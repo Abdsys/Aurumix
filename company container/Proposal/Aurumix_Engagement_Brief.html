@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <title>Aurumix | Engagement Brief | Tokenomics.net</title>
+
+  <!-- Google Fonts (preconnect for faster load) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Brand System CSS (absolute path to plugin standards) -->
+  <link rel="stylesheet" href="file:///C:/Users/BlockApex/Desktop/Tokenomics%20Skills%20Directory/tokenomics-plugin/standards/branded-docs-main/css/brand-system.css">
+
+  <style>
+    /* ===== cover-minimal-typographic ===== */
+    .page--cover-minimal-typographic {
+      background: var(--warm-white);
+    }
+    .page--cover-minimal-typographic .cover-gold-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--gold);
+    }
+    .page--cover-minimal-typographic .cover-content {
+      position: absolute;
+      top: 50%;
+      left: 0.7in;
+      right: 0.7in;
+      transform: translateY(-55%);
+    }
+    .page--cover-minimal-typographic .cover-eyebrow {
+      margin-bottom: 16px;
+    }
+    .page--cover-minimal-typographic .cover-title {
+      font-family: var(--font-serif);
+      font-size: 42pt;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--warm-charcoal);
+      margin-bottom: 20px;
+    }
+    .page--cover-minimal-typographic .cover-subtitle {
+      font-family: var(--font-sans);
+      font-size: 13pt;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 5.5in;
+    }
+    .page--cover-minimal-typographic .cover-rule {
+      border: none;
+      border-bottom: 1px solid var(--stone);
+      margin-bottom: 0;
+      width: 100%;
+    }
+    .page--cover-minimal-typographic .cover-bottom {
+      position: absolute;
+      bottom: 0.8in;
+      left: 0.7in;
+      right: 0.7in;
+    }
+    .page--cover-minimal-typographic .cover-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: 9pt;
+      font-weight: 500;
+      color: var(--concrete);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    /* Cover prepared-for/by row */
+    .page--cover-minimal-typographic .cover-prepared {
+      display: flex;
+      gap: 0.6in;
+      margin-top: 28px;
+      font-family: var(--font-sans);
+      font-size: 9pt;
+      color: var(--concrete);
+    }
+    .page--cover-minimal-typographic .cover-prepared .prepared-label {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--warm-charcoal);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .page--cover-minimal-typographic .cover-prepared .prepared-value {
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* ===== content-single-column ===== */
+    .page--content-single-column .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .page--content-single-column .content-heading {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .page--content-single-column .heading-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 16px;
+      width: 100%;
+    }
+    .page--content-single-column[data-continuation] .content-heading,
+    .page--content-single-column[data-continuation] .heading-rule {
+      display: none;
+    }
+
+    /* ===== content-data-table ===== */
+    .page--content-data-table .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .page--content-data-table .content-heading {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .page--content-data-table .heading-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .page--content-data-table .stats-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .page--content-data-table .stats-row .stat-card {
+      flex: 1;
+      padding: 14px 14px;
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--gold);
+      break-inside: avoid;
+    }
+    .page--content-data-table .stats-row .stat-value {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .page--content-data-table .stats-row .stat-label {
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .page--content-data-table[data-continuation] .content-heading,
+    .page--content-data-table[data-continuation] .heading-rule {
+      display: none;
+    }
+    /* Tighter table for engagement summary (3 cols, narrow phase) */
+    .page--content-data-table table th:first-child,
+    .page--content-data-table table td:first-child {
+      width: 1.3in;
+      white-space: nowrap;
+    }
+    .page--content-data-table table th,
+    .page--content-data-table table td {
+      vertical-align: top;
+      font-size: 9.5pt;
+      line-height: 1.45;
+    }
+
+    /* ===== closing-cta-contact ===== */
+    .page--closing-cta-contact .cta-wrapper {
+      position: absolute;
+      top: 50%;
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      transform: translateY(-50%);
+      text-align: center;
+    }
+    .page--closing-cta-contact .cta-title {
+      font-family: var(--font-serif);
+      font-size: 32pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 14px;
+    }
+    .page--closing-cta-contact .cta-subtitle {
+      font-family: var(--font-sans);
+      font-size: 12pt;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 5in;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page--closing-cta-contact .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--warm-white);
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 10pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 16px 40px;
+      margin-bottom: 40px;
+      text-decoration: none;
+    }
+    .page--closing-cta-contact .cta-divider {
+      width: 80px;
+      height: 1px;
+      background: var(--stone);
+      margin: 0 auto 36px;
+    }
+    .page--closing-cta-contact .cta-contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 4.5in;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .page--closing-cta-contact .contact-label {
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--concrete);
+      margin-bottom: 4px;
+    }
+    .page--closing-cta-contact .contact-value {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      color: var(--text-primary);
+    }
+    .page--closing-cta-contact .cta-wordmark {
+      position: absolute;
+      bottom: 0.75in;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* ===== closing-back-cover ===== */
+    .page--closing-back-cover {
+      background: var(--warm-charcoal);
+    }
+    .page--closing-back-cover .back-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      text-align: center;
+    }
+    .page--closing-back-cover .back-tagline {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      font-weight: 400;
+      color: var(--concrete);
+      letter-spacing: 0.05em;
+      margin-top: 20px;
+    }
+    .page--closing-back-cover .back-legal {
+      position: absolute;
+      bottom: 0.75in;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      color: var(--concrete);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* ===== Phase tables (used inside content-single-column) ===== */
+    .phase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: 9pt;
+      line-height: 1.45;
+      margin: 8px 0 14px;
+      page-break-inside: auto;
+    }
+    .phase-table thead {
+      display: table-header-group;
+    }
+    .phase-table tr {
+      page-break-inside: avoid;
+    }
+    .phase-table thead th {
+      text-align: left;
+      background: var(--warm-charcoal);
+      color: var(--warm-white);
+      padding: 7px 10px;
+      font-weight: 600;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .phase-table tbody td {
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: top;
+      color: var(--text-primary);
+    }
+    .phase-table tbody td:first-child {
+      font-weight: 600;
+      color: var(--warm-charcoal);
+      width: 32%;
+    }
+    .phase-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .phase-subhead {
+      font-family: var(--font-sans);
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--concrete);
+      margin: 14px 0 6px;
+    }
+    /* Phase headings rendered as H3 within shared pages — match content-heading visually */
+    .page--content-single-column .phase-heading {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      line-height: 1.2;
+      margin: 32px 0 6px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <main id="document-pages">
+
+    <!-- ============ PAGE 1: COVER ============ -->
+    <div class="page page--cover-minimal-typographic" data-template="cover-minimal-typographic">
+      <div class="cover-gold-bar"></div>
+
+      <div class="cover-content">
+        <div class="cover-eyebrow text-eyebrow" data-text-role="eyebrow">Engagement Brief</div>
+        <h1 class="cover-title" data-text-role="title">Aurumix</h1>
+        <p class="cover-subtitle" data-text-role="subtitle">Mapping the Complete Data Room to the Gold-Backed SIP Token Mandate</p>
+        <hr class="cover-rule">
+
+        <div class="cover-prepared">
+          <div>
+            <span class="prepared-label">Prepared for</span>
+            <span class="prepared-value">Gaurav Khullar<br>Aurumix</span>
+          </div>
+          <div>
+            <span class="prepared-label">Prepared by</span>
+            <span class="prepared-value">Tokenomics.net</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-bottom">
+        <div class="cover-meta">
+          <img src="file:///C:/Users/BlockApex/Desktop/Tokenomics%20Skills%20Directory/tokenomics-plugin/standards/branded-docs-main/assets/tokenomics-logo-dark.svg" alt="Tokenomics.net" class="logo logo--cover">
+          <span data-text-role="meta-date">June 3, 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ PAGE 2: How We Read Aurumix ============ -->
+    <div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+      <div class="content-area">
+        <h2 class="content-heading" data-text-role="section-title">How We Read Aurumix</h2>
+        <hr class="heading-rule">
+
+        <div data-text-role="body">
+          <p>Aurumix is a long-term, gold-backed Systematic Investment Programme issued as a VARA-regulated token. Every dollar splits 70/30 by smart contract. 70% buys physical LBMA gold held in custody. 30% goes into an algorithmic growth pool of conservative instruments. New tokens reach investors only through Mining Events, allocated by a Priority Score that rewards consistency over cheque size. The design is built so every event closes oversubscribed, and the token pairs with a gold-backed credit facility so investors borrow against their holdings rather than sell.</p>
+
+          <p>The investor profile is not crypto-native. The target is the long-term saver, closer to an LIC subscriber than a DeFi participant. The design constraints span 50 years, roughly 1,176 Mining Events, VARA's regulatory perimeter, and an LBMA-grade custody operation.</p>
+
+          <p>The Complete Data Room is built for this kind of work. Our methodology is fixed. What's tailored for Aurumix is how each phase maps to the specific design questions the master reference document already surfaces. The V3 formula tagged "to be built". The Priority Score tables marked "need to work". The cohort-level fee revenue curve the team has explicitly asked for. The architectural decisions on token compliance, credit delivery, and agent governance that determine whether the system holds for fifty years.</p>
+
+          <div class="callout">
+            <div class="callout-title">How this brief is organised</div>
+            <div class="callout-body">Phase 0 sets up the engagement. The six phases that follow are how the work maps to Aurumix.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <!-- ============ PAGE 3: Phase 0 + Phase 1 (packed) ============ -->
+    <div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+      <div class="content-area">
+        <h2 class="content-heading" data-text-role="section-title">Phase 0: Discovery</h2>
+        <hr class="heading-rule">
+
+        <div data-text-role="body">
+          <p>Discovery aligns scope before any design work begins. For Aurumix this phase covers:</p>
+          <table class="phase-table">
+            <thead><tr><th>Workstream</th><th>What it covers</th></tr></thead>
+            <tbody>
+              <tr><td>Current-state inventory</td><td>Whitepaper, pitch decks, internal docs, market research, user data, roadmaps, revenue and cost models, KPIs.</td></tr>
+              <tr><td>Quality assessment</td><td>Three axes: accuracy, gaps, internal consistency. Strong inputs route into refinement and alignment. Incomplete inputs route into deeper handholding and builds.</td></tr>
+              <tr><td>Kickoff meeting</td><td>Captures implicit context, working assumptions, and the gaps surfaced in review. Near-term and long-term objectives clarified across fundraising, growth, retention, and product features.</td></tr>
+              <tr><td>Aurumix-specific scope alignment</td><td>Not a standard token project. The model already exists with significant structural depth. The engagement is validation, stress-testing, simulation, and investor-grade documentation built on top of it. Calibrated to the hybrid gold-plus-algorithm structure, 50-year emission, ICS scoring, and VARA framework. Not from-scratch redesign.</td></tr>
+              <tr><td>Project charter</td><td>Captures the voice of customer from the meeting, sent for sign-off before design work begins.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Deliverables:</strong> Project Charter for Alignment, and Voice of Customer documentation.</p>
+
+          <h3 class="phase-heading">Phase 1: Market Research</h3>
+          <p>Before any mechanism is designed, we look outward. Comparable models show where the pressure points sit, which assumptions fail under stress, and which investor behaviours define the first three years.</p>
+          <p>The research is not a literature review. It is the stress-test catalogue every later phase draws from. For Aurumix, that means examining:</p>
+          <table class="phase-table">
+            <thead><tr><th>Comparable</th><th>What it teaches</th></tr></thead>
+            <tbody>
+              <tr><td>MicroStrategy (MSTR)</td><td>Closest analog to AURX's GFV-plus-APV price structure. The cleanest case for how premium-over-NAV dynamics behave through a real market cycle.</td></tr>
+              <tr><td>Tokenised commodity precedents</td><td>PAXG, Tether Gold, Pax Silver. Regulated custody, redemption mechanics, and oracle architecture.</td></tr>
+              <tr><td>Algorithmic growth failure modes</td><td>The Terra/Luna reference CG raised on the call. The failure pattern any pool-driven price appreciation engine has to avoid.</td></tr>
+              <tr><td>Silver-tokenisation engagement</td><td>Direct structural comparable for the asset-backed credit facility.</td></tr>
+              <tr><td>Regulatory positioning</td><td>VARA, LBMA, and cross-border NRI/FEMA relative to peers.</td></tr>
+            </tbody>
+          </table>
+          <p>The output is a market research document the later phases draw from. It also produces a written record of which historical mistakes Aurumix is structurally exempt from, and which still require active mitigation.</p>
+
+          <h3 class="phase-heading">Phase 2: Mechanism Design</h3>
+          <p>Mechanism design is the keystone phase. Every subsequent deliverable in the engagement depends on what closes here. Theory before numbers. If a mechanism cannot be defended in plain language, no simulation will rescue it. This phase exists to finalise every formula, threshold, and rule before a single line of simulation code runs. The simulation needs a closed mechanism to operate on. Qualitative fairness can only be assessed at the design layer, not the numerical one.</p>
+
+          <p>For Aurumix, this phase closes the following:</p>
+          <table class="phase-table">
+            <thead><tr><th>Workstream</th><th>What we close</th></tr></thead>
+            <tbody>
+              <tr><td>V3 formula</td><td>Target Alignment Multiplier and its 3 inputs (raw new-gold ratio, oversubscription sentiment signal, ecosystem-target anchor). A defined response surface across all 50 years.</td></tr>
+              <tr><td>Priority Score system</td><td>Calibrate every "need to work" table: Duration, Lock, Family Group, Referral, Tier thresholds, Spot Window streak bonuses. Qualitative fairness check across cohorts and class tiers.</td></tr>
+              <tr><td>Dynamic event-size formula</td><td>Tied to investor growth targets (500 in Year 1, 14k by Year 3, 60-100k by Year 10). Asymmetric subscription-ratio feedback per Section 3.4.</td></tr>
+              <tr><td>Seven-step Mining Event process</td><td>Refined into specification-ready form for the smart contract team.</td></tr>
+              <tr><td>Credit facility full mechanic</td><td>Per-market delivery routes (UPI, NBFC, funded debit, country partner). Class 1 vs Class 2 distinction. LTV by ICS tier. No-sell-to-pool flow matching card spend to incoming SIP principal.</td></tr>
+              <tr><td>DCA and holding-attractive features</td><td>Optional design modules consistent with the Mining Event architecture.</td></tr>
+              <tr><td>Token architecture</td><td>ERC-3643 base + ERC-20 wrapper. KYC enforcement preserved while permitting DeFi composability. Wallet topology and custody flow specified.</td></tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <div class="callout-title">Scope note</div>
+            <div class="callout-body">This is a sample of what mechanism design could cover for Aurumix, not an exhaustive list. The full scope is shaped by what Discovery surfaces.</div>
+          </div>
+
+          <p>The output is a closed-form mechanism design document and the supporting process maps. Every subsequent phase runs on both.</p>
+
+          <h3 class="phase-heading">Phase 3: Revenue Model</h3>
+          <p>Once the mechanism is closed, we model how Aurumix earns. This is the deterministic, happy-path revenue picture. The static projection the team needs to plan hiring, operating reserves, and the build budget against.</p>
+          <p>For Aurumix this covers:</p>
+          <table class="phase-table">
+            <thead><tr><th>Revenue stream</th><th>Modelling approach</th></tr></thead>
+            <tbody>
+              <tr><td>Algo growth fee</td><td>5% to 2% declining curve. Mapped against pool balance and growth. 15% permanent reserve floor enforced.</td></tr>
+              <tr><td>Entry fee</td><td>3% one-time on the 30% algo portion.</td></tr>
+              <tr><td>Custody and audit fee</td><td>Net of operational cost.</td></tr>
+              <tr><td>Spot Window revenue</td><td>From the 5% per-event allocation.</td></tr>
+              <tr><td>Credit facility interest</td><td>Income and default assumptions.</td></tr>
+              <tr><td>Agent network commission</td><td>15% platform fee share. Distribution across three levels under varying network configurations.</td></tr>
+              <tr><td>Cohort revenue curves</td><td>Year-by-year and cohort-by-cohort across 50 years. The simulation the master reference asks for in Section 2.6.</td></tr>
+              <tr><td>Additional revenue streams</td><td>Surfaced from mechanism design but not yet quantified in the reference document.</td></tr>
+            </tbody>
+          </table>
+          <p>The output is a working-capital-ready revenue model spreadsheet covering both the near-term operating window and the long-horizon trajectory.</p>
+
+          <h3 class="phase-heading">Phase 4: Simulation</h3>
+          <p>This is the most intensive phase, and its shape depends on what mechanism design closes in Phase 2. The simulation runs on the finalised mechanism, not the current draft. The deterministic revenue model shows one path. The simulation tests thousands and surfaces where the design holds or bends. Findings here may send us back to mechanism design when stress tests expose edge cases worth correcting before launch.</p>
+          <p>For Aurumix, the simulation work covers:</p>
+          <table class="phase-table">
+            <thead><tr><th>Stress test</th><th>What it surfaces</th></tr></thead>
+            <tbody>
+              <tr><td>Gold price modelling</td><td>Geometric Brownian motion with drift and volatility. Anchored to COMEX gold futures at 12, 24, and 36 month tenors as the market-implied baseline.</td></tr>
+              <tr><td>Monte Carlo investor growth</td><td>Slow, base, and fast scenarios calibrated to the published targets.</td></tr>
+              <tr><td>Oversubscription dynamics</td><td>Across all 1,176 Mining Events. Three-event rolling average and asymmetric supply-contraction feedback fully modelled.</td></tr>
+              <tr><td>V1 + V2 + V3 sensitivity</td><td>Each driver's effect on mining-price trajectory under varying inflow. Where the gap between calculated APV and real pool value becomes structurally meaningful.</td></tr>
+              <tr><td>Algo pool depletion stress</td><td>The 85% principal floor and fee-suspension behaviour.</td></tr>
+              <tr><td>Credit facility default cascade</td><td>Collateral liquidation cascade modelling under default scenarios.</td></tr>
+              <tr><td>Cohort-level fee revenue</td><td>Across the 50-year horizon. Each cohort's distinct V3 entry profile preserved.</td></tr>
+              <tr><td>Mining Event subscription dynamics</td><td>When oversubscription survives and when it breaks.</td></tr>
+            </tbody>
+          </table>
+          <p>The output is a Python simulation framework delivered in a GitHub repository, with full scenario charts and a structured simulation report.</p>
+
+          <h3 class="phase-heading">Phase 5: Supply Side</h3>
+          <p>We hold this phase until after simulation. AURX is not a standard utility token with a fixed pre-decided vesting schedule. Its emission is event-based and dynamic. The supply schedule emerges from the calibrated event-size formula and what the simulation actually shows, not from a curve drawn at the start.</p>
+
+          <p>This phase also covers what happens to tokens after issuance. Where they sit, what's locked, what's pledged to the credit facility, and what reaches the secondary market once exchange listings begin in Year 2. The dynamic we raised on the call is the failure mode this work prevents: thin liquidity pools where tens of thousands in selling pressure can erase millions in market cap.</p>
+
+          <h3>Issuance side</h3>
+          <p>For Aurumix, the issuance side produces:</p>
+          <table class="phase-table">
+            <thead><tr><th>Workstream</th><th>What we produce</th></tr></thead>
+            <tbody>
+              <tr><td>100B token hard cap</td><td>Distributed across Phase 1 (~70%, Years 1 to 15) and Phase 2 (~30%, Years 16 to 50).</td></tr>
+              <tr><td>Decay constant calibration</td><td>Against simulation-observed inflow rates and oversubscription patterns.</td></tr>
+              <tr><td>Dynamic event-size formula</td><td>Production-ready form, tuned with the asymmetric subscription-ratio feedback the master reference specifies.</td></tr>
+              <tr><td>5% Spot Window allocation</td><td>Modelled across the tier-residual roll-up rule.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Secondary market side</h3>
+          <p>On the secondary market side, the phase produces:</p>
+          <table class="phase-table">
+            <thead><tr><th>Workstream</th><th>What we produce</th></tr></thead>
+            <tbody>
+              <tr><td>DEX liquidity depth requirements</td><td>Sized against expected free float at each horizon phase. Explicit modelling of how SIP-locked supply, credit-pledged supply, and the freely tradeable Spot Window combine into what secondary market liquidity has to absorb.</td></tr>
+              <tr><td>Trade size and slippage modelling</td><td>So a single large buyer or seller cannot disconnect the secondary market price from the mining-price floor by more than a defined tolerance.</td></tr>
+              <tr><td>Buy pressure analysis</td><td>Across cumulative tokens leaving lock-in over time. Includes how the credit-facility match flow from Phase 2 absorbs card-spend sell pressure before it reaches the pool.</td></tr>
+              <tr><td>Launch liquidity budget</td><td>For the Year 2 listing. Initial DEX seed depth and the scaling profile as circulating supply grows.</td></tr>
+            </tbody>
+          </table>
+          <p>The output is a complete supply-side spreadsheet showing circulating supply over the full 50-year horizon under each simulated scenario, alongside a DEX liquidity plan sized against the float trajectory.</p>
+
+          <h3 class="phase-heading">Phase 6: Documentation</h3>
+          <p>The output that closes the engagement. A whitepaper and supporting materials that read like a research paper, not a pitch. Methodology stated. Evidence presented. Stress-test results visualised. Risk register published. Compliance posture written for VARA review and listing-partner diligence.</p>
+
+          <p>For Aurumix this covers:</p>
+          <table class="phase-table">
+            <thead><tr><th>Deliverable</th><th>Contents</th></tr></thead>
+            <tbody>
+              <tr><td>Tokenomics whitepaper</td><td>Embedded simulation outputs, V1+V2+V3 derivation, sensitivity heatmaps. Honest treatment of the gold floor versus algorithmic premium framing.</td></tr>
+              <tr><td>Process maps</td><td>Mining Event flow, 70/30 capital flow, credit facility, agent network, seven-step event execution.</td></tr>
+              <tr><td>Tokenomics Audit Report</td><td>Independent review of every design decision with prioritised recommendations.</td></tr>
+              <tr><td>Market Research deliverable</td><td>Client-ready form.</td></tr>
+              <tr><td>Prep, Launch, and Scale roadmap</td><td>Milestones across the first three years.</td></tr>
+              <tr><td>Handoff guides</td><td>For development, legal and compliance, and capital markets teams.</td></tr>
+              <tr><td>Whitepaper formats</td><td>Google Doc and PDF. Two rounds of revisions included.</td></tr>
+            </tbody>
+          </table>
+          <p>The output is a publication-quality document set sufficient to bring to investors, list with an exchange, and submit for VARA review.</p>
+
+          <h3 class="phase-heading">Where This Lands</h3>
+          <p>The methodology stays the same. What's specific to Aurumix is how it answers the design problem you actually have. Closing the formulas marked "need to work". Validating the engine that makes oversubscription perpetual. Producing the documentation that lets the model survive contact with regulators, exchanges, and investors.</p>
+        </div>
+      </div>
+
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <!-- ============ PAGE 8: Engagement Summary Table ============ -->
+    <div class="page page--content-data-table" data-template="content-data-table" data-auto-continue>
+      <div class="content-area">
+        <h2 class="content-heading" data-text-role="section-title">Engagement Summary</h2>
+        <hr class="heading-rule">
+
+        <div data-text-role="body">
+          <p>Each phase, the primary problem it solves for Aurumix, and the deliverable that closes it.</p>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-value" data-text-role="stat-1-value">7</div>
+            <div class="stat-label" data-text-role="stat-1-label">Engagement Phases</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" data-text-role="stat-2-value">12</div>
+            <div class="stat-label" data-text-role="stat-2-label">Final Deliverables</div>
+          </div>
+        </div>
+
+        <table data-text-role="table">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Primary Problem Solved</th>
+              <th>Deliverable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>0. Discovery</strong></td>
+              <td>Scope alignment and voice of customer capture before any design work begins</td>
+              <td>Project Charter for Alignment, Voice of Customer documentation</td>
+            </tr>
+            <tr>
+              <td><strong>1. Market Research</strong></td>
+              <td>Surfacing failure modes from comparable models to inform stress-test design</td>
+              <td>Market research document covering MSTR, Terra/Luna, tokenised commodities, and regulatory positioning</td>
+            </tr>
+            <tr>
+              <td><strong>2. Mechanism Design</strong></td>
+              <td>Closing every "need to work" formula, parameter, and architectural choice before they hit simulation</td>
+              <td>Mechanism design document and supporting process maps</td>
+            </tr>
+            <tr>
+              <td><strong>3. Revenue Model</strong></td>
+              <td>Deterministic happy-path revenue picture for planning hiring, reserves, and budget</td>
+              <td>Revenue model spreadsheet covering near-term and 50-year horizons</td>
+            </tr>
+            <tr>
+              <td><strong>4. Simulation</strong></td>
+              <td>Validating the closed mechanism under thousands of scenarios across the 50-year horizon</td>
+              <td>Python simulation framework in GitHub, scenario charts, structured simulation report</td>
+            </tr>
+            <tr>
+              <td><strong>5. Supply Side</strong></td>
+              <td>Calibrating emission against simulation behaviour and sizing liquidity against the free float</td>
+              <td>Supply-side spreadsheet over the 50-year horizon and a DEX liquidity plan</td>
+            </tr>
+            <tr>
+              <td><strong>6. Documentation</strong></td>
+              <td>Institutional-grade artefacts for VARA review, listing partners, and investor diligence</td>
+              <td>Whitepaper, process maps, tokenomics audit report, market research deliverable, Prep/Launch/Scale roadmap, handoff guides</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="table-caption" data-text-role="table-caption">Table 1: Aurumix engagement phases mapped to the design problems each closes.</p>
+      </div>
+
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <!-- ============ PAGE 9: Back Cover ============ -->
+    <div class="page page--closing-back-cover" data-template="closing-back-cover">
+      <div class="back-center">
+        <img src="file:///C:/Users/BlockApex/Desktop/Tokenomics%20Skills%20Directory/tokenomics-plugin/standards/branded-docs-main/assets/tokenomics-logo-light.svg" alt="Tokenomics.net" class="logo logo--2xl">
+        <p class="back-tagline" data-text-role="tagline">Built by founders. Designed for founders.</p>
+      </div>
+
+      <div class="back-legal" data-text-role="legal-line">Prepared by Tokenomics.net &middot; &copy; 2026</div>
+    </div>
+
+  </main>
+
+  <!-- Auto-continuation: splits overflowing content pages into continuation pages -->
+  <script>
+  (function(){
+    'use strict';
+    var BUFFER=2;
+    function isAtomic(el){
+      if(!el||el.nodeType!==1)return false;
+      var s=window.getComputedStyle(el);
+      var bi=s.getPropertyValue('break-inside')||s.getPropertyValue('-webkit-break-inside');
+      if(bi==='avoid')return true;
+      var t=el.tagName.toLowerCase();
+      if(t==='figure'||t==='blockquote')return true;
+      if(el.classList.contains('callout')||el.classList.contains('pull-quote')||
+         el.classList.contains('stat-row')||el.classList.contains('finding')||
+         el.classList.contains('keep-together'))return true;
+      return false;
+    }
+    function isWrapper(el){
+      if(!el||el.nodeType!==1)return false;
+      if(el.tagName.toLowerCase()!=='div')return false;
+      if(el.hasAttribute('data-text-role')&&el.children.length>1)return true;
+      return false;
+    }
+    function flattenWrappers(ca){
+      var changed=true;
+      while(changed){changed=false;
+        var ch=Array.prototype.slice.call(ca.children);
+        for(var i=0;i<ch.length;i++){
+          if(isWrapper(ch[i])){
+            var w=ch[i],p=w.parentNode,nx=w.nextSibling;
+            var inner=Array.prototype.slice.call(w.children);
+            for(var j=0;j<inner.length;j++)p.insertBefore(inner[j],nx);
+            p.removeChild(w);changed=true;break;
+          }
+        }
+      }
+    }
+    function makeCont(orig){
+      var c=document.createElement('div');
+      c.className=orig.className;
+      c.setAttribute('data-template',orig.getAttribute('data-template')||'');
+      c.setAttribute('data-auto-continue','');
+      c.setAttribute('data-continuation','');
+      var ca=document.createElement('div');
+      ca.className='content-area';
+      c.appendChild(ca);
+      var pn=document.createElement('div');
+      pn.className='page-number';
+      pn.setAttribute('data-text-role','page-number');
+      c.appendChild(pn);
+      return c;
+    }
+    function getCA(p){return p.querySelector('.content-area');}
+    function neutralizeLayout(ca){
+      var cs=window.getComputedStyle(ca);
+      if(cs.display==='flex'||cs.display==='inline-flex'||cs.overflow==='hidden'){
+        ca.style.display='block';ca.style.flexDirection='';ca.style.overflow='visible';
+      }
+    }
+    function process(page){
+      var ca=getCA(page);
+      if(!ca)return[page];
+      flattenWrappers(ca);
+      neutralizeLayout(ca);
+      var uh=ca.clientHeight-BUFFER;
+      if(ca.scrollHeight<=uh+BUFFER){page.setAttribute('data-auto-continued','');return[page];}
+      var ch=[];for(var i=0;i<ca.children.length;i++)ch.push(ca.children[i]);
+      var si=-1,ar=ca.getBoundingClientRect();
+      for(var i=0;i<ch.length;i++){
+        if(ch[i].classList.contains('page-number'))continue;
+        if(ch[i].getBoundingClientRect().bottom-ar.top>uh){si=i;break;}
+      }
+      if(si===-1){page.setAttribute('data-auto-continued','');return[page];}
+      var oc=ch[si];
+      if(oc.getBoundingClientRect().top-ar.top<uh&&isAtomic(oc)){/* straddles — move whole */}
+      var nd=0;
+      for(var n=0;n<ch.length;n++){
+        if(!ch[n].classList.contains('page-number')&&
+           !ch[n].classList.contains('content-heading')&&
+           ch[n].tagName.toLowerCase()!=='hr')nd++;
+      }
+      if(si===0&&nd<=1){page.setAttribute('data-auto-continued','');return[page];}
+      while(si>1){var pv=ch[si-1];if(!pv||pv.nodeType!==1)break;var pt=pv.tagName.toLowerCase();if(pt==='h3'||pt==='h4'||pt==='h5'){si--;}else{break;}}
+      var cp=makeCont(page);
+      page.parentNode.insertBefore(cp,page.nextSibling);
+      var cca=getCA(cp),tm=[];
+      for(var j=si;j<ch.length;j++){if(!ch[j].classList.contains('page-number'))tm.push(ch[j]);}
+      for(var k=0;k<tm.length;k++)cca.appendChild(tm[k]);
+      page.setAttribute('data-auto-continued','');
+      return[page].concat(process(cp));
+    }
+    function renumber(){
+      var pp=document.querySelectorAll('#document-pages > .page');
+      for(var i=0;i<pp.length;i++){var n=pp[i].querySelector('.page-number');if(n)n.textContent=String(i+1);}
+    }
+    function populateTOC(){
+      var ee=document.querySelectorAll('.toc-entry[data-toc-ref]');
+      if(ee.length===0)return;
+      for(var i=0;i<ee.length;i++){
+        var ref=ee[i].getAttribute('data-toc-ref');if(!ref)continue;
+        var t=document.getElementById(ref);
+        if(!t)t=document.querySelector('.page[data-toc-id="'+ref+'"]');
+        if(!t)continue;
+        var pg=t.closest?t.closest('#document-pages > .page'):null;
+        if(!pg){var nd=t;while(nd&&nd!==document.body){if(nd.classList&&nd.classList.contains('page')&&nd.parentNode&&nd.parentNode.id==='document-pages'){pg=nd;break;}nd=nd.parentNode;}}
+        if(!pg&&t.classList&&t.classList.contains('page'))pg=t;
+        if(!pg)continue;
+        var nm=pg.querySelector('.page-number');if(!nm)continue;
+        var sp=ee[i].querySelector('.toc-entry-page');if(sp)sp.textContent=nm.textContent;
+      }
+    }
+    function run(){
+      var pp=document.querySelectorAll('.page[data-auto-continue]');
+      if(pp.length===0){renumber();populateTOC();document.dispatchEvent(new Event('auto-continue-complete'));return;}
+      var a=Array.prototype.slice.call(pp);
+      for(var i=0;i<a.length;i++)process(a[i]);
+      renumber();populateTOC();
+      document.dispatchEvent(new Event('auto-continue-complete'));
+    }
+    function waitForMermaid(){
+      return new Promise(function(resolve){
+        if(typeof mermaid==='undefined'){resolve();return;}
+        var dd=document.querySelectorAll('.mermaid');
+        if(dd.length===0){resolve();return;}
+        var att=0,max=100;
+        function chk(){
+          var ok=true;
+          for(var i=0;i<dd.length;i++){if(!dd[i].querySelector('svg')){ok=false;break;}}
+          if(ok||att>=max){resolve();}else{att++;setTimeout(chk,100);}
+        }
+        chk();
+      });
+    }
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',function(){document.fonts.ready.then(function(){return waitForMermaid();}).then(run);});
+    }else{document.fonts.ready.then(function(){return waitForMermaid();}).then(run);}
+  })();
+  </script>
+</body>
+</html>
