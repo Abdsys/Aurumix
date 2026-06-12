@@ -100,6 +100,47 @@ Lock-ins of 6 months to 25 years, combined with credit facilities that let inves
 
 ---
 
+## Design Gaps
+
+If we take the design as-is, these are the open items that need to be closed before anything downstream is meaningful.
+
+### Formulas Marked "Need To Work" In Their Own Doc
+
+- V3 formula itself. Trajectory described (100% to 8% to 5%), formula not built. Target Alignment Multiplier not specified.
+- Duration Score values across all 10 SIP bands
+- Lock-in Score values across all 10 lock bands
+- Subscription Adjustment %s in the high-demand bands (SR > 2.0×)
+- Custody fee % (currently ~1%, depends on actual cost)
+- Loyalty Multiplier appears in the Priority Score formula but is never defined
+- Class Multiplier values for the I to V investor classes
+- Decay constants across the 50-year supply curve
+
+### Mechanics Described But Underspecified
+
+- ICS Score formula itself. Tier ranges are given but the calculation from inputs is missing.
+- Confirmed SIP threshold logic. 6 events confirmed, but the allocation algorithm around the protected base is fuzzy.
+- Phase 1 vs Phase 2 supply split. Stated as ~70% and ~30%, exact decay schedule not defined.
+- Spot Window allocation post-Y2. Activation trigger, residual roll-up edge cases, streak bonus interaction.
+- Family Group SIP splitting rules. How a $100 SIP is split across 8 family members, who counts towards the bonus.
+- Investor Class System thresholds. $37.50/event appears arbitrary, not derived.
+- Mining Event Scheduler governance. Multi-sig approval rules, what changes require it, frozen periods.
+- Credit limit % per tier. Only Gold tier example (74%) given. Other tiers not specified.
+- Streak recovery math. "Held points reactivate" but the formula for partial reactivation is missing.
+
+### Ambiguous Or Unresolved
+
+- Token standard. ERC-20 implied but ERC-3643 or ERC-1400 needed for VARA compliance. Not chosen.
+- Spot Window timing. Activates "post-Y2" but specific event trigger not defined.
+- VARA classification ruling. They hope for "commodity-linked hybrid". Not confirmed.
+- MLM safe harbor design. Referral cap stated as "subordinate to investment scores" but the actual cap % not set.
+- Custody multi-vault failover. Brinks, Loomis, Malca-Amit listed as options. Single or split?
+- Algo pool instrument allocation %s. Govt securities, MMF, IG bonds, deposits all listed. Target allocation not specified.
+- Subscription Ratio definition. Capital blocked vs planned capital, but planned capital itself adjusts. Circular.
+
+The Mechanism Design phase has to close the first two categories before any simulation work is meaningful. The third category is design additions worth pitching as scope. The fourth needs legal and architectural decisions, not just math.
+
+---
+
 ## Summary
 
 The structure works if and only if new investors keep showing up faster than old investors want to exit. The 70% gold backing is real and provides a meaningful floor. The 30% algo pool's quoted growth is largely algorithmic markup. The legal structure (no redemption right) protects Aurumix from a bank run. It does not protect the investor from buying into a price detached from underlying value.
