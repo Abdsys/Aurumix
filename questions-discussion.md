@@ -34,6 +34,8 @@
 
 12. Lock-in duration appears to affect the dividend twice (double dependency). It is a component of the ICS score, and it also sets the standalone Dividend Multiplier, and the ICS-Weighted Score = ICS Score × Investment Value × Dividend Multiplier. So lock-in is counted once inside ICS and again as the multiplier on top — a compounding (lock-in²) effect that can let long lock-ins dominate the 80/20 pool over the stated "primary driver" of continuity. Is this an intentional super-weighting of long lock-ins, or an unintended double-count? If intentional, we need to calibrate the magnitude so lock-in alone cannot crown the top 10%; if not, lock-in should live in only one channel (either an ICS component or a standalone multiplier, not both).
 
+13. Physical redemption of gold isn't mentioned anywhere — the only exit is the cash buyback (net grams × LBMA price, in USDT/AED). Is physical delivery intentionally excluded, or should we offer it (e.g. for higher tiers / above a minimum gram threshold)? Peers like PAXG and Kinesis allow it, and we market hard on "you own physical gold."
+
 ---
 
 ## Discussion Points (design / research / strategy)
