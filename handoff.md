@@ -1,7 +1,7 @@
 # Aurumix — Handoff / Context Doc
 
 > **Read this first in any new chat.** It carries the full context of the Aurumix engagement so a fresh session starts loaded — no need to re-explain from scratch.
-> **Last updated:** 2026-07-15
+> **Last updated:** 2026-07-22
 > **Update protocol:** Refresh this file whenever the working context reaches ~80% (when a new chat is about to be spun up). Keep it current, concise, and decision-focused.
 
 ---
@@ -32,7 +32,8 @@ We (Tokenomics.net) are building a **tokenomics Data Room** for **Aurumix**, a U
 - `client container/Aurumix_Complete_Master_Reference_v2.docx.md` — **OLD V2** (70/30 split, algo pool, company-set price formula). Superseded.
 - `Aurumix_V3_Business_Model_Explained.md` (root) — our full structured walkthrough of V3, gaps flagged (`⚠ GAP`). Best single explainer.
 - `Aurumix_MD_Blueprint.md` (root) — **the plan we're executing**: how to build the MD, decision-driven, MR → B1..B10.
-- `questions-discussion.md` (root) — open items split into **Questions** (12, clarify with client on Friday) and **Discussion Points** (2: credit risk engine, AURX classification).
+- `deliverables/1-market-research/Aurumix_Market_Research.md` — **Phase A COMPLETE**: 10-track deep-researched, QC'd market research with confidence tags and precedent→MD-block map. Key comparable found: **ORO** (Dubai yield-bearing gold token).
+- `questions-discussion.md` (root) — open items split into **Questions** (13, clarify with client on Friday) and **Discussion Points** (2: credit risk engine, AURX classification).
 - `company container/Proposal/Aurumix_Engagement_Brief.md` — our 7-phase proposal (⚠ written against V2 — needs re-scoping to V3).
 - `company container/notes/Aurumix_Summary.md` (V2 critique) + `Aurumix_V3_Summary.md` (V3 critique).
 - `company container/meeting-notes/2_June.md` — discovery call transcript.
@@ -70,6 +71,7 @@ These are worked-through positions from prior discussion — carry them forward:
 5. **"Mining / oversubscription" no longer has an economic function** in V3 (price = pure gold, so buying this event vs next = same price). It's now purely a retention/FOMO device. Decide: keep the framing or simplify to "gold DCA + tier-earned spot." Note: throttling oversubscription also throttles AUM growth.
 6. **Three-lane percentages don't reconcile** (SIP 90% + ICS-spot 80% + external 20% can't sum) — needs client clarification (likely different denominators).
 7. **Token standard:** fee/KYC/credit/dividend/buyback rights all fail to survive a permissionless ERC-20 DEX transfer → argues for permissioned base (ERC-3643) + optional ERC-20 wrapper (rights suspended in wrapped form until re-registration).
+8. **Real-yield route for the dividend (from market research):** the Dubai peer **ORO** funds gold yield via an external gold-leasing partner (**Monetary Metals**) that pays interest on gold, in gold — genuine yield-on-asset, not recycled fees. This is the compliant answer to the "recycled fees" critique (Q11): fund the dividend from a real external gold-yield source, framed as asset-yield (not enterprise profit-share, which is the securities risk). Trade-off: leasing encumbers gold, denting "100% allocated/unencumbered" — must be capped/disclosed/risk-managed. Put on the table for B5.
 
 ## 7. Open questions & status
 
@@ -88,9 +90,11 @@ See `questions-discussion.md`. 12 **Questions** to resolve on the **Friday clien
 
 ## 10. Current status & next action
 
-- Blueprint + this handoff just created and (to be) pushed to main.
-- **Waiting on the user** to say whether we start with **Phase A (Market Research)** or jump to **B1 (Classification & Token Architecture)**. (Claude suggested pre-loading B1 reasoning before the Friday call; user said "wait, I will tell you.")
-- Friday call pending to answer the 12 open questions.
+- **Phase A (Market Research) is COMPLETE** and pushed to main — 10 tracks, QC'd, incl. the ORO (Dubai) comparable and its Monetary Metals real-yield model. Lives in `deliverables/1-market-research/`.
+- **PENDING TASK (user will run next session):** remove em dashes (—) from `deliverables/1-market-research/Aurumix_Market_Research.md` using the **`tokenomics:web3-copywriter`** then **`tokenomics:humanizer`** skills/agents. Do NOT touch en dashes (–) in numeric ranges (2–5%, 6–9 months). The user already changed the H1 em dash to a colon; the body still has em dashes.
+  - ⚠ Agent-availability note: in the 2026-07-22 session the `tokenomics:web3-copywriter` and `tokenomics:humanizer` **agents** were deregistered ("no longer available"), but the equivalent **skills** were still available. Agent availability is per-session — check the available-agents list next session; use the agents if present, otherwise invoke the skills via the Skill tool.
+- **Next design step:** **B1 (Classification & Token Architecture)** — the spine. User to signal when to start; Claude suggested pre-loading B1 before the Friday call.
+- Friday client call pending to answer the open Questions (now 13, incl. physical-redemption Q13).
 
 ## 11. Update protocol for this doc
 
