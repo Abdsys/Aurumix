@@ -1,0 +1,20 @@
+{
+  "project": "Aurumix",
+  "processes": {
+    "0": {
+      "status": "complete",
+      "updated_at": "2026-07-24",
+      "files": [
+        "Aurumix_Project_Charter.md",
+        "questions-discussion.md"
+      ]
+    },
+    "1": {
+      "status": "complete",
+      "updated_at": "2026-07-22",
+      "files": [
+        "Aurumix_Market_Research.md"
+      ]
+    }
+  }
+}
