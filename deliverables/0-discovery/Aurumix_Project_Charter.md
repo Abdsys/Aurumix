@@ -1,6 +1,6 @@
 # Aurumix Tokenomics Project Charter
 
-**Delivery Date:** 8 weeks from July 24, 2026 (Target: September 18 to October 2, 2026)
+**Delivery Date:** 6 weeks from July 24, 2026 (Target: September 4 to September 11, 2026)
 
 ## Problem statement
 
@@ -49,7 +49,7 @@ The current specification is the 100 G Business Model, in which 100% of every do
     - Process maps and diagrams
 - Questions package for the client's Dubai legal counsel, with our recommended structural position on each
 
-**Phase 3: Revenue model and supply side (Weeks 4)**
+**Phase 3: Revenue model and supply side (Week 4)**
 
 - Revenue model spreadsheet:
     - All fee lines: entry, custody, credit, and merchant interchange
@@ -65,7 +65,7 @@ The current specification is the 100 G Business Model, in which 100% of every do
     - Free float analysis across SIP-locked, credit-pledged, and freely tradeable supply
     - Secondary market liquidity depth and slippage tolerance sizing
 
-**Phase 4: Simulation (Weeks 5)**
+**Phase 4: Simulation (Week 5)**
 
 Please note this is subjective right now and might change based on the key question we aim to answer with the simulation.
 
