@@ -11,10 +11,13 @@
     },
     "1": {
       "status": "complete",
-      "updated_at": "2026-07-22",
+      "updated_at": "2026-07-28",
       "files": [
-        "Aurumix_Market_Research.md"
-      ]
+        "Aurumix_Market_Research.md",
+        "Aurumix_Protocol_Landscape.md",
+        "Aurumix_Protocol_Landscape_PILOT.md"
+      ],
+      "notes": "Reopened 2026-07-28 for the protocol landscape (19 protocols: 16 live, 3 failed). Registry-first method overturned 11 prior conclusions; ORO entry in the market research was corrected in place."
     }
   }
 }
