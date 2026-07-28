@@ -42,7 +42,8 @@ We (Tokenomics.net) are building a **tokenomics Data Room** for **Aurumix**, a U
 - `deliverables/0-discovery/Aurumix_Project_Charter.md` — **DONE.** Client-reviewed, final.
 - `deliverables/0-discovery/questions-discussion.md` — **DONE.** All 15 questions with answers, statuses, and supporting research. *(Moved here from repo root.)*
 - `deliverables/1-market-research/Aurumix_Market_Research.md` — **DONE but incomplete.** 10 tracks (A1–A10), QC'd. Structured around our preliminary questions, which the client has since said is too narrow. Covers only 5 protocols. **Its ORO entry was materially wrong and was corrected in place on 2026-07-28** (A7, plus the two summary references and the findings table): ORO is Singaporean, not Dubai, and is not a compliant precedent. See §6.8.
-- `deliverables/1-market-research/Aurumix_Protocol_Landscape_PILOT.md` — **format sample, approved.** Full teardown of one protocol (PGOLD) against 13 headings. The full doc replaces nothing; it sits alongside the market research.
+- `deliverables/1-market-research/Aurumix_Protocol_Landscape.md` — ✅ **DONE 2026-07-28. The other authoritative Phase 1 deliverable.** 19 protocols (16 live, 3 failed) against 13 headings, ~5,650 lines, 292 source URLs, registry-first. Front section carries the corrections register, nine cross-cutting findings and comparison tables. **Overturned 11 things we believed: see §6.13–§6.20.**
+- `deliverables/1-market-research/_working/` — ⚠ **NOT deliverables. Do not point a directory-scanning skill at this folder.** Build inputs and provenance for the landscape: `_frontmatter.md` (the hand-written synthesis section), `sections/*.md` (18 per-protocol profiles), `_landscape_brief.md` (the researcher instruction file, re-read before re-running any protocol), and the approved `Aurumix_Protocol_Landscape_PILOT.md` format sample. Every file is either a duplicate of content already inside the assembled document or an instruction file, so a skill that ingests all `*.md` in a folder would **triple-count**. `_working/README.md` explains the layout and holds the assembly script. **The assembled landscape is generated but authoritative: hand edits do not flow back, and re-assembly would overwrite them.**
 - `deliverables/_progress.json` — tracks process status. Processes 0 and 1 marked complete.
 - `company container/Proposal/Aurumix_Engagement_Brief.md` — ⚠ **written against the OLD model** (70/30, 100B cap, 50-year horizon). **Superseded by the charter.**
 - `company container/meeting-notes/2_June.md` — discovery call transcript. **Source for Voice of Customer.**
@@ -208,11 +209,63 @@ Six further asks arrived after charter sign-off. They are recorded verbatim in a
 
 **The recon grades turned out to be a poor predictor and should not be reused.** Documentation quality tracks **regulatory anchoring, not size** (Matrixdock and Comtech out-document Tether Gold), but the THIN grade in particular mislabelled several protocols: **Tenbin is well documented at the technical layer** and opaque only legally, and **DGLD is one of the best-documented protocols in the set**. The grade measured what a search engine surfaces, not what exists.
 
-- ⏭ **NEXT: Phase 2 Mechanism Design, starting with B1 (Classification & Token Architecture).** Still the spine, and the landscape now feeds it hard. Inputs: the **dividend trilemma** (§6.16, needs a client decision first), the **dead DMCC route** (§6.14, so B1's options are VARA / ADGM Accepted Spot Commodity / licensed partner and nothing cheap), the **wind-down argument for ERC-3643** (§6.7 and §6.15), the **two peg-neutral custody-fee mechanisms** (§6.1, for B2), and the **Streamex lease documentation** to go to counsel (§6.8).
+- ▶ **IMMEDIATE NEXT JOB: the client-facing Market Research Summary, branded. Full brief in §11.** Being done in a fresh chat.
+- ⏭ **THEN: Phase 2 Mechanism Design, starting with B1 (Classification & Token Architecture).** Still the spine, and the landscape now feeds it hard. Inputs: the **dividend trilemma** (§6.16, needs a client decision first), the **dead DMCC route** (§6.14, so B1's options are VARA / ADGM Accepted Spot Commodity / licensed partner and nothing cheap), the **wind-down argument for ERC-3643** (§6.7 and §6.15), the **two peg-neutral custody-fee mechanisms** (§6.1, for B2), and the **Streamex lease documentation** to go to counsel (§6.8).
 - 📅 **Next client call: Wednesday.** Agenda: the four client-side open items in §7, especially the **Data Room objective** question (asked twice, never answered), plus the scope conversation owed on client additions 1–3. **Add two items from the landscape:** (a) the **dividend trilemma** at §6.16, put as an explicit three-way choice rather than as our recommendation, and (b) **the premium is zero** (§6.13), which the client should hear before it is embedded in any revenue projection, because their spot-capacity parameter is currently tuned against it.
 - ✅ **CLOSED (was "Needs Tony"): the ORO real-yield anchor.** ORO is a Singapore holding company with no licence and no named issuer. But the search should **not** have been closed: **Streamex's SEC-filed lease agreement is the documented precedent we said did not exist** (§6.8). Net: the yield-generation template is real and copyable, the holder-protection layer is missing everywhere, and that gap is now a differentiation opportunity rather than a blocker. Brief Tony on the outcome; no decision is owed back.
 - 🔴 **NEW, needs the client not us: the dividend trilemma (§6.16).** Encumber the gold, fund from operating profit, or drop the dividend. There is no fourth option and it is arithmetic, not design. Our recommendation is option 3 at launch. **This gates B5 and it should be asked on Wednesday.**
 
-## 11. Update protocol for this doc
+## 11. ▶ NEXT CHAT: client-facing Market Research Summary (branded)
 
-When context nears ~80%: append new decisions to §6, update §7 after each client call, refresh §10, bump "Last updated". Keep it tight — a living index, not an archive.
+**This is the immediate job.** Abdur is starting a fresh chat to build it. Everything needed is below.
+
+### The task
+
+Produce a **client-facing Market Research Summary** for Aurumix, as a **branded Tokenomics.net document**, synthesising both Phase 1 deliverables into something CG and Gaurav will actually read. **The client prefers short.** The skill targets 10–15 pages; the source material is ~5,650 lines of landscape plus ~700 lines of market research, so this is a heavy compression job, not a reformatting job.
+
+### Inputs: use exactly these two files
+
+- `deliverables/1-market-research/Aurumix_Market_Research.md` (10 tracks A1–A10, structured around our preliminary questions)
+- `deliverables/1-market-research/Aurumix_Protocol_Landscape.md` (19 protocols, and where all the good material is)
+
+⛔ **Do not let a skill auto-scan `deliverables/1-market-research/`.** The `market-research-summary` skill detects and ingests every `*.md` in the folder it is given. `_working/` was created on 2026-07-28 precisely to keep the 18 per-protocol section files, the frontmatter and the pilot out of that scan, because they duplicate the landscape and would be counted two or three times. **Pass the two file paths explicitly.**
+
+### Pipeline (plugin skills and agents, in order)
+
+1. **`tokenomics:market-research-summary`** for the structure. It defines a canonical 9-section shape in `references/report-structure.md`: Executive Summary, Market Landscape, Competitive Analysis, Business Model & Revenue Patterns, Token Economics & Value Capture, Stakeholder Ecosystem, Market Gaps & Strategic Opportunities, Conclusions & Recommendations, Appendix. **Read that reference file before writing.**
+2. **`tokenomics:web3-copywriter`** (agent) if the draft needs a real rewrite rather than an edit.
+3. **`tokenomics:humanizer`** before design. Non-negotiable: this document goes to the client.
+4. **`tokenomics:page-sequence-designer`** to produce the page-sequence plan.
+5. **`tokenomics:branded-document-designer`** to assemble the HTML. It reads `${CLAUDE_PLUGIN_ROOT}/brand-config.json` first, then `template-manifest.json` and `compose.html` from `standards/branded-docs-main/`. **It is a pure assembly agent when a plan exists**, so do step 4 first. Do not let it read `css/brand-system.css` (2000+ lines).
+6. **`tokenomics:document-qa`** after assembly, before any PDF export. Checks ToC accuracy, page numbering, overflow and back-cover compliance.
+
+### ⛔ What must NOT go into the client document
+
+- **The corrections register.** The landscape opens with a table of eleven things *we* got wrong. That is an internal quality artifact and it reads as self-flagellation to a client. **Present the corrected facts as findings, not as corrections.** No "we previously believed".
+- **The silver product revenue model.** Internal use only, standing decision (§7). It informs our recommendations; it is never shown.
+- **Anything that re-scopes the charter.** The six client additions of 2026-07-28 stay parked and unscoped (§7). The summary must not imply we have taken them on.
+- **Our tooling and cost notes.** No mention of Perplexity, agents, waves, or spend.
+
+### Framing calls that need care
+
+Two of the strongest findings are bad news about features the client is attached to. Neither should be buried, and neither should be delivered as a verdict.
+
+- **The dividend trilemma (§6.16).** Frame as a **decision the client owns**, with the three options and the evidence under each, and our recommendation stated as a recommendation. Do not write it as "your dividend does not work". The persuasive material is the arithmetic on other protocols (Kinesis at ~0.10% realised against 2.05% advertised, PGOLD's unfundable 5%, MG999's impossible 2.3%), not assertions about Aurumix.
+- **The premium is zero (§6.13).** This one has a live consequence: their **spot capacity parameter (20–40%) is currently tuned to produce a 3–8% premium**. Say so plainly, because it feeds the revenue model in Phase 4 and it is cheaper to hear now.
+- **Tone on competitors.** The landscape is blunt about unfundable yields, stale attestations and expired licences. Keep the substance and keep the existing framing, which is already the right one: **report what public documentation does and does not show**, attribute assertions to the issuer, and never state as fact something we could not verify. Do not sharpen it further for a client audience.
+
+### A gap the summary must own rather than paper over
+
+**Client addition #4 asked for the retail vs institutional split of the tokenized gold market** before we size into it, since Aurumix's model discourages institutions. **Neither Phase 1 deliverable answers it.** The market research quotes totals only, and the landscape is protocol-by-protocol. The summary should state that this is not yet established and name it as scoped work, not quietly fill it with an estimate. Related: two of the parked additions (crypto/fiat rails, eligible countries) are gated by the **FEMA/LRS problem** in §7, which is also not yet in any deliverable.
+
+### Style
+
+`§9` conventions apply in full. In particular: **no em dashes**, Notion-importable markdown for the intermediate draft (single H1, GFM tables, `- [ ]` checkboxes, no HTML), plain language with the reasoning shown, and **short**. The client's stated preference on the charter was short, and it applies here.
+
+### Suggested spine, if the canonical structure needs adapting
+
+The strongest client-facing narrative in this material is: **the category has spent seven years perfecting custody and ignoring demand**, and that is the gap Aurumix is built for (§6.17: not one of nineteen protocols has a savings plan, a recurring purchase mechanism or a retail referral programme). Open there. It is true, it is flattering without being flattery, and it earns the right to deliver the harder findings on the dividend and the premium later in the document.
+
+## 12. Update protocol for this doc
+
+When context nears ~80%: append new decisions to §6, update §7 after each client call, refresh §10, clear §11 once that job is done, bump "Last updated". Keep it tight — a living index, not an archive.
