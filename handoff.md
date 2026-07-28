@@ -12,6 +12,8 @@ We (Tokenomics.net) are building a **tokenomics Data Room** for **Aurumix**, a U
 
 **Phase 1 is now genuinely complete.** The competitor teardown (`Aurumix_Protocol_Landscape.md`) is **delivered**: 19 protocols (16 live, 3 failed) profiled against 13 headings, built registry-first. **It overturned eleven conclusions we were carrying, three of which change decisions already made**: ORO is Singaporean not Emirati, the Comtech DMCC route around VARA does not exist, and PMGT died of commercial abandonment rather than AUSTRAC enforcement. It also produced the biggest single open item for Phase 2: **the ICS Dividend is a trilemma, not a design problem, and it needs a client decision (§6.16).** Research tooling was re-configured along the way: **Sonar Pro only, no Deep Research** (§9). Next client call is **Wednesday**.
 
+**Phase 2 is now under way and is being worked conversationally before write-up. All of that working state lives in §12**, which is the section to read before doing anything else in Phase 2. Headlines: the MD Blueprint is stale in six places and its block order is wrong (**B4 must precede B3**); the **Mining Event problem is solved** (split into three layers, scarcity layer deleted); the client's own document contains **four internal contradictions we do not believe have been raised with them**; and the single biggest live finding is that **the 100 G model never names who sells Aurumix the gold**, which breaks the buyback promise and not just the purchase promise (§12.5).
+
 ---
 
 ## 1. The engagement
@@ -127,6 +129,22 @@ We (Tokenomics.net) are building a **tokenomics Data Room** for **Aurumix**, a U
     - ⚠ **An inversion worth remembering: the licence buys the opacity, it does not remove it.** MG999 holds a real MAS licence and publishes **less** legally operative detail than tiny VNX, because selling only to accredited investors removes the prospectus obligation. "Regulated therefore transparent" has the causation backwards. That route is closed to us anyway at $20/month retail.
 19. ⚠ **rwa.xyz is reliable for enumerating the market and unreliable for characterising an issuer.** Our entire protocol list came from it, and so did several of the errors above. It names a **"Gold Issuance Inc."** for ORO that exists in no register; attributes **four incorrect fields to AZG** including a fabricated auditor and a non-existent ASIC licence; labels both **Midas XGZ and PGOLD "Bankruptcy Remote"** with nothing in either issuer's own documents supporting it; and degrades DGLD's SRO membership into **"supervised by FINMA"**, which is false. Use it to find protocols, never to describe them.
 20. ⚠ **"Audited" almost never means the gold was checked.** This caught us on six protocols and it is the most reliable single tell in the sector: the published audit is a **smart-contract** audit while the **reserve attestation** is absent, stale or self-signed. PGOLD (Beosin, staking contract only), Aurus (NonceBlox, PoR announced but not live), ORO (Cantina and Adevar Labs, RSM frequency stated three inconsistent ways with no document published), Comtech (self-signed letters), WTGOLD (neither exists), AZG (neither exists). Only **DGLD, PAXG and VNXAU** have credible independent reserve examination, and XAUT's **ISAE 3000 (Revised) reasonable assurance from BDO Italia** is the strongest in the set even though the custodian is unnamed. **Separate the two explicitly in every deliverable.** Note VNX's sting: its auditor states the basis of a holder's property right is **VNX's own internal holder register**, then expressly refuses to opine on it. The token is not the title, the register is.
+21. 🔴 **THE MISSING COUNTERPARTY. The 100 G model specifies where the gold sits and never specifies where it comes from.** No dealer, no refiner, no bullion bank anywhere in 527 lines. Brink's / Loomis / Malca-Amit are **vaults and secure logistics firms**: they store gold, they do not sell it.
+    - **The sharpest version is the buyback, not the purchase.** §3.2 says the buyback is "funded by the custodian liquidating exactly those grams." **Custodians do not liquidate.** Since physical delivery is excluded, cash buyback is the only exit, and it runs entirely through a dealer relationship that does not exist. The missing counterparty breaks the *redemption* promise.
+    - **What Aurumix needs: three counterparties plus a register.** (1) a bullion dealer or accredited refiner on a **two-way basis** (buy *and* sell, for the buyback), (2) a vault (already named), (3) an independent assayer on intake, plus (4) DMCC Tradeflow or an equivalent title register.
+    - **Category context:** sourcing is the second most opaque dimension in the landscape after reserve attestation. Nearly all name a vault; almost none names a seller. **Zero of 19 name a responsible-sourcing standard** (LBMA RGG / OECD DDG). **Zero of 19 disclose the window between money received and metal allocated** (Matrixdock's T+3 is the only timing figure in the set). Only **DGLD** is vertically integrated (MKS PAMP owns refinery and vaults), which is why zero fees and 1 g retail redemption at 0.20% work for it. **Midas XGZ has the one intake process worth copying:** accept gold from trusted refineries meeting spec → independent international assay → **then** mint.
+22. 🔴 **"LBMA" MEANS TWO DIFFERENT THINGS AND THE CLIENT'S DOC CONFLATES THEM (established 2026-07-28).** This corrects an over-strong reading that "Aurumix cannot get LBMA gold in Dubai." **It can.**
+    - **"LBMA Good Delivery bar"** is a bar spec: ~**400 oz / 12.4 kg**, min 995 fineness, ~**$1.4M per bar** at $3,400/oz. At Y1 inflow one such bar takes **~1,092 days to fill** (§12.4). Aurumix will never take delivery of these. Read strictly, the client's "100% LBMA gold" promises a bar size the business cannot use.
+    - **"Bar from an LBMA-accredited refiner"** is a 1 kg or 100 g bar poured by a refiner on the Good Delivery List. **This is what Aurumix wants, and it is freely obtainable in Dubai** through a dealer, vaulted with Brink's or Transguard. Nothing about the jurisdiction blocks it.
+    - ✅ **The formulation to copy is XAUm's: "99.99% LBMA-accredited gold held in 1 kg bars."** Precise, achievable, and it does not overclaim.
+    - ⚠ **The real constraint is sourcing, not availability.** UAE *local* refiners are accredited to **Dubai/UAE Good Delivery (UAEGD)**, a separate and **voluntary** standard, not LBMA. Buying accredited metal in Dubai means dealer-sourced or imported, at a premium over local UAEGD product.
+    - ⚠ **Grade and loco are independent variables.** Grade is set by the refiner (LBMA GD vs UAEGD); loco is set by the vault (Dubai vs London vs Zurich). A vault confers no grade. **Unverified and worth confirming before B2:** whether LBMA GD bars retain status only inside the LBMA "chain of integrity" of approved vaults and carriers, such that re-entry to loco London needs re-assay. If true it **prices the exit** and bears directly on the buyback.
+23. **Where the other 18 stand on the metal standard (from our own landscape doc, 2026-07-28).** **9 of 19 claim LBMA-standard gold:** PAXG, XAUT, Kinesis, XAUm, VNXAU, WTGOLD, DGLD, ORO, Aurus. The other 10: **bare fineness** with no standards body (Comtech, Midas XGZ, Digix, CACHE Gold), sovereign mint standard (PMGT), LBMA at the *custodian* only (Streamex), no physical metal at all (Tenbin, synthetic, LBMA only as price reference), and nothing stated (AZG, MG999, PGOLD).
+    - 🔴 **The most useful datapoint: the one Dubai issuer in the set refuses to make the claim.** Comtech specifies 999.9 fineness and 1 kg bars; its T&C cl. 3.2 says merely "at least 999 purity". Midas does the same in Hong Kong. Both sit in Aurumix's structural position and both decline to promise what the client's document promises.
+    - **Almost nobody specifies the standard, they invoke it.** The wording across the nine is "LBMA-standard / accredited / certified". Only **WTGOLD** writes it as a real specification ("gold meeting the good delivery requirements set by the London Bullion Market Association"). The standard sits in LBMA's rulebook, not in the token's terms, so a holder has nothing to enforce.
+    - **Aurus contradicts itself, instructively:** metal is "99.99% **LBMA-accredited** gold" but "sourced from LBMA / **DMCC / LPPM** accredited refineries". Both cannot be true. This is exactly the slippage Aurumix is about to make, visible in someone else's document. **But its multi-list structure is still the right model** (accredit against three lists, not one), because it builds in substitution flexibility.
+    - ⚠ **Two data caveats:** AZG, MG999 and PGOLD returned blank, probably genuine silence (all three are among the most opaque) but re-check before quoting "19" as a clean denominator. And **PMGT may be underclaimed** in our doc: it records only "Perth Mint GoldPass certificate", but the Perth Mint is itself an LBMA Good Delivery refiner.
+24. ⚠ **LBMA is a private members' club, not a regulator.** Trade association, founded 1987, no statutory power. Its authority is only that the wholesale market refuses anything else. It runs the **Good Delivery List** (accredits *refiners*), the **LBMA Gold Price** (twice-daily auction, administered by **ICE Benchmark Administration** since 2015, FCA-regulated as a UK benchmark, and a **benchmark rather than a price you can transact at**), and **Responsible Gold Guidance** (the mechanism that suspended Emirates Gold). **No regulator obliges the LBMA to keep any refiner listed, and it removes them without notice.** That is what makes it fragile to hardcode into a product promise.
 
 ## 7. Open questions & status
 
@@ -170,7 +188,9 @@ Six further asks arrived after charter sign-off. They are recorded verbatim in a
 
 ## 8. The plan
 
-`Aurumix_MD_Blueprint.md`. Method: Market Research feeds Mechanism Design (blocks B1–B10) as an ordered sequence of questions via the **Working Loop** (frame → reason → decide → ripple-check → log). **B1 (Classification & Token Architecture) is the spine and goes first** — everything else depends on it. Output is layered (dev spec + investor narrative + compliance). A running **Decision Log** becomes the MD backbone.
+`Aurumix_MD_Blueprint.md`. Method: Market Research feeds Mechanism Design (blocks B1–B10) as an ordered sequence of questions via the **Working Loop** (frame → reason → decide → ripple-check → log). Output is layered (dev spec + investor narrative + compliance).
+
+⚠ **The blueprint is stale and its order is wrong. Read §12.1 before using it.** In short: **B1 is a 1–2 day write-up, not a research block** (4 of its 6 questions are [LEGAL], which we may not answer, and the other 2 are already decided); **B4 must come before B3**; six of its sub-questions are resolved or dead; a whole block on payment rails and geographic eligibility is missing; and its promise that "the Decision Log becomes the MD" does not match the finished DRODE MD, which has no decision log at all.
 
 ## 9. Working preferences & conventions
 
@@ -215,8 +235,19 @@ Six further asks arrived after charter sign-off. They are recorded verbatim in a
     - **All 19 protocols survive.** Appendix A is renumbered to the tiered scheme. Appendix B is capped at 6 sources per protocol (114 of 202), because listing all of them cost six pages; the full register stays in `Aurumix_Protocol_Landscape.md`.
     - ✅ **Revised twice on 2026-07-28 after review.** The first tiered build was 72 pages and read as walls of text, because the line-count cap had pushed every subhead into one dense paragraph. Rewritten to bullets, callouts and short paragraphs, then cut to **52 pages**. The line cap is retired: see §11.
     - **Clean-build bar is now four empty arrays**, not three. `sparsePages` was added to `render.js` and catches widow pages under 35% fill, which the empty-page check missed. Six were shipping unnoticed.
-- ⏭ **NEXT: Phase 2 Mechanism Design, starting with B1 (Classification & Token Architecture).** Still the spine, and the landscape now feeds it hard. Inputs: the **dividend trilemma** (§6.16, needs a client decision first), the **dead DMCC route** (§6.14, so B1's options are VARA / ADGM Accepted Spot Commodity / licensed partner and nothing cheap), the **wind-down argument for ERC-3643** (§6.7 and §6.15), the **two peg-neutral custody-fee mechanisms** (§6.1, for B2), and the **Streamex lease documentation** to go to counsel (§6.8).
-- 📅 **Next client call: Wednesday.** Agenda: the four client-side open items in §7, especially the **Data Room objective** question (asked twice, never answered), plus the scope conversation owed on client additions 1–3. **Add two items from the landscape:** (a) the **dividend trilemma** at §6.16, put as an explicit three-way choice rather than as our recommendation, and (b) **the premium is zero** (§6.13), which the client should hear before it is embedded in any revenue projection, because their spot-capacity parameter is currently tuned against it.
+- ⏭ **NEXT, in this order (see §12 for all of it):**
+    1. ✅ **DONE 2026-07-28: the procurement sweep** (§12.5 and §6.21–24). Dubai vault question closed.
+    2. **Build the reconciliation register** (§12.1). This is the unblocking artifact and it does not exist yet.
+    3. **Then B4 (ICS), not B1 and not B3.** B4 is the hub: 100% ours, zero legal, zero client-blocked, and four other blocks cannot be calibrated until it exists.
+    4. **Write up Mining Events + ICS together as the first MD sections.**
+    - Standing inputs: the **dividend trilemma** (§6.16, needs a client decision first), the **dead DMCC route** (§6.14, so B1's options are VARA / ADGM Accepted Spot Commodity / licensed partner and nothing cheap), the **wind-down argument for ERC-3643** (§6.7 and §6.15), the **two peg-neutral custody-fee mechanisms** (§6.1, for B2), and the **Streamex lease documentation** to go to counsel (§6.8).
+- 📅 **Next client call: Wednesday.** Agenda, in priority order:
+    1. 🔴 **The missing gold supplier**, framed via the buyback because that is the part that visibly breaks (§6.21). Line that lands: *"Your document names the vault three times and the seller zero times, and the buyback promise runs entirely through the seller you haven't named."*
+    2. 🔴 **The four internal contradictions in their own document** (§12.3). We do not believe these have been raised with them.
+    3. **The dividend trilemma** (§6.16), put as an explicit three-way choice rather than as our recommendation.
+    4. **The premium is zero** (§6.13), which they should hear before it is embedded in any revenue projection, because their spot-capacity parameter is currently tuned against it.
+    5. **"100% LBMA gold" needs re-wording** (§6.22): say whether you mean Good Delivery bars (which you will never hold) or metal from accredited refiners (which you can have). It determines bar size, dealer and premium.
+    6. The four client-side open items in §7, especially the **Data Room objective** question (asked twice, never answered), plus the scope conversation owed on client additions 1–3.
 - ✅ **CLOSED (was "Needs Tony"): the ORO real-yield anchor.** ORO is a Singapore holding company with no licence and no named issuer. But the search should **not** have been closed: **Streamex's SEC-filed lease agreement is the documented precedent we said did not exist** (§6.8). Net: the yield-generation template is real and copyable, the holder-protection layer is missing everywhere, and that gap is now a differentiation opportunity rather than a blocker. Brief Tony on the outcome; no decision is owed back.
 - 🔴 **NEW, needs the client not us: the dividend trilemma (§6.16).** Encumber the gold, fund from operating profit, or drop the dividend. There is no fourth option and it is arithmetic, not design. Our recommendation is option 3 at launch. **This gates B5 and it should be asked on Wednesday.**
 
@@ -278,6 +309,112 @@ These produced the readable version and a rebuild should hold them:
 - **Appendix B is capped at 6 sources per protocol** (`MAX_SOURCES_PER_PROTOCOL` in `assemble.py`). All 202 cost six pages. The full register is in `Aurumix_Protocol_Landscape.md`.
 - **Format reference for tiering:** the DRODE market research summary (`$DRODE Tokenomics/deliverables/1-market-research/final/DRODE_Competitive_Landscape_Deep.md`).
 
-## 12. Update protocol for this doc
+## 12. PHASE 2 WORKING STATE (read this before doing any MD work)
 
-When context nears ~80%: append new decisions to §6, update §7 after each client call, refresh §10, clear §11 once that job is done, bump "Last updated". Keep it tight — a living index, not an archive.
+Phase 2 is being worked **conversationally, before write-up**. Nothing below is in a deliverable yet. This section is the record.
+
+### 12.1 Why the MD Blueprint felt unstartable, and the fix
+
+- The blueprint names **B1 as "the spine, go first"**, but **4 of B1's 6 questions are [LEGAL]**, which we are explicitly not allowed to answer. It points at a wall.
+- B1's two non-legal questions are **already decided**: §6.7 (ERC-3643 + wrapper, argued from wind-down rather than rights-survival) and §6.3 (pure-gold token, dividend/credit off-token). Q6 (peg unit) is tagged [FRIDAY] but is **ours**. So **B1 is a 1–2 day WRITE-UP, not a research block.**
+- 🔴 **The real missing artifact is a reconciliation register**, and it has not been built. It maps handoff §6's ~24 conclusions + the 15 questions + 6 delegated items + 6 parked additions onto the B-blocks, each tagged **DECIDED / OURS-ANSWERABLE-NOW / CLIENT-BLOCKED / COUNSEL**. **Build this first.** It is what converts "we know a lot" into "we know what to write next."
+- 🔴 **REORDER: B4 (ICS) must come BEFORE B3 (issuance).** B3.5 is the allocation algorithm and its priority weighting **is** ICS. The blueprint has this backwards.
+- **The blueprint is stale in six places:** B3.3 (the 90/80/20 that "can't sum" is resolved, as nested denominators), B5.3 (lock-in double-count resolved, multiplier dropped), B6.3 (110% LTV dead, now 90–95%), B6.4 (pledged gold earns ICS: answered yes), B9.3 (premium thesis dead), B1.6 (peg unit tagged [FRIDAY] but it is ours).
+- 🔴 **MISSING BLOCK: payment rails + geographic eligibility.** Client additions 1–3 and the FEMA/LRS problem are homeless in the blueprint and they **gate the revenue model**.
+- ⚠ **Format mismatch.** The blueprint promises "the Decision Log becomes the MD", but the finished **DRODE MD has no decision log**. Decisions are threaded into prose. Follow DRODE, not the blueprint.
+
+### 12.2 DRODE depth benchmark (measured, use as the bar)
+
+`DRODE_Mechanism_Design_v1.md` = **1,252 lines / ~25k words / 20+ parameter tables.**
+
+Per-mechanism anatomy: **The mechanic:** → **How it works:** (numbered steps) → **Why X over Y:** → **Worked example** (with table) → edge case / fallback. **For Aurumix add a sixth element: a compliance note.** Target **1,500–2,000 lines**.
+
+### 12.3 The lifecycle chronology (12 stages) and the eight gaps it surfaced
+
+Stages walked end to end: 0 acquisition/agents → 1 KYC + funding by residency → 2 SIP config (amount + lock term) → 3 first purchase (money → gold → Receipt → AURX) → 4 accumulation + ICS accrual → 5 month 6 Confirmed SIP + credit activation → 6 spot access → 7 credit + Gold Card → 8 Family Portfolio + Digital Will → 9 annual cycle (custody fee + ICS Dividend) → 10 secondary market → 11 buyback exit → 12 lapse/dormancy.
+
+🔴 **Four of the eight gaps are internal contradictions in the CLIENT's own document. We do not believe these have been raised with them. Raise Wednesday.**
+
+- **a. §7.1's parameter table has an EMPTY CELL labelled "New investor onboarding".** The model never specifies how a first-time investor makes their first purchase. **§7.1 says spot is ICS-only; §7.2 says external spot is the entry point for new investors. New investors have no ICS.**
+- **b. Stage 5 contradicts stage 2.** Confirmed SIP requires 6 consecutive events *"at the same monthly commitment"*, but the client confirmed the amount is **variable**.
+- **c. SECOND DOUBLE-COUNT.** Investment value is an ICS component (§8.2) **and** the multiplicand in ICS-Weighted Score (§4.2). **Identical shape to the lock-in double-count the client already agreed to drop in Q12.**
+- **d. Credit "activates at month 6" for all tiers, but a 6-month lock EXPIRES at month 6.** The retention mechanism arrives exactly as the exit door opens.
+
+Plus four of ours: FEMA/LRS risk on the Indian-resident funding route (§7); ICS wholly unquantified; gram-denominated custody fee breaks the peg (§6.1); premium is zero (§6.13).
+
+### 12.4 MINING EVENTS: solved. Full latitude was given to kill the scarcity layer.
+
+**The name is doing three unrelated jobs. Separate them:**
+
+| Layer | What it is | Design |
+|---|---|---|
+| **1. Contribution** | continuous, on the investor's **own anniversary date** (insurance model) | add **15-day grace** (IRDAI monthly standard) + a **6-month revival window** restoring partial continuity. Numbers calibrate in B4. |
+| **2. Allocation** | grams struck at the **first LBMA AM fix after cleared funds (T+1)** | cuts price-risk exposure from up to 30 days to under 24 hours |
+| **3. Treasury execution** | batched, threshold-driven | **invisible to the investor** |
+
+**Why layer 2 matters in money:** at Y10 inflow a 5% move over 30 days is **~$300k**. That is the real cost of the current welding.
+
+**Float sizing** (this is the answer to "do they need a reserve"): **it is a float, not a reserve**, it sits on the **metal side**, and its size = **daily inflow × days-to-fill-one-bar**. **Bar denomination is the dial.** At ~$3,400/oz:
+
+| Year | Investors | Monthly inflow | Daily grams | 100 g bar | 1 kg bar | Good Delivery (12.4 kg) |
+|---|---|---|---|---|---|---|
+| Y1 | 500 | $37,500 | ~11 g | 8.8 days | 88 days | 1,092 days |
+| Y3 | 12,000 | $900,000 | ~274 g | — | 3.6 days | — |
+| Y10 | 80,000 | $6,000,000 | ~1,830 g | — | — | — |
+
+**Recommend: 100 g bars at launch → 1 kg from ~Y3 → Good Delivery from ~Y8.** The falling fabrication premium is a real scale economy for the revenue model.
+⚠ **Tension to resolve in B2 (found 2026-07-28):** DMCC's gold tokenisation programme specifies eligible Tradeflow collateral as **1 kg 999.9 bars**. If we want warrants from launch, **1 kg may be the effective floor**, which cuts against 100 g at launch. Real trade-off, not an oversight.
+
+**Two consequences the client's doc must absorb:**
+1. **The AM fix is a BENCHMARK, not the price paid** (fix + fabrication + spread). Currently absorbed silently by the 2–5% entry fee. **Must be disclosed.**
+2. **The Gold Receipt can NEVER be bar-specific for a $75/mo saver** (they own under 1% of a kilobar after a year). §1.3's "100% individually allocated" **overstates**. Honest framing: **individually recorded pro-rata undivided interest in identified, serial-numbered bars.**
+
+🔴 **Scarcity layer: DELETE.** Four independent legs:
+1. **Economically vacuous** — every token mints at NAV against the buyer's own gold, so there is no fixed pool to ration.
+2. **The premium it exists to create is zero** (§6.13).
+3. **Regulatory shape** — a capped, time-boxed, oversubscribed, priority-queued sale is **OFFERING-shaped** and points at securities characteristics. Continuous mint-on-deposit at NAV is **commodity-purchase shaped** and sits in the ARVA lane.
+4. **"Mining" implies PoW emissions** — wrong lens in Dubai, wrong framing in India.
+
+⚠ **IMPORTANT: the client ALREADY abolished the SIP-side event in their Q2 answer** ("no collective fixed SIP date, SIPs can arrive any day") **without noticing.**
+
+**Spot lane fix: uncap entry, move the friction to the EXIT.** Continuous at NAV for anyone KYC'd; **higher entry fee for spot (~4–5% vs SIP ~2%)** because it is less sticky; spot still earns **no ICS**; **redemption fee decaying over 6–12 months** to handle hot money. **[LEGAL]** redemption terms under an ARVA rulebook.
+
+**ICS repurposed:** allocation priority dies. Replace with an **ENTRY FEE DISCOUNT BY TIER** (the insurance no-claim-bonus analogue). Keep credit ratio, dividend share, card tier, family features. **Confirmed SIP survives as the month-6 credit gate.**
+
+**Invariant replacing "no confirmation, no event":** allocated + unallocated grams **≥** total grams credited, at all times; unallocated **capped at X%**; minting permitted **only while custodian attestation is current**, and halts automatically if it lapses.
+
+### 12.5 Procurement: the sweep, run and closed 2026-07-28
+
+The finding itself is at **§6.21**; the standard question at **§6.22–24**. What the sweep established:
+
+- **Dubai vault operators, verified.** Three are DGCX-approved: **Brink's Global Services** (DMCC vault at Almas Tower JLT, stated by **DMCC itself**, plus a DAFZA vault), **Transguard** (Emirates Group; second DGCX vault in DAFZA, branches at Almas Tower and Deira Gold Souk; **this is Comtech's custodian**, so our Comtech finding and market structure agree), and **MAF Securicor / G4S** (Rashidiya, Deira, approved 2006).
+- ⚠ **Of the three custodians the 100 G doc names, only one holds up cleanly.** **Brink's** = solid, confirmed by DMCC. **Loomis International** = operates a DAFZA warehouse, but evidenced only via a *customer's* site (Strategic Wealth Preservation), not its own. **Malca-Amit** = **cannot be verified in the UAE at all**: its own global network page lists the UAE only as a service contact (phone + `uae@malca-amit.com`), its vaulting/FTZ pages name no UAE facility, and it is absent from the DGCX approved-vault set. **Caveat: absence of a website claim is not proof of absence.** Cross-check that sharpens it: **XAUm names Malca-Amit as a custodian in Singapore and Hong Kong**, so the firm is unquestionably a real vault operator. It just is not evidenced in Dubai.
+- 🔴 **Sourcing fragility, and it has already happened once.** UAE local refiners are **UAEGD**-accredited (LBMA's own *Spotlight on the UAE* ch.3: 10 active Dubai Good Delivery gold members, "with only three refineries based in the UAE" — Al Etihad Gold Refinery DMCC, Emirates Gold DMCC, Sam Precious Metals FZ-LLC). **Emirates Gold DMCC, the largest and oldest, was suspended from the UAEGD list effective 7 July 2023 and from the LBMA's own Good Delivery List on 21 July 2023**, while the UAE government investigated links to alleged money launderers. **If Aurumix had named Emirates Gold as its refiner in 2023, its core promise would have broken overnight through no fault of its own.**
+    - ✅ **This converts "naming a sourcing standard is cheap differentiation" into a RISK CONTROL**: named refiner + **accreditation covenant** + **substitution clause** on suspension. Use **Aurus's multi-list wording** (LBMA / DMCC / LPPM) so substitution is pre-authorised.
+- **DMCC Tradeflow, now properly specified. One thing we had right, one wrong.**
+    - ✅ **Stronger than we thought, legally:** a Tradeflow warrant is an **electronic document of title**; the registered warrant holder has **legal title**, the storage operator has **possession only**, and per **Al Tamimi** the operator's own creditors **cannot reach the goods in its liquidation**. That is documentable bankruptcy remoteness, unlike the "Bankruptcy Remote" labels rwa.xyz invents (§6.19).
+    - ❌ **Weaker than we thought, evidentially: the register is members-only and NOT publicly searchable, and the fee schedule is unpublished.** So the previous claim that "a warrant register is stronger evidence than a custodian letter" is **wrong as stated**. It is stronger *title*, but holders cannot inspect it, so we would still need an **attestation of the warrant holdings**.
+    - Membership types: Owner, Storage Operator, Financier, Islamic Financier, Quality Inspector. Warrants are issued **by the storage operator on the owner's request**. So the vault relationship and the title relationship are **two different contracts**.
+- **Premiums and spreads: a negative result, and it is a finding.** Dubai dealer premiums, two-way spreads and wholesale minimum tickets are **not publicly published by any refiner or dealer**. Best public figure is ~2–4% over spot on retail Dubai bars (Aug 2025, weak source); global benchmarks put 1 kg cast bars at **1–3%** (one dealer 1.4–2%) and small bars at 2–5%. ⚠ **Our previous working assumption of ~0.5–1% for 1 kg is too low.** **This is now a "get a dealer quote" item, not a research item.**
+- **Creation spreads for comparison** (from the landscape): PAXG 1.0% → 0.125% tiered, Kinesis 0.45% + ~0.23% spread, Matrixdock 0.25%, Comtech ~1.8% round trip + ~1% commission.
+
+### 12.6 Comtech clarifications (asked and answered)
+
+- ❌ **NOT VARA licensed.** Verified absent from VARA's register of 52 VASPs, and from DFSA and ADGM FSRA. Issuer is **ComTech FZCO (DAFZA) licence 05069**, "gold and other precious metals trading". A separate **ComTech FZCO (DMCC) licence DMCC-889799 is IT consultancy only.** Both display **EXPIRED** on Comtech's own site (Feb 2024, Jun 2024). A **third entity, COMTECH CORE TRADING FZCO, collects the money** at ZAND Bank.
+- **Procurement barely disclosed.** Only named supply-side counterparty is **StoneX**, and only as "under discussion" in the whitepaper plus a website partner logo. **Custodian is TRANSGUARD, not Brink's.** Custody clause permits storage "in the UAE or elsewhere" and via affiliates "anywhere in the world".
+- ✅ **Three mechanics worth stealing:**
+    1. **DMCC Tradeflow warrants are live and real** (19 kg of Comtech's 111 kg sits on them).
+    2. **T&C 3.5 permits a 10 kg UNBACKED ISSUANCE WINDOW.** Comtech contractually lets itself mint ahead of the gold. **That is exactly our float, disclosed rather than hidden.** Take the shape, express the cap as a **percentage**, and **publish the unbacked balance alongside the reserve**.
+    3. **Zero custody fee recovered in the spread** keeps 1 token = 1 gram exact. **The tell:** free for 24 months then "a nominal fee", conceding that transaction-margin funding fails for buy-and-hold.
+- ⚠ **Two warnings:** T&C Part B cl.20 **gold-financing facility leases pooled gold to jewellery businesses** and says expressly *"the Participating Digital Gold Holders will take the risk"* (directly relevant to dividend trilemma option 1). And the **reserve/supply mismatch** (111 kg reserve vs 39 kg on-chain supply) means **most of the customer book is an OFF-CHAIN DATABASE ROW** — an app-product warning for Aurumix. Attestations are self-signed, irregular, none since 21 Mar 2025.
+
+### 12.7 Research still owed
+
+- **StoneX: run, and the answer is partial.** StoneX operates a precious metals / bullion **desk** in Dubai (named in its precious metals brochure and on StoneX Bullion's company page, with a +971 4 number). But there is **no public record of its UAE legal entities, licence numbers, regulator or free zone.** It owns a CME-accredited vault with >$1.2bn of metal, but **the location is not identified as Dubai**, and direct DMCC or DGCX membership is **not confirmed**. Net: **a plausible Dubai TRADING counterparty, not a confirmed Dubai VAULT.**
+- **Still owed:** DMCC Tradeflow **fees and terms** (not published; needs a direct approach to DMCC). **Real Dubai dealer spreads and minimum tickets** (not public; needs a dealer conversation). Whether **LBMA GD bars lose chain-of-integrity status** when vaulted outside the LBMA approved-vault network, which prices the exit (§6.22). **IRDAI 2023 regulation text** for real commission figures (§7).
+- ⚠ **Could not close:** the current **LBMA Good Delivery list for UAE refiners**. The LBMA list page renders via JavaScript. Established: Emirates Gold **was** on the LBMA list (you cannot be suspended from a list you are not on) and is not now. Whether Al Etihad and Sam Precious Metals hold LBMA GD **in addition to** UAEGD is **unconfirmed — do not put it in front of the client either way.**
+- 🔧 **Tooling note (2026-07-28):** openrouter/Perplexity was **flaky this session** — one hard API error, one response truncated mid-sentence, and **one answer that flatly contradicted a previous one** on LBMA UAE accreditation (it also mis-dated the Emirates Gold suspension to 2021; it was 2023). **Resolved by fetching the primary sources directly with WebFetch/WebSearch.** Reinforces §9's registry-first rule: **for any load-bearing claim, go to the register, not the search model.**
+
+## 13. Update protocol for this doc
+
+When context nears ~80%: append new decisions to §6, update §7 after each client call, refresh §10, keep §12 current as Phase 2 progresses (and fold each part into the MD as it gets written up), clear §11 once that job is done, bump "Last updated". Keep it tight — a living index, not an archive.
