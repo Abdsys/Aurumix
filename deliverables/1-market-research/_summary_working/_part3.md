@@ -1,0 +1,147 @@
+### 4.3 Kinesis Money (KAU)
+
+| Field | Detail |
+|---|---|
+| Issuer | Kinesis Cayman, a Cayman Islands exempted company (registered office c/o Stuarts Corporate Services, 36A Dr Roy's Drive, Grand Cayman KY1-1104). Company number not published on any reachable public register. Related entities in the Terms of Use: UAB Kinesis Money Lithuania (305992161, Vilnius), Kinesis Global Pty Ltd (ACN 656 201 660, Brisbane), Kinesis Money Panama S.A. (155727241), KMS Labs S.A. (Panama, 155772003, issues the ERC-20), Allocated Bullion Exchange (ACN 149 681 489, Brisbane) and historically Kinesis AG (Vaduz). Thomas Richard Archer Coughlin is CEO and founder |
+| Licence covering the token | None identified. Cayman: conditional approval only for a CIMA Virtual Asset Service Provider licence, and no entity named "Kinesis" is returned by the CIMA regulated-entities search. Australia: AUSTRAC registrations DCE100865184-001 and IND100865184-001, anti-money-laundering registrations rather than financial-services licences. Lithuania: listed only as a distributor of e-money of a Lithuanian electronic money institution, no MiCA CASP authorisation found. UK: not FCA authorised, site voluntarily deactivated for UK users in late 2025. UAE: no licence found despite a Dubai office and Dubai vault |
+| Assets under management | ~US$310.2M market cap, US$519.1M fully diluted, at 28 July 2026. 2.386 million KAU circulating, equal to 2.386 tonnes of gold. Price US$130.01 |
+| Backing | 1 KAU = 1 gram of allocated physical gold. Kinesis holds the bullion as bailee, with legal and beneficial title remaining in the native-chain holder. Sister token KAG represents 1 troy ounce of silver. Vaults marketed in London, New York, Zurich, Dubai, Singapore, Hong Kong, Sydney and Brisbane |
+| Custody fee charged to holders | 0%. Explicitly stated as a "0% fee" for both KAU and KAG storage |
+| Yield paid to holders | Holder's Yield, contractually documented at 15% of the Master Fee Pool, paid pro rata daily to KYC-verified holders. Kinesis advertises a 2.05% aggregated 12-month gold yield and 0.07% on silver. The June 2026 gold payout of US$26,326.32 against a US$310.2M market cap works out at roughly 0.10% annualised. ERC-20 wrapper holders receive no yield at all |
+| Redemption | Physical redemption into allocated bullion at 1,000 KAU per 1kg gold bar (~US$130,000), costing 0.45% plus US$100 plus delivery. Managed case by case, Kinesis may prescribe minimum withdrawal quantities at its ultimate discretion, and redemption is satisfied only in bars of a prescribed form |
+| Token standard | Kinesis Blockchain Network, a fork of Stellar. Permissioned and KYC-gated, every address tied to a verified account. Not ERC-20 and not ERC-3643 at the base layer. A separate ERC-20 wrapper on Ethereum (`0x14DAB79fD7B7B3f748d434812Fd6a9Aac460EA52`) is issued by KMS Labs S.A. and restricted to Eligible Users, with freeze and blacklist powers exercisable without advance notice |
+| Reserve verification | Bureau Veritas / Inspectorate International, twice yearly. The 17 October 2025 audit reported 2,393,328.835 g of gold and 3,729,719.331 ozt of silver, confirming 1:1 backing. Most recent referenced audit April 2026. No bar list. No smart-contract audit for either the wrapper or the chain. The public blockchain explorer is a supply feed, not a reserve feed |
+
+#### What it is
+
+Kinesis is a gold-and-silver monetary system rather than a bare custody receipt. KAU is a 1-gram allocated-gold token on the Kinesis Blockchain Network, wrapped in a full retail stack: an in-house exchange, a debit and virtual card, a merchant directory, multi-asset payroll, and a four-way fee-sharing yield system paying holders, minters, depositors and referrers.
+
+Kinesis has been live since 2018 and is one of very few gold tokens that actually pays a recurring, disclosed, contractually documented distribution to ordinary holders. It is the closest live analogue to the ICS Dividend anywhere in this market, which makes it the most useful case study in the set: the mechanism has run for eight years, so the arithmetic can be checked against published payouts rather than against a pitch.
+
+Issuance runs two ways. Users mint with cash through the Kinesis Mint at a 0.45% execution fee, after which Kinesis "will cause an equivalent amount of Bullion to be purchased on your behalf." Alternatively, under Exchange of Physical for Digital, a user delivers their own LBMA-conforming bars into a Kinesis vaulting account and mints KAU at 1,000 KAU per kilogram. That route is case by case, and Kinesis "may temporarily or permanently disallow deposits for any reason or no reason." There is no hard supply cap: KAU is minted on demand against deposited or purchased metal, which is exactly the model Aurumix proposes.
+
+#### Legal structure and regulatory standing
+
+The title language on the native chain is the strongest of any protocol in this set. Terms of Use clauses 5.1.1 and 7.1.1 state that "legal and beneficial title in the Allocated Bullion backing the Kinesis Currency will remain with the Kinesis Currency holder until such time as all or part of the corresponding Kinesis Currency is transferred to another Kinesis Address." Clause 4.1.2 adds that "Kinesis will store that Bullion as bailee on behalf of all holders of that particular Kinesis Currency, whereby each holder of that Kinesis Currency has an undivided interest in the total pool of Bullion in proportion to the amount of Kinesis Currency held." Definition 1.1.4 confirms that "Allocated" means bullion to which a person has legal title, with Kinesis holding it on that person's behalf as bailee.
+
+Bailment is the right structure. Bailed property is not the bailee's asset and does not fall into its insolvency estate, so this is materially stronger than a creditor claim, stronger than PAXG's beneficial-interest wording and stronger than XAU₮'s undivided-ownership assertion.
+
+The ERC-20 wrapper is a completely different legal instrument, and this is the most important structural finding in the profile. The KMS Labs terms state that "holders of the Tokens acknowledge and agree that they have no legal, equitable or beneficial right, title or interest in or to the Reserves," and that "KMS Labs is entitled to and may retain all net returns, interest, and other income earned on Reserve assets." The ERC-20 KAU holder therefore owns no gold and earns no yield. They hold an unsecured claim against a Panamanian company, KMS Labs S.A. (155772003), redeemable only into native KAU at KMS Labs' discretion. The moment a KAU leaves the permissioned Kinesis chain for Ethereum, both the property right and the income right disappear. Marketing does not draw this distinction. Only the two separate legal documents do.
+
+Three points on regulatory standing are material. First, "registered with CIMA" does a great deal of work in Kinesis's marketing and in third-party write-ups, and it overstates the position. Kinesis's own Q4 2025 / Q1 2026 update says only that "Kinesis has received conditional approval for a Virtual Asset Service Provider (VASP) license from the Cayman Islands Monetary Authority (CIMA)." Conditional approval is not a licence. Secondary sources asserting a flat "registered VASP, reference 1877923" state something that does not resolve against CIMA's own register, where a search for "Kinesis" returns no entity.
+
+Second, there is a MiCA gap. Lithuania's legacy FNTT virtual-currency registrations were superseded by MiCA CASP authorisation across 2025 and 2026. The Lithuanian entity appears on the Bank of Lithuania register only as a distributor of e-money, a much narrower permission, and no CASP authorisation was found. If Kinesis serves EU retail on the strength of a lapsed FNTT registration, that is a live exposure.
+
+Third, the legal document is candid about the position. Schedule 6, clause 2.1 states: "We are seeking, or we plan to seek registrations with various regulatory bodies in countries which we may operate... If we fail to qualify for registrations under any of these authorities, we may be unable to execute on some or all aspects of our business plan as a provider of financial services." After eight years of operation, the yield schedule still describes the regulatory position in the future tense. Kinesis also withdrew from the UK entirely rather than seek FCA registration, deactivating the site for UK users in late 2025 with a notice stating that "this website and any information materials within are not intended to be accessed by UK-based persons."
+
+#### Custody and reserve verification
+
+Brink's and Loomis are named as vault operators, Loomis for Zurich. Kinesis markets vaults across London, New York, Zurich, Dubai, Singapore, Hong Kong, Sydney and Brisbane. Bullion is contractually allocated under the bailment structure, with legal title in the holder.
+
+The reserve attestation is one of the better performances in this set: Bureau Veritas / Inspectorate International, an established independent commodity inspector, on a fixed twice-yearly cadence, publishing absolute gram figures. The 17 October 2025 audit reported 2,393,328.835 g of gold and 3,729,719.331 ozt of silver. Cross-check that gold figure against 2.386 million KAU circulating in July 2026 and the 1:1 correspondence is near exact, which is a good sign.
+
+Two gaps sit against it. There is no published bar list with serial numbers and no real-time proof-of-reserve feed, so between semi-annual audits there is a six-month window in which the reserve position is unverified. The live blockchain explorer Kinesis publishes is a supply feed: it proves how many KAU exist, not how much gold sits in the vault, and a skimming reader will conflate the two. Separately, no smart-contract audit has been published for either the ERC-20 wrapper or the Kinesis chain, and upgradeability and admin key arrangements are not disclosed. Reserve attestation and contract audit are different things, and Kinesis is credible on the first and silent on the second.
+
+#### Fees, revenue and redemption
+
+| Fee line | Rate | Note |
+|---|---|---|
+| Annual storage / custody | 0% | Explicitly stated as "0% fee" for both KAU and KAG |
+| Mint (subscription) | 0.45% | Plus US$25 if funding from platform balance, US$0 if funding externally |
+| Mint spread | ~0.23% | Buy/sell spread at the Mint |
+| Exchange trade execution | 0.22% | Market and limit orders alike |
+| Send KAU to another Kinesis account | 0.45% | The core yield-funding fee |
+| Send KAU to an external wallet | 0.45% | |
+| Physical redemption | 0.45% plus US$100 plus delivery | 1,000 KAU per 1kg bar |
+| Fiat withdrawal | US$25 to US$90 | Currency dependent |
+| Card sign-up / monthly / transaction | US$0 / US$0 / 0% | Cashback 2% in gold up to US$2,000 per month |
+| Card purchase via third-party rails | 1.99% to 5.99% | Banxa and others |
+
+Kinesis charges holders nothing to store gold and covers vaulting and insurance out of transaction-fee revenue plus its Allocated Bullion Exchange vaulting relationship. Kinesis states that it redistributes 57.5% of every fee back to users as yields, which implies the residual ~42.5% funds operations including vaulting.
+
+The structural point matters more than the rates. Kinesis's revenue is a velocity tax, not an assets tax. It earns on movement, not on stock. A user who buys KAU and never moves it generates essentially zero revenue and costs Kinesis real money in vaulting. The whole design is therefore oriented toward making gold circulate: the card, the payroll product, the merchant directory, and the Minter's and Depositor's yields that pay only when currency is actually used. Coherent, deliberate, and the opposite of the AUM-fee model most gold tokens run.
+
+Redemption is genuine and documented, which distinguishes Kinesis from Aurumix and from PGOLD. Clause 8.1.1.1 provides that "at any point in time, you may request for your Kinesis Currency to be redeemed into Allocated Bullion," at 1,000 KAU per 1kg bar under clause 8.1.1.10. The qualifications matter. Each request "shall be managed on a case by case" basis, Kinesis "may at its ultimate discretion, prescribe reasonable minimum withdrawal quantities," and redemption is satisfied only in bars "of a Prescribed Form." In practice the minimum increment is a 1kg bar, roughly US$130,000. Physical redemption is legally real and economically out of reach for the retail saver, which is precisely Aurumix's target customer. This is the qualified-holder pattern expressed through economics rather than through eligibility language.
+
+#### Liquidity and distribution
+
+| Metric | Value |
+|---|---|
+| Market cap | ~US$310.2M |
+| Circulating supply | 2.386M KAU (2.386 tonnes of gold) |
+| Price | US$130.01 (28 July 2026) |
+| 24h volume | US$219,282 |
+| Venue concentration | Kinesis's own exchange 98.5% (KAU/C1USD US$212,814 = 96.93%; KAU/USDT US$3,455 = 1.57%). Emirex KAU/USDT US$1,398 = 0.64% |
+
+Volume runs at 0.07% of market cap per day. Thin, but an order of magnitude better than PGOLD's sub-US$20 daily volume against US$79M to US$90M of stated AUM. A captive in-house exchange can generate real, if modest, turnover.
+
+The dominant fact is that 98.5% of all KAU liquidity sits on Kinesis's own venue. There is essentially no independent external market. KAU trades at the gold price because Kinesis operates both the market and the mint, not because arbitrageurs enforce it. Eight years and US$310M of AUM have not bootstrapped third-party liquidity.
+
+Distribution is the one area where Kinesis maps directly onto Aurumix's agent model, and it is contractually documented rather than promotional. Recruiter Yield, at Schedule 6 clause 8, gives registered recruiters a unique tracking link and a percentage of the execution fees generated by every user they introduce, with the worked example in the Terms using 7.5%. The entitlement is perpetual and runs on the referred user's transaction fees, not on their deposits. Depositor Yield, at clause 7, rewards large initial deposits and pays on velocity, "forever on the Kinesis coins they bought and then used." Minter's Yield, at clause 5, rewards creating currency and then circulating it. Retail channels include the virtual and debit card, the merchant directory, multi-asset payroll, and Banxa card and bank on-ramps. Geography is global excluding the UK, with offices claimed in Brisbane, London, Lithuania, Dubai, the USA and Istanbul.
+
+What Kinesis does not have is a recurring monthly savings plan. There is no auto-debit contribution schedule. Its recurring mechanic is transactional velocity, not periodic accumulation.
+
+Recent developments. In early to mid 2026 founder Thomas Coughlin announced an "Earn Programme" proposing to cut Holder's Yield from 15% to 5% of the Master Fee Pool while raising the KVT entitlement from 20% to 30%, with 5% added to the pool. That came in a video interview rather than an amended legal document, and no effective date was given. The Kinesis Virtual Card US beta launched on 9 February 2026 to 250 community members, with public US launch targeted for March 2026 and full card launch later slipping to early August 2026 on a new Visa requirement. The Q4 2025 / Q1 2026 quarterly update, published 2 February 2026, confirmed CIMA conditional VASP approval, UK site deactivation and the Bureau Veritas audit results. In February 2026 Coughlin stated that Kinesis was "in negotiations right now to acquire two banks." Multi-asset payroll and the Merchant Directory launched in Q4 2025. Across 2025 and 2026 no regulator warning-list entries, enforcement actions, litigation, security incidents, or suspensions of withdrawals or yield payments were identified.
+
+#### Relevance to Aurumix
+
+Kinesis is the most directly instructive protocol in this set, because it has been running the ICS Dividend concept for eight years and the arithmetic can be checked against published payouts.
+
+**Custody fee: live proof that the zero-fee option works, and equally clear about why Aurumix cannot copy it.** Kinesis charges 0% storage and recovers vaulting cost from transaction fees, sidestepping Aurumix's peg problem entirely. Deducting the fee in grams breaks price equals grams divided by tokens; charging cash creates friction; Kinesis does neither. It works only because Kinesis monetises velocity rather than assets. Aurumix's product is the opposite: a buy-and-hold SIP with no physical redemption, designed so the gold never moves. A zero-fee model cannot be bolted onto a zero-velocity product. If Aurumix wants zero custody fees it must build a genuine transactional layer, with the Gold Card the obvious candidate, or accept that the cost comes out of the credit facility spread.
+
+**Dividend: this is where the case study pays for itself, and the arithmetic is brutal.** The mechanism, from Schedule 6, is a Master Fee Pool per currency funded by the 0.45% transfer and mint fees and the 0.22% exchange fees, split as follows.
+
+| Recipient | Share of fee pool | Basis |
+|---|---|---|
+| KVT holders | 20% | Equity-like token, 300,000 cap, sold under an Offering Memorandum |
+| Holder's Yield | 15% | Pro rata daily on KAU held, KYC-verified holders |
+| Velocity / Depositor Yield | 10% | On initial deposit, paid on velocity |
+| Minter's Yield | 5% | Minted and then used |
+| Recruiter Yield | 7.5% (worked example) | Of referred users' execution fees |
+| Total redistributed | ~57.5% | Kinesis retains ~42.5% |
+
+Kinesis publishes its actual payouts, so the reality check is available. The June 2026 Holder's Yield on gold was US$26,326.32 (180.14 g) against a US$310.2M market cap. That is 0.0085% for the month, or roughly 0.10% annualised. Kinesis's own headline figure is a 2.05% aggregated 12-month yield, with all-time gold payouts of US$12.14M. The two numbers are irreconcilable by a factor of roughly 20. The 2.05% is almost certainly a per-holder compounding figure computed on a subset of eligible balances rather than a yield on total assets. A retail buyer reading "2.05%" will not receive 2.05% on their holding, and the June payout demonstrates it.
+
+Work backwards and the picture gets more useful. A US$26,326 monthly payout at a 15% share implies a total monthly KAU fee pool of roughly US$175,500, or about US$2.1M a year. At the 0.45% transfer fee that implies annual fee-generating volume of roughly US$468M, about 1.5 times AUM. That is a real, functioning economy. Kinesis genuinely turns over its asset base one and a half times a year. It is not a fake. And it still only produces a tenth of a percent.
+
+Apply that to Aurumix. Paying a 5% distribution on US$310M means US$15.5M a year going to holders. At a 15% pool share that requires a US$103M annual fee pool, which at 0.45% requires roughly US$23 billion of annual transaction volume, about 74 times AUM. Even routing 100% of the fee pool to holders rather than 15% would still require roughly 11 times AUM in annual velocity.
+
+That is the single most important number in this profile: a well-run, eight-year-old, genuinely transactional gold platform turning over 1.5 times its AUM per year pays its holders about 0.10%. Aurumix's ICS Dividend promises 15% to 20% of operating profit with 80% concentrated on the top 10% of holders. Concentrating a small pool on few holders can make headline numbers look respectable, but the total distributable amount is governed by the arithmetic above, and for a buy-and-hold SIP with no redemption and therefore near-zero velocity the fee pool is close to nil. Fee-recycling cannot fund a meaningful dividend. Kinesis is the strongest available evidence, and it is evidence against. If Aurumix wants a real dividend it must come from external yield (gold leasing) or from the credit facility spread, which is genuine external revenue and Aurumix's most promising untapped source.
+
+The securities point is sharper still. Kinesis did not pretend the fee-share was not a security. It split the instrument in two: KAU is the commodity, holding gold title and receiving a modest 15% yield share, and KVT is the security, capped at 300,000 units, entitled to 20% of all fees, sold to accredited investors under a formal Offering Memorandum through a private placement targeting US$200M or more. The Offering Memorandum states that the company "shall distribute an aggregate sum equal to 20% of the transaction fees" to KVT holders pro rata. That is a revenue-share security, documented and sold as one, and it is directly transplantable: keep AURX as a clean ARVA commodity token under VARA, and if a profit-share is wanted, issue it as a separate, capped, privately placed instrument to a small accredited base rather than bolting a dividend onto a mass-retail token. That single move could dissolve the hybrid-regulation problem.
+
+There is also a warning in how the entitlement is drafted. Although the yield sits in a legal schedule, it is fully revocable at the issuer's sole discretion, including retroactively. Schedule 6, clause 3.1 permits Kinesis to "amend, suspend or terminate any Yield offering to You individually at any time whatsoever and howsoever... for any reason or without reason, including but not limited to your citizenship, residency, domicile, location and any previously accrued Yields shall no longer be payable with immediate and irrevocable effect." Not theoretical: the 2026 Earn Programme proposes cutting Holder's Yield from 15% to 5% while raising the KVT insider and investor share from 20% to 30%. A documented entitlement that can be cancelled at will, with accrued amounts clawed back, being reallocated from retail holders to security holders, sets up the drafting dilemma Aurumix will face directly. Write the same discretion into Aurumix's terms and the dividend is not a value proposition. Leave it out and Aurumix has created a fixed liability against a variable revenue stream.
+
+**Token standard and the wrapper rights gap. Treat this as the most material finding here, because Aurumix is considering the same architecture.** Kinesis faced exactly Aurumix's problem, that entitlements break on anonymous transfer, and solved it by keeping the entitlement on the permissioned ledger and stripping it from the wrapper. The native chain is permissioned and KYC-gated, and the yield attaches to the verified account rather than to the token: Schedule 6 clause 6.2.1.1 requires that "a Holder has passed all identification and onboarding requirements."
+
+One refinement is genuinely elegant and worth copying. The entitlement follows the account, not the bearer instrument, so it survives even when tokens sit in a linked external wallet. Kinesis confirms that KAU "held in external wallets are also applicable for the yield, as long as they are linked to your Kinesis account." Aurumix can achieve the same by registering ICS standing against the account, allowing tokens to move, and paying entitlements only to linked, KYC-verified accounts. Cheaper than a full ERC-3643 implementation, and it preserves optionality.
+
+The cost of that architecture is the rights gap, and it is severe. The KMS Labs terms state flatly that wrapper holders "have no legal, equitable or beneficial right, title or interest in or to the Reserves," and that KMS Labs keeps all income earned on the reserves. So the ERC-20 KAU holder owns no gold and earns no yield, while holding a token that shares a ticker, a name and a price with an instrument that carries both. The two tokens are not fungible in any economic sense. Even the wrapper is permissioned in substance: holding is limited to Eligible Users who are not resident in Restricted Jurisdictions and not Sanctioned Persons, and KMS Labs may "freeze, blacklist, or otherwise restrict access to any the Tokens" without advance notice. The wrapper holder surrenders title and income and does not even gain unconditional transferability in exchange.
+
+For Aurumix the implication is direct. Issue a permissioned base token, later wrap it into a transferable ERC-20 for exchange liquidity, and you reproduce this exact structure: a wrapper holder with price exposure but no ICS standing, no dividend entitlement, no credit eligibility and no buyback right. Decide before launch whether wrapper holders retain any rights, write that into the wrapper terms in plain language, and market the two instruments distinguishably. Kinesis's marketing does not distinguish them, and the number of holders who have unknowingly surrendered gold title and yield rights by bridging is not disclosed anywhere. That is a disclosure failure Aurumix should not repeat, and a live conduct risk: a saver who bridges out of the permissioned chain to reach a DEX has, on the wrapper's own terms, given up everything the product was sold on.
+
+**Regulatory route.** Kinesis holds no UAE licence despite a Dubai office and a Dubai vault. Its actual anchor is an AUSTRAC anti-money-laundering registration in Australia, a Lithuanian registration that appears to have lapsed into a narrower e-money distributor listing, and conditional-only CIMA approval after eight years of trading. That is a thin position for a platform holding US$310M of client gold. The lesson is not to imitate it. It is that "we're registered with CIMA" is exactly the formulation Aurumix will be tempted to use and should not. Note also that Kinesis withdrew from the UK entirely rather than seek FCA registration, which indicates what a serious retail regulator costs relative to this revenue model.
+
+**Redemption.** Physical redemption at 0.45% plus US$100 plus delivery, in 1kg bars at roughly US$130,000, is legally real and practically inaccessible to retail. Aurumix's no-redemption stance is more honest than this and should be said plainly rather than treated as a weakness. "Cash buyback only" is clearer to a US$75-per-month saver than a theoretical right to a US$130,000 bar.
+
+**Premium and liquidity.** US$310M AUM, US$219k daily volume, 98.5% of it on Kinesis's own exchange. Eight years of operation produced almost no independent third-party market. Evidence against the premium thesis, though less damning than PGOLD: Kinesis proves a captive venue can generate meaningful turnover, not that an external market will price the token at a premium.
+
+**Proof of reserve.** Kinesis is best in this set on attestation, with Bureau Veritas semi-annually, absolute gram figures published, and reconciliation to supply. It still has no bar list and no live proof-of-reserve feed, and its "live record" explorer is a supply feed a casual reader will mistake for reserve proof. Aurumix can beat this cheaply: publish a bar list and a monthly attestation and it is ahead of the sector.
+
+**Distribution.** The Recruiter Yield, at roughly 7.5% of referred users' fees, perpetual, and documented in the legal terms, is the closest live analogue to Aurumix's 3-tier agent network. The critical difference is that Kinesis pays agents from transaction fees, not from deposits. Aurumix's commission comes out of contributions, which is materially different, more dangerous, and the shape regulators associate with distribution-heavy schemes. Kinesis has no SIP, so Aurumix's monthly savings plan remains genuinely differentiated. The agent network does not.
+
+**Wind-down.** No wind-down plan is published. Kinesis has something arguably better in structure if not in procedure: the bailment arrangement means the bullion is legally the holders' property and not Kinesis's asset, so it should not fall into the insolvency estate. Copy the bailment language into Aurumix's own terms. It costs nothing, it is far stronger than the creditor-claim wording most gold tokens use, and combined with a published wind-down plan it would make Aurumix the best-protected product in the sector on paper.
+
+Takeaways for Aurumix:
+
+- The dividend arithmetic does not work. A platform turning over 1.5 times its AUM annually pays holders 0.10%. A near-zero-velocity SIP product generates a fee pool close to nil, so a 5% distribution cannot be funded by recycled fees.
+- Advertised yield and realised yield diverge by a factor of 20 here (2.05% advertised against roughly 0.10% realised on AUM). Aurumix must publish the denominator alongside any yield figure or it will face the same credibility problem.
+- Split the instrument the way Kinesis did: a clean commodity token for retail under VARA, and a separate capped, privately placed revenue-share security if a profit-share is genuinely wanted.
+- The wrapper rights gap is the most material warning. If Aurumix wraps a permissioned base into an ERC-20, decide and disclose in plain language whether wrapper holders retain ICS standing, dividend entitlement, credit eligibility and buyback rights. Kinesis strips all of them and does not say so in marketing.
+- Attach entitlements to the KYC-verified account, not to the token. That preserves ICS standing while allowing tokens to sit in linked external wallets, and it is cheaper than full ERC-3643.
+- Pay agents from transaction fees rather than from contributions. Commission taken out of a saver's deposit is the structure regulators scrutinise hardest.
+- Copy the bailment language. It is the strongest holder protection in the set and costs nothing to draft.
+- Do not draft the dividend as fully revocable with retroactive clawback. Kinesis did, and is now reallocating from retail holders to insiders, which is exactly the reputational outcome Aurumix cannot afford.
+
+---
+
