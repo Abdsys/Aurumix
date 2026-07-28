@@ -221,8 +221,9 @@ So the **external spot lane is only 4 to 8 percent of monthly SIP inflow**, and 
 
 **Our direction:**
 - The core problem is that a dividend funded purely by investor fees is both a **weak value story** and a **securities classification risk**, since a profit share tied to enterprise performance looks like a security.
-- **Market research surfaced the answer:** the Dubai peer **ORO** funds real gold yield via **Monetary Metals**, a gold leasing partner that pays interest on gold, in gold. That is genuine external yield on the asset, not recycled fees, and it can be framed as **asset yield rather than enterprise profit share**, which is the compliant framing.
+- **The direction is real external yield on the asset, not recycled fees.** Framed as **asset yield rather than enterprise profit share**, this is the compliant framing, and gold leasing (a counterparty pays interest on gold, in gold) is the mechanism that produces it.
 - **Trade-off:** leasing encumbers the gold, denting the "100 percent allocated and unencumbered" claim. Needs caps, disclosure and active risk management.
+- ⚠ **Revised 2026-07-28: the precedent behind this has been withdrawn.** This answer previously cited **ORO** as a Dubai peer already doing it compliantly. Re-verification found ORO to be **Oro Labs PTE Ltd., a Singapore holding company (UEN 202434484G)**, not an Emirati one; **unlicensed in every jurisdiction checked**; disclaiming token issuance to **unnamed third parties** in its own terms; and publishing **nothing** on how holders rank if the lease counterparty defaults, despite advertising 3 to 4 percent APY. The **principle survives** and is still our recommendation. The **worked precedent does not.** Treat ORO as a cautionary comparable. Build the framing from **Kinesis account-level mechanics** and put the leasing structure to counsel as an **open question**, not a solved one. See the A7 entry in `deliverables/1-market-research/Aurumix_Market_Research.md`.
 - **Merchant interchange** is the one existing stream that is genuinely externally funded and should be emphasised accordingly.
 
 ---

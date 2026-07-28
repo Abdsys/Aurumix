@@ -174,3 +174,14 @@ Please note this is subjective right now and might change based on the key quest
 - 100 G Business Model (Version 3). The authoritative product specification across 17 sections. Supersedes all earlier models.
 - Aurumix reply document. Written answers to our pre-kickoff questions.
 - Google Drive folder. Pending. Contains supporting documentation including the differential fee structure for spot versus SIP investments.
+
+## Additional comments from client
+
+Raised by the client on July 28, 2026, after charter sign-off. Recorded here as received. Scope, sequencing, and timeline impact to be assessed separately and reflected in a charter revision if required.
+
+1. Enable investment in crypto (stablecoin) as well as fiat.
+2. Determine which countries we can accept investment from, under either payment method.
+3. Identify which service providers we can use to enable that payment flow.
+4. Establish the retail share of the tokenized gold market. When sizing the market and positioning ourselves inside it, we must first separate retail market cap from institutional market cap, because our model discourages institutional investors.
+5. Rather than the stated growth targets (500 investors in Year 1, 10,000 to 14,000 by Year 3, 60,000 to 100,000 by Year 10), derive the minimum numbers required to support our annual expenses. Above that floor, build strategies for bridging the Indian life insurance policyholder mindset across to a crypto savings mindset, which is the real challenge. That means building mechanisms for easy investment through agent channels. NRI investors are the other large market: study how they invest, build routes for them to invest with ease, and position the product to fit their expectations.
+6. The product is not being built only for India, the UAE, and NRIs, though the focus leans that way because we understand those markets best.
