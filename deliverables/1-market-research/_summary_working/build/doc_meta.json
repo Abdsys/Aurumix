@@ -1,0 +1,79 @@
+{
+  "title": "Tokenized Gold: Market Research Summary",
+  "eyebrow": "Prepared for Aurumix",
+  "subtitle": "Nineteen tokenized gold protocols profiled end to end, and what the evidence means for the Aurumix design.",
+  "date": "July 2026",
+  "tagline": "Built by founders. Designed for founders.",
+  "legal": "Prepared by Tokenomics.net for Aurumix. © 2026",
+  "cta": {
+    "title": "What Happens Next",
+    "subtitle": "Two decisions in this report are yours to make: how the dividend is funded, and whether the premium stays in the model. Once those are settled, mechanism design begins with token classification and architecture.",
+    "button": "Book the Next Session",
+    "email": "tony@tokenomics.net",
+    "web": "tokenomics.net"
+  },
+  "profile_sections": ["4", "5"],
+  "executive_summary": {
+    "intro": [
+      "Tokenized gold is eight years old, nineteen products deep, and far smaller than it looks. Two protocols hold roughly 86% of the sector's assets. Nine of the sixteen live products hold under $10M each, several after five or more years of trading. This is not a crowded market that Aurumix has to fight into. It is a market with two incumbents, a long tail that never found buyers, and a great deal of unoccupied ground in between.",
+      "This report profiles all nineteen protocols against the same set of questions: who issues the token, what licence covers it, where the metal sits, who verifies it, how the business is funded, what a holder actually owns, and how the product reaches customers. Every profile was built from company registers, regulator registers, issuer terms, filings and on-chain data rather than from marketing. Sixteen live protocols are covered in Section 4, three failures in Section 5, and the adjacent Indian digital gold market in Section 3.6."
+    ],
+    "stats": [
+      { "value": "19", "label": "Protocols profiled" },
+      { "value": "0", "label": "With a savings plan" },
+      { "value": "4", "label": "Licensed for the token issued" }
+    ],
+    "findings": [
+      {
+        "title": "The category solved custody and never solved distribution",
+        "body": "Not one of the nineteen protocols runs a savings plan, a recurring purchase mechanism, or a retail referral programme. The best-provenanced product in the sector, backed by a sovereign mint with state vaults and a live proof-of-reserve feed, reached US$2.5M in four years and was shut down. Distribution is the gap, and it is where Aurumix's advantage actually sits."
+      },
+      {
+        "title": "Vaulted gold cannot pay a yield, and every protocol claiming otherwise fails its own arithmetic",
+        "body": "Kinesis paid $26,326 in June 2026 on $310M of assets, roughly 0.10% annualised against 2.05% advertised. Pleasing Gold promises 5% on a market trading under $20 a day. MG999 advertises 2.3% net on gold borrowed at 2.5% gross with a 1.00% management fee on top. The dividend resolves into three options and there is no fourth. Section 11.1."
+      },
+      {
+        "title": "The exchange premium should be modelled at zero",
+        "body": "Nine protocols across the full liquidity range say a premium cannot hold: where a market is liquid, arbitrage closes it, and where it is illiquid, there is no market to express one. The two protocols trading off spot trade at a discount. The Aurumix spot capacity parameter is currently tuned to produce a 3% to 8% premium and should be re-derived. Section 11.2."
+      },
+      {
+        "title": "A revenue line is a survival feature",
+        "body": "All three failures died of revenue starvation rather than enforcement, hacks or reserve shortfalls. Cache Gold charged a storage fee its own terms only collected on a transaction, so buy-and-hold savers paid nothing while consuming vault cost daily. Any Aurumix fee that depends on customer activity collects nothing from the customer the product is designed for."
+      },
+      {
+        "title": "An anonymous bearer token cannot be wound down",
+        "body": "Cache Gold published a proper wind-down plan, followed it, and still stranded 96% of supply, because it had no holder registry to deliver notice to and never burned redeemed tokens. Being able to execute a wind-down requires a trustee holding title, a holder registry, burn-on-redemption, and a published reconciliation. That is the strongest argument for a permissioned token base."
+      },
+      {
+        "title": "There is no cheap compliant door",
+        "body": "Four of nineteen protocols hold a licence covering the token they issue. The rest run one of three recognisable patterns: a software company performing regulated acts, an adjacent trade or AML registration presented as authorisation, or a regulatory halo built on a conditional approval or a distant investor. The Dubai free zone route around VARA does not exist."
+      },
+      {
+        "title": "\"Audited\" almost never means the gold was checked",
+        "body": "Six protocols publish a smart-contract audit while their reserve attestation is absent, stale or self-signed. Only three have credible independent reserve examination. Separating the two explicitly in public disclosure costs nothing and is a differentiator in a sector where almost nobody does it."
+      }
+    ]
+  },
+  "sections": [
+    { "number": "1", "subtitle": "What this market is, how large it actually is, which regulators matter to a Dubai issuer, and where the Aurumix product sits against the field." },
+    { "number": "2", "subtitle": "Nine conclusions drawn across all nineteen protocols, each with a direct consequence for a decision Aurumix has to make." },
+    { "number": "3", "subtitle": "Every protocol side by side on assets, funding, licensing and reserve verification, plus the adjacent Indian digital gold market." },
+    { "number": "4", "subtitle": "Sixteen live protocols in full, ordered by assets under management. Each covers legal structure, custody, fees, liquidity, distribution and what it means for Aurumix." },
+    { "number": "5", "subtitle": "Three protocols that stopped operating, why each one actually died, and what holders were left with." },
+    { "number": "6", "subtitle": "How this sector makes money, what it charges, which models survive contact with a buy-and-hold customer, and what that means for the Aurumix fee design." },
+    { "number": "7", "subtitle": "Token standards in use, what a holder legally owns, what rights survive a transfer or a wrapper, and how proof of reserve should be built." },
+    { "number": "8", "subtitle": "Where the classification line runs, what the credit facility requires, and which UAE routes remain genuinely open." },
+    { "number": "9", "subtitle": "Who participates in these protocols, how the adjacent market solved distribution, and how to build an agent network that survives the pyramid analysis." },
+    { "number": "10", "subtitle": "What nobody in this market serves, where Aurumix can differentiate cheaply, and the three questions this research does not answer." },
+    { "number": "11", "subtitle": "Two choices that belong to the client rather than to the design work, both of which shape everything downstream." },
+    { "number": "12", "subtitle": "The findings that matter most, what this market rewards and punishes, the main risks, and the recommended next steps." }
+  ],
+  "appendices": {
+    "divider_title": "Appendices",
+    "divider_subtitle": "Full protocol reference table and the primary sources behind every claim in this report.",
+    "items": [
+      { "letter": "A", "title": "Protocol Reference Table", "file": "appendix-a.md" },
+      { "letter": "B", "title": "Sources", "file": "appendix-b.md" }
+    ]
+  }
+}

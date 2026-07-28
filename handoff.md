@@ -43,7 +43,7 @@ We (Tokenomics.net) are building a **tokenomics Data Room** for **Aurumix**, a U
 - `deliverables/0-discovery/questions-discussion.md` — **DONE.** All 15 questions with answers, statuses, and supporting research. *(Moved here from repo root.)*
 - `deliverables/1-market-research/Aurumix_Market_Research.md` — **DONE but incomplete.** 10 tracks (A1–A10), QC'd. Structured around our preliminary questions, which the client has since said is too narrow. Covers only 5 protocols. **Its ORO entry was materially wrong and was corrected in place on 2026-07-28** (A7, plus the two summary references and the findings table): ORO is Singaporean, not Dubai, and is not a compliant precedent. See §6.8.
 - `deliverables/1-market-research/Aurumix_Protocol_Landscape.md` — ✅ **DONE 2026-07-28. The other authoritative Phase 1 deliverable.** 19 protocols (16 live, 3 failed) against 13 headings, ~5,650 lines, 292 source URLs, registry-first. Front section carries the corrections register, nine cross-cutting findings and comparison tables. **Overturned 11 things we believed: see §6.13–§6.20.**
-- `deliverables/1-market-research/Aurumix_Market_Research_Summary.md` / `.html` / `.pdf` — ✅ **DONE 2026-07-28. The client-facing Phase 1 deliverable**, and the one to send. 679 lines, 72 pages, synthesising both research documents above. Section 4 is tiered: five protocols in full, eleven in comparison tables. **The `.md` was generated from body files that have since been deleted (§11), so it is now the editable master.** The PDF is gitignored and lives only locally.
+- `deliverables/1-market-research/Aurumix_Market_Research_Summary.md` / `.html` / `.pdf` — ✅ **DONE 2026-07-28. The client-facing Phase 1 deliverable**, and the one to send. **52 pages, ~14,700 words**, synthesising both research documents above. Section 4 is tiered: five protocols in full, eleven in comparison tables. Written to a bullets-and-callouts format with no paragraph over 60 words. **Generated: edit the body files in `_summary_working/` and rebuild (§11), never the `.md` directly.** The PDF is gitignored and lives only locally.
 - `deliverables/1-market-research/_working/sections/` — ⚠ **NOT deliverables.** The 18 per-protocol research files, section by section, kept as the raw research record. Their content is already inside `Aurumix_Protocol_Landscape.md`, so **a skill that ingests every `*.md` under `1-market-research/` would double-count.** Pass explicit file paths.
 - `deliverables/_progress.json` — tracks process status. Processes 0 and 1 marked complete.
 - `company container/Proposal/Aurumix_Engagement_Brief.md` — ⚠ **written against the OLD model** (70/30, 100B cap, 50-year horizon). **Superseded by the charter.**
@@ -212,46 +212,67 @@ Six further asks arrived after charter sign-off. They are recorded verbatim in a
 
 - ✅ **DONE 2026-07-28: the client-facing Market Research Summary, branded.** `deliverables/1-market-research/Aurumix_Market_Research_Summary.md` / `.html`, with the PDF built locally (gitignored; rebuild via `_summary_working/build/`). **679 lines, ~19,950 words, 72 pages**, down from a 172-page first build. Zero overflow pages, zero empty pages, zero unresolved contents entries, lint total 0.
     - **Section 4 is tiered, and that is what got the length down without dropping protocols.** Five live protocols carry full profiles (Tether Gold, Pax Gold, Kinesis, Streamex, Comtech), each chosen because it settles a distinct question: what the largest product charges, what a fully licensed issuer looks like, whether an advertised yield survives its own arithmetic, whether leasing income can be documented, and what a Dubai issuer actually holds. The other eleven sit in three comparison tables at 4.6 preserving the same nine fields as columns. Section 5 tiers the same way: PMGT in full at 5.1, Digix and CACHE Gold as a table at 5.2.
-    - **All 19 protocols and all 202 source URLs survive** in the document, Appendix B carrying the sources and Appendix A renumbered to the tiered scheme.
-    - ⚠ **The build tooling and body files were deleted after delivery** (see §11). The `.md` is now the editable master. Restoring the pipeline to rebuild the HTML or PDF is a one-line `git checkout` from commit `53337a0`.
+    - **All 19 protocols survive.** Appendix A is renumbered to the tiered scheme. Appendix B is capped at 6 sources per protocol (114 of 202), because listing all of them cost six pages; the full register stays in `Aurumix_Protocol_Landscape.md`.
+    - ✅ **Revised twice on 2026-07-28 after review.** The first tiered build was 72 pages and read as walls of text, because the line-count cap had pushed every subhead into one dense paragraph. Rewritten to bullets, callouts and short paragraphs, then cut to **52 pages**. The line cap is retired: see §11.
+    - **Clean-build bar is now four empty arrays**, not three. `sparsePages` was added to `render.js` and catches widow pages under 35% fill, which the empty-page check missed. Six were shipping unnoticed.
 - ⏭ **NEXT: Phase 2 Mechanism Design, starting with B1 (Classification & Token Architecture).** Still the spine, and the landscape now feeds it hard. Inputs: the **dividend trilemma** (§6.16, needs a client decision first), the **dead DMCC route** (§6.14, so B1's options are VARA / ADGM Accepted Spot Commodity / licensed partner and nothing cheap), the **wind-down argument for ERC-3643** (§6.7 and §6.15), the **two peg-neutral custody-fee mechanisms** (§6.1, for B2), and the **Streamex lease documentation** to go to counsel (§6.8).
 - 📅 **Next client call: Wednesday.** Agenda: the four client-side open items in §7, especially the **Data Room objective** question (asked twice, never answered), plus the scope conversation owed on client additions 1–3. **Add two items from the landscape:** (a) the **dividend trilemma** at §6.16, put as an explicit three-way choice rather than as our recommendation, and (b) **the premium is zero** (§6.13), which the client should hear before it is embedded in any revenue projection, because their spot-capacity parameter is currently tuned against it.
 - ✅ **CLOSED (was "Needs Tony"): the ORO real-yield anchor.** ORO is a Singapore holding company with no licence and no named issuer. But the search should **not** have been closed: **Streamex's SEC-filed lease agreement is the documented precedent we said did not exist** (§6.8). Net: the yield-generation template is real and copyable, the holder-protection layer is missing everywhere, and that gap is now a differentiation opportunity rather than a blocker. Brief Tony on the outcome; no decision is owed back.
 - 🔴 **NEW, needs the client not us: the dividend trilemma (§6.16).** Encumber the gold, fund from operating profit, or drop the dividend. There is no fourth option and it is arithmetic, not design. Our recommendation is option 3 at launch. **This gates B5 and it should be asked on Wednesday.**
 
-## 11. Market Research Summary: delivered, and the build tooling retired
+## 11. Market Research Summary: delivered, and how to rebuild it
 
-The summary is **delivered** (see §10). On 2026-07-28, after delivery, the working tree was deliberately cleaned back to finished artifacts only.
+The summary is **delivered** (see §10). The build tooling was briefly deleted on 2026-07-28 and then **restored, because the document went through two further rounds of revision.** Keep it.
 
-**What survives in `deliverables/1-market-research/`:**
-
-- `Aurumix_Market_Research_Summary.md` / `.html` / `.pdf` (the client deliverable)
-- `Aurumix_Market_Research.md` and `Aurumix_Protocol_Landscape.md` (the two research deliverables it was built from)
-- `_working/sections/` (the 18 per-protocol research files, section by section)
-
-**What was deleted:** the whole of `_summary_working/`, meaning the seven body files, `_original/`, the build pipeline (`assemble.py`, `build.py`, `render.js`, `lint.py`, `shots.js`, `doc_meta.json`), `node_modules/`, the page screenshots and every scratch draft. Also the non-section files in `_working/` (`_frontmatter.md`, `_landscape_brief.md`, `README.md`, the PILOT sample).
-
-### If the summary needs changing
-
-**The `.md` is now the editable master.** Nothing regenerates it, so editing it directly is safe, but the `.html` and `.pdf` will no longer match it.
-
-To rebuild the branded HTML and PDF, restore the tooling first:
+**Working dir:** `deliverables/1-market-research/_summary_working/`. **Build dir:** `build/` inside it.
 
 ```
-git checkout 53337a0 -- deliverables/1-market-research/_summary_working
-cd deliverables/1-market-research/_summary_working/build
-npm install          # node_modules was never committed
-python assemble.py && python build.py && node render.js && python lint.py
+npm install          # first run only; node_modules is gitignored
+python assemble.py   # stitches body files, regenerates Appendix B from _original/
+python build.py      # emits the self-contained branded HTML
+node   render.js     # renders the PDF and reports layout defects
+python lint.py       # style and leakage lint on the assembled deliverable
 ```
 
-`render.js` must print `"overflowPages": []`, `"emptyPages": []`, `"unresolvedTocEntries": []`. `lint.py` must print `TOTAL: 0`. Note that `assemble.py` regenerates the `.md` from the body files, so **any hand edits made to the delivered `.md` after 53337a0 would be overwritten**: port them into the body files instead.
+**Body files, in document order:** `sections-1-3.md`, `prof-live-detailed-1.md` (4.1–4.2), `prof-live-detailed-2.md` (4.3–4.5), `prof-live-table.md` (4.6), `prof-failed.md` (5.1–5.2), `sections-6-12.md`, plus `appendix-a.md`. **`Aurumix_Market_Research_Summary.md` and `appendix-b.md` are generated: never hand-edit them.**
 
-### Constraints that shaped the document, and would bind a rebuild
+⛔ **Never point a directory-scanning skill at `deliverables/1-market-research/`.** `_working/sections/`, `_summary_working/` and `_summary_working/_original/` all hold overlapping copies of the same content. Pass explicit file paths.
 
-- **Under 800 raw lines** for the assembled markdown, set as the readability cap. This is why section 4 is tiered rather than sixteen full profiles. Before anyone tries to "restore" the long version: the four section files originally frozen as done came to **875 lines by themselves**, and a profile cannot go below ~38 lines while keeping its nine-field table and six subheads, so nineteen full profiles have a hard floor around 1,600 lines.
+### The clean-build bar
+
+`render.js` must print **four** empty arrays: `overflowPages`, `emptyPages`, `sparsePages`, `unresolvedTocEntries`. `lint.py` must print `TOTAL: 0`.
+
+`sparsePages` was added on 2026-07-28 and is the one that matters most. Overflow means clipped text and is obvious; a **sparse page is a widow**, under 35% full, and the earlier empty-page check missed it entirely because the page is not literally empty. Six of them were shipping unnoticed in the 72-page build.
+
+### Order of work, learned the hard way
+
+**Fix the markdown first, then the rendering.** An earlier pass trimmed content to make pages fit, which is backwards: it damages the document to serve the layout. Get the markdown right as a document, then fix layout defects in `build.py` and `render.js`.
+
+### Formatting rules the document is written to
+
+These produced the readable version and a rebuild should hold them:
+
+- **No paragraph over 3 sentences or ~60 words.** Two is the norm. A verified zero paragraphs currently exceed 60 words.
+- **Bullets carry a bold lead-in of 2 to 5 words**, then the point, one or two lines. Currently 220 bullets.
+- **One `> **Title.** text` callout per numbered section**, for its single most important takeaway. Currently 15.
+- **Never stack more than two paragraphs** without a bullet list, table, subhead or callout.
+- Tables are the preferred form for anything comparative. Currently 226 rows.
+
+⚠ **The earlier "under 800 raw lines" cap is retired and should not be reinstated.** It actively caused the wall-of-text problem: minimising lines meant one dense paragraph per subhead. Bullets and whitespace cost lines and are worth it. **Target pages, not lines.** The document is 968 markdown lines and 52 pages.
+
+### Layout switches in `build.py`
+
+- `SECTION_DIVIDERS = False`. Full-page section dividers cost one near-empty page per section, 13 of 70. Off; the section title and contents anchor ride on the section's first content page.
+- `PROFILE_PAGE_BREAKS = False`. Starting each protocol on a fresh page only works if a profile fills a page. These fill ~1.3, so each stranded its closing callout at ~31%.
+- Table chunking is **balanced, not greedy**. Greedy split 11 rows as 9 + 2 and put the 2-row tail on its own page.
+- Five older defects remain fixed: page numbering starts after the contents; template CSS is handled per template with a hard-fail on a missing selector; wrapper divs carry `data-text-role` so the splitter can unwrap them; contents page numbers are prefilled with `000` so writing the real number cannot reflow an entry; tables are atomic to the splitter and so must be chunked.
+
+### Content constraints that still bind
+
 - **Stripped, and staying stripped:** the corrections register, confidence grades, documentation-quality grades, sourcing caveats, per-protocol "open items for verification", and any research-tooling or cost reference.
-- **Framing that must not drift.** §11.1 of the document puts the dividend as a three-way choice the client owns, with our recommendation stated as a recommendation and the persuasive weight carried by arithmetic on other protocols rather than assertions about Aurumix. §11.2 says plainly that the spot capacity parameter is tuned to a premium the evidence says will not appear. §10.3 owns three gaps (retail vs institutional split, the FEMA/LRS route for Indian residents, NRI savings behaviour) as **not established and scoped**, without implying the engagement has taken the six parked client additions on.
-- **Format reference for tiering:** the DRODE market research summary (`$DRODE Tokenomics/deliverables/1-market-research/final/DRODE_Competitive_Landscape_Deep.md`, 655 lines). Full prose for the ones that matter, bullets for the middle, pure table rows for the rest.
+- **Framing that must not drift.** Document §11.1 puts the dividend as a three-way choice the client owns, with our recommendation stated as a recommendation and the weight carried by arithmetic on other protocols rather than assertions about Aurumix. §11.2 says plainly that the spot capacity parameter is tuned to a premium the evidence says will not appear. §10.3 owns three gaps as **not established and scoped**, without implying the six parked client additions have been taken on.
+- **Appendix B is capped at 6 sources per protocol** (`MAX_SOURCES_PER_PROTOCOL` in `assemble.py`). All 202 cost six pages. The full register is in `Aurumix_Protocol_Landscape.md`.
+- **Format reference for tiering:** the DRODE market research summary (`$DRODE Tokenomics/deliverables/1-market-research/final/DRODE_Competitive_Landscape_Deep.md`).
 
 ## 12. Update protocol for this doc
 
