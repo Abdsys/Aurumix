@@ -217,7 +217,7 @@ The redemption right is what anchors the price. Arbitrage between token, spot an
 
 ---
 
-## 10. Gaps, Opportunities and Open Questions
+## 10. Gaps and Open Questions
 
 ### 10.1 What nobody in this market serves
 
@@ -228,16 +228,7 @@ Four gaps are consistent across all nineteen protocols.
 - **The holder who wants protection rather than assurance.** No protocol names holders as an insurance loss payee or publishes a default waterfall.
 - **The family.** No protocol offers inheritance or beneficiary nomination.
 
-### 10.2 Where Aurumix can differentiate
-
-Ranked by how cheap the differentiation is against how much it is worth.
-
-- **Recurring savings distribution, first.** The moat. The gap is total and the adjacent Indian market proves the demand.
-- **Holder-level protection in the documentation, second.** Trustee holding title, holder registry, burn-on-redemption, a published wind-down clause, holders named as insurance loss payee. Drafting decisions rather than capital commitments, and no competitor has done it.
-- **Honest reserve verification, third.** Attestation on a fixed schedule, an oracle feed that can halt issuance, a bar-level lookup. Only three protocols have even the first done credibly.
-- **Inheritance, fourth.** Legally untested, but nobody else offers it.
-
-### 10.3 What this research does not yet establish
+### 10.2 What this research does not yet establish
 
 Three things are genuinely open, and none of them should be filled with an estimate.
 
@@ -255,84 +246,38 @@ This is not established. It is scoped work, it gates any break-even sizing, and 
 
 ---
 
-## 11. Two Decisions for Aurumix
+## 11. Conclusions
 
-Everything above informs design work Tokenomics.net can carry. These two are choices the client owns.
+### 11.1 The seven findings that matter most
 
-### 11.1 The dividend: three options, and there is no fourth
+1. **The category solved custody and never solved distribution.** Nineteen protocols, zero savings plans, zero referral programmes.
+2. **Vaulted gold cannot pay a yield.** Kinesis realised about 0.10% against 2.05% advertised.
+3. **The premium is zero.** Arbitrage closes it where markets are liquid, and there is no market to express it where they are not.
+4. **A revenue line is a survival feature.** All three failures died of revenue starvation, not enforcement or hacks.
+5. **An anonymous bearer token cannot be wound down.** Cache Gold followed a proper wind-down plan and still stranded 96% of supply.
+6. **There is no cheap compliant door.** Four of nineteen hold a licence covering the token they issue.
+7. **"Audited" almost never means the gold was checked.** Six publish a contract audit while the reserve attestation is absent, stale or self-signed.
 
-Gold in a vault produces no income and costs money to store, so any distribution has to come from one of exactly three places.
-
-- **Option 1: encumber the gold.** Lease the metal out and pay holders from the lease income. Streamex's SEC-filed agreement is a copyable template, with a 3% net floor and two insurance layers.
-  - **The cost.** Aurumix gives up the claim that the gold is unencumbered, and inherits lessee credit risk. The AgaBullion default of 26 January 2026 shows what that looks like.
-- **Option 2: fund it from operating profit.** The current design. Honest, and fundable.
-  - **The cost.** It reads most clearly as a profit share, carrying classification risk: heavier capital, licensed venues only, possible restriction to qualified investors.
-- **Option 3: drop the dividend.** Compete on the savings plan, the credit facility and inheritance.
-  - **The cost.** Losing a headline feature. Every well-regulated protocol in this sector made that choice.
-
-The arithmetic from other protocols is the persuasive material:
-
-- **Kinesis.** About 0.10% realised against 2.05% advertised.
-- **PGOLD.** 5% advertised on $79M to $90M, roughly $4M a year, against a market trading under $20 a day.
-- **MG999.** A 2.5% gross lease funding a 1.00% management fee plus platform, trustee and audit costs, against 2.3% advertised net.
-
-Our recommendation is option 3 at launch, with option 1 available later, once the credit book is real and counsel has ruled on holder protection under VARA or ADGM. That keeps the token classifiable as a commodity claim during licensing.
-
-> **The takeaway.** This is a recommendation, not a verdict. The decision is the client's and it should be taken explicitly.
-
-### 11.2 The premium: model it at zero
-
-The current model assumes a 3% to 8% exchange premium, and the spot capacity parameter is tuned to produce it. That parameter runs 20% to 40% of monthly SIP inflow, split 80% internal and 20% external.
-
-**Revenue projections should carry a zero premium assumption.** Nine protocols say the premium will not appear, and the two that trade off spot trade at a discount. The premium feeds the revenue model, so absorb this now.
-
-- **Re-derive the spot capacity parameter.** Against growth in assets under management and lane fairness rather than premium engineering. A price above net asset value under closed redemption is an artefact of blocked arbitrage, not demand.
-- **The "mining event" framing loses its last economic argument.** Keep the allocation mechanic and drop the mining metaphor, which implies an emissions story that invites the wrong regulatory reading.
-
----
-
-## 12. Conclusions and Recommendations
-
-### 12.1 The seven findings that matter most
-
-1. **The category solved custody and never solved distribution.** Nineteen protocols, zero savings plans, zero recurring purchase mechanisms, zero retail referral programmes. The best-provenanced product, backed by a sovereign mint, reached $2.5M in four years.
-2. **Vaulted gold cannot pay a yield.** Kinesis realised about 0.10% against 2.05% advertised; PGOLD promises $4M a year from a market trading under $20 a day.
-3. **The premium is zero.** Arbitrage closes it in liquid markets and there is no market to express it in illiquid ones. Two protocols trade at a discount.
-4. **A revenue line is a survival feature.** All three failures died of revenue starvation, not enforcement, hacks or reserve shortfalls.
-5. **An anonymous bearer token cannot be wound down.** Cache Gold published a proper wind-down plan, followed it, and still stranded 96% of supply.
-6. **There is no cheap compliant door.** Four of nineteen protocols hold a licence covering the token they issue, and the Dubai free-zone route does not exist.
-7. **"Audited" almost never means the gold was checked.** Six protocols publish a smart-contract audit while their reserve attestation is absent, stale or self-signed.
-
-### 12.2 What this market rewards and punishes
+### 11.2 What this market rewards and punishes
 
 Rewards:
 
-- **A legal claim that survives issuer failure.** DGLD demonstrated it across six dormant years.
-- **Revenue that does not depend on customer activity.** The dormant holder still has to pay something.
-- **Distribution embedded where the customer already is.** The Indian payment apps are the proof.
+- **A legal claim that survives issuer failure.** DGLD, across six dormant years.
+- **Revenue that does not depend on customer activity.** The dormant holder still pays something.
+- **Distribution embedded where the customer already is.** The Indian payment apps.
 - **Reserve verification that names the custodian and publishes the bars.** Three protocols manage it.
 
 Punishes:
 
-- **Yield promises with no disclosed funding source.** Every one of them has been caught by its own arithmetic.
+- **Yield promises with no disclosed funding source.** Each caught by its own arithmetic.
 - **Redemption rights that differ from the marketing.** 10 g on the website, 1 kg in the binding terms.
 - **Licences described as covering more than they cover.** Comtech is the live example.
-- **Zero-fee models with no parent to carry them.** This is how Cache Gold died.
+- **Zero-fee models with no parent to carry them.** How Cache Gold died.
 
-### 12.3 The main risks to watch
+### 11.3 The main risks to watch
 
 - **Classification.** The dividend plus the credit facility push the token toward a hybrid read, dragging in a second regulator. The single largest risk in the product.
 - **Combination risk in distribution.** Profit share plus lock-in plus multi-tier referral is the exact pattern behind the largest enforcement actions in crypto.
 - **SIP persistence.** The stoppage ratio in Indian mutual fund SIPs spiked above 120% in 2025, and the whole engine assumes contributions continue.
 - **The funding route for Indian residents.** If the FEMA and LRS position holds, the charter's primary persona may have no compliant way to pay in.
 - **Custody funding.** Every model the category uses is unavailable to Aurumix for structural reasons.
-
-### 12.4 Recommended next steps
-
-1. **Decide the dividend.** Three options, and it is a client decision. This gates the token architecture work.
-2. **Re-derive the spot capacity parameter** against a zero premium, and carry that zero into all revenue projections.
-3. **Commission the retail versus institutional split analysis** before any market sizing. It should not be estimated.
-4. **Put the FEMA and Liberalised Remittance Scheme question to Indian counsel.** It gates eligible countries, payment rails, and whether the primary persona is reachable.
-5. **Take the Streamex leasing documentation to Dubai counsel** as a worked example, asking whether the holder-protection layer Streamex omits can be built under VARA or ADGM.
-6. **Price the VARA Sponsored Regime and Partnership Model** alongside a standalone licence.
-7. **Re-space the credit facility thresholds** under the corrected 90% to 95% ceiling, and specify the loss-absorbing reserve behind them.

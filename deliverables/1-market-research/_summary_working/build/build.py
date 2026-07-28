@@ -82,6 +82,10 @@ SECTION_DIVIDERS = False
 # widows; the ### heading and fact table still mark each protocol clearly.
 PROFILE_PAGE_BREAKS = False
 
+# Closing "What Happens Next" call-to-action page. Off: this is market research,
+# and a booking prompt does not belong in it.
+CLOSING_CTA = False
+
 
 def split_row(line):
     line = line.strip()
@@ -866,7 +870,10 @@ def main():
             "".join(md_blocks(content_lines)), ref,
         ))
 
-    pages.append(page_cta(meta, logo_dark))
+    # The closing call-to-action page is off. This is a research deliverable,
+    # not a pitch, and its copy pointed at decisions the report no longer makes.
+    if CLOSING_CTA:
+        pages.append(page_cta(meta, logo_dark))
     pages.append(page_back_cover(meta, logo_light))
 
     pages.insert(toc_placeholder_index, page_toc(toc))
