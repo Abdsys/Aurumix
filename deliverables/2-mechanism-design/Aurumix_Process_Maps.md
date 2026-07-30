@@ -1,6 +1,8 @@
 # Aurumix Process Maps
 
 > Draft for the client call. Covers only the decisions finalised so far: the gating procurement question, Mining Events, the premium, token denomination, the ICS Dividend, and the allocation and float mechanism.
+>
+> ⚠ **Two companion sets carry decisions this file predates.** `Aurumix_Process_Maps_SIP_Spot_ICS.md` covers the SIP/spot split, the lock-in deletion and the ICS structure, and **supersedes diagram 5 below ("Spot Lane"), because the lanes no longer exist.** `Aurumix_Process_Maps_Custody_Fee.md` covers custody-fee recovery, which is summarised as the seventh row of diagram 14 and reasoned in full there.
 
 ## Diagram Plan
 
@@ -19,7 +21,7 @@
 | 11 | The Float: How It Works | Flowchart | LR | 5 | Inline | The mechanism |
 | 12 | Who Carries the Float | Flowchart | LR | 5 | Inline | The dealer fork |
 | 13 | The Float Fixes the Buyback | Flowchart | LR | 5 | Inline | Four jobs |
-| 14 | Before and After | Flowchart | TD | 14 | Dedicated | Summary |
+| 14 | Before and After | Flowchart | TD | 16 | Dedicated | Summary |
 
 ## Consistency Convention
 
@@ -480,7 +482,9 @@ graph LR
 ## 14. Before and After
 
 <!-- SPEAKER NOTES:
-"Six changes. None of them removes a feature your investors value. Every one of them removes a regulatory exposure, and three of them make the product better for the saver: they get a firm price within a day, a gold balance that grows every month, and a statement they can read without a conversion."
+"Seven changes. None of them removes a feature your investors value. Every one of them removes a regulatory exposure, and three of them make the product better for the saver: they get a firm price within a day, a gold balance that grows every month, and a statement they can read without a conversion.
+
+The seventh row is the newest and it is the one your development team will ask about first, because your document names a custody fee of 0.8 to 1% and never says how it is collected. Every route that touches the metal either breaks the one-gram peg or requires debiting a holder's wallet, and a monthly cash bill stops working for the majority of holders who stop contributing but keep holding. So custody is recovered at entry and at exit, where cash is already moving. The gram count only ever rises. There is a separate set of four diagrams on that one if you want the full reasoning."
 -->
 
 ```mermaid
@@ -504,6 +508,7 @@ graph TD
         A4["1 AURX = 0.01 g"]
         A5["Dividend from operating profit"]
         A6["No gold seller named"]
+        A7["Custody fee, no collection route"]
     end
 
     subgraph After["After"]
@@ -513,6 +518,7 @@ graph TD
         B4["1 AURX = 1 gram"]
         B5["Gold Rewards from fee revenue"]
         B6["Two-way dealer required"]
+        B7["Recovered at entry and exit"]
     end
 
     A1 -->|"Allocation"| B1
@@ -521,6 +527,7 @@ graph TD
     A4 -->|"Denomination"| B4
     A5 -->|"Dividend"| B5
     A6 -->|"Procurement"| B6
+    A7 -->|"Custody"| B7
 
     style A1 fill:#9A9590,stroke:#9A9590,color:#1A1714
     style A2 fill:#9A9590,stroke:#9A9590,color:#1A1714
@@ -528,10 +535,12 @@ graph TD
     style A4 fill:#9A9590,stroke:#9A9590,color:#1A1714
     style A5 fill:#9A9590,stroke:#9A9590,color:#1A1714
     style A6 fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style A7 fill:#9A9590,stroke:#9A9590,color:#1A1714
     style B1 fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style B2 fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style B3 fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style B4 fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style B5 fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style B6 fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B7 fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
