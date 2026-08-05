@@ -196,13 +196,17 @@ The CBUAE Payment Token Services Regulation (Circular 2/2024) governs payment to
 
 **The carve-out is the design insight. AURX is a virtual asset, so a USDT-to-AURX purchase may sit inside the permitted use of a Foreign Payment Token.** The fee legs do not: entry fee, custody fee and credit fees are payments for services and must settle in fiat or in a licensed Dirham Payment Token.
 
-**Design consequence, stated precisely:**
+🔄 **SUPERSEDED 2026-08-05. The carve-out has two conditions, not one, and USDT fails the first.** The operative wording permits a *"Foreign Payment Token issued by a **Registered** Foreign Payment Token Issuer being lawfully used as a Means of Payment for purchase of Virtual Assets."* Both limbs must hold. As at 29 January 2026 the only registered Foreign Payment Token found was **USDU** (Universal Digital, ADGM); no evidence Tether or Circle have registered or been refused. **Confidence: High** on the two-limb reading, **Medium-High** on the registration list, which rests on a regulatory tracker rather than a CBUAE register.
 
-- The token purchase leg **may** settle in USDT, subject to counsel confirmation.
+**Design consequence, restated:**
+
+- The token purchase leg **may** settle in a *registered* Foreign Payment Token. **Not USDT, not USDC.**
 - The fee legs **must** settle in AED, USD or a licensed Dirham Payment Token.
-- Practically: quote and collect in fiat, treat USDT as a supplementary rail, and separate the fee legs in the payment design rather than netting them off the USDT amount.
+- **The route that works today: the customer converts on their own account, at a licensed exchange, before paying.** Aurumix receives an ordinary bank transfer. See `_explainer_how-we-take-money.md` for the four payment paths and the signpost list.
 
-⚠ This is the difference between the client's USDT plan surviving in modified form and dying completely. It needs written confirmation.
+⚠ **Two workarounds tested and ruled out.** (a) Accepting USDT and off-ramping it yourself fails: conversion is itself a licensable Payment Token Service, and **routing an unregistered token through a licensed processor does not cure its status**. (b) The PTSR is drafted as *"No Person shall perform any service, within the UAE or directed to Persons in the UAE"*, so **the merchant is bound, not just the token issuer**. Aurumix would be the party in breach.
+
+⚠ **Addition to the licence stack in section 3:** VARA and SCA licensees that custody, transfer or convert stablecoins reportedly require a **CBUAE Non-Objection Registration**. **Confidence: Medium**, commentary rather than rulebook. Verify before relying on it.
 
 Note also Federal Decree-Law No. 6 of 2025, which added virtual-asset payment services to the CBUAE perimeter with in-scope operators required to comply or cease by **September 2026**. **Confidence: Medium.**
 
