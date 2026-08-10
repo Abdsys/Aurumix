@@ -115,7 +115,7 @@ graph LR
 ## 1b. The Discount, Worked
 
 <!-- SPEAKER NOTES:
-"Same seventy-five dollars, two savers. The newcomer pays the base fee and gets 0.6518 grams. The top-tier saver pays two points less and gets 0.6655 grams. The difference is a hundredth of a gram every month, a sixth of a gram a year, and the app shows it accumulating. Small numbers, permanent direction."
+"Two savers, the identical seventy-five dollars. One is on their first payment and pays the base fee. The other has made fifty-six straight payments and pays two points less: an extra 0.0137 grams that month, a sixth of a gram a year. The money is the same. The record is the only difference, and money cannot buy the record."
 -->
 
 ```mermaid
@@ -132,19 +132,20 @@ graph LR
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
-    A["USD 75, new saver"] --> B["Fee 5%: 0.6518 g"]
-    C["USD 75, top tier"] --> D["Fee 3%: 0.6655 g"]
-    B --> E["+0.0137 g that month"]
-    D --> E
-    E --> F["~0.16 g a year, in the app"]
+    A["First payment: USD 75"] --> B["Base fee 5%"]
+    B --> C["0.6518 g allocated"]
+    D["56th straight payment: USD 75"] --> E["Top-tier fee 3%"]
+    E --> F["0.6655 g allocated"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
+
+⚠ **The only difference between the lanes is the record: 56 straight payments** (the month the USD 20 saver reaches the top tier, rulebook §11.1). Same money, +0.0137 g that month, ~0.16 g a year in the app counter.
 
 ⚠ **Example numbers, not decisions:** base 5% (decision 9, Year 1 top of range), top-tier discount 2pp (the placeholder ceiling), same fix as the minting worked example (USD 75 → 0.6518 AURX). The 0.6655 g figure is decision 41's own arithmetic. B4 sets the real ladder.
 
