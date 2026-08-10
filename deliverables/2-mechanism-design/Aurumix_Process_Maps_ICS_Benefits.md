@@ -10,6 +10,7 @@
 |---|---|---|---|---|---|---|
 | 0 | The Common Engine | Flowchart | LR | 12 | Inline | All five. ⚠ Deliberate exception to the 4-to-6 rule: the hub map names all five benefits with their outcomes |
 | 1 | The Entry-Fee Discount | Flowchart | LR | 5 | Inline | Price |
+| 1b | The Discount, Worked | Flowchart | LR | 6 | Inline | Price, example numbers |
 | 2 | The Credit LTV Ladder | Flowchart | LR | 6 | Inline | Leverage |
 | 3 | The Card Tier | Flowchart | LR | 5 | Inline | Service and waiver |
 | 4 | Gold Rewards | Flowchart | LR | 5 | Inline | Payout |
@@ -108,6 +109,44 @@ graph LR
 ```
 
 ⚠ **Open, client's call: the size of the base-rate uplift.** Ceiling placeholder 1.5 to 2.0pp; margin alone funds only ~0.12pp per tier.
+
+---
+
+## 1b. The Discount, Worked
+
+<!-- SPEAKER NOTES:
+"Same seventy-five dollars, two savers. The newcomer pays the base fee and gets 0.6518 grams. The top-tier saver pays two points less and gets 0.6655 grams. The difference is a hundredth of a gram every month, a sixth of a gram a year, and the app shows it accumulating. Small numbers, permanent direction."
+-->
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}}}%%
+graph LR
+    A["USD 75, new saver"] --> B["Fee 5%: 0.6518 g"]
+    C["USD 75, top tier"] --> D["Fee 3%: 0.6655 g"]
+    B --> E["+0.0137 g that month"]
+    D --> E
+    E --> F["~0.16 g a year, in the app"]
+
+    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+```
+
+⚠ **Example numbers, not decisions:** base 5% (decision 9, Year 1 top of range), top-tier discount 2pp (the placeholder ceiling), same fix as the minting worked example (USD 75 → 0.6518 AURX). The 0.6655 g figure is decision 41's own arithmetic. B4 sets the real ladder.
 
 ---
 
