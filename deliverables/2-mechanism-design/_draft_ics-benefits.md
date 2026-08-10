@@ -26,6 +26,8 @@ This extends the taxonomy in rulebook §1.1 from three levers to five. The famil
 
 **Price levers are self-limiting** (bounded by money the customer hands over), which is why benefit 1 is safe to apply to spot and benefit 5 needs no anti-gaming machinery. **The payout lever needs a cap, the leverage lever needs seasoning, and the service lever needs a partner**, which is the rest of this file.
 
+> **Rejected on the way (2026-08-10), recorded so nobody re-proposes it: a sixth benefit, a pooled rebate funded from entry fees**, divided by tier among AURX holders (the tenure rebate reborn as a pool, aimed at savers who never use the card). It fails three fixed rules at once. A pool redistributes across customers, which breaks the capped-at-what-you-generated rule and recycles investor fees into investor payouts, which is the dividend problem decision 6 exists to avoid and it would pull the SCA into the regulator set. A per-gram division scales with capital, the forbidden shape. And the compliant per-customer version (part of your own fee back, in grams, sized by tier) is arithmetically identical to benefit 1 at the moment of purchase (decision 41), so running both pays the same money twice from the same uplift. The test that closes it: a passive holder who never spends and never borrows generates no revenue and consumes storage, so their cap under the payout rule is zero. **There is no compliant funding line for paying a passive holder. The set stays at five**; the visibility gap it was reaching for is answered by the display rule in §1.2a.
+
 ### 0.2 Rules that bind all five
 
 These are already decided. They are restated here because every section below leans on them.
@@ -79,6 +81,12 @@ These are already decided. They are restated here because every section below le
 | Floor of the benefit | 0 percentage points: the base rate, paid by every pre-Confirmed account and by the lowest benefit-bearing tier if B4 sets it so | Fixed here |
 | Ceiling of the benefit | **Placeholder: 1.5 to 2.0 percentage points off the base** at the top tier. Bounded above by the uplift the client authorises, bounded below by noticeability: a ladder of 0.12pp steps (all that margin alone funds) is decorative | ⚠ Input to B4 and to the client funding decision |
 | Smooth or stepped | **Stepped, by tier.** A price must be quotable before the customer pays: the app shows "your rate: X%", receipts carry it, and disclosure documents list it. A smooth curve makes every customer's price unique and unauditable | Decided here |
+
+### 1.2a The display rule: make the invisible benefit visible
+
+**Decided 2026-08-10.** The app shows the account's **cumulative fee savings, converted to grams**: *"your tier has earned you 1.4 g since 2026."* Computed as a running total of (base rate minus applied rate) × contribution, with each purchase's saving converted at that purchase's own fix, so the displayed number only ever rises and never restates.
+
+This costs nothing and it closes a real retention gap: the discount is the one benefit every saver gets, and it is invisible (a slightly smaller fee nobody notices). A saver who never uses the card and never borrows climbs the ladder and feels nothing between purchases. This gives them a payout-shaped number without creating a payout, which is exactly the boundary the rejected pool in §0.1 could not stay inside.
 
 ### 1.3 Funding line
 
@@ -204,6 +212,15 @@ The ceiling is not ours to assert, so it was checked against the market. Run via
 | Recalculated | Tier monthly at period resolution; the card level follows at the statement boundary |
 
 **The mapping is many-to-few and that is fine.** Sponsor banks operate a handful of programme levels, typically three or four, and B4 may define more tiers than that. The mapping from tiers to card levels must be **monotone and onto**: a higher tier never gets a worse card, and every card level is reachable. Benefits are allowed to plateau across adjacent tiers; the scoring step should know that when placing thresholds.
+
+**Two layers, because plastic is sticky and parameters are not (added 2026-08-10).** A card level at the network is a separate card *product* (Visa Classic, Gold, Platinum, Signature, Infinite; Mastercard Standard through World Elite), each with its own BIN range, its own bundled network perks, and often a higher interchange rate at higher levels. Moving between products means reissuing the physical card, which costs money and days, so the two halves of the benefit run on different clocks:
+
+| Layer | What it contains | Moves how |
+|---|---|---|
+| **The product (the plastic)** | Network level, BIN, bundled network perks (lounges, insurance, concierge) | **Upgrades on sustained tier** (placeholder: N months held at the qualifying tier), and **never downgrades**: on a step-down the customer keeps the plastic. This is the floor rule made physical |
+| **The parameters** | FX margin, ATM allowance, fee waivers | **Flex monthly** with the tier of record, at the statement cycle, inside whatever product is held |
+
+One happy alignment worth stating: higher network products typically carry higher interchange, so upgrading a loyal saver's plastic enlarges the very pool that funds their Gold Rewards. The upgrade is revenue-positive, not a cost.
 
 ### 3.2 Shape
 
@@ -414,7 +431,8 @@ This is the closed list. The structure above holds whatever these numbers become
 
 - [ ] The tier-to-card-level mapping (monotone, onto), against a level count of **3 to 4** until the sponsor says otherwise.
 - [ ] FX margin per level (**2.0% base to placeholder 0.75 to 1.0% top**), ATM allowance per level (**placeholder AED 1,000 to 5,000/month**), waiver set per level.
-- [ ] External input: the sponsor bank's level count and floor economics.
+- [ ] **The plastic upgrade rule**: how many consecutive months at the qualifying tier before the card product reissues upward (**placeholder 3 to 6 months**). Downgrade is already fixed at never (§3.1).
+- [ ] External input: the sponsor bank's level count and floor economics, and which perks are product-bound (network) versus parameter-bound (programme).
 
 **Benefit 4, Gold Rewards:**
 
