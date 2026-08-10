@@ -1,12 +1,14 @@
-# Aurumix Process Maps: The Five Revenue Streams
+# Aurumix Process Maps: The Six Revenue Streams
 
 > Draft for the client call. Answers the question underneath the ICS Dividend problem: **where does the money actually come from, if not from the investors themselves?**
 >
-> Reasoning and sources: this file. Related decisions: 6 (Gold Rewards), 9 (entry fee at the top of range), 32 (no fee on redemption), 41 (grams are fungible).
+> Reasoning and sources: this file. Related decisions: 6 (Gold Rewards), 9 (entry fee at the top of range), 32 (no fee on redemption), 41 (grams are fungible), 42 (the storage resolution and the platform fee).
 >
-> **The single message: the current model charges the investor at one moment and against one base, which is why the dividend was circular. Two of these five streams are paid by somebody who is not the investor.**
+> **The single message: the current model charges the investor at one moment and against one base, which is why the dividend was circular. Three of the six streams are paid by somebody who is not the investor.**
 >
-> Scope note: custody is deliberately folded into the entry fee and is not a separate stream. The transfer fee, physical delivery, advisory fees, insurance attach and any exit-side charge are all out of this set.
+> Scope note: custody is deliberately folded into the entry fee for the direct saver and is not a separate retail stream. The transfer fee, physical delivery, advisory fees, insurance attach and any exit-side charge are all out of this set.
+>
+> 🆕 **2026-08-10: stream 6 added, the B2B platform fee, agreed with Abdur.** Two maps, 6a and 6b: the storage-economics decision that motivates it, then the fee flow itself. White-label moves out of the excluded table. The FX corridor margin was considered the same day and parked: GCC currency pegs make it thin at launch. Recorded as decision 42 in `handoff.md`.
 
 ## Diagram Plan
 
@@ -17,8 +19,10 @@
 | 3 | Family Portfolio and Digital Will | Flowchart | LR | 5 | Inline | The investor |
 | 4 | Cardholder Fees | Flowchart | LR | 6 | Inline | The cardholder |
 | 5 | Lending Fees | Flowchart | LR | 6 | Inline | The borrower |
+| 6a | Who Pays for Storage | Decision map | LR | 5 | Inline | Aurumix, the reward pool, the partner |
+| 6b | The B2B Platform Fee | Flowchart | LR | 5 | Inline | The partner |
 
-## The five streams at a glance
+## The six streams at a glance
 
 | # | Stream | Who pays | Charged when |
 |---|---|---|---|
@@ -27,8 +31,9 @@
 | 3 | Family plan and Digital Will | The investor | Annually, plus once per beneficiary |
 | 4 | Cardholder fees | The cardholder | On foreign spend, ATM use, card issue |
 | 5 | Lending fees | The borrower | At drawdown, then monthly |
+| 6 | B2B platform fee | The partner | Monthly, in bps on the partner's book |
 
-**Three of the five are charged on activity rather than on the balance, and one of those is paid by a third party.** That is the point of the set.
+**Three of the six are charged on activity rather than on the balance, and one of those is paid by a third party. The sixth is the only line that scales directly with assets under management, and it is billed to a business, never to a saver.** That is the point of the set.
 
 ## Consistency Convention
 
@@ -38,7 +43,7 @@
 - **Stone node convention:** starting points, mechanism steps, and anything pending confirmation.
 - **Text style:** regular, no bold.
 
-> **Numbering note: 1 to 5 are stream identifiers, not a sequence.** The diagrams below are grouped by who pays, so they do not run in numerical order.
+> **Numbering note: 1 to 6 are stream identifiers, not a sequence.** Stream 6 carries two maps: 6a is the decision that motivates it, 6b is the flow. The diagrams below are grouped by who pays, so they do not run in numerical order.
 
 ---
 
@@ -313,6 +318,100 @@ graph LR
 
 ---
 
+# Paid by the partner
+
+## 6a. Who Pays for Storage
+
+<!-- SPEAKER NOTES:
+"Stream one folded custody into the entry fee, and we left one honest question open on that slide: is 0.8 to 1 percent a cost or a margin line? We now have the shape of the answer, subject to one quote. Institutional allocated storage runs somewhere between 0.15 and 0.40 percent a year, not 1 percent. That changes what the line is for.
+
+For the direct saver the answer is: nothing is ever charged after the door, and the metal is never touched. That sentence is a marketing asset no competitor can honestly match. Pax Gold charges nothing today but reserves the right to recover custody by issuing new tokens, which dilutes every holder. Matrixdock charges nothing and reserves the right to start on thirty days' notice. Comtech says nil fees and reserves a nominal fee after twenty-four months. Goldmoney, the profitable comparison, charges up to 0.98 percent a year. The ones that charge zero can do it because a parent company pays. Aurumix would charge zero because the design pays, and can put that in writing.
+
+Two recoveries survive, and neither one sends a bill to a saver. First, card users: Gold Rewards is already defined as capped by the revenue that customer generates, so the reward is computed net of that customer's storage cost. The reward is slightly smaller, no bill exists, nothing is chased. Second, partner books: the partner is a company, and invoicing a company monthly is ordinary commerce. That is the next diagram, and it is where the storage economics we give away at retail are collected instead.
+
+One number decides all of this: the vault quote. It sits in the same conversation as the bullion dealer. If it comes back near one percent rather than a third of one percent, this structure is revisited."
+-->
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}}}%%
+graph LR
+    A["Custody owed on every gram, no way to bill a sleeping saver"] --> B["True vault cost: 0.15 to 0.40% a year, not 1%"]
+    B --> C["Direct saver: nothing charged after the door, metal never touched"]
+    B --> D["Card user: Gold Rewards computed net of storage cost"]
+    B --> E["Partner's customer: storage billed to the partner in cash"]
+
+    style A fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+```
+
+⚠ **The 0.15 to 0.40% figure is research-derived, not quoted.** It came from a market sweep, not a rate card, because the major vaults publish nothing. **The vault quote upgrades from cost check to pricing decision: it validates the retail absorption and prices stream 6.** It sits in the dealer conversation batch.
+
+**Rejected on the way, so nobody re-proposes them:** custody riding the monthly debit with arrears collected on revival (impractical to chase, and a back-bill at the moment a customer returns punishes the exact behaviour the product wants back); gram deduction with matching token burn (mechanically peg-safe, the invariant holds, but it breaks "you can never lose your gold" and needs express authority to sell the customer's metal); dilution (breaks 1 AURX = 1 gram outright); any exit-side recovery (VARA III.E.4, decision 32).
+
+---
+
+## 6b. The B2B Platform Fee
+
+<!-- SPEAKER NOTES:
+"By launch you will hold a set of assets nobody else in the region has together: a VARA issuance licence, a title register, a custody stack and compliant payment rails. Every other company that wants to offer gold inside its app must either build that, which takes years and millions, or rent it from someone who has it. The natural first renters are the exchange houses: millions of monthly remittance relationships with exactly your customer, and no gold product.
+
+Here is how the money works. Their customer buys gold in their app and sees one all-in price, the same way your own app shows one price. Behind that price the entry spread splits, and the partner keeps the larger share, seventy to eighty percent, paid once at the moment of sale. That split is the going rate for distribution: it is what the comparable gold infrastructure businesses in India pay their channels, and it is what makes the integration worth the partner's while.
+
+Then follow the gram. It lands in your vault, on your register, under your licence, and it stays there for ten or twenty years. The partner has no claim on it after the sale. From that point the partner pays a platform fee on the whole book their customers hold with you: monthly, in cash, in basis points. That fee is the storage economics you chose to give away at retail, collected instead from the one counterparty where collection is frictionless. The partner is paid once at the till. You are paid on the stock, every year, for as long as the gold sits.
+
+The result is the only line in your model that scales directly with assets under management, and it costs you no customer acquisition. One partner with a hundred-million-dollar book at sixty basis points is six hundred thousand dollars a year, recurring, growing with their book rather than with your marketing.
+
+One thing has to happen now for this to be possible later. The September build must make the register and the mint able to serve more than one front end. That is a small architectural choice today and an expensive retrofit in two years, and it sits in the same conversation as the upgradeable proxy."
+-->
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}}}%%
+graph LR
+    A["Customer buys in the partner's app: one all-in price"] --> B["Entry spread splits: partner keeps 70 to 80%, paid once"]
+    B --> C["The gram lands in Aurumix custody, on the Aurumix register"]
+    C --> D["Partner invoiced monthly: platform fee in bps on their whole book"]
+    D --> E["Revenue scales with partner AUM, no new sale needed"]
+
+    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+```
+
+⚠ **Precedent, and the reason to believe the split works: SafeGold in India.** Reported ~90% of revenue partner-originated, with 70 to 80% of the 2.5% spread paid to the distribution channel, and the platform still the more profitable side because it earns on every partner's flow. Research-derived from a market sweep; verify against primary sources before this reaches the client in numbers.
+
+⚠ **The bps rate is a placeholder.** 0.5 to 0.75% a year covers the true vault cost several times over and stays below what the partner could build for. It hardens only after the vault quote and the first partner conversation, in Phase 4.
+
+🔴 **Timing: this is a Year 2 to 3 stream with a Week 1 build requirement.** Multi-tenant capability at the register and the mint costs little in September and cannot be retrofitted cheaply. Raise it alongside the proxy recommendation.
+
+---
+
 # What this set deliberately leaves out
 
 | Not included | Why |
@@ -322,8 +421,10 @@ graph LR
 | Physical delivery and making charges | Not a current feature. The largest number on the table and worth reopening later |
 | Insurance attach on the loan and the SIP | Out of scope at client instruction |
 | Dealer volume rebates | Treated as compression of the fabrication premium inside the entry fee, not a separate stream |
-| Custody as a separate annual line | Folded into diagram 1 |
-| Advisory fees, float income, broker-dealer exit spread, white-label | Each needs a new licence, a new feature, or a rulebook answer we do not have |
+| Custody as a separate annual line | Folded into diagram 1 for the direct saver; billed to the partner under stream 6 |
+| Advisory fees, float income, broker-dealer exit spread | Each needs a new licence, a new feature, or a rulebook answer we do not have. White-label left this list on 2026-08-10 and became stream 6 |
+| FX margin on contributions | Considered 2026-08-10 and parked: GCC currency pegs make it thin at launch. Real only with expansion beyond pegged currencies, Year 3+, and it leans on the counsel batch 2 answers |
+| Gold leasing for yield | Refused even though it is the biggest margin line in the adjacent Indian market: it encumbers the metal, the holder-protection precedent is poor, and it re-imports the securities risk Gold Rewards exists to avoid |
 
 ---
 
@@ -335,9 +436,13 @@ graph LR
 - [ ] `_draft_entities-licensing-and-payments.md`: **the licence-extension fee is wrong and in the expensive direction.** We record "+50% of the lower application fee". VARA Schedule 2 has a separate Licence Extension Fee column at **AED 200,000** for Broker-Dealer, Custody, Exchange, Lending and VA Management. The 50% formulation appears in one cell only, Advisory Services. Also: **paid-up capital stacks per activity and does not merge** (Company Rulebook Part VI.B).
 - [ ] `handoff.md` §5: same two corrections.
 - [ ] Decision 6: **Gold Rewards is now arithmetically bounded by the interchange rate**, since the merchant funds it. State the cap explicitly rather than leaving it at "0.10 to 0.75% by tier".
+- [ ] Decision 6 again, from stream 6a: **Gold Rewards is computed net of that customer's custody cost**, inside the existing cap. One line of arithmetic, no bill, and the most engaged customers quietly cover their own storage.
+- [ ] 🔴 **The September build must be multi-tenant capable at the register and the mint** (stream 6b). Same class as the upgradeable-proxy recommendation: a small choice now, an expensive retrofit later. Raise the two together.
+- [ ] **The Phase 4 revenue model** picks up: the platform fee as the only AUM-linked line, custody absorption as a cost line on the direct book at the quoted vault rate, and the Gold Rewards netting as a partial recovery.
 
 # Questions for the client
 
 1. **Is the Gold Card credit or prepaid?** It is the single choice that sets the ceiling on the only externally funded revenue in the model, and it must be settled before the September build.
 2. **Are the Family Portfolio and Digital Will free features or paid ones?** We recommend paid, and it resolves a deadlock in the loyalty score at the same time.
 3. **Who is the sponsor bank, and who is the lending partner?** Neither is named. Both are commercial gates, not design gates, and they sit alongside the bullion dealer on the critical path.
+4. **Does he want the B2B channel in the Year 2 to 3 plan?** A yes in principle is enough for now, but it changes the September build (multi-tenant register and mint) and the Phase 4 model, so it cannot wait for Year 2.
