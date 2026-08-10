@@ -8,7 +8,7 @@
 
 | # | Diagram Name | Type | Direction | Nodes | Placement | Lever family |
 |---|---|---|---|---|---|---|
-| 0 | The Common Engine | Flowchart | LR | 6 | Inline | All five |
+| 0 | The Common Engine | Flowchart | LR | 12 | Inline | All five. ⚠ Deliberate exception to the 4-to-6 rule: the hub map names all five benefits with their outcomes |
 | 1 | The Entry-Fee Discount | Flowchart | LR | 5 | Inline | Price |
 | 2 | The Credit LTV Ladder | Flowchart | LR | 6 | Inline | Leverage |
 | 3 | The Card Tier | Flowchart | LR | 5 | Inline | Service and waiver |
@@ -46,17 +46,29 @@
 }}}%%
 graph LR
     A["Six payments: Confirmed SIP"] --> B["Tier of record, monthly"]
-    B --> C["Cheaper prices"]
-    B --> D["More credit"]
-    B --> E["Better card"]
-    B --> F["Gold Rewards"]
+    B --> C["Entry-fee discount"]
+    B --> D["Credit LTV ladder"]
+    B --> E["Card tier"]
+    B --> F["Gold Rewards rate"]
+    B --> G["Will and family discount"]
+    C --> H["Cheaper gold at the till"]
+    D --> I["More credit per gram"]
+    E --> J["Fees waived weekly"]
+    F --> K["Grams back on spend"]
+    G --> L["Cheaper family services"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style E fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style G fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style H fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style I fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style J fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style K fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style L fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
 
 ⚠ **The binding test:** a USD 20 saver who never misses reaches every ceiling.
