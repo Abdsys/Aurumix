@@ -154,7 +154,7 @@ graph LR
 ## 2. The Credit LTV Ladder
 
 <!-- SPEAKER NOTES:
-"Grams are the base, tier is the rate. Gold seasons 90 days before it counts, the ratio locks on the day you draw, and a tier fall never margin-calls: only the market can, on thresholds shown at the draw. The honest number: comparables worldwide run 50 to 85 percent, so the top of the ladder is whatever the lending partner signs. Ninety to ninety-five stays a design ceiling, never a promise."
+"Walk it start to finish. The saver asks to borrow. Every gram held ninety days qualifies, spot grams included: grams are the base, tier is the rate. Whatever their tier is that month sets the ratio, and it locks for the life of the loan. The gold is flagged as pledged, never leaves the vault, and keeps earning score. A licensed lender advances the cash. And to term: a tier fall never touches the loan; only a market fall can, on thresholds shown at the draw."
 -->
 
 ```mermaid
@@ -171,19 +171,21 @@ graph LR
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
-    A["Grams seasoned 90 days"] --> B["Tier sets the LTV"]
-    B --> C["Locked at the draw"]
-    C --> D["Partner advances cash"]
-    C --> E["Tier fall: no margin call"]
-    D --> F["Price fall: partner thresholds"]
+    A["Saver requests a draw"] --> B["Grams held 90 days qualify"]
+    B --> C["Tier sets the LTV, locked now"]
+    C --> D["Pledged: stays in vault, still earns"]
+    D --> E["Partner advances the cash"]
+    E --> F["To term: tier fall never margin-calls"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style F fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
+
+⚠ **The one thing the score cannot protect against: the market.** A gold price fall can trigger the partner's warning and liquidation thresholds, disclosed at the draw. A tier fall never can.
 
 ⚠ **Ceiling = min(partner max, 90 to 95%), and the partner will bind:** every observed comp sits at 50 to 85% (RBI tiers 85/80/75 from April 2026; no UAE lender publishes one). Structure ours, pricing theirs.
 
@@ -209,16 +211,15 @@ graph LR
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
-    A["Confirmed SIP unlocks card"] --> B["Plastic: up only"]
-    A --> C["Parameters: FX, ATM, waivers"]
-    C --> D["Move at statement cycle"]
-    B --> E["Score pays off weekly"]
-    D --> E
+    A["Confirmed SIP unlocks the card"] --> B["Tier sets FX, ATM, waivers"]
+    B --> C["Update each statement cycle"]
+    C --> D["Plastic upgrades, never down"]
+    D --> E["Score pays off weekly"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
 
