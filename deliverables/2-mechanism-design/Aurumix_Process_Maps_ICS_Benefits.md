@@ -13,7 +13,7 @@
 | 1b | The Discount, Worked | Flowchart | LR | 6 | Inline | Price, example numbers |
 | 2 | The Credit LTV Ladder | Flowchart | LR | 6 | Inline | Leverage |
 | 3 | The Card Tier | Flowchart | LR | 5 | Inline | Service and waiver |
-| 4 | Gold Rewards | Flowchart | LR | 5 | Inline | Payout |
+| 4 | Gold Rewards | Flowchart | LR | 6 | Inline | Payout |
 | 5 | The Digital Will and Family Discount | Flowchart | LR | 5 | Inline | Price |
 
 ## Consistency Convention
@@ -230,7 +230,7 @@ graph LR
 ## 4. Gold Rewards
 
 <!-- SPEAKER NOTES:
-"The only benefit that pays out, so it carries the strictest rule: never more than the revenue you personally generated, merchant-funded, minus your own storage. That is the whole difference between a rebate and the dividend we deleted, and why it is never called a yield. Reward grams cannot inflate the score and cannot build the streak. Once credited, they are the customer's gold forever."
+"Follow the money start to finish. The saver spends on the card. The shop, not the saver, pays about two and a half percent of the sale, and the largest slice of that is interchange. Aurumix's contracted share of it is the pot. At month end the tier sets the rebate rate on that month's spend, capped at what this customer's own activity put in the pot, minus their storage. What clears the cap converts to grams at the next fix and lands in their holding, forever. The merchant funds the reward. No saver's fee ever funds another saver's payout, which is the whole difference from the dividend we deleted."
 -->
 
 ```mermaid
@@ -247,17 +247,21 @@ graph LR
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
-    A["Card spend"] --> B["Rate by tier"]
-    B --> C["Capped at what you generated"]
-    C --> D["Grams at the next fix"]
-    D --> E["Yours forever"]
+    A["Saver spends on the card"] --> B["Shop pays ~2.5%: interchange"]
+    B --> C["Aurumix takes its share"]
+    C --> D["Tier sets the rebate rate"]
+    D --> E["Capped at what you generated"]
+    E --> F["Grams at the next fix, forever"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
+
+⚠ **The cap runs net of that customer's storage cost** (decision 42) and includes their credit revenue share alongside interchange. Reward grams cannot inflate the score and earn no periods.
 
 ⚠ **Ships with the card; the contracted interchange share is the hard ceiling on the rate table.**
 
