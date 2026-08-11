@@ -1,6 +1,6 @@
 # ICS Scoring: The Formula (B4)
 
-> **Phase 2 decision draft — 2026-08-11 (revised same day: revival deleted, Masterclass removed, both Abdur's calls).** This is B4: the scoring step. It finalises the formula proposed in `_draft_sip-rulebook.md` §11, **deletes the revival mechanism** (was 🔴 open), sets the tier thresholds, and supplies every number on the closed handoff list in `_draft_ics-benefits.md` §7. Where this file conflicts with the rulebook's §11 proposals, this file wins; the corrections owed are listed in §12.
+> **Phase 2 decision draft — 2026-08-11 (revised same day, Abdur's calls: revival deleted, Masterclass removed, and the flat halving replaced by an escalating strike schedule).** This is B4: the scoring step. It finalises the formula proposed in `_draft_sip-rulebook.md` §11, **deletes the revival mechanism** (was 🔴 open), sets the tier thresholds, and supplies every number on the closed handoff list in `_draft_ics-benefits.md` §7. Where this file conflicts with the rulebook's §11 proposals, this file wins; the corrections owed are listed in §12.
 
 ---
 
@@ -24,14 +24,14 @@ R         = gram-months actually held ÷ gram-months if never sold
 | Component | Accrual | Cap | Share of max |
 |---|---|---|---|
 | **Tenure** | 1 point per counted period | **60** | 62% |
-| **Continuity** | 1 point per consecutive counted period; **halves (rounded down) at grace expiry** | **24** | 25% |
+| **Continuity** | 1 point per consecutive counted period; **steps down on the escalating strike schedule (§3): −25% / −50% / −100% for the 1st / 2nd / 3rd miss in any trailing 12 months** | **24** | 25% |
 | **Supplementaries** | Referrals + Family (§5) | **13** (8 + 5) | 13% |
 | **Maximum base** | | **97** | |
 | **Retention** | Two running counters, one division (rulebook §5.2). Starts at 1.00 | multiplier ∈ [0, 1] | scales everything |
 
-**Ratified unchanged from rulebook §11:** the Tenure and Continuity caps (60/24), the halving step-down, the 0.80 holding allowance, one counted period per calendar month, monthly recalculation at period close, the tier of record as the only tier any benefit reads (benefits draft §0.3 — confirmed as the recalculation this formula assumes).
+**Ratified unchanged from rulebook §11:** the Tenure and Continuity caps (60/24), the 0.80 holding allowance, one counted period per calendar month, monthly recalculation at period close, the tier of record as the only tier any benefit reads (benefits draft §0.3 — confirmed as the recalculation this formula assumes).
 
-**Revised here, with reasons:** the tier thresholds (§2), **revival deleted outright** (§4 — was 🔴 open), **Masterclass removed from scoring** (Abdur, 2026-08-11 — supplementaries re-cut from 8/5/2 to 8/5), and the surviving supplementary mechanics made precise (§5). One new rule is added: the Silver floor (§2.3).
+**Revised here, with reasons:** the tier thresholds (§2), **the step-down re-shaped from a flat halving to an escalating strike schedule** (§3 — Abdur, 2026-08-11), **revival deleted outright** (§4 — was 🔴 open), **Masterclass removed from scoring** (Abdur, 2026-08-11 — supplementaries re-cut from 8/5/2 to 8/5), and the surviving supplementary mechanics made precise (§5). One new rule is added: the Silver floor (§2.3).
 
 ### 1.1 Why the shape is right, in one paragraph
 
@@ -79,21 +79,51 @@ Confirmed SIP is already permanent (rulebook §4.1). Without this rule, a Confir
 
 ---
 
-## 3. The price of a miss, at every age
+## 3. The price of a miss: the strike schedule
 
-The step-down (continuity halves, rounded down) is ratified. What B4 adds is the full price list, because "roughly one tier" (rulebook §7.2) is now checkable against real thresholds:
+> 🔄 **Revised 2026-08-11, Abdur's call, replacing the rulebook's flat halving.** The halving had the wrong shape: its biggest bite fell on the *first* miss (−12 from a full streak) and each subsequent miss cost geometrically less (−6, −3…) — front-loaded on the lapse, forgiving on the pattern. The behaviour worth pricing is the opposite: **one lapse is life; a pattern is a choice.** The step-down now escalates.
 
-| When the miss happens | Score before → after | Tier before → after | Time to recover the tier |
+### 3.1 The rule
+
+> **Each miss is a strike. Strikes live for 12 months.**
+>
+> | Strike (misses in the trailing 12 months) | Step-down at grace expiry |
+> |---|---|
+> | 1st | Continuity **−25%** (rounded down) |
+> | 2nd | Continuity **−50% of what remains** (rounded down) |
+> | 3rd | Continuity **→ 0** |
+>
+> The customer sentence: *your first miss in a year costs a quarter of your streak; a second costs half of what's left; a third costs all of it. Your history, your gold and your Retention are never touched.*
+
+**Why strikes count misses in a trailing window, not consecutive misses.** "Escalate on consecutive misses" is the intuitive version and it is gameable: a customer who alternates miss–pay–miss–pay resets the counter every time and pays the mild first-strike price forever, six times a year. Under the trailing window, the alternating misser reaches strike 2 on their second miss and strike 3 on their third — the pattern is priced as a pattern within five months, whatever its rhythm. A strike ages out 12 months after it was incurred, so a genuinely isolated lapse is fully forgiven as a *category* (the next miss, a year or more later, is a first strike again) even though the lost points still rebuild at one per month.
+
+**Tenure remains the floor under everything.** Even strike 3 zeroes only the streak: a veteran's tenure (60) alone holds Titanium. The rulebook's "repeated misses grind, they do not zero" survives at the score level — the *streak* can now zero, the *score* cannot fall below history × R.
+
+### 3.2 The price list
+
+First miss (strike 1), at every age:
+
+| When | Score before → after | Tier before → after | Time to recover |
 |---|---|---|---|
-| Month 13 (year one) | 24 → 18 | Gold → Silver | ~3 months |
-| Month 31 (year 2½) | 54 → 42 | Platinum → Gold | ~3 months |
-| Month 61 (veteran, tenure capped) | 84 → 72 | **Sovereign → Elite, exactly** | **12 months** |
+| Month 13 (year one) | 24 → 21 | Gold → Silver | ~2 months |
+| Month 31 (year 2½) | 54 → 48 | **Platinum → Platinum. No tier lost** | — |
+| Month 61 (veteran, tenure capped) | 84 → 78 | Sovereign → Elite | **6 months** |
+
+A pattern (misses in three consecutive months, veteran):
+
+| Strike | Continuity | Score | Tier |
+|---|---|---|---|
+| 1st | 24 → 18 | 78 | Elite |
+| 2nd | 18 → 9 | 69 | Titanium |
+| 3rd | 9 → 0 | **60** | **Titanium — the tenure floor, exactly** |
+
+Under the old halving the same three misses read 72 / 66 / 63: harsher on the first, softer on the third. The strike schedule is **gentler than the halving on the lapse and strictly harsher on the pattern**, which is the shape that was asked for — and after strike 3 the veteran rebuilds from zero streak, 24 months to full, which is what three misses in a year has earned.
 
 Three properties, all deliberate:
 
-1. **One miss costs about one tier at every age.** The veteran lands exactly on Elite's lower bound (84 − 12 = 72): the arithmetic delivers precisely the promise made in words.
-2. **Recovery is slower at the top.** Early misses recover in ~3 months because tenure and continuity both rebuild (+2/month); a veteran's tenure is capped at 60, so rebuild runs at +1/month and takes 12. A full year one tier down is the airline norm for a missed requalification (§10), and the veteran waits it out in Elite — still carrying ~85% of every benefit — not at the bottom. This is the "loss is faster than rebuild" behaviour the client's own §8.2 specifies, priced.
-3. **Supplementaries are miss insurance at the top.** A veteran with 12+ of the 13 supplementary points scores 96–97; a halving costs 12 and leaves them at 84–85 — **still Sovereign**. Only the most engaged accounts (near-max referrals *and* a full family board) can absorb a miss without a tier fall, which is exactly who should be able to. This falls out of the arithmetic unprompted and is worth telling the client: the referral network they want built doubles as the safety margin for their best customers.
+1. **A first miss costs at most one tier, and mid-climb often costs nothing** — savers between anniversaries carry a few points of natural buffer (the month-31 row). A veteran sitting exactly on the Sovereign bound always drops one tier on any penalty, but now recovers in 6 months, not 12. (The airline soft-landing norm is one tier for a full year — our first strike is gentler than the category; our third is not, and that is the point.)
+2. **Loss is still faster than rebuild, at every strike.** −6 instantly vs +1/month at strike 1; −9 vs +1/month at strike 2. The client's §8.2 asymmetry holds without a flat cliff.
+3. **Supplementaries are miss insurance at the top, now within honest reach.** A veteran with ≥6 of the 13 supplementary points (two sustained referrals and a family sub-account, say) scores ≥90 and absorbs a first strike without leaving Sovereign — but a second strike inside the year overwhelms any buffer. Engagement forgives a lapse; nothing forgives a pattern.
 
 **No hysteresis on tier falls — considered and rejected.** Bank tiers soften downgrades (Citi re-tiers only after three consecutive shortfall months; BofA gives an anniversary-plus-grace). We do not copy this, because banks need it and we do not: their benefits reprice the moment the tier moves, so tier flicker is customer-visible noise. Ours never reprice retroactively — LTV is struck at draw and runs to term, plastic never downgrades, discounts strike per event, Gold Rewards computes at period close (benefits draft §0.2/§0.3). **The damping already lives in the benefit layer; a second layer in the score would mute the one signal the step-down exists to send.** The miss must cost the tier *now*, because that immediate, bounded, non-financial consequence is the entire replacement for the deleted lock-in.
 
@@ -101,7 +131,7 @@ Three properties, all deliberate:
 
 ## 4. Revival is deleted (was 🔴, resolved by removal — Abdur, 2026-08-11)
 
-> **Rule. A missed period is permanently missed.** There is no arrears mechanism, no restoration window, and nothing to pay back. Grace — 5 days, weekend-rolling — is the only tolerance in the design. After grace expires, the period never counted and never will; the continuity halving stands; the account simply continues, and next month's request is next month's request. A customer who wants to put money in after a miss makes a **spot purchase** — allocated normally, no period, exactly as spot has always worked.
+> **Rule. A missed period is permanently missed.** There is no arrears mechanism, no restoration window, and nothing to pay back. Grace — 5 days, weekend-rolling — is the only tolerance in the design. After grace expires, the period never counted and never will; the strike step-down (§3) stands; the account simply continues, and next month's request is next month's request. A customer who wants to put money in after a miss makes a **spot purchase** — allocated normally, no period, exactly as spot has always worked.
 
 **Why deletion is the coherent answer, not just the simple one.** Revival is an *insurance* concept solving an *insurance* problem: a lapsed policy is in breach of a contractual premium obligation, the cover has died, and revival (arrears + interest + underwriting) is the machinery for resurrecting it. **Aurumix deleted the contractual obligation with the lock-in (§6.19 decision).** A miss here breaches nothing and suspends nothing — the gold stays owned, the account stays live, Confirmed SIP stays permanent, and the only consequence is the step-down. Where nothing dies, there is nothing to revive. Importing revival machinery would have been importing the solution to a problem this product designed out.
 
@@ -114,7 +144,7 @@ Three properties, all deliberate:
 
 **The trade accepted.** A saver who misses month 13 and "makes it up" with a spot purchase in month 14 ends with one fewer tenure point than a saver who never missed — permanently, since the month cannot be re-earned. That is the design speaking plainly: **tenure counts months in which the discipline happened, and money arriving later is a different, also-welcome behaviour with its own name (spot).** The score's two ideas stay clean: periods measure paying on schedule, Retention measures keeping. Nothing measures paying eventually.
 
-**The day-20 payer.** With no revival, a payment clearing after grace is simply refused as a SIP contribution (the request has expired) and the customer is offered the spot path in the same screen. The halving stands. Grace already absorbs "busy or away" (5 days, nudges on days 1/3/5, never expiring on a weekend); a tolerance behind a tolerance is no tolerance.
+**The day-20 payer.** With no revival, a payment clearing after grace is simply refused as a SIP contribution (the request has expired) and the customer is offered the spot path in the same screen. The strike stands. Grace already absorbs "busy or away" (5 days, nudges on days 1/3/5, never expiring on a weekend); a tolerance behind a tolerance is no tolerance.
 
 ---
 
@@ -231,10 +261,10 @@ No dead rungs. T2→T3 is deliberately the largest single step — it is the one
 
 1. **No amount, anywhere.** No component reads dollars or grams held — referees contribute *periods*, family contributes *active accounts*, Retention is a *proportion*. Capital cannot buy a tier at any rung.
 2. **A new saver is never behind.** R starts at 1.00; T1 is day one; the climb is the same for everyone.
-3. **A miss costs standing, never property.** Gold, tenure, Retention and Confirmed SIP are untouched by any miss (rulebook §7); the halving is the *whole* price.
+3. **A miss costs standing, never property.** Gold, tenure, Retention and Confirmed SIP are untouched by any miss (rulebook §7); the strike step-down is the *whole* price.
 4. **Refused money never scores against you.** The regulatory block freezes the clock (rulebook §8) — inherited unchanged.
 5. **Nothing already delivered is ever taken back.** Struck prices, drawn LTVs, issued plastic, credited grams — all survive any tier fall.
-6. **Decay is faster than rebuild, everywhere, and by arithmetic rather than by rule** — the halving vs +1/month, and R's lost gram-months gone from the numerator forever.
+6. **Decay is faster than rebuild, everywhere, and by arithmetic rather than by rule** — every strike lands instantly against a +1/month rebuild, and R's lost gram-months are gone from the numerator forever.
 7. **The score attaches to the person, not the account.** Cancel-and-reopen buys nothing (rulebook §9.1 item 7); a returner resumes.
 
 ---
@@ -257,7 +287,7 @@ Run via recency-swept web research; secondary-source confidence unless noted. Us
 
 | Our choice | Category precedent | Read |
 |---|---|---|
-| One miss ≈ one tier, recover in ≤ 12 months | Airline "soft landing": drop one level on failed requalification, on an annual cadence (Air Canada documents the mechanism explicitly; annual evaluation is the industry norm) | Our veteran case (one tier for 12 months) sits exactly on the category norm; our early cases are *gentler* than the norm |
+| First miss ≤ one tier, escalating strikes for a pattern | Airline "soft landing": drop one level on failed requalification, on an annual cadence (Air Canada documents the mechanism explicitly; annual evaluation is the industry norm) | Our first strike (one tier, 6-month recovery) is *gentler* than the category norm of a year; our third strike is harsher — the schedule spends its severity on repeat missers instead of on the lapse |
 | Tenure + Continuity as one score | Airlines run lifetime status (Million Miler) *alongside* annual status as two systems | Same two layers; we combine additively for one legible ladder — a simplification, not an invention |
 | No revival at all | IRDAI *mandates* a 3-year revival window — because an insurance lapse breaches a premium obligation and the cover dies without revival | The comp explains why we *don't* need it: Aurumix deleted the contractual obligation with the lock-in, so a miss kills nothing and there is nothing to revive. Revival machinery is an insurance solution to a problem this product designed out |
 | Time-weighted R vs window-dressing | Bank tiers use daily/monthly *averaging* (Citi CAMB, DBS daily-average) precisely so a one-day balance spike buys nothing | Averaging-over-time is the standard institutional answer to snapshot gaming; R is the same idea run over the account's life |
@@ -271,7 +301,7 @@ Run via recency-swept web research; secondary-source confidence unless noted. Us
 
 **Dials (ours, revisit on field data):**
 - Holding allowance **0.80** (rulebook §11 — ratified; the cycler sits two orders of magnitude below it either way).
-- Step-down **halving** (ratified; the gentler alternative, −25%, would let a veteran miss twice a year and hold Sovereign — too soft to replace a lock-in).
+- Step-down **strike schedule 25/50/100 over a trailing 12 months** (Abdur's shape; the percentages and window length are the calibration dial — a flat −25% with no escalation was considered and rejected as too soft to replace a lock-in, the old flat halving as wrongly front-loaded).
 - Qualifying-spend cap **USD 3,000/month**; plastic rule **3 months**; per-referee cap **2**.
 
 **Client questions (adds to the existing list):**
@@ -293,7 +323,7 @@ Inherited from benefits draft §6, now with numbers: at launch the tier buys the
 ## 12. What this file changes elsewhere
 
 - [ ] `_draft_sip-rulebook.md` §7.1: **delete the arrears row entirely** ("Arrears cleared inside 12 months" — the mechanism no longer exists) and add the spot-path line: money after grace is offered as a spot purchase.
-- [ ] `_draft_sip-rulebook.md` §7.2: delete "Arrears are one payment, not instalments", delete "Arrears buy gold at the fix on the day they clear", and correct "The step-down applies at grace expiry **and reverses on revival**" → the step-down applies at grace expiry and **stands**; grace is the only tolerance.
+- [ ] `_draft_sip-rulebook.md` §7.1/§7.2: replace "Continuity halves" with the strike schedule (§3 here); delete "Arrears are one payment, not instalments"; delete "Arrears buy gold at the fix on the day they clear"; replace "Rebuild is slower than decay... a halved 24-month streak takes twelve months" and "Halving twice takes 24 to 6" with the strike arithmetic; correct "The step-down applies at grace expiry **and reverses on revival**" → the step-down applies at grace expiry and **stands**; grace is the only tolerance.
 - [ ] `_draft_sip-rulebook.md` §9.1 item 9 (the arrears look-back exploit): mark moot — no restoration path exists.
 - [ ] `_draft_sip-rulebook.md` §11: mark the proposed parameters table and thresholds **superseded by this file** (Tenure/Continuity caps, step-down and allowance ratified; thresholds re-cut; revival row resolved by deletion; Masterclass removed, supplementaries 8/5 = 13, max 97).
 - [ ] `handoff.md` decision 36 ("arrears clear as one payment, not instalments"): the arrears half is moot with revival's deletion.
