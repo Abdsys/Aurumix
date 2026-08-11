@@ -1,8 +1,10 @@
 # ICS Scoring: The Formula (B4)
 
-> **Phase 2 decision draft — 2026-08-11, rewritten 2026-08-12, then hardened the same day against a flaw review (Abdur's calls).** This is B4: the scoring step. It supersedes the 2026-08-11 version in full.
+> **Phase 2 decision draft — 2026-08-11, rewritten 2026-08-12, hardened the same day against a flaw review, and amended 2026-08-13 on the gate (Abdur's calls throughout).** This is B4: the scoring step. It supersedes the 2026-08-11 version in full.
 >
-> **Three fixes from the flaw review, all in §1:** **Confirmed SIP redefined** as the 6th counted period so the gate and the score can no longer disagree (§1.6); **Retention re-based** on a timing-neutral denominator and re-shaped to a straight line at a 30% allowance, which kills the 21%-costs-the-top-tier bug (§1.5); and **Sovereign's zero tolerance kept deliberately**, with the arithmetic showing the alternative does not exist (§1.8). The earlier draft kept the client's seven tiers and a weighted-sum formula; both are replaced. **Five tiers**, and a formula built on a **minimum rather than a sum**. Referrals, family and Masterclass are removed from scoring entirely. Retention survives as the multiplier it always was, re-based on an observable quantity.
+> **🆕 2026-08-13 amendment, and it changes the shape of the entry.** **Confirmed SIP is 6 *consecutive* counted periods, and it gates the score itself, not only the benefits** (§1.6). This reverses the 2026-08-12 redefinition and resolves the same contradiction a different and simpler way: before the door there is no score and no tier at all, so the score can never contradict the gate. **The scoring clock starts at the qualifying run**, so pre-gate payments never enter the score and **every account opens at exactly Silver, 25** (§1.6). **The first rung is renamed from Green to "No tier"**, which is now literally accurate. The 2026-08-12 sweep to *"6 contributions"* is cancelled.
+>
+> **Three fixes from the flaw review, all in §1:** the **gate/score contradiction** (§1.6, now resolved by the gate above); **Retention re-based** on a timing-neutral denominator and re-shaped to a straight line at a 30% allowance, which kills the 21%-costs-the-top-tier bug (§1.5); and **Sovereign's zero tolerance kept deliberately**, with the arithmetic showing the alternative does not exist (§1.8). The earlier draft kept the client's seven tiers and a weighted-sum formula; both are replaced. **Five tiers**, and a formula built on a **minimum rather than a sum**. Referrals, family and Masterclass are removed from scoring entirely. Retention survives as the multiplier it always was, re-based on an observable quantity.
 >
 > Where this file conflicts with `_draft_sip-rulebook.md` §11 or with the 2026-08-11 draft, **this file wins.** Corrections owed are listed in §12.
 
@@ -34,8 +36,8 @@ Three inputs, every one of them readable straight off the payment ledger and the
 
 | Fact | What it measures | Moves how |
 |---|---|---|
-| **Months** | Total counted periods over the account's life. **What you contributed.** | Rises by 1 per counted period. **Never falls, for any reason.** |
-| **Recent** | Counted periods in the trailing 12 calendar months, 0–12. **Whether you are contributing now.** | Rises and falls as the window rolls. Self-healing over 12 months. |
+| **Months** | Counted periods since the qualifying run began (§1.6). **What you contributed.** | Rises by 1 per counted period. **Never falls, for any reason.** Starts at 6 on the day the gate opens. |
+| **Recent** | Counted periods in the trailing 12 calendar months, 0–12. **Whether you are contributing now.** | Rises and falls as the window rolls. Self-healing over 12 months. Never looks back past the start of the run. |
 | **Sold** | The share of everything you had that you no longer have — see §1.5. **Whether you kept it.** | Recomputed monthly on the same clock as Recent. |
 
 **A counted period** is unchanged from the rulebook and remains the atom of the whole design: a calendar month in which one accepted SIP contribution — at or above the USD 20 floor, cleared on time or inside the 5-day grace — was allocated. One per calendar month maximum, **amount irrelevant**, spot purchases never count, a missed month is permanently uncounted (§4).
@@ -160,25 +162,54 @@ The line is **gentler below ~32% and harsher above it** — free where withdrawa
 
 **What it costs:** a one-time full liquidator recovers in 12 clean months rather than never. Accepted — the case the multiplier exists to stop is the *cycler*, who redeems continuously and therefore sits at Retention 0 permanently (§7.1 persona D). A saver who liquidated once, then rebought and held for a year, has demonstrated the behaviour the product wants.
 
-### 1.6 Confirmed SIP, redefined — and the Silver floor
+### 1.6 Confirmed SIP is the gate, and the score sits behind it
 
-> 🔄 **Confirmed SIP is redefined as the 6th counted period, not the 6th *consecutive* counted period** (Abdur, 2026-08-12). It remains permanent once earned. **Rulebook §4.1 correction owed.**
+> 🔄 **Confirmed SIP is 6 *consecutive* counted periods, and it gates the score itself, not only the benefits** (Abdur, 2026-08-13). This reverses the 2026-08-12 redefinition. It remains permanent once earned. **Rulebook §4.1 correction owed.**
 >
-> **An account that has earned Confirmed SIP never scores below 25.**
+> **Before the gate: no score, no tier. After it: the score runs, and never falls below 25.**
 
-**The contradiction this closes.** Confirmed SIP is the benefits gate (benefits draft §0.2) — nothing is granted before it. But the score reads only Months and Recent, and neither requires a *streak*. So a saver who missed every fifth month would never string six together, and at month 60 would compute to **Platinum (≈83) while the gate said they were entitled to nothing.** Two statuses, opposite answers, no rule to arbitrate. Under the new definition:
+**Two objects, and keeping them separate is what makes the design explainable.**
+
+| | What it is | How it moves |
+|---|---|---|
+| **Confirmed SIP** | A **door**. Six consecutive contributions opens it. | Opens once. **Permanent.** A later miss never closes it. |
+| **ICS score** | A **dial** behind the door. Prices what each benefit is worth. | Recalculates monthly, from the moment the door opens. |
+
+**Customer sentence:** *Six months straight to start. Then your score runs, and it decides what you get.*
+
+**Why the score sits behind the gate rather than beside it.** The score reads only Months and Recent, and neither can see a streak. If the gate demanded consecutiveness while the score ran independently of it, the two would disagree: a saver missing every fifth month never strings six together, so the gate grants nothing, while at month 60 the score reads **Platinum (≈83)**. Two statuses, opposite answers, no rule to arbitrate. Putting the score behind the same door removes the case rather than adjudicating it: that saver has no score to contradict the gate, because the score never started. **One door, one thing behind it.**
+
+**What the score reads on the day the door opens: the qualifying run, and nothing before it** (Abdur, 2026-08-13). The scoring history begins at the first month of the run. Payments made before it are real purchases of real gold and they are not erased in any way that matters to the customer, but they are **invisible to the score.**
+
+So a saver who paid months 1, 2, 3, missed 4, paid 5, 6, 7, missed 8, then landed 9 through 14 straight has **Months = 6** and **Recent = 6** on opening day, not 12 and 10:
 
 ```
-Confirmed SIP  ⟺  Months ≥ 6  ⟺  Silver
+Months   = 6      Record   = 25
+Recent   = 6      Standing = 50
+ICS = min(25, 50) × 1.00 = 25   →  Silver
 ```
 
-One condition, three names for it, and the ladder is internally consistent at every point. This also makes the Record mapping and the gate agree by arithmetic — `Record(6) = 25`, which is exactly the Silver bound.
+**Everybody opens at exactly Silver, always**, whether the run was months 1 to 6 or months 9 to 14. That uniformity is the point: there is one entry to the ladder and one number at it, so the promise needs no branch. *Your score starts the day you complete six months straight, and it starts at Silver.*
 
-**Nothing is lost.** Confirmed SIP was never a promise or a commitment (decision 19: *a backward-looking threshold, and stopping early forfeits nothing*). Its job is to prove the account is real and the saver is not a one-payment tourist, and six payments proves that whether or not they were consecutive. The discipline signal has not gone anywhere — it moved to **Recent**, which is where current form is supposed to live. A scattered payer earns Silver and cannot rise: six payments over three years gives Months 6 and Recent ~2, so Standing ≈ 17 and the score sits on the floor at 25.
+⚠ **The alternative was considered and rejected:** reading every payment ever made would have opened the late saver above at `Record(12) = 50`, **Gold**, skipping Silver entirely. It preserves more history, and it was rejected because it makes the entry point depend on how messy the run-up was, which is a rule nobody can state in one line. **Six real payments in the example count for nothing toward the score.** That is the accepted cost, and it is the strongest argument for the countdown display in §1.6a: a customer must be able to see the run they are building, or those payments feel taken rather than spent.
 
-⚠ **The anti-commitment wording tightens rather than loosens.** Decision 19 forbids writing *"6 month commitment"* and requires *"6 consecutive contributions."* That becomes simply **"6 contributions."** Update the rulebook and every client-facing string.
+**Nothing is lost by the strictness.** Confirmed SIP was never a promise or a commitment (decision 19: *a backward-looking threshold, and stopping early forfeits nothing*). Its job is to prove the account is real and the saver is not a one-payment tourist. Six consecutive contributions proves that more strongly than six scattered ones, and it is the one place in the design where a streak is cheap to require, because it is asked **once and never again.** After the door opens, no streak is ever measured anywhere in the design: Recent counts, it does not sequence.
 
-**Gaming check on the floor.** The floor hands a lapsed or cycling account Silver rather than Green. Silver buys a 0.4pp entry-fee discount (structurally unexploitable — a price reduction bounded by money handed over, rulebook §9.2 item 15) and a 10% discount on a will plan the customer must buy. No credit, no card, no Gold Rewards below Gold. **Nothing farmable passes through the floor**, and the redefinition adds nothing to it: the six payments still have to be made.
+⚠ **The consequence to state out loud rather than let a customer discover.** A saver who never completes six in a row accrues nothing at all: no score, no tier, no benefits, however many scattered payments they make. That is defensible (*the qualifying run was never completed*) but it must appear in the terms and in the app, not only in the engine. **The countdown display in §1.6a is the mitigation.**
+
+⚠ **Wording.** Decision 19 forbids *"6 month commitment"*; the accurate phrase is **"6 consecutive contributions."** The 2026-08-12 sweep to *"6 contributions"* is cancelled. Nothing here creates an obligation: a broken run costs the customer nothing except starting the run again, and no money is forfeited.
+
+**Gaming check on the floor.** The floor hands a lapsed or cycling account Silver rather than nothing. Silver buys a 0.4pp entry-fee discount (structurally unexploitable — a price reduction bounded by money handed over, rulebook §9.2 item 15) and a 10% discount on a will plan the customer must buy. No credit, no card, no Gold Rewards below Gold. **Nothing farmable passes through the floor**, and the consecutive gate makes it strictly harder to reach than under either earlier draft.
+
+### 1.6a Before the gate: what the customer sees
+
+No score is computed, so none is shown. **Showing a number here would be actively harmful:** the persona reads scores as CIBIL, and an 8 reads as *bad credit* rather than *early progress*, in exactly the months where persistency is thinnest and the customer is barely profitable (decision 22). Show the run instead:
+
+> **4 of 6 — three months to go**
+
+Concrete, actionable, and it converts to the score at the moment the door opens. A broken run resets the counter to zero with an explicit message, since a silent reset is the one thing that would make the gate feel arbitrary.
+
+⚠ **Build note:** the engine tracks the **current run length** (0–6) before the gate, not a score and not Months. Months and Recent both begin at the first month of the qualifying run (§1.6), so on opening day they are 6 and 6 by construction. Pre-run contributions are still recorded on the ledger as ordinary allocated purchases; they simply never enter the score.
 
 ### 1.7 Absolute, not relative — retained unchanged
 
@@ -228,7 +259,7 @@ Three things improve at five and nothing degrades:
 2. **Every increment roughly doubles.** Gold Rewards steps of 0.30pp are about USD 9 a month at the spend cap — the first increment in the design a customer would notice in the month it happened.
 3. **Twenty fewer cells to calibrate.** Every external input still outstanding (partner max LTV, interchange share, vault quote, sponsor floor economics) has to be pushed through the whole matrix when it lands.
 
-**Names.** Green → Silver → Gold → Platinum → Sovereign. Titanium and Elite are dropped. The one client-table fact worth preserving — **Gold Member at 50% LTV** — is preserved exactly under the top-anchored LTV rule (§6.2).
+**Names.** No tier → Silver → Gold → Platinum → Sovereign. Titanium and Elite are dropped, and **Green is renamed to "No tier"** (Abdur, 2026-08-13), since under §1.6 an account below the gate genuinely has no tier and no score rather than a low one. **So the ladder is four named rungs, not five.** The one client-table fact worth preserving — **Gold Member at 50% LTV** — is preserved exactly under the top-anchored LTV rule (§6.2).
 
 ⚠ **Client-facing:** the seven-name ladder is theirs, and cutting it to five is a change to communicate. The argument to make is the one above — *their* benefits cannot differentiate seven ways, and a rung that moves nothing a customer can feel devalues every rung.
 
@@ -240,8 +271,8 @@ Identical statements. The first is what goes in the terms and the app; the secon
 
 | Tier | Requirement |
 |---|---|
-| **Green** | — |
-| **Silver** | 6 months paid, ever  —  which *is* Confirmed SIP (§1.6). **Permanent.** |
+| **No tier** | Confirmed SIP not yet earned. No score is computed (§1.6). |
+| **Silver** | Confirmed SIP earned: **6 consecutive contributions.** **Permanent.** |
 | **Gold** | 12 months paid · 6 of the last 12 |
 | **Platinum** | 36 months paid · 9 of the last 12 |
 | **Sovereign** | 60 months paid · 12 of the last 12 |
@@ -250,11 +281,13 @@ Identical statements. The first is what goes in the terms and the app; the secon
 
 | Tier | ICS |
 |---|---|
-| Green | 0 – 24.9 |
+| No tier | *no score* |
 | **Silver** | **25** |
 | **Gold** | **50** |
 | **Platinum** | **75** |
 | **Sovereign** | **100** |
+
+> 🆕 **The 0–24.9 band no longer exists, and this is a real simplification.** Below the gate there is no score; above it the Silver floor makes 25 the minimum. **Every score the system ever displays is 25 or higher.** The old Green rung was a tier that named an absence, which is why it is renamed to "No tier" (Abdur, 2026-08-13): the label is now literally what the account has.
 
 > ⚠ **Build note, still binding: lower bounds, never ranges.** ICS is a real number. A band written "75 to 99" leaves 99.4 in no tier.
 
@@ -359,7 +392,7 @@ Each family sub-account already earns its own tier by its own saving, which is t
 
 The master table. Dashes are where a benefit's own preconditions (credit facility, card) do not yet exist. Every ladder is stepped, monotone non-decreasing, and read from the **tier of record** (benefits draft §0.3).
 
-| | **Green** | **Silver** | **Gold** | **Platinum** | **Sovereign** |
+| | **No tier** | **Silver** | **Gold** | **Platinum** | **Sovereign** |
 |---|---|---|---|---|---|
 | **1. Entry-fee discount** | 0 | 0.4pp | 0.8pp | 1.2pp | **1.5pp** |
 | **2. Credit LTV** (partner max 90%) | — | — | 60% | 75% | **90%** |
@@ -402,7 +435,7 @@ Plan-fee discount 10% → **50%** (the top of the 40–50 placeholder — the ch
 
 | Boundary | What changes |
 |---|---|
-| Green→Silver | First price benefit (0.4pp), first will discount (10%), Silver floor secured |
+| No tier→Silver | **The gate opens.** Score switches on, first price benefit (0.4pp), first will discount (10%), Silver floor secured permanently |
 | **Silver→Gold** | **The big rung:** credit unlocks at 50%, card issues at L1, Gold Rewards begins, discount 0.8pp, will 20% |
 | Gold→Platinum | LTV +15pp, plastic → L2, GR 0.45%, discount 1.2pp, will 35%, per-beneficiary begins, ATM 2,500 |
 | Platinum→Sovereign | LTV top, plastic → L3, GR 0.75%, discount 1.5pp, will 50%, per-beneficiary 20%, ATM 5,000 |
@@ -424,7 +457,8 @@ No dead rungs, and unlike the seven-tier version, no rung whose largest line mov
 | **E.** Withdrew half at month 36, kept saving | 36 | 12 | 50% | 75 | 100 | 0.714 | **53.6** | Gold |
 | **F.** Withdrew everything at month 36, kept saving | 36 | 12 | 100% | 75 | 100 | **0** | 0 → floor **25** | Silver |
 | **G.** Withdrew 30% at month 36 (inside the allowance) | 36 | 12 | 30% | 75 | 100 | **1.00** | **75** | **Platinum — no change** |
-| **H.** Scattered payer: 6 payments over 3 years | 6 | 2 | 0 | 25 | 16.7 | 1.00 | 16.7 → floor **25** | Silver |
+| **H.** Scattered payer: 6 payments over 3 years, never 6 in a row | 6 | 2 | 0 | — | — | — | **none** | **No tier** |
+| **I.** Late opener: paid 1–3, missed 4, paid 5–7, missed 8, ran 9–14 | 6 | 6 | 0 | 25 | 50 | 1.00 | **25** | **Silver on opening day** |
 
 - **A = C, to the day.** The founding principle as arithmetic: a hundred times the money buys zero tiers. This remains the single most useful row when a regulator asks whether benefits scale with capital.
 - **B: one miss in year five costs exactly one tier**, and only because A was sitting on the Sovereign bound with zero margin by design.
@@ -433,7 +467,8 @@ No dead rungs, and unlike the seven-tier version, no rung whose largest line mov
 - **F: full liquidation costs three tiers.** Accepted: liquidating everything is the strongest anti-signal the product can receive. F still keeps every benefit already delivered, every gram since repurchased, Confirmed SIP, and a Record that never stopped climbing.
 - **E and F both recover in 12 clean months**, as the sale ages out of the window. Deliberate (§1.5), and it is what distinguishes a one-time liquidator from D.
 - **G is the row to put in front of the client**, and it only exists after the 2026-08-12 fix: a real household withdrawal of nearly a third **costs nothing at all.** Under the previous convex form G scored 74.1 and lost a tier — the design punished the exact behaviour it had promised to tolerate.
-- **H proves the redefinition of Confirmed SIP is safe** (§1.6). Six scattered payments earn Silver and stop there: Standing is 16.7, so the floor is doing all the work and no higher tier is reachable without current form.
+- **H is the cost of the consecutive gate, and it is the row to be honest about.** Six real payments, three years of intermittent saving, and the account has no score and no tier because no six landed in a row. Under the 2026-08-12 definition H held Silver. This is the deliberate trade for removing the gate/score contradiction, and §1.6's countdown display exists so H sees the run they are failing rather than discovering it at year three.
+- **I is the uniform-entry row.** Nine paid months across fourteen calendar months, and the door opens on **Silver at exactly 25** — the same place a flawless month-6 saver opens. The six pre-run payments bought gold and bought no score. Every account enters the ladder at one point, which is what lets the promise be stated without a branch. ⚠ It is also the row a customer could feel aggrieved by, which is why §1.6a's countdown is a requirement rather than a nicety.
 
 ### 7.2 The four handoff tests (benefits draft §7)
 
@@ -447,9 +482,9 @@ No dead rungs, and unlike the seven-tier version, no rung whose largest line mov
 ### 7.3 The fairness invariants
 
 1. **No amount, anywhere.** No input reads dollars or grams *held* — Months and Recent count periods, Sold is a proportion. **Capital cannot buy a tier at any rung, and with supplementaries removed, neither can anything else except saving.**
-2. **A new saver is never behind.** Retention starts at 1.00; Green is day one; the climb is identical for everyone.
+2. **A new saver is never behind.** Retention starts at 1.00; everyone starts outside the gate on the same terms; the climb is identical for everyone.
 3. **A miss costs standing, never property.** Gold, Months and Confirmed SIP are untouched by any miss. The fall in Standing is the whole price.
-4. **Selling costs standing, never record.** Months is a historical fact and nothing reduces it. This is why Retention is a multiplier and not a deduction from Months.
+4. **Selling costs standing, never record.** Once the gate opens, Months is a historical fact and nothing reduces it. This is why Retention is a multiplier and not a deduction from Months. ⚠ **Scope note:** the record *begins* at the qualifying run (§1.6), so pre-gate payments never enter it. Nothing removes a month once counted; the rule is about where counting starts, not about taking anything away.
 5. **Refused money never scores against you.** The regulatory pause freezes the clock (rulebook §8, decision 36) — inherited unchanged.
 6. **Nothing already delivered is ever taken back.** Struck prices, drawn LTVs, issued plastic, credited grams all survive any tier fall.
 7. **Decay is faster than rebuild, by arithmetic rather than by rule.** A miss costs 8.33 of Standing instantly and returns only when the window rolls twelve months later.
@@ -480,10 +515,11 @@ The rulebook's three-layer register (§9) is unchanged by any number here. What 
 | **Sell then rebuy before assessment** | Sold reads opening balance, acquisitions and closing balance — a rebuy enlarges the denominator but the sale stays in the numerator, so it cannot be erased, only aged out over twelve months. |
 | **Timing the sale to cheapen it** | **Closed 2026-08-12.** The old average-balance denominator made a sale cheaper the later in the window it happened. The current measure is timing-neutral by construction (§1.5) — the same sale costs the same whenever it is made. |
 | **Sitting just under a threshold** | Nothing to sit under: both inputs move in one direction only, one month at a time, by paying. |
-| **Silver floor abuse** | Nothing payable or borrowable passes through it (§1.6). |
+| **Silver floor abuse** | Nothing payable or borrowable passes through it (§1.6), and the consecutive gate now makes the floor strictly harder to reach: six payments no longer suffice, six *in a row* do. |
+| **Minimum-effort entry** (buy the cheapest possible way in) | 🆕 **Closed by the gate.** Six consecutive periods cannot be compressed, bought or backdated — one counted period per calendar month, no revival, no arrears. The only way through the door is six months of elapsed discipline, which is the one cost no attacker can shortcut. |
 | Cancel-and-reopen | Score attaches to the person (rulebook §9.1 item 7). Unchanged. |
 
-**Net: five of nine attacks are now structurally impossible rather than defended against.** That is the strongest single argument for the rewrite.
+**Net: six of eleven attacks are now structurally impossible rather than defended against** (was five of nine before the 2026-08-13 gate). That is the strongest single argument for the rewrite.
 
 ---
 
@@ -523,8 +559,8 @@ Run via recency-swept web research (2026-08-11); secondary-source confidence unl
 2. Whether the raw score (0–100) is customer-visible or tier-only. **Recommendation: show the number.** The persona knows CIBIL; a visible score with visible progress is the cheapest retention surface in the product, and it now has a second use — **the score names its own constraint** (§1.2), so the app can tell the customer exactly what to do next.
 
 **Client-facing changes to communicate — the full list:**
-- **Seven tiers become five.** Titanium and Elite are dropped (§2.1).
-- **Confirmed SIP becomes 6 contributions, not 6 consecutive contributions** (§1.6). Slightly easier to earn, and it makes Silver and Confirmed SIP the same event.
+- **Seven tiers become five, and the bottom one is renamed.** Titanium and Elite are dropped; Green becomes **"No tier"** (§2.1). Four named rungs.
+- **Confirmed SIP stays 6 consecutive contributions, and it now gates the score itself** (§1.6). Before it: no score, no tier, no benefits. After it: permanent, and never below Silver. **The score never contradicts the gate because it does not exist before it.**
 - **Referrals, family portfolios and Masterclass no longer score.** All three survive as programmes (§5). This departs from their §8.2 in three places.
 - **No revival or arrears mechanism.** A missed month is missed; late money is a spot purchase (§4).
 - **Sovereign arrives at month 60** on contributions alone, with no acceleration route.
@@ -541,8 +577,12 @@ Inherited from benefits draft §6: at launch the tier buys the **entry-fee disco
 
 ## 12. What this file changes elsewhere
 
-- [ ] 🆕 `_draft_sip-rulebook.md` §4.1: **redefine Confirmed SIP as the 6th counted period, not the 6th consecutive one** (§1.6). Permanence unchanged. Then sweep every file and client-facing string for *"6 consecutive contributions"* → **"6 contributions"** — including `handoff.md` decision 19, which currently mandates the old wording.
-- [ ] 🆕 `handoff.md` §4 product-in-brief and decision 19: same wording change; and the ICS line still says "7 tiers."
+- [x] ✅ 🆕 **CANCELLED 2026-08-13: the *"6 contributions"* sweep is not to be run.** Confirmed SIP stays **6 consecutive contributions** (§1.6), so `_draft_sip-rulebook.md` §4.1 and `handoff.md` decision 19 keep their existing wording and need **no** change on this point. Anyone picking up the 2026-08-12 version of this list should stop here.
+- [ ] 🆕 `_draft_sip-rulebook.md` §4.1: add that Confirmed SIP now gates **the score**, not only the benefits, and that pre-gate accounts have no score and no tier (§1.6).
+- [ ] 🆕 **Rename Green → "No tier" everywhere** (§2.1): `_draft_sip-rulebook.md`, `_draft_ics-benefits.md`, `_draft_sip-spot-and-ics.md`, `Aurumix_Process_Maps_ICS_Benefits.md`, `Aurumix_ICS_Score_Calculator.xlsx`, and every client-facing string.
+- [ ] 🆕 `handoff.md` §4 product-in-brief: the ICS line still says **"7 tiers"** and names Green. Correct to five tiers, four named rungs, No tier at the bottom.
+- [ ] 🆕 `Aurumix_ICS_Score_Calculator.xlsx` (via `_build_ics_calculator.py`): the gate is not modelled. Add the pre-gate state (no score), the Green→No tier rename, and the 6-consecutive run to the ladder block and the Rajesh worked story. Re-run `_verify_ics_calculator.py`.
+- [ ] 🆕 Build: pre-gate the engine tracks only the **current run length (0–6)** and displays a **"n of 6"** countdown, never a score, with an explicit reset message on a broken run (§1.6a). **Months and Recent both start at the first month of the qualifying run**, so every account opens at exactly 25.
 - [ ] `_draft_sip-rulebook.md` §7.1: **delete the arrears row entirely**; add the spot-path line (money after grace is offered as a spot purchase).
 - [ ] `_draft_sip-rulebook.md` §7.1/§7.2: delete "Continuity halves" and everything downstream of it — **there is no step-down mechanism to describe**, only Standing. Delete "Arrears are one payment, not instalments"; delete "Arrears buy gold at the fix on the day they clear"; delete the rebuild-rate prose. Correct "The step-down applies at grace expiry **and reverses on revival**" → a miss reduces Recent for twelve months and then ages out; grace is the only tolerance.
 - [ ] `_draft_sip-rulebook.md` §9.1 item 9 (arrears look-back exploit): **moot** — no restoration path exists.
