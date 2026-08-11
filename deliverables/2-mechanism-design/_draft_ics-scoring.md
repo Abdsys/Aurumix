@@ -53,6 +53,8 @@ Tiers are **absolute thresholds** (score ≥ 84 is Sovereign, for everyone, alwa
 
 Practical corollaries: absolute behaves identically at 500 users and 100,000 (percentiles are noise at Y1 scale), and it is deterministic — the customer can compute their own tier, which is the trust posture behind the visible-score recommendation.
 
+> ⚠ **Absolute does not mean permanent.** The bar never moves and nobody else's behaviour can push you off it — but the score recalculates monthly and falls three ways: strikes (§3), Retention (selling past the allowance scales everything), and supplementary decay (referees and family going inactive). Sovereign is the *most* fragile perch in the ladder: bar 84 against a max base of 97 means holding it requires tenure 60 **and** a live streak ≥ 12 **and** R ≥ 0.80, simultaneously, every month — a supplementary-free veteran sits at exactly 84 with zero margin. **Sovereign is rented by conduct, never owned.** The only unconditional floor in the design is Silver (Confirmed SIP); even the tenure-60 Titanium floor holds only while the gold is held (sell everything and 60 × 0.635 = 38, which is Gold).
+
 ### 1.0b Where the weights are: embedded in the caps, deliberately
 
 The formula has weights; they are not written as multipliers because **every component is denominated in the same unit — points per month of a verified behaviour — so the caps are the weights**: 60/24/13 is history 62%, form 25%, engagement 13%. An explicit `w₁·Tenure + w₂·Continuity + …` would be the same formula with two knobs per component where only their product matters — a redundancy that invites incoherent tuning and wrecks the customer explanation ("1 point per month, up to 60" is computable by hand; "your months × 0.37" is opacity).
