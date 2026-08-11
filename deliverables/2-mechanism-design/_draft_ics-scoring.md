@@ -132,7 +132,7 @@ The form above is timing-neutral by construction: it reads three numbers (openin
 | Denominator is zero (no gold, none acquired) | Sold = 0, Retention = 1. A customer with nothing cannot have sold anything. |
 | Grams credited by **Gold Rewards** | Count as *acquired*. They enlarge the denominator, so a reward never creates or reduces a penalty. Sold clamps at 0 either way. |
 | **Transfers to a family sub-account or under the Digital Will** | **Not a sale.** The gold stays inside the product; only the name on it changes. Excluded from the numerator, and it arrives in the recipient's account as an acquisition. |
-| **Lender liquidation on a margin call** | ⚠ **Open.** It is a real reduction in holdings the customer did not choose on the day — but they chose to borrow. Proposed default: **it counts**, on the grounds that the alternative makes borrowing a route around Retention. Flag for the client conversation. |
+| **Lender liquidation on a margin call** | ✅ **It counts as a sale** (Abdur, 2026-08-13). The customer did not choose the day, but they chose to borrow, and the alternative makes borrowing a route around Retention: pledge, draw to the limit, let it liquidate, keep the cash, keep the score. ⚠ **Note the deliberate asymmetry with a tier fall:** a tier fall never margin-calls, but a margin call does move the score. Different directions, and both are correct. |
 
 #### Why linear at 30%, not convex at 20%
 
@@ -236,6 +236,16 @@ So the choice is real and binary, and **zero tolerance is the better half**:
 
 ⚠ **Alternative, considered and rejected:** define `Standing = min(12, Recent + 1) × 8.33` — "one free miss a year." It works arithmetically, leaves every arrival date untouched (Record binds throughout a clean climb), and softens the whole ladder by one miss. **Rejected because it invites the product's best savers to skip a month every year at no cost** — five skipped payments across the climb, in a product whose entire thesis is monthly discipline. Recorded here because it is the fix to reach for if field data shows the year-long Sovereign penalty driving churn.
 
+### 1.9 Scope rules: who has a score, and what pauses the run
+
+**All three settled 2026-08-13 (Abdur).**
+
+**Every account passes its own gate, with no exceptions and no inheritance of status.** A family sub-account, a spouse, a child, a second account opened by the same person: each earns its own six consecutive contributions and its own score. This follows directly from rulebook §385 (a sub-account's contribution earns a full period for the sub-account's own score) and from invariant 8 (the score attaches to the person). **Nobody is carried in on someone else's record**, which is also what stops a head-of-family account being used to switch benefits on for people who have never paid.
+
+**A pause freezes the run; it never breaks it.** Decision 36's regulatory pause was written for accounts already through the gate. **It applies identically before the gate:** a month in which Aurumix refuses the investor's money does not count against them, and pre-gate that means the qualifying run neither advances nor resets. A saver at 4-of-6 who enters a compliance pause resumes at 4-of-6. Invariant 5 — *refused money never scores against you* — has no reason to behave differently on the two sides of a door the customer cannot see. **Frozen months are skipped entirely and the window extends to reach twelve countable months** (§10 item 3, settled): a frozen month is treated as though it never existed, on both clocks.
+
+**Partner-channel customers earn no ICS.** Customers who reach AURX through a B2B partner's own app (revenue stream 6, decision 42) hold gold and are **outside the scoring system entirely** — no gate, no score, no tier, no tier-priced benefits. Three reasons it has to be this way: **the behaviour is not observable to us** (the partner owns the payment relationship and the collection rail, so we cannot see a counted period, only a balance); **the benefits are not ours to give** on that book, since the partner sets their own pricing and keeps 70 to 80% of the spread; and **the funding cap breaks** — Gold Rewards is capped at the interchange and credit revenue that customer generated, and a partner customer generates neither. ⚠ **This makes ICS a direct-channel product feature, which is a strategic fact and not only a mechanical one.** Decision 45 recorded this as a Phase 4 contract question; it is now decided ahead of the contract, and the partner agreement must say so explicitly rather than leave it to be assumed.
+
 ---
 
 ## 2. Tier structure: five tiers
@@ -257,7 +267,7 @@ Three things improve at five and nothing degrades:
 
 1. **The card mapping stops being many-to-few.** Sponsor banks operate three or four programme levels. At seven tiers the benefits draft needed a plastic/parameter split (§3.1 there) and both a 3-level and a 4-level fallback. At five tiers, Gold/Platinum/Sovereign map one-to-one onto three sponsor levels. The fallback disappears.
 2. **Every increment roughly doubles.** Gold Rewards steps of 0.30pp are about USD 9 a month at the spend cap — the first increment in the design a customer would notice in the month it happened.
-3. **Twenty fewer cells to calibrate.** Every external input still outstanding (partner max LTV, interchange share, vault quote, sponsor floor economics) has to be pushed through the whole matrix when it lands.
+3. **Twenty fewer cells to calibrate.** Every external input still outstanding (interchange share, vault quote, sponsor floor economics) has to be pushed through the whole matrix when it lands. 🔄 Partner max LTV has since left this list: **fixed at 80% by decision, §6.2**.
 
 **Names.** No tier → Silver → Gold → Platinum → Sovereign. Titanium and Elite are dropped, and **Green is renamed to "No tier"** (Abdur, 2026-08-13), since under §1.6 an account below the gate genuinely has no tier and no score rather than a low one. **So the ladder is four named rungs, not five.** The one client-table fact worth preserving — **Gold Member at 50% LTV** — is preserved exactly under the top-anchored LTV rule (§6.2).
 
@@ -395,8 +405,7 @@ The master table. Dashes are where a benefit's own preconditions (credit facilit
 | | **No tier** | **Silver** | **Gold** | **Platinum** | **Sovereign** |
 |---|---|---|---|---|---|
 | **1. Entry-fee discount** | 0 | 0.4pp | 0.8pp | 1.2pp | **1.5pp** |
-| **2. Credit LTV** (partner max 90%) | — | — | 60% | 75% | **90%** |
-| **2. Credit LTV** (partner max 80%) | — | — | 50% | 65% | **80%** |
+| **2. Credit LTV** | — | — | 50% | 65% | **80%** |
 | **3. Card level** | — | — | L1 | L2 | **L3** |
 | **3. Card FX margin** | — | — | 2.0% | 1.5% | **1.0%** |
 | **3. Card ATM allowance** (AED/mo) | — | — | 1,000 | 2,500 | **5,000** |
@@ -412,12 +421,25 @@ The master table. Dashes are where a benefit's own preconditions (credit facilit
 
 ### 6.2 Credit LTV ladder (benefit 2)
 
-**The general rule, robust to any partner outcome:** anchor Sovereign at `min(partner max, 90%)`, step down **15pp per tier** to Gold, floor 50%. Unlock at **Gold**, honouring the one row of the client's credit table worth preserving.
+> 🔒 **SETTLED 2026-08-13 (Abdur): Sovereign is 80%. The ladder is 50 / 65 / 80 and it is no longer contingent on the partner.**
 
-- Partner lands at 90–95% (client's hope): 60 / 75 / 90.
-- Partner lands at 75–85% (the likely case per benefits draft §2.3 — RBI comps 75–85, tokenised-gold lenders 50–80): at 80%, the ladder reads **50 / 65 / 80**, which reproduces the client's *"Gold Member: 50%"* row **exactly** while fixing the arithmetic their Sovereign row got wrong (their "up to 110%" example computed to 85%).
-- The construction holds for any partner max ≥ 65%.
-- External inputs unchanged: the partner max itself, and warning/liquidation spacing above each step (partner's book, not ours). 90-day seasoning, LTV struck at draw, **tier fall never margin-calls** — all inherited (benefits draft §2), none reopened.
+**The construction:** anchor Sovereign at **80%**, step down **15pp per tier** to Gold, floor 50%. Unlock at **Gold**, honouring the one row of the client's credit table worth preserving.
+
+| Tier | Gold | Platinum | Sovereign |
+|---|---|---|---|
+| **Max LTV** | 50% | 65% | **80%** |
+
+**Three reasons 80 is the right number to fix on rather than hold open:**
+
+1. **It sits inside every comparable.** Benefits draft §2.3: RBI's 2025 Directions tier India's cap at 85/80/75 by loan size from April 2026, Muthoot and Manappuram lend at the cap, and tokenised-gold lenders run 50% (Fringe) to 80% (Clapp). **80 is the top of the observed range without being outside it**, so no partner conversation starts with us walking a number back.
+2. **It reproduces the client's own table exactly.** Their *"Gold Member: 50% LTV"* row falls straight out, while the arithmetic their Sovereign row got wrong is fixed: they wrote "up to 110%" and then worked the example at 8,500 on 10,000, which is 85%. **Their own worked number was never 110, and 80 is one step below what they actually computed.**
+3. **A fixed ladder can be advertised; a contingent one cannot.** LTV is struck at draw and runs to term (benefits draft §2). A rate that depends on an unsigned partner agreement cannot go in the app, the terms or the tier table, which means the second-largest benefit in the design stays unquotable until the lending partner signs.
+
+⚠ **Consequence to carry to the partner conversation, not away from it.** 80% is now our number, so **a partner landing below 80 is a repricing event, not a parameter fill.** If the best available partner maxes at 75, the ladder compresses to 45/60/75 or the top rung is subsidised. **Get the partner max confirmed before this reaches a client-facing document.**
+
+⚠ **Warning and liquidation spacing above each step is still the partner's book, not ours**, and at 80% the headroom above the top rung is thin: handoff §4's note that thresholds *"must be re-spaced"* was written against 90–95% and is more binding at 80, not less. 90-day seasoning, LTV struck at draw, **tier fall never margin-calls** — all inherited (benefits draft §2), none reopened.
+
+⚠ **The client will hear this as a downgrade from 90 to 95, and it is.** The line that makes it land: *their own §9.3 example computed to 85%, no UAE lender publishes a loan-against-gold LTV at all, and every comparable in the world sits between 50 and 85.* The 90 to 95 figure was never anchored to anything.
 
 ### 6.3 Card tier (benefit 3)
 
@@ -549,10 +571,23 @@ Run via recency-swept web research (2026-08-11); secondary-source confidence unl
 - **Sovereign's zero tolerance** — the "one free miss" variant is specified and costed in §1.8 if churn data ever justifies it.
 - Qualifying-spend cap **USD 3,000/month**; plastic upgrade rule **3 months**.
 
-**Open sub-decisions surfaced by the 2026-08-12 pass, with proposed defaults:**
-1. **Lender liquidation on a margin call — does it count as a sale?** Proposed: **yes** (§1.5). The alternative makes borrowing a route around Retention.
-2. **A compliance-forced exit (the returning NRI, decision 31) drives Retention to zero for something the customer did not choose.** Decision 36's regulatory pause covers refused *payments*, not forced *sales*. Proposed: **extend the pause to cover forced redemptions** — the grams leave, the score does not move.
-3. **How a frozen month is counted inside a 12-month trailing window** — 12 calendar months, or 12 unfrozen ones? Proposed: **frozen months are skipped, and the window extends to reach 12 countable months.** Build detail, but it must be written down.
+**Sub-decisions, resolved 2026-08-13 (Abdur) except where marked:**
+1. [x] ✅ **Lender liquidation on a margin call counts as a sale** (§1.5). The alternative makes borrowing a route around Retention.
+2. [ ] ⚠ **STILL OPEN, deliberately: a compliance-forced exit (the returning NRI, decision 31) drives Retention to zero for something the customer did not choose.** Decision 36's regulatory pause covers refused *payments*, not forced *sales*. Proposed: **extend the pause to cover forced redemptions** — the grams leave, the score does not move. **Left open at Abdur's instruction 2026-08-13**, not rejected. ⚠ It interacts with item 1: a forced sale and a margin call are both sales the customer did not pick the day of, and the design currently answers them differently. Close them together.
+3. [x] ✅ **A frozen month is skipped entirely, as though it never existed, and the window extends to reach 12 countable months** (§1.9). Applies on both clocks and on both sides of the gate.
+4. [x] ✅ **Every account passes its own gate**, sub-accounts included (§1.9).
+5. [x] ✅ **A pause freezes the qualifying run rather than breaking it** (§1.9).
+6. [x] ✅ **Partner-channel customers earn no ICS at all** (§1.9). Decided ahead of the partner contract, which must say so explicitly.
+
+**Considered and deliberately left alone (Abdur, 2026-08-13). Recorded so nobody re-raises them as oversights:**
+
+| Item | Status |
+|---|---|
+| **Pre-run gold counts in Retention's denominator, while pre-run payments score nothing.** A saver's early purchases can cost them score if sold, having never earned any | **Accepted.** Retention reads the token ledger and the ledger does not know about the gate. The asymmetry is real and is not being designed away |
+| **The zero-benefit paying customer.** Months 1 to 5 pay the full entry fee and receive nothing — no score, no tier, no discount — and longer if the run breaks | **Accepted.** The countdown display (§1.6a) is the mitigation |
+| **Inheritance: does a Digital Will beneficiary inherit the tier and the Months?** | **Not designed.** Will surface in year one |
+| **Agent-onboarded accounts: whose behaviour is scored** when an advisor invests for a client | **Left as-is.** The agent system is unchanged pending the IRDAI 2023 caps |
+| **The cycler-plus-agent combination** (rulebook §365): a cycler generates real counted periods, so an agent can earn commission on customers worth nothing to Aurumix | **Left as-is.** The 12-month commission clawback is the only defence and it holds pending the same IRDAI retrieval |
 
 **Client questions:**
 1. The entry-fee base-rate uplift funding benefit 1's ceiling (rulebook §13). **🆕 The ask is smaller than previously stated and may be zero — see §6.1.** Re-put it with the time-phasing argument.
@@ -564,8 +599,11 @@ Run via recency-swept web research (2026-08-11); secondary-source confidence unl
 - **Referrals, family portfolios and Masterclass no longer score.** All three survive as programmes (§5). This departs from their §8.2 in three places.
 - **No revival or arrears mechanism.** A missed month is missed; late money is a spot purchase (§4).
 - **Sovereign arrives at month 60** on contributions alone, with no acceleration route.
+- 🆕 **Max LTV is 80%, not 90 to 95%** (§6.2). The ladder is 50 / 65 / 80. **Expect this to land as a downgrade, because it is one.** Their own §9.3 example computed to 85%, no UAE lender publishes a loan-against-gold LTV at all, and every comparable sits between 50 and 85, so the 90 to 95 figure was never anchored to anything. Their *"Gold Member: 50%"* row survives exactly.
+- 🆕 **Partner-channel customers earn no ICS** (§1.9). The score is a direct-channel feature. This is a strategic position, not only a mechanic, and the partner agreement must state it.
+- 🆕 **Every account passes its own gate, sub-accounts included** (§1.9). Nobody inherits a family member's status.
 
-**External inputs (not B4's to close):** partner max LTV and warning/liquidation spacing; sponsor level count, floor economics and waiver sets; contracted interchange share; vault quote; stream 3 base prices and per-name cost.
+**External inputs (not B4's to close):** ~~partner max LTV~~ 🔒 **fixed at 80% by decision, 2026-08-13 (§6.2) — no longer an input, and a partner below 80 is now a repricing event**; warning/liquidation spacing above each step; sponsor level count, floor economics and waiver sets; contracted interchange share; vault quote; stream 3 base prices and per-name cost.
 
 ---
 
@@ -598,7 +636,11 @@ Inherited from benefits draft §6: at launch the tier buys the **entry-fee disco
 - [ ] `_draft_ics-benefits.md` §3.1: the plastic/parameter split survives, but the **many-to-few mapping problem and the 4-level variant are moot** at five tiers.
 - [ ] `Aurumix_Process_Maps_ICS_Benefits.md`: **8 diagrams need a tier-count pass** (seven-tier references throughout). A companion scoring map set (the climb, the miss, the cycler, the min-gate) is now drawable and owed when process maps are next batched.
 - [ ] `handoff.md`: decision 46 to be **rewritten in full**; decision 36's arrears half is moot; decision 20's "referrals, family and Masterclass as capped supplementaries" is superseded.
-- [ ] Client conversation: the four items in §10.
+- [ ] 🆕 **`_draft_ics-benefits.md` §2.3: the LTV research section now has an answer.** `min(partner max, 90%)` is replaced by a flat **80%** (§6.2). Mark the 90 to 95 ceiling retired and keep the 50 to 85 comps as the evidence for 80. §2's inherited rules (90-day seasoning, struck at draw, tier fall never margin-calls) are unchanged.
+- [ ] 🆕 **`handoff.md` §4: "max LTV 90 to 95% (corrected from 110%)" → 80%**, and the note that warning/liquidation thresholds must be re-spaced is **more** binding at 80, not less.
+- [ ] 🆕 **`handoff.md` decision 45: the partner-channel ICS question is closed** (no ICS) rather than deferred to Phase 4, and the LTV item is settled at 80.
+- [ ] 🆕 **`_draft_sip-rulebook.md` §8: extend the regulatory pause explicitly to the pre-gate qualifying run** (§1.9). It currently reads as a post-gate mechanism only.
+- [ ] Client conversation: the items in §10, now including the LTV downgrade and the partner-channel exclusion.
 
 ---
 
