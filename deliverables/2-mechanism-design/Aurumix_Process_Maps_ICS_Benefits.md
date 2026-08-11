@@ -46,7 +46,7 @@
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
-    A["Six payments: Confirmed SIP"] --> B["Tier of record, monthly"]
+    A["Six in a row: Confirmed SIP"] --> B["Tier of record, monthly"]
     B --> C["Entry-fee discount"]
     B --> D["Credit LTV ladder"]
     B --> E["Card tier"]

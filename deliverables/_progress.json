@@ -24,6 +24,7 @@
       "files": [
         "Aurumix_Process_Maps.md",
         "Aurumix_Process_Maps_ICS_Benefits.md",
+        "Aurumix_Process_Maps_ICS_Scoring.md",
         "Aurumix_Process_Maps_Revenue_Streams.md",
         "Aurumix_Process_Maps_SIP_Structure.md",
         "_build_ics_calculator.py",
@@ -34,7 +35,7 @@
         "_parked_collection-economics-and-minimum-ticket.md",
         "_verify_ics_calculator.py"
       ],
-      "updated_at": "2026-08-11"
+      "updated_at": "2026-08-12"
     }
   }
 }
