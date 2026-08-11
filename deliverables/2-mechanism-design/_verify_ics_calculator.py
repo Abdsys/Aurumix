@@ -2,10 +2,13 @@
 the results against _draft_ics-scoring.md.  Layout-agnostic: it finds the scored
 rows by looking for the tier VLOOKUP.  Stands in for recalc.py where LibreOffice
 is unavailable."""
+import os
 import re
 from openpyxl import load_workbook
 
-PATH = r"C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\2-mechanism-design\Aurumix_ICS_Score_Calculator.xlsx"
+# Resolve beside this script, so the check runs on any machine.
+PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                    "Aurumix_ICS_Score_Calculator.xlsx")
 ws = load_workbook(PATH)["ICS"]
 
 VL = re.compile(r"VLOOKUP\(([A-N]\d+),\$A\$(\d+):\$B\$(\d+),2,TRUE\)")
@@ -77,7 +80,7 @@ for _, label, ics, tier in scored:
 checks = [
     ("USD 20 a month, perfect, five years", 100, "Sovereign"),
     ("USD 2,000 a month, perfect, five years", 100, "Sovereign"),
-    ("Six payments scattered over three years", 25, "Silver"),
+    ("Six payments scattered, never six in a row", 0, "No tier"),
     ("Sells a quarter of his gold", 75, "Platinum"),
     ("Sells a third", 75, "Platinum"),
     ("Sells half", 53.6, "Gold"),
@@ -120,7 +123,7 @@ def record(m):
 print("\nINVARIANTS")
 print("  Standing >= Record for every clean month 0-240 : %s"
       % all(min(12, m) * 100 / 12.0 >= record(m) - 1e-9 for m in range(241)))
-print("  Record(6)=25 so Silver == 6 payments           : %s" % (abs(record(6) - 25) < 1e-9))
+print("  Record(6)=25, so the gate opens exactly at Silver: %s" % (abs(record(6) - 25) < 1e-9))
 print("  Record(12)=50, Record(36)=75, Record(60)=100   : %s"
       % all(abs(record(a) - b) < 1e-9 for a, b in [(12, 50), (36, 75), (60, 100)]))
 print("  Retention == 1.000 at exactly the 30%% allowance: %s"

@@ -108,14 +108,14 @@ graph LR
     style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
 
-⚠ **Open, client's call: the size of the base-rate uplift.** Ceiling placeholder 1.5 to 2.0pp; margin alone funds only ~0.12pp per tier.
+⚠ **Open, client's call: the size of the base-rate uplift.** 🔄 **Ceiling settled at 1.5pp** (scoring draft §6.1, was a 1.5 to 2.0pp placeholder), and **the ask may be zero**: the ladder is time-phased by construction, so nobody is above Silver in Year 1 and the maximum discount outstanding at launch is 0.4pp, while the first Sovereign appears at month 60 with the cost base already falling toward ~3%.
 
 ---
 
 ## 1b. The Discount, Worked
 
 <!-- SPEAKER NOTES:
-"Two savers, the identical seventy-five dollars. One is on their first payment and pays the base fee. The other has made fifty-six straight payments and pays two points less: an extra 0.0137 grams that month, a sixth of a gram a year. The money is the same. The record is the only difference, and money cannot buy the record."
+"Two savers, the identical seventy-five dollars. One is on their first payment and pays the base fee. The other has made sixty payments and pays a point and a half less: an extra 0.0103 grams that month, an eighth of a gram a year. The money is the same. The record is the only difference, and money cannot buy the record."
 -->
 
 ```mermaid
@@ -134,8 +134,8 @@ graph LR
 graph LR
     A["First payment: USD 75"] --> B["Base fee 5%"]
     B --> C["0.6518 g allocated"]
-    D["56th straight payment: USD 75"] --> E["Top-tier fee 3%"]
-    E --> F["0.6655 g allocated"]
+    D["60th payment: USD 75"] --> E["Sovereign fee 3.5%"]
+    E --> F["0.6621 g allocated"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
@@ -145,9 +145,11 @@ graph LR
     style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
 
-⚠ **The only difference between the lanes is the record: 56 straight payments** (the month the USD 20 saver reaches the top tier, rulebook §11.1). Same money, +0.0137 g that month, ~0.16 g a year in the app counter.
+⚠ **The only difference between the lanes is the record: 60 counted payments** (the month the USD 20 saver reaches Sovereign, scoring draft §2.3). Same money, +0.0103 g that month, ~0.12 g a year in the app counter.
 
-⚠ **Example numbers, not decisions:** base 5% (decision 9, Year 1 top of range), top-tier discount 2pp (the placeholder ceiling), same fix as the minting worked example (USD 75 → 0.6518 AURX). The 0.6655 g figure is decision 41's own arithmetic. B4 sets the real ladder.
+🔄 **Updated 2026-08-13 from placeholders to the settled ladder:** base 5% (decision 9, Year 1 top of range), **Sovereign discount 1.5pp** so the fee is 3.5% (scoring draft §6, was a 2pp placeholder), **arrival at month 60** (was 56 under the seven-tier draft), same fix as the minting worked example (USD 75 → 0.6518 AURX, implying ~USD 109.31/g). The old 0.6655 g figure came from decision 41's 2pp arithmetic and is superseded by **0.6621 g**.
+
+⚠ **The lane label is now "60th payment", not "60th straight payment."** After the Confirmed SIP gate opens, no streak is measured anywhere in the design (scoring draft §1.6): Recent counts periods, it does not sequence them. The only place consecutiveness is ever required is the six-month gate at entry.
 
 ---
 

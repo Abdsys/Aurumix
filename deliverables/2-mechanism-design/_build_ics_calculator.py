@@ -1,6 +1,7 @@
 """Builds Aurumix_ICS_Score_Calculator.xlsx — one tab, laid out for presenting
 to the client rather than for auditing.  Mechanics per _draft_ics-scoring.md
 (2026-08-12, post flaw-review)."""
+import os
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 
@@ -189,8 +190,8 @@ header(r, ["Score needed", "Tier", "In plain English", "What it buys"], "ABCD")
 r += 1
 row_tier0 = r
 ladder = [
-    (0, "Green", "You have opened an account.", "—"),
-    (25, "Silver", "Six payments made. You are established, permanently.", "0.4pp off the entry fee · 10% off the will plan"),
+    (0, "No tier", "Account open, gate not yet passed. No score is calculated.", "—"),
+    (25, "Silver", "Six months straight. You are established, permanently.", "0.4pp off the entry fee · 10% off the will plan"),
     (50, "Gold", "One year paid, and paying now.", "Credit at 50% LTV · card issued · Gold Rewards begin · 0.8pp off"),
     (75, "Platinum", "Three years paid, and a strong year behind you.", "LTV 65% · card level 2 · Rewards 0.45% · 1.2pp off · will 35%"),
     (100, "Sovereign", "Five years paid, a perfect year, gold intact.", "LTV 80% · top card · Rewards 0.75% · 1.5pp off · will 50%"),
@@ -203,6 +204,8 @@ for bound, name, plain, buys in ladder:
     r += 1
 row_tier1 = r - 1
 TIER_RANGE = "$A$%d:$B$%d" % (row_tier0, row_tier1)
+put("A%d" % r, "The gate comes first: six consecutive payments before any score exists. Everyone enters at Silver, 25.", SUB)
+r += 1
 put("A%d" % r, "Silver is permanent. Every tier above it is rented by conduct — which is the point.", SUB)
 r += 2
 
@@ -325,8 +328,8 @@ cases = [
      "The smallest saver in the product reaches the top. This is the test the design exists to pass."),
     ("   USD 2,000 a month, perfect, five years", 60, 12, 0.0,
      "Identical, to the day. A hundred times the money buys zero tiers."),
-    ("   Six payments scattered over three years", 6, 2, 0.0,
-     "Earns Silver and stops. The floor holds him; nothing above it is reachable without current form."),
+    ("   Six payments scattered, never six in a row", 0, 0, 0.0,
+     "Never passes the gate, so no score is ever calculated. Six real payments, no tier."),
     ("SELLING", None, None, None, ""),
     ("   Sells a quarter of his gold", 36, 12, 0.25, "Inside the allowance. Nothing happens."),
     ("   Sells a third", 36, 12, 0.30, "Exactly on the line. Still nothing."),
@@ -410,7 +413,10 @@ for k, v in widths.items():
 ws.sheet_view.showGridLines = False
 ws.freeze_panes = "A4"
 
-out = r"C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\2-mechanism-design\Aurumix_ICS_Score_Calculator.xlsx"
+# Resolve beside this script, so the build runs on any machine.
+# Was hardcoded to one workstation's path and failed everywhere else.
+out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                   "Aurumix_ICS_Score_Calculator.xlsx")
 wb.save(out)
 print("saved:", out)
 print("tier range:", TIER_RANGE, "| story rows:", row_story0, "| case rows:", row_case0, "-", row_case1)

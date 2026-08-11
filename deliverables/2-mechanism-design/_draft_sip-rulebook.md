@@ -408,7 +408,13 @@ Family portfolios currently appear as **both** a capped ICS input and a tier-gat
 
 ## 11. Proposed parameters
 
-> ⚠ **These are proposed defaults for B4, not settled decisions.** The structure above does not depend on them. They are set here so the design can be tested rather than debated in the abstract.
+> ⛔ **SUPERSEDED IN FULL by `_draft_ics-scoring.md` (B4, closed 2026-08-12, amended 2026-08-13). Everything in this section is retained as audit trail only. Do not build against it and do not quote it to the client.**
+>
+> **What replaced it:** the weighted sum is gone, so **there are no weights, no component caps and no Maximum base.** The score is `ICS = min(Record, Standing) × Retention`. **Tenure and Continuity became Record and Standing** and are combined by a **minimum rather than a sum**, because minimum is the arithmetic of AND and a sum lets a long record substitute for a dead year. **Supplementaries are deleted entirely** — referrals, family and Masterclass no longer score at all. **Seven tiers became five, four of them named** (No tier / Silver / Gold / Platinum / Sovereign), at thresholds **25 / 50 / 75 / 100**, reached at months **6 / 12 / 36 / 60**. **The step-down is deleted** (a trailing-12 count produces the same shape with no penalty table) and so is **revival** (a missed period is permanently missed; money after grace is a spot purchase). **Retention is re-based** on a timing-neutral denominator with a **hard 30% annual withdrawal allowance**, replacing the 0.80 lifetime allowance.
+>
+> ⚠ **The one thing in this section still worth reading is the ⚠ note under the threshold line: define tiers as lower bounds, never as ranges.** That build note survives unchanged and it is the kind of thing that ships.
+>
+> ⚠ **Original preamble retained:** ~~These are proposed defaults for B4, not settled decisions. The structure above does not depend on them. They are set here so the design can be tested rather than debated in the abstract.~~
 
 | Component | Proposal | Reasoning |
 |---|---|---|

@@ -465,17 +465,17 @@ graph LR
 ## 10. What Is Still Open
 
 <!-- SPEAKER NOTES:
-"Appendix, and only if asked. Four things block the numbers, and none of them blocks the structure. Everything in the previous eight diagrams holds whatever these answers turn out to be.
+"Appendix, and only if asked. Three of the four things that used to block the numbers are now closed, and none of them ever blocked the structure. Everything in the previous eight diagrams still holds.
 
-The tier count and the thresholds. Seven tiers is your figure and we have kept it, but the boundaries are relative to each other and to the score range, so they get set as one exercise rather than one at a time. That is the next piece of work and it is ours.
+Closed: the tier count and the thresholds. We came back with five rather than seven, and the argument is your own benefit set rather than our preference. Seven tiers cut a fixed ladder into six steps too small to feel, about nineteen cents a month on the entry fee discount. At five, the borrowing steps double, the rewards steps double, and the card maps one to one onto the three levels a sponsor bank actually operates. The score runs zero to a hundred and the rungs sit at twenty five, fifty, seventy five and a hundred: six months, one year, three years, five years.
 
-How the discount ladder is funded, and this one is yours because it is your revenue. At launch the fee is around five percent and it costs roughly four point one five percent to actually deliver a contribution, which leaves under one percentage point. If the tier discount comes out of that, then seven tiers are worth about a tenth of a percentage point each and no customer will ever notice they climbed. The base rate has to sit above the top tier price so the ladder has somewhere to come from. It is the same question that sits under the tenure rebate, so it should be answered once for both.
+Closed: how the discount ladder is funded, and the answer is that the ask may be nothing at all. The ceiling is a point and a half. But nobody is above the first rung in year one, so the most you ever give away at launch is four tenths of a point, and the first top tier customer appears at month sixty, by which time your cost of delivering a contribution has fallen from four point one five toward three. The ladder gets more expensive on exactly the same curve your costs get cheaper. Hold the headline at five percent and it may pay for itself.
 
-Whether the UAE direct debit system supports variable amount mandates under a ceiling. This is a small technical check and it is ours to do, but it is load bearing. If it does not, then a variable monthly amount forces everyone onto a rail that needs a tap each month, which reintroduces the monthly decision the whole product exists to remove.
+Closed: the direct debit question is gone because the rail is gone. We are not using the UAE direct debit system. Launch is a request to pay in the customer's own banking app, one tap a month, plus a prefunded balance drawn automatically for anyone who wants genuine set and forget.
 
-And the differential fee structure for lump sums against monthly payments, which is in the folder we still do not have access to.
+Still open, and it is yours: the differential fee structure for lump sums against monthly payments, which is in the folder we still do not have access to."
 
-None of these change a single arrow in this set."
+It never changed a single arrow in this set, and neither did the three we closed."
 -->
 
 ```mermaid
@@ -492,14 +492,14 @@ None of these change a single arrow in this set."
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
-    A["Tier count and thresholds"] --> E["Then the numbers can be set"]
-    B["How the discount ladder is funded"] --> E
-    C["Variable direct debit mandates"] --> E
-    D["Your spot versus SIP fee structure"] --> E
+    A["Tier count: five, closed"] --> E["Numbers can now be set"]
+    B["Discount funding: closed"] --> E
+    C["Direct debit: rail dropped"] --> E
+    D["Your spot versus SIP fees"] --> E
 
-    style A fill:#9A9590,stroke:#9A9590,color:#1A1714
-    style B fill:#9A9590,stroke:#9A9590,color:#1A1714
-    style C fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style D fill:#9A9590,stroke:#9A9590,color:#1A1714
     style E fill:#D4CFC8,stroke:#9A9590,color:#1A1714
 ```

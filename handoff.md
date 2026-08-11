@@ -224,7 +224,9 @@ All live in `deliverables/2-mechanism-design/`: allocation and float in `_draft_
 
 **Gaming: one new structural closure.** Six consecutive periods cannot be compressed, bought or backdated (one counted period per calendar month, no revival, no arrears), so the only way through the door is six months of elapsed discipline. Six of eleven attacks are now structurally impossible, up from five of nine.
 
-**⚠ Owed:** the Green → No tier rename across five files and the xlsx, and the gate is not yet modelled in `Aurumix_ICS_Score_Calculator.xlsx`. Full list in `_draft_ics-scoring.md` §12.
+**✅ The rename sweep ran the same day, and it was four fifths phantom.** The four drafts thought to carry tier names — the rulebook, the benefits draft, the SIP/spot draft and the ICS benefits maps — **contain no tier names at all**, because they were written with tier as an abstract input. **The only live occurrence in our own work was the calculator's build script.** Everything else sits in files that *describe the client's* seven-tier scheme, which are accurate records and must not be renamed. Also corrected on the pass: **rulebook §11 marked superseded in full**; **ICS-benefits diagram 1b rebuilt** on the settled ladder (month 56 → 60, 2pp → 1.5pp, 0.6655 g → 0.6621 g); **SIP-structure diagram 10** now shows three of its four open items closed; and 🔴 **both calculator scripts had the output path hardcoded to one workstation and failed on every other machine** — now resolved relative to the script, rebuilt and re-verified at **182 formulas, 0 errors, 20/20 spot-checks, 4/4 invariants**.
+
+**⚠ Still owed on the workbook:** the gate is renamed and its test case fixed (the scattered payer now reads 0 → No tier), but **the gate is not modelled as a mechanism** — no pre-gate run counter, and Rajesh's story still opens at month 1 rather than at the qualifying run. Full list in `_draft_ics-scoring.md` §12.
 
 **The 2026-08-11 entry is retained below as the audit trail of what was replaced and why.**
 

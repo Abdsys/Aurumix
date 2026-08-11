@@ -221,7 +221,7 @@ Now the design move, and it is the one worth arguing for.
 
 Tier the free allowances by ICS. Higher score, bigger free cash withdrawal allowance and a lower foreign exchange margin. Nexo and Crypto dot com both run loyalty exactly this way.
 
-This fixes something real. At the moment your score pays off in two places: a discount on the entry fee, and a better borrowing ratio. But the discount only helps at the moment you are buying, and the borrowing ratio only helps if you borrow. So a disciplined saver who does neither can climb seven tiers and feel nothing. Card benefits pay off every week, in something they can see. It is the difference between a score that is a number in an app and a score that is a reason to keep paying.
+This fixes something real. At the moment your score pays off in two places: a discount on the entry fee, and a better borrowing ratio. But the discount only helps at the moment you are buying, and the borrowing ratio only helps if you borrow. So a disciplined saver who does neither can climb the whole ladder and feel nothing. Card benefits pay off every week, in something they can see. It is the difference between a score that is a number in an app and a score that is a reason to keep paying.
 
 And it is cheap for you, because the benefit is a fee you waive rather than cash you hand over."
 -->
