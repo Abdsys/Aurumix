@@ -4,6 +4,8 @@
 > **Depends on:** decision 13 (anti-MLM), decision 20 (behaviour never amount), decision 22 (persistency governs), decision 42 (revenue streams), decision 44 (benefit set closed at five), decision 46 (ICS, and referrals removed from scoring).
 > **Supersedes:** nothing. This is the first referral design. The 2026-08-11 scoring version was deleted, not replaced, and this document is what replaces it.
 
+> 🔄 **REVISED 2026-08-13 (Abdur), five changes, and two of them make the design more principled than the version they replace.** **(1) The pool is 30% of the entry fee**, explicitly a placeholder locking against the revenue model. **(2) The USD 75 counting cap is removed** and the reward is computed on whatever the referee actually contributed, which makes it a **constant 19.4% of lifetime value at every ticket size** instead of collapsing to 3% for the best customers. **(3) The reward is credited in grams from launch**, which moves the gram-credit rail into the September build. **(4) There is no cap on how many people a member may refer**, which is what VARA's own referral case study describes, and single level now carries the anti-MLM defence alone. **(5) The agent network is a separate population**, not a rung above this one, so the automatic graduation door is deleted. ⚠ **Removing the counting cap opened one real hole** and it is register item 8: inflate the referee's contributions for exactly six months, then collapse. It is now held by a reserved right rather than by arithmetic, which is the weakest defence in the file.
+
 > ⚠ **This draft has been through an adversarial review and it did not survive intact.** Three independent passes ran against the first version: an arithmetic check, a consistency check against the prior record, and a red team. **They found one false invariant that four separate conclusions were resting on, one rule missing without which decision 46 reopened by the back door, one genuine cash-extractive exploit, one trigger that could never fire for a returning customer, and a privacy disclosure that would have gone into a VARA licence application.** All are fixed and each fix is marked in place with what it replaced, so the reasoning is auditable rather than tidy. **The one thing review could not settle is the size of the reward**, which is a business decision and sits in §5.4 as an explicit three-way choice.
 
 ---
@@ -54,9 +56,9 @@ This is decision 13 restated with fresh evidence. *Not one of nineteen protocols
 | **1. Member referral** | An existing customer introduces someone they know | Once, in grams, at the referee's gate | None. Terms of use only | Single, always |
 | **2. Agent network** | A contracted, trained, disclosed intermediary | Upfront share of entry fee plus trailing, vesting with clawback | Agent Agreement | Three, and they are **functions, not depths** (§7.2) |
 
-**The door is graduation.** A member who reaches the referral cap is offered agent onboarding. Below the cap you are a customer with friends and you need no contract. Above it you are running a distribution business and you will be contracted, trained, disclosed and supervised as one.
+**The two rings are separate populations, not two rungs of one ladder** (Abdur, 2026-08-13). An agent is a registered, contracted individual and is designed elsewhere. **A member is a customer who told a friend.** There is no automatic promotion from one to the other and no referral count that triggers one; §6.2 keeps only a reserved right to require a proper footing where someone is plainly running a distribution business.
 
-**The line that carries the whole architecture: a bounty is a thank-you and needs no contract. An annuity is an income and needs one.**
+**The line that carries the architecture: a bounty is a thank-you and needs no contract. An annuity is an income and needs one.** The member reward is a single payment per referral, forever. Recurring income lives behind a contract, on the other side of the wall.
 
 That is not a stylistic preference. It is the direct lesson of the sharpest regulatory precedent available, in §7.1.
 
@@ -117,11 +119,13 @@ Reason: any window in which attribution can still be changed is a window in whic
 
 ## 4. The reward
 
-> **A third of the fee your friend paid in their first six months, split between you, in gold.**
+> **30% of the entry fee your friend paid in their first six months, split between you, credited as gold.**
 
-Formally: the reward pool is **one third of the entry fee the referee paid over the six contributions of their qualifying run**, split equally between referrer and referee, credited **thirty days after the gate resolves** provided no contribution in the run has been reversed.
+Formally: the reward pool is **30% of the entry fee the referee actually paid over the six contributions of their qualifying run**, on whatever they contributed with **no counting cap**, split equally between referrer and referee, **credited in grams** to both accounts **thirty days after the gate resolves**, provided no contribution in the run has been reversed.
 
-**Each qualifying month counts up to the USD 75 target and no further.** A referee contributing USD 500 a month generates the same reward as one contributing USD 75. §4.4 explains why.
+At a 5% entry fee that is **1.5% of the referee's six-month contributions in total, 0.75% to each side.**
+
+> ⚠ **30% is a placeholder and is marked as one throughout.** It is set here so the mechanism can be reasoned about and worked through; **the number is locked after the revenue model** (Phase 4), alongside the agent commission rate and the acquisition-budget ceiling in §8.3. Everything in this document holds at any percentage. Nothing in it depends on 30 specifically.
 
 > ⚠ **On wording, and it is a compliance point rather than a style one.** An earlier draft said *"one month's entry fee back, each"*, which is the same arithmetic and a misleading sentence. It sounds like a month of saving returned. It is 5% of one contribution, and 0.83% of what the referee actually handed over. **VARA Marketing Regulation I.C.2.l(i) prohibits incentives framed so as to divert focus from proper consideration**, and an incentive described so that it sounds several times larger than it is does exactly that. Describe it as a share of a fee, never as a share of savings.
 
@@ -140,11 +144,13 @@ Formally: the reward pool is **one third of the entry fee the referee paid over 
 
 **Note the last row.** There is no VARA advantage to paying in metal. The reasons to prefer grams are economic and product reasons, not regulatory ones, and the draft should not claim otherwise.
 
-**Build consequence, and the launch answer is not the steady-state answer.** A gram credit is a title transfer of Aurumix's own metal, which is Gold Rewards machinery, and decision 41 sequences Gold Rewards to ship with the card because it is funded by interchange that does not yet exist. Building that rail at launch purely for a reward that cannot be paid before month 13 is the worst build-cost-to-value trade in the design.
+🔴 **Build consequence, and it is decided rather than deferred (Abdur, 2026-08-13): the reward is credited in grams from launch.**
 
-> **So: at launch the reward is credited to the account as a fee credit, and it converts to a gram credit when Gold Rewards ships.** The credit sits on the account and applies against the next contribution whenever that happens, so it does not expire on a referrer who is between payments. Nothing is pulled forward into the September build.
+A gram credit is a title transfer of Aurumix's own metal, which is Gold Rewards machinery, and decision 41 sequences Gold Rewards to ship with the card because it is funded by interchange that does not yet exist. **The referral reward is funded by the entry fee, which exists on day one, so it does not wait for interchange. It does need the rail.**
 
-An earlier draft rejected the credit form on the ground that a discount is worthless to a referrer who has stopped contributing. That is true of a *discount at the moment of purchase* and false of a *credit that sits on the account*, and the distinction was missed. **The credit form is strictly better at launch: no new rail, and §12.4 records that a rebate against a customer's own fees is structurally further from a taxable supply of services than a payment is.**
+> **So the gram-credit rail moves into the September build.** It is a smaller job than Gold Rewards proper (no interchange reconciliation, no per-customer revenue cap, no monthly netting) but it is the same primitive: transfer Aurumix metal into a customer holding and record it against the title register. **Raise it with the client alongside the upgradeable-proxy and multi-tenancy notes**, which are the other two build consequences already owed.
+
+An intermediate version had the reward land as a **fee credit** at launch, converting to grams later. It is recorded and not taken. It was cheaper and it was worse: *"you both get gold"* is the product, a fee credit is an accounting entry, and a gold savings product that pays its referral reward in anything other than gold is explaining itself twice. ⚠ **One cost carries over from that version and is now accepted:** §12.4 records that a rebate against a customer's own fees is structurally further from a taxable supply of services than a payment in kind is, so **the gram form is the one that needs the VAT view** (§15, item 7).
 
 ### 4.2 Why both sides are paid
 
@@ -163,15 +169,33 @@ The reward lands **at the referee's month six**. That is the moment their score 
 
 So the referee's half is not only an acquisition payment. **It is a retention payment delivered at the thinnest month of the curve, and it costs nothing extra because it was already being spent.**
 
-### 4.4 Why the counting cap at USD 75
+### 4.4 No counting cap, and this is the better answer
 
-Without a cap the reward scales without limit with the referee's ticket, and the referrer's incentive becomes to push a friend to contribute more than they can afford. That is the mis-selling risk in its purest form, in a product sold to people whose defining characteristic is that they are not sophisticated.
+An earlier version counted each qualifying month only up to the USD 75 target, so a USD 500 referee generated the same reward as a USD 75 one. **That was wrong and the reason is worth stating, because it inverts the argument for the cap** (Abdur's call, 2026-08-13).
 
-Capping the counted contribution at the **stated target of USD 75** does three things: it keeps the reward scaling across the range that actually matters (USD 20 to USD 75, which is the whole persona), it removes the incentive to chase a large ticket, and it uses a number the product has already published rather than inventing one.
+**The cap broke the one property the ratio exists to deliver.** With no cap, the reward is a **constant share of the referred customer's lifetime value at every ticket size**, because both the reward and the value scale with the contribution:
 
-**What it does not do is make the reward flat.** A flat reward would pay the same for a USD 20 referee as for a USD 75 referee, and the USD 75 referee is genuinely worth nearly four times as much. Scaling to the target and stopping is the honest middle.
+| Referee ticket | Reward pool | Contribution-margin LTV | **Reward as % of LTV** |
+|---|---|---|---|
+| USD 20/month | USD 1.80 | ~USD 9.30 | **19.4%** |
+| USD 75/month | USD 6.75 | ~USD 34.80 | **19.4%** |
+| USD 500/month | USD 45.00 | ~USD 232 | **19.4%** |
 
-**On "behaviour, never amount" (decision 20).** That rule governs a customer's return on their own capital: no benefit's *rate* may scale with the customer's own money, because that is a return proportional to investment. **An acquisition payment to a third party for a service performed is not a return on anyone's capital**, and the agent commission the client has already agreed to is a share of the entry fee, which scales with amount by construction. The rule is not engaged. It is worth saying so explicitly, because it looks at first glance as though it is.
+Under the cap that last row paid **19.4% of the value of a USD 75 customer for a USD 500 customer, which is about 3% of what they are worth.** The cap systematically underpaid for the most valuable introductions the programme could produce. **Paying a constant fraction of value is what a commission is.** The cap was a conduct control wearing a pricing rule's clothes, and it was a bad pricing rule.
+
+**On "behaviour, never amount" (decision 20).** That rule governs a customer's return on their **own** capital: no benefit's *rate* may scale with the customer's own money, because that is a return proportional to investment. **An acquisition payment to a third party for a service performed is not a return on anyone's capital**, and agent commission as a share of the entry fee scales with amount by construction. The rule is not engaged. Worth saying explicitly, because at first glance it looks as though it is.
+
+> 🔴 **What the cap was accidentally defending, and it needs a different defence.** The SIP amount is **variable month to month by design**. So a referee can contribute heavily for exactly the six qualifying months and then collapse to the USD 20 floor.
+>
+> **Worked:** USD 2,000/month for six months is USD 12,000 of contributions, USD 600 of entry fee, and a **USD 180 reward pool, USD 90 a side**. Aurumix retains `12,000 × 0.85% = USD 102` of net margin on that run, so it is **USD 78 down on day one**. The customer then drops to USD 20/month, earning about **USD 0.17 a month**, so the gap takes 458 months to close. It never closes.
+>
+> This is the household-capture case of §5.2 with the brake removed. It is not fraud, nobody lies, and the money is real gold the customer wanted. **It is simply a way to buy a large gold position at an effective 3.5% entry fee instead of 5%, by splitting it over six months and having a friend enter a code.**
+
+**The defence is a reserved right, not a cap**, which is the same instrument the design already uses for round-tripping (rulebook §9.3: a reserved right, exercised on review, with a stated appeal path):
+
+> **Where a referee's average contribution in the six months after the gate falls below one third of their average during the qualifying run, the reward is placed under review before it is credited.** Nothing is deducted, the gold and the tier are untouched, and there is an appeal path.
+
+This bites the collapse pattern and nothing else. A genuine large saver who keeps saving is paid in full, immediately, which is the whole point of removing the cap. ⚠ **The one-third threshold and the six-month window cannot be calibrated without data.** Set conservatively, review with the round-trip thresholds, and note this pushes the credit date out for the flagged minority only.
 
 ---
 
@@ -181,17 +205,19 @@ Capping the counted contribution at the **stated target of USD 75** does three t
 
 ### 5.0 The withdrawn claim
 
-The first draft asserted an invariant: *the reward is always smaller than the gross margin the qualifying run generated, so the programme funds itself inside the six months.* It tested a reward of 1.67% of contributions against a "gross margin" of 2.15%.
+The first draft asserted an invariant: *the reward is always smaller than the gross margin the qualifying run generated, so the programme funds itself inside the six months.* It tested the reward against a "gross margin" of 2.15%.
 
-**That 2.15% is contribution less gold cost only. It has not yet paid for price-gap risk, the float cost of capital, or the payment rail**, which together are a further 1.15pp. Against the real Year 1 cost stack the comparison inverts:
+**That 2.15% is contribution less gold cost only. It has not yet paid for price-gap risk, the float cost of capital, or the payment rail**, which together are a further 1.15pp. Against the real cost stack the comparison inverts:
 
-| | Entry fee | Full cost base | **Net margin** | **Reward** (⅓ of fee) | Headroom |
+| | Entry fee | Full cost base | **Net margin** | **Reward** (30% of fee) | Headroom on the run |
 |---|---|---|---|---|---|
-| Year 1 | 5.00% | 4.15% | **0.85%** | **1.67%** | **−0.82pp** |
-| Year 3 | 4.00% | 2.76% | **1.24%** | **1.33%** | **−0.09pp** |
-| Year 10 | 3.00% | 1.71% | **1.29%** | **1.00%** | +0.29pp |
+| Year 1 | 5.00% | 4.15% | **0.85%** | **1.50%** | **−0.65pp** |
+| Year 3 | 4.00% | 2.76% | **1.24%** | **1.20%** | +0.04pp |
+| Year 10 | 3.00% | 1.71% | **1.29%** | **0.90%** | +0.39pp |
 
-**The reward is roughly double the Year 1 net margin on the run that generated it.** The invariant was false in two of three years, and every conclusion resting on it fell with it.
+**At Year 1 the reward is nearly double the net margin on the run that generated it.** The invariant was false, and every conclusion resting on it fell with it.
+
+⚠ **Note the Year 3 row: at 30% the reward and the margin are the same number to within 0.04pp.** That is not a designed property, it is a coincidence of two placeholders, and it means **30% is roughly the highest rate at which the qualifying run washes its own face from Year 3 onward.** Useful when the rate is locked against the revenue model.
 
 **The claim is withdrawn rather than repaired, because it should never have been made.** No acquisition programme in any industry recovers its cost inside the acquired customer's first six months. Customer acquisition is an investment recovered over a lifetime, and dressing it up as self-funding was an attempt to make a cost line look like a free lunch. What follows is the honest version, and the programme survives it.
 
@@ -203,22 +229,25 @@ Applying the Schmitt, Skiera and Van den Bulte (2011) findings for referred cust
 
 | Referee ticket | Net margin per month | Expected paying months | **Contribution-margin LTV** | Reward paid | **Reward as % of LTV** |
 |---|---|---|---|---|---|
-| USD 20/month | USD 0.20 | ~40 | **~USD 9.20** | USD 2.00 | **21.7%** |
-| USD 75/month | USD 0.75 | ~40 | **~USD 34.50** | USD 7.50 | **21.7%** |
+| USD 20/month | USD 0.20 | ~40 | **~USD 9.30** | USD 1.80 | **19.4%** |
+| USD 75/month | USD 0.75 | ~40 | **~USD 34.80** | USD 6.75 | **19.4%** |
+| USD 500/month | USD 5.00 | ~40 | **~USD 232** | USD 45.00 | **19.4%** |
 
-**The ratio is identical at every ticket size**, because both the reward and the lifetime value scale with the contribution. That is the property the ratio was actually chosen for, and it is a real one:
+**The ratio is identical at every ticket size**, because both the reward and the lifetime value scale with the contribution. **This holds all the way up only because §4.4 removed the counting cap**; with the cap the third row paid 3% of value instead of 19.4%.
 
-> **The total acquisition payment is a constant 21.7% of the referred customer's contribution-margin lifetime value, whatever they contribute.**
+> **The total acquisition payment is a constant 19.4% of the referred customer's contribution-margin lifetime value, whatever they contribute.**
 
 Roughly a fifth of lifetime value spent on acquisition is an ordinary, healthy ratio, and it excludes every downstream stream: card interchange, credit fees, and the will and family plan are all additional and none is counted here.
 
 **Payback, and an earlier version of this line was too pessimistic.** It said payback took ten months *after the gate*, which silently discarded the margin already earned during the qualifying run. That margin is real money, already collected, and it counts.
 
-Cumulative net margin at month `N` is `1.00% × C × N`. The reward is `10% × C`, paid once at the gate. Setting them equal:
+Cumulative net margin at month `N` is `1.00% × C × N`. The reward is `9% × C` (1.5% of six contributions), paid once at the gate. Setting them equal:
 
-> **The referred customer is cumulatively cash-positive at month 10, which is about four months after the reward lands.** Not month 16.
+> **The referred customer is cumulatively cash-positive at month 9, which is about three months after the reward lands.** Not month 16.
 
-At the target ticket: net margin USD 0.75 a month, so month 6 sits at USD 4.50 collected against USD 7.50 paid, a gap of USD 3.00, and that gap closes by month 10. **About 79% of savers are still contributing at month 13**, so the large majority of referred customers repay their own acquisition comfortably, before any of the Schmitt uplift is counted.
+At the target ticket: net margin USD 0.75 a month, so month 6 sits at USD 4.50 collected against USD 6.75 paid, a gap of USD 2.25, and that gap closes by month 9. **About 79% of savers are still contributing at month 13**, so the large majority of referred customers repay their own acquisition comfortably, before any of the Schmitt uplift is counted.
+
+⚠ **On the 0.85% net-margin figure instead of 1.00%, payback is month 11 rather than month 9.** The two figures come from different derivations in `_draft_allocation-and-float.md` and have never been reconciled. **Quote the range, not a point**, until the rail cost settles which is right.
 
 > 🔴 **The condition that breaks all of this, and it is not hypothetical.** Every figure above uses the ~1.00% net contribution margin from `_draft_allocation-and-float.md`. **`_parked_collection-economics-and-minimum-ticket.md` records flatly that this number is wrong: it is −0.67% on a USD 75 contribution at AED 5 per debit.** Not at the USD 20 floor. At the target ticket, which is the case worked through above.
 >
@@ -230,15 +259,15 @@ To farm one reward with a second identity you must put six months of your own mo
 
 | Referee ticket | Fee paid over the run | Whole pool recovered | **Net to a self-referrer** |
 |---|---|---|---|
-| USD 20/month (the floor) | USD 6.00 | USD 2.00 | **−USD 4.00** |
-| USD 75/month (the target) | USD 22.50 | USD 7.50 | **−USD 15.00** |
-| USD 200/month (counted at 75) | USD 60.00 | USD 7.50 | **−USD 52.50** |
+| USD 20/month (the floor) | USD 6.00 | USD 1.80 | **−USD 4.20** |
+| USD 75/month (the target) | USD 22.50 | USD 6.75 | **−USD 15.75** |
+| USD 500/month | USD 150.00 | USD 45.00 | **−USD 105.00** |
 
-**You pay 5% to receive 1.67%, and you wait six months to do it.**
+**You pay 5% to receive 1.5%, and you wait six months to do it.** The loss now scales with the ticket rather than flattening, because there is no counting cap, so **the bigger the farm the bigger the loss.**
 
 > ⚠ **The exact limit of that proof, stated because the first draft overstated it.** It holds against an attacker with **no independent demand for gold**. It does not hold against a household that was going to buy anyway.
 >
-> A husband already saving refers his wife, who intended to start regardless. Both halves land inside one budget, so the household recovers the **whole** pool: on a USD 75 run, USD 7.50 back against USD 22.50 of fee, an **effective entry fee of 3.33% instead of 5.00%** for that account's first six months.
+> A husband already saving refers his wife, who intended to start regardless. Both halves land inside one budget, so the household recovers the **whole** pool: on a USD 75 run, USD 6.75 back against USD 22.50 of fee, an **effective entry fee of 3.50% instead of 5.00%** for that account's first six months. **The discount is 30% of the fee at any ticket size**, which is the same proportion whether the household puts in USD 120 or USD 120,000. §4.4's reserved right is what bounds the absolute number.
 >
 > **This is not leakage and it is not an exploit. It is the programme working.** She was not a customer and now she is, separately KYC'd, separately funded, with her own gate and her own lifetime value. Intra-household introductions will be a large share of volume in an NRI and GCC savings product and they are the volume we want. Edge case 13 rules it valid deliberately.
 >
@@ -263,22 +292,33 @@ Thirty days after Meera's gate resolves and no contribution in her run has been 
 
 - Contributions over the run: `75 + 75 + 50 + 75 + 75 + 75 = USD 425`
 - Fee she paid: `USD 425 × 5% = USD 21.25`
-- Reward pool: `USD 21.25 ÷ 3 = USD 7.08`
-- Each side: `USD 3.54`, which at USD 109.31/g is **0.0324 g each**
+- Reward pool: `USD 21.25 × 30% = USD 6.38`
+- Each side: `USD 3.19`, which at USD 109.31/g is **0.0292 g each, credited as gold**
 
-Meera's score started at Silver 25 on the day her gate resolved and her entry-fee discount switched on then. The reward lands a month later. Neither party gets a score point, a badge, a tier, or a status.
+Meera's score started at Silver 25 on the day her gate resolved and her entry-fee discount switched on then. The gold lands a month later. Neither party gets a score point, a badge, a tier, or a status.
 
-**What Aurumix has:** USD 425 collected, USD 21.25 of disclosed fee, and USD 7.08 paid out. On the full Year 1 cost base that run generated `425 × 0.85% = USD 3.61` of net margin, so **the acquisition is USD 3.47 underwater when the reward lands and closes about five months later**, on the analysis in §5.1 and subject to the rail-cost warning in it.
+**What Aurumix has:** USD 425 collected, USD 21.25 of disclosed fee, and USD 6.38 paid out. On the full Year 1 cost base that run generated `425 × 0.85% = USD 3.61` of net margin, so **the acquisition is USD 2.77 underwater when the gold is credited and closes about four months later**, on the analysis in §5.1 and subject to the rail-cost warning in it.
 
 ### 5.4 What this means for the size of the reward
 
 Two things are now true at once and they pull against each other.
 
-**The reward is not large.** USD 3.54 a side on a target-ticket referee, and USD 1.00 a side at the USD 20 floor, seven months after the introduction. Against Mashreq NEO's AED 100 on a single AED 3,000 deposit, it is roughly an eighth of the money for six times the work. Anyone assessing this as payment for effort will find it derisory, and they will be right.
+**At the persona's ticket the reward is small.** USD 3.19 a side on a target-ticket referee, USD 0.90 a side at the USD 20 floor, seven months after the introduction. Against Mashreq NEO's AED 100 on a single AED 3,000 deposit, that is roughly a tenth of the money for six times the work. Anyone assessing it as payment for effort will find it derisory, and they will be right.
 
-**And it cannot be much larger.** It is already 21.7% of contribution-margin lifetime value. Doubling it to make it feel like money takes acquisition past 43% of LTV on a product whose Year 1 net margin may be negative.
+**But removing the counting cap changed the shape of that problem, and this is the part worth noticing.** The reward is now unbounded above:
 
-**So the honest positioning is that this is a thank-you, not an income.** It is sized to be worth the tap that shares the code, not the hour that sells the product. The hour that sells the product is the agent network's job, it is paid properly, and it comes with a contract. That is the same line as §2 and it is the reason the architecture has two rings rather than one.
+| Referee ticket | Referrer receives | In grams |
+|---|---|---|
+| USD 20/month | USD 0.90 | 0.008 g |
+| USD 75/month | USD 3.19 | 0.029 g |
+| USD 500/month | USD 22.50 | 0.206 g |
+| USD 2,000/month | USD 90.00 | 0.823 g |
+
+So the honest statement is no longer *"this is too small to matter."* It is: **the reward is negligible at the floor, modest at the target, and genuinely material for a serious saver.** A member who introduces three USD 500/month savers in a year earns USD 67.50 in gold. That is not an income, and it is no longer nothing.
+
+**And it still cannot be raised much as a rate.** It is already 19.4% of contribution-margin lifetime value, and §5.0 shows 30% is roughly where the qualifying run stops washing its own face from Year 3. The lever that made the reward meaningful was **removing the cap, not raising the rate**, which is the more interesting result: the money was always there, the cap was refusing to pay it to the customers who had earned it.
+
+**The positioning that follows: this is a thank-you that scales with what you actually brought.** It is worth the tap that shares the code. It is not payment for the hour that sells the product, and it is not meant to be.
 
 > 🔴 **The open decision this creates, and it is Abdur's, not ours.** Three coherent positions:
 >
@@ -296,43 +336,47 @@ Two things are now true at once and they pull against each other.
 
 ## 6. The cap, and the door it opens
 
-> **The reward is capped at five successful referrals per verified identity per rolling twelve months. Attribution is not capped at all.**
+> **There is no cap. A member may refer as many people as they can, and every successful referral is paid.**
 
-Those are two different things and separating them is the whole of this section.
+Set that way deliberately (Abdur, 2026-08-13). An earlier version capped payment at five per rolling year and forced anyone above it toward an agent contract. **The cap is removed and the graduation door with it.**
 
-### 6.1 What the cap is actually for
+### 6.1 Why uncapped is defensible, and the best support is VARA's own document
 
-Not fraud. §5.2 already made fraud unprofitable for anyone without independent demand. Not cost. Five referrals a year at USD 3.54 is under USD 18, which is not a number anyone needs protecting from.
+The instinct behind a cap was that an uncapped reward becomes an income, and an income earned by introducing people to a financial product without a contract is close to the fact pattern in §7.1 that a regulator has acted on. That instinct is not wrong. **But it was answering a risk that single level already answers, and it was paying a real price to do it.**
 
-**The cap exists to fix the shape.** A reward that is uncapped becomes an income, an income becomes a job, and a job introducing people to a financial product without a contract, without training, without disclosure and without supervision is the exact fact pattern in §7.1 that a regulator has already acted on.
+**The strongest evidence is VARA's own worked example.** The Guidance case study (Part II, Section F) describes a licensed VASP that *"allows existing users to share referral codes with any person, **with no maximum number of referrals**"*, and pays the referrer out of what those users generate. VARA does not call it unlawful, a pyramid, or an unlicensed activity. **Its only stated consequence is prior approval and compliance with conditions.** An uncapped, code-based, revenue-linked referral programme is expressly contemplated by the regulator we are applying to.
 
-### 6.2 Why attribution must stay uncapped, and the first draft got this wrong
+**What the cap was costing.** It went blind at exactly the wrong moment. Consider who actually distributes a savings product in this community: a mosque or temple committee member, a WhatsApp group admin, an employer with sixty Indian staff in Dubai. Under a cap, referrals six through two hundred paid nothing, so the design switched off the only people who could move volume cheaply and pushed all of it into the expensive contracted channel.
 
-A capped reward with capped attribution goes blind at exactly the wrong moment. Consider who actually distributes a savings product in this community: a mosque or temple committee member, a WhatsApp group admin, an employer with sixty Indian staff in Dubai. **Under a single combined cap, referrals six through two hundred pay nothing and are not even recorded.** The design would be unable to see the one person in the book who can genuinely move volume.
+**What still carries the anti-MLM defence, and it is now carrying it alone: single level** (§7). Every reclassification case retrieved (Forsage, BitConnect, OneCoin, Karatbars) turned on **downline compensation**, not on referral volume. Nobody has been reclassified for referring too many people at one level. **The count was never the risky dimension. The depth was.**
 
-> **So: every introduction is attributed and recorded, however many there are. Only the first five in a rolling year are paid.**
+### 6.2 What replaces the cap: two reserved rights, no automatic cutoff
 
-Reach above the cap is then not leakage. It is **the signal that identifies an agent candidate**, which is the input §6.4 needs and which the first draft had no way of generating.
+Neither is a limit and neither fires on a counter. Both are the same instrument as the round-trip flag (rulebook §9.3: a reserved right, exercised on review, with a stated appeal path).
 
-**And the honest statement about motivation, because an earlier draft contained both halves of a contradiction.** It argued in §4.2 that the reward shape drives behaviour, and then argued here that people above the cap will keep referring for nothing "because the reward was never the reason". Both cannot be true. The resolution: **the reward is a thank-you that lowers the friction on an introduction someone was already inclined to make. It is not payment for effort and it will not manufacture an introduction that would not otherwise have happened** (§5.4). Someone referring their thirtieth person is doing it for reasons the reward never supplied, and that person should be in a contract, not in a loyalty programme.
+1. **The contribution-collapse review** (§4.4). Where a referee's contribution falls away immediately after the gate, the reward is reviewed before it is credited. This bounds the split-a-large-purchase pattern that removing the counting cap opened.
+2. **The volume review.** Aurumix reserves the right, where one identity is introducing at a volume that is plainly a distribution business rather than a personal network, to require that the relationship be put on a proper footing before further rewards are paid. **No threshold is published**, because a published threshold is a target and because the honest trigger is a pattern rather than a number.
 
-### 6.3 Per identity, not per account
+**Neither right is exercised by an algorithm and neither is surfaced to the customer as a counter.** That was the other lesson of the removed version: an app that automatically offers a contract at a fixed count creates an unbounded operational liability triggered by customer behaviour rather than by our capacity to supervise.
 
-The cap attaches to the **verified identity**, exactly as the score does (SIP rulebook §9.1, item 7: *the score attaches to the verified identity, not the account*). A customer with a personal account, a family sub-account and a second account gets five between them, not fifteen. A joint account counts against **both** holders' caps; a corporate account is ineligible to refer (§10, case 26).
+**And the honest statement about motivation, because an earlier draft contained both halves of a contradiction.** It argued in §4.2 that the reward shape drives behaviour, and then argued that people above the cap would keep referring for nothing. Both cannot be true. The resolution: **the reward lowers the friction on an introduction someone was already inclined to make. It does not manufacture one.** With the cap gone, it now also scales with what the introduction was worth (§5.4), which is the first version of this mechanism where the reward and the value point in the same direction all the way up.
+
+### 6.3 Rewards accrue to the verified identity, not the account
+
+Exactly as the score does (SIP rulebook §9.1, item 7: *the score attaches to the verified identity, not the account*). With no cap this no longer rations anything, but it still matters: it is what makes the volume review in §6.2 see one person rather than four accounts, and it is what keeps a single individual from appearing as several referrers in the book.
+
+A joint account's referrals attribute to **both** holders; a corporate or trust account may not refer (§10, case 26).
 
 **The household check is deliberately soft.** We match on identity, not on address, because the NRI persona routinely shares an address with several unrelated working adults. Matching on address would reject the referral pattern the product most wants.
 
-### 6.4 Graduation is an invitation Aurumix extends, not an entitlement the counter triggers
+### 6.4 What is still true with the cap gone
 
-**This is a correction to the first draft, and the arithmetic behind it is unpleasant.** That draft had the app offer agent onboarding automatically at the fifth referral. Price that. Five referrals at the target ticket generate on the order of USD 15 of net margin over the qualifying runs. Against it, Aurumix must onboard, run suitability, contract, train, disclose and then **supervise on a continuing basis**, because §7.3 makes the supervision fee conditional on supervision actually performed. That is plausibly USD 500 to 2,000 per agent per year.
+Two things the removed cap was doing that other rules now do, so nothing was lost with it:
 
-At fifty thousand customers with 3% reaching the cap, an automatic offer means **1,500 agent onboardings a year, triggered by customer behaviour rather than by Aurumix's capacity to supervise.** That is an unbounded operational liability with a customer-facing promise attached, and the escape hatch of declining people is worse than the problem: an app that offers a contract Aurumix intends to refuse at scale is a conduct problem on a marketing surface VARA will read.
+- **Bounding the loss on a gamed referral.** Previously the cap bounded it at five a year. It is now bounded by §5.2's arithmetic instead, which holds at any volume: a farmer pays 5% to recover 1.5%, so more attempts means more loss, not more profit. **The cap was never the thing making farming unprofitable.**
+- **Identifying distribution businesses.** Previously the counter did it. The volume review in §6.2 does it now, on a pattern rather than a number, and without publishing a target.
 
-> **So: reaching the cap surfaces nothing to the customer. It flags an agent candidate internally. Aurumix approaches whom it chooses, when it has capacity to supervise them.**
-
-The threshold that matters is supervisory capacity, not a referral count. The referral count is only the search light.
-
-**Recorded: five is the parameter most likely to need tuning**, and it cannot be calibrated without data. Set it here, review after twelve months of attribution data, and expect the answer in the tail of the distribution rather than its mean. **Uncapped attribution (§6.2) is what makes that review possible at all.**
+⚠ **Recorded, not solved:** with no cap and no automatic graduation, a person can build a substantial unregistered referral income over time and there is no point at which the design forces the conversation. **The volume review is a right, and a right that is never exercised is a rule that does not exist.** It needs an owner and a review cadence, which is an operations question rather than a mechanism question, and it belongs in the compliance monitoring plan.
 
 ### 6.4 What is deliberately not in the programme
 
@@ -509,7 +553,7 @@ Every one of these was found by walking the mechanism rather than by imagining i
 | 11 | **The referee is referred by two people** | **First code entered at account creation wins.** No split, no dispute path | §3.3. Attribution is immutable |
 | 12 | **The referee enters no code but names a friend later** | **No reward, not appealable** | §3.3, with the trade-off stated |
 | 13 | **Both parties are the same household, different real people, independently funded** | **Valid** | §9, funding independence |
-| 14 | **The referrer hits the cap mid-run on a referee already at 3 of 6** | **The in-flight referral pays.** The cap counts referrals **completed** in the window | Otherwise the customer is punished for the referee's timing, which they do not control |
+| 14 | ~~**The referrer hits the cap mid-run**~~ | 🔄 **Moot. There is no cap** (§6) | The general principle survives and applies to any future rule change: a referral already attributed completes on the terms in force when it was attributed (case 27) |
 | 15 | **A referred customer later becomes an agent** | **Fine.** Their own historic referral reward stands; they earn no further member rewards from the date of contracting | §9 rule 2 |
 | 16 | **The gold price moves between the gate and the credit** | The pool is fixed in **USD** at the gate. If it is credited in grams, it converts at **the next published fix after the thirty-day window closes** | Decision 34's settled principle applies: the price is always the next fix nobody has seen yet, because anywhere either side can pick between two known prices, that side holds a free option. ⚠ **The AM-or-PM resolution is NOT settled.** handoff §7 records the pricing rule as inconsistent across three drafts with *"next published fix, AM or PM, whichever comes first"* as **our recommendation, not a decision.** An earlier draft of this file adopted it as though it were a rule. It is flagged, not assumed |
 | 17 | **The referee dies before the gate** | **No reward.** The Digital Will governs the gold; the referral simply does not complete | Recorded because it will happen and support needs an answer |
@@ -584,9 +628,9 @@ Layered the same way as the SIP rulebook's §9: make it unprofitable first, dete
 | 5 | **Compressing the run**, prepaying six months at once | A fast payout | **One counted period per calendar month.** No revival, no arrears, no backdating | **Structural** |
 | 6 | **Referring cyclers** who pay six months then withdraw | Rewards on customers worth nothing | **Priced, not prevented.** About **USD 3.67 of loss per gamed referral**, bounded by the cap at roughly USD 18 per identity per year. Judged not worth a mechanism, and disclosed rather than defended (§10.2) | **Accepted, bounded** |
 | 7 | **Recruiting a downline** | Second-tier earnings | **They do not exist** (§7). There is nothing to build | **Structural** |
-| 8 | **Big-ticket chasing**, pressuring a friend to over-contribute | A larger reward | **Counting capped at the USD 75 target** (§4.4) | **Structural** |
+| 8 | 🔴 **Inflate the referee's contributions for exactly the six qualifying months, then collapse to the floor** | A large reward on a customer with almost no remaining value. **USD 90 a side on a USD 2,000/month run, against USD 102 of margin, then USD 0.17 a month forever** | 🔄 **The counting cap that blocked this was removed (§4.4).** Replaced by the **contribution-collapse review**: where average contribution in the six months after the gate falls below a third of the run average, the reward is reviewed before crediting. ⚠ **A reserved right, not arithmetic. This is the weakest defence in the register** | **Rule, uncalibrated** |
 | 9 | **Agent double-dip**, routing a sale through a personal customer account | Commission and bounty on one acquisition | **One acquisition, one payment** (§9). Agents excluded from the member programme | **Rule** |
-| 10 | **Cap evasion** via a spouse's or child's account | More than five paid referrals a year | Cap attaches to the **verified identity**, not the account (§6.3). The yield on success is under USD 18 a year and five genuinely delivered customers, so the attack is barely distinguishable from the intended behaviour. **Attribution is uncapped regardless (§6.2), so the pattern is visible even when the payment is not** | **Rule** |
+| 10 | ~~**Cap evasion** via a spouse's or child's account~~ | ~~More than five paid referrals a year~~ | 🔄 **Moot. There is no cap to evade** (§6). Rewards still accrue to the verified identity rather than the account, so the volume review sees one person rather than four | **Removed** |
 | 11 | **Household farming**, one person opening accounts for relatives | Rewards on accounts they fund | **Own-name bank funding** is already a hard product rule (§9) | **Rule** |
 | 12 | **Rebating**, the referrer privately hands their half to the referee to close the sale | A larger effective inducement | **Not defended, and largely defused by design.** Rebating exists because the referee gets nothing; paying the referee half removes most of the pressure. Amounts are trivial and policing is not practical | **Accepted** |
 | 13 | **Volume abuse patterns**: device sharing, IP velocity, PII collisions | Industrial farming | Standard controls as a second line: device fingerprinting, IP and velocity checks, PII matching against the whole book, manual review above a threshold. **Second line, not first** | **Detection** |
@@ -734,8 +778,9 @@ Four departures and three findings. The departures are choices they can overrule
 |---|---|---|---|
 | 1 | 🔴 **AANI Request to Pay per-request cost.** If net margin on a USD 20 contribution is negative, the reward on a USD 20 referee never repays | PSP conversation | The **sizing** of the whole programme (§5.4) |
 | 2 | 🔴 **VARA compliance confirmation** under I.C.2.l(iii), and what conditions VARA has imposed on comparable programmes | Counsel, then VARA | **Launch** |
-| 3 | 🔴 **The size of the reward: ship as designed, size it as real acquisition spend, or attribution-only at launch** | **Abdur** | Nothing technically, but it decides whether the programme is a thank-you or a channel. §5.4 sets out the three positions and recommends the first |
-| 3b | The one-third ratio and the five-per-year cap, given that decision | Us, reviewable | Nothing. Both are set here and reviewed on twelve months of attribution data |
+| 3 | ✅ **The shape is settled (Abdur, 2026-08-13): 30% of the fee, no counting cap, no referral cap, paid in grams, half each.** | Settled | — |
+| 3b | 🔴 **The 30% itself is a placeholder and locks against the revenue model**, with the agent rate and the §8.3 acquisition ceiling. §5.0 notes 30% is roughly the ceiling at which the qualifying run still washes its own face from Year 3 | Phase 4 | Nothing. The mechanism holds at any rate |
+| 3c | **The contribution-collapse review thresholds** (§4.4): a third of the run average, over six months. Uncalibratable without data | Us, review with the round-trip thresholds | Nothing, but it is the only defence on register item 8 |
 | 4 | Whether the gram-credit rail is built at launch or the reward ships as a discount | Build, September | §4.1. Raise with the proxy and multi-tenancy notes |
 | 5 | Whether a reward may land on a compliance-blocked account | Counsel batch | Nothing. Joins the existing Gold Rewards question, same answer serves both |
 | 6 | Whether a contingent referral reward survives the referrer's death | Counsel | Nothing. Edge case 18 |
