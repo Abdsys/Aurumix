@@ -10,7 +10,7 @@
 
 | # | Diagram Name | Type | Direction | Nodes | Placement | What it answers |
 |---|---|---|---|---|---|---|
-| 0 | How a Referral Works | Flowchart | LR | 5 | Inline | What actually happens, start to finish |
+| 0 | How a Referral Works | Flowchart | LR | 4 | Inline | What actually happens, start to finish |
 | 1 | What Counts as a Referral | Flowchart | LR | 6 | Inline | When do we pay, and what earns nothing |
 | 2 | Where the Money Comes From | Flowchart | LR | 5 | Inline | Who funds it, and does it cost us anything new |
 | 3 | One Level, and It Stops There | Flowchart | LR | 5 | Inline | Why this is not a network scheme |
@@ -36,9 +36,9 @@
 
 You share your code. Your friend opens their own account, in their own name, funded from their own bank account. Then they save. Six months in a row, at whatever amount suits them, minimum twenty dollars. When they finish that sixth month, they have earned the same Confirmed SIP that opens their own score, and at that moment the referral has succeeded.
 
-Thirty days later, gold lands in both accounts. Not points, not a badge, not a discount voucher. Gold, in their holding and in yours.
+That same day, gold lands in both accounts. Not points, not a badge, not a discount voucher. Gold, in their holding and in yours. There is no waiting period on top, and nothing is held back.
 
-Two things to draw out. First, the shortest possible path from sharing a code to being paid is seven months. That is not a delay we added, it is the product: six months is what it takes to become a real customer here, and we pay for real customers.
+Two things to draw out. First, the shortest possible path from sharing a code to being paid is six months. That is not a delay we added, it is the product: six months is what it takes to become a real customer here, and we pay for real customers.
 
 Second, notice who the payment is not from. It is not from a pool, it is not from other savers, and it is not from profit. Map 2 shows exactly where it comes from."
 -->
@@ -59,19 +59,17 @@ Second, notice who the payment is not from. It is not from a pool, it is not fro
 graph LR
     A["You share your code"] --> B["Friend opens own account"]
     B --> C["Six months in a row"]
-    C --> D["Thirty day settling period"]
-    D --> E["Gold to both of you"]
+    C --> D["Gold to both of you"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
 
 ⚠ **The code is attached when the account is created and never moves.** No entering it later, no transferring a referral, no dispute path. Any window in which attribution can still change is a window in which it gets sold.
 
-⚠ **The thirty days is not a test of your friend.** It exists because a prefunded balance is refundable, so without it someone could prefund six months, collect, then ask for the money back. Any reversal in the run voids the reward.
+✅ **There is no waiting period after the six months.** The gold lands the day the gate resolves, at the same moment your friend's own score opens at Silver and their entry-fee discount switches on. **One event, everything at once.**
 
 ⚠ **There is no limit on how many people you can introduce.** This is what VARA's own guidance describes: referral codes shared *"with any person, with no maximum number of referrals"*.
 
