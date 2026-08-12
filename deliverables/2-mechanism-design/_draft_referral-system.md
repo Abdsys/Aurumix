@@ -212,7 +212,13 @@ Applying the Schmitt, Skiera and Van den Bulte (2011) findings for referred cust
 
 Roughly a fifth of lifetime value spent on acquisition is an ordinary, healthy ratio, and it excludes every downstream stream: card interchange, credit fees, and the will and family plan are all additional and none is counted here.
 
-**Payback:** the reward equals 10% of one month's contribution; net margin is 1.00% of a contribution per month. **Payback is 10 months of continued contribution after the gate**, so about **month 16**, improving to roughly month 15 once the referred-customer uplift is counted. About 79% of savers are still contributing at month 13.
+**Payback, and an earlier version of this line was too pessimistic.** It said payback took ten months *after the gate*, which silently discarded the margin already earned during the qualifying run. That margin is real money, already collected, and it counts.
+
+Cumulative net margin at month `N` is `1.00% × C × N`. The reward is `10% × C`, paid once at the gate. Setting them equal:
+
+> **The referred customer is cumulatively cash-positive at month 10, which is about four months after the reward lands.** Not month 16.
+
+At the target ticket: net margin USD 0.75 a month, so month 6 sits at USD 4.50 collected against USD 7.50 paid, a gap of USD 3.00, and that gap closes by month 10. **About 79% of savers are still contributing at month 13**, so the large majority of referred customers repay their own acquisition comfortably, before any of the Schmitt uplift is counted.
 
 > 🔴 **The condition that breaks all of this, and it is not hypothetical.** Every figure above uses the ~1.00% net contribution margin from `_draft_allocation-and-float.md`. **`_parked_collection-economics-and-minimum-ticket.md` records flatly that this number is wrong: it is −0.67% on a USD 75 contribution at AED 5 per debit.** Not at the USD 20 floor. At the target ticket, which is the case worked through above.
 >
@@ -262,7 +268,7 @@ Thirty days after Meera's gate resolves and no contribution in her run has been 
 
 Meera's score started at Silver 25 on the day her gate resolved and her entry-fee discount switched on then. The reward lands a month later. Neither party gets a score point, a badge, a tier, or a status.
 
-**What Aurumix has:** USD 425 collected, USD 21.25 of disclosed fee, and USD 7.08 paid out. On the full Year 1 cost base that run generated `425 × 0.85% = USD 3.61` of net margin, so **the acquisition is USD 3.47 underwater at the gate and repays by roughly month 16**, on the analysis in §5.1 and subject to the rail-cost warning in it.
+**What Aurumix has:** USD 425 collected, USD 21.25 of disclosed fee, and USD 7.08 paid out. On the full Year 1 cost base that run generated `425 × 0.85% = USD 3.61` of net margin, so **the acquisition is USD 3.47 underwater when the reward lands and closes about five months later**, on the analysis in §5.1 and subject to the rail-cost warning in it.
 
 ### 5.4 What this means for the size of the reward
 
