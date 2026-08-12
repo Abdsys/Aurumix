@@ -303,14 +303,14 @@ Meera's score started at Silver 25 on the day her gate resolved and her entry-fe
 
 Two things are now true at once and they pull against each other.
 
-**At the persona's ticket the reward is small.** USD 3.19 a side on a target-ticket referee, USD 0.90 a side at the USD 20 floor, seven months after the introduction. Against Mashreq NEO's AED 100 on a single AED 3,000 deposit, that is roughly a tenth of the money for six times the work. Anyone assessing it as payment for effort will find it derisory, and they will be right.
+**At the persona's ticket the reward is small.** USD 3.38 a side on a flat USD 75 referee, USD 0.90 a side at the USD 20 floor, seven months after the introduction. Against Mashreq NEO's AED 100 on a single AED 3,000 deposit, that is roughly a tenth of the money for six times the work. Anyone assessing it as payment for effort will find it derisory, and they will be right.
 
 **But removing the counting cap changed the shape of that problem, and this is the part worth noticing.** The reward is now unbounded above:
 
 | Referee ticket | Referrer receives | In grams |
 |---|---|---|
 | USD 20/month | USD 0.90 | 0.008 g |
-| USD 75/month | USD 3.19 | 0.029 g |
+| USD 75/month | USD 3.38 | 0.031 g |
 | USD 500/month | USD 22.50 | 0.206 g |
 | USD 2,000/month | USD 90.00 | 0.823 g |
 
