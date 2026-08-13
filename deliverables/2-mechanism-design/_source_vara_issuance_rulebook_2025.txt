@@ -1,0 +1,1548 @@
+araconnect@vara.aevصندوق بريد9292 دبي، الإمارات العربية المتحدة - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority
+Virtual Asset Issuance Rulebook 
+19 May 2025
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+2 
+Contents 
+INTRODUCTION .................................................................................................................................................................... 5 
+I. PART I – LICENCE REQUIREMENTS ............................................................................................................. 7 
+A. General requirement ............................................................................................................................................................... 7 
+B. Prohibited Virtual Assets ..................................................................................................................................................... 8 
+C. VA issuance categories and prior requirements ...................................................................................................... 8 
+D. Category 1 VA Issuance ........................................................................................................................................................ 9 
+E. Category 2 VA issuance ..................................................................................................................................................... 11 
+F. Exempt VAs .............................................................................................................................................................................. 11 
+II. PART II – GENERAL RULES ............................................................................................................................12 
+III. PART III – WHITEPAPERS AND PUBLIC DISCLOSURES ...................................................................13 
+A. Application ................................................................................................................................................................................. 13 
+B. Whitepapers ............................................................................................................................................................................. 13 
+C. Risk Disclosure Statements ............................................................................................................................................. 14 
+IV. PART IV – SUPERVISION, EXAMINATION AND ENFORCEMENT ................................................15 
+SCHEDULE 1 – VA WHITEPAPER REQUIREMENTS ............................................................................................16 
+A. Application ................................................................................................................................................................................. 16 
+B. Whitepaper Requirements ................................................................................................................................................ 16 
+SCHEDULE 2 – DEFINITIONS ........................................................................................................................................22 
+ANNEX 1: FIAT-REFERENCED VIRTUAL ASSETS ISSUANCE RULES ..........................................................27 
+I. PART I – APPROVAL REQUIREMENTS .....................................................................................................29 
+A. Interpretation........................................................................................................................................................................... 29 
+B. General requirements for VARA approval ............................................................................................................... 29 
+C. Significant FRVA Issuers ................................................................................................................................................... 30 
+II. PART II – ADDITIONAL DISCLOSURES ....................................................................................................32 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+3 
+A. Additional Whitepaper disclosures .............................................................................................................................. 32 
+B. Additional ongoing disclosures ...................................................................................................................................... 33 
+III. PART III – ADDITIONAL COMPLIANCE OBLIGATIONS OF FRVA ISSUERS .............................34 
+A. Maintenance of stable backing ....................................................................................................................................... 34 
+B. Reserve Assets ........................................................................................................................................................................ 34 
+C. Redemptions ............................................................................................................................................................................. 36 
+D. Audits and reporting ............................................................................................................................................................ 37 
+E. Marketing ................................................................................................................................................................................... 37 
+F. Capital requirements ............................................................................................................................................................ 37 
+SCHEDULE 1 – DEFINITIONS ........................................................................................................................................38 
+ANNEX 2: ASSET-REFERENCED VIRTUAL ASSETS ISSUANCE RULES .....................................................40 
+PART I – APPROVAL REQUIREMENTS .....................................................................................................................42 
+A. Interpretation........................................................................................................................................................................... 42 
+B. General requirements for VARA approval ............................................................................................................... 42 
+C. Significant ARVA Issuers ................................................................................................................................................... 43 
+PART II – ADDITIONAL DISCLOSURES ....................................................................................................................45 
+A. Additional Whitepaper disclosures .............................................................................................................................. 45 
+B. Additional ongoing disclosures ...................................................................................................................................... 46 
+PART III – ADDITIONAL COMPLIANCE OBLIGATIONS OF ARVA ISSUERS ............................................47 
+A. Value of an Asset-Referenced Virtual Asset .......................................................................................................... 47 
+B. Direct right of ownership................................................................................................................................................... 47 
+C. Reserve Assets ........................................................................................................................................................................ 48 
+D. Audits and reporting ............................................................................................................................................................ 49 
+E. Redemptions ............................................................................................................................................................................. 49 
+F. Marketing ................................................................................................................................................................................... 50 
+G. Capital requirements ............................................................................................................................................................ 50 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+4 
+SCHEDULE 2 – DEFINITIONS ........................................................................................................................................52 
+  
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+5 
+Introduction 
+This Virtual Asset Issuance Rulebook ("VA Issuance Rulebook ") is issued by VARA pursuant to the 
+Virtual Assets and Related Activities Regulations 2023 , as may be amended from time to time  
+("Regulations"), and includes requirements that all Entities in the Emirate wishing to issue a Virtual 
+Asset must follow.  
+The requirements defined herein cover explicit categories and conditions to be met for VA issuances in 
+each category, including but not limited to— 
+• Category 1 VA Issuances that require a VARA Licence; 
+• Category 2 VA issuances; and 
+• Exempt VA issuances.  
+The Rules contained in this VA Issuance Rulebook operate in addition to the regulation of VA Activities 
+carried out in the Emirate. 
+In order to address emerging risks and the continually evolving developments in the Virtual Assets sector 
+globally and in the Emirate, VARA will continue to monitor these Rules and any Annex hereto and amend 
+them from time to time. In addition to the Rules in this VA Issuance Rulebook, specific Rules or Directives 
+for certain types of Virtual Assets (as defined by VARA) shall be made available from time to time. 
+The most updated version of the Regulations, this VA Issuance Rulebook and any additional Rules or 
+Directives shall be made available on VARA’s website. 
+Capitalised terms in this VA Issuance Rulebook have the meanings defined herein or as defined in 
+Schedule 2 – Definitions. 
+  
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+6 
+DISCLAIMER 
+Any Licence granted by VARA under this VA Issuance Rulebook is not an endorsement of either (i) the 
+Issuer or (ii) any Virtual Asset and must not be construed or considered as such.  
+A Licence to issue Virtual Assets granted by VARA under this VA Issuance Rulebook does not exempt 
+any Entity from obtaining relevant approvals in respect of any specific Virtual Asset where mandated 
+under any VARA Regulations, Rules or Directives. 
+Unless otherwise specified in its communications, VARA makes no representation and does not provide 
+any warranties regarding any Issuer or Virtual Asset including, but not limited to, their fitness for 
+purpose, suitability or regulatory status in any jurisdiction other than the Emirate of Dubai, UAE. 
+Any representation contrary to the above shall be deemed to be a breach of the Virtual Assets and 
+Related Activities Regulations 2023, as amended from time to time. 
+ 
+ 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+7 
+I. Part I – Licence Requirements 
+A. General requirement 
+1. All Entities in the Emirate that issue a Virtual Asset in the course of a business, must comply 
+with this VA Issuance Rulebook, as may be amended by VARA from time to time. 
+2. "In the course of a business" requirement. For the purposes of Rule I.A.1 of this VA Issuance 
+Rulebook, in determining whether an Entity has issued a Virtual Asset in the course of a business, 
+VARA shall retain sole and absolute discretion , with the following factors forming part of the 
+consideration criteria— 
+a. whether the Entity holds itself out as issuing the Virtual Asset in the course of a 
+business; 
+b. the regularity and scale with which the Entity issues Virtual Assets; 
+c. whether there is any direct or indirect commercial element to the Virtual Asset or in how 
+the Virtual Asset is issued,  
+d. whether the Entity receives remuneration, incentive or other value in kind benefit,  
+e. whether the Entity is related to any commercial or business activity in any way; 
+f. includes not -for-profit, non -profit and charitable organisations , foundations, 
+associations and associated activity(ies);  
+g. Category 1 VA Issuances are, in all events without exception, deemed to be carried out 
+in the course of a business; and 
+h. VA issuances that do not fall under Category 1, and that are carried out solely for 
+personal and/or non-commercial use, may not be deemed to be issued in the course of 
+a business. 
+3. VARA will, from time to time, assign categorisations to the issuance of certain types of Virtual 
+Assets depending on the nature of the issuance and/or underlying business model associated 
+with the Virtual Asset. VARA may impose additional specific or nuanced requirements on such 
+issuances which, unless otherwise stated, will apply in addition to the requirement for the Issuer 
+to obtain a Licence and/or thereafter obtain prior approval from VARA of the Whitepaper. 
+ 
+ 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+8 
+B. Prohibited Virtual Assets 
+1. As specified in the Regulations, issuing Anonymity-Enhanced Cryptocurrencies and all VA 
+Activity(ies) related to them are prohibited in the Emirate. 
+ 
+C. VA issuance categories and prior requirements 
+1. VA issuances in the Emirate are categorised, along with the applicable requirement prior to the 
+Virtual Asset being issued, as follows— 
+ 
+Category  Applicable types of VA issuances Prior requirement 
+Category 1  Issuance of any—  
+(i) Fiat-Referenced Virtual Assets ("FRVAs");  
+(ii) Asset-Referenced Virtual Assets ("ARVAs"); or 
+(iii)  other Virtual Assets as may be determined by VARA 
+from time to time. 
+VARA Licence. 
+Category 2  Issuance of any Virtual Asset which does not constitute—  
+(i)  a Category 1 VA Issuance; or  
+(ii)  an Exempt VA. 
+No VARA Licence 
+required, but a ll 
+placement or 
+distribution must be 
+carried out through 
+or by a Licensed 
+Distributor. 
+Exempt VAs  Issuance of any  Virtual Asset which does not constitute a 
+Category 1 VA Issuance and is either— 
+(i)  a Non-Transferable Virtual Asset; 
+(ii)  a Redeemable Closed-Loop Virtual Asset; or 
+(iii) other Virtual Asset as may be determined by VARA 
+from time to time. 
+No requirements 
+prior to issuance. 
+ 
+2. When determining the category of a VA issuance, VARA will consider all factors it deems 
+appropriate, including but not limited to, the— 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+9 
+a. nature of all Virtual Assets or types of Virtual Assets; 
+b. rights and/or value which the Virtual Asset represents or purports to represent; and 
+c. the underlying business model associated with the Virtual Asset. 
+3. If any change is proposed to a Virtual Asset which may result in its issuance no longer qualifying 
+under the original categorisation in Rule I.C.1 of this VA Issuance Rulebook , the Issuer must 
+comply with all requirements of the category under which the Virtual Asset will fall after such 
+change has been made. The Issuer must ensure all such future requirements are met prior to any 
+proposed change to the Virtual Asset taking effect which, for the avoidance of doubt, may include 
+the Issuer obtaining a Licence from VARA and/or thereafter obtaining prior approval from VARA 
+of the Whitepaper, where necessary. 
+ 
+D. Category 1 VA Issuance 
+1. No Entity in the Emirate may carry out any Category 1 VA Issuance, unless it is authorised and 
+Licensed by VARA for the VA issuance. 
+2. As stated in the Regulations, c arrying out Category 1 VA Issuance is a VA Activity . In addition 
+to compliance with this VA Issuance Rulebook, and all other Regulations, Rules and Directives as 
+communicated by VARA in its Licence , or otherwise from time to time, all Entities seeking to 
+carry out Category 1 VA Issuance will be required to comply with the following Rulebooks— 
+a. Company Rulebook; 
+b. Compliance and Risk Management Rulebook; 
+c. Technology and Information Rulebook; and 
+d. Market Conduct Rulebook. 
+3. For the avoidance of doubt, all Rules in Rulebooks apply cumulatively in addition to all other 
+requirements in the Regulations, Rules and Directive and as such, in the event of overlap , the 
+higher standard of compliance must be met at all times. 
+4. Licensing process. All Entities seeking a Licence from VARA to carry out Category 1 VA Issuance 
+shall adhere to the licensing process as prescribed by VARA from time to time when applying for 
+such Licence.  
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+10 
+5. FRVA Rules.  All Entities seeking to carry out the issuance of a n FRVA will, in addition to 
+compliance with all other Regulations, Rules and Directives as communicated by VARA in its 
+Licence, or otherwise from time to time, be required to comply with the FRVA Rules in Annex 27 
+of this VA Issuance Rulebook at all times. 
+6. ARVA Rules.  All Entity seeking to carry out the issuance of an ARVA will, in addition to 
+compliance with all other Regulations, Rules and Directives as communicated by VARA in its 
+Licence, or otherwise from time to time, be required to comply with the ARVA Rules in Annex 2 
+of this VA Issuance Rulebook, at all times. 
+7. Revocation or Suspension. VARA may, in its sole and absolute discretion, revoke a  Licence for 
+Category 1 VA Issuance in the event of any of the following— 
+a. the Entity which has received the Licence has not issued the Virtual Asset within six (6) 
+months after the approval has been granted; 
+b. the Entity which has received the Licence obtained the Licence by making false or 
+misleading statements including , but not limited to , in the Whitepaper, during the 
+licensing process in Rule I.D.4 above, or in any other communications with VARA or the 
+public; 
+c. the Entity which has received the Licence no longer meets, or is in breach of, any of the 
+conditions imposed by VARA in relation to the Licence; 
+d. infringement of any Regulation, Rule or Directive; 
+e. violation of any regulatory requirements applicable in other jurisdictions; 
+f. the Entity which has received the Licence is Insolvent, subject to Insolvency Proceedings 
+or otherwise has been put under an orderly wind -down plan in accordance with 
+applicable insolvency laws;  
+g. the Entity which has received the Licence has decided to stop its operations; 
+h. on any ground on which VARA might refuse to issue a Licence;  
+i. for Good Cause; or 
+j. other grounds determined by VARA in exercising its powers, performing its functions or 
+fulfilling its objectives under the Dubai VA Law. 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+11 
+8. Entities shall immediately notify VARA of any of the situations referred to in Rule  I.D.7 of this 
+VA Issuance Rulebook. 
+ 
+E. Category 2 VA issuance 
+1. Entities in the Emirate may only issue Virtual Assets that fall within Category 2 above provided 
+that, all placement and distribution is carried out by a Licensed Distributor. 
+2. Provided that Rule I.E.1 of this VA Issuance Rulebook is met, Entities in the Emirate that issue 
+Virtual Assets that fall within Category 2 above do not need prior approval from VARA.  
+3. Licensed Distributors who provide Licensed Distribution Services to Issuers of Virtual Assets 
+that fall within Category 2 above, assume the responsibility for assuring and validating that the 
+Issuer complies with this VA Issuance Rulebook.  
+4. Licensed Distributors who provide Licensed Distribution Services  to Issuers of Virtual Assets 
+that fall within Category 2 above, must continue to comply with all other applicable Regulations, 
+Rules and Directives, as well as any conditions of their Licence, at all times when providing such 
+services. 
+5. No Virtual Asset issued under Category 2 shall be deemed in any way to have been approved by 
+VARA and may not be construed or considered as such. VARA makes no representation and does 
+not provide any warranties regarding any Issuer or Virtual Asset including, but not limited to, 
+their fitness for purpose, suitability or regulatory status in any jurisdiction. 
+ 
+F. Exempt VAs  
+1. Entities in the Emirate may issue Exempt VAs without prior approval from VARA, provided that, 
+they comply with Part II of this VA Issuance Rulebook at all times. 
+2. Issuers of Exempt VAs  issued in accordance with Rule I.F.1 of this VA Issuance Rulebook shall 
+remain subject to VARA’s supervision, examination and enforcement at all times, in accordance 
+with Part IV of this VA Issuance Rulebook. 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+12 
+II. Part II – General Rules 
+1. All Entities in the Emirate carrying out the issuance of an y Virtual Asset shall comply with the 
+following general Rules, at all times, when conducting all their business from or in the Emirate, 
+including issuing any Virtual Asset— 
+a. Integrity, honesty and fairness: All Issuers should act fairly, clearly and in good faith, so 
+as to not mislead and to serve the best interests of owners of the Virtual Assets they 
+issue and preserve market integrity. Issuer shall use clear and transparent wording in all 
+communications and public disclosures, treat all owners of the Virtual Asset fairly, and 
+engage in ethical market practices; 
+b. Diligence: All Issuers must act with the due skill, care and diligence reasonably expected 
+of an Issuer taking into the account the nature of the Virtual Asset; 
+c. Capabilities and resource: All Issuers must have and effectively employ the necessary 
+resources (including technical, financial  and otherwise), for the sound, effective and 
+efficient operation of the issuance taking into the account the nature of the Virtual 
+Asset, as well as all applicable legal and regulatory requirements; 
+d. Effective communication and disclosures: All Issuers must ensure that a ll 
+communications and disclosures, including but not limited to those applicable in Part III 
+of this VA Issuance Rulebook,  are clear, concise, effective and contain all information 
+necessary for owners and/or prospective owners of the Virtual Asset  to make an 
+informed decision and be kept up -to-date. All Issuers should dispatch information in a 
+timely manner if ongoing disclosure is required by any relevant authorities including, but 
+not limited to, VARA; 
+e. Legal and regulatory compliance: All Issuers must comply with all applicable laws and 
+regulatory requirements in the UAE and as may apply to their business or operations in 
+any jurisdiction at all times including, but not limited to, consumer protection laws; and 
+f. Environmental responsibility: All Issuers must act in an environmentally responsible 
+manner including, but not limited to, mitigating negative environmental impacts of the 
+Virtual Asset and disclosing how they identify, assess and manage other climate-related 
+risks relevant to the issuance and/or project lifecycle of the Virtual Asset. 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+13 
+III. Part III – Whitepapers and Public Disclosures 
+A. Application 
+1. All Entities in the Emirate issuing a Virtual Asset must comply with this Part III of the VA 
+Issuance Rulebook, and publish both a Whitepaper and a Risk Disclosure Statement. 
+2. The only exception to Rule III.A.1 of this VA Issuance Rulebook is that Issuers of Exempt VAs do 
+not need to publish a Whitepaper or a Risk Disclosure Statement in respect of Exempt VAs only. 
+ 
+B. Whitepapers 
+1. Initial Whitepaper. Prior to issuing a Virtual Asset, all Entities in the Emirate issuing a Virtual 
+Asset shall provide the relevant disclosures set out in Schedule 1 of this VA Issuance Rulebook 
+in a single easily accessible location  in a machine -readable format, or in any form as may be 
+prescribed by VARA from time to time ("Whitepaper"). 
+2. In addition to the relevant disclosures set out in Schedule 1 of this VA Issuance Rulebook, Issuers 
+of a ny Category 1 VA Issuance will be required to include all additional information in the 
+Whitepaper that is stipulated in any Annex applicable to the type of Virtual Asset being issued, 
+as may be stipulated by VARA from time to time. 
+3. No Issuer may exclude , or attempt to exclude , any form of actual or potential civil liability in 
+respect of any information in any Whitepaper, or any other disclosure or communication. 
+4. Issuers must publish the Whitepaper prior to making the Virtual Asset available to the public, 
+including any offer or Marketing. The Whitepaper shall remain subject to all Rules set out in this 
+VA Issuance Rulebook for as long as the Virtual Asset is available to the public. 
+5. Whitepaper updates. Issuers must ensure the Whitepaper is accurate and complete at all times 
+including, but not limited to, making any necessary changes to the Whitepaper, or publishing an 
+updated Whitepaper, in the event of changes to the Virtual Asset.  
+6. Issuers must take all reasonable steps to ensure owners of Virtual Assets are notified of any 
+changes to a Virtual Asset prior to any such changes taking effect, except in the event an Issuer 
+needs to implement any changes in response to a security or other threat, or which is in the best 
+interests of maintaining the integrity of the Virtual Asset. 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+14 
+7. In the event of any update to the Whitepaper, Issuers must clearly state the date on which the 
+Whitepaper has been updated and ensure all previous versions remain easily accessible in the 
+same format and location in which they were initially published.  Records of all versions of the 
+Whitepaper must be kept for a minimum of eight (8) years, starting from the date on which the 
+Virtual Asset ceases to be in circulation. 
+ 
+C. Risk Disclosure Statements 
+1. Initial Risk Disclosure Statement . Issuers must publish a statement that includes a detailed 
+description of all material risks related to the Virtual Assets being issued as applicable  in a 
+machine-readable format ("Risk Disclosure Statement"). The Risk Disclosure Statement shall 
+be drawn up as a document written in a concise manner, in a language that is clear, non-technical 
+and comprehensible for owners of the Virtual Asset. Risk Disclosure Statements shall be made 
+available in the same easily accessible location as, but remain separate from, the Whitepaper.  
+2. Risk Disclosure Statement updates. Issuers must ensure the Risk Disclosure Statement is 
+accurate and complete at all times  including, but not limited to, making any necessary updates 
+to the Risk Disclosure Statement , or publishing an updated Risk Disclosure Statement , in the 
+event of changes to the Virtual Asset.  
+3. In the event of any update to the Risk Disclosure Statement, Issuers must clearly state the date 
+on which the Risk Disclosure Statement has been updated , and ensure all previous versions 
+remain easily accessible in the same format and location in which they were initially published.  
+Records of all versions of the Whitepaper must be kept for a minimum of eight (8) years, starting 
+from the date on which the Virtual Asset ceases to be in circulation. 
+ 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+15 
+IV. Part IV – Supervision, Examination and Enforcement 
+1. Issuers are reminded that under the Dubai VA Law and the Regulations, VARA has supervisory, 
+examination and enforcement powers in relation to all Virtual Assets and VA Activities in the 
+Emirate. 
+2. In respect of any Virtual Asset , including all categories specified in this VA Issuance Rulebook,  
+which has already been issued or in the process of being issued, VARA may require an Issuer to 
+suspend issuing the Virtual Asset, or issuing further Virtual Assets, if VARA believes a Virtual 
+Asset, how it is being issued or the Issuer does not comply wit h any aspect of this VA Issuance 
+Rulebook. VARA may also impose additional conditions and/or take further enforcement action 
+within its power including, but not limited to, imposing fines or penalties. 
+3. Issuers must provide VARA with any books or other records requested by VARA to facilitate any 
+examination of and/or investigation into the Issuer’s compliance with its obligations under the 
+Regulations including, but not limited to, this VA Issuance Rulebook. 
+4. Issuers shall ensure that VARA is granted all access as requested by VARA  to perform its 
+supervision, examination and enforcement responsibilities including, but not limited to— 
+a. immediate access to all premises, data, books and records throughout the period of 
+VARA's examination; 
+b. all assistance necessary to ensure immediate access including authentication or 
+approvals; and 
+c. ensure that doing so does not violate the local laws of any other jurisdiction in which the 
+Issuer operates. 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+16 
+Schedule 1 – VA Whitepaper Requirements 
+A. Application 
+1. In accordance with Part III of this VA Issuance Rulebook , all Entities in the Emirate issuing a 
+Virtual Asset must publish a Whitepaper, except in respect of Exempt VAs only. 
+2. The following table lists the information that Issuers and/or their Licensed Distributors must 
+first consider as a minimum for each Virtual Asset when creating the Whitepaper. 
+3. VARA recognises that upon consideration of each item in the table by Issuers and/or their 
+Licensed Distributors, not all of the information listed in this table will be applicable for every 
+Virtual Asset. At such time, Issuers and /or their Licensed Distributors must exercise 
+professional judgement, acting in accordance with the General Rules in Part II of this VA Issuance 
+Rulebook at all times, when determining if the information listed in this table is applicable for 
+the purposes of inclusion in a Whitepaper of a specific Virtual Asset.  
+4. If an Issuer and/or their Licensed Distributor fails to include any of the information listed in the 
+table below in a Whitepaper, and it is later found that the information was applicable, then the 
+Whitepaper does not comply with this VA Issuance Rulebook. 
+5. VARA will not be responsible for confirming , and will not accept requests to confirm,  the 
+applicability of any of the areas listed in the table to any Virtual Asset or  Whitepaper. Issuers 
+and/or their Licensed Distributors shall be fully responsible for the accuracy and completeness 
+of all Whitepapers.  
+ 
+B. Whitepaper Requirements 
+A. Information about the Issuer 
+i.  the Issuer's name, legal structure, registered address, and head office location (if different); 
+ii. the Issuer's date of incorporation or registration; 
+iii.  the identity of the Issuer’s parent company; 
+iv.  the identities, business addresses, and functions of the Issuer’s  owners, management 
+and/or members;  
+v. whether any individual involved in the issuance, including the Issuer’s owners, management 
+and/or members, has been convicted of any offence of dishonesty, fraud, financial crime or 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+17 
+an offence under laws relating to companies, banking, insolvency, money laundering and 
+insider dealing, and, to the extent permissible under applicable laws, whether any individual 
+is subject to ongoing inquiries or investigations in respect of such offences; 
+vi.  the business, business related and/ or professional activities of the Issuer , including any 
+regulatory authorisations or Licences, and its group; 
+vii.  the Issuer’s financial condition over the past three  (3) years, or since registration if the 
+Issuer has existed for less than three years; 
+viii.  an assessment based on a fair review of the development, performance, and position of the 
+Issuer’s business over the past three (3) years, or since registration if the Issuer has existed 
+for less than three (3) years, including the causes of any material changes. The assessment 
+should be a balanced and comprehensive analysis of the Issuer’s business development, 
+performance, and position, and should be consistent with the size and complexity of the 
+business; 
+ix.  a detailed description of the Issuer’s governance arrangements; 
+x.  if the Issuer issues other Virtual Assets or undertakes other Virtual Assets Activities, this 
+should be clearly stated;  
+xi.  if there is any connection between the Issuer itself and the Entity or organisation that has 
+control of the DLT used to issue the Virtual Assets, including if the DLT is run, managed or 
+controlled by an Entity closely connected to the Issuer or other project participants; and 
+xii.  details of all Entities (including businesses addresses or company domiciles) involved in the 
+issuance and/or operation of the Virtual Asset, such as advisors, development teams, 
+and/or VASPs. 
+B. Information about the Virtual Asset 
+i.  the name, abbreviation or ticker handler of the Virtual Asset; 
+ii.  a description of the characteristics of the Virtual Asset and all features and uses; 
+iii.  information about the plans for the Virtual Asset  and all related projects , including a 
+description of the past and future milestones and resources already allocated; 
+iv.  an explanation of the target market  of the Virtual Asset, including any restrictions as 
+regards the type of owners; 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+18 
+v.  the name of any trading platform for Virtual Assets where admission to trading is or will 
+be sought, and information about how investors can access such trading platforms and the 
+costs involved; 
+vi.  information about technical requirements necessary to own and/or hold the Virtual Asset, 
+including but not limited the types of VA Wallets with which the Virtual Asset is 
+compatible; 
+vii.  a detailed description of the issuance structure of the Virtual Asset, in particular the 
+number that will be issued, the issuance schedule, when all of the supply of the Virtual 
+Asset will be made available and how many will be allocated or retained by any party, 
+including but not limited to the Issuer, its investors and/or advisors; and 
+viii.  the planned use of any proceeds or consideration received by the Issuer, in any form, related 
+to issuing the Virtual Asset. 
+C. Information about the rights and obligations attached to the Virtual Asset 
+i.  a description of the characteristics and functionality of the Virtual Asset being issued, 
+including information about whe ther the functionality will change , and if so when such 
+changes will take place; 
+ii.  a description of the rights and obligations, if any, of the owner, and the procedure and 
+conditions for the exercise of those rights; 
+iii.  whether the rights represented by the Virtual Asset may differ depending on what DLT or 
+platform the Virtual Asset is acquired or used; 
+iv.  a description of the conditions under which the rights and obligations may be modified; 
+v.  information on subsequent issuances or offers that may have a dilutive effect on the Virtual 
+Asset being issued, and the number of units of the Virtual Asset retained by the Issuer 
+itself; 
+vi.  information on how and where the Virtual Asset can be purchased or sold after the 
+issuance; 
+vii.  any restrictions on the transferability, or additional steps required to give legal effect to a 
+transfer of ownership, of the Virtual Asset that is being issued; 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+19 
+viii.  a description of protection schemes protecting the value of the Virtual Asset or any initial 
+investments in the Virtual Asset; 
+ix.  information on the nature and enforceability of rights, including permanent rights of 
+redemption and any claims that owners may have against the Issuer;  
+x.  information on any rights an owner of the Virtual Asset will have in the event the Issuer is 
+Insolvent, including in the context of any scheme of arrangement or recovery plan; 
+xi.  information on whether different rights are allocated to different owners, and the non -
+discriminatory reasons for such different rights; 
+xii.  information on the arrangements put in place by the Issuer to ensure the liquidity of the 
+Virtual Asset, including the name of the Entities in charge of ensuring such liquidity; 
+xiii.  the contact details for submitting complaints, and a description of the complaints-handling 
+procedures and any dispute resolution mechanism or redress procedure established by the 
+Issuer of the Virtual Asset; 
+xiv.  detailed information on any rights of redemption and how the Virtual Asset is redeemed, 
+including whether the owner will be able to choose the form of redemption, the form of 
+transference, or the official currency of redemption;  
+xv.  any material legal or regulatory considerations applicable to owning, storing, transferring, 
+or otherwise using the Virtual Asset , including to give legal effect to a transfer of 
+ownership; and  
+xvi.  the law applicable to the Virtual Asset, as well as the competent court. 
+D. Information about underlying technology 
+i.  information on the technology used, including DLTs, as well as protocols and technical 
+standards, allowing for the holding, storing, and transfer of Virtual Assets; 
+ii.  information on the consensus mechanism used by the DLT on which the Virtual Asset is 
+issued including, where the Virtual Asset is issued on more than one DLT whether any 
+variances in mechanisms used by different DLTs give rise to a variance in the rights of 
+owners of the Virtual Asset; 
+iii.  incentive mechanisms to secure transactions and any applicable fees; 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+20 
+iv.  if the Virtual Asset is issued, transferred, and stored using DLT that is operated by the 
+Issuer or a third-party acting on the Issuer’s behalf, a detailed description of the functioning 
+of such DLT and information on the outcome of any audits, if such an audit was conducted, 
+including what Entity carried out the audit; and 
+v.  a statement on the environmental and climate-related impact of the Virtual Asset. 
+E. Information about the Licensed Distributor 
+i.  name; 
+ii.  legal form; 
+iii.  registered address and head office, where different; 
+iv.  VARA Licence number; 
+v.  the name of the parent company; and 
+vi.  business or professional activity of the Licensed Distributor and of its parent company. 
+F. Information about any initial offer to the public of the Virtual Asset  
+i.  the reasons for any offer to the public; 
+ii.  the amount that the offer to the public intends to raise denominated in AED, including any 
+minimum and maximum target subscription goals set for the offer to the public of the 
+Virtual Asset;  
+iii.  whether oversubscriptions are accepted and how allocations will be determined in the 
+event of oversubscription;  
+iv.  a specific notice that purchasers participating in the offer to the public of Virtual Asset will 
+be reimbursed if the minimum target subscription goal is not reached at the end of the 
+offer to the public, or if the offer is cancelled , and a detailed description of the refund 
+mechanism, including the expected timeline of when such refunds will be completed; 
+v.  the issue price of the Virtual Asset being offered to the public, denominated in both AED 
+and/or any other Virtual Assets;  
+vi.  the total number of Virtual Assets to be offered to the public , and the percentage of the 
+total supply in circulation (i.e. supply available prior to the intended new issuance) of the 
+Virtual Asset that the offer to the public represents; 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+21 
+ 
+vii.  an indication of the prospective owners targeted by the offer to the public, including any 
+restriction as regards the type of owners for such Virtual Assets; 
+viii.  information about the various phases of the offer to the public of Virtual Assets, including 
+information on discounted purchase price s for early purchasers of Virtual Assets (pre-
+public sales). In the case of discounted purchase prices for some purchasers, an explanation 
+why purchase prices may be different, and a description of the impact on the other 
+investors; 
+ix.  for time-limited offers, the subscription period during which the offer to the public is open; 
+x.  arrangements to safeguard funds or other Virtual Assets during the time-limited offer to 
+the public or during the withdrawal period; 
+xi.  methods of payment to purchase the Virtual Assets offered, and methods of transfer of 
+the value to the purchasers when they are entitled to be reimbursed; 
+xii.  information on any rights the Issuer has to withdraw or cancel the offer to the public; 
+xiii.  information on the manner and time schedule of transferring the purchased Virtual Assets 
+to the owners and/or holder; 
+xiv.  expenses to be incurred by purchasers of the Virtual Asset related to the offer to the public 
+of the Virtual Asset, including any applicable subscription fee or the method in accordance 
+with which the offer price will be determined; 
+xv.  potential conflicts of interest of the persons involved in the offer to the public arising in 
+relation to the offer; and 
+xvi.  the law applicable to the offer to the public of Virtual Assets, as well as the competent 
+court. 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+22 
+Schedule 2 – Definitions 
+Term Definition 
+"Anonymity-Enhanced 
+Cryptocurrencies" 
+has the meaning ascribed to it in the Regulations. 
+"Asset Referenced Virtual 
+Asset" or "ARVA" 
+means any Virtual Asset, that is not an FRVA, and which— 
+(a)  represents, or purports to represent, direct, indirect, current, 
+future or contingent ownership of any RWA; 
+(b)  represents, or purports to represent, direct, indirect, current, 
+future or contingent entitlement to receive or share any 
+Income; 
+(c)  purports to maintain a stable value or reference to any type 
+or combination of RWA(s) or Income; 
+(d)  represents, or purports to represent, entitlement to receive 
+or share any value that is, or purports to be, or in any manner 
+originate from, derived from or backed by (including but not 
+limited to  under any securitisation, collateralisation, or 
+guarantee arrangement) any type or combination of RWA or 
+Income; or 
+(e)  is a directly or indirectly wrapped, duplicated, fractionalised, 
+securitised or derivative version of any other ARVA. 
+"ARVA Rules" means the Asset-Referenced Virtual Assets Issuance Rules in Annex 
+2 of this VA Issuance Rulebook. 
+"Broker-Dealer Services" has the meaning ascribed to it in Schedule 1 of the Regulations. 
+"Broker-Dealer Services  
+Rulebook" 
+means the Broker-Dealer Services  Rulebook issued by VARA 
+pursuant to the Regulations, as may be amended from time to time. 
+"Category 1" has the meaning ascribed to it in Rule I.C.1 of this VA Issuance 
+Rulebook. 
+"Category 1 VA Issuance" means the VA Activity of issuing any Virtual Asset that falls within 
+Category 1. 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+23 
+Term Definition 
+"Category 2" has the meaning ascribed to it in Rule I.C.1 of this VA Issuance 
+Rulebook. 
+"Company Rulebook" means the Company Rulebook issued by VARA pursuant to the 
+Regulations, as may be amended from time to time. 
+"Compliance and Risk 
+Management Rulebook" 
+means the Compliance and Risk Management Rulebook issued by 
+VARA pursuant to the Regulations, as may be amended from time to 
+time. 
+"Directive" has the meaning ascribed to it in the Regulations. 
+"Distributed Ledger 
+Technology" or "DLT" 
+has the meaning ascribed to the term 'Distributed Ledger 
+Technology' in the Dubai VA Law. 
+"Dubai VA Law" means Law No. (4) of 2022 Regulating Virtual Assets in the Emirate 
+of Dubai, as may be amended from time to time. 
+"Emirate" means all zones across the Emirate of Dubai, including Special 
+Development Zones and Free Zones but excluding the Dubai 
+International Financial Centre. 
+"Exempt VAs" has the meaning ascribed to it in Rule I.C.1 of this VA Issuance 
+Rulebook. 
+"Fiat-Referenced Virtual 
+Asset" or "FRVA" 
+means a Virtual Asset that purport s to maintain a stable value in 
+relation to the value of one or more fiat currencies,  or one or more 
+other FRVA(s), but does not have legal tender status in the UAE, and 
+is not issued for use as a means of payment for goods or services in 
+the UAE. An FRVA is neither issued nor guaranteed by any 
+jurisdiction and fulfils its functions only by use and acceptance within 
+the community of users of the FRVA. 
+ 
+For the avoidance of doubt, and as stated in Rule I.B. 4 of the FRVA 
+Rules, the issuance of any FRVA that purports to maintain a stable 
+value in relation to the value of AED shall not be approved under this 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+24 
+Term Definition 
+VA Issuance Rulebook or the FRVA Rules, and shall remain under the 
+sole and exclusive regulatory purview of the CBUAE. 
+"FRVA Rules" means the Fiat-Referenced Virtual Assets Issuance Rules in Annex 1 
+of this VA Issuance Rulebook. 
+"Good Cause" has the meaning ascribed to it in the Regulations. 
+"Income" means sales proceeds, interests, dividends, profits, repayments or 
+any other form of direct, indirect, current, future or contingent value 
+originating or deriving from an RWA. 
+"Insolvency Proceedings" has the meaning ascribed to it in the Regulations. 
+"Insolvent" has the meaning ascribed to it in the Regulations. 
+"Issuer" means the Entity responsible for the issuance of a Virtual Asset. 
+"Licence" has the meaning ascribed to it in the Regulations. 
+"Licensed" means having a valid Licence. 
+"Licensed Distribut ion 
+Services" 
+has the meaning ascribed to it in the Broker-Dealer Services 
+Rulebook. 
+"Licensed Distributor" means a VASP Licensed by VARA to carry out Broker -Dealer 
+Services. 
+"Market Conduct Rulebook" means the Market Conduct Rulebook issued by VARA pursuant to 
+the Regulations, as may be amended from time to time. 
+"Marketing" has the meaning ascribed to it in the Marketing Regulations. 
+"Marketing Regulations" means the Regulations on the Marketing of Virtual Assets and 
+Related Activities 2024 issued by VARA, as may be amended from 
+time to time. 
+"Non-Transferable Virtual 
+Asset" 
+means a Virtual Asset that— 
+(a) is not sold by the Issuer  for, and cannot be converted into, 
+exchanged or redeemed for, fiat currency, Virtual Assets or 
+any value in kind; 
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+25 
+Term Definition 
+(b)  is not redeemable or exchangeable for goods, services, 
+discounts, purchases  or otherwise ha s no market, use, or 
+application; and 
+(c) cannot be transferred between VA Wallets. 
+"PDPL" means the Federal Decree-Law No. (45) of 2021 on the Protection 
+of Personal Data. 
+"Personal Data" has the meaning ascribed to it in the PDPL. 
+"Redeemable Closed -Loop 
+Virtual Asset" 
+means a Virtual Asset that can be redeemed or exchanged for goods, 
+services, discounts, or purchases with the Issuer and/or other 
+merchants designated by the Issuer, provided that— 
+(a) the Issuer is the legal owner and/or has validly enforceable 
+legal right to grant all rights of redemption; 
+(b) the Virtual Asset is not sold or exchanged for, and cannot be 
+converted into, exchanged or redeemed for, fiat currency or 
+Virtual Assets;  
+(c) cannot be used or accepted as a means of payment outside 
+of the closed -loop of the Issuer and/or other merchants 
+designated by the Issuer; and  
+(d) cannot be transferred between VA Wallets other than for 
+the purposes of redemption from the Issuer or designated 
+merchants. 
+"Regulations" means the Virtual Assets and Related Activities Regulations 2023, 
+as may be amended from time to time. 
+"Risk Disclosure Statement" has the meaning ascribed to it in Rule  III.C.1 of this VA Issuance 
+Rulebook. 
+"Rule" has the meaning ascribed to it in the Regulations. 
+"RWA" means, in respect of any Virtual Asset, any type or combination of— 
+(a)  interest in any financial instrument, scheme or arrangement;  
+  
+ 
+araconnect@vara.aevصندوق بريد9292 دبي،الإمارات العربية المتحدة  - سُلطة تنظيم  الأصول الافتراضية  
+varaconnect@vara.ae - PO Box 9292, Dubai, UAE - Virtual Assets Regulatory Authority 
+26 
+Term Definition 
+(b)  physical and/or tangible asset; or  
+(c)  intangible asset, rights or interest, other than—  
+i. the Virtual Asset itself; or 
+ii. items that exist in digital form only. 
+"Technology and 
+Information Rulebook" 
+means the Technology and Information Rulebook issued by VARA 
+pursuant to the Regulations, as may be amended from time to time. 
+"UAE" means the United Arab Emirates. 
+"VA Activity" means the activities listed in Schedule  1 of the Regulations, as may 
+be amended from time to time. 
+"VA Issuance Rulebook" means this Virtual Asset Issuance Rulebook issued by VARA 
+pursuant to the Regulations, as may be amended from time to time. 
+"VARA" means the Dubai Virtual Assets Regulatory Authority. 
+“VA Wallet” has the meaning ascribed to the term 'Virtual Asset Wallet ' in the 
+Dubai VA Law. 
+"Virtual Asset" or "VA" has the meaning ascribed to it in the Dubai VA Law. 
+"Whitepaper" has the meaning ascribed to it in Rule  III.B.1 of this VA Issuance 
+Rulebook. 
+"Working Day" has the meaning ascribed to it in the Regulations. 
+ 
+  
+  
+ 
+27 
+ 
+ANNEX 1: FIAT-REFERENCED VIRTUAL ASSETS ISSUANCE RULES 
+ 
+ 
+ 
+ 
+Fiat-Referenced Virtual Assets 
+Issuance Rules  
+[DATE] 2025 
+  
+  
+ 
+28 
+ 
+Contents 
+I. PART I – APPROVAL REQUIREMENTS .....................................................................................................29 
+A. Interpretation........................................................................................................................................................................... 29 
+B. General requirements for VARA approval ............................................................................................................... 29 
+C. Significant FRVA Issuers ................................................................................................................................................... 30 
+II. PART II – ADDITIONAL DISCLOSURES ....................................................................................................32 
+A. Additional Whitepaper disclosures .............................................................................................................................. 32 
+B. Additional ongoing disclosures ...................................................................................................................................... 33 
+III. PART III – ADDITIONAL COMPLIANCE OBLIGATIONS OF FRVA ISSUERS .............................34 
+A. Maintenance of stable backing ....................................................................................................................................... 34 
+B. Reserve Assets ........................................................................................................................................................................ 34 
+C. Redemptions ............................................................................................................................................................................. 36 
+D. Audits and reporting ............................................................................................................................................................ 37 
+E. Marketing ................................................................................................................................................................................... 37 
+F. Capital requirements ............................................................................................................................................................ 37 
+SCHEDULE 1 – DEFINITIONS ........................................................................................................................................38 
+ 
+  
+ 
+29 
+ 
+I. Part I – Approval Requirements 
+A. Interpretation 
+1. "Fiat-Referenced Virtual Asset " or "FRVA" has the meaning ascribed to it in Schedule 2 – 
+Definitions of the VA Issuance Rulebook.  
+2. As stated in Rule I.B.4 of these FRVA Rules, the issuance of any FRVA that purports to maintain 
+a stable value in relation to the value of AED shall not be approved under these FRVA Rules and 
+shall remain under the sole and exclusive regulatory purview of the CBUAE. 
+3. FRVAs do not include Virtual Assets which are— 
+a. representations of any equity claim; 
+b. issued by central banks acting in their monetary authority capacity (e.g. CBDCs); or 
+c. tokenised bank deposits used only for interbank settlement purposes. 
+4. "Reference Currency" means, in relation to a FRVA, a VARA-approved fiat currency— 
+a. the value of which an FRVA purports to maintain a stable reference to; 
+b. which is controlled by a central bank of any country (ies) or territory(ies) which are not 
+subject to any sanctions in accordance with Federal AML-CFT Laws; 
+c. which has the status of legal tender; and 
+d. which is required to be accepted within a given jurisdiction. 
+5. "Reserve Assets" means, for the purposes of these FRVA Rules, the pool of assets maintained 
+in accordance with Rule III.B of these FRVA Rules and as approved by VARA. Reserve Assets are 
+not Client Money or Client VAs, as defined in the Compliance and Risk Management Rulebook. 
+ 
+B. General requirements for VARA approval  
+1. As stated in Rule I.C.1 of the VA Issuance Rulebook, the issuance of an FRVA is a Category 1 VA 
+Issuance and as such is a VA Activity. In addition to compliance with these FRVA Rules, and all 
+other Regulations, Rules and Directives as communicated by VARA in its Licence or otherwise 
+from time to time, all Entities seeking to carry out the issuance of an FRVA will be required to 
+comply with the following Rulebooks— 
+a. Company Rulebook; 
+b. Compliance and Risk Management Rulebook; 
+  
+ 
+30 
+ 
+c. Technology and Information Rulebook; 
+d. Market Conduct Rulebook; and 
+e. VA Issuance Rulebook. 
+2. Approval of each FVRA. All VASPs Licensed by VARA to carry out Category 1 VA Issuance must 
+obtain approval from VARA prior to issuing each Fiat-Referenced Virtual Asset.  
+3. Approval conditions. VARA may, in its sole and absolute discretion, impose conditions on any 
+approvals granted for the issuance of an FRVA by a VASP including, but not limited to— 
+a. segregation of the VASP's business or operations in relation to VA issuances and any 
+other VA Activities (or other businesses and activities, if applicable ) by implementing 
+and strictly enforcing policies and procedures;  
+b. provision of further information to demonstrate the VASP’s ability to comply with any 
+Regulation, Rule or Directive; and/or 
+c. any additions or modifications to requirements set out in any Regulation, Rule and/or 
+Directive.  
+4. AED as Reference Currency. In addition to Regulation III.A.4, the issuance of any Virtual Asset 
+that purports to maintain a stable value in relation to the value of AED shall remain under the 
+sole and exclusive regulatory purview of the CBUAE. Entities seeking to issue any such Vir tual 
+Asset in the Emirate must comply with any applicable CBUAE regulation. 
+5. Use of FRVAs in VA ecosystem only. FRVAs issued under these FRVA Rules may only be used 
+for the purchase and/or sale of assets in the VA ecosystem and may not be used as a means of 
+payment for goods or services within the UAE. 
+6. Currencies of sanctioned countries or territories. VASPs may not have as a Reference Currency 
+any currency issued by any country (ies) or territory(ies) which are subject to sanctions under 
+Federal AML-CFT Laws. 
+ 
+C. Significant FRVA Issuers 
+1. VARA may, in its sole and absolute discretion, designate any VASP Licensed to issue an FRVA 
+as a Significant FRVA Issuer at the time of granting a Licence or anytime thereafter. 
+2. In designating a VASP as a Significant FRVA Issuer, VARA may consider all factors relevant to 
+the VASP and/or the FRVA issued by the VASP, including but not limited to—  
+  
+ 
+31 
+ 
+a. the number of holders of the FRVA;  
+b. the value of circulating and/or outstanding supply of the FRVA; 
+c. the value of the Reserve Assets maintained by the VASP;  
+d. the number and value of transactions in the FRVA; 
+e. whether the VASP and/or its affiliates carry out any other VA Activity (ies) and/or 
+financial services in the Emirate, or provide services similar to VA Activities and/or 
+financial services in other jurisdictions; 
+f. interconnectedness with licensed financial institutions and/or VASPs; and/or 
+g. the business, structural and operational complexity of the VASP in relation to the FRVA 
+issued by it. 
+3. VARA may, in its sole and absolute discretion, impose any Rules on a Significant FRVA Issuer in 
+addition to those contained in the Rulebooks, which may include, but not be limited to, additional 
+Rules on— 
+a. company structure and corporate governance; 
+b. Paid-Up Capital, Net Liquid Assets, Insurance and/or Reserve Assets;  
+c. audits, regulatory reporting and regulatory notifications; and/or  
+d. any other matter as VARA deems appropriate. 
+ 
+ 
+  
+  
+ 
+32 
+ 
+II. Part II – Additional Disclosures 
+A. Additional Whitepaper disclosures 
+1. In addition to all other disclosures required in Rule  III.A of the VA Issuance Rulebook, VASPs 
+Licensed to issue FRVAs must include the following in the Whitepaper—  
+a. the type(s) and composition of Reference Currency(ies); 
+b. whether the type(s) and composition of Reference Currency(ies) may change and, if so, 
+the circumstances in which any such changes may take place and the consequential 
+effect of such changes; 
+c. a clear and detailed policy on the creation and redemption of FRVAs in circulation and 
+the consequence of such creation or redemption on the increase and decrease of the 
+Reserve Assets;  
+d. the type (s) and composition of Reserve Asset (s), and methodology for valuing such 
+Reserve Assets; 
+e. criteria for how Reserve Asset(s) are or will be identified; 
+f. the custody arrangement of the Reserve Assets including, but not limited to, the 
+custodian(s) involved and how the VASP Licensed to issue FRVAs ensures it has timely 
+access to Reserve Assets to process redemption requests in compliance with Rule  III.C 
+of these FRVA Rules; 
+g. a detailed description of how Reserve Assets are maintained, with reference to the 
+requirements in Rule III.B of these FRVA Rules; 
+h. a detailed description of how they will comply with Rules relating to the handling of 
+redemption requests in Rule III.C of these FRVA Rules, and all relevant risks which may 
+affect their compliance; 
+i. the procedures and timeline for holders of FRVAs to redeem such FRVAs at par; 
+j. prominently state whether having a valid Client Agreement with the VASP Issuer is a 
+condition for redemption of the FRVA directly from the VASP Issuer;  
+k. detailed assessments of risks relevant to the management, custody, investment and/or 
+liquidation of the Reserve Assets, including, but not limited to, credit risk, market risk 
+  
+ 
+33 
+ 
+and liquidity risk, and policies and procedures to manage such risks for the purpose of 
+processing redemption requests; and 
+l. any other relevant information as may be determined by VARA.  
+ 
+B. Additional ongoing disclosures 
+1. VASPs Licensed to issue FRVAs shall at least every month and in a clear, accurate and 
+transparent manner disclose on their website the following information regarding whether an 
+FRVA is at least one hundred percent (100%) backed by Reserve Assets—  
+a. the number and value of FRVAs in circulation; and 
+b. the value and composition of the Reserve Assets, 
+as independently audited in accordance with Rule III.D.1 of these FRVA Rules. 
+2. Disclosures in accordance with Rule II.B.1 of these FRVA Rules  shall be accompanied by a 
+statement confirming whether the FRVA is, for the period covered and at the time of the 
+disclosure, at least one hundred percent (100%) backed by Reserve Assets in accordance with 
+independent audit requirements in Rule III.D.1 of these FRVA Rules. 
+3. VASPs Licensed to issue FRVAs shall as soon as possible and in a clear, accurate and transparent 
+manner disclose on their website any event that has or is likely to have a significant effect, 
+directly or indirectly, on the market value of the FRVAs. 
+  
+  
+ 
+34 
+ 
+III. Part III – Additional Compliance Obligations of FRVA Issuers 
+A. Maintenance of stable backing 
+1. VASPs Licensed to issue FRVAs shall ensure that—  
+a. any increase in the circulating supply of the FRVA is always matched by a corresponding 
+increase in the Reserve Assets; and 
+b. any decrease in the circulating supply of the FRVA is always matched by a corresponding 
+decrease in the Reserve Assets. 
+2. VASPs Licensed to issue FRVAs shall ensure that any increase or decrease in the Reserve Assets 
+required under Rule III.A.1 of these FRVA Rules  is responsibly managed to avoid any adverse 
+market impact in relation to the Reserve Assets.  
+3. VASPs Licensed to issue FRVAs shall, regardless of whether any third party(ies) are involved in 
+the creation or redemption of  the FRVA, comply with Rule III.A.2 of these FRVA Rules  at all 
+times. 
+ 
+B. Reserve Assets 
+1. VASPs Licensed to issue FRVAs shall, at all times, hold and maintain sufficient Reserve Assets 
+such that the FRVA is at least one hundred percent (100%) backed by Reserve Assets.  
+2. VASPs Licensed to issue FRVAs shall only hold Reserve Assets denominated in the Reference 
+Currency(ies) in—  
+a. cash or cash equivalent s (including, but not limited to, central bank reserve deposits, 
+bank deposits and CBDCs); or 
+b. highly liquid financial instruments with minimal market risk, credit risk and 
+concentration risk, which are capable of being liquidated rapidly with minimal adverse 
+market impact, including the following— 
+a. debt securities with residual maturity of ninety (90) days or less, issued by— 
+i. governments or central banks of the Reference Currency; or 
+ii. government agencies (local or international); 
+b. repurchase agreements with a maturity of seven (7) days or less which are backed 
+by (i) above; and 
+  
+ 
+35 
+ 
+c. short-term government money market funds. 
+3. VASPs Licensed to issue FRVAs shall, at all times, manage Reserve Assets effectively and 
+prudently, at least by— 
+a. maintaining Reserve Assets only with financial services firms (as agreed with VARA 
+during the licensing process)—  
+i. appropriately and validly licensed and authorised to hold the specific type of 
+Reserve Assets; 
+ii. having regard to counterparty risk and/or exposure in the event of failure 
+or each financial services firm becoming Insolvent; and 
+iii. segregated from their own funds; 
+b. ensuring newly added Reserve Assets are held in accordance with their custody 
+arrangements; 
+c. putting in place policies and procedures to ensure Reserve Assets can be promptly 
+accessed and converted into the Reference Currency(ies) at all times, for the purpose of 
+processing and completing any redemption requests in accordance with Rule III.C of 
+these FRVA Rules; and 
+d. conducting regular risk assessments to evaluate the appropriateness of the composition 
+of Reserve Assets (including, but not limited to, whether there is sufficient 
+diversification in the types of Reserve Assets held ) in ensuring compliance with Rule 
+III.B.1 of these FRVA Rules.  
+4. VASPs Licensed to issue FRVAs shall, to the furthest extent permitted by applicable laws, hold 
+Reserve Assets of an FRVA in such a manner that—  
+a. such Reserve Assets are legally segregated and remote from their own assets (including, 
+but not limited to, any assets held in relation to other FRVAs) and do not form a part of 
+their estate; 
+b. they would not be prevented or hindered from processing any redemption requests in 
+accordance with Rule III.C of these FRVA Rules, at all times (including, but not limited 
+to, ensuring such Reserve Assets are not rehypothecated, or subject to any pledges, 
+encumbrances, right of set-off or counterclaim); 
+  
+ 
+36 
+ 
+c. will not otherwise be subject to any recourse by their creditors, the custodian of the 
+Reserve Assets or any other third parties, in particular in the event that they become 
+Insolvent; and 
+d. VARA has the ability to direct the control, liquidation and distribution of all such Reserve 
+Assets for the purposes of fulfilling its regulatory obligations. 
+5. VASPs Licensed to issue FRVAs shall work with VARA to structure agreements with financial 
+services firms to ensure VARA has priority access to Reserve Assets, to the furthest extent 
+permitted by applicable laws, for the purposes of VARA fulling its regulatory obligations. 
+6. Conflicts of interest. In addition to all requirements relating to the avoidance and management 
+of conflicts of interest in the Company Rulebook, VASPs Licensed to issue FRVAs shall take all 
+appropriate steps, to the extent practicable, to prevent and, in any event identify, manage and 
+publicly disclose conflicts of interest arising from the constitution and management of Reserve 
+Assets. 
+7. Reserve Assets held with financial services firms, including but not limited to those regulated by 
+the CBUAE, may be subject to prevailing reporting obligations incremental to those applicable 
+under this Rulebook.  
+ 
+C. Redemptions 
+1. VASPs Licensed to issue FRVAs shall, at all times, ensure holders of the FRVA have the valid 
+legally enforceable right to redeem the FRVA at par. 
+2. VASPs Licensed to issue FRVAs must ensure all requests made by holders, with valid Client 
+Agreements with the VASP Issuer, to redeem the FRVA at par are, at all times, processed and 
+completed—  
+a. within one (1) Working Day of any such requests; or 
+b. if the trading and/or settlement of the Reserve Assets are subject to significant 
+disruption events beyond the control of a VASP Licensed to issue FRVAs, within one (1) 
+Working Day of the trading and/or settlement of Reserve Assets no longer being 
+significantly impacted by such disruption events.  
+3. VASPs Licensed to issue FRVAs shall process and complete redemption requests without 
+charging any fees. 
+  
+ 
+37 
+ 
+4. VASPs Licensed to issue FRVAs shall establish, maintain and implement clear and detailed 
+policies and procedures to ensure compliance with this Rule III.C of these FRVA Rules. 
+ 
+D. Audits and reporting 
+1. In addition to all requirements relating to audits and reporting in the Compliance and Risk 
+Management Rulebook, VASPs Licensed to issue FRVAs shall, on a monthly basis, commission 
+an independent audit of the following information regarding whether an FRVA  is one hundred 
+percent (100%) backed by Reserve Assets—  
+a. the number and value of FRVAs in circulation; and 
+b. the composition and value of Reserve Assets. 
+2. The Senior Management of a VASP Licensed to issue FRVAs shall, as soon as practicable upon 
+its completion, submit to VARA an attestation as to the accuracy of each independent audit in 
+accordance with Rule III.D.1 of these FRVA Rules. 
+ 
+E. Marketing 
+1. No Entity may, in the Marketing of any FRVA in the Emirate, include language suggesting that 
+the value of an FRVA is maintained stable relative to its Reference Currency(ies), unless—  
+a. it has a Licence to issue the FRVA and such Licence has not been revoked; and 
+b. the FRVA was issued and is maintained in accordance with these FRVA Rules. 
+2. VASPs Licensed to issue FRVAs  shall, in all Marketing, include clear and unambiguous 
+statements that—  
+a. the holders of the FRVA have the right to redeem the FRVA at par, and whether such 
+right is directly enforceable against the VASP Issuer; and 
+b. such FRVAs are not covered by any investor protection or deposit guarantee schemes. 
+ 
+F. Capital requirements 
+1. VASPs Licensed to issue FRVAs shall always maintain Paid-Up Capital equal to the total of— 
+a. AED 1,500,000; and  
+b. two percent (2%) of the value of available supply of the FRVA.  
+  
+ 
+38 
+ 
+Schedule 1 – Definitions 
+Term Definition 
+"Category 1 VA Issuance" has the meaning ascribed to it in the VA Issuance Rulebook. 
+"CBDC" has the meaning ascribed to it in the Regulations. 
+"CBUAE" means the Central Bank of the United Arab Emirates. 
+"Client Agreements" has the meaning ascribed to it in the Market Conduct Rulebook. 
+"Client Money" has the meaning ascribed to it in the Compliance and Risk 
+Management Rulebook. 
+"Client VA" has the meaning ascribed to it in the Compliance and Risk 
+Management Rulebook. 
+"Company Rulebook" means the Company Rulebook issued by VARA pursuant to the 
+Regulations, as may be amended from time to time. 
+“Compliance and 
+Management Rulebook” 
+means the Compliance and Risk Management Rulebook issued by 
+VARA pursuant to the Regulations, as may be amended from time 
+to time. 
+"Directive" has the meaning ascribed to it in the Regulations. 
+"Dubai VA Law" means Dubai Law No. (4) of 2022 Regulating Virtual Assets in the 
+Emirate of Dubai, as may be amended from time to time. 
+"Emirate" means all zones across the Emirate of Dubai, including Special 
+Development Zones and Free Zones but excluding the Dubai 
+International Financial Centre. 
+"Entity" means any legal entity or individual. 
+"Federal AML-CFT Laws" has the meaning ascribed to it in the Regulations.  
+"Fiat-Referenced Virtual 
+Asset" or "FRVA" 
+has the meaning ascribed to it in Schedule 2 – Definitions of the VA 
+Issuance Rulebook.  
+"FRVA Rules" means these Fiat -Referenced Virtual Assets Issuance Rule s issued 
+by VARA pursuant to the Regulations, as may be amended from time 
+to time. 
+  
+ 
+39 
+ 
+Term Definition 
+"Group" has the meaning ascribed to it in the Company Rulebook. 
+"Insolvency Proceedings" has the meaning ascribed to it in the Regulations. 
+"Insolvent" has the meaning ascribed to it in the Regulations. 
+"Insurance" has the meaning ascribed to it in the Company Rulebook. 
+"Market Conduct Rulebook" means the Market Conduct Rulebook issued by VARA pursuant to 
+the Regulations, as may be amended from time to time. 
+"Marketing" has the meaning ascribed to it in the Marketing Regulations. 
+"Marketing Regulations" has the meaning ascribed to it in the VA Issuance Rulebook. 
+"Net Liquid Assets" has the meaning ascribed to it in the Company Rulebook. 
+"Paid-Up Capital" has the meaning ascribed to it in the Company Rulebook. 
+"Reference Currency" has the meaning ascribed to it in Rule I.A.4 of these FRVA Rules. 
+"Regulations" means the Virtual Assets and Related Activities Regulations 2023, 
+as may be amended or supplemented by VARA from time to time. 
+"Reserve Assets" has the meaning ascribed to it in Rule I.A.5 of these FRVA Rules. 
+"Senior Management" has the meaning ascribed to it in the Company Rulebook. 
+"Significant FRVA Issuer" means a VASP designated by VARA in accordance with Rule I.C.1 of 
+these FRVA Rules. 
+"Technology and Information 
+Rulebook" 
+means the Technology and Information Rulebook issued by VARA 
+pursuant to the Regulations, as may be amended VARA from time 
+to time. 
+"VA Issuance Rulebook" means th e Virtual Asset Issuance Rulebook issued by VARA 
+pursuant to the Regulations, as may be amended or supplemented 
+by VARA from time to time. 
+"VARA" means the Dubai Virtual Assets Regulatory Authority. 
+"Virtual Asset" or "VA" has the meaning ascribed to it in the Dubai VA Law. 
+"Whitepaper" has the meaning ascribed to it in the VA Issuance Rulebook. 
+"Working Day" has the meaning ascribed to it in the Regulations. 
+ 
+  
+  
+ 
+40 
+ 
+ANNEX 2: ASSET-REFERENCED VIRTUAL ASSETS ISSUANCE 
+RULES 
+ 
+ 
+ 
+ 
+Asset-Referenced Virtual Assets 
+Issuance Rules  
+[DATE] 2025  
+  
+  
+ 
+41 
+ 
+Contents 
+PART I – APPROVAL REQUIREMENTS .....................................................................................................................42 
+A. Interpretation........................................................................................................................................................................... 42 
+B. General requirements for VARA approval ............................................................................................................... 42 
+C. Significant ARVA Issuers ................................................................................................................................................... 43 
+PART II – ADDITIONAL DISCLOSURES ....................................................................................................................45 
+A. Additional Whitepaper disclosures .............................................................................................................................. 45 
+B. Additional ongoing disclosures ...................................................................................................................................... 46 
+PART III – ADDITIONAL COMPLIANCE OBLIGATIONS OF ARVA ISSUERS ............................................47 
+A. Value of an Asset-Referenced Virtual Asset .......................................................................................................... 47 
+B. Direct right of ownership................................................................................................................................................... 47 
+C. Reserve Assets ........................................................................................................................................................................ 48 
+D. Audits and reporting ............................................................................................................................................................ 49 
+E. Redemptions ............................................................................................................................................................................. 49 
+F. Marketing ................................................................................................................................................................................... 50 
+G. Capital requirements ............................................................................................................................................................ 50 
+SCHEDULE 2 – DEFINITIONS ........................................................................................................................................52 
+ 
+  
+ 
+42 
+ 
+Part I – Approval Requirements 
+A. Interpretation 
+1. "Asset-Referenced Virtual Assets" or "ARVAs" has the meaning ascribed to it in Schedule 2 – 
+Definitions of the VA Issuance Rulebook. 
+2. "Income" has the meaning ascribed to it in Schedule 2  – Definitions of the VA Issuance 
+Rulebook. 
+3. "Reference Assets" means, in relation to a n ARVA, the RWA and/or Income  the ARVA 
+represents or purports to represent, as approved by VARA. 
+4. "Reserve Assets" means, for the purposes of these ARVA Rules, the asset or assets maintained 
+in accordance with Rule III.C of these ARVA Rules and as approved by VARA. Reserve Assets are 
+not Client Money or Client VAs, as defined in the Compliance and Risk Management Rulebook. 
+5. "RWA" has the meaning ascribed to it in Schedule 2 – Definitions of the VA Issuance Rulebook.  
+ 
+B. General requirements for VARA approval  
+1. As stated in Rule I.C.1 of the VA Issuance Rulebook, the issuance of an ARVA is a Category 1 VA 
+Issuance and as such is a VA Activity. In addition to compliance with these ARVA Rules, and all 
+other Regulations, Rules and Directives as communicated by VARA in its Licence or otherwise 
+from time to time, all Entities in the Emirate seeking to issue an ARVA will be required to comply 
+with the following Rulebooks— 
+a. Company Rulebook; 
+b. Compliance and Risk Management Rulebook; 
+c. Technology and Information Rulebook; 
+d. Market Conduct Rulebook; and 
+e. VA Issuance Rulebook. 
+2. Approval of each ARVA. All VASPs Licensed by VARA to carry out Category 1 VA Issuance must 
+obtain approval from VARA prior to issuing each ARVA.  
+3. Approval conditions. VARA may, in its sole and absolute discretion, impose conditions on any 
+approvals granted for the issuance of an ARVA by a VASP, including, but not limited to— 
+  
+ 
+43 
+ 
+a. segregation of the VASP's business or operations in relation to VA issuances and any 
+other VA Activities (or other businesses and activities, if applicable ) by implementing 
+and strictly enforcing policies and procedures;  
+b. obtaining and maintaining all necessary regulatory approvals and licences for activities 
+involving the R WA and/or Reserve Assets , which must be carried out for the normal 
+functioning of the ARVA, or otherwise provide further information to demonstrate 
+ongoing compliance with all applicable laws and regulations; 
+c. provision of further information to demonstrate the VASP's ability to comply with any 
+Regulation, Rule or Directive; and/or 
+d. any additions or modifications to requirements set out in any Regulation, Rule and/or 
+Directive.  
+4. Applicable Rules. On receiving approval to issue an ARVA by VARA, a VASP will be required to 
+comply with all Rules or requirements that VARA may impose on the VASP as a condition and 
+ongoing requirement for any approval. VARA may impose Rules in addition to, or disapply any 
+of, the Rules in these ARVA Rules depending on the considerations which it deems relevant to 
+the nature of the ARVA being issued and/or the VASP. Any additional Rules imposed on a VASP 
+may be requirements equivalent or similar to those contained in the Regulations, Rulebooks or 
+Directives.  
+ 
+C. Significant ARVA Issuers 
+1. VARA may, in its sole and absolute discretion, designate any VASP Licensed to issue an ARVA 
+as a Significant ARVA Issuer at the time of granting a Licence or anytime thereafter. 
+2. In designating a VASP as a Significant ARVA Issuer, VARA may consider all factors relevant to 
+the VASP and/or the ARVA issued by the VASP, including but not limited to—  
+a. the number of owners and/or holders of the ARVA;  
+b. the value of circulating and/or outstanding supply of the ARVA; 
+c. the value of the Reserve Assets maintained by the VASP;  
+d. the number and value of transactions in the ARVA; 
+  
+ 
+44 
+ 
+e. whether the VASP  and/or its affiliates carry out any other VA Activity (ies) and/or 
+financial services in the Emirate, or provide services similar to VA Activities and/or 
+financial services in other jurisdictions; 
+f. interconnectedness with licensed financial institutions and/or VASPs; and/or 
+g. the business, structural and operational complexity of the VASP in relation to the ARVA 
+issued by it. 
+3. VARA may, in its sole and absolute discretion, impose any Rules on a Significant ARVA Issuer in 
+addition to those contained in the Rulebooks, which may include, but not be limited to, additional 
+Rules on— 
+a. company structure and corporate governance; 
+b. Paid-Up Capital, Net Liquid Assets, Insurance and/or Reserve Assets;  
+c. audits, regulatory reporting and regulatory notifications; and/or  
+d. any other matter as VARA deems appropriate. 
+ 
+  
+ 
+45 
+ 
+Part II – Additional Disclosures 
+A. Additional Whitepaper disclosures 
+1. In addition to all other disclosures required in the Part III of the VA Issuance Rulebook, VASPs 
+Licensed to issue ARVAs must include the following in the Whitepaper—  
+a. a clear and accurate description of the rights and/or value that the AR VA grants, or 
+purports to grant, owners and/or holders of the ARVA and a clear and detailed policy 
+on how the VASP ensures the ARVA derives and maintains its value;  
+b. the types and composition of Reference Assets, and criteria for how such Reference 
+Assets were identified; 
+c. whether the types of Reference Asset will change and, if so, the circumstances in which 
+any such changes may take place; 
+d. whether the ARVA represents, or purports to represent, a direct right of ownership of 
+the Reference Assets, or a fractional proportion thereof, and if so, a detailed description 
+of how the right of ownership is established and/or such fractionalisation is structured; 
+e. if transactions in the Reference Assets are subject to legal or regulatory requirements 
+relating to their settlement and/or transfer of title, a detailed description of how such 
+requirements will be met and an explanation of how the VASP will respond to 
+transactions in the ARVA not resulting in corresponding transactions in the Reference 
+Asset being legally settled, completed and/or transferred, and any mitigation employed 
+by the VASP to address such risks; 
+f. whether the ARVA maintains, or purports to maintain, a stable reference to the value of 
+the Reference Assets, and if so, a detailed description of how such stable reference is 
+maintained and the weighting of each type of Reference Asset in the unit value of the 
+ARVA; 
+g. whether the VASP will maintain Reserve Assets in respect of the ARVA; 
+h. the types and composition of Re serve Assets (if applicable), and criteria for how such 
+Reserve Assets were identified; 
+  
+ 
+46 
+ 
+i. whether the types of Re serve Asset may be subject to  change and, if so, the 
+circumstances in which any such changes may take place, including a detailed description 
+of the VASP’s investment policy for the Reserve Assets (if applicable); 
+j. a clear and detailed policy on  the procedure for  the creation and destruction of the 
+ARVAs in public circulation and the consequence of such creation or destruction on the 
+increase and decrease of the Reserve Assets (if applicable); 
+k. full details of the rights of owners and/or holders of the ARVA to redeem the value of 
+the ARVA, including but not limited to the requirements under Rule III.E and the 
+procedures and timeline for owners and/or holders of the ARVA to redeem such value;  
+l. the custody arrangement of the Reference Asset and/or Reserve Assets, including but 
+not limited to, the custodians involved and how the VASP ensures it has timely access 
+to Reserve Assets to process redemption requests; 
+m. detailed assessments of risks relevant to the management, custody, investment and/or 
+liquidation of the Reference Asset and/or Reserve Assets, including but not limited to, 
+credit risk, market risk, counterparty risk and liquidity risk, and policies and procedures 
+to manage such risks for the purpose of processing redemption requests; and 
+n. any other relevant information as may be determined by VARA.  
+ 
+B. Additional ongoing disclosures 
+1. VASPs Licensed to issue ARVAs shall at least monthly, and in a clear, accurate and transparent 
+manner disclose on their website—  
+a. the number and value of ARVAs in public circulation; and 
+b. the value and composition of the Reserve Assets (if applicable). 
+2. Disclosures in accordance with Rule III.B shall be accompanied by a statement confirming 
+whether or not the ARVA is, at the time of the disclosure, fully backed by sufficient Reserve 
+Assets in accordance with Rule III.C.1. 
+  
+ 
+47 
+ 
+Part III – Additional Compliance Obligations of ARVA Issuers 
+A. Value of an Asset-Referenced Virtual Asset 
+1. All Entities seeking to issue an ARVA shall clearly demonstrate to VARA—  
+a. the rights and/or value that the ARVA grants, or purports to grant, to the owners 
+and/or holders of the ARVA; and  
+b. a clear and detailed policy on how the Entity will ensure the ARVA derives and maintains 
+its value.  
+2. Reference Asset. All Entities seeking to issue an ARVA shall clearly demonstrate to VARA the 
+type and composition of Reference Assets and whether the Reference Asset may change and, if 
+so, the circumstances in which any such changes may take place. 
+ 
+B. Direct right of ownership  
+1. All VASPs Licensed to issue an ARVA which represents, or purports to represent, a direct right 
+of ownership of the Reference Asset, or a fractional proportion thereof, shall ensure—  
+a. the right of ownership is legally and validly established and that such right of ownership 
+is transferred in the event of a transfer of ownership of the ARVA; 
+b. where transactions in the Reference Assets are subject to legal or regulatory 
+requirements relating to their settlement, completion and/or transfer of title, that such 
+legal or regulatory requirements are satisfied, in order to give effect to the transfer of 
+ownership in the event of a transfer of ownership of the ARVA; and  
+c. that the VASP will respond to transactions in the ARVA not resulting in a corresponding 
+transaction in the Reference Asset being legally settled, completed and/or transferred, 
+and shall implement mitigating measures to ensure all transactions in the ARVA result 
+in a corresponding transaction in the Reference Asset being legally settled , completed 
+and/or transferred. 
+2. Legal opinion. VASPs Licensed to issue ARVAs may be required to provide VARA with a legal 
+opinion, provided by a professional and duly registered lawyer, confirming any explanation made 
+either to VARA or any information contained in a Whitepaper.  
+ 
+  
+ 
+48 
+ 
+C. Reserve Assets 
+1. VASPs Licensed to issue ARVAs which purport to maintain a stable value in respect of any 
+Referenced Asset, shall hold and maintain sufficient and acceptable Reserve Assets such that—  
+a. the risks associated with the rights and/or to the value that the AR VA grants, or 
+purports to grant, owners of the ARVA are secured; and 
+b. the liquidity risks associated with any rights of redemption granted to the owners 
+and/or holders are mitigated and managed.  
+2. VASPs Licensed to issue ARVAs  shall, at all times, manage Reserve Assets effectively and 
+prudently, at least by— 
+a. maintaining Reserve Assets only with custodians or other Entities which are validly 
+licensed and qualified to hold such assets;  
+b. ensuring Reserve Assets are segregated from the VASP’s own funds; 
+c. ensuring newly added Reserve Assets are held in custody in accordance with Rule III.C.2.a 
+by no later than the time period stipulated by VARA as a condition of its approval of the 
+VASP to issue the ARVA; 
+d. having in place policies and procedures to ensure Reserve Assets can be promptly 
+accessed to process and complete any redemption requests in accordance with Rule III.E, 
+including but not limited to conversion into AED where the redemptions are being paid 
+in AED; and 
+e. conducting regular risk assessments to evaluate the appropriateness of the composition 
+of Reserve Assets in ensuring compliance with this Rule III.C .  
+3. VASPs Licensed to issue ARVAs shall, to the furthest extent permitted by applicable laws, ensure 
+that Reserve Assets—  
+a. are legally segregated from its estate and the Reserve Assets of any other Virtual Assets;  
+b. are not rehypothecated, or subject to any pledges or encumbrances which would prevent 
+the Issuer from processing any redemption request in accordance with Rule III.E; and 
+c. will not otherwise be subject to any recourse by the creditors of the VASP, the custodian 
+of the Reserve Assets or any other third parties, in particular , in the event of any party 
+becoming Insolvent. 
+  
+ 
+49 
+ 
+4. Legal opinion. VASPs Licensed to issue ARVAs  shall be required to provide VARA with a legal 
+opinion, provided by a duly registered practising lawyer, confirming compliance with Rule III.C.3 
+above.  
+5. Conflicts of interest. VASPs Licensed to issue ARVAs shall take all appropriate steps to prevent, 
+identify, manage and publicly disclose conflicts of interest arising from the constitution and 
+management of Reserve Assets. 
+ 
+D. Audits and reporting 
+1. For the purposes of complying with this Rule III.D, VASPs Licensed to issue ARVAs shall appoint 
+an independent third -party auditor and promptly  notify VARA of the full name and contact 
+details of the auditor upon appointment. 
+2. VASPs Licensed to issue ARVAs shall— 
+a. every six (6) months, commission an independent audit of—  
+a. the number and value of the ARVAs in public circulation;  
+b. the composition and value of the Reserve Assets, if applicable; and 
+b. commission an independent audit of the ir financial statements to produce an annual 
+report, which shall be promptly made available to VARA upon request. 
+3. The Senior Management of the VASP Licensed to issue ARVAs shall, as soon as practicable upon 
+its completion, submit to VARA an attestation as to the accuracy of each independent audit in 
+accordance with Rule III.D of these ARVA Rules. 
+ 
+E. Redemptions 
+1. To the extent an ARVA provides owners and/or holders with a right of redemption, the VASP 
+Licensed to issue the ARVA shall, at all times, ensure owners and/or holders of the ARVA have 
+the right to redeem the ARVA for an equal value denominated in—  
+a. AED; and  
+b. other forms as may be determined by the VASP and disclosed in the Whitepaper. 
+2. To the extent an ARVA provides owners and/or holders with a right of redemption,  the VASP 
+Licensed to issue the ARVA shall, at all times, ensure owners and/or holders of the ARVA have 
+the right to redeem the ARVA— 
+  
+ 
+50 
+ 
+a. against the VASP; or  
+b. otherwise in respect of the Reserve Assets in the event that the VASP is unable to 
+process and complete redemption requests. 
+3. VASPs Licensed to issue ARVAs  must ensure all requests made by  owners and/or holders to 
+redeem such ARVAs for an equal value of RWAs shall be processed and completed within a 
+reasonable period of such requests being made, provided the owner and/or holder, or the ir 
+designee, has successfully onboarded with the VASP and any other conditions necessary to 
+permit redemption in compliance with all applicable laws, Regulations, Rules and Directives have 
+been met.  
+4. VASPs Licensed to issue ARVAs  shall process and complete redemption requests without 
+charging any fees. 
+5. VASPs Licensed to issue ARVAs  shall establish, maintain and implement clear and detailed 
+policies and procedures to ensure compliance with this Rule III.E. 
+ 
+F. Marketing 
+1. No Entity may, in the Marketing of any Virtual Asset in the Emirate, use the term 'stablecoin' or 
+include language suggesting that the value of a Virtual Asset is maintained stable relative to a 
+particular RWA, unless—  
+a. it is a VASP Licensed by VARA to issue ARVAs  and has received VARA’s approval to 
+issue the ARVA and such approval has not been revoked; 
+b. such ARVA purports to maintain a stable reference to the value of one RWA only; and 
+c. the VASP maintains Reserve Assets in accordance with Rule III.C of these ARVA Rules. 
+2. VASPs Licensed to issue ARVAs  shall, in all Marketing relating to any ARVA, include clear and 
+unambiguous statements that such ARVA is not covered by any investor protection or deposit 
+guarantee schemes. 
+ 
+G. Capital requirements 
+1. VASPs Licensed to issue ARVAs shall always maintain Paid-Up Capital equal to the value of at 
+least the higher of— 
+a. AED 1,500,000; and 
+  
+ 
+51 
+ 
+b. 2% of the average market value of the Reserve Assets  (where applicable) calculated 
+over the preceding twenty-four (24) months. 
+ 
+  
+ 
+52 
+ 
+Schedule 2 – Definitions 
+Term Definition 
+"Asset-Referenced Virtual 
+Asset" or "ARVA" 
+has the meaning ascribed to it in Schedule 2 – Definitions of the VA 
+Issuance Rulebook. 
+"ARVA Rules" means these Asset-Referenced Virtual Assets Issuance Rules issued 
+by VARA pursuant to the Regulations, as may be amended from time 
+to time. 
+"Category 1 VA Issuance" has the meaning ascribed to it in the VA Issuance Rulebook. 
+"Client Money" has the meaning ascribed to it in the Compliance and Risk 
+Management Rulebook. 
+"Client VA" has the meaning ascribed to it in the Compliance and Risk 
+Management Rulebook. 
+"Directive" has the meaning ascribed to it in the Regulations. 
+"Dubai VA Law" means Dubai Law No. (4) of 2022 Regulating Virtual Assets in the 
+Emirate of Dubai, as may be amended from time to time. 
+"Emirate" means all zones across the Emirate of Dubai, including Special 
+Development Zones and Free Zones but excluding the Dubai 
+International Financial Centre. 
+"Entity" means any legal entity or individual. 
+"Insolvency Proceedings" has the meaning ascribed to it in the Regulations. 
+"Insolvent" has the meaning ascribed to it in the Regulations. 
+"Issuer" means the Entity responsible for the issuance of a Virtual Asset. 
+"Marketing" has the meaning ascribed to it in the Marketing Regulations.  
+  
+ 
+53 
+ 
+Term Definition 
+"Marketing Regulations" means the Regulations on the Marketing of Virtual Assets and 
+Related Activities 2024, issued by VARA and as may be amended or 
+superseded from time to time. 
+"Regulations" means the Virtual Assets and Related Activities Regulations 2023, as 
+may be amended from time to time. 
+"Reference Assets" has the meaning ascribed to it in Rule III.A.3 of these ARVA Rules. 
+"Reserve Assets" has the meaning ascribed to it in Rule III.A.4. of these ARVA Rules. 
+"Senior Management" means the executive management of an Entity responsible and 
+accountable to the Board for the sound and prudent day -to-day 
+management of the Entity, generally including but not limited to, the 
+chief executive officer, chief financial officer, chief risk off icer, and 
+heads of the compliance and internal audit functions, or as equivalent 
+roles may be titled.  
+"Significant ARVA Issuer" means a VASP designated by VARA in accordance with Rule III.C.1 of 
+these ARVA Rules. 
+"VA Issuance Rulebook" means the Virtual Asset Issuance Rulebook issued by VARA pursuant 
+to the Regulations, as may be amended or supplemented by VARA 
+from time to time. 
+"VARA" means the Dubai Virtual Assets Regulatory Authority. 
+"Virtual Asset" or "VA" has the meaning ascribed to it in the Dubai VA Law. 
+"Whitepaper" has the meaning ascribed to it in Rule III.A,1 of the VA Issuance 
+Rulebook. 
+ 
+ 
+ 
