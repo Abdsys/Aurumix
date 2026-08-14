@@ -23,19 +23,21 @@
       "status": "in_progress",
       "files": [
         "Aurumix_Process_Maps.md",
+        "Aurumix_Process_Maps_Family_And_Succession.md",
         "Aurumix_Process_Maps_ICS_Benefits.md",
         "Aurumix_Process_Maps_ICS_Scoring.md",
         "Aurumix_Process_Maps_Revenue_Streams.md",
         "Aurumix_Process_Maps_SIP_Structure.md",
         "_build_ics_calculator.py",
         "_draft_allocation-and-float.md",
+        "_draft_family-and-succession.md",
         "_draft_ics-scoring.md",
         "_draft_purchase-structure.md",
         "_draft_sip-rulebook.md",
         "_parked_collection-economics-and-minimum-ticket.md",
         "_verify_ics_calculator.py"
       ],
-      "updated_at": "2026-08-12"
+      "updated_at": "2026-08-14"
     }
   }
 }
