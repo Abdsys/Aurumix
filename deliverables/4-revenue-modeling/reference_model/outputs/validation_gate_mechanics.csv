@@ -1,0 +1,8 @@
+check,expected,got,pass
+"Persona I gate fires at M14 with Months=6, Recent=6",gated=True months=6 recent=6 tier=Silver,gated=True months=6 recent=6 tier=Silver,True
+"Persona H never gates (no score, no tier, ever)",gated=False tier=None,gated=False tier=None,True
+Regulatory block freezes the pre-gate run (4-of-6 resumes at 4-of-6),run_length=4 after 6 frozen months,run_length=4 (was 4),True
+Frozen months are skipped entirely on both clocks,months unchanged at 6,months=6,True
+Dormancy absorbs at 12 consecutive silent periods,dormant=True,dormant=True silent=12,True
+"Exact fractions: Standing(Recent=6) reaches Gold, not Silver",Standing=50 exactly -> Gold,exact=50.0 (naive 8.3333x6=49.9998 -> Silver),True
+Alternating misser is permanently capped at Gold,tier=Gold,months=66 recent=6 tier=Gold,True

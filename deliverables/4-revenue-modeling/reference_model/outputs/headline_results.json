@@ -1,0 +1,500 @@
+{
+  "scenarios": {
+    "Base": {
+      "y10_revenue": 8150081.31633034,
+      "y10_accounts_live": 21660.953559200818,
+      "y10_holding": 64197.49134342163,
+      "y10_aum": 39790584.11661284,
+      "cumulative_net_profit": -14110495.330944136,
+      "y10_net_profit": -367050.94788482203,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": null,
+      "pnl_breakeven_year_net_profit": null,
+      "first_positive_month_secondary": 115,
+      "net_profit_of_that_year": -367050.94788482203,
+      "peak_funding_requirement": 15076459.927520921,
+      "peak_funding_month": 114,
+      "min_cumulative_cash": -14668018.811115203,
+      "min_cash_month": 114
+    },
+    "Aggressive": {
+      "y10_revenue": 32914333.84082022,
+      "y10_accounts_live": 43472.392565254304,
+      "y10_holding": 93285.92005252124,
+      "y10_aum": 251297975.37012452,
+      "cumulative_net_profit": 37065463.14713514,
+      "y10_net_profit": 14825847.670842,
+      "cash_breakeven_month": 80,
+      "pnl_breakeven_year_ebitda": 5,
+      "pnl_breakeven_year_net_profit": 5,
+      "first_positive_month_secondary": 47,
+      "net_profit_of_that_year": -747626.0326842271,
+      "peak_funding_requirement": 6049332.821384718,
+      "peak_funding_month": 52,
+      "min_cumulative_cash": -5640891.704979,
+      "min_cash_month": 52
+    },
+    "Conservative": {
+      "y10_revenue": 1018688.966735939,
+      "y10_accounts_live": 8730.18403637181,
+      "y10_holding": 38565.80752782524,
+      "y10_aum": 3573657.9008439337,
+      "cumulative_net_profit": -24888701.143729012,
+      "y10_net_profit": -3558975.042253929,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": null,
+      "pnl_breakeven_year_net_profit": null,
+      "first_positive_month_secondary": null,
+      "net_profit_of_that_year": null,
+      "peak_funding_requirement": 25428705.214724753,
+      "peak_funding_month": 120,
+      "min_cumulative_cash": -25020264.098319035,
+      "min_cash_month": 120
+    },
+    "rail_kills_it": {
+      "y10_revenue": 8150081.31633034,
+      "y10_accounts_live": 21660.953559200818,
+      "y10_holding": 64197.49134342163,
+      "y10_aum": 39790584.11661284,
+      "cumulative_net_profit": -15526751.887569644,
+      "y10_net_profit": -650479.3216600345,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": null,
+      "pnl_breakeven_year_net_profit": null,
+      "first_positive_month_secondary": 115,
+      "net_profit_of_that_year": -650479.3216600345,
+      "peak_funding_requirement": 16387738.008105712,
+      "peak_funding_month": 118,
+      "min_cumulative_cash": -15979296.891699994,
+      "min_cash_month": 118
+    },
+    "no_card": {
+      "y10_revenue": 1767497.0045048047,
+      "y10_accounts_live": 21660.953559200818,
+      "y10_holding": 64197.49134342163,
+      "y10_aum": 39790584.11661284,
+      "cumulative_net_profit": -24633515.358007416,
+      "y10_net_profit": -3713122.496413557,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": null,
+      "pnl_breakeven_year_net_profit": null,
+      "first_positive_month_secondary": null,
+      "net_profit_of_that_year": null,
+      "peak_funding_requirement": 25472989.984345756,
+      "peak_funding_month": 120,
+      "min_cumulative_cash": -25064548.86794004,
+      "min_cash_month": 120
+    },
+    "card_prepaid_capped": {
+      "y10_revenue": 5845159.831500201,
+      "y10_accounts_live": 21660.953559200818,
+      "y10_holding": 64197.49134342163,
+      "y10_aum": 39790584.11661284,
+      "cumulative_net_profit": -21364674.55642375,
+      "y10_net_profit": -2671972.432714961,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": null,
+      "pnl_breakeven_year_net_profit": null,
+      "first_positive_month_secondary": null,
+      "net_profit_of_that_year": null,
+      "peak_funding_requirement": 22204149.182762086,
+      "peak_funding_month": 120,
+      "min_cumulative_cash": -21795708.06635637,
+      "min_cash_month": 120
+    },
+    "clients_plan": {
+      "y10_revenue": 17668002.92983842,
+      "y10_accounts_live": 54009.601220796656,
+      "y10_holding": 169755.64629199903,
+      "y10_aum": 97529200.19398531,
+      "cumulative_net_profit": -7218254.418181845,
+      "y10_net_profit": 1274060.8813513394,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": 10,
+      "pnl_breakeven_year_net_profit": 10,
+      "first_positive_month_secondary": 67,
+      "net_profit_of_that_year": -628656.5448788877,
+      "peak_funding_requirement": 10468829.33057832,
+      "peak_funding_month": 113,
+      "min_cumulative_cash": -10060388.214172602,
+      "min_cash_month": 113
+    },
+    "no_india": {
+      "y10_revenue": 6118450.124255404,
+      "y10_accounts_live": 16700.248690323348,
+      "y10_holding": 50714.82089773603,
+      "y10_aum": 33187620.195502065,
+      "cumulative_net_profit": -17746326.74680382,
+      "y10_net_profit": -1392164.6444500498,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": null,
+      "pnl_breakeven_year_net_profit": null,
+      "first_positive_month_secondary": null,
+      "net_profit_of_that_year": null,
+      "peak_funding_requirement": 18534328.920420155,
+      "peak_funding_month": 120,
+      "min_cumulative_cash": -18125887.804014437,
+      "min_cash_month": 120
+    },
+    "lapsed_loses_card": {
+      "y10_revenue": 4756307.6651089685,
+      "y10_accounts_live": 21660.953559200818,
+      "y10_holding": 64197.49134342163,
+      "y10_aum": 39790584.11661284,
+      "cumulative_net_profit": -19352546.48489899,
+      "y10_net_profit": -2243513.4972053664,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": null,
+      "pnl_breakeven_year_net_profit": null,
+      "first_positive_month_secondary": null,
+      "net_profit_of_that_year": null,
+      "peak_funding_requirement": 20192021.11123734,
+      "peak_funding_month": 120,
+      "min_cumulative_cash": -19783579.99483162,
+      "min_cash_month": 120
+    },
+    "option_b_capital": {
+      "y10_revenue": 8150081.31633034,
+      "y10_accounts_live": 21660.953559200818,
+      "y10_holding": 64197.49134342163,
+      "y10_aum": 39790584.11661284,
+      "cumulative_net_profit": -14110495.330944136,
+      "y10_net_profit": -367050.94788482203,
+      "cash_breakeven_month": null,
+      "pnl_breakeven_year_ebitda": null,
+      "pnl_breakeven_year_net_profit": null,
+      "first_positive_month_secondary": 115,
+      "net_profit_of_that_year": -367050.94788482203,
+      "peak_funding_requirement": 15321068.036199853,
+      "peak_funding_month": 114,
+      "min_cumulative_cash": -14668018.811115203,
+      "min_cash_month": 114
+    }
+  },
+  "survival_fit": {
+    "anchors": [
+      {
+        "anchor_month": 13,
+        "target": 0.55,
+        "sourced_weights": 0.5344,
+        "calibrated": 0.5438,
+        "residual_pp": -0.62,
+        "sourced_residual_pp": -1.56
+      },
+      {
+        "anchor_month": 25,
+        "target": 0.4,
+        "sourced_weights": 0.4043,
+        "calibrated": 0.4083,
+        "residual_pp": 0.83,
+        "sourced_residual_pp": 0.43
+      },
+      {
+        "anchor_month": 37,
+        "target": 0.3,
+        "sourced_weights": 0.3078,
+        "calibrated": 0.3092,
+        "residual_pp": 0.92,
+        "sourced_residual_pp": 0.78
+      },
+      {
+        "anchor_month": 49,
+        "target": 0.24,
+        "sourced_weights": 0.2355,
+        "calibrated": 0.2359,
+        "residual_pp": -0.41,
+        "sourced_residual_pp": -0.45
+      },
+      {
+        "anchor_month": 61,
+        "target": 0.19,
+        "sourced_weights": 0.1811,
+        "calibrated": 0.1814,
+        "residual_pp": -0.86,
+        "sourced_residual_pp": -0.89
+      }
+    ],
+    "rmse_sourced_pp": 0.9188579868510695,
+    "rmse_calibrated_pp": 0.7519840423838793,
+    "m120_survival": 0.052574336863761666,
+    "calibrated_weights": {
+      "Perfect payer": 0.1154772164423804,
+      "Occasional misser": 0.3019772570067361,
+      "Alternating misser": 0.30473002678684386,
+      "Reducer": 2.875655459501327e-14,
+      "Early lapser": 0.2778154997640108
+    },
+    "calibrated_background_hazard": 0.013445196579318107
+  },
+  "personas_pass": "9/9",
+  "gate_mechanics_pass": "7/7",
+  "breakeven": {
+    "basis": "revenue(N) = total_cost(N), not opex alone",
+    "entry_fee_only": {
+      "solution_accounts": null,
+      "breakeven_year_ebitda": null,
+      "extrapolated_year": 10.879772909694653
+    },
+    "all_streams": {
+      "solution_accounts": 45101.981505309945,
+      "breakeven_year_ebitda": null,
+      "extrapolated_year": 10.879772909694653
+    },
+    "minimum_entry_fee_path": [
+      {
+        "year": 1,
+        "bar_grams": 100.0,
+        "premium": 0.03,
+        "sip_ticket": 49.13606075693367,
+        "spot_ticket": 691.2209554689578,
+        "v1.0 assumed fee": 0.05,
+        "tier discount applied": 0.0007569394952032932,
+        "min viable fee SIP lane": 0.049622422344217335,
+        "min viable fee spot lane": 0.04503384554450497,
+        "min viable fee (binding)": 0.049622422344217335,
+        "shortfall_pp": -0.03775776557826682,
+        "achievable": true,
+        "stream1_sip_net": 2630.193255827159,
+        "stream1_net_total": 3924.3285214799685
+      },
+      {
+        "year": 2,
+        "bar_grams": 100.0,
+        "premium": 0.03,
+        "sip_ticket": 45.84301815820491,
+        "spot_ticket": 653.3648672223984,
+        "v1.0 assumed fee": 0.05,
+        "tier discount applied": 0.0020651580479364856,
+        "min viable fee SIP lane": 0.03991858488923215,
+        "min viable fee spot lane": 0.034995518354362196,
+        "min viable fee (binding)": 0.03991858488923215,
+        "shortfall_pp": -1.008141511076785,
+        "achievable": true,
+        "stream1_sip_net": 9528.01506800632,
+        "stream1_net_total": 15516.913107572822
+      },
+      {
+        "year": 3,
+        "bar_grams": 100.0,
+        "premium": 0.03,
+        "sip_ticket": 43.828803371475146,
+        "spot_ticket": 627.2280388860836,
+        "v1.0 assumed fee": 0.04,
+        "tier discount applied": 0.0028834418366710662,
+        "min viable fee SIP lane": 0.041818342459588556,
+        "min viable fee spot lane": 0.0337599089099619,
+        "min viable fee (binding)": 0.041818342459588556,
+        "shortfall_pp": 0.18183424595885553,
+        "achievable": false,
+        "stream1_sip_net": -3099.3334714622197,
+        "stream1_net_total": 2472.0252824368226
+      },
+      {
+        "year": 4,
+        "bar_grams": 100.0,
+        "premium": 0.03,
+        "sip_ticket": 42.54239106056051,
+        "spot_ticket": 610.357184746096,
+        "v1.0 assumed fee": 0.04,
+        "tier discount applied": 0.003654693997384613,
+        "min viable fee SIP lane": 0.04181669607716277,
+        "min viable fee spot lane": 0.03390545325402928,
+        "min viable fee (binding)": 0.04181669607716277,
+        "shortfall_pp": 0.18166960771627688,
+        "achievable": false,
+        "stream1_sip_net": -5556.88909970257,
+        "stream1_net_total": 5455.580619520565
+      },
+      {
+        "year": 5,
+        "bar_grams": 1000.0,
+        "premium": 0.02,
+        "sip_ticket": 41.646885533106904,
+        "spot_ticket": 598.8271736086281,
+        "v1.0 assumed fee": 0.04,
+        "tier discount applied": 0.004304968432426247,
+        "min viable fee SIP lane": 0.03778552367065282,
+        "min viable fee spot lane": 0.027953974802078972,
+        "min viable fee (binding)": 0.03778552367065282,
+        "shortfall_pp": -0.22144763293471814,
+        "achievable": true,
+        "stream1_sip_net": 734.9955247088187,
+        "stream1_net_total": 30741.26878800941
+      },
+      {
+        "year": 6,
+        "bar_grams": 1000.0,
+        "premium": 0.02,
+        "sip_ticket": 40.971641863552954,
+        "spot_ticket": 590.3285178885133,
+        "v1.0 assumed fee": 0.035,
+        "tier discount applied": 0.00487579965689898,
+        "min viable fee SIP lane": 0.037928476709635936,
+        "min viable fee spot lane": 0.028256518645036074,
+        "min viable fee (binding)": 0.037928476709635936,
+        "shortfall_pp": 0.29284767096359327,
+        "achievable": false,
+        "stream1_sip_net": -17971.782360113823,
+        "stream1_net_total": 11707.177164764726
+      },
+      {
+        "year": 7,
+        "bar_grams": 1000.0,
+        "premium": 0.02,
+        "sip_ticket": 40.415669991539836,
+        "spot_ticket": 583.441990464983,
+        "v1.0 assumed fee": 0.035,
+        "tier discount applied": 0.005398012622133328,
+        "min viable fee SIP lane": 0.037432447420381404,
+        "min viable fee spot lane": 0.028044829638827904,
+        "min viable fee (binding)": 0.037432447420381404,
+        "shortfall_pp": 0.24324474203814006,
+        "achievable": false,
+        "stream1_sip_net": -18471.494440957737,
+        "stream1_net_total": 22656.34118237591
+      },
+      {
+        "year": 8,
+        "bar_grams": 1000.0,
+        "premium": 0.02,
+        "sip_ticket": 39.929166722592036,
+        "spot_ticket": 577.5130673412855,
+        "v1.0 assumed fee": 0.03,
+        "tier discount applied": 0.0058784318346426535,
+        "min viable fee SIP lane": 0.037358627279407974,
+        "min viable fee spot lane": 0.028111808240689044,
+        "min viable fee (binding)": 0.037358627279407974,
+        "shortfall_pp": 0.7358627279407975,
+        "achievable": false,
+        "stream1_sip_net": -64808.82437596356,
+        "stream1_net_total": -51105.46902661116
+      },
+      {
+        "year": 9,
+        "bar_grams": 1000.0,
+        "premium": 0.02,
+        "sip_ticket": 39.49622448302211,
+        "spot_ticket": 572.2868309284889,
+        "v1.0 assumed fee": 0.03,
+        "tier discount applied": 0.006337082786847952,
+        "min viable fee SIP lane": 0.03756397976578417,
+        "min viable fee spot lane": 0.028372753089324947,
+        "min viable fee (binding)": 0.03756397976578417,
+        "shortfall_pp": 0.756397976578417,
+        "achievable": false,
+        "stream1_sip_net": -73268.2020397757,
+        "stream1_net_total": -60250.766548852574
+      },
+      {
+        "year": 10,
+        "bar_grams": 1000.0,
+        "premium": 0.02,
+        "sip_ticket": 39.10622818615213,
+        "spot_ticket": 567.708884135189,
+        "v1.0 assumed fee": 0.03,
+        "tier discount applied": 0.0067742533371718296,
+        "min viable fee SIP lane": 0.03790842341185749,
+        "min viable fee spot lane": 0.02871710682959114,
+        "min viable fee (binding)": 0.03790842341185749,
+        "shortfall_pp": 0.790842341185749,
+        "achievable": false,
+        "stream1_sip_net": -80548.2103226596,
+        "stream1_net_total": -69777.25501384691
+      }
+    ],
+    "opex_blocks": {
+      "Headcount": {
+        "driver": "contributing",
+        "fixed": 646979.5513023066,
+        "variable": 49.589852390195425
+      },
+      "MLRO": {
+        "driver": "fixed",
+        "fixed": 0.0,
+        "variable": 0.0,
+        "steps": {
+          "1": 49000,
+          "3": 163000,
+          "10": 0
+        }
+      },
+      "VARA supervision": {
+        "driver": "fixed",
+        "fixed": 0.0,
+        "variable": 0.0,
+        "steps": {
+          "1": 54500,
+          "3": 94500,
+          "10": 110000
+        }
+      },
+      "Audit + attestation": {
+        "driver": "fixed",
+        "fixed": 0.0,
+        "variable": 0.0,
+        "steps": {
+          "1": 35000,
+          "3": 60000,
+          "10": 180000
+        }
+      },
+      "Compliance + KYC": {
+        "driver": "holding",
+        "fixed": 53265.89911451999,
+        "variable": 0.8520819912949615
+      },
+      "Vault and metal": {
+        "driver": "holding",
+        "fixed": 42131.02185950698,
+        "variable": 3.171484711723992
+      },
+      "Technology": {
+        "driver": "holding",
+        "fixed": 46643.21268683082,
+        "variable": 2.3116817988025717
+      },
+      "Corporate": {
+        "driver": "contributing",
+        "fixed": 14539.890759716485,
+        "variable": 4.18465219157676
+      },
+      "Security": {
+        "driver": "fixed",
+        "fixed": 0.0,
+        "variable": 0.0,
+        "steps": {
+          "1": 10000,
+          "3": 35000,
+          "10": 200000
+        }
+      },
+      "Legal + insurance": {
+        "driver": "fixed",
+        "fixed": 0.0,
+        "variable": 0.0,
+        "steps": {
+          "1": 60000,
+          "3": 120000,
+          "10": 400000
+        }
+      }
+    },
+    "holding_to_contributing_ratio": 2.963742624163135
+  },
+  "y10_revenue_stack": {
+    "stream1_sip": -80548.2103226596,
+    "stream1_spot": 10770.95530881268,
+    "stream2_card_interchange": 4156380.090148149,
+    "stream3_family": 111064.56715861434,
+    "stream4_cardholder_fees": 2226204.221677386,
+    "stream5_credit": 12134.64923355692,
+    "stream6_b2b": 1221200.0,
+    "total": 8150081.31633034
+  },
+  "aum_reconciliation": {
+    "y10_aum": 39790584.11661284,
+    "y10_cumulative_contributions": 90746186.70059523
+  },
+  "derived_parameter_count": 11,
+  "source_conflict_count": 9
+}
