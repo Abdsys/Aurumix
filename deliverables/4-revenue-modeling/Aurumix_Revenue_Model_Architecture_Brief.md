@@ -1,22 +1,28 @@
 # Aurumix — Revenue Model Architecture Brief
 
 **Date:** 2026-08-18
-**Version:** 2.0 (draft — structural sections)
+**Version:** 2.1 (draft — structural sections)
 **Phase:** 4, Revenue and Economic Modeling (repo folder 4; charter Phase 3)
 **Status:** Architecture for review. No spreadsheet built yet. Build follows sign-off on Section 3.
-**Supersedes:** v1.0 (2026-08-17, commit `668e0d5`). Every architecture change is recorded in `_working_architecture-decisions-v2.md` as decisions D1–D20 and is cited here at the point of use.
+**Supersedes:** v2.0 (2026-08-18) and v1.0 (2026-08-17, commit `668e0d5`). Every architecture change through v2.0 is recorded in `_working_architecture-decisions-v2.md` as decisions D1–D20 and is cited here at the point of use. **v2.1 carries three client decisions on top of that record: D21 the 7-year, 29-column basis; D22 the collapse of the score machinery to a tenure→tier lookup; D23 cohorts as a convolution rather than a triangle.**
 
+> ⚠ **Figures in this document are from the v2.0 ten-year model run and are illustrative of the architecture, not final.** The architecture below is what is being reviewed. Once it is signed off, the reference model is rebuilt to the 7-year, 29-column basis and every figure is re-cut. Expect levels to move; the structural findings in §0 are not expected to.
+>
 > **What this document is.** A complete, implementable plan for the Aurumix revenue and cost model. After reading it, a modeller should be able to build the workbook without asking a question. Every value, formula and structure is specified, and every assumption carries its source and confidence.
 >
 > **What changed at v2.0, in one paragraph.** v1.0's research and sourcing survived audit intact. Its *architecture* did not. Five audits — arithmetic, corpus fidelity, structural, benchmark and buildability — established that the three-state population machine drops 81% of the terminal book out of the model, that tier distribution cannot be computed from cohort averages, that a single constant hazard cannot reproduce the persistency curve v1.0 itself recommends, that a model with no cash flow cannot answer "when do we make money," and that the break-even figures in §0.3 were divisions of an opex base sized for 500 investors by a margin figure that could never meet it. v2.0 rebuilds the engine around a six-state population, five behavioural archetypes, a pre-gate block, a net-flow redemption term, and a cash and funding layer. **The findings v1.0 reached are, if anything, strengthened. The numbers it reached are withdrawn.**
 >
-> **How to read the figures.** Every figure that is an *output* of the model is now filled from the reference implementation in `reference_model/`, and none is carried over from v1.0 — v1.0's headline figures were proved wrong, and reusing one in a slot that belongs to the model would be worse than leaving it visibly empty. Every figure that is an *input* — the F-, S- and T-series values, corpus-sourced constants, published rates — is written out in full, because those are real. **A small number of slots remain marked `{{UNFILLED: … }}`. Each one is a figure the reference model does not compute, with the reason stated in the marker. They are open items, not oversights.**
+> **What changed at v2.1, in one paragraph.** Three decisions, all taken by the client and none re-openable here. **(1) The horizon is 7 years on 29 columns — 24 monthly plus 5 annual** — matching the firm's DRODE precedent, whose Model sheet was 29 columns on exactly this split (D21, §1). **(2) The per-period score arithmetic collapses to a tenure→tier lookup plus one heavy-seller haircut** (D22, §3 Layer 5); the eligibility gate, the survival engine and the never-gated population stay as a live engine, because measurement says the rate ladder is second-order and eligibility is first-order. **(3) Cohorts become a convolution** — five monthly lifecycle curves computed to M84 on an input sheet, convolved against the monthly acquisition vector (D23, §3 Layer 2). **The workbook must not contain a cohort triangle.** The engine's shape changes; none of its findings do.
+>
+> **How to read the figures.** Every figure that is an *output* of the model is filled from the reference implementation in `reference_model/`, and none is carried over from v1.0 — v1.0's headline figures were proved wrong, and reusing one in a slot that belongs to the model would be worse than leaving it visibly empty. Every figure that is an *input* — the F-, S- and T-series values, corpus-sourced constants, published rates — is written out in full, because those are real. **A small number of slots remain marked `{{UNFILLED: … }}`. Each one is a figure the reference model does not compute, with the reason stated in the marker. They are open items, not oversights.** ⚠ **Every output figure is on the ten-year basis and is superseded by the rebuild.** Where a figure belongs to Y8–Y10 it is now labelled as beyond the new horizon at the point of use.
 
 ---
 
-## 0. Read this first: the six findings that determine the architecture
+## 0. Read this first: the five findings that determine the architecture
 
 Everything below follows from these. If you disagree with one, the model changes shape, not just its numbers.
+
+> ⚠ **Figures in this section are from the v2.0 ten-year model run and are illustrative of the architecture, not final.** Once the architecture is signed off, the reference model is rebuilt to the 7-year, 29-column basis and every figure is re-cut. **Expect levels to move; the structural findings below are not expected to.**
 
 **Every figure in this section is model output**, generated by the reference implementation in `reference_model/` and reproducible by running it. That is the first difference from v1.0, whose headline stack could not be rebuilt from its own stated drivers — an audit found the Year 10 interchange line was 23–32% below what its own assumptions produced. Nothing here is asserted.
 
@@ -94,28 +100,7 @@ The model runs T1 on v1.0's assumed 5/4/3 deliberately, so the P&L shows the con
 
 ---
 
-### 0.4 The business does not break even inside ten years, and it needs USD 15.1m
-
-| | v1.0 | v2.0 |
-|---|---|---|
-| Break-even | Y7–Y9 base case | **No profitable year in ten** |
-| Y10 net profit | +2,468,500 | **(367,051)** |
-| Peak funding requirement | *not computed* | **15,076,460** |
-
-Base EBITDA runs **(1,376,075) at Y1 improving monotonically to (367,051) at Y10** and extrapolates to a crossing around **Y10.9**. The trajectory is improving by roughly USD 400,000 a year at the end, so this is a business that is close to viable on the Base path and does not get there inside the modelled horizon.
-
-Break-even solved as a genuine fixed point, `revenue(N) = total_cost(N)`:
-
-- **All streams: 45,102 accounts.** The model's Base path reaches 21,661.
-- **Entry fee alone: no solution exists at any N.** Not a large number — no number. The margin slope in N is negative, so adding investors makes it worse. v1.0's three precise figures (171,911 / 278,444 / 786,620) came from dividing opex sized for 500 investors by margin per investor; the prose conclusion beside them was right and the arithmetic was not.
-
-⚠ **A single month (M115) is EBITDA-positive inside a year that loses USD 367,051. That is not break-even** and must not be reported as Year 10.
-
-**The peak funding requirement is the number v1.0 could not produce**, because it had no cash flow, no balance sheet and no float funding — while charging a float cost of capital in the P&L. Across scenarios it ranges from USD 6.0m to USD 25.4m.
-
----
-
-### 0.5 The client's Year 10 target is met or missed by a factor of three, depending on a definition nobody has fixed
+### 0.4 The client's Year 10 target is met or missed by a factor of three, depending on a definition nobody has fixed
 
 v1.0 §14 asks, as an open question, whether the 60,000–100,000 target counts accounts opened or investors still contributing, and guesses they differ by about 5×.
 
@@ -130,7 +115,7 @@ This needs settling with the client before any target is agreed, because both an
 
 ---
 
-### 0.6 The two most valuable questions in the engagement are not research questions
+### 0.5 The two most valuable questions in the engagement are not research questions
 
 v1.0 ranked the payment rail as "the single most important unknown in the model." The tornado says otherwise. On cumulative net profit:
 
@@ -151,13 +136,13 @@ Two questions are worth more than any further research:
 
 **1. Does a lapsed customer keep the card? Worth USD 3,393,774 a year — 42% of Year 10 revenue.** Nobody has ever asked. It decides whether the largest revenue stream decays with persistency or is immune to it, and at 19% five-year persistency that is close to deciding the business. v1.0 silently assumed immunity by treating lapsed accounts as gone from everything *except*, implicitly, nothing at all.
 
-**2. What programme manager share can be negotiated? An EBITDA-positive year inside ten needs 77.5%.** Base assumes 72%; the researched range is 55–85% with a hard floor at 36% below which Gold Rewards stops self-funding. **The gap between 72% and 77.5% is the difference between a business that breaks even inside the horizon and one that does not.**
+**2. What programme manager share can be negotiated? On the ten-year run, the smallest share producing any EBITDA-positive year was 77.5%.** Base assumes 72%; the researched range is 55–85% with a hard floor at 36% below which Gold Rewards stops self-funding. **A few points of PM share is the difference between a business that turns and one that does not, and it is a negotiation rather than a research question.** ⚠ The 77.5% solve is a ten-year figure; on a 7-year horizon the required share is higher, and the rebuild will state it.
 
 Both are commercial conversations. Neither can be closed by more desk research, and both are worth more than every unresolved research question in §16 combined.
 
 ---
 
-### 0.7 What moved from v1.0, and why
+### 0.6 What moved from v1.0, and why
 
 | Figure | v1.0 | v2.0 | Driver of the change |
 |---|---|---|---|
@@ -179,51 +164,71 @@ Both are commercial conversations. Neither can be closed by more desk research, 
 
 ---
 
+> **Footnote — break-even and funding, demoted at v2.1.** v2.0 carried these as finding 0.4. **They are not a finding to lean on**, at client instruction: the cost base, the fee schedule and the card terms are all expected to change materially before the model is final, and both outputs are dominated by exactly those inputs. **Neither break-even nor peak funding falls inside a 7-year window on any run to date.** For the record, on the v2.0 ten-year run: no profitable year in ten, Y10 net profit **(367,051)** against v1.0's +2,468,500, peak funding **USD 15,076,460** at M114 with a range of USD 6.0m to 25.4m across scenarios, and the fixed point `revenue(N) = total_cost(N)` solving at **45,102 accounts on all streams** and **at no N at all on the entry fee alone** — the entry-fee margin slope in N is negative, so adding investors makes it worse. **That last result is structural and survives any horizon**: it is the reason v1.0's three precise figures (171,911 / 278,444 / 786,620) were withdrawn. The method is specified at §14 and stands; the levels are not to be quoted. ⚠ M114, M115 and the Y10 figures all fall **beyond the new 7-year horizon**.
+
+---
+
 ## 1. Model Overview
 
 | Field | Value |
 |---|---|
 | **Project** | Aurumix (AURX), a VARA-regulated gold-backed monthly savings product in Dubai. 1 AURX = 1 gram of allocated physical gold. SIP from USD 20/month **plus a spot purchase lane**, an Investor Conviction Score governing five benefits, a gold-collateralised credit facility and card, and a B2B white-label channel |
 | **Revenue Model Type** | Hybrid, and deliberately unbalanced: one inflow-linked stream with two sub-lanes (entry fee on SIP and on spot), three activity-linked streams (interchange, cardholder fees, lending), one headcount-linked stream (family and will), one AUM-linked stream (B2B platform fee), and **one mandatory zero-revenue cost stream (redemption)** |
-| **Modeling Approach** | **Bottom-up cohort engine with heterogeneous behavioural archetypes.** Acquisition by channel and segment, five payment archetypes per segment-cohort, a six-state population machine, a deterministic ICS state machine with a pre-gate block, per-segment unit economics, stock-and-flow AUM with a redemption/self-custody taxonomy, and a cash and funding layer |
-| **Time Horizon** | 10 years, from an assumed Year 1 start of **January 2027** |
-| **Granularity** | **Hybrid: monthly M1 to M72, annual Y7 to Y10** |
-| **Total Periods** | **76** (72 monthly + 4 annual) — D20 |
+| **Modeling Approach** | **Lifecycle-curve convolution with heterogeneous behavioural archetypes.** Acquisition by channel and segment produces a monthly vector; five payment-archetype lifecycle curves, computed once to M84 on an input sheet, carry alive / contributing / reduced / gated / tier / grams / card-active / spend per month-since-origination; the book in any period is the **convolution** of the acquisition vector against those curves. Eligibility is a live engine (the run-of-6 gate); the rate ladder is a **tenure→tier lookup** (D22, D23) |
+| **Time Horizon** | **7 years**, from an assumed Year 1 start of **January 2027** |
+| **Granularity** | **Hybrid: monthly M1 to M24, annual Y3 to Y7** |
+| **Total Periods** | **29** (24 monthly + 5 annual) — D21 |
 | **Currency** | USD primary, AED at the peg 3.6725 |
-| **Headline outputs** | (1) contribution margin per cohort by month since acquisition; (2) **LTV:CAC by channel × segment**; (3) months-to-cash-breakeven and **peak funding requirement**; (4) revenue mix over time. The investor-count break-even is **kept as a named finding**, not as the headline — D16 |
+| **Headline outputs** | (1) contribution margin per cohort by month since acquisition — read straight off a lifecycle curve, not a triangle; (2) **LTV:CAC by channel × segment**; (3) revenue mix over time; (4) the funding trajectory, **reported as a shape rather than a level** (§14). The investor-count break-even is **kept as a named finding**, not as the headline — D16 |
 
-**Why 76 periods and not 65.** v1.0 stopped monthly resolution at M60. **The first Sovereign appears at M61** — one month later. So the tier carrying the highest interchange (2.10%), the deepest waivers (FX 1.0%, ATM AED 5,000), the largest Gold Rewards rate (0.75%) and the highest LTV (80%) was computed only inside annual columns, and a state v1.0 itself calls "rented by conduct, never owned" cannot be represented annually. v1.0 also conceded that the trailing-12 measures "must stay monthly-recomputed even in the annual block," which is self-contradictory. **Eleven extra columns buy the first full year of Sovereign at the granularity the engine requires** (D20).
+**Why 29 periods, 24 monthly + 5 annual.** This is the firm's DRODE precedent, whose Model sheet was 29 columns on exactly this split. It replaces v2.0's 76 columns (72 monthly + 4 annual), which is withdrawn (D21).
 
-**What happens in the annual block, stated rather than fudged.** From Y7 onward, hold the tier distribution and `Recent` **constant at the M72 archetype-weighted distribution**. Do not pretend to recompute a trailing-12-month measure inside an annual column. This is a stated simplification with a stated cost: it freezes tier mix for the final four years, which is defensible because by M72 the mix has saturated, and dishonest only if unlabelled.
+**The monthly window must cover everything that needs month-level resolution, and it does.** Three dates decide that, and all three land inside 24 months:
+
+| Event | Period | Why it needs monthly resolution |
+|---|---|---|
+| **The gate resolves** | **around M8** | Gate arrival is a run-of-6 first-passage distribution with a cohort-weighted mean of **M8.1** (§0.2). Eligibility is the first-order driver of the whole card stack, and it is settled inside the monthly block |
+| **The card launches** | **M18** | Streams 2 and 4 activate — the majority of terminal revenue — and F27 programme fixed costs begin **M15**, three months earlier. Both sit inside the monthly block, so the ramp is resolved month by month rather than smeared across a year |
+| **Gold arrives** | **around M20** | Gold is the eligibility threshold for card, credit and Gold Rewards. The earliest arrival is M12; the gate-delayed mean lands around M20. **The tier that carries the eligibility decision is resolved monthly** |
+
+**Platinum and above fall in the annual block, and that is acceptable *precisely because* the tier ladder was collapsed** (D22). Platinum is earliest at M36 and Sovereign at M61 — both beyond M24. Under v2.0 that would have been a defect, because the per-period `Record`/`Standing`/`Retention` arithmetic priced every tier separately and the top of the ladder carried the highest interchange, the deepest waivers and the largest rewards. **Under the collapse, the rate ladder is a flat Gold rate with a measured cost of ~2% of gross profit at Y7** (§3 Layer 5), so resolving Platinum and above annually costs almost nothing. **The two decisions reinforce each other: shortening the monthly window is safe because the ladder collapsed, and collapsing the ladder is safe because eligibility — the part that is first-order — is still resolved monthly.**
+
+**B2B activates at M24, exactly on the boundary.** Place it at the **start of the annual block (Y3), not as a single stub month at M24.** A one-month stub inside the monthly block would give stream 6 a twelfth of a year's revenue in a column that then has to be reconciled against a full annual column beside it, which is the seam error §10.5 exists to prevent. **Stream 6 is zero through M24 and starts on the Y3 column** (§4).
+
+⚠ **The lifecycle table stays monthly to M84 even though the Model sheet is 29 columns.** This is the resolution that makes the shape work and it must not be collapsed for tidiness: the curves are an **input sheet**, computed monthly out to M84 so that a Y7 annual column can still be built from twelve genuine monthly lifecycle points. **The Model sheet is 29 columns; the Lifecycle Curves sheet is 84.** See §3 Layer 2 and §12.
+
+**What happens in the annual block, stated rather than fudged.** From Y3 onward the Model sheet carries annual aggregates. **Nothing is frozen** — that was v2.0's M72 hold rule and it is no longer needed, because the lifecycle curves run monthly to M84 and an annual column is the sum or average of twelve of their monthly points. **The annual block loses column resolution, not engine resolution.**
 
 **Monthly-to-annual conversion notes.**
 
 | Quantity | Conversion rule |
 |---|---|
-| Archetype hazard | Already monthly by construction (D3). No conversion. In the annual block, apply `1 − (1 − h_monthly)^12` per archetype. |
-| Survival beyond M61 | **v1.0 has no survival rule beyond M61 at all.** Extend the curve to M120 off the calibrated background hazard — the archetype-specific hazards are exhausted by then and the tail is the background hazard alone (D3, D20). |
-| Withdrawal allowance (30%) | Trailing-twelve-month measure. In the annual block it is **held at the M72 value**, per the rule above. Do not carry three ledger reads forward as annual snapshots — that was v1.0's fudge. |
-| Card spend, interchange, cardholder fees | Monthly flows. Annual periods sum twelve months at the year's average active-cardholder count **and the M72 tier mix**. |
-| B2B platform fee | Invoiced monthly on a stock. In annual periods use the average of opening and closing partner AUM. Each partner runs its own maturity clock (S43). |
-| Seasonality (S52a, S52b, S53) | Applies to the monthly block only. In the annual block it cancels by construction, since both vectors normalise to exactly 12.00. |
+| Archetype survival | Already monthly by construction, on the lifecycle curve (D3, D23). An annual column reads the curve at each of its twelve months and aggregates. **No `^12` shortcut is needed or permitted** — the curve is tabulated. |
+| Lifecycle beyond M84 | The curves are computed to **M84**, which covers a Y7 annual column for the M1 cohort. **No cohort in a 7-year model has more than 84 months of life**, so no extrapolation rule is required — the v2.0 M120 extension is withdrawn. |
+| Tier mix | Read off the tenure→tier lookup at each monthly point, convolved against acquisition, then aggregated. **Not held, not frozen.** |
+| Heavy-seller haircut | A single multiplier on the tier mix, applied identically in both blocks (D22, §3 Layer 5). |
+| Card spend, interchange, cardholder fees | Monthly flows on the curve. An annual column sums twelve convolved monthly values. |
+| B2B platform fee | Invoiced monthly on a stock. **Activates at the start of the annual block (Y3).** In annual periods use the average of opening and closing partner AUM. Each partner runs its own maturity clock (S43). |
+| Seasonality (S52a, S52b, S53) | Applies to the monthly block only. In the annual block it cancels by construction, since all three vectors normalise to exactly 12.00. |
 | Tax | **Booked annually, in the final month of the financial year, never monthly** (F33–F35). |
 
 ### 1.1 Sheet index
 
-Ten sheets (D18). Full row bands, freeze panes and colour legend at §12.
+Eleven sheets (D18, extended at D23). Full row bands, freeze panes and colour legend at §12.
 
 | # | Sheet | Purpose | Depends on |
 |---|---|---|---|
 | 1 | **Cover** | Title, version, scope, colour legend, period-count statement | — |
 | 2 | **Assumptions** | F-, S-, T-series with unit, basis, confidence, source URL, source category, sheet location | — |
 | 3 | **Scenario Parameters** | Global switch, per-parameter override, named narrative scenarios, binary switches | Assumptions |
-| 4 | **Time Series** | 76 period headers, activation flags, seasonality vectors, gold price, fee ladder, bar denomination | Assumptions, Scenario |
-| 5 | **Cohort Engine** | Acquisition by channel × segment, archetype split, six-state population roll-forward per cohort | Time Series |
-| 6 | **ICS Engine** | Pre-gate run counter, gate-arrival distribution, Record/Standing/Retention/ICS per archetype track, tier distribution | Cohort Engine |
-| 7 | **Model** | Contribution flow, spot lane, unit margin, AUM stock, all six revenue streams, benefit costs | ICS Engine |
-| 8 | **Opex & P&L** | Opex blocks, acquisition cost, EBITDA, tax, working capital, cash, funding | Model |
-| 9 | **Summary** | Annual roll-ups, revenue mix, unit economics, break-even views, tornado inputs | Opex & P&L |
-| 10 | **Checks** | Nine conservation and sanity tests, all returning TRUE/FALSE | All |
+| 4 | **Time Series** | **29** period headers, activation flags, seasonality vectors, gold price, fee ladder, bar denomination | Assumptions, Scenario |
+| 5 | **Lifecycle Curves** *(new at v2.1)* | **Monthly to M84.** Five archetype curves carrying alive / contributing / reduced / gated / tier / grams / card-active / spend per month-since-origination. **The only monthly-to-M84 sheet in the workbook** | Assumptions, Scenario |
+| 6 | **Acquisition** | Acquisition by channel × segment → the **monthly acquisition vector**, with segment scalars and the S4/S5/S6 offsets | Time Series |
+| 7 | **ICS Validation** *(demoted from Engine)* | The full ICS formula and the nine-persona test set, run as a **validation artefact** against the collapsed lookup, plus the 5% safety gate (§3 Layer 5) | Lifecycle Curves |
+| 8 | **Model** | The convolution, contribution flow, spot lane, unit margin, AUM stock, all six revenue streams, benefit costs. **29 columns, ~200 rows** | Lifecycle Curves, Acquisition |
+| 9 | **Opex & P&L** | Opex blocks, acquisition cost, EBITDA, tax, working capital, cash, funding | Model |
+| 10 | **Summary** | Annual roll-ups, revenue mix, unit economics, break-even views, tornado inputs | Opex & P&L |
+| 11 | **Checks** | Conservation and sanity tests, all returning TRUE/FALSE, **including the D22 collapse-safety gate** | All |
 
 **The Checks sheet is where this build should exceed the benchmark**, which has none (D18).
 
@@ -254,38 +259,50 @@ Ten sheets (D18). Full row bands, freeze panes and colour legend at §12.
 |        S1 UAE professional  USD 75   S4 Oman+Bahrain  USD 40  [M13]           |
 |        S2 UAE white-collar  USD 40   S5 India         USD 30  [SWITCH]        |
 |        S3 UAE blue-collar   USD 20   S6 Other intl    USD 75  [M25]           |
+|                                                                               |
+|   ==> THE MONTHLY ACQUISITION VECTOR  a(s,t),  t = 1..24 monthly then Y3..Y7  |
+|       Later-activating segments S4/S5/S6 are handled by OFFSETTING a(s,t),    |
+|       NEVER by a new lifecycle curve  (D23)                                    |
 +=============================================================================+
                                     |
-                                    v  SPLIT EACH COHORT INTO 5 ARCHETYPE TRACKS (S27)
-       +---------+---------+---------+---------+---------+
-       | Perfect | Occas.  | Altern. | Reducer | Early   |
-       |   10%   |   35%   |   12%   |   13%   | lapser  |
-       | p=.995  | p=0.93  | p=0.55  | p=0.97  |  30%    |
-       +---------+---------+---------+---------+---------+
-             |         |         |         |         |
-             v         v         v         v         v
+                                    |  convolve  (SUMPRODUCT)
+                                    v
 +=============================================================================+
-|             SIX-STATE POPULATION MACHINE  (per segment x cohort x archetype) |
+|   LIFECYCLE CURVES  --  INPUT SHEET, MONTHLY TO M84, FIVE CURVES  (D23)      |
+|   one per payment archetype; computed ONCE; the workbook has NO cohort       |
+|   triangle                                                                   |
 +=============================================================================+
+|            | Perfect | Occas.  | Altern. | Reducer | Early lapser |          |
+|  weight    |   10%   |   35%   |   12%   |   13%   |     30%      |          |
+|  pay prob  | p=.995  | p=0.93  | p=0.55  | p=0.97  | 0.60 falling |          |
 |                                                                              |
-|   PRE-GATE ---(run=6)---> CONTRIBUTING <---(restart, decayed)--- STOPPED     |
-|   run 0-6        |              |    ^                              ^        |
-|   no score       |              |    |                              |        |
-|   pays full fee  |     (S28)    v    |                              |        |
-|   NEVER-GATED <--+          REDUCED --+                              |        |
-|   (persona H)               (S29 depth, S30 hazard)                  |        |
-|        |                         |                                   |        |
-|        |                         +---(voluntary, 70%)----------------+        |
-|        |                         +---(involuntary, 30%)---> STOPPED           |
-|        |                                                       |              |
-|        |                    REGULATORY BLOCK                    | 12 silent   |
-|        |                    both clocks FROZEN,                 v periods     |
-|        |                    window RE-INDEXES (D5)          DORMANT           |
-|        |                                                       |              |
-|        +-----------------------> ALL OF THE ABOVE HOLD GOLD ----+              |
-|                                          |                                    |
-|                              grams = 0 --v--> CLOSED  (the ONLY exit          |
-|                                                from AUM, custody, screening)  |
+|  EACH CURVE CARRIES, PER MONTH-SINCE-ORIGINATION m = 1..84:                  |
+|     alive(m)         survival, from the archetype hazard                     |
+|     contributing(m)  pays at full ticket                                     |
+|     reduced(m)       pays at S29 reduced ticket                              |
+|     gated(m)         cumulative share that has passed the run-of-6 gate      |
+|                      == THE FIRST-ORDER TERM.  Stays a LIVE first-passage    |
+|                         solve, NOT a lookup  (D22)                            |
+|     never_gated(m)   persona H, the complement.  Full fee, zero benefit      |
+|     tier(m)          from the TENURE -> TIER LOOKUP (D22):                    |
+|                        Gold      at gate + 12                                |
+|                        Platinum  at gate + 36                                |
+|                        Sovereign  -- in the annual block only                |
+|     grams(m)         cumulative, net of S31 / S32 / S33 leakage              |
+|     card_active(m)   Gold+ and past M18, x S5 activation                     |
+|     spend(m)         card spend base, before the segment multiplier          |
++=============================================================================+
+                                    |
+                                    v
++=============================================================================+
+|   THE CONVOLUTION  --  this is the whole population engine  (D23)           |
+|                                                                              |
+|     book(s, X, t) = SUM over a of  weight(a)                                 |
+|                     x SUMPRODUCT( acq(s, 1..t) , curve_a(X, t..1) )          |
+|                     x segment_scalar(s, X)                                   |
+|                                                                              |
+|   SEGMENTS SCALE THE SAME CURVES.  Ticket and card-spend multipliers only.   |
+|   No segment gets its own curve.  No cohort gets its own row.               |
 +=============================================================================+
        |                              |                              |
        | contributing + reduced       | holding_not_contributing     |
@@ -319,25 +336,35 @@ Ten sheets (D18). Full row bands, freeze panes and colour legend at §12.
             |                                    |                   |
             v                                    |                   |
 +=============================================================================+
-|      ICS STATE MACHINE  -- deterministic, PER ARCHETYPE TRACK               |
+|      SCORE MACHINERY  --  COLLAPSED AT v2.1  (D22)                          |
++=============================================================================+
 |                                                                             |
-|  PRE-GATE BLOCK (new at v2.0, D4):                                          |
+|  LIVE ENGINE  --  eligibility is FIRST-ORDER, keep it exact:                |
 |     run_length in [0,6]; +1 on a counted period; RESET to 0 on a miss;      |
 |     FROZEN (not reset) during a regulatory block.                           |
-|     Gate fires at run_length = 6, at which point Months := 6, Recent := 6.  |
-|     ==> GATE ARRIVAL IS A DISTRIBUTION, NOT A DATE.                         |
+|     Gate fires at run_length = 6.                                           |
+|     ==> GATE ARRIVAL IS A DISTRIBUTION, NOT A DATE.  Run-of-6 first-passage |
+|     ==> NEVER-GATED POPULATION (persona H) falls out of the same solve      |
+|     Survival by payment archetype, monthly, on the lifecycle curve          |
 |                                                                             |
-|  POST-GATE:                                                                 |
-|     Record   = (100/24) x Months            for Months <= 12                |
-|              = 50 + (100/96) x (Months-12)  for 12 < Months <= 60           |
-|              = 100                          for Months > 60                 |
-|     Standing = (100/12) x Recent                                            |
-|     Sold     = 1 - (grams now) / (grams 12m ago + grams acquired since)     |
-|     Retention= 1                       for Sold <= 30%                      |
-|              = 1 - (Sold-30%)/70%      for Sold > 30%                       |
-|     ICS = MAX(25, MIN(Record, Standing) x Retention)                        |
+|  COLLAPSED  --  the rate ladder is SECOND-ORDER:                            |
+|     TENURE -> TIER LOOKUP, keyed on months since gate                       |
+|         gate + 12  -> Gold                                                  |
+|         gate + 36  -> Platinum                                              |
+|         above      -> annual block only                                     |
+|     x  ONE HEAVY-SELLER HAIRCUT, replacing the per-account Sold ratio       |
 |                                                                             |
-|  THRESHOLD PER TRACK, THEN WEIGHT --> tier distribution (never the reverse) |
+|     GONE: per-period Record / Standing / Retention arithmetic               |
+|     GONE: the 1.80 / 2.05 / 2.10 rate ladder -> a FLAT GOLD RATE            |
+|     MEASURED COST: 3.1% of gross profit at Y10, ~2% at Y7                   |
+|                                                                             |
+|  DEMOTED, NOT DELETED  --  the ICS Validation sheet:                        |
+|     the FULL ICS formula and the NINE-PERSONA test set still specified,     |
+|     still run, still must PASS.  The collapse is PROVED equivalent,         |
+|     never assumed.                                                          |
+|     5% SAFETY GATE: if the collapsed lookup's tier mix moves stream 2 by    |
+|     more than 5% of gross profit in ANY year, the collapse is UNSAFE and    |
+|     MUST BE REVERTED.                                                       |
 +=============================================================================+
                                      |
         +----------------------------+----------------------------+
@@ -348,7 +375,8 @@ Ten sheets (D18). Full row bands, freeze panes and colour legend at §12.
 | Entry discount   |   | eligible x activation(S5)  |  | eligible x take-up(S8) |
 |   0/.4/.8/1.2/1.5|   |   x spend x S38 tier mult  |  |   x LTV(tier) x S9     |
 | Gold Rewards     |   |   x seasonality S52b       |  |   = PEAK drawn         |
-|   -/-/.15/.45/.75|   |   x interchange(tier)      |  |   x S40 TURNOVER 0.42  |
+|   -/-/.15/.45/.75|   |   x FLAT GOLD RATE 1.80%  |  |   x S40 TURNOVER 0.42  |
+|                  |   |     (ladder collapsed,D22)|  |                        |
 | Will discount    |   |   x PM_SHARE(S3)           |  |   = AVERAGE drawn      |
 |   0/10/20/35/50% |   |   - F24 per-txn fee        |  |   VINTAGED BY STRUCK   |
 | (LTV + card tier |   |     (11% of gross at Gold) |  |   LTV (D12)            |
@@ -434,7 +462,9 @@ new(s,t) = raw_demand(s,t)
          × seasonality(month_of_year)                        [S52a]
 ```
 
-**Use cumulative-ever-acquired, never live accounts, in the numerator.** A lapsed customer is a burnt lead, not a returned one. At the corrected persistency the difference between the two denominators is roughly **5× by Year 10**, and it is the mechanism that stops the model producing an implausible Year 8–10 hockey stick.
+**Use cumulative-ever-acquired, never live accounts, in the numerator.** A lapsed customer is a burnt lead, not a returned one. The two denominators diverge steadily with tenure — the ten-year run put the gap at roughly **5× by Year 10** — and the correct one is the mechanism that stops the model producing an implausible late-horizon hockey stick.
+
+**Layer 1's output is a vector, not a triangle** (D23). This layer terminates in `a(s,t)` — new accounts by segment by period — and nothing else. **The segments that activate late (S4 at M13, S5 on the switch, S6 at M25) are handled by offsetting `a(s,t)`, never by giving them their own lifecycle curve.** A segment that opens at M13 has zeros in `a(s,1..12)`; the convolution at Layer 2 then places its whole book 12 months to the right automatically. **Segments differ by ticket and card-spend multiplier only. They do not differ by behaviour, and giving them separate curves would assert that they do without evidence.**
 
 **Two structural rules the S16 matrix encodes, which matter more than its cells:**
 
@@ -443,11 +473,63 @@ new(s,t) = raw_demand(s,t)
 
 Seasonality is applied on a vector normalised to exactly **12.00** (S52a). **This is a hard build requirement: an un-normalised seasonality vector silently changes the model's annual answer**, which is one of the more common ways a monthly model goes wrong. Check formula at §12.
 
-### Layer 2 — The six-state population machine
+### Layer 2 — Lifecycle curves and the convolution
 
-**This is the largest single change at v2.0, and it is the one the whole revenue stack moves on.**
+**This is the largest single change at v2.1, and it changes the engine's shape without changing a single one of its states** (D23).
 
-v1.0 ran `CONTRIBUTING → REDUCED → LAPSED`, with LAPSED terminal. **A lapsed account keeps its gold.** It holds a permanent ICS floor of 25 (`_draft_ics-scoring.md` §1.6 — "once you have made six payments, your score never falls below 25"), stays in the AUM stock, the custody-cost base, the B2B AUM base and the collateral base, and stays in continuous AML screening at USD 0.36/name/year indefinitely. **At the corrected persistency roughly 81% of every cohort sits in v1.0's "terminal" state by M61. v1.0 models the economics of the other 19%** (D1).
+#### 2a. The rule: no cohort triangle
+
+⚠ **The workbook must not contain a cohort triangle.** v2.0 specified a six-state roll-forward **per segment × cohort × archetype** — 6 × 5 × 6 = 180 state rows, replicated once per acquisition month. On a 72-month monthly block that is a triangle of 72 cohorts, and it is the single largest reason v2.0's Model sheet ran to 600 rows × 76 columns. **It is also unnecessary**, because every cohort of a given archetype follows an *identical* path — the six-state machine is time-invariant in month-since-origination. **A triangle re-computes the same 84 numbers 72 times.**
+
+#### 2b. Five lifecycle curves, monthly to M84
+
+Compute each archetype's path **once**, on an input sheet, as a function of `m` = months since origination, for `m = 1..84`. Five curves, one per payment archetype (S27). Each curve carries eight series:
+
+| Series | Contents | Driven by |
+|---|---|---|
+| `alive(m)` | Survival, all non-CLOSED states | Archetype hazard + background hazard (D3) |
+| `contributing(m)` | Share paying at full ticket | The six-state machine at §2c |
+| `reduced(m)` | Share paying at the S29 reduced ticket | S28 diversion, S30 multiplier |
+| `gated(m)` | **Cumulative share that has passed the run-of-6 gate** | Run-of-6 first-passage solve. **A live engine, not a lookup** (D22) |
+| `tier(m)` | Tier, from the tenure→tier lookup | Gate + 12 → Gold; gate + 36 → Platinum (D22, Layer 5) |
+| `grams(m)` | Cumulative grams held, net of S31/S32/S33 leakage | Layer 6 |
+| `card_active(m)` | Share Gold+, past M18, activated | S5 activation |
+| `spend(m)` | Card spend base per active card, before the segment multiplier | S4, S38, S52b |
+
+**M84 is the binding number and it is not arbitrary.** The M1 cohort reaches month 84 at the end of Y7. **No cohort in a 7-year model lives longer than 84 months**, so the curves need no extrapolation rule and v2.0's M120 extension is withdrawn. **The Lifecycle Curves sheet is the only monthly-to-M84 sheet in the workbook; the Model sheet is 29 columns** (§1).
+
+#### 2c. The convolution — this is the population engine
+
+The book in any period is the acquisition vector convolved against the curves:
+
+```
+book(s, X, t) = Σ_a  weight(a)
+                     × SUMPRODUCT( acq(s, 1..t) , REVERSE( curve_a(X, 1..t) ) )
+                     × segment_scalar(s, X)
+
+  X            any of the eight series above
+  acq(s,1..t)  the monthly acquisition vector for segment s, from Layer 1
+  curve_a      archetype a's lifecycle curve, read backwards so that the
+               OLDEST cohort meets the LATEST month-since-origination
+  weight(a)    the S27 archetype weight
+  segment_scalar(s,X)  ticket multiplier for flow series,
+                       card-spend multiplier for spend series,
+                       1.00 for every population series
+```
+
+**In Excel this is one `SUMPRODUCT` per series per period.** Worked example and the exact reversal convention at §10.4 Pattern 1.
+
+**Three properties that make this equivalent to the triangle rather than an approximation of it:**
+
+1. **Time-invariance.** Every state transition in §2d depends on `m`, never on `t`. Nothing in the six-state machine reads a calendar date. The one apparent exception is the card at M18, and it is handled on the *convolved* result — `card_active` is masked by `IF(t ≥ 18, …)` at the Model sheet, not inside the curve.
+2. **Linearity.** Every series aggregates by addition across cohorts. A convolution is exactly the sum a triangle would take, in one row instead of 72.
+3. **Segments scale, they do not diverge.** Segments differ by ticket and card spend, both of which are multiplicative on the curve. **A segment never gets its own curve**, and a later-activating segment is handled by offsetting `acq(s,t)` (Layer 1). **If a future decision makes a segment behave differently rather than merely spend differently, this equivalence breaks and the curve set must expand — say so at that point rather than quietly adding a scalar.**
+
+#### 2d. The six states, unchanged
+
+**The states below are what the curves are computed *from*. Nothing in this taxonomy changes at v2.1** — the convolution is a change of representation, not of behaviour (D1 stands in full).
+
+v1.0 ran `CONTRIBUTING → REDUCED → LAPSED`, with LAPSED terminal. **A lapsed account keeps its gold.** It holds a permanent ICS floor of 25 (`_draft_ics-scoring.md` §1.6 — "once you have made six payments, your score never falls below 25"), stays in the AUM stock, the custody-cost base, the B2B AUM base and the collateral base, and stays in continuous AML screening at USD 0.36/name/year indefinitely. **At the corrected persistency roughly 81% of every cohort sits in v1.0's "terminal" state by M61 — and the share is already above two thirds by M25, well inside the monthly block. v1.0 models the economics of the minority** (D1).
 
 The real structure, recovered from `_draft_sip-rulebook.md` §8:
 
@@ -546,25 +628,44 @@ Two qualifications that keep this honest. **Spot earns no ICS**, so it builds no
 
 **Two spot constraints to build as rules, not costs.** Above roughly one bar denomination, **procure directly rather than drawing the float** — *"a single order larger than the float would breach the backing invariant and halt minting for everyone else"* (`_draft_purchase-structure.md` §4.2). At a Year 1 float of ~USD 28k, a USD 100,000 order **breaches it by 3.5×**, so the two-step quote mechanism is live from launch, not a Year 3 concern. And the **AED 50,000 AANI per-transaction cap** routes large tickets to domestic transfer or wire, with enhanced due diligence and source of funds — a different cost and a different friction from the SIP rail. Travel Rule data applies above AED 3,500.
 
-### Layer 5 — The pre-gate block and the ICS archetype engine
+### Layer 5 — The gate as a live engine, the score collapsed to a lookup
+
+**The measurement that decides this layer, and it is why the collapse is safe** (D22). Replacing the full tier ladder — interchange at 1.80% Gold / 2.05% Platinum / 2.10% Sovereign — with a **flat Gold rate** moves stream 2 by **3.1% of gross profit at Y10**, and by only **~2% at Y7**, because Sovereign is **1.2% of tiered accounts** at that point. Doing the same thing to *eligibility* — assuming 100% of live accounts are Gold+ when the computed figure is **63%** — **overstates the business by ~59%.**
+
+🔴 **The rate ladder is second-order. Eligibility is first-order.** That asymmetry, not a preference for simplicity, is the entire argument for what follows.
+
+| | Kept as a live engine | Collapsed to a lookup | Demoted to validation |
+|---|---|---|---|
+| **What** | Survival by payment archetype; the six-consecutive-payment gate as a run-of-6 first-passage solve; months-since-gate driving **Gold at +12** and **Platinum at +36**; the never-gated population (persona H) | The per-period `Record` / `Standing` / `Retention` arithmetic → a **tenure→tier lookup**, plus **a single haircut for heavy sellers** replacing the per-account `Sold` ratio | The **full ICS formula** and the **nine-persona test set** |
+| **Why** | It sets who is eligible, and eligibility is worth ~59% of the business | It sets the rate within eligibility, and that is worth ~2% at Y7 | So the collapse is **proved** equivalent rather than assumed |
+| **Where** | Lifecycle Curves sheet, monthly to M84 (Layer 2) | Lifecycle Curves sheet, `tier(m)` series | **ICS Validation sheet** (§12) |
+
+#### 5a. What was wrong with cohort averaging, and why it still matters
 
 **v1.0's proudest claim — "tier distribution is an output, never an assumption" — is false as specified** (D2). ICS is `MAX(25, MIN(Record, Standing) × Retention)` followed by a **threshold lookup** at 25/50/75/100. Tier is a non-linear step function of an *individual's* history. v1.0 computes one set of values per segment-cohort — the cohort's *average* `Recent` and *average* `Sold`, thresholded. **By Jensen's inequality that is wrong, and biased upward.**
 
-Worked, in one line: a cohort half perfect payers (`Recent` = 12) and half alternating missers (`Recent` = 6). **Average-then-threshold** gives mean `Recent` 9 → Standing 75 → **100% Platinum**. **Threshold-then-average** gives **50% Platinum and 50% Gold-capped-for-life**. v1.0's own text names the alternating misser as *"a real, permanently occupied cell in the distribution"* and then specifies a structure with no cell to put it in. Worst where the money is: **Sovereign requires `Record 100` AND `Recent 12` AND `Sold ≤ 30%` simultaneously, monthly** (`_draft_ics-scoring.md` §1.8) — a cohort average cannot represent a joint distribution. Which is why v1.0's T5 sits in the assumptions register as an **input**, flatly contradicting T4's own note.
+Worked, in one line: a cohort half perfect payers (`Recent` = 12) and half alternating missers (`Recent` = 6). **Average-then-threshold** gives mean `Recent` 9 → Standing 75 → **100% Platinum**. **Threshold-then-average** gives **50% Platinum and 50% Gold-capped-for-life**. v1.0's own text names the alternating misser as *"a real, permanently occupied cell in the distribution"* and then specifies a structure with no cell to put it in.
 
-#### 5a. The pre-gate block (new at v2.0)
+⚠ **The collapse at v2.1 is not a return to cohort averaging, and the difference is the whole point.** Cohort averaging averages *behaviour* and then thresholds it, which destroys the heterogeneity that decides eligibility. **The tenure→tier lookup is applied per archetype curve, then weighted** — the D2 rule, "threshold per track then weight," is preserved exactly. What is dropped is the per-period arithmetic *inside* each track, which is deterministic given tenure and therefore adds nothing a lookup cannot carry. **Averaging across archetypes remains forbidden.**
+
+#### 5b. The pre-gate block — kept in full, unchanged
 
 `_draft_ics-scoring.md` §1.6a: *"the engine tracks the **current run length** (0–6) before the gate, not a score and not Months. Months and Recent both begin at the first month of the qualifying run (§1.6), so on opening day they are 6 and 6 by construction."*
 
 ```
-run_length ∈ [0,6],  integer, per segment × cohort × archetype track
+run_length ∈ [0,6],  integer, PER ARCHETYPE CURVE  (not per cohort — D23)
   +1        on a counted period
   RESET 0   on a miss
   FROZEN    during a regulatory block  (not reset — D5)
-  GATE      fires when run_length = 6; on that period Months := 6, Recent := 6
+  GATE      fires when run_length = 6
+
+gated(a, m)  = cumulative share of archetype a that has gated by month m
+             = the run-of-6 FIRST-PASSAGE solve in p(a), applied with survival
 ```
 
-**The structural consequence v1.0 misses entirely.** Under v1.0, everyone surviving to month 6 is Silver at month 6. Under the real rule, a member who misses month 4 does not gate until **month 9 at the earliest**. **Gate arrival is a distribution, not a date** — a run-of-6 first-passage problem in the monthly payment probability `p`. The model must compute it, not assume it. **This shifts every downstream ladder date right: Gold at M12+, card eligibility, credit eligibility, Sovereign at M61+.** See §10.3 for the worked first-passage table by archetype.
+**The structural consequence v1.0 misses entirely.** Under v1.0, everyone surviving to month 6 is Silver at month 6. Under the real rule, a member who misses month 4 does not gate until **month 9 at the earliest**. **Gate arrival is a distribution, not a date** — a run-of-6 first-passage problem in the monthly payment probability `p`. The model must compute it, not assume it. **This shifts every downstream ladder date right: Gold, card eligibility and credit eligibility all move by the expected gate delay.** See §10.3 for the worked first-passage table by archetype.
+
+🔴 **This is the first-order term and it is the one thing in this layer that must not be simplified.** The cohort-weighted mean gate month is **M8.1** and the ever-gate share is **53.5%** — against v1.0's assumption that everyone gates at M6. **Assuming universal gating overstates the business by ~59%**, which is roughly thirty times the cost of collapsing the rate ladder. **`gated(a,m)` is computed, never assumed, and it is computed monthly.** It resolves inside the monthly block (§1).
 
 **Two populations v1.0 has no cell for:**
 
@@ -573,7 +674,45 @@ run_length ∈ [0,6],  integer, per segment × cohort × archetype track
 
 **The asymmetry to reproduce:** *"pre-run gold counts in Retention's denominator, while pre-run payments score nothing."* Grams bought before the gate enter Retention's denominator, so selling them later costs score that those purchases never earned.
 
-#### 5b. The post-gate formula — use exact fractions
+#### 5c. The collapse — a tenure→tier lookup and one haircut
+
+**What runs in the live model** (D22):
+
+```
+TENURE -> TIER LOOKUP,  keyed on months since gate,  PER ARCHETYPE CURVE
+
+  months_since_gate < 12          ->  Silver
+  months_since_gate >= 12         ->  Gold
+  months_since_gate >= 36         ->  Platinum
+  above Platinum                  ->  resolved in the ANNUAL block only
+
+  not gated                       ->  NO TIER    (persona H, no benefits, full fee)
+
+Then, once, on the resulting mix:
+
+  HEAVY-SELLER HAIRCUT  =  a single multiplier demoting the share of the book
+                           that sells past the 30% allowance,
+                           replacing the per-account `Sold` ratio entirely
+```
+
+**What that removes.** The per-period `Record`, `Standing`, `Retention` and `ICS` rows are gone from the live model — four rows per track per period, which on a 30-track engine was the largest single row band in v2.0's workbook (§10.1). **They are gone because, given the archetype and the tenure, every one of them is deterministic.** A lookup carries the same information in one row.
+
+**What that changes, measured, not asserted:**
+
+| Effect | Y10 | Y7 | Why |
+|---|---|---|---|
+| Flat Gold rate replacing the 1.80/2.05/2.10 ladder, on stream 2 | **3.1% of gross profit** | **~2%** | **Sovereign is 1.2% of tiered accounts at Y7.** There is very little at the top of the ladder to mis-price |
+| Assuming 100% Gold+ eligibility instead of computing it | — | **overstates the business by ~59%** | **63% of live accounts are Gold+.** This is why eligibility stays a live engine |
+
+**One archetype-specific consequence to keep.** The alternating misser's `Recent` pins at 6 forever, so under the full formula it is **capped at Gold for life** — it never reaches Platinum however long it survives. **The lookup must reproduce that cap**, which it does by keying the archetype's own curve rather than a blended tenure: the alternating-misser curve's `tier(m)` returns Gold from gate + 12 and never advances. **A single blended tenure→tier table across archetypes would lose this and would drift the mix upward, which is the D2 error in a new costume.**
+
+⚠ **The heavy-seller haircut is an aggregate, and it is looser than the rule it replaces.** The real `Retention` term is per account and kinks at 30%; a single multiplier on the mix cannot represent the kink. This is accepted as limitation **L11** (§3.y.3) and it is the reason the 5% safety gate below exists.
+
+#### 5d. Demoted, not deleted — the ICS Validation sheet and the 5% safety gate
+
+🔴 **The full ICS formula and the nine-persona test set are not removed from the specification. They move from the engine to the validation layer, and they must still pass.** The collapse is *proved* equivalent, never assumed.
+
+**The full formula, still specified, still built, on the ICS Validation sheet:**
 
 ```
 Months  = counted periods since the qualifying run began. Starts at 6 on gate day.
@@ -593,9 +732,9 @@ ICS = MAX(25, MIN(Record, Standing) × Retention)      once the gate is passed
 
 Source: `_draft_ics-scoring.md` §1.3, §1.4, §1.5. Tiers: Silver 25, Gold 50, Platinum 75, Sovereign 100. Below the gate there is **no score at all**, which is why the bottom rung is named "No tier."
 
-⚠ **Use exact fractions, never the rounded decimals.** `8.3333 × 6 = 49.9998`, which falls below the Gold threshold of 50 and **silently misfiles the entire alternating-misser population into Silver** — 12% of the book, and the cell that carries the most profitable card economics. Write `100/12` and `100/24`, not `8.3333` and `4.1667` (D4).
+⚠ **Use exact fractions, never the rounded decimals.** `8.3333 × 6 = 49.9998`, which falls below the Gold threshold of 50 and **silently misfiles the entire alternating-misser population into Silver** — 12% of the book, and the cell that carries the most profitable card economics. Write `100/12` and `100/24`, not `8.3333` and `4.1667` (D4). **This is a validation-sheet requirement now rather than a Model-sheet one, and it is exactly as binding**: the collapse is checked against this formula, so an error here corrupts the check rather than the answer, which is worse.
 
-**Four rules the Sold denominator forces** (`_draft_ics-scoring.md` §1.5), all cheap and all required:
+**Four rules the Sold denominator forces** (`_draft_ics-scoring.md` §1.5), all cheap and all required on the validation sheet:
 
 | Case | Rule |
 |---|---|
@@ -604,13 +743,31 @@ Source: `_draft_ics-scoring.md` §1.3, §1.4, §1.5. Tiers: Silver 25, Gold 50, 
 | **Transfers to a family sub-account or under the Digital Will** | **Not a sale.** Excluded from the numerator; arrives in the recipient's account as an acquisition |
 | **Lender liquidation on a margin call** | ✅ **Counts as a sale** (settled 2026-08-13). The alternative makes borrowing a route around Retention |
 
-#### 5c. The archetype tracks — how the tier distribution is genuinely computed
+**The nine personas A–I still run and still must return the corpus's stated Record, Standing, Retention, ICS and Tier. Nine TRUEs or the build does not ship.** Personas H and I remain the two a naive build fails.
 
-Five payment archetypes per segment-cohort (S27), each with its own **deterministic ICS path**, crossed with the withdrawal split (S31) that straddles the 30% Retention kink. **Threshold each track, then weight. Never average then threshold.**
+> 🔴 **THE 5% SAFETY GATE — the condition under which this collapse must be reverted.**
+>
+> ```
+> FOR EACH YEAR y IN Y1..Y7:
+>   stream2_collapsed(y)  = stream 2 on the tenure->tier lookup
+>   stream2_full(y)       = stream 2 on the full ICS formula, same book
+>   delta(y)              = ABS( stream2_collapsed(y) - stream2_full(y) )
+>                           / gross_profit(y)
+>
+> GATE:  MAX over y of delta(y)  <=  5%
+> ```
+>
+> **If the collapsed lookup's tier mix moves stream 2 by more than 5% of gross profit in any year, the collapse is unsafe and must be reverted** to the per-period ICS engine. **This is a workbook check, not a review item** — it lives on the Checks sheet, it returns TRUE/FALSE, and it is included in the master flag (§10.6, §12).
+>
+> **The measured headroom is comfortable but not large.** The ladder collapse costs 3.1% of gross profit at Y10 and ~2% at Y7 against a 5% tolerance. **The gate is therefore live rather than ceremonial**, and the parameter most likely to trip it is anything that enriches the top of the tier mix — a higher perfect-payer weight, a lower background hazard, or an Aggressive archetype mix. **Run the gate under Base, Aggressive and Conservative.**
+
+#### 5e. The archetype tracks — what the curves are computed from
+
+Five payment archetypes (S27), each with its own **deterministic lifecycle curve**, crossed with the withdrawal split (S31) that straddles the 30% Retention kink. **Threshold each track, then weight. Never average then threshold** — the D2 rule survives the collapse in full (§5a).
 
 | Archetype | Weight (Base) | Monthly pay prob. | Own hazard | Total monthly attrition | Terminal tier |
 |---|---|---|---|---|---|
-| **Perfect payer** | 10% | 0.995 | 0.000 | 0.016 | **Sovereign-capable — the only one.** Reaches it at M61 |
+| **Perfect payer** | 10% | 0.995 | 0.000 | 0.016 | **Sovereign-capable — the only one.** Earliest arrival M61, so **resolved in the annual block** under the collapsed ladder (D22) |
 | **Occasional misser** | 35% | 0.93 | 0.007 | 0.023 | **Platinum ceiling.** Misses ~1 month a year; Standing halves and rebuilds |
 | **Alternating misser** | 12% | 0.55 | 0.018 | 0.034 | **Gold, capped for life.** `Recent` holds at 6 forever |
 | **Reducer** | 13% | 0.97 at reduced ticket | 0.002 | 0.018 | By payment record. **Lowest attrition of any non-perfect archetype** — the point of the free unscored reduction |
@@ -619,11 +776,11 @@ Five payment archetypes per segment-cohort (S27), each with its own **determinis
 **Aggressive mix** (fits 65% M13): Perfect 29%, Occasional 26%, Alternating 16%, Reducer 8%, Early lapser 21%; background hazard **1.1%/month**.
 **Conservative mix** (fits 45% M13): Perfect 14%, Occasional 24%, Alternating 16%, Reducer 10%, Early lapser 36%; background hazard **2.4%/month**.
 
-**The alternating misser is a revenue-relevant cell, not a curiosity.** At 12% of the book with a Gold-for-life cap, it is roughly a quarter of the steady-state Gold population — spending at the **lowest interchange rate (1.80%)** and the **highest FX margin (2.0%)**, i.e. **the most profitable card cell in the book, because it generates stream 4 revenue that the higher tiers have waived.**
+**The alternating misser is a revenue-relevant cell, not a curiosity.** At 12% of the book with a Gold-for-life cap, it is roughly a quarter of the steady-state Gold population — spending at the **lowest interchange rate (1.80%)** and the **highest FX margin (2.0%)**, i.e. **the most profitable card cell in the book, because it generates stream 4 revenue that the higher tiers have waived.** ⚠ **Under the collapsed ladder its interchange rate is the flat Gold rate, which is the rate it was already on** — the cell that carries the most card profit is the one the collapse touches least. That is a large part of why the measured cost is 3.1% and not more.
 
 **Rejected: Monte Carlo.** Wrong deliverable for a client Excel workbook, unauditable, and unnecessary once the archetypes are discrete and deterministic (D2).
 
-#### 5d. Regulatory block re-indexes both clocks
+#### 5f. Regulatory block re-indexes both clocks
 
 `_draft_ics-scoring.md` §1.9 and §10 sub-decision 3 (settled): *"**Frozen months are skipped entirely and the window extends to reach twelve countable months** … on both clocks and on both sides of the gate."*
 
@@ -802,7 +959,7 @@ loss_pool(y)        = loss_pool(y−1) − loss_bf_utilised(y) + MAX(0, −accou
 
 Federal Decree-Law No. 47 of 2022, Article 37: indefinite carry-forward, **utilisation capped at 75% of the taxable income of the year in which it is used**, subject to ownership-continuity and business-continuity tests. With a large accumulated loss pool from the loss-making years, **the 75% cap means Aurumix pays real cash tax from its first profitable year even though it is cumulatively loss-making.** It cannot shelter the full profit. **This is a genuine cash-flow finding v1.0 has no line for**, and the omission is not even conservative — v1.0 omits both the tax and the shelter, and the shelter is worth less than the tax.
 
-**QFZP: assume the adverse case, and the reasoning is modelling hygiene rather than a tax opinion** (F35). Three reasons. **(a)** Qualifying Income is essentially income from transactions with other Free Zone Persons plus a defined activity list; **Aurumix's revenue is retail customer income, which is the paradigm case of non-qualifying income.** **(b)** The de minimis relief tolerates non-qualifying revenue only up to the lower of 5% of total revenue or AED 5 million; Aurumix's non-qualifying share would be close to 100%. **(c)** The asymmetry of the error is severe: a QFZP that loses its status loses it for the tax period **and the four following tax periods**, and **a QFZP does not get the AED 375,000 zero band on its non-qualifying income** — so a failed QFZP is taxed *worse* than a plain mainland company. **Modelling 0% and being wrong is a five-year, no-safety-net error; modelling 9% and being wrong is upside.** Carry the 0% case as an upside sensitivity — **but on the Base path it is worth exactly USD 0.** The model books **zero tax in all ten years** because no year is profitable, so QFZP status changes nothing inside the horizon. 🔴 **v1.0's "~USD 220k/yr at Y10" is unsupported: it presupposes a profitable Y10 that the corrected model does not produce.** The relief becomes worth something only in the scenarios that do turn profitable — Aggressive (EBITDA-positive from Y5) and `clients_plan` (Y10) — and it should be sized there, not at Base.
+**QFZP: assume the adverse case, and the reasoning is modelling hygiene rather than a tax opinion** (F35). Three reasons. **(a)** Qualifying Income is essentially income from transactions with other Free Zone Persons plus a defined activity list; **Aurumix's revenue is retail customer income, which is the paradigm case of non-qualifying income.** **(b)** The de minimis relief tolerates non-qualifying revenue only up to the lower of 5% of total revenue or AED 5 million; Aurumix's non-qualifying share would be close to 100%. **(c)** The asymmetry of the error is severe: a QFZP that loses its status loses it for the tax period **and the four following tax periods**, and **a QFZP does not get the AED 375,000 zero band on its non-qualifying income** — so a failed QFZP is taxed *worse* than a plain mainland company. **Modelling 0% and being wrong is a five-year, no-safety-net error; modelling 9% and being wrong is upside.** Carry the 0% case as an upside sensitivity — **but on the Base path it is worth exactly USD 0.** The model books **zero tax in every modelled year** because no year is profitable, so QFZP status changes nothing inside the horizon — and shortening the horizon to 7 years can only reinforce that, since the loss-making years are the early ones. 🔴 **v1.0's "~USD 220k/yr at Y10" is unsupported: it presupposes a profitable Y10 that the corrected model does not produce, and Y10 is now beyond the horizon in any case.** The relief becomes worth something only in the scenarios that do turn profitable — Aggressive was EBITDA-positive from Y5 on the ten-year run, which is inside the new window — and it should be sized there, not at Base.
 
 **VAT is a residency question, and on this base it is probably an advantage.** 5% standard-rated for UAE residents (F36), 0% for non-residents under export-of-services (F37). The split falls straight out of §5's own segmentation (S49), because decision 31 re-cut the segments by country of residence precisely so that residence-dependent rules could bind. **The non-resident share of the book rises from 0% in Y1 to roughly 42% by Y10.** Worth `{{UNFILLED: Y10 VAT advantage on fee lines from non-resident share, USD — not in spine; the model books cost_vat of USD 7,421 at Y10 but does not decompose a non-resident saving}}` against a competitor set that is UAE-resident-facing and pays 5% on all of it.
 
@@ -833,15 +990,17 @@ TOTAL FUNDING     = PEAK FUNDING + AED 1.5m regulatory capital + float principal
                     [subject to the offset counsel question at §7.6]
 ```
 
-**Outputs, all placeholders:**
+**Outputs.** ⚠ **All of these are from the v2.0 ten-year run and every one of them lands beyond the new 7-year horizon.** They are recorded so the layer's outputs are named, not so the levels are quoted (§0 footnote, §14).
 
-| Output | Value |
-|---|---|
-| Peak funding requirement | **USD 15,076,460** |
-| Month it occurs | **M114** |
-| Months to cash break-even | **Never within 120 months** — cumulative cash does not turn positive inside the horizon |
-| Months to P&L break-even | **No year within the 10-year horizon.** The first individual month with positive net profit is M115, but the year containing it still loses USD 367,051 |
-| Total funding need incl. capital and float | **USD 15,076,460** (cumulative cash deficit plus the USD 408,441 locked regulatory capital) |
+| Output | Value on the ten-year run | Status under the 7-year basis |
+|---|---|---|
+| Peak funding requirement | **USD 15,076,460** | **Beyond horizon.** The 7-year model reports the trough *within* its own window, which is not the peak |
+| Month it occurs | **M114** | **Beyond horizon** — M114 is Y9.5 |
+| Months to cash break-even | **Never within 120 months** | **Not reached.** Also not reached in 84 |
+| Months to P&L break-even | **No year within the ten-year horizon.** The first individual month with positive net profit is M115, but the year containing it still loses USD 367,051 | **Beyond horizon.** M115 is Y9.6 |
+| Total funding need incl. capital and float | **USD 15,076,460** (cumulative cash deficit plus the USD 408,441 locked regulatory capital) | **Beyond horizon** |
+
+🔴 **The layer is kept in full and its outputs are demoted.** The cash mechanics above are correct and must be built — the float double-count below is a genuine error that only a cash layer can catch. **What is not to be built on is the level of any figure in that table**, because break-even and peak funding both fall outside a 7-year window and because the client has instructed that profitability is not to be leaned on until the cost base settles (§0 footnote). **Report the funding trajectory as a shape — the direction, the slope and the fact it has not turned — never as a headline number.**
 
 **Report months-to-cash-breakeven separately from P&L breakeven.** They are different questions, and the gap between them is the working-capital story.
 
@@ -851,7 +1010,9 @@ TOTAL FUNDING     = PEAK FUNDING + AED 1.5m regulatory capital + float principal
 
 ## 3.x Calculation cascade and acyclicity proof
 
-**This section exists because a 76-column, ten-sheet model with an ICS state machine, an archetype split, a contra-revenue layer and two solvers will produce circular references unless the execution order is fixed in advance.** The benchmark has no equivalent and it should. A circular reference with iterative calculation off returns zeros silently; with it on, it returns garbage silently. Neither failure announces itself.
+**This section exists because a multi-sheet model with a gate engine, an archetype split, a contra-revenue layer and two solvers will produce circular references unless the execution order is fixed in advance.** The benchmark has no equivalent and it should. A circular reference with iterative calculation off returns zeros silently; with it on, it returns garbage silently. Neither failure announces itself.
+
+**The convolution makes this proof stronger, not weaker** (D23). A cohort triangle has 72 blocks that each read the block above; a convolution has one row per series that reads a fixed lookup table. **The number of edges in the dependency graph falls by roughly two orders of magnitude, and the one edge that could close a loop is now visible in a single formula.**
 
 ### 3.x.1 Sheet execution order
 
@@ -860,45 +1021,56 @@ TOTAL FUNDING     = PEAK FUNDING + AED 1.5m regulatory capital + float principal
         |
   [2] Scenario Parameters    reads Assumptions (Base/Aggressive/Conservative columns)
         |
-  [3] Time Series            reads Assumptions + Scenario; produces period headers,
+  [3] Time Series            reads Assumptions + Scenario; produces 29 period headers,
         |                    activation flags, seasonality, gold price, fee ladder,
         |                    bar denomination, opex interpolation
         |
-  [4] Cohort Engine          reads Time Series; produces acquisition by channel ×
-        |                    segment × archetype, and the six-state roll-forward
+  [4] Lifecycle Curves       reads Assumptions + Scenario ONLY.  MONTHLY TO M84.
+        |                    Five archetype curves: alive / contributing / reduced /
+        |                    gated / tier / grams / card-active / spend.
+        |                    ** READS NO PERIOD-t QUANTITY FROM ANYWHERE. **
+        |                    It is a pure function of month-since-origination.
         |
-  [5] ICS Engine             reads Cohort Engine ONLY; produces run_length, gate
-        |                    arrival, Record / Standing / Retention / ICS per track,
-        |                    and the tier distribution
+  [5] Acquisition            reads Time Series; produces the monthly acquisition
+        |                    vector acq(s,t) by channel x segment, with the
+        |                    S4 / S5 / S6 activation offsets
         |
-  [6] Model                  reads ICS Engine + Cohort Engine; produces flows, the
-        |                    AUM stock, all six streams and the benefit costs
+  [6] ICS Validation         reads Lifecycle Curves ONLY.  Writes into the model
+        |                    NOWHERE.  Produces the nine persona results and the
+        |                    5% collapse-safety delta.  A LEAF, not a link.
         |
-  [7] Opex & P&L             reads Model + Time Series; produces EBITDA, tax,
+  [7] Model                  reads Lifecycle Curves + Acquisition; performs the
+        |                    convolution, then flows, AUM stock, six streams,
+        |                    benefit costs.  29 columns.
+        |
+  [8] Opex & P&L             reads Model + Time Series; produces EBITDA, tax,
         |                    working capital, cash, funding
         |
-  [8] Summary                reads Opex & P&L + Model; annual roll-ups, unit economics
+  [9] Summary                reads Opex & P&L + Model; annual roll-ups, unit economics
         |
-  [9] Checks                 reads everything; writes nothing
+ [10] Checks                 reads everything; writes nothing
 ```
 
 **The rule to enforce: no sheet may reference a sheet to its right.** There is exactly one exception and it is handled at §3.x.3 item 1.
 
-### 3.x.2 The cohort → ICS → benefits → stream 1 chain has no loop
+⚠ **The ICS Validation sheet is a leaf and must stay one.** It reads the Lifecycle Curves and it is read only by Checks. **If any Model formula ever references it, the collapse has been silently un-done** and the row map at §10.1 no longer describes the workbook. Add this to the left-to-right dependency test at §3.x.4.
+
+### 3.x.2 The acquisition → curve → benefits → stream 1 chain has no loop
 
 The chain that *looks* circular is:
 
 ```
 tier distribution → entry-fee discount → fee applied → stream 1 revenue
                  → acquisition budget ceiling (% of stream 1)
-                 → marketing spend → new accounts → cohorts → tier distribution
+                 → marketing spend → new accounts → acquisition vector
+                 → convolution → tier distribution
 ```
 
-**It is not a loop, because of a one-period lag and a one-cohort separation. The proof is in three parts.**
+**It is not a loop, because of a one-period lag and a separation of the curve from the vector. The proof is in three parts, and the middle one is now trivial rather than argued.**
 
-**(a) Tier is a function of a cohort's own history, not of period-`t` revenue.** A cohort acquired in month `k` has, at month `t`, a tier determined entirely by `run_length`, `Months`, `Recent` and `Sold` — all of which are functions of `(t − k)` and of the archetype's payment path. **No term in the ICS formula reads any revenue, cost or population figure from period `t`.** The ICS Engine sheet therefore reads only the Cohort Engine, which reads only Time Series. One direction, no return path.
+**(a) The lifecycle curves are a pure function of month-since-origination.** `tier(a,m)`, `gated(a,m)` and every other series depend on `m` and on the archetype's parameters. **No series reads a revenue, cost, population or price figure from any period `t`.** The Lifecycle Curves sheet reads Assumptions and Scenario Parameters and nothing else. **Under v2.0 this had to be proved cohort by cohort; under the convolution it is a property of the sheet, verifiable by inspecting its inbound references.** One direction, no return path.
 
-**(b) The discount applies to the cohort that earned it, and cannot change it.** `fee_applied(s,t) = base_fee(t) − tier_weighted_discount(s,t)` reduces revenue in period `t`. Reduced revenue changes the acquisition budget in period `t+1`, which changes the **size of the month `t+1` cohort** — a *different* cohort, whose own tier path starts at `run_length = 0`. **The arrow that would close the loop points at a cohort that does not yet exist.**
+**(b) The discount applies to a book the acquisition vector cannot retroactively change.** `fee_applied(s,t) = base_fee(t) − tier_weighted_discount(s,t)` reduces revenue in period `t`. Reduced revenue changes the acquisition budget in period `t+1`, which changes `acq(s, t+1)` — **a later element of the vector.** The convolution at period `t` reads `acq(s, 1..t)` only. **The arrow that would close the loop points at a vector element that has not been written yet**, and the `SUMPRODUCT` range makes that visible: it terminates at `t`.
 
 **(c) The lag is explicit and must be built as such.** `acquisition_budget(t) = ceiling% × stream1_revenue(t−1)`. **Write the lag. Do not write `stream1_revenue(t)`.** With the lag, the dependency graph on the Model sheet is strictly lower-triangular in the period index and Excel resolves it left to right in a single pass.
 
@@ -910,17 +1082,21 @@ There are exactly two, and both are real.
 
 | # | Circularity | Why it is genuine | Resolution |
 |---|---|---|---|
-| **1** | **The acquisition ceiling.** Marketing and agent spend is capped as a percentage of entry-fee revenue; entry-fee revenue depends on the accounts that spend bought. | Within a single period these are mutually determining. Unlike the tier chain there is no cohort separation — the spend and the revenue are in the same month. | **A one-period lag.** `budget(t) = ceiling% × stream1_revenue(t−1)`, with `budget(1)` set from a hardcoded launch allocation. **Do not enable iterative calculation.** A lagged budget is also the operationally honest model: a board approves this quarter's spend against last quarter's revenue. Test by running the ceiling at ±5pp and confirming the model is not sensitive to the lag itself. |
+| **1** | **The acquisition ceiling.** Marketing and agent spend is capped as a percentage of entry-fee revenue; entry-fee revenue depends on the accounts that spend bought. | Within a single period these are mutually determining. Unlike the curve chain there is no separation of vector from lookup — the spend and the revenue are in the same period. | **A one-period lag.** `budget(t) = ceiling% × stream1_revenue(t−1)`, with `budget(1)` set from a hardcoded launch allocation. **Do not enable iterative calculation.** A lagged budget is also the operationally honest model: a board approves this quarter's spend against last quarter's revenue. Test by running the ceiling at ±5pp and confirming the model is not sensitive to the lag itself. ⚠ **In the annual block the lag is one *annual* column, i.e. twelve months, not one month.** Say so in the formula bar; a lag that silently changes length at the M24/Y3 seam is the seam error §10.5 warns about. |
 | **2** | **T3, the bar denomination.** The denomination sets the fabrication premium (F4) and the float size; the float size and the inflow rate determine when an upgrade is affordable; affordability depends on margin, which depends on the premium, which depends on the denomination. | A genuine fixed point in a capital allocation decision. The upgrade rule is a threshold on a quantity the upgrade itself changes. | **Resolve as a step function on a trailing measure, not as a simultaneity.** `bar_grams(t) = threshold_lookup( trailing_12m_avg_daily_inflow_grams(t−1) )`. Period `t`'s premium is set by periods `t−12` to `t−1`. **Additionally, latch the step:** once upgraded, the denomination never steps back down even if trailing inflow falls — you do not sell a kilobar to buy 100 g bars. The latch removes chatter at the threshold and matches physical reality. |
 
 **A third candidate that is not a circularity but is often mistaken for one.** The redemption spread cost depends on net flow; net flow depends on inflow; inflow depends on accounts; accounts depend on nothing downstream of redemption. **Redemption reduces grams, grams reduce AUM, and AUM drives stream 6 — but stream 6 revenue does not feed back into redemption behaviour.** S32 and S33 are exogenous rates on the AUM stock. Straight line, no return arrow.
 
+**A fourth candidate, new at v2.1, and it is the one a modeller will get wrong.** The convolution at an *annual* column looks as though it needs the annual column's own result to know which lifecycle months to read. **It does not.** An annual column `Y` covers a known, fixed set of twelve calendar months; the convolution is performed **at each of those twelve monthly points against the M84 curve table** and only then aggregated into the column. **The annual column is an output of twelve monthly convolutions, never an input to them.** ⚠ **Do not attempt to convolve an annual acquisition figure against an annual curve point.** That collapses twelve first-passage months into one and destroys the gate distribution, which is the first-order term (§3 Layer 5). **This is the single most likely way to break the D23 architecture while appearing to implement it.**
+
 ### 3.x.4 What the Checks sheet must verify about the cascade
 
 - **Circular-reference canary.** A named cell that reports the workbook's iterative-calculation setting. Iterative calculation is a workbook property and a modeller can enable it by accident; the canary makes that visible on the Checks sheet rather than invisible in a dialog box.
-- **Left-to-right dependency test.** For each sheet, confirm no formula references a sheet later in the §3.x.1 order.
-- **Lag integrity.** Confirm `acquisition_budget` in every period references `t−1` and never `t`.
+- **Left-to-right dependency test.** For each sheet, confirm no formula references a sheet later in the §3.x.1 order. **Including: no Model formula may reference the ICS Validation sheet.**
+- **Lag integrity.** Confirm `acquisition_budget` in every period references the prior period and never the current one, **and that the lag is one month in the monthly block and one year in the annual block.**
 - **Denomination monotonicity.** Confirm `bar_grams(t) ≥ bar_grams(t−1)` for all `t` — the latch.
+- **Convolution range integrity.** Confirm every `SUMPRODUCT` in the convolution band terminates its acquisition range at the current period and never beyond it, and that the curve range is reversed against it. **A range that runs one column too far reads an acquisition figure the model has not derived yet, which is the loop §3.x.2(b) rules out.**
+- **Annual-column decomposition.** Confirm each annual column's population equals the sum of twelve monthly convolutions and not a single convolution on an annual aggregate. **The third candidate above, tested.**
 
 ---
 
@@ -930,21 +1106,24 @@ This section exists so that a reviewer can judge the *approach* before arguing w
 
 ### 3.y.1 The choice
 
-**A deterministic, bottom-up cohort engine with behavioural archetype tracks.** Accounts are acquired by channel into segments, split at origination into fixed behavioural archetypes, and each track is run through its own deterministic ICS path. Revenue and cost are computed per track and summed. Nothing is drawn from a distribution at runtime.
+**A deterministic lifecycle-curve convolution with behavioural archetype tracks.** Five archetype lifecycle curves are computed once, monthly to M84, as a pure function of month-since-origination. Acquisition by channel into segments produces a monthly vector. The book in any period is the convolution of the two. Revenue and cost are computed per archetype and summed. **Eligibility — the run-of-6 gate — is solved exactly; the rate ladder within eligibility is a tenure→tier lookup.** Nothing is drawn from a distribution at runtime.
 
-Three properties made this the right shape rather than a default:
+Four properties made this the right shape rather than a default:
 
-1. **Tier distribution drives 83.5% of terminal gross profit and cannot be assumed.** Interchange (54.3%), cardholder fees (29.1%) and credit (0.2%) are all priced off tier at Y10, and so are Gold Rewards cost, FX waivers, ATM allowances, LTV and two discount ladders. Any approach that takes the tier mix as an input is assuming most of the answer. *(v1.0 put this at 71% of revenue; the corrected figure is higher, and on gross profit rather than gross revenue.)*
-2. **Tier is a threshold function of an individual's history**, so the model must carry heterogeneity explicitly. Averaging first and thresholding after is wrong by Jensen's inequality (D2), and wrong in the direction that flatters the business.
-3. **The deliverable is an auditable Excel workbook for a pre-launch company.** That rules out anything a client cannot open, trace and argue with cell by cell.
+1. **Eligibility drives the card stack and cannot be assumed.** 63% of live accounts are Gold+; assuming 100% overstates the business by ~59%. Interchange, cardholder fees and credit are all gated on Gold+, and so are Gold Rewards cost, FX waivers, ATM allowances and LTV. **Any approach that takes eligibility as an input is assuming most of the answer.** *(v1.0 put the card at 71% of revenue; the corrected figure is higher, and on gross profit rather than gross revenue.)*
+2. **Eligibility is a threshold function of an individual's payment history**, so the model must carry heterogeneity explicitly. Averaging first and thresholding after is wrong by Jensen's inequality (D2), and wrong in the direction that flatters the business. **The convolution preserves this exactly** — it weights per-archetype curves, it does not blend them.
+3. **The rate ladder within eligibility is second-order and was collapsed on measurement, not preference** (D22). A flat Gold rate against the full 1.80/2.05/2.10 ladder moves stream 2 by ~2% of gross profit at Y7. **The saving is not the arithmetic; it is that the top of the ladder no longer needs monthly resolution, which is what makes a 24-month monthly block viable** (§1).
+4. **The deliverable is an auditable Excel workbook for a pre-launch company.** That rules out anything a client cannot open, trace and argue with cell by cell. **A cohort triangle is technically auditable and practically not** — 72 near-identical blocks is where a reviewer stops reading, which is why D23 removes it.
 
 ### 3.y.2 Alternatives considered and rejected
 
 | Approach | Why it was rejected |
 |---|---|
-| **Aggregate roll-forward** (the DRODE V3 shape: one population, average tenure, assumed mix) | Cannot compute a tier distribution, so it must assume one. That assumption sets **83.5% of gross profit**. It is the approach v1.0 effectively specified while claiming otherwise |
+| **Aggregate roll-forward** (one population, average tenure, assumed mix) | Cannot compute eligibility or a tier distribution, so it must assume one. **Assuming 100% Gold+ overstates the business by ~59%.** It is the approach v1.0 effectively specified while claiming otherwise |
+| **An explicit cohort triangle** (v2.0's shape: a six-state block per segment × cohort × archetype) | **Rejected at v2.1 and it must not return** (D23). It re-computes the same 84-number path once per acquisition month, and it was the single largest driver of v2.0's 600 × 76 Model sheet. **The convolution is not an approximation of it — it is the same sum, because the state machine is time-invariant in month-since-origination and every series aggregates by addition** (§3 Layer 2c). The triangle costs two orders of magnitude in dependency edges and buys nothing |
+| **The full per-period ICS engine as the live model** | **Demoted, not rejected** (D22). It remains fully specified and it still runs — as a validation artefact against which the collapsed lookup is proved, with a 5% safety gate that reverts the collapse if it fails (§3 Layer 5d). The argument for demoting it is measured, not aesthetic: ~2% of gross profit at Y7 |
 | **Monte Carlo over payment and withdrawal behaviour** | Statistically the most defensible and the wrong deliverable. Not reproducible cell by cell, not auditable by a client, and it converts a sourcing argument into a distributional one that none of our inputs can support. Unnecessary once archetypes are discrete and deterministic |
-| **Full Markov chain over the ICS state space** | Strictly more general than archetypes, and genuinely tempting. Rejected on tractability: the state is `(Months 0–120 × Recent 0–12 × Sold bucket × payment state)`, which is tens of thousands of cells per segment before any revenue line. Archetype tracks are the Excel-representable approximation to the same object — a mover-stayer mixture rather than a full transition matrix |
+| **Full Markov chain over the ICS state space** | Strictly more general than archetypes, and genuinely tempting. Rejected on tractability: the state is `(Months × Recent 0–12 × Sold bucket × payment state)`, which is tens of thousands of cells per segment before any revenue line. Archetype curves are the Excel-representable approximation to the same object — a mover-stayer mixture rather than a full transition matrix |
 | **Agent-based simulation** | This is Phase 5's deliverable, not Phase 4's. A revenue model that a client signs off on and a simulation that stress-tests it are different artefacts with different standards of evidence. Building one in place of the other loses both |
 | **Top-down market-share model** | Would sidestep every mechanism the engagement exists to price. It is also how the client's own 60,000–100,000 target was produced, and testing that target is the point |
 
@@ -956,14 +1135,17 @@ Each of these is a deliberate boundary, not an oversight. A reviewer should push
 |---|---|---|---|
 | L1 | **Archetypes are fixed at origination.** A customer cannot migrate from occasional misser to perfect payer | Real behaviour migrates; the mixture reproduces the *aggregate* survival curve to under 1pp at all five anchors, which is what the revenue lines consume. Migration mostly reshuffles members between tracks whose economics are already modelled | A transition matrix between archetypes — i.e. the Markov approach, at Markov cost |
 | L2 | **Gold price is flat in the base case** | Deliberate: it makes every revenue change attributable to the business rather than the metal. Held as a **scenario**, not a one-cell sensitivity (D14) | Nothing — it is already a scenario axis. The limitation is only that the *base* is flat |
-| L3 | **Tier mix and `Recent` freeze from Y7** at the M72 archetype-weighted distribution | A trailing-12-month measure cannot be recomputed inside an annual column. By M72 the mix has substantially saturated | Extending monthly resolution to M120, at 48 more columns |
+| **L3** | **The tier rate ladder is collapsed to a flat Gold rate** (D22). The model cannot price a Platinum or Sovereign account's interchange, waivers or Gold Rewards at that tier's own rate | **Measured, not assumed: ~2% of gross profit at Y7, 3.1% at Y10.** Sovereign is 1.2% of tiered accounts at Y7, so there is very little at the top of the ladder to mis-price. **Eligibility, which is worth ~59%, is not collapsed** | Restoring the per-period ICS engine — which is still fully specified on the ICS Validation sheet, so the cost is re-linking it, not rebuilding it. **The 5% safety gate (§3 Layer 5d) forces exactly this if the cost ever exceeds tolerance** |
+| **L3a** | **Platinum and above are resolved annually, not monthly.** Platinum is earliest at M36 and Sovereign at M61; the monthly block ends at M24 | Acceptable **precisely because of L3**: with the ladder collapsed, the rate difference between Gold and the tiers above it is the ~2% already counted. **Under the uncollapsed ladder this would be a defect** — the two decisions are only jointly safe (§1) | A longer monthly block, which is what v2.0 had at 72 columns and what D21 withdrew |
+| **L3b** | **Archetype lifecycle curves are fixed at origination and identical across segments.** A segment scales a curve by ticket and card spend; it cannot bend one | The archetype mix already carries the behavioural heterogeneity, and **no source decomposes behaviour by segment** — S27's decomposition is a confirmed negative (§8.2). Scaling is an assertion the evidence supports; bending is not | A curve set per segment — 30 curves rather than 5. **If a future decision makes a segment behave differently rather than merely spend differently, this limitation becomes a defect and the curve set must expand.** Say so at that point rather than quietly adding a scalar |
+| **L11** | **The heavy-seller haircut is an aggregate multiplier, not a per-account `Sold` ratio** (D22). The 30% Retention kink cannot be represented | The real term kinks per account; a mix-level multiplier smooths it. This is the same class of error as L4 and it is bounded by the same 5% gate | The per-account `Sold` denominator, i.e. the per-period ICS engine — L3's remedy, at L3's cost |
 | L4 | **Per-account cumulative caps are applied at archetype level, not per account** — Gold Rewards specifically | `Σ MIN(individual) ≠ MIN(Σ)`, so an aggregate cap is looser than the real rule. The approximation is safe *only because* the cap is proved non-binding at any PM share above the 36% floor (§9). It is not safe below it | Per-account state, which a column model cannot carry |
 | L5 | **Acquisition is deterministic.** No competitive response, no channel saturation shock, no viral dynamics beyond the referral lag | A pre-launch company has no basis for any of these. Segment saturation caps prevent the hockey stick, which is the failure mode that actually matters | Phase 5 |
-| L6 | **The B2B partner book is top-down.** Partner AUM is an input ramp, not an engine of partner accounts | Partner customers earn no ICS and consume no benefits, so they need no state machine. Their economics are a fee on a stock | A seventh segment with its own cohort block |
+| L6 | **The B2B partner book is top-down.** Partner AUM is an input ramp, not an engine of partner accounts | Partner customers earn no ICS and consume no benefits, so they need no state machine. Their economics are a fee on a stock | A seventh segment with its own lifecycle curve |
 | L7 | **No stochastic shocks**: no rail outage, no partner default, no regulatory stop. A gold crash is carried, but only as a *discrete* shock — see L10 | Named scenarios and the stress tests carry the ones we can size; the rest are unquantifiable pre-launch | Phase 5 |
 | L8 | **Credit is modelled as a revenue share on an average drawn balance**, with drawn-balance vintages by struck LTV but no loan-level book | Aurumix is not the lender of record and takes no credit risk. Every fee head is a partner term-sheet input that does not yet exist | A term sheet |
 | L9 | **The model prices India as a market. It does not assert a compliant payment route exists** | Decision 27 stands. The `INDIA_ENABLED` switch exists so the client can see what the payment problem costs them, not to imply it is solved | Not ours to remove |
-| **L10** | **Gold is modelled as a level and as a discrete shock, never as a stochastic process.** So the model answers *"what if gold falls X% in Year 6"* and **cannot answer** *"what is the probability of a margin call over ten years"* | A level axis proves the USD-AUM invariance (§14.4a) and a dated shock against struck-LTV vintages proves what actually margin-calls (§14.4b). Neither needs a price process, and a pre-launch company has no basis for calibrating one | A stochastic gold path — Phase 5. It would turn §14.4's stress rows into exceedance probabilities, which is the one thing this view cannot currently produce |
+| **L10** | **Gold is modelled as a level and as a discrete shock, never as a stochastic process.** So the model answers *"what if gold falls X% in Year 6"* and **cannot answer** *"what is the probability of a margin call over the horizon"* | A level axis proves the USD-AUM invariance (§14.4a) and a dated shock against struck-LTV vintages proves what actually margin-calls (§14.4b). Neither needs a price process, and a pre-launch company has no basis for calibrating one | A stochastic gold path — Phase 5. It would turn §14.4's stress rows into exceedance probabilities, which is the one thing this view cannot currently produce |
 
 ### 3.y.4 The honest summary of confidence
 
@@ -986,12 +1168,14 @@ Each of these is a deliberate boundary, not an oversight. A reviewer should push
 | Oman and Bahrain open | M13 | Segment 4 activates. Requires local authorisation |
 | **Referral channel produces its first payout** | **M13** | Six months for the referrer plus six for the referee. Year 1 pays nothing. **Steady state not before ~M25** |
 | **Card programme live** (sponsor bank) | **M18, assumed** | **Streams 2 and 4 activate. This is the majority of terminal revenue** |
-| Lending partner live | M24, assumed | Stream 5 activates |
-| **B2B partner live** | **M24, assumed** | Stream 6 activates. Partner 1 starts its own S43 maturity clock here |
-| Other international | M25 | Segment 6 |
-| First Platinum — earliest | M36 | LTV 65%, Gold Rewards 0.45%, FX 1.5% |
-| **First Sovereign — earliest** | **M61** | **The ladder reaches full cost only in Year 6.** Monthly resolution runs to M72 to capture the first full Sovereign year (D20) |
-| Monthly block ends | **M72** | Tier distribution and `Recent` held at the M72 archetype-weighted values through Y7–Y10, and **said so** rather than pretended-recomputed |
+| **Gold arrives — cohort-weighted** | **~M20** | **The eligibility threshold for card, credit and Gold Rewards.** Earliest M12; the gate delay pushes the weighted arrival to roughly M20. **Inside the monthly block, and this is the reason the monthly block is 24 columns** (§1) |
+| **Monthly block ends** | **M24** | **24 monthly columns, then five annual** (D21). Nothing is frozen at the seam — the lifecycle curves run monthly to M84 and an annual column aggregates twelve of their points (§1, §10.5) |
+| Lending partner live | **M24, assumed → booked at the start of the annual block (Y3)** | Stream 5 activates |
+| **B2B partner live** | **M24, assumed → booked at the START OF THE ANNUAL BLOCK (Y3)** | Stream 6 activates. Partner 1 starts its own S43 maturity clock here. 🔴 **M24 falls exactly on the monthly/annual boundary. Place stream 6 at the start of the annual block so it does not get a single stub month** — a one-twelfth-year column sitting beside a full annual column is the seam error §10.5 exists to prevent |
+| Other international | M25 | Segment 6. **First period of the annual block**, handled by offsetting the acquisition vector, not by a new lifecycle curve (D23) |
+| First Platinum — earliest | M36 | LTV 65%, Gold Rewards 0.45%, FX 1.5%. **In the annual block** — acceptable because the rate ladder is collapsed (D22, §1, L3a) |
+| **First Sovereign — earliest** | **M61** | **In the annual block.** Under the uncollapsed ladder this would need monthly resolution; under the flat Gold rate it costs ~2% of gross profit at Y7, because **Sovereign is 1.2% of tiered accounts by then** (D22) |
+| **Horizon ends** | **Y7** | 29 columns total (D21) |
 
 ### 4.1 Gate arrival is a distribution, and it moves every date in this table
 
@@ -1011,6 +1195,8 @@ Under v1.0's Layer 5 the ladder dates above were dates. **They are not.** A memb
 **The never-gated share is a revenue-positive population, not a failure statistic.** They pay the full undiscounted fee, hold gold, generate AUM, and consume no benefits, forever. The corpus states the customer-facing consequence plainly and the model must reproduce it: *"A saver who never completes six in a row accrues nothing at all: no score, no tier, no benefits, however many scattered payments they make"* (`_draft_ics-scoring.md` §1.6).
 
 **Model implication.** Conditional activation on every stream: `=IF(period >= activation_month, calculation, 0)`, with activation months held on the Time Series sheet and **never hardcoded inside a formula**. The two dates that matter most are the **card programme (M18)** and the **B2B partner (M24)**, because between them they carry the majority of terminal revenue and **both are commercial gates outside our control.** The Checks sheet must verify that every activation flag fires in the right period.
+
+⚠ **The two dates sit on opposite sides of the seam and must be built differently.** The card at **M18** is inside the monthly block, so its ramp is resolved month by month and the F27 fixed costs beginning at **M15** land three columns earlier, as they should. The B2B partner at **M24** is on the boundary, so **stream 6 is zero through the whole monthly block and first appears in the Y3 column** — not as a stub month at M24. **Stream 5 follows the same rule for the same reason.** Check 7 (§10.6) must test both conventions, not just the flag.
 
 ---
 
@@ -1105,7 +1291,7 @@ Source: `_draft_purchase-structure.md` §2.2, re-run at the verified gold price 
 | Reduced ticket, per segment | MAX(20, 0.50 × ticket) | S29 — **not the hard-coded 20** | USD/month |
 | Gold price (flat) | **141.46** | F1, USD 4,400/oz verified 2026-08-17 | USD/g |
 
-**Formula — Monthly (M1–M72)**
+**Formula — Monthly (M1–M24)**
 
 ```
 For each segment s, each period t:
@@ -1131,19 +1317,23 @@ For each segment s, each period t:
   STREAM1a(s,t)          = gross_margin − pricegap − floatcoc − rail
 ```
 
-**Formula — Annual (Y7–Y10)**
+**Formula — Annual (Y3–Y7)**
 
 ```
 For each segment s, each year y:
 
-  contributing(s,y)      = average of the 12 implied monthly values, rolled forward
-                           on the archetype hazards compounded to annual:
-                           h_annual(a) = 1 − (1 − h_monthly(a))^12
-  tier_weighted_discount(s,y) = HELD at the M72 archetype-weighted value        [D20]
+  contributing(s,y)      = SUM over the 12 constituent months of the CONVOLUTION
+                           at each month against the M84 lifecycle curves    [D23]
+                           ** NOT a compounded annual hazard, and NOT one
+                              convolution on an annual acquisition figure **
+  tier_weighted_discount(s,y) = COMPUTED at each of the 12 months from the
+                           tenure->tier lookup, then weighted.  Nothing is held
+                           or frozen at the seam                            [D21, D22]
 
-  sip_inflow(s,y)        = 12 × [ contributing(s,y) × ticket(s)
-                                + reduced(s,y) × reduced_ticket(s) ]
-  rail(s,y)              = 12 × [ contributing(s,y) + reduced(s,y) ] × S1
+  sip_inflow(s,y)        = Σ over the 12 months of [ contributing(s,m) × ticket(s)
+                                + reduced(s,m) × reduced_ticket(s) ]
+  rail(s,y)              = Σ over the 12 months of
+                             [ contributing(s,m) + reduced(s,m) ] × S1
 
   All rate-based lines are identical to the monthly form applied to the annual base.
   Seasonality does NOT apply — S52a normalises to 12.00 and cancels over a full year.
@@ -1216,7 +1406,7 @@ A one-off gold purchase outside the SIP schedule. **The gold is identical, the f
 | Rail cost per event | **0.25** Base (S1) — **one transfer, not a collection** | S1 | USD |
 | Large-ticket threshold | one bar denomination (T3) | `_draft_purchase-structure.md` §4.2 | grams |
 
-**Formula — Monthly (M1–M72)**
+**Formula — Monthly (M1–M24)**
 
 ```
 For each segment s, each period t:
@@ -1242,7 +1432,7 @@ For each segment s, each period t:
     → must route to the two-step quote. Report breaches; never net them off.
 ```
 
-**Formula — Annual (Y7–Y10)**
+**Formula — Annual (Y3–Y7)**
 
 ```
   attaching(s,y)     = live_accounts(s,y) × S45 × tenure_uplift(s,y)
@@ -1315,10 +1505,10 @@ Aurumix's share of the interchange a merchant's acquirer pays on every card tran
 
 **How It Materialises**
 
-1. **Tier reached.** Gold or above, from the ICS Engine, per archetype track, thresholded then weighted.
+1. **Tier reached.** Gold or above, from the **convolved tenure→tier lookup** (D22), per archetype curve, thresholded then weighted. ⚠ **Eligibility is what this step delivers and it is a live engine; the rate that follows is flat** — see step 4.
 2. **Card issued and activated.** `S5` activation rate on eligible accounts. Plastic is sticky — **never downgrades** — and upgrades on **3 consecutive months** at the qualifying tier before reissue (`_draft_ics-scoring.md` §6.3).
 3. **Spend occurs**, at that tier's multiplier and that month's seasonality (S52b).
-4. **Gross interchange accrues** at the tier's rate on the transaction value.
+4. **Gross interchange accrues at the FLAT GOLD RATE** on the transaction value (D22). ⚠ **Not at the tier's own rate.** The 1.80 / 2.05 / 2.10 ladder is collapsed; the measured cost is **3.1% of gross profit at Y10 and ~2% at Y7**, because Sovereign is 1.2% of tiered accounts by Y7. **The full ladder survives on the ICS Validation sheet, where the 5% safety gate is computed against it** (§3 Layer 5d).
 5. **The programme manager retains its contracted share (S3); the processor takes a per-transaction fee (F24) on top.**
 6. **Fraud, disputes and programme fixed costs net off** (S39, F25, F27).
 7. **Gold Rewards is haircut off the net**, capped at the customer's own generated revenue net of custody.
@@ -1340,15 +1530,17 @@ Aurumix's share of the interchange a merchant's acquirer pays on every card tran
 | Programme fixed costs | **180,000** Base / 106,000 Agg / **340,000** Cons annualised from M18 | F27 | USD/yr |
 | Spend seasonality | Normalised to exactly 12.00 | S52b | multiplier |
 
-**Formula — Monthly (M18–M72)**
+**Formula — Monthly (M18–M24)**
 
 ```
 For each tier k ∈ {Gold, Platinum, Sovereign}, each period t:
 
-  eligible(t,k)      = accounts at tier k, from the ICS Engine
+  eligible(t,k)      = accounts at tier k, from the CONVOLVED tenure->tier
+                       lookup (D22, D23) — eligibility is computed, never assumed
   active_cards(t,k)  = eligible(t,k) × S5
   spend(t,k)         = active_cards(t,k) × S4 × S38(k) × S52b(month_of(t))
-  gross_ic(t,k)      = spend(t,k) × F12(k) ÷ AED_per_USD
+  gross_ic(t,k)      = spend(t,k) × F12_GOLD ÷ AED_per_USD
+                       ** FLAT GOLD RATE, not F12(k). Ladder collapsed, D22 **
 
   txns(t,k)          = spend(t,k) ÷ F23(k) × 1.06                [+6% declines]
   txn_fee(t,k)       = txns(t,k) × F24
@@ -1369,11 +1561,12 @@ For each tier k ∈ {Gold, Platinum, Sovereign}, each period t:
   STREAM2(t) = Σ_k [ net_ic(t,k) − gold_rewards(t,k) ] − fraud − disputes − fixed
 ```
 
-**Formula — Annual (Y7–Y10)**
+**Formula — Annual (Y3–Y7)**
 
 ```
-  active_cards(y,k)  = average of opening and closing counts at the M72-held tier mix
-  spend(y,k)         = 12 × active_cards(y,k) × S4 × S38(k)
+  active_cards(y,k)  = average of opening and closing counts at the tier mix
+                       COMPUTED at each of the year's 12 months.  Nothing held
+  spend(y,k)         = Σ over the 12 months of active_cards(m,k) × S4 × S38(k)
                        [no S52b — it normalises to 12.00 and cancels]
   txns(y,k)          = spend(y,k) ÷ F23(k) × 1.06
   All other lines are the monthly forms applied to the annual base.
@@ -1439,7 +1632,7 @@ An annual plan fee for registering beneficiaries and a Digital Will over the cus
 | Continuous screening | **0.36** | Same. **Per name, per year, for 20–40 years** | USD/yr |
 | Platform minimum | **299 + 1.85/check** | F16, **Sumsub's own pricing page.** Binds below 162 checks/month | USD/mo |
 
-**Formula — Monthly (M1–M72)**
+**Formula — Monthly (M1–M24)**
 
 ```
 For each segment s, each period t:
@@ -1458,7 +1651,7 @@ For each segment s, each period t:
     platform(t)     = MAX(299, 1.85 × kyc_checks(t))              [F16 floor]
 ```
 
-**Formula — Annual (Y7–Y10)**
+**Formula — Annual (Y3–Y7)**
 
 ```
   plans(s,y)        = average live accounts × S11
@@ -1525,7 +1718,7 @@ The fee revenue a cardholder pays directly, as opposed to the interchange a merc
 | Replacement event rate | 0.11 Base / 0.07 Agg / 0.18 Cons | S37 | events/card/yr |
 | Card production unit cost | 4.50 / 7.00 / 14.00 | F26. **At Sovereign, production cost exceeds the AED 0 issuance fee by construction** | USD/card |
 
-**Formula — Monthly (M18–M72)**
+**Formula — Monthly (M18–M24)**
 
 ```
 For each tier k, each period t:
@@ -1545,13 +1738,14 @@ For each tier k, each period t:
   STREAM4(t) = Σ_k [ fx_rev + atm_rev + issue_rev − issue_cost ] ÷ AED_per_USD
 ```
 
-**Formula — Annual (Y7–Y10)**
+**Formula — Annual (Y3–Y7)**
 
 ```
   foreign_share(y)  = S34 annual mean (34%)   [S53 normalises out over a full year]
   foreign_spend(y,k)= spend(y,k) × S34
-  atm_rev(y,k)      = 12 × the monthly distribution formula at the annual average
-                      card count and the M72 tier mix
+  atm_rev(y,k)      = Σ over the 12 months of the monthly distribution formula,
+                      each at that month's own convolved card count and tier mix.
+                      Nothing held or frozen at the seam                 [D21]
   issue events      = active_cards(y,k) × (S36 + S37)
   STREAM4(y)        = Σ_k [ fx_rev + atm_rev + issue_rev − issue_cost ] ÷ AED_per_USD
 ```
@@ -1617,7 +1811,7 @@ A revenue share on a gold-collateralised credit facility originated by Aurumix a
 | Recovery fee — gross / share | 1.50% of recovered / **0%** | F31. 🔴 **Modelled at zero. See below** | % / % |
 | Pricing corridor | 9% reducing (Emirates Money) to 16% (Finance House) | Two actual UAE gold products | % APR |
 
-**Formula — Monthly (M24–M72)**
+**Formula — Annual block only (Y3–Y7); zero through M24, no stub month**
 
 ```
 For each tier k, each period t, each vintage v:
@@ -1645,7 +1839,7 @@ For each tier k, each period t, each vintage v:
   STREAM5(t) = interest_share + origination + servicing + penal + recovery
 ```
 
-**Formula — Annual (Y7–Y10)**
+**Formula — Annual (Y3–Y7)**
 
 ```
   avg_drawn(y,v)     = average of opening and closing vintage balances
@@ -1714,7 +1908,7 @@ For each tier k, each period t, each vintage v:
 | Total partner AUM at Y10 | **200** Base / 400 Agg / 50 Cons | S13 | USD m |
 | Platform fee rate | **0.50–0.75** | Placeholder. Worked corpus example: USD 100m at 60 bps = USD 600,000/yr recurring | %/yr |
 
-**Formula — Monthly (M24–M72)**
+**Formula — Annual block only (Y3–Y7); zero through M24, no stub month**
 
 ```
 For each partner p, each period t:
@@ -1731,7 +1925,7 @@ For each partner p, each period t:
   ZERO entry-spread revenue from the partner channel. See below.
 ```
 
-**Formula — Annual (Y7–Y10)**
+**Formula — Annual (Y3–Y7)**
 
 ```
   partner_AUM(p,y)   = average of opening and closing AUM for partner p
@@ -1792,7 +1986,7 @@ Burn-and-pay-cash. **A mandatory, uncapped, zero-revenue cost line that scales w
 | Settlement windows | Small → next business day; Medium → up to 3; Large → up to 5 | §5.5. **Thresholds deliberately unset — they depend on float size, which depends on the dealer** | days |
 | PAXG turnover comparator | 5.9% | `_draft_allocation-and-float.md`. **A token-turnover figure, not a redemption figure.** The only comparator in the corpus | %/yr |
 
-**Formula — Monthly (M1–M72)**
+**Formula — Monthly (M1–M24)**
 
 ```
   redemption_grams(t) = [ contributing_AUM_grams(t) × S32
@@ -1807,7 +2001,7 @@ Burn-and-pay-cash. **A mandatory, uncapped, zero-revenue cost line that scales w
              [the second term is ZERO in every month the book grows]
 ```
 
-**Formula — Annual (Y7–Y10)** — identical, on annual grams, without the ÷ 12.
+**Formula — Annual (Y3–Y7)** — identical, on annual grams, without the ÷ 12.
 
 **Growth Logic**
 
@@ -2007,7 +2201,7 @@ Turning it ON shows the counterfactual: *"At the Year 10 target of 60,000 to 100
 | AED 1.5m VARA minimum paid-up capital | **Locked, not expensed.** Posted at launch |
 | Float principal | **Balance sheet.** Zero under dealer-carried; §7.5 table under own float |
 | One-off launch spend | Cash, Year 1: application, audit, incorporation, DIFC SPV, licensing support, **plus unpriced legal** |
-| Cumulative operating losses | The dominant term. **USD 14,110,495 of cumulative net loss across the ten years, with cumulative cash reaching USD −14,541,529 at Y10. Break-even is never reached inside the horizon, so this is the loss to the end of the modelled period rather than to break-even** |
+| Cumulative operating losses | The dominant term. **On the ten-year run, USD 14,110,495 of cumulative net loss with cumulative cash reaching USD −14,541,529 at Y10.** ⚠ **Ten-year figures, superseded by the rebuild.** The structural point holds on either horizon: **break-even is never reached inside the modelled period, so this is the loss to the end of the horizon rather than the loss to break-even, and it must not be presented as a total funding need** (§14) |
 | **Total funding requirement** | **USD 15,076,460** under Option A · **USD 15,321,068** under Option B |
 
 **Reconciliation against the corpus's own launch estimate, because the two figures look contradictory and are not.** The corpus §3.5 says *"approximately **USD 550,000 to 750,000 of capital and fees before any build cost**, and six to nine months minimum"* — that is **USD 408k locked capital + USD 27k application + USD 75k audit + USD 200k/yr supervision + the vehicle and unpriced legal opinions.** v1.0's USD 127,380 is **cash spent, one-off, excluding locked capital and excluding annual fees** — a different and correct measure for a P&L. **Both are right; they measure different things, and the funding view is where they meet.** ⚠ **VARA publishes no approval timeline.**
@@ -2318,7 +2512,7 @@ Partners (S42) ──S43 ramp──> Partner AUM ──────────�
 |---|---|---|---|
 | **1** | **S4 — card spend per active card** | **USD 14,177,704** | Larger than the next two combined. **No PM share saves the business at AED 3,500 of card spend and every PM share works at AED 9,000** — which inverts v1.0's ranking of S3 above S4 |
 | **2** | **S5 — card activation rate** | **USD 6,539,376** | How many eligible accounts actually carry a live card. Triangulated from PULSE and Monzo; no primary source exists |
-| **3** | **S3 — PM share of interchange** | **USD 6,359,822** | Sizes the largest single stream. **No UAE/MENA figure is published anywhere.** Floor 36%; **77.5% is what an EBITDA-positive year inside ten actually requires** |
+| **3** | **S3 — PM share of interchange** | **USD 6,359,822** | Sizes the largest single stream. **No UAE/MENA figure is published anywhere.** Floor 36%; **77.5% was the smallest share producing any EBITDA-positive year on the ten-year run.** ⚠ On a 7-year horizon the required share is higher; the rebuild re-solves it |
 | **4** | **F27 — card programme fixed costs** | **USD 2,125,500** | Runs the card at a loss for its first 12–18 months in the Conservative case — drag v1.0's break-even does not carry. **Flexed for the first time this round and it lands 4th** |
 | **5** | **S27 — payment archetype mix** | **USD 1,906,962** | 🔴 **Genuinely load-bearing, and not first.** It *is* the persistency curve and it *is* what makes the tier distribution computable. But on this cost base the card triple outweighs it by roughly **seven to one**, because a book that persists better simply carries more of the same loss-making inflow lane |
 | **6** | **S1 — rail cost per collection** | **USD 1,607,643** | Decides the sign of stream 1's margin, and whether the agent channel is viable at all. **A Year 1–3 survival problem, not a terminal-value driver** |
@@ -2372,7 +2566,7 @@ Phase 2 parked eight parameters with the note *"locks against the revenue model,
 | **4** | **Agent commission rate** | The client's only written number is 15% of a fee whose base no longer exists. Transplanted, it consumes **88% of Y1 gross margin** | **USD 175.68/account**, split across three levels on a 4/5/6 front-loaded gradient = **46.85 / 58.56 / 70.27.** Derived from an agent pool of USD 5,075,076 over 28,889 agent-sourced accounts. Subject to the item 2 ceiling |
 | **5** | **B2B platform fee rate** | Placeholder 0.5–0.75%/yr. The SafeGold precedent says the margin cannot come from the entry spread | **35 bps floor** (vault rate 25bps + 10bps target margin); **modelled at 60 bps**, which on Y10 partner AUM of USD 215,306,667 yields **USD 1,291,840/yr.** The placeholder range survives the solve — 60bps sits comfortably above the floor |
 | **6** | **Family plan and Digital Will price** | USD 29–36/yr including 4 beneficiaries, awaiting client sign-off, against a USD 1.80–2.90 per-name floor plus a 20-to-40-year screening tail | **USD 32/yr + USD 20/name** — the corpus midpoint, against a USD 2.35 per-name floor (~5× headroom). **Carried from the corpus and confirmed, not re-solved** |
-| **7** | **Minimum viable PM share** | Phase 2 derived the floor: **36%** at Sovereign, below which Gold Rewards stops self-funding | **The floor is already derived and verified (0.75 ÷ 2.10 = 35.7%).** The model solves the *commercial* number by bisection: **77.5% PM share is needed for an EBITDA-positive year inside ten**, against the Base assumption of 72% and the Aggressive case of 85%. ⚠ **The question as written asks for cash break-even by Y7; the solve answers EBITDA break-even by Y10, which is the weaker bar. No PM share reaches cash break-even by Y7** |
+| **7** | **Minimum viable PM share** | Phase 2 derived the floor: **36%** at Sovereign, below which Gold Rewards stops self-funding | **The floor is already derived and verified (0.75 ÷ 2.10 = 35.7%).** The model solves the *commercial* number by bisection: on the ten-year run, **77.5% PM share was the smallest share producing any EBITDA-positive year**, against the Base assumption of 72% and the Aggressive case of 85%. 🔴 **The result that matters and that a shorter horizon only strengthens: no PM share in the researched 55–85% range reaches cash break-even by Y7.** ⚠ **The 77.5% figure is a ten-year solve and must be re-solved on the 7-year basis; expect it to rise.** ⚠ **The 36% floor is computed against the 2.10% Sovereign rate and therefore survives the D22 collapse untouched** — the ladder is retired from the live model but is still carried on Assumptions, which is where this floor reads it |
 | ~~8~~ | ~~**Tenure rebate size**~~ | — | 🔴 **STRUCK. RETIRED by decision 44. No solve required.** See §9.3 |
 | **+** | **Gold Rewards rate ceiling** *(solved but not on the brief's original list)* | Not a Phase 2 parked item; the brief carries the 36% PM-share floor instead | **1.148% of qualifying spend** = (cum interchange 13,192,568 + credit 46,347 − custody 388,102) ÷ cum card spend 1,119,222,206. **The top-tier 0.75% rate sits inside this ceiling**, so §7.2's self-funding claim holds at Base |
 
@@ -2443,62 +2637,83 @@ The seven do not solve independently. Three of them are mutually constrained and
 
 ### 10.1 Row map for the new structure
 
-Column layout is common to the Cohort Engine, ICS Engine, Model and Opex & P&L sheets:
+**The row map shrinks substantially at v2.1** (D21, D22, D23). v2.0 specified a Cohort Engine of ~320 rows and an ICS Engine of ~340, both replicated across 76 columns. **The convolution removes the first, the collapse removes most of the second, and the horizon removes 47 columns.** The Model sheet drops from ~520 rows × 76 columns to **~200 rows × 29 columns**.
+
+Column layout is common to the Time Series, Acquisition, Model and Opex & P&L sheets:
 
 ```
 Col A: Row label      Col B: Unit      Col C: Source/note
-Col D–BU  (72 cols):  M1 … M72   (monthly)
-Col BV–BY ( 4 cols):  Y7 … Y10   (annual)
+Col D–AA  (24 cols):  M1 … M24   (monthly)
+Col AB–AF ( 5 cols):  Y3 … Y7    (annual)
                       ─────────────────────
-                      76 data columns
+                      29 data columns
 ```
 
-**Sheet 5 — Cohort Engine**
+⚠ **The Lifecycle Curves sheet does NOT use this layout.** It is indexed by **month-since-origination, not by period**, and it runs `m = 1..84`. **Nothing on it has a calendar date.** Confusing the two indices is the most likely way to build the convolution backwards.
+
+**Sheet 5 — Lifecycle Curves** *(new at v2.1; the only monthly-to-M84 sheet)*
+
+```
+Col A: Series label   Col B: Archetype   Col C: Unit / note
+Col D–CG  (84 cols):  m = 1 … 84   (months since origination)
+```
+
+| Band | Rows | Contents |
+|---|---|---|
+| Headers | 1–3 | `m` index, gate-window marker, notes. **No calendar dates** |
+| Gate solve | 5–14 | Per archetype: run-of-6 first-passage `gated(a,m)`, `never_gated(a,m)`. **The live engine — computed, never assumed** (D22) |
+| Survival | 16–25 | Per archetype: `alive(a,m)` from the archetype hazard plus background hazard |
+| Payment states | 27–41 | Per archetype: `contributing(a,m)`, `reduced(a,m)`, `holding_not_contributing(a,m)` |
+| **Tenure→tier lookup** | 43–57 | Per archetype: `tier(a,m)` — Silver / Gold at gate+12 / Platinum at gate+36 / No tier. **A lookup, not an arithmetic chain** (D22) |
+| Stock and card | 59–78 | Per archetype: `grams(a,m)` net of S31/S32/S33; `card_active(a,m)`; `spend(a,m)` before the segment multiplier |
+| Heavy-seller haircut | 80–84 | The single multiplier replacing the per-account `Sold` ratio (D22) |
+| Curve integrity | 86–92 | Per archetype, per `m`: states sum to 1.000; `alive` monotone non-increasing; `tier` monotone non-decreasing. **Feeds Checks** |
+
+**Sheet 6 — Acquisition**
 
 | Band | Rows | Contents |
 |---|---|---|
 | Headers | 1–4 | Period number, label, type (Monthly/Annual), calendar month index for seasonality |
 | Channel volume | 6–29 | Active agents, recruits (S18 gross-up), ramp factor (S17), agent output; qualified referrers, referral output (S19, S20); marketing spend, effective CAC (S25 curve), paid output, organic (S26); partner count (S42) |
-| Channel→segment | 31–58 | S16 matrix by phase; raw demand by segment |
-| Saturation | 60–72 | Cumulative-ever-acquired by segment; headroom `base(s) × S22`; logistic factor (S23); **T10 cumulative-to-live ratio, reported** |
-| New accounts | 74–80 | Seasonalised new accounts by segment (× S52a) |
-| **Archetype split** | 82–111 | 6 segments × 5 archetype tracks = 30 rows of new-cohort allocation (S27) |
-| **Six-state roll-forward** | 113–292 | **Per segment × archetype: 6 state rows each.** 6 × 5 × 6 = 180 rows. PRE-GATE, CONTRIBUTING, REDUCED, REG-BLOCK, STOPPED, DORMANT |
-| Derived populations | 294–312 | `live` = all non-CLOSED; `contributing + reduced`; **`holding_not_contributing`**; `never_gated`; CLOSED (absorbing) |
-| Conservation | 314–320 | Per-segment, per-track: opening + new − closed = closing. **Feeds Checks** |
+| Channel→segment | 31–52 | S16 matrix by phase; raw demand by segment |
+| Saturation | 54–64 | Cumulative-ever-acquired by segment; headroom `base(s) × S22`; logistic factor (S23); **T10 cumulative-to-live ratio, reported** |
+| **The acquisition vector** | 66–74 | `acq(s,t)` — seasonalised new accounts by segment (× S52a), **with the S4 (M13) / S5 (switch) / S6 (M25) activation offsets written as leading zeros in the vector, not as separate curves** (D23) |
+| Conservation | 76–80 | Cumulative-ever-acquired ties to the running sum of `acq(s,t)`. **Feeds Checks** |
 
-**Sheet 6 — ICS Engine**
+**Sheet 7 — ICS Validation** *(demoted from Engine — a leaf, read by Checks only)*
 
 | Band | Rows | Contents |
 |---|---|---|
-| Headers | 1–4 | As above |
-| **Pre-gate block** | 6–65 | Per segment × archetype: `run_length` (0–6), miss flag, freeze flag, **gate-arrival share this period**, cumulative gated share, **never-gated share** |
-| Clocks | 67–126 | Per track: `Months` (countable only), `Recent` (trailing 12 countable), frozen-month counter, window extension |
-| Retention inputs | 128–187 | Per track: grams now, grams 12 countable months ago, grams acquired since, `Sold`, `Retention` — **driven by the S31 distribution, not an aggregate** |
-| Score | 189–248 | Per track: `Record`, `Standing`, `MIN(Record, Standing)`, `× Retention`, `MAX(25, …)` = ICS |
-| **Threshold then weight** | 250–309 | Per track: tier flag (No tier / Silver / Gold / Platinum / Sovereign) **as a step lookup on that track's own ICS**; then weighted to a distribution |
-| Tier distribution | 311–322 | Share at each tier by segment; **T4 Gold+ share and T5 Sovereign share, computed** |
-| Persona validation | 324–340 | The nine hard-coded persona paths A–I, returning Record/Standing/Retention/ICS/Tier. **Pass/fail, not a chart** |
+| Headers | 1–3 | |
+| **Full ICS formula** | 5–34 | Per archetype, on the M84 index: `Months`, `Recent`, `Sold`, `Record`, `Standing`, `Retention`, `ICS`. **Exact fractions `100/12` and `100/24`, never `8.3333`** (D4) |
+| Tier from full ICS | 36–45 | Threshold per archetype, then weight — the D2 rule, run on the full formula |
+| **Collapse delta** | 47–58 | Per year Y1–Y7: stream 2 on the lookup, stream 2 on the full formula, `ABS(delta) ÷ gross_profit`. **The 5% safety gate** (§3 Layer 5d) |
+| **Persona validation** | 60–76 | The nine hard-coded persona paths A–I, returning Record/Standing/Retention/ICS/Tier. **Pass/fail, not a chart.** H and I are the two a naive build fails |
 
-**Sheet 7 — Model**
+🔴 **Nothing on this sheet may be referenced by the Model sheet.** It is a leaf (§3.x.1). If a Model formula ever points here, the collapse has been silently un-done.
+
+**Sheet 8 — Model** *(~200 rows × 29 columns)*
 
 | Band | Rows | Contents |
 |---|---|---|
-| Headers | 1–4 | |
-| Fee and discount | 6–29 | Base fee (T1), tier-weighted discount by segment, **zero for pre-gate and never-gated**, `fee_applied` |
-| Stream 1a — SIP | 200–239 | Reduced ticket (S29), gross inflow, net of fee, COGS, gross margin, price-gap × float_mode, float CoC × float_mode, rail events, rail cost, **STREAM 1a** |
-| Stream 1b — Spot | 240–264 | Attach, tenure uplift, events, seasonality, ticket by segment, inflow, margin, rail, **STREAM 1b**, float-invariant breach counter |
-| AUM stock | 266–298 | Grams bought SIP, bought spot, rewards credited, self-custody out (S31 buckets), redemption out (S32 × S33), **net flow**, closing grams, AUM USD, custody cost |
-| Stream 2 — Interchange | 300–349 | Eligible by tier, active cards (S5), spend (S4 × S38 × S52b), gross interchange, txn count (F23, +6%), per-txn fee (F24), **effective PM share by tier — report it**, fraud (S39), disputes (F25), fixed (F27), Gold Rewards cap and haircut, **STREAM 2** |
-| Stream 3 — Family/Will | 350–369 | Plans, names, tier-discounted price, new + renewal revenue, **STREAM 3**; onboarding, screening, platform floor (F16) |
-| Stream 4 — Cardholder fees | 370–399 | Foreign share (S53 vector), foreign spend, FX by tier, **ATM over the S35 distribution by bucket**, issuance/replacement events and fees, production cost (F26), **STREAM 4** |
-| Stream 5 — Credit | 400–439 | Eligible collateral, facility limit by tier, borrowers (S8), peak drawn (S9), **× S40 = average drawn**, **vintage rows by struck LTV**, draw events (S41), interest share, origination, servicing, penal, recovery = 0, **STREAM 5** |
-| Stream 6 — B2B | 440–459 | Per-partner maturity, ramp (S43), terminal (S44), **india_factor**, partner AUM, **STREAM 6** |
-| Stream 0 — Redemption | 460–474 | Redemption grams, events, F20 handling, net-flow spread cost, **STREAM 0** |
-| Benefit costs | 476–495 | Entry discount value, Gold Rewards value and cap, will discount value; **total contra-revenue** |
-| Revenue summary | 497–520 | All streams, total revenue, mix %, period-over-period growth |
+| Headers | 1–4 | Period number, label, type (Monthly/Annual), calendar month index |
+| **The convolution** | 6–29 | One `SUMPRODUCT` row per series per segment-group: live, contributing, reduced, gated, holding-not-contributing, never-gated, tier shares, grams, active cards, spend. **This band replaces v2.0's 320-row Cohort Engine and 310 rows of ICS Engine** (D23). Formula pattern and worked example at §10.4 Pattern 1 |
+| Fee and discount | 31–44 | Base fee (T1), tier-weighted discount by segment off the convolved tier shares, **zero for pre-gate and never-gated**, `fee_applied` |
+| Stream 1a — SIP | 46–66 | Reduced ticket (S29), gross inflow, net of fee, COGS, gross margin, price-gap × float_mode, float CoC × float_mode, rail events, rail cost, **STREAM 1a** |
+| Stream 1b — Spot | 68–82 | Attach, tenure uplift, events, seasonality, ticket by segment, inflow, margin, rail, **STREAM 1b**, float-invariant breach counter |
+| AUM stock | 84–100 | Grams bought SIP, bought spot, rewards credited, self-custody out (S31 buckets), redemption out (S32 × S33), **net flow**, closing grams, AUM USD, custody cost |
+| Stream 2 — Interchange | 102–128 | Eligible (Gold+, from the convolved `gated` × `tier`), active cards (S5), spend (S4 × S38 × S52b), gross interchange **at the flat Gold rate** (D22), txn count (F23, +6%), per-txn fee (F24), **effective PM share — report it**, fraud (S39), disputes (F25), fixed (F27), Gold Rewards cap and haircut, **STREAM 2** |
+| Stream 3 — Family/Will | 130–140 | Plans, names, tier-discounted price, new + renewal revenue, **STREAM 3**; onboarding, screening, platform floor (F16) |
+| Stream 4 — Cardholder fees | 142–156 | Foreign share (S53 vector), foreign spend, FX, **ATM over the S35 distribution by bucket**, issuance/replacement events and fees, production cost (F26), **STREAM 4** |
+| Stream 5 — Credit | 158–174 | Eligible collateral, facility limit, borrowers (S8), peak drawn (S9), **× S40 = average drawn**, **vintage rows by struck LTV**, draw events (S41), interest share, origination, servicing, penal, recovery = 0, **STREAM 5**. **Zero through M24; first non-zero column is Y3** |
+| Stream 6 — B2B | 176–186 | Per-partner maturity, ramp (S43), terminal (S44), **india_factor**, partner AUM, **STREAM 6**. **Zero through M24; first non-zero column is Y3 — no stub month** (§4) |
+| Stream 0 — Redemption | 188–194 | Redemption grams, events, F20 handling, net-flow spread cost, **STREAM 0** |
+| Benefit costs | 196–204 | Entry discount value, Gold Rewards value and cap, will discount value; **total contra-revenue** |
+| Revenue summary | 206–216 | All streams, total revenue, mix %, period-over-period growth |
 
-**Sheet 8 — Opex & P&L**
+⚠ **Rows 102–128 must be physically ordered gross interchange → Gold Rewards cap → net interchange**, per §3.x.2. The ordering is the resolution of the apparent circularity.
+
+**Sheet 9 — Opex & P&L**
 
 | Band | Rows | Contents |
 |---|---|---|
@@ -2510,11 +2725,11 @@ Col BV–BY ( 4 cols):  Y7 … Y10   (annual)
 | Cash | 128–140 | Free cash, cumulative, **peak funding, month of peak, cash break-even** |
 | Capital memo | 142–150 | AED 1.5m, `OPTION_B` escalator, opportunity cost memo line |
 
-### 10.2 Cohort engine worked, one segment, months 1–13
+### 10.2 The lifecycle curves worked, months 1–13
 
-**Setup.** Segment S3 (UAE blue-collar, USD 20 ticket). A single cohort of **1,000 accounts acquired in M1.** Base archetype mix (S27). This traces one cohort only; the live model runs 72 of these per segment.
+**Setup.** A notional **1,000 accounts at origination**, Base archetype mix (S27), traced by month-since-origination. ⚠ **Read this as a derivation of the curve, not as a cohort block.** The live model computes this once, to M84, on the Lifecycle Curves sheet, and then convolves it against the acquisition vector (D23). **The workbook does not contain 72 of these.** Segment S3's USD 20 ticket is used where a ticket is needed, but the population arithmetic is segment-independent — segments scale the curve, they do not have their own (§3 Layer 2c).
 
-**Step 1 — split the cohort into archetype tracks.**
+**Step 1 — split the origination population into archetype curves.**
 
 | Track | Weight | Accounts at M1 | Monthly pay prob. | Total monthly attrition |
 |---|---|---|---|---|
@@ -2589,7 +2804,7 @@ M6:  contributing = 712.2 − reduced_stock(M6)
 | STOPPED + DORMANT (holding, not contributing) | ~452.9 | **Yes** | **Yes** | **Yes** | No |
 | CLOSED (grams = 0) | ~0 at M13 | No | No | No | No |
 
-**This is D1 in one table.** v1.0's LAPSED state drops all 452.9 out of AUM, custody, screening and the collateral base. **At M61 the same table reads roughly 183 contributing against 817 holding-not-contributing, and v1.0 models the 183.**
+**This is D1 in one table.** v1.0's LAPSED state drops all 452.9 out of AUM, custody, screening and the collateral base. **By M25 — the first period of the annual block — the same table already reads roughly 400 contributing against 600 holding-not-contributing, and v1.0 models the 400.** The gap widens with tenure and reaches roughly 183 against 817 at M61.
 
 ### 10.3 ICS engine worked, at M1 / M6 / M12 / M36 / M60 / M61, including pre-gate
 
@@ -2693,16 +2908,60 @@ G:  Sold = 30% is AT the allowance, not past it → Retention = 1.000 exactly
 
 **G is the row that proves the S31 finding.** At exactly 30% the multiplier is **1.000, not 0.9998** — the hard allowance was chosen precisely so a Sovereign, who has no buffer because Record and Standing both cap at 100, does not lose the top tier on a 21% withdrawal. **And it is why only 14% of the base takes any Retention haircut at Base: the kink is set generously.**
 
-**Persona validation is a pass/fail test set, not a chart.** All nine rows A–I are hard-coded input paths on the ICS Engine sheet, and **the engine must return the stated Record, Standing, Retention, ICS and Tier for every one.** H and I are the two that fail a naive build, which is exactly why they are the valuable rows.
+**Persona validation is a pass/fail test set, not a chart.** All nine rows A–I are hard-coded input paths on the **ICS Validation** sheet, and **the full ICS formula must return the stated Record, Standing, Retention, ICS and Tier for every one.** H and I are the two that fail a naive build, which is exactly why they are the valuable rows. 🔴 **Demoting the score machinery to a validation artefact does not weaken this test — it is the reason the test exists.** The collapsed lookup is proved against a formula that itself has to pass nine independent corpus checks, so an error in the formula corrupts the proof rather than the answer, which is worse and harder to see (§3 Layer 5d).
 
 ⚠ **`_draft_ics-scoring.md` §7.1's heading reads "Six personas" and its table has nine rows, A–I.** The heading is stale — correction 20 at §15.
 
 ### 10.4 Formula patterns, with evaluated examples
 
-**Pattern 1 — Six-state roll-forward (monthly)**
+**Pattern 1 — The convolution (this is the population engine, D23)**
+
+**On the Model sheet, one row per series per segment-group.** The acquisition vector runs left to right across the period columns; the lifecycle curve runs left to right across `m = 1..84` on its own sheet. **The convolution reads the acquisition range forwards and the curve range backwards**, so that the oldest cohort meets the largest month-since-origination.
 
 ```
-PRE_GATE(s,a,c,t)    = PRE_GATE(t−1) + new(t) − gated(t) − lapsed_pregate(t)
+book(s, X, t) = Σ_a  weight(a)
+                     × SUMPRODUCT( acq(s, 1..t) , curve_a(X, t..1) )
+                     × segment_scalar(s, X)
+```
+
+**In Excel, for series `X`, segment `s`, at period column `t`:**
+
+```
+=SUMPRODUCT( Acquisition!$D5:INDEX(Acquisition!5:5, COLUMN()) ,
+             INDEX('Lifecycle Curves'!$D12:$CG12, 1, COLUMN()-3) : 'Lifecycle Curves'!$D12 )
+     × S27_weight_a
+     × segment_scalar
+```
+
+⚠ **The reversal is the whole formula and it is the thing that gets built wrong.** The acquisition range is anchored at its first column and extends to the current one. The curve range is anchored at its *first* column too, but written so the range runs from the current offset **back** to it. `SUMPRODUCT` pairs element 1 of the first range with element 1 of the second, so anchoring both at column D and letting the curve range run backwards pairs `acq(1)` with `curve(t)` — **the M1 cohort at `t` months of age, which is correct.** Building both ranges forwards pairs `acq(1)` with `curve(1)`, which ages every cohort by one month regardless of when it was acquired. **The model still runs, the totals still look plausible, and every ladder date is wrong.** Check formula at §10.6, check 14.
+
+**Evaluated, `contributing`, one segment, at M4.** Acquisition 100 / 120 / 140 / 160 accounts in M1–M4. Base archetype mix, so the weighted `contributing(m)` curve reads 1.000 / 0.919 / 0.853 / 0.797 at `m` = 1 / 2 / 3 / 4 (the §10.2 total-live column, which at these months is all contributing):
+
+```
+Pair the M1 cohort with m=4, the M2 cohort with m=3, and so on:
+
+  acq(M1) = 100  ×  curve(m=4) = 0.797   =  79.7
+  acq(M2) = 120  ×  curve(m=3) = 0.853   = 102.4
+  acq(M3) = 140  ×  curve(m=2) = 0.919   = 128.7
+  acq(M4) = 160  ×  curve(m=1) = 1.000   = 160.0
+                                          ───────
+  SUMPRODUCT                              = 470.8  contributing at M4
+```
+
+**The wrong pairing, shown so it can be recognised:**
+```
+  100 × 1.000 + 120 × 0.919 + 140 × 0.853 + 160 × 0.797  =  457.4
+```
+**13.4 accounts apart at M4 and diverging** — and the error is entirely in *which cohort is how old*, so it corrupts the gate distribution, every ladder date and the tier mix, not merely the headcount. **A 3% headcount gap is what this failure looks like from the outside. That is why it needs a check rather than an eyeball.**
+
+**At an annual column**, perform the convolution **at each of the twelve constituent months against the M84 curve, then aggregate** — flows sum, stocks average opening and closing. ⚠ **Never convolve an annual acquisition figure against an annual curve point** (§3.x.3, fourth candidate). That collapses twelve first-passage months into one and destroys the gate distribution, which is the first-order term.
+
+**Pattern 1a — The six-state roll-forward that produces the curve (monthly, on the Lifecycle Curves sheet only)**
+
+**This is how a curve is *derived*. It runs once per archetype across `m = 1..84`, not once per cohort.**
+
+```
+PRE_GATE(a,m)        = PRE_GATE(m−1) + new(m) − gated(m) − lapsed_pregate(m)
 CONTRIBUTING(t)      = CONTRIBUTING(t−1) + gated(t) + restarts(t)
                        − diverted_to_reduced(t) − lapsed(t) − blocked(t)
 REDUCED(t)           = REDUCED(t−1) + diverted_to_reduced(t)
@@ -2717,57 +2976,94 @@ to_dormant(t)        = accounts entering STOPPED in period (t−12)
                        that have not restarted        [HARD BOUNDARY]
 
 CONSERVATION (Checks): PRE_GATE + CONTRIBUTING + REDUCED + REG_BLOCK
-                     + STOPPED + DORMANT + CLOSED = cumulative_ever_acquired
+                     + STOPPED + DORMANT + CLOSED = 1.000, at every m
+                     [a share of origination, not a headcount — the curve is
+                      normalised, and the headcount arrives at the convolution]
 ```
 
-**Evaluated, S3 cohort, occasional-misser track, M2:**
+**Evaluated, occasional-misser curve, m = 2** (shown on a notional 350 at origination so it reads against §10.2):
 ```
-CONTRIBUTING(M1) = 350.0
+CONTRIBUTING(m=1) = 350.0
 h_total          = 0.023
 would_be_lapse   = 350.0 × 0.023            = 8.05
 diverted         = 8.05 × 0.33 (S28)        = 2.66  → REDUCED
 lapsed           = 8.05 − 2.66              = 5.39  → STOPPED
   of which involuntary = 5.39 × 0.30        = 1.62  (restart-eligible)
-CONTRIBUTING(M2) = 350.0 − 2.66 − 5.39      = 341.95
-REDUCED(M2)      = 0 + 2.66                 = 2.66
+CONTRIBUTING(m=2) = 350.0 − 2.66 − 5.39     = 341.95
+REDUCED(m=2)      = 0 + 2.66                = 2.66
 Check: 341.95 + 2.66 + 5.39 = 350.00 ✅
 ```
 
-**Pattern 2 — Pre-gate run counter (monthly)**
+**Pattern 2 — Pre-gate run counter (on the curve, indexed by m — the live engine, D22)**
 
 ```
-run_length(t) = IF( frozen(t),         run_length(t−1),
-                IF( paid(t),           MIN(6, run_length(t−1) + 1),
+run_length(m) = IF( frozen(m),         run_length(m−1),
+                IF( paid(m),           MIN(6, run_length(m−1) + 1),
                                        0 ) )
-gated(t)      = share of the track reaching run_length = 6 this period
-                [a run-of-6 first-passage problem in p]
+gated(a,m)    = share of archetype a reaching run_length = 6 at month m
+                [a run-of-6 first-passage problem in p(a)]
 ```
+
+🔴 **This pattern is not collapsed and must not be.** It is the first-order term: the cohort-weighted mean gate is M8.1 and the ever-gate share 53.5%, against a naive assumption of universal gating at M6 that overstates the business by ~59% (§3 Layer 5b).
 
 ⚠ **Note `0`, not `run_length(t−1) − 1`. A miss resets the run; it does not decrement it.** And `frozen` **holds** the counter — it does not reset it. *"A saver at 4-of-6 who enters a compliance pause resumes at 4-of-6."*
 
-**Pattern 3 — Record, Standing, Retention, ICS (monthly)**
+**Pattern 3 — The tenure→tier lookup (on the curve, indexed by m — this is what the live model runs, D22)**
 
 ```
-Record(t)    = IF( Months(t) <= 12, (100/24) * Months(t),
-               IF( Months(t) <= 60, 50 + (100/96) * (Months(t) - 12),
+months_since_gate(a,m) = MAX(0, m - gate_month(a))
+
+tier(a,m)  = IF( NOT gated(a,m),                 "No tier",
+             IF( months_since_gate(a,m) >= 36,   "Platinum",
+             IF( months_since_gate(a,m) >= 12,   "Gold",
+                                                 "Silver" ) ) )
+
+  capped archetypes override:  the alternating misser returns "Gold" from
+  gate+12 and NEVER advances, because its Recent pins at 6 forever.
+  The cap is a property of the archetype's own curve, never of a blend.
+```
+
+**Evaluated, perfect payer, gate at m = 6, read at m = 42:** `months_since_gate = 36` → **Platinum.** ✅
+**Evaluated, alternating misser, gate at m = 25, read at m = 84:** `months_since_gate = 59`, which would return Platinum on the generic ladder — **the archetype cap overrides it to Gold.** ✅ **This override is the D2 rule surviving the collapse; without it the mix drifts upward** (§3 Layer 5c).
+
+**Pattern 3v — Record, Standing, Retention, ICS (ICS VALIDATION SHEET ONLY, D22)**
+
+⚠ **This pattern no longer runs in the live model. It runs on the validation sheet, and the collapsed Pattern 3 is proved against it.**
+
+```
+Record(m)    = IF( Months(m) <= 12, (100/24) * Months(m),
+               IF( Months(m) <= 60, 50 + (100/96) * (Months(m) - 12),
                                     100 ) )
-Standing(t)  = (100/12) * Recent(t)
-Sold(t)      = 1 - grams_now(t) / ( grams_12_countable_ago(t)
-                                  + grams_acquired_since(t) )
-Retention(t) = IF( Sold(t) <= 0.30, 1, 1 - (Sold(t) - 0.30) / 0.70 )
-ICS(t)       = MAX( 25, MIN(Record(t), Standing(t)) * Retention(t) )
-Tier(t)      = LOOKUP( ICS(t), {0, 25, 50, 75, 100},
+Standing(m)  = (100/12) * Recent(m)
+Sold(m)      = 1 - grams_now(m) / ( grams_12_countable_ago(m)
+                                  + grams_acquired_since(m) )
+Retention(m) = IF( Sold(m) <= 0.30, 1, 1 - (Sold(m) - 0.30) / 0.70 )
+ICS(m)       = MAX( 25, MIN(Record(m), Standing(m)) * Retention(m) )
+Tier(m)      = LOOKUP( ICS(m), {0, 25, 50, 75, 100},
                        {"No tier","Silver","Gold","Platinum","Sovereign"} )
 ```
 
-**Evaluated, perfect payer at M36:** `Record = 50 + (100/96) × 24 = 75.00`; `Standing = (100/12) × 12 = 100.00`; `ICS = MAX(25, MIN(75, 100) × 1) = 75.00` → **Platinum.** ✅
+**Evaluated, perfect payer at m = 36:** `Record = 50 + (100/96) × 24 = 75.00`; `Standing = (100/12) × 12 = 100.00`; `ICS = MAX(25, MIN(75, 100) × 1) = 75.00` → **Platinum.** ✅ **Which is what Pattern 3 returns at the same point, and that agreement is the collapse being proved rather than assumed.**
 
-**Pattern 4 — Threshold then weight (the D2 correction)**
+**Pattern 3g — The 5% collapse-safety gate (annual, on the ICS Validation sheet)**
+
+```
+delta(y) = ABS( stream2_lookup(y) - stream2_full_ICS(y) ) / gross_profit(y)
+
+GATE     = MAX over y in Y1..Y7 of delta(y)  <=  0.05
+```
+
+🔴 **FALSE reverts the collapse.** Measured headroom: 3.1% of gross profit at Y10, ~2% at Y7, against a 5% tolerance. **Run under Base, Aggressive and Conservative** — an Aggressive archetype mix enriches the top of the tier ladder and is the most likely to trip it.
+
+**Pattern 4 — Threshold then weight (the D2 correction, and it survives the collapse)**
 
 ```
 WRONG  (v1.0):  Tier = LOOKUP( MIN( AVG(Record), AVG(Standing) ) × AVG(Retention) )
-RIGHT  (v2.0):  share(tier k) = Σ_a [ weight(a) × IF( Tier(a,t) = k, 1, 0 ) ]
+RIGHT  (v2.1):  share(tier k, t) = Σ_a [ weight(a)
+                                        × convolved( IF(tier(a,m) = k, 1, 0), t ) ]
 ```
+
+⚠ **The collapse changes what is inside the `IF`, never the order of operations.** Pattern 3 is applied **per archetype curve**, and only then weighted and convolved. **A single blended tenure→tier table across archetypes would be the D2 error in a new costume** (§3 Layer 5a).
 
 **Evaluated, the two-track worked example:**
 ```
@@ -2781,14 +3077,16 @@ RIGHT:  perfect     → Standing = 100 → ICS = MIN(Record,100) → PLATINUM  (
 
 **The difference is not a rounding artefact. It is an entire tier for half the cohort, and it is biased upward every time.**
 
-**Pattern 5 — Effective PM share (monthly, per tier)**
+**Pattern 5 — Effective PM share (monthly, on the flat Gold rate — D22)**
 
 ```
-gross_ic(t,k)  = spend(t,k) × F12(k) ÷ 3.6725
-txns(t,k)      = spend(t,k) ÷ F23(k) × 1.06
-net_ic(t,k)    = gross_ic(t,k) × S3 − txns(t,k) × F24
-eff_PM(t,k)    = net_ic(t,k) ÷ gross_ic(t,k)          [REPORT THIS ROW]
+gross_ic(t)  = spend(t) × F12_gold ÷ 3.6725       [FLAT GOLD RATE, ladder collapsed]
+txns(t)      = spend(t) ÷ F23 × 1.06
+net_ic(t)    = gross_ic(t) × S3 − txns(t) × F24
+eff_PM(t)    = net_ic(t) ÷ gross_ic(t)            [REPORT THIS ROW]
 ```
+
+⚠ **`F12` is now a scalar, not a per-tier vector.** The 1.80 / 2.05 / 2.10 ladder is retired from the live model and its cost is measured at 3.1% of gross profit at Y10, ~2% at Y7 (§3 Layer 5). **It remains in the Assumptions register as an input, because the ICS Validation sheet reads it to compute the 5% gate.**
 
 **Evaluated, Gold tier, AED 6,000 spend at S38 = 0.82, Conservative PM share:**
 ```
@@ -2894,31 +3192,35 @@ tax              = 0.09 × (750,000 − 375,000)         = USD 33,750
 ```
 **Real cash tax paid in a year the business is cumulatively USD 2m in the red.** That is the finding.
 
-### 10.5 The monthly→annual transition at M72 / M73
+### 10.5 The monthly→annual transition at M24 / Y3
 
-**This is the highest-risk seam in the workbook and it must be built deliberately.**
+**This is the highest-risk seam in the workbook and it must be built deliberately.** It moves from M72/M73 to **M24/Y3** at v2.1 (D21).
 
-| Quantity | At M72 (last monthly column) | At Y7 (first annual column) |
+🔴 **The seam is far less dangerous than v2.0's, and for a structural reason worth stating.** v2.0's seam was a **change of engine**: at M73 the tier distribution and `Recent` stopped being computed and started being *held*, so the annual block ran on a frozen snapshot. **The v2.1 seam is only a change of column width.** The lifecycle curves run monthly to M84 regardless of how the Model sheet is columned, so an annual column is built from **twelve genuine monthly convolutions** aggregated (§3.x.3, fourth candidate). **Nothing is frozen, nothing is held, and no simplification is taken at the seam itself.**
+
+| Quantity | At M24 (last monthly column) | At Y3 (first annual column) |
 |---|---|---|
 | **Period length** | 1 month | 12 months |
-| **Account roll-forward** | `(1 − h_monthly)` per archetype | `(1 − h_monthly)^12` per archetype |
-| **Tier distribution** | Computed from the ICS Engine | **HELD at the M72 archetype-weighted distribution** |
-| **`Recent`** | Trailing 12 countable months | **HELD at the M72 value.** Do not attempt to recompute a trailing-12 measure inside an annual column |
-| **`Sold` / `Retention`** | Trailing 12 countable months | **HELD at the M72 value** |
-| **`Months` / `Record`** | +1 per month | **+12 per year.** `Record` continues to climb and is the only score component that does |
+| **Population** | One convolution | **Twelve convolutions, aggregated.** Never one convolution on an annual acquisition figure |
+| **Tier distribution** | From the tenure→tier lookup, convolved | **Identical mechanism.** Read at each of the twelve months, then aggregated. **Not held, not frozen** |
+| **Gate arrival** | From the first-passage solve on the curve | **Identical mechanism.** The gate has substantially resolved by M8, so by Y3 the distribution is nearly settled — but it is still read, not assumed |
+| **Heavy-seller haircut** | A single multiplier on the mix | **Identical multiplier.** It does not vary by block |
 | **Seasonality (S52a, S52b, S53)** | Applied | **Not applied.** All three normalise to 12.00 and cancel over a full year |
-| **Flows** | Monthly value | `12 × monthly value at the year's average population` |
+| **Flows** | Monthly value | **Sum of the twelve monthly values**, each at its own convolved population. **Not `12 ×` a single month** |
 | **Stocks (AUM, drawn, partner AUM)** | Closing balance | **Average of opening and closing** |
+| **Acquisition-budget lag** | `t−1` = one month | **`t−1` = one annual column, i.e. twelve months.** Write it explicitly (§3.x.3 item 1) |
 | **Tax** | Booked in the FY-end month only | Booked once per annual column |
 | **Card programme fixed costs** | Monthly minimums + quarterly assessments in the quarter-end month | `12 × monthly + 4 × quarterly` |
+| **Streams 5 and 6** | **Zero.** Both activate at M24, on the boundary | **First non-zero column.** Booked at the start of the annual block, **never as a stub month at M24** (§4) |
 
-**Three checks on the seam, all on the Checks sheet:**
+**Four checks on the seam, all on the Checks sheet:**
 
-1. **Continuity.** `live_accounts(Y7 opening) = live_accounts(M72 closing)`. A mismatch means the roll-forward exponent is wrong.
-2. **Rate consistency.** `(1 − h_monthly)^12` must equal the annual survival factor used in the Y7 column, per archetype, to 6 decimal places.
-3. **Revenue continuity.** `revenue(Y7) ÷ 12` should sit within ±15% of `revenue(M72)`. A larger jump means a flow has been treated as a stock or vice versa. **This single check catches most transition errors.**
+1. **Continuity.** `live_accounts(Y3 opening) = live_accounts(M24 closing)`. A mismatch means the convolution range is wrong at the seam.
+2. **Decomposition.** The Y3 population must equal the sum of twelve monthly convolutions at M25–M36, **not** a single convolution on an annual figure. This is the check that protects the gate distribution.
+3. **Revenue continuity.** `revenue(Y3) ÷ 12` should sit within ±15% of `revenue(M24)`. A larger jump means a flow has been treated as a stock or vice versa. **This single check catches most transition errors.** ⚠ **Exclude streams 5 and 6 from this test at the Y3 column** — they are zero at M24 by design and would fail a continuity test that is measuring the wrong thing.
+4. **No stub month.** `stream5(M24) = 0` and `stream6(M24) = 0`, with both non-zero at Y3.
 
-⚠ **State the simplification rather than hiding it.** Holding tier mix constant from Y7 means the model **cannot show further tier migration in the final four years.** By M72 the mix has substantially saturated, so the cost is small — but it is a cost, and v1.0's alternative (claiming to recompute a trailing-12 measure annually) was self-contradictory rather than merely simplified.
+⚠ **The one thing the seam still costs, and it is the column resolution, not the engine.** Within an annual column the model reports a single number for twelve months, so it cannot show *when inside Y3* something happened. **Everything that needs a when — the gate at M8, the card at M18, Gold at M20 — is inside the monthly block by design** (§1). What falls in the annual block is Platinum at M36 and Sovereign at M61, and that is acceptable **because the rate ladder was collapsed** (D22, limitation L3a).
 
 ### 10.6 Check formulas
 
@@ -2926,26 +3228,29 @@ All nine live on the Checks sheet and all return **TRUE/FALSE**, never a number 
 
 | # | Check | Formula | Why |
 |---|---|---|---|
-| **1** | **Cohort conservation** | `PRE_GATE + CONTRIBUTING + REDUCED + REG_BLOCK + STOPPED + DORMANT + CLOSED = cumulative_ever_acquired`, **per segment, per archetype track, every period** | 30 independent tests. Catches any state transition that creates or destroys accounts |
-| **2** | **Tier counts sum to accounts** | `Σ_tier share(s,t,tier) = 1.000` and `Σ_tier count = gated_accounts(s,t)`, ± 1e-9 | Catches a threshold lookup that misses a boundary — including the `49.9998` failure |
+| **1** | **Curve conservation, and book conservation** | On the curve: `PRE_GATE + CONTRIBUTING + REDUCED + REG_BLOCK + STOPPED + DORMANT + CLOSED = 1.000` at every `m`, **per archetype** — 5 tests × 84 months. On the Model sheet: `Σ_states book(s,t) = cumulative_ever_acquired(s,t)`, per segment, every period | Catches any state transition that creates or destroys accounts, **and** any convolution that loses or duplicates a cohort |
+| **2** | **Tier counts sum to accounts** | `Σ_tier share(s,t,tier) = 1.000` and `Σ_tier count = gated_accounts(s,t)`, ± 1e-9 | Catches a tenure→tier lookup that misses a boundary. ⚠ **On the ICS Validation sheet the same test also catches the `49.9998` failure**, which the collapsed lookup cannot produce but the validation formula still can |
 | **3** | **Grams reconciliation** | `grams(t−1) + bought + rewards − self_custody − redeemed = grams(t)`, every period | Catches double-counted leakage, the most likely stock error |
 | **4** | **Non-negativity** | `MIN` over every population row, every revenue row and every stock row `≥ 0` | A negative population is the classic symptom of a hazard applied to a base it has already been applied to |
 | **5** | **Gold Rewards cap never negative** | `MIN over t,k of [ net_ic(t,k) + stream5_attributable(t,k) − custody_cost(t,k) ] ≥ 0` | If it goes negative the benefit is being funded from profit, which decision 6 forbids |
 | **6** | **Acquisition ceiling never breached** | `total_acquisition_cost(t) ≤ ceiling% × stream1_revenue(t−1)`, **every period, not on average** | A ceiling solved on average breaches in the ramp months, which is when cash is tightest |
-| **7** | **Activation flags fire on the right period** | `stream2(t) = 0 for all t < 18`; `stream5(t) = 0 for all t < 24`; `stream6(t) = 0 for all t < 24`; `referral_payout(t) = 0 for all t < 13`; `F27 one-offs booked only in M15` | Catches a hardcoded activation month that drifted from the Time Series sheet |
+| **7** | **Activation flags fire on the right period, and on the right side of the seam** | `stream2(t) = 0 for all t < 18`; **`stream5(M24) = 0` and `stream6(M24) = 0`, both first non-zero at Y3**; `referral_payout(t) = 0 for all t < 13`; `F27 one-offs booked only in M15` | Catches a hardcoded activation month that drifted from the Time Series sheet, **and the M24 stub-month error** (§4) |
 | **8** | **Scenario-switch canary** | A cell that returns the active scenario name **and** a hash of all Base/Aggressive/Conservative selections, so a partially-flipped state is visible | **Under per-parameter override (D17) a mixed state is legitimate — the canary shows *which* mixed state** |
 | **9** | **Seasonality normalisation** | `SUM(S52a) = 12.000` and `SUM(S52b) = 12.000`, exactly | 🔴 **An un-normalised seasonality vector silently changes the model's annual answer.** This is one of the more common ways a monthly model goes wrong |
 
-**Four additional checks specific to this build:**
+**Seven additional checks specific to this build:**
 
 | # | Check | Formula |
 |---|---|---|
 | **10** | **Iterative-calculation canary** | Reports the workbook's iterative-calculation setting. Must read OFF |
 | **11** | **Denomination monotonicity** | `bar_grams(t) ≥ bar_grams(t−1)` for all `t` — the T3 latch |
-| **12** | **Persona validation** | All nine personas A–I return the corpus's stated Record, Standing, Retention, ICS and Tier. **Nine TRUEs or the build does not ship** |
-| **13** | **M72/M73 seam** | The three continuity tests at §10.5 |
+| **12** | **Persona validation** | All nine personas A–I return the corpus's stated Record, Standing, Retention, ICS and Tier, **on the ICS Validation sheet**. **Nine TRUEs or the build does not ship** |
+| **13** | **M24/Y3 seam** | The four continuity tests at §10.5 |
+| **14** | 🔴 **Convolution pairing** | For a synthetic acquisition vector of `(1, 0, 0, …, 0)` — one account at M1 and nothing after — the convolved book at period `t` must equal `curve(m = t)` exactly, for every series and every `t`. **A single impulse is the only test that isolates the pairing.** If the ranges are built forwards, this returns `curve(m = 1)` at every `t` and the failure is unmistakable (§10.4 Pattern 1) |
+| **15** | 🔴 **The 5% collapse-safety gate** | `MAX over y in Y1..Y7 of ABS( stream2_lookup(y) − stream2_full_ICS(y) ) ÷ gross_profit(y) ≤ 0.05`. **FALSE means the collapse is unsafe and must be reverted** to the per-period ICS engine (§3 Layer 5d). Measured headroom: ~2% at Y7 against a 5% tolerance |
+| **16** | **ICS Validation is a leaf** | No formula on the Model sheet references the ICS Validation sheet. **If it does, the collapse has been silently un-done** (§3.x.1) |
 
-**Sign-off rule: the build is not complete until all thirteen return TRUE simultaneously under Base, Aggressive and Conservative.** Checks 1, 5, 9 and 12 are the ones most likely to fail first, and each of them corresponds to a specific v1.0 defect.
+**Sign-off rule: the build is not complete until all sixteen return TRUE simultaneously under Base, Aggressive and Conservative.** Checks 1, 5, 9 and 12 are the ones most likely to fail first, and each corresponds to a specific v1.0 defect. **Checks 14 and 15 are new at v2.1 and each guards one of the two architecture decisions** — 14 the convolution, 15 the collapse. 🔴 **Neither may be waived. A convolution built backwards and a collapse that has drifted past tolerance both produce a model that runs, reconciles and is wrong.**
 
 ---
 
@@ -2958,7 +3263,7 @@ All nine live on the Checks sheet and all return **TRUE/FALSE**, never a number 
 | **New accounts/month** | Ramp, then logistic decay against headroom | **49.7** → **620.5** | `base(s) × S22` per segment, **against cumulative-ever-acquired** | Channel volume × S16 mix × S23 saturation × S52a seasonality |
 | **Active agents** | Step, **net of 45% annual attrition** | 5 (Y1) → 200 (Y10) as a **stock** | Recruitment capacity | T7 stock grossed up by S18 into a recruit flow; each recruit re-enters the S17 ramp at 0.20 |
 | **Referral volume** | **Zero to M13**, then compounding on the qualified-referrer base | 0 → `{{UNFILLED: Y10 referral accounts/month — not in spine; new accounts are published in total, not by channel}}` | Qualified referrers × S19 | **Two six-month gates in series. Steady state not before ~M25** |
-| **Live accounts** | Compounding, **decelerating** as saturation and lapse bite | **511** → **21,661** | Sum of segment ceilings | Six-state roll-forward per archetype; only CLOSED exits |
+| **Live accounts** | Compounding, **decelerating** as saturation and lapse bite | **511** → **21,661** | Sum of segment ceilings | **Convolution of the acquisition vector against the `alive` curves** (D23); only CLOSED exits |
 | **Holding-not-contributing** | **Compounding faster than the live base** | **176** → **42,536** (64,197 holding less 21,661 live) | **None** — it is the residual of everything ever acquired minus CLOSED | 🔴 **Reaches ~81% of ever-acquired by M61. The population v1.0 deletes** |
 | **Tier mix at Gold+** | S-curve, saturating as the archetype mix binds | 0% (Y1) → **63.0%** | **Bounded by the archetype mix**, not by time | Threshold each archetype track, then weight (D2) |
 | **Sovereign share** | **Zero to M61**, then a slow climb | 0% → **4.4%** (954 accounts) | **~10% — only the perfect-payer track can ever reach it** | Requires Record 100 AND Recent 12 AND Sold ≤ 30% **simultaneously, monthly** |
@@ -2975,7 +3280,7 @@ All nine live on the Checks sheet and all return **TRUE/FALSE**, never a number 
 | **Marketing spend** | Decision variable, **not a cost output** | 0 (Y1) → 1,200,000 (Y10) | The acquisition budget ceiling (§9 item 2) | **One source, two consumers.** Feeds acquisition; referenced by opex |
 | **Effective CAC** | **Rising with spend**, not flat | 120 → `{{UNFILLED: Y10 effective CAC, USD — not in spine; acquisition cost is published as a total (USD 1,623,205 at Y10) and not divided into an effective CAC}}` | None — it degrades without bound | `S15 × [1 + 0.35 × (spend ÷ 60,000)^0.7]`. **A flat CAC makes the break-even year an artefact of the marketing budget** |
 | **Float capital** | Step with bar denomination, **latched** | ~29k → ~3.6M | None | `MAX(2 bars, 1 bar + S50 days)`. **Falls as a share of AUM — a fixed operational requirement, not a proportional drag** |
-| **Cumulative cash** | **Down throughout, flattening but never turning up inside the horizon** | 0 → **USD −14,541,529** | — | **The minimum of this row is the fundraise.** It bottoms at **USD −14,668,019 in M114** and is still USD −14,541,529 at M120 |
+| **Cumulative cash** | **Down throughout, flattening but never turning up inside the horizon** | 0 → **USD −14,541,529** on the ten-year run | — | ⚠ **Report the shape, not the level** (§14). On the ten-year run it bottomed at **USD −14,668,019 in M114** and was still USD −14,541,529 at M120 — **both beyond the new horizon.** A 7-year model reports a within-horizon minimum, **which is not the peak and must not be labelled as the fundraise** |
 
 **Five structural insights the table is meant to make visible:**
 
@@ -2989,7 +3294,19 @@ All nine live on the Checks sheet and all return **TRUE/FALSE**, never a number 
 
 ## 12. Excel structure map
 
-Ten sheets (D18). v1.0's §11 was internally inconsistent with its own §10.1 — §11 listed an Opex sheet while §10.1 put opex rows on the Model sheet — and a 6-segment × 5-archetype cohort engine with an ICS state machine, six streams, a contra-revenue layer and two solvers lands near **600 rows × 76 columns ≈ 45,000 formulas on one tab.** That is not a workbook, it is a hazard.
+**Eleven sheets** (D18, extended at D23). v1.0's §11 was internally inconsistent with its own §10.1 — §11 listed an Opex sheet while §10.1 put opex rows on the Model sheet — and a 6-segment × 5-archetype cohort engine with an ICS state machine, six streams, a contra-revenue layer and two solvers lands near **600 rows × 76 columns ≈ 45,000 formulas on one tab.** That is not a workbook, it is a hazard.
+
+**The structure shrinks substantially at v2.1, and it is worth showing the arithmetic:**
+
+| | v2.0 | v2.1 | Driver |
+|---|---|---|---|
+| Model sheet | ~520 rows × 76 cols ≈ 39,500 cells | **~200 rows × 29 cols ≈ 5,800 cells** | D21 horizon, D22 collapse, D23 convolution |
+| Cohort Engine | ~320 rows × 76 cols | **Gone.** Replaced by a 24-row convolution band on the Model sheet | D23 |
+| ICS Engine | ~340 rows × 76 cols | **Gone as an engine.** Survives as a ~76-row **ICS Validation** leaf sheet | D22 |
+| Lifecycle Curves | — | **New: ~92 rows × 84 cols ≈ 7,700 cells, computed once** | D23 |
+| **Net** | | **Roughly an 80% reduction in live formula cells** | |
+
+⚠ **The Lifecycle Curves sheet is the one place the workbook gets *wider*, and that is deliberate.** 84 columns on an input sheet is the price of 29 columns on the Model sheet. **Do not shorten it to match the Model sheet** — a Y7 annual column needs twelve genuine monthly lifecycle points for the M1 cohort, which reaches `m = 84` (§1).
 
 **Colour legend — the same convention on every sheet:**
 
@@ -3010,15 +3327,18 @@ RED text      = a check that is currently FALSE
 SECTION          ROWS    CONTENTS
 ────────────────────────────────────────────────────────────────────
 Title            1–5     Aurumix Revenue Model — Hybrid Monthly + Annual
-Version          7       V2.0 — Six streams + redemption cost
-                         76 periods (72 monthly M1–M72 + 4 annual Y7–Y10)
+Version          7       V2.1 — Six streams + redemption cost
+                         29 periods (24 monthly M1–M24 + 5 annual Y3–Y7)
+                         Lifecycle Curves sheet is monthly to M84 — NOT 29
 Date             8       August 2026
-Scope            10–14   Full P&L to net profit after tax, plus cash and funding.
-                         Six-state population, five payment archetypes,
-                         pre-gate ICS block, spot lane, vintaged credit.
-Colour legend    16–22   As above
-Read-me          24–30   Pointer to §3 sign-off, the thirteen Checks,
-                         and the placeholder convention
+Scope            10–15   Full P&L to net profit after tax, plus cash and funding.
+                         Lifecycle-curve convolution, five payment archetypes,
+                         live run-of-6 gate, tenure->tier lookup,
+                         spot lane, vintaged credit.
+Colour legend    17–23   As above
+Read-me          25–32   Pointer to §3 sign-off, the SIXTEEN Checks,
+                         the placeholder convention, and — first —
+                         the 5% collapse-safety gate at check 15
 ```
 
 ### Assumptions
@@ -3035,10 +3355,14 @@ Fixed inputs     3–46    F1–F38. Columns:
                            G: Sheet location where consumed
 F27 detail       48–55    Card programme fixed cost stack, six lines,
                           with the "when booked" column
-Time-evolving    57–120   T1–T10 across all 76 period columns.
+Time-evolving    57–120   T1–T10 across all 29 period columns.
                           T3 carries the threshold rule AND the latch.
                           T4, T5, T8, T10 are OUTPUTS — GREEN, linked
-                          back from Model/ICS Engine, never typed
+                          back from the Model sheet, never typed.
+                          ⚠ F12's tier ladder (1.80/2.05/2.10) STAYS as an
+                          input even though the live model reads only the
+                          Gold rate — the ICS Validation sheet needs the
+                          full ladder to compute the 5% gate (D22)
 Named ranges     122+     The full named-range index, ID → range name → address
 ```
 
@@ -3080,17 +3404,19 @@ Tornado control      162–175 Per-parameter ±X% flex driver for §13.4
 SECTION              ROWS    COLUMNS
 ────────────────────────────────────────────────────────────────────
                              Col A: label  Col B: unit
-                             Col D–BU: M1–M72   Col BV–BY: Y7–Y10
+                             Col D–AA: M1–M24   Col AB–AF: Y3–Y7
 Period headers       1–5     Number, label, type, calendar month index,
                              financial-year-end flag
-Activation flags     7–20    Card M18, credit M24, B2B M24, S4 M13, S6 M25,
-                             referral M13, F27 one-off M15.
+Activation flags     7–20    Card M18, S4 M13, referral M13, F27 one-off M15
+                             — all inside the MONTHLY block.
+                             Credit and B2B: START OF THE ANNUAL BLOCK (Y3),
+                             NOT a stub month at M24.  S6 at M25 = Y3.
                              ⚠ EVERY activation month lives here and NOWHERE else
 Seasonality          22–28   S52a, S52b, S53 vectors, plus the
                              SUM = 12.000 verification row
 Price and fee ladder 30–40   F1 gold price, T1 entry fee, T2 premium,
                              T3 bar denomination (threshold + latch)
-Opex interpolation   42–70   Per block: Y1/Y3/Y10 anchors, step-or-scale flag,
+Opex interpolation   42–70   Per block: Y1/Y3/Y7 anchors, step-or-scale flag,
                              F32 log-linear interpolation, booked-month rule,
                              Marketing reconciliation plug
 Float                72–82   F38 sizing rule, S50 buffer, float grams,
@@ -3099,19 +3425,39 @@ Float                72–82   F38 sizing rule, S50 buffer, float grams,
 
 **Freeze panes:** at **D5**.
 
-### Cohort Engine
+### Lifecycle Curves *(new at v2.1 — the only monthly-to-M84 sheet)*
 
-Row bands at §10.1. **Freeze panes at D5.** Rows 113–292 are the 180-row six-state block — **group them by segment so a reviewer can collapse five of the six segments.**
+```
+SECTION              ROWS    COLUMNS
+────────────────────────────────────────────────────────────────────
+                             Col A: series  Col B: archetype  Col C: unit
+                             Col D–CG: m = 1 … 84
+                             ⚠ MONTHS SINCE ORIGINATION, NOT PERIODS.
+                                No calendar date appears on this sheet.
+Row bands at §10.1
+```
 
-### ICS Engine
+**Freeze panes:** at **D4**. **Group the five archetypes so a reviewer can collapse four and read one curve end to end** — that is how this sheet is checked, and it is the reason it is a separate tab rather than a block on the Model sheet.
 
-Row bands at §10.1. **Freeze panes at D5.** The persona validation block (rows 324–340) sits at the bottom deliberately, so **its nine TRUEs are the last thing on the sheet.**
+🔴 **This sheet is computed once and never varies by period, segment or scenario-of-time.** It varies by scenario only through the archetype weights and hazards (S27), which is exactly one dependency. **If anything on this sheet acquires a period reference, the architecture has been broken** (§3.x.2a).
+
+### Acquisition
+
+Row bands at §10.1. **Freeze panes at D5.** The acquisition vector band (rows 66–74) is the sheet's only output and **must be a clean rectangle of one row per segment** — the convolution's `SUMPRODUCT` ranges read it directly, and a merged or interrupted row breaks them silently.
+
+### ICS Validation
+
+Row bands at §10.1. **Freeze panes at D4.** The persona validation block sits at the bottom deliberately, so **its nine TRUEs are the last thing on the sheet**, with the 5% collapse-safety gate immediately above them.
+
+🔴 **This sheet is a leaf.** It reads the Lifecycle Curves; it is read by Checks. **No Model formula may reference it** (§3.x.1, check 16).
 
 ### Model
 
 Row bands at §10.1. **Freeze panes at D5.** Stream blocks are ordered by stream number so a reader can navigate by §6.
 
-⚠ **Rows 300–349 must be physically ordered gross interchange → Gold Rewards cap → net interchange**, per §3.x.2. The ordering is the resolution of the apparent circularity, so it is structural rather than cosmetic.
+⚠ **Rows 6–29 are the convolution band and every other row on the sheet depends on it.** Put it at the top, above the fee block, and **group it** — it is 24 rows of near-identical `SUMPRODUCT` and a reviewer needs to check three of them, not all 24. **The three to check are `alive`, `gated` and `tier`**, because the first tests the pairing, the second tests the first-order term and the third tests the collapse.
+
+⚠ **Rows 102–128 must be physically ordered gross interchange → Gold Rewards cap → net interchange**, per §3.x.2. The ordering is the resolution of the apparent circularity, so it is structural rather than cosmetic.
 
 ### Opex & P&L
 
@@ -3122,16 +3468,19 @@ Row bands at §10.1. **Freeze panes at D5.** The tax block (rows 102–112) comp
 ```
 SECTION              ROWS    CONTENTS
 ────────────────────────────────────────────────────────────────────
-Headers              1–3     Columns: Label, Y1…Y10, 10-Yr Total
-                             Y1 = SUM(M1:M12) … Y6 = SUM(M61:M72),
-                             Y7–Y10 = direct reference
+Headers              1–3     Columns: Label, Y1…Y7, 7-Yr Total
+                             Y1 = SUM(M1:M12), Y2 = SUM(M13:M24),
+                             Y3–Y7 = direct reference to the annual columns
 Revenue by stream    5–16    1a, 1b, Stream 1 total, 2, 3, 4, 5, 6,
                              Stream 0 (negative), TOTAL REVENUE
 Revenue mix          18–26   Each stream as % of total
 Cost summary         28–40   COGS, benefit costs, acquisition, opex,
                              EBITDA, tax, NET PROFIT AFTER TAX
-Cash and funding     42–52   Free cash, cumulative, PEAK FUNDING and its month,
-                             cash break-even, total funding requirement
+Cash and funding     42–52   Free cash, cumulative, the WITHIN-HORIZON trough
+                             and its period, total funding requirement.
+                             ⚠ Label the trough as a within-horizon minimum,
+                             NOT as peak funding — the peak falls outside
+                             a 7-year window (§14, §0 footnote)
 Key metrics          54–80   Live accounts (EOY), holding-not-contributing,
                              never-gated, tier distribution, AUM,
                              active cards, borrowers, partner count,
@@ -3148,21 +3497,31 @@ Tornado data         122–140 Per-parameter ±X% net profit and peak funding de
 ```
 SECTION              ROWS    CONTENTS
 ────────────────────────────────────────────────────────────────────
-Master flag          3       =AND(all thirteen). ONE cell. Green or red.
-Structural (1–4)     5–12    Cohort conservation (30 sub-tests),
+Master flag          3       =AND(all SIXTEEN). ONE cell. Green or red.
+Structural (1–4)     5–12    Curve conservation (5 archetypes x 84 months)
+                             AND book conservation per segment,
                              tier counts sum to accounts,
                              grams reconciliation, non-negativity
 Economic (5–6)       14–18   Gold Rewards cap ≥ 0,
                              acquisition ceiling never breached
-Timing (7, 9)        20–26   Activation flags fire on the right period,
+Timing (7, 9)        20–26   Activation flags fire on the right period AND on
+                             the right side of the seam (no M24 stub month),
                              seasonality vectors sum to exactly 12.000
 Scenario (8)         28–32   Scenario canary: active name + selection hash,
                              so a partially-flipped CUSTOM state is visible
-Build integrity      34–42   Iterative-calculation canary (must read OFF),
-  (10–11, 13)                denomination monotonicity (the T3 latch),
-                             M72/M73 seam: continuity, rate consistency,
-                             revenue continuity ±15%
-Persona set (12)     44–56   All nine personas A–I, each returning
+Build integrity      34–44   Iterative-calculation canary (must read OFF),
+  (10–11, 13, 16)            denomination monotonicity (the T3 latch),
+                             M24/Y3 seam: continuity, decomposition,
+                             revenue continuity ±15%, no stub month,
+                             ICS Validation is a leaf (no Model reference)
+ARCHITECTURE (14–15) 46–54   🔴 CONVOLUTION PAIRING: the (1,0,0,...) impulse
+                             test returns curve(m=t) at every t.
+                             🔴 THE 5% COLLAPSE-SAFETY GATE: max annual
+                             stream-2 delta ≤ 5% of gross profit.
+                             FALSE on 15 REVERTS THE COLLAPSE.
+                             These two guard the two v2.1 decisions and
+                             neither may be waived.
+Persona set (12)     56–68   All nine personas A–I, each returning
                              Record / Standing / Retention / ICS / Tier
                              against the corpus's stated values.
                              ⚠ H and I are the two a naive build fails
@@ -3192,7 +3551,7 @@ Persona set (12)     44–56   All nine personas A–I, each returning
 | **Card works, savings doesn't** | The card programme lands well; the SIP persists badly | S2 → 45%, S27 → Conservative mix. S3, S4, S5 → Base or better | **The most likely real outcome**, and the one v1.0 cannot express. Does the card carry a shrinking book? |
 | 🔴 **No card** | The sponsor bank does not sign, or the programme is prepaid-only at a 1.00% capped rate | `PREPAID_VS_CREDIT` → prepaid; or card activation → 0 | **The most important missing scenario. It removes the majority of revenue and it is a real commercial risk.** v1.0 cannot represent it at all, because prepaid-vs-credit is not a variable |
 | **Distribution fails** | Agents underperform and referral never compounds | S12 → 2, S17 → Conservative, S18 → 60%, S19 → 0.18, S25 → Conservative | Does the model still reach any meaningful scale on paid direct alone, and at what CAC? |
-| **Client's plan** | The client's own 100,000-investor Y10 target, **imposed as an input** | Account count forced to the client's trajectory; **everything else Base** | **Measured against the floor, never assumed as an output.** What would have to be true, and what does it cost to get there? **The `clients_plan` run reaches 169,756 ever-acquired but only 54,010 live, lifts Y10 revenue to USD 17,668,003 and cuts cumulative net loss to USD 7,218,254 with peak funding of USD 10,468,829 at M113. It turns EBITDA-positive in Year 10 — the only scenario other than Aggressive to reach break-even inside the horizon at all, and it does so in the final year by brute-forcing volume.** 🔴 **So the target is reachable on acquisition and does not fix the unit economics.** `{{UNFILLED: marketing spend implied by the client's 100k target — not in spine; the scenario imposes the account trajectory directly rather than solving the spend that buys it}}` |
+| **Client's plan** | The client's own 100,000-investor Y10 target, **imposed as an input** | Account count forced to the client's trajectory; **everything else Base** | **Measured against the floor, never assumed as an output.** What would have to be true, and what does it cost to get there? **On the ten-year run the `clients_plan` scenario reached 169,756 ever-acquired but only 54,010 live, lifted Y10 revenue to USD 17,668,003 and cut cumulative net loss to USD 7,218,254 with a funding trough of USD 10,468,829 at M113. It turned EBITDA-positive only in Year 10 — by brute-forcing volume in the final year.** ⚠ **Y10 and M113 both fall beyond the new 7-year horizon, so on the rebuild this scenario does not turn inside the window at all. Aggressive, which turned in Y5, still does.** 🔴 **The finding is unchanged and is if anything sharpened: the target is reachable on acquisition and does not fix the unit economics.** `{{UNFILLED: marketing spend implied by the client's 100k target — not in spine; the scenario imposes the account trajectory directly rather than solving the spend that buys it}}` |
 | **India closed** | The payment route is never solved | `INDIA_ENABLED` → OFF, **and S44/S42 fall with it** (they are coupled, §6.6) | What does the payment problem cost? **Y10 revenue falls from USD 8,150,081 to USD 6,118,450 — a delta of USD 2,031,631, or 24.9%.** Live accounts fall to 16,700, holding to 50,715, Y10 AUM to USD 33,187,620, and cumulative net loss deepens from USD 14,110,495 to USD 17,746,327 with peak funding rising to USD 18,534,329 |
 
 ⚠ **The India scenario must move stream 6 as well as the S5 segment.** Per S16 the B2B row is 60% S5, so **turning India off must reduce S44 to ~40% of Base and S42 to the Conservative path.** v1.0 leaves the two switches independent and they are not.
@@ -3244,11 +3603,19 @@ A fourth, orthogonal axis specific to redemption, using the corpus's own figures
 
 ✅ **The two tornados rank differently, as this section predicted.** The orders agree through the top four and then diverge: **S27 is 5th on profit and 6th on funding; S1 rail cost is the reverse — 6th on profit and 5th on funding.** The mechanism is the one predicted: the rail bites from month 1 on every collection, so it deepens the funding hole faster than it damages terminal profit, while persistency compounds into the later years where terminal profit is decided. **A parameter's rank depends on which question is asked, which is the whole reason for running two tornados rather than one.**
 
-⚠ **One part of the prediction is still unmet, and it is worth stating.** F27 ranks 4th on both axes rather than materially higher on funding, and S48 ranks last on both. For S48 the cause is measurement rather than substance: it flexes the exit run-rate of a Y1 base that is ~12% of the ten-year cost stack, and **peak funding lands at M114 — nine and a half years in — so an early-biting parameter has almost the whole horizon to be diluted before the trough arrives.** A tornado on *peak funding within the first 36 months* would test the early-cost hypothesis properly; neither of these can.
+⚠ **One part of the prediction was unmet on the ten-year run, and the shorter horizon is expected to fix it.** F27 ranked 4th on both axes rather than materially higher on funding, and S48 ranked last on both. For S48 the cause was measurement rather than substance: it flexes the exit run-rate of a Y1 base that was ~12% of the ten-year cost stack, and **the funding trough landed at M114 — nine and a half years in — so an early-biting parameter had almost the whole horizon to be diluted before the trough arrived.** 🔴 **On a 7-year horizon the trough sits far closer to the ramp and the Y1 base is a much larger share of the cost stack, so the early-biting parameters should rank higher. If they do not, the funding tornado is not reading the cash rows.** A tornado on *the funding trough within the first 36 months* remains the cleanest test of the early-cost hypothesis.
 
 ---
 
 ## 14. Break-even and risk architecture
+
+> 🔴 **What is kept and what is demoted at v2.1, stated before the section rather than inside it.**
+>
+> **KEPT — the method, in full.** The fixed point solved against **total cost**, not opex. The **two views** reported separately — entry-fee-only and all-streams — because they answer different questions and the client asked the first one. The **diverging-curves chart**, which makes the point where no crossing exists and needs no solver. All three are correct, all three must be built, and the argument for each is unchanged.
+>
+> **DEMOTED — the conclusions.** ⚠ **Break-even and peak funding both fall outside a 7-year window.** On the v2.0 ten-year run there was no profitable year in ten and the funding trough landed at M114, which is Y9.5. **Neither of those is a finding a 7-year model can report, and neither is a figure to build narrative on** — the client has instructed that profitability is not to be leaned on because the cost base, the fee schedule and the card terms will all change materially (§0 footnote).
+>
+> **So: report the mechanism, the shape and the direction. Do not report a break-even year, a break-even account count as a headline, or a peak funding number as a fundraise ask.** Where a figure below is quoted it is from the ten-year run and is illustrative of the method, not of the answer.
 
 ### 14.1 The fixed point, and why v1.0's three numbers were wrong
 
@@ -3267,15 +3634,19 @@ FIND N such that  revenue(N) = Opex(N)
   and   revenue(N) is computed by the model at that N, NOT extrapolated linearly
 ```
 
+⚠ **The table below is from the ten-year run. It shows what the solver produces and in what shape. The levels are superseded by the rebuild** (§0 footnote).
+
 | Output | Entry fee only | All streams |
 |---|---|---|
-| Does a crossing exist? | **FALSE. No solution exists at any N** — the two curves diverge rather than cross, because the SIP lane's net contribution margin per collection is negative from Year 6 onward | **TRUE**, but outside the modelled book |
-| If yes, at what N? | **n/a — there is no crossing.** ⚠ **Entry-fee-only must never be reported as breaking even.** The `extrapolated_year` of ~10.9 that the model carries against this view is the all-streams trajectory and does not belong to it | **45,102 contributing accounts** — against the 21,661 the Base path reaches by Year 10. |
+| Does a crossing exist? | 🔴 **FALSE. No solution exists at any N** — the two curves diverge rather than cross, because the SIP lane's net contribution margin per collection turns negative with tenure. **This result is structural and does not depend on the horizon: it is a statement about slopes, not about years** | **TRUE**, but outside the modelled book |
+| If yes, at what N? | **n/a — there is no crossing.** ⚠ **Entry-fee-only must never be reported as breaking even.** The `extrapolated_year` the model carries against this view belongs to the all-streams trajectory and does not belong to it | **45,102 contributing accounts** on the ten-year run — against the 21,661 the Base path reached by Year 10. ⚠ **Both figures are ten-year. The crossing sits outside the book on either horizon, and it sits further outside on seven years** |
 | Marginal opex per investor/yr | **USD 304** (the cost slope against which the fixed point is solved) | same |
-| Marginal margin per investor/yr | **Negative and falling: net margin per contribution runs USD 0.77 at Y1 to USD −0.32 at Y10**, i.e. the whole entry-fee lane contributes **USD −80,548 at Y10** rather than a positive per-investor margin | **USD 346** |
-| Gap | **The gap does not close at any N. It widens** — revenue per account is negative on this basis while the cost slope is USD 304 | **USD 42/investor/yr in revenue's favour**, which is why a crossing exists at all |
+| Marginal margin per investor/yr | **Negative and falling**: net margin per contribution ran USD 0.77 at Y1 to USD −0.32 at Y10 on the ten-year run. **The sign change is the finding; the terminal level is not** | **USD 346** |
+| Gap | 🔴 **The gap does not close at any N. It widens.** Revenue per account is negative on this basis while the cost slope is positive. **A widening gap is horizon-independent** | **USD 42/investor/yr in revenue's favour**, which is why a crossing exists at all |
 
 **Report entry-fee-only and all-streams separately.** They answer different questions and the client asked the first one.
+
+🔴 **The one conclusion in this subsection that survives the demotion, because it is a statement about slopes rather than about years: the entry-fee lane has no break-even at any N, and adding investors makes it worse.** That is the answer to the client's item 5 and it does not become more or less true on a shorter horizon. **Everything else here is a level, and every level is provisional.**
 
 ### 14.2 The diverging-curves chart
 
@@ -3301,6 +3672,8 @@ USD/yr
 
 ⚠ **Plot the all-streams line on the same axes.** If it crosses and the entry-fee line does not, **the chart also demonstrates why the business is a card business — visually, without an argument.**
 
+🔴 **This chart is kept unchanged and it is the right artefact under the demotion, because it is the one break-even output that carries no year in it.** It plots against `N`, not against time. **A chart of two diverging slopes is exactly as true on a 7-year model as on a ten-year one**, and it says what §14.1 says without inviting anyone to read a break-even date off it. **Where §14 has to give the client one thing, give them this.** ⚠ **The slope annotations on the sketch above are from the ten-year run and must be re-cut with the rest.**
+
 ### 14.3 The promoted outputs
 
 **v1.0 sets "the expense-derived break-even floor, by year" as the headline and then concludes on its own evidence that "break-even is not a function of how many savers you sign up."** An investor-count break-even is right only for a business with roughly constant margin per unit. **Here margin per investor varies 7.6× across segments on the entry-fee lane and 1.72× on all-streams LTV, and opex steps with N** (D16). **v1.0's own ~50× estimate is not supported on either basis** — but the conclusion is unchanged, because the 7.6× spread sits in precisely the lane that loses money.
@@ -3311,10 +3684,10 @@ USD/yr
 
 | # | Promoted output | Value | Why it is the better headline |
 |---|---|---|---|
-| **1** | **Contribution margin per cohort by month since acquisition** | `{{UNFILLED: contribution margin curve by cohort month, months 1–72 — not in spine; margin is published by year and by segment, not by cohort month}}`. The annual blended figure the spine does give runs **USD 0.77 per contribution at Y1, turning negative from Y3 (−0.08) and reaching −0.32 at Y10** | It shows **when** a cohort pays back, which is the question a board actually asks |
+| **1** | **Contribution margin per cohort by month since acquisition** | **Now read straight off a lifecycle curve rather than reconstructed from a triangle** (D23) — this output is *easier* at v2.1, not harder. `{{UNFILLED: contribution margin curve by cohort month, months 1–84 — not in spine; margin is published by year and by segment, not by cohort month}}`. The annual blended figure the spine gives ran **USD 0.77 per contribution at Y1, turning negative from Y3 (−0.08)** on the ten-year run | It shows **when** a cohort pays back, which is the question a board actually asks |
 | **2** | **LTV:CAC by channel × segment** | See §7.8 | **The variance is the whole point — 7.6× on the entry-fee lane, 1.72× on all streams.** A single break-even number averages away the one fact that decides where to spend |
-| **3** | **Months-to-cash-breakeven and peak funding** | **Cash break-even: never within 120 months.** **Peak funding: USD 15,076,460, at M114** | **This is the fundraise.** v1.0 produces neither |
-| **4** | **Revenue mix over time** | **Y1 → Y10 as a share of GROSS PROFIT: SIP 46.0% → −1.1%; spot 22.6% → 0.1%; card interchange 0.0% → 54.3%; family 31.3% → 1.5%; cardholder fees 0.0% → 29.1%; credit 0.0% → 0.2%; B2B 0.0% → 15.9%. Each year sums to exactly 100.0%. Card interchange overtakes every other line by Y5, and the two card streams together carry 83.4% of Y10 gross profit** | It shows the business changing shape at M18 and M24, which no single number can |
+| **3** | ⚠ **DEMOTED at v2.1 — the funding trajectory as a shape, not a level** | **Report the direction and the slope of cumulative cash, and state plainly that it does not turn inside the horizon.** ⚠ **Do not report a peak funding figure.** On the ten-year run cash break-even was never reached within 120 months and the trough was USD 15,076,460 at M114 — **both beyond a 7-year window.** A 7-year model can report its own within-horizon minimum, and **that minimum is not the peak and must not be labelled as one** | The mechanism is still worth having — v1.0 produces no cash flow at all. **The number is not, until the cost base settles** (§0 footnote) |
+| **4** | **Revenue mix over time** | **On the ten-year run, Y1 → Y10 as a share of GROSS PROFIT: SIP 46.0% → −1.1%; spot 22.6% → 0.1%; card interchange 0.0% → 54.3%; family 31.3% → 1.5%; cardholder fees 0.0% → 29.1%; credit 0.0% → 0.2%; B2B 0.0% → 15.9%. Each year sums to exactly 100.0%. Card interchange overtook every other line by Y5 — inside the new horizon — and the two card streams together carried 83.4% of Y10 gross profit, which is beyond it** | It shows the business changing shape at M18 and M24, which no single number can. **The crossover at Y5 is the part of this that a 7-year model can still show** |
 
 **Two supporting facts that belong beside them, both already in v1.0's own arithmetic and both buried:**
 
@@ -3328,6 +3701,8 @@ USD/yr
 🔴 **The distinction that organises this whole section: a permanently higher or lower gold price cannot produce a margin call. Only a move landing *after* a loan is struck can.** F1 holds gold flat by design — correct for revenue attribution, because it makes every revenue change attributable to the business rather than the metal — so gold has to be run two separate ways to say anything useful.
 
 #### 14.4a Gold as a LEVEL — and the invariance finding
+
+⚠ **The table below is the ten-year run, so its Y10 column is beyond the new horizon. The invariance it demonstrates is not** — it follows from contributions being fixed in USD, which holds at any period and on any horizon. **Re-cut the levels; the finding stands.**
 
 | Gold move | USD/g | Y10 grams | Y10 AUM | Cumulative net profit | Peak funding |
 |---|---|---|---|---|---|
@@ -3357,7 +3732,7 @@ A margin call comes from a move **after** the loan is struck. Drawn balances are
 
 #### 14.4c Who is exposed — the static analytical ladder
 
-⚠ **This table is an analytical statement, not a scenario result.** For an account struck at each tier's LTV *and drawn to its maximum*, it is the fall needed to reach the 92% margin-call line. It binds only on customers who max out at the top tier.
+⚠ **This table is an analytical statement, not a scenario result.** For an account struck at each tier's LTV *and drawn to its maximum*, it is the fall needed to reach the 92% margin-call line. It binds only on customers who max out at the top tier. **The "fall to margin call" column is pure arithmetic on the struck LTV and is horizon-independent; the account counts are ten-year figures and will fall on the rebuild** — which makes the exposure smaller, not larger.
 
 | Tier | Struck LTV | Accounts (Y10) | Collateral USD | Drawn at max | Fall to margin call | Within 1σ? |
 |---|---|---|---|---|---|---|
@@ -3371,7 +3746,7 @@ A margin call comes from a move **after** the loan is struck. Drawn balances are
 
 **The exposure is real, small, and mitigated twice.** USD 85,165 of drawn balance at maximum draw, against a 954-account population that is the most disciplined in the book — only the perfect-payer track reaches Sovereign at all — with **two warnings and 14 days** before anything is sold. **The −13% one-sigma sensitivity is the honest headline; the USD 85k it puts at risk is why it is not an emergency.**
 
-⚠ **The caveat that bounds all of the above.** This is a **single-shock path, not a stochastic price process.** It answers *"what happens if gold falls X% in Year 6"* and it cannot answer *"what is the probability of a margin call over ten years."* The latter needs a price process, which is out of scope here and is recorded as limitation L10 at §3.y.3. For the same reason the two rows below stay open:
+⚠ **The caveat that bounds all of the above.** This is a **single-shock path, not a stochastic price process.** It answers *"what happens if gold falls X% in Year 6"* — which is inside the 7-year window — and it cannot answer *"what is the probability of a margin call over the horizon."* The latter needs a price process, which is out of scope here and is recorded as limitation L10 at §3.y.3. For the same reason the two rows below stay open:
 
 | Output | Value |
 |---|---|
@@ -3596,43 +3971,52 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 
 | # | Item | Signed off by | Where |
 |---|---|---|---|
-| 1 | **The twelve layers of §3** — especially the six-state machine and the archetype engine | Abdur | §3 |
-| 2 | **The acyclicity proof and the two resolved circularities** | Modeller | §3.x |
-| 3 | **76 periods, 72 monthly + 4 annual**, and the M72 hold rule stated | Abdur | §1 |
-| 4 | **Ten sheets and the execution order** | Modeller | §3.x.1, §12 |
-| 5 | **The archetype weights and the background hazard** as the calibration starting point, not settled values | Abdur | §3 Layer 5c |
+| 1 | **The twelve layers of §3** — especially the lifecycle curves, the convolution and the live gate engine | Abdur | §3 |
+| 2 | **The acyclicity proof and the two resolved circularities**, including the fourth non-circularity at the annual block | Modeller | §3.x |
+| **3** | 🔴 **29 periods, 24 monthly + 5 annual, 7-year horizon** (D21) — **and the M8 / M18 / M20 argument for why 24 monthly columns is sufficient** | **Client — taken. Not open** | §1 |
+| **3a** | 🔴 **The lifecycle table stays monthly to M84 while the Model sheet is 29 columns.** These are different sheets with different indices and the distinction is load-bearing | Modeller | §1, §10.1 |
+| **3b** | 🔴 **The score collapse** (D22): tenure→tier lookup plus one heavy-seller haircut; the gate, survival and persona H stay live; **the full ICS formula and the nine personas are demoted to validation and must still pass**; **the 5% safety gate reverts the collapse if it fails** | **Client — taken. Not open** | §3 Layer 5 |
+| **3c** | 🔴 **Cohorts are a convolution. The workbook must not contain a cohort triangle** (D23). Segments scale the curves; later-activating segments offset the acquisition vector | **Client — taken. Not open** | §3 Layer 2 |
+| **3d** | **B2B and credit activate at the start of the annual block (Y3), not as a stub month at M24** | Modeller | §4, §10.5 |
+| 4 | **Eleven sheets and the execution order**, including that **ICS Validation is a leaf** | Modeller | §3.x.1, §12 |
+| 5 | **The archetype weights and the background hazard** as the calibration starting point, not settled values | Abdur | §3 Layer 5e |
 | 6 | **Spot is in scope** and is a sub-stream of 1, not a seventh stream | Abdur | §6 |
 | 7 | **Stream 0 exists** and there is no offsetting revenue | Abdur | §6 |
 | 8 | **The solver is seven items, not eight**, and item 1's answer may be zero | Abdur | §9 |
-| 9 | **The promoted outputs replace the investor-count headline** | Abdur | §14.3 |
+| **9** | **The promoted outputs replace the investor-count headline — and output 3 is now a shape, not a level.** Break-even and peak funding both fall outside the horizon and are not to be built on | Abdur | §14, §0 footnote |
 | 10 | **Every binary switch's default** | Abdur | §13.3 |
 | 11 | **The placeholder convention**: no v1.0 figure may occupy a `{{SPINE}}` slot | Modeller | §0 |
 | 12 | **The Assumptions indirection rule**: no numeric literals in formulas | Modeller | §12 |
+| **13** | ⚠ **Every output figure in this brief is from the v2.0 ten-year run and is re-cut on the rebuild.** Sign-off is on the architecture, not on the levels | Abdur | Front matter, §0 |
 
 ### 20.2 Build sequence
 
 | Step | Build | Verify before proceeding |
 |---|---|---|
 | **1** | **Assumptions and Scenario Parameters.** All 101 parameters with source category, source, confidence and sheet location. Named ranges for every one | Every named range resolves. The scenario canary reads Base cleanly |
-| **2** | **Time Series.** 76 period headers, all activation flags, the three seasonality vectors, the fee and denomination ladders, opex interpolation, float sizing | **Check 9: both seasonality vectors sum to exactly 12.000.** Check 11: the denomination latch is monotone |
-| **3** | **Cohort Engine, one segment, one archetype, monthly only.** Get the six-state roll-forward right on a single track before replicating | **Check 1 on that one track.** Opening + new − closed = closing, every period |
-| **4** | **Replicate to 6 segments × 5 archetypes.** 30 tracks, 180 state rows | **Check 1 across all 30 tracks.** Aggregate M13 survival lands at 54.7% ± 1pp against the §0.5 target of 55% |
-| **5** | **ICS Engine pre-gate block.** `run_length`, the freeze rule, the gate-arrival distribution | 🔴 **Personas H and I return the corpus's stated values.** These are the two a naive build fails, and failing them here is cheap |
-| **6** | **ICS Engine post-gate.** Record, Standing, Retention, ICS, **threshold per track then weight** | **Check 12: all nine personas A–I pass.** Check 2: tier shares sum to 1.000. **Verify the exact-fraction test — `100/12`, not `8.3333`** |
-| **7** | **Model: streams 1a and 1b, and the AUM stock.** The two inflow lanes and the stock-and-flow | **Check 3: grams reconcile every period.** Check 4: nothing negative. **Verify spot margin exceeds SIP margin per ticket, at both rail cases** |
-| **8** | **Model: stream 0 and the net-flow term** | **Spread cost is exactly zero in every growing month.** Verify against the four book states |
-| **9** | **Model: streams 2 and 4, with the per-txn fee and the ATM distribution** | **Check 7: nothing before M18.** Verify the effective-PM-share row: Gold ~43% at the Conservative contracted 55%. **Verify the ATM distribution returns non-zero where the mean returns zero** |
-| **10** | **Model: streams 3, 5 and 6.** Credit vintaged by struck LTV; partners on their own clocks | **Check 7: nothing before M24 for 5 and 6.** Verify stream 5 average drawn = peak × 0.42. Verify stream 6 reconciles to S13 within ~5% |
-| **11** | **Model: benefit costs, including the Gold Rewards cap** | **Check 5: the cap never goes negative.** Verify the launch-year ladder cost is one 0.4pp Silver discount |
-| **12** | **Opex & P&L, through EBITDA** | Verify the log-linear interpolation reproduces the §7.4 year table, and that the Marketing plug ties Y3 and Y10 to the published anchors |
-| **13** | **Tax, with the 75% cap** | **Verify real cash tax is paid in the first profitable year despite a large loss pool.** Verify tax writes only in FY-end months |
-| **14** | **Cash and funding.** Working capital, cumulative cash, peak funding | **Check 6: the acquisition ceiling is never breached, in any period.** Verify peak funding and its month both populate |
-| **15** | **Extend to the annual block, Y7–Y10** | **Check 13: all three M72/M73 seam tests.** Revenue continuity within ±15% |
-| **16** | **Summary, unit economics and the break-even views** | Verify LTV:CAC populates for every channel × segment cell, **including the loss-making ones — those are the answer, not an error** |
-| **17** | **Scenario architecture: all three layers plus the ten binary switches** | **Check 8: the canary distinguishes Base from CUSTOM.** Verify `INDIA_ENABLED = OFF` moves **both** S5 and stream 6 |
-| **18** | **Checks sheet: all thirteen** | 🔴 **Row 3 reads TRUE under Base, Aggressive and Conservative. The build does not ship otherwise** |
-| **19** | **Solvers.** Items 1–7 in the §9.4 order, with 3 and 4 solved jointly | Verify item 1 against the possible zero-uplift answer. Verify the 3/4 frontier at both rail cases |
-| **20** | **Tornados, both of them** | Verify the two rankings **differ.** If they are identical, the peak-funding tornado is not reading the cash rows. **Reference model: they differ at ranks 5 and 6 — S27 archetype mix is 5th on profit and 6th on funding, S1 rail cost the reverse.** ⚠ **A parameter returning a swing of exactly zero is a wiring failure, not a finding** — check the flex actually reaches the model (S27 was dead until a `from params import` binding was fixed, and S48 until it was read by any model code) |
+| **2** | **Time Series.** **29 period headers (24 monthly + 5 annual)**, all activation flags, the three seasonality vectors, the fee and denomination ladders, opex interpolation, float sizing | **Check 9: both seasonality vectors sum to exactly 12.000.** Check 11: the denomination latch is monotone. **Verify credit and B2B are flagged at the start of the annual block, not at M24** |
+| **3** | 🔴 **Lifecycle Curves, ONE archetype, monthly to M84.** Get the six-state roll-forward and the run-of-6 gate solve right on a single curve before replicating. **This is the build's foundation and everything downstream reads it** | **Check 1 on that one curve.** States sum to 1.000 at every `m`. `alive` monotone non-increasing |
+| **4** | **Replicate to all five archetypes.** 5 curves × ~92 rows × 84 columns | **Check 1 across all five.** Weighted M13 survival lands at 54.7% ± 1pp against the §0.5 target of 55%. **Weighted gate arrival lands at M8.1 and ever-gate at 53.5%** |
+| **5** | **The tenure→tier lookup on each curve.** Gold at gate+12, Platinum at gate+36, **the alternating-misser Gold cap** | **Verify the archetype cap overrides the generic ladder.** A blended lookup here is the D2 error returning (§3 Layer 5c) |
+| **6** | **Acquisition sheet.** Channel volume, S16 mix, saturation, and **the acquisition vector as a clean rectangle** — with S4/S5/S6 as leading zeros, not as new curves | Vector ties to cumulative-ever-acquired. **No segment has its own curve** |
+| **7** | 🔴 **THE CONVOLUTION, on one series, with the impulse test.** Build `alive` first and nothing else | 🔴 **Check 14: for an acquisition vector of `(1,0,0,…)`, the convolved book at period `t` equals `curve(m=t)` exactly, for every `t`.** **Do not build a second series until this passes.** A convolution built backwards runs, reconciles and is wrong (§10.4 Pattern 1) |
+| **8** | **Replicate the convolution to all series and all segments.** Segment scalars on ticket and card spend only | **Check 1 book conservation per segment.** Check 4: nothing negative |
+| **9** | **ICS Validation sheet.** The full ICS formula, the nine personas, **and the 5% collapse delta** | 🔴 **Personas H and I return the corpus's stated values.** **Check 12: all nine pass.** **Verify the exact-fraction test — `100/12`, not `8.3333`.** **Check 16: nothing on the Model sheet references this sheet** |
+| **10** | 🔴 **Check 15, the 5% collapse-safety gate, under Base** | 🔴 **Max annual stream-2 delta ≤ 5% of gross profit. If it fails, STOP — the collapse is unsafe and must be reverted before any further build** (§3 Layer 5d) |
+| **11** | **Model: streams 1a and 1b, and the AUM stock.** The two inflow lanes and the stock-and-flow | **Check 3: grams reconcile every period.** Check 4: nothing negative. **Verify spot margin exceeds SIP margin per ticket, at both rail cases** |
+| **12** | **Model: stream 0 and the net-flow term** | **Spread cost is exactly zero in every growing month.** Verify against the four book states |
+| **13** | **Model: streams 2 and 4, on the flat Gold rate, with the per-txn fee and the ATM distribution** | **Check 7: nothing before M18.** Verify the effective-PM-share row: ~43% at the Conservative contracted 55%. **Verify the ATM distribution returns non-zero where the mean returns zero** |
+| **14** | **Model: streams 3, 5 and 6.** Credit vintaged by struck LTV; partners on their own clocks | **Check 7: streams 5 and 6 are zero at M24 and first non-zero at Y3 — no stub month.** Verify stream 5 average drawn = peak × 0.42. Verify stream 6 reconciles to S13 within ~5% |
+| **15** | **Model: benefit costs, including the Gold Rewards cap** | **Check 5: the cap never goes negative.** Verify the launch-year ladder cost is one 0.4pp Silver discount |
+| **16** | **Opex & P&L, through EBITDA** | Verify the log-linear interpolation reproduces the §7.4 year table, and that the Marketing plug ties Y3 and **Y7** to the anchors, **re-cut from the published Y3/Y10 pair** |
+| **17** | **Tax, with the 75% cap** | **Verify the mechanism on a synthetic profitable year**, since no modelled year is profitable. Verify tax writes only in FY-end months |
+| **18** | **Cash and funding.** Working capital, cumulative cash, the within-horizon trough | **Check 6: the acquisition ceiling is never breached, in any period, with the lag one month in the monthly block and one year in the annual block.** ⚠ **Label the trough as a within-horizon minimum, never as peak funding** (§14) |
+| **19** | **Extend to the annual block, Y3–Y7** | **Check 13: all four M24/Y3 seam tests**, including the decomposition test that each annual column is twelve monthly convolutions. Revenue continuity within ±15%, excluding streams 5 and 6 at Y3 |
+| **20** | **Summary, unit economics and the break-even views** | Verify LTV:CAC populates for every channel × segment cell, **including the loss-making ones — those are the answer, not an error.** Verify the diverging-curves chart renders |
+| **21** | **Scenario architecture: all three layers plus the ten binary switches** | **Check 8: the canary distinguishes Base from CUSTOM.** Verify `INDIA_ENABLED = OFF` moves **both** S5 and stream 6. 🔴 **Re-run check 15 under Aggressive and Conservative — an Aggressive archetype mix enriches the top of the ladder and is the most likely to trip the gate** |
+| **22** | **Checks sheet: all sixteen** | 🔴 **Row 3 reads TRUE under Base, Aggressive and Conservative. The build does not ship otherwise** |
+| **23** | **Solvers.** Items 1–7 in the §9.4 order, with 3 and 4 solved jointly | Verify item 1 against the possible zero-uplift answer. Verify the 3/4 frontier at both rail cases |
+| **24** | **Tornados, both of them** | Verify the two rankings **differ.** If they are identical, the funding tornado is not reading the cash rows. **Reference model, ten-year run: they differed at ranks 5 and 6 — S27 archetype mix 5th on profit and 6th on funding, S1 rail cost the reverse.** ⚠ **On a 7-year horizon expect the early-biting parameters to rank higher on funding than they did**, because the trough now sits much closer to the ramp. ⚠ **A parameter returning a swing of exactly zero is a wiring failure, not a finding** — check the flex actually reaches the model (S27 was dead until a `from params import` binding was fixed, and S48 until it was read by any model code) |
 
 ### 20.3 Post-build validation checklist
 
@@ -3640,25 +4024,31 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 
 | # | Validation | Expected |
 |---|---|---|
-| 1 | **All thirteen checks TRUE under all three global scenarios** | 🔴 **Non-negotiable** |
-| 2 | **Nine personas pass** | Nine TRUEs |
-| 3 | **Aggregate survival against all five §0.5 anchors** | 55 / 40 / 30 / 24 / 19% ± 1pp at M13 / M25 / M37 / M49 / M61 |
-| 4 | **Ladder arrival for a clean saver** | Silver M6, Gold M12, Platinum M36, Sovereign M60 |
-| 5 | **`Record` binds and `Standing` never does, for a clean saver** | The §7.4 property, reproduced not assumed |
-| 6 | **Tier distribution is genuinely computed** | T4 and T5 are GREEN links from the ICS Engine, **not typed values.** This is the claim v1.0 made and could not support |
-| 7 | **The alternating-misser track is capped at Gold at M120** | Standing pinned at 50.00 forever |
+| 1 | **All sixteen checks TRUE under all three global scenarios** | 🔴 **Non-negotiable** |
+| **1a** | 🔴 **Check 14, the convolution impulse test, passes** | For `(1,0,0,…)`, the book at `t` equals `curve(m=t)` exactly, every series, every `t`. **A backwards convolution is invisible in the totals and fatal in the ladder dates** |
+| **1b** | 🔴 **Check 15, the 5% collapse-safety gate, passes under all three scenarios** | Max annual stream-2 delta ≤ 5% of gross profit. **Failure reverts the collapse — it is not a warning** |
+| **1c** | **The workbook contains no cohort triangle** | Grep the sheet list. **One Lifecycle Curves sheet, one Model sheet, no per-cohort blocks anywhere** (D23) |
+| **1d** | **The Model sheet is 29 columns and the Lifecycle Curves sheet is 84** | **Two different indices, deliberately.** If the curve sheet has been shortened to 29, a Y7 annual column cannot be built from twelve genuine monthly points |
+| 2 | **Nine personas pass, on the ICS Validation sheet** | Nine TRUEs |
+| 3 | **Aggregate survival against the §0.5 anchors inside the horizon** | 55 / 40 / 30 / 24% ± 1pp at M13 / M25 / M37 / M49. ⚠ **The M61 anchor at 19% falls at Y6 and is still testable; there is no M73+ anchor to test** |
+| 4 | **Ladder arrival for a clean saver** | Silver M6, Gold M12 — **both inside the monthly block, where it matters.** Platinum M36 and Sovereign M60 resolve inside annual columns |
+| 5 | **`Record` binds and `Standing` never does, for a clean saver** | The §7.4 property, reproduced not assumed, **on the ICS Validation sheet** |
+| 6 | **Tier distribution is genuinely computed** | T4 and T5 are GREEN links from the Model sheet's convolution band, **not typed values.** This is the claim v1.0 made and could not support. ⚠ **The collapse does not weaken this — the lookup is applied per archetype and weighted, so the mix is still an output** |
+| **6a** | **The gate distribution is genuinely computed** | Weighted mean gate M8.1, ever-gate 53.5%. 🔴 **This is the first-order term. If it reads M6 and 100%, the live engine has been collapsed along with the ladder and the model overstates the business by ~59%** |
+| 7 | **The alternating-misser curve is capped at Gold at M84** | Never advances past Gold, however long it survives. **The archetype cap, not a blended ladder** |
 | 8 | **Never-gated accounts appear and carry zero benefit cost** | A non-zero population with a zero discount |
-| 9 | **Holding-not-contributing reaches ~81% of ever-acquired by M61** | The D1 correction, visible in a row |
+| 9 | **Holding-not-contributing reaches ~81% of ever-acquired by M61** | The D1 correction, visible in a row. **Already ~60% by M25, inside the first annual column** |
 | 10 | **Spot margin per ticket exceeds SIP margin per ticket at both rail cases** | Including the Conservative rail, where SIP is negative and spot is not |
 | 11 | **Stream 5 is roughly half v1.0's figure** | The S40 correction, visible |
-| 12 | **Effective PM share is below the contracted share on every tier, most on Gold** | ~43% against 55% at Gold, Conservative |
+| 12 | **Effective PM share is below the contracted share** | ~43% against 55% at the flat Gold rate, Conservative |
 | 13 | **Redemption spread cost is exactly zero in every growing month** | The §5.4 argument, reproduced |
-| 14 | **Peak funding and its month both populate, and the month is before break-even** | If peak funding lands after break-even, the cash rows are wrong |
-| 15 | **Cash break-even and P&L break-even differ** | If identical, working capital is not flowing through |
-| 16 | **The diverging-curves chart renders and the two lines do not meet on the entry-fee-only basis** | The answer to the client's item 5 |
+| **14** | ⚠ **The funding trajectory populates and is labelled as a within-horizon trough** | **It must NOT be labelled peak funding.** The peak falls outside a 7-year window (§14, §0 footnote). **If the workbook reports a "peak funding requirement," that label is the error, not the number** |
+| 15 | **Cash break-even and P&L break-even are both reported as not reached** | ⚠ **Neither turns inside the horizon.** If either reports a date, the cash rows or the extrapolation are wrong |
+| 16 | **The diverging-curves chart renders and the two lines do not meet on the entry-fee-only basis** | The answer to the client's item 5, **and the one break-even artefact that carries no year in it** |
 | 17 | **Every `{{SPINE}}` placeholder in this brief has a populated cell reference** | No orphans in either direction |
-| 18 | **No numeric literal other than 0, 1, 12 or 100 appears in any formula outside Assumptions and Scenario** | Spot-check twenty formulas across four sheets |
-| 19 | **The two tornados produce different rankings** | Timing-sensitive parameters rank higher on funding. **Reference model: S4 > S5 > S3 > F27 on both, then S27 5th / S1 6th on profit and S1 5th / S27 6th on funding.** **No parameter may return a swing of exactly zero** — that is a wiring failure |
+| 18 | **No numeric literal other than 0, 1, 12 or 100 appears in any formula outside Assumptions and Scenario** | Spot-check twenty formulas across four sheets, **including five in the convolution band** |
+| 19 | **The two tornados produce different rankings** | Timing-sensitive parameters rank higher on funding, **and on a 7-year horizon they should rank higher than they did on ten**, because the trough sits much closer to the ramp. **No parameter may return a swing of exactly zero** — that is a wiring failure |
 | 20 | **Sourcing audit counts tie to the register** | §8.5 totals to 101 |
+| **21** | ⚠ **Every figure carried forward from this brief has been re-cut on the 7-year basis** | **No output figure in the workbook may be a v2.0 ten-year value.** The brief's figures are illustrative of the architecture; the workbook's are the answer |
 
 **One final instruction, and it is the reason this brief is 2,000 lines rather than 700.** **The model's job is not to produce a number. It is to make a small number of decisions visible: the rail, the PM share, the prepaid-versus-credit fork, whether a lapsed customer keeps the card, and whether the entry fee funds the ladder at all.** Every structural choice above exists to keep one of those five questions answerable rather than averaged away.
