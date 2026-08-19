@@ -286,3 +286,197 @@ New, beyond v1.0's existing ten:
 Verified clean and load-bearing: the §0.1 fee waterfall (the fabrication premium is on the correct base; `C − C(1−f)(1+p)` returns the identical USD 1.6125); the §0.2 rail equation and both rail cases; every ICS constant against `_draft_ics-scoring.md`; the 36% PM-share floor and its arithmetic (0.75/2.10 = 35.7%); the VARA III.E.4 quote, verbatim and correctly located in Annex 2 Part III.E clause 4; **all ten cited decision numbers** — no misattribution, which is the error class most expected and it is clean. Also the §12 View 3 sensitivity grid, which is fully monotone with no inversions.
 
 Structurally worth preserving: the §0 "read this first" device; the constructed opex base with per-line confidence; the inverted model direction; the eight-parameter solver; the corrections-owed register; confirmed negatives as findings; deliberately-excluded streams recorded so they are not re-proposed; and the single-sentence thesis.
+
+---
+
+# v2.1 → v2.2 decision record
+
+**Date:** 2026-08-19. **D21, D22 and D23 were taken at v2.1 and are recorded in the brief itself** (7-year 29-column basis; score collapsed to a tenure to tier lookup; cohorts as a convolution). D24 and D25 below are new.
+
+---
+
+### D24. The bottom-up engine was reopened, tested and confirmed
+
+**The question, raised deliberately:** should the revenue model be driven top-down from a market size and a penetration share, or bottom-up from acquisition and per-account behaviour? The concern behind it was legitimate: with three gates still open (dealer, title opinion, persona) and most inputs unresolved, a bottom-up engine asks for roughly fifty more parameters, which is fifty more places to be wrong.
+
+**Decision: bottom-up stays, as the engine. Top-down survives in exactly three places** — the saturation ceiling, the B2B partner book, and the presentation layer.
+
+**Three arguments carried it.**
+
+1. **Unknowns argue against top-down, not for it.** A top-down model has fewer parameters but concentrates the answer in one that is unknowable: the penetration share. There is no source for "percentage of GCC South Asians who will buy a tokenised gold SIP" because the product does not exist. Bottom-up distributes the uncertainty across many inputs, several of which are genuinely sourceable (published interchange rates, IRDAI persistency, AMFI ticket data, insurance agency attrition). **When you know least is exactly when you most need the model to tell you which unknown to resolve first, and only a bottom-up model produces a tornado.**
+2. **The findings are structural, not level-dependent.** Move persistency 30% either way and the card is still the majority of profit. Move card spend 30% and the SIP lane still loses money at Y10. Move acquisition 30% and the fee floor barely moves, because it is a fixed cost divided by a ticket and neither is an acquisition number. **The §0 findings would survive a wholesale re-cut of the parameter set**, which is what makes them safe to present while the gates are still open.
+3. **Simpler did not mean safer.** v1.0 was the simpler model and it was wrong in five independent ways that took five audits to surface. A top-down model would have produced a healthy Y10 and the client would have priced the entry fee at 3%, below cost, for seven years.
+
+**What was conceded.** The real complexity risk is the **surface** (parameters exposed, scenarios, what the client must follow in a call), not the engine. That is cut by collapsing layers to flat inputs, not by changing the engine. D22 already did this once.
+
+**Consequence:** no rework. v2.1 was already bottom-up. This is a confirmation with its reasoning recorded so it does not have to be re-derived.
+
+---
+
+### D25. Six occupational segments become four regional ones, and the population is re-cut from Indian to South Asian
+
+**v2.1:** S1 to S6, cut by occupation within nationality, each with a single ticket. Bases derived from the MEA overseas-Indians table filtered by an unsourced gold-savings propensity.
+
+**The finding, from three parallel research streams against primary sources** (Oman NCSI monthly bulletin, Bahrain Social Insurance wage dataset, CBB Crypto-Asset Module text, CBUAE Financial Stability Report 2025, AMFI July 2026, Abu Dhabi 2024 census):
+
+1. **The market is South Asian, not Indian.** Bangladeshi workers outnumber Indian workers in Oman (605,486 vs 515,361). Non-Indian South Asians match or exceed Indians in the UAE. **The MEA table counts PIO/OCI and historic diaspora and omits Bangladeshis and Pakistanis entirely.** It is the wrong instrument.
+2. **Occupation was a proxy for ticket size**, and ticket size can be carried directly by two numbers per region without asserting an occupational split that rests on an uncited tertiary source.
+3. **Bahrain is not an easy adjacency.** The CBB Crypto-Asset Module treats the token as a security, requires written CBB approval, BD 50,000 paid-up capital, escrow at a CBB-licensed retail bank and a CBB-licensed digital token advisor, and **contains no reverse-solicitation exemption** in 246 pages of text.
+
+**Decision.**
+
+- **Four modelled regions:** R1 UAE Indian, R2 UAE other South Asian (new, ~620,000, the largest single addition to the perimeter), R3 Oman, R4 India resident.
+- **Three named, sized and deliberately not modelled:** Bahrain (~259,000, CBB gate), Emirati (~1.33m, wrong persona not small), Western expat (~500-600k, no gold-savings behaviour). **Each is a decision with a number attached.**
+- **One funnel for every row** (active → direct-debit-capable IBAN → discretionary capacity). **The unsourced gold-propensity filter is deleted**, having been named the weakest link in the entire sizing at v2.1.
+- **Two numbers per region: average ticket (S55) and floor share (S54)**, from which two ticket bands are derived. Unit margin, rail cost and card spend are computed per band and never on a regional average.
+
+**Why the two-band mechanic is load-bearing and not bookkeeping.** A single blended ticket would have destroyed two separate non-linearities: the fixed per-collection rail cost (which is §0.3's entire fee-floor finding) and the card-spend income proxy (which would have flattened the 3.75x spread to ~1.3x on the line carrying 83.4% of Y10 gross profit). **This is the same error class as v1.0's ICS engine: average first, then apply a threshold.**
+
+**The invariant that was deliberately preserved.** `base × ceiling` totals **165,750** against v2.1's **164,900**. The re-cut moves where accounts come from without inflating how many could ever exist. **A re-cut that raised the ceiling would be a re-cut that proved nothing.** Ceilings were re-based when the propensity filter was deleted, so base and ceiling moved together.
+
+🔴 **The consequence, stated before the re-run rather than discovered after it.** The book-weighted average ticket falls from roughly USD 40 to **USD 31.5**. Against a fixed per-collection rail, **the minimum viable entry fee rises above §0.3's 3.79%.** The re-cut tightens the fee schedule; it does not rescue it.
+
+**Two findings that are not sizing findings and reach into Phase 2.** The lowest-income band may hold a WPS payroll card with no IBAN and therefore no usable rail (corrections 23), and CBUAE has stated it will launch digital savings products for low-income earners within one to two years (correction 25). **Five corrections owed, numbers 21 to 25, two of which are client conversations rather than text edits.**
+
+**Not done:** the reference model has not been re-run. Every output figure in the brief still reflects the pre-D25 segmentation and is labelled as such. Brief first, model second.
+
+---
+
+# v2.2 to v2.3 decision record
+
+**Date:** 2026-08-19. One decision, presentational rather than structural.
+
+---
+
+### D26. The workbook ships on the firm's standard five-sheet architecture, with the machinery hidden
+
+**The conflict.** The brief specified eleven sheets (D18, extended at D23). The firm's `revenue-modeler` skill specifies **exactly five required sheets in a fixed order** — Cover, Assumptions, Scenario Parameters, Model, Summary — and permits additional working sheets after them. **Both cannot be right, and the standard wins**, because it is the firm's deliverable convention across engagements and a client who has seen one model should recognise the next.
+
+**Decision.**
+
+- **Five visible sheets, in the standard order and with the standard names.**
+- **Five hidden working sheets, placed after them:** Time Series, Lifecycle Curves, Acquisition, ICS Validation, Checks.
+- **The former Opex & P&L sheet folds into Model as a second row band.** Model goes from ~200 to ~280 rows.
+- **The Checks master flag is mirrored to Cover as a link**, green on TRUE and red on FALSE.
+
+**Why opex folds into Model rather than hiding.** A reader must be able to trace **one visible sheet** from accounts acquired to net profit and cash without unhiding anything. Hiding the P&L would put the answer behind the machinery, which is the wrong side of the line. **The cost is height, not complexity.** This also settles an inconsistency inherited from v1.0, whose §11 listed an Opex sheet while its §10.1 put opex rows on Model. **§10.1 wins.**
+
+**Why Checks hides, but not entirely.** Checks is where this build exceeds the benchmark, which has none. But sixteen TRUE/FALSE rows are a working artefact, not a presentation one. **Promoting one cell to the Cover keeps the integrity signal and loses the clutter.**
+
+🔴 **The one real consequence, and it is not cosmetic.** The acyclicity rule at §3.x was written as **"no sheet may reference a sheet to its right"** — a tab-position test. **Hiding inverts tab order against logical order.** Model sits at tab 4 and legitimately reads Time Series, Lifecycle Curves and Acquisition at tabs 6, 7 and 8. A positional test would now **fail a correct workbook**, and a modeller who "fixed" it by reordering tabs would break the standard five-sheet layout instead.
+
+**Resolution: the dependency test is by sheet NAME against the §3.x.1 numbered logical order, and that order is written onto the Cover sheet so it cannot be lost.** Two build rules follow:
+
+- **Cover is logically last, not first.** It is the only visible sheet carrying an inbound reference (the Checks master flag), and that is the only edge into it.
+- **Hiding is the final build step.** Build everything visible, pass all sixteen checks, then hide. **Never hide a sheet that has not passed its checks** — a hidden FALSE is precisely the silent failure §3.x exists to prevent. Re-run every check after hiding.
+
+**The honesty obligation this creates.** Hiding machinery is a presentation choice and becomes a misrepresentation the moment a reader cannot discover the machinery exists. **The Cover carries a sheet map naming the five hidden sheets and stating that unhiding them is expected rather than discouraged.** Two checks enforce the rest: a hidden-sheet inventory, and a test that the Cover flag is a formula and not a typed TRUE. **A hardcoded TRUE on the Cover is the worst single failure this workbook could ship**, because it hides a hidden sheet's failure behind a visible green cell.
+
+**What did not change.** Nothing about what is computed, in what order, or by what formula. **D26 separates presentation from computation; it does not merge them.** The 45,000-formulas-on-one-tab argument that produced the multi-sheet structure still stands — the machinery still has its own sheets, they are simply not the ones a reader opens.
+
+**Brief sections amended:** front matter, §1.1, §3.x.1, §3.x.4, §10.1, §12 (Cover, Model, the former Opex & P&L), §20.1 items 4 and 4a, §20.2 steps 16 and 25.
+
+---
+
+### D27. CAC is linear in the revenue model; convexity moves to Phase 5
+
+**The question.** v2.2 modelled marketing CAC as convex in spend: `S15 × [1 + 0.35 × (spend ÷ 60,000)^0.7]`, giving USD 162 effective CAC at USD 60,000/month against a USD 120 base. Should the revenue model carry that shape?
+
+**Decision: no. `effective_CAC = S15`, flat.** The convexity survives as a scenario switch `CAC_CONVEXITY`, **default OFF**, with its flexes intact. **Calibration of the shape moves to Phase 5.**
+
+**Three arguments carried it.**
+
+1. **The constants are invented and the brief already says so.** §18 item 11, verbatim: *"No published CAC benchmark exists for any UAE gold or savings product. S15 and the S25 curve are both judgement. The functional form is defensible; the constants are not."* A 0.35 coefficient and a 0.7 exponent are two unsourced numbers producing a precise-looking answer in a client-facing model.
+2. **The failure mode it guards is already guarded, by a sourced mechanism.** The argument for convexity was that flat CAC lets a model buy unlimited growth at a constant price. **That brake is the saturation term** (S23): `new = raw_demand × [1 − cumulative_ever_acquired ÷ (base × ceiling)]`. Spend cannot manufacture accounts the perimeter does not contain. **Two mechanisms guarding one failure, and only one of them is sourced.**
+3. **Convexity is a dynamic, and dynamics are Phase 5's deliverable.** Consistent with L5, which already assigns competitive response, saturation shocks and viral dynamics to Phase 5. **The revenue model is a structured argument a client signs off on; the simulation is where behaviour under stress is explored.** Importing a half-calibrated dynamic into the first artefact weakens both.
+
+**Precedent.** This is the same move D22 made with the ICS rate ladder: **demoted to a validation or scenario artefact, not deleted**, so the machinery survives for whoever needs it next.
+
+🔴 **The one real consequence, and it must travel with the output.** **Direct-channel LTV:CAC at high spend is an UPPER BOUND under linear CAC.** LTV:CAC by channel × segment is promoted output 2 (§14.3), so the direct-channel cells carry the caveat explicitly and the switch exists to show the sensitivity on request. **CAC uncertainty still reaches the tornado through S15's own 80 / 120 / 200 range** — a level the tornado can rank, rather than a shape it cannot.
+
+**What did not change.** The saturation rule, the agent ramp and attrition, the referral double-gate, and the partner channel are all untouched. **Only the direct channel's cost curve is affected, and only its shape, not its level.**
+
+**Brief sections amended:** §3 Layer 1 (Direct row + a new note after the channel table), §8.2 S25, §11 growth logic summary.
+
+---
+
+# v2.3 to v2.4 decision record
+
+**Date:** 2026-08-19. Three decisions from one research pass. **Full evidence, sources and method in `_working_dealer-premium-and-comparables-research.md`.**
+
+---
+
+### D28. The fabrication premium is measured, not assumed
+
+**The problem.** F4 sets **70% of stream 1's cost base** and was carried at **3.00%** as an unsourced midpoint of a 2 to 5% range nobody publishes. §18 item 11 said so plainly: *"the functional form is defensible; the constants are not."* Four prior research passes on the direct question returned nothing.
+
+**The method that worked, and it is worth keeping.** A first attempt compared dealer prices in AED against a spot price captured at a different moment, on a day gold moved 3.6%. It returned bars priced **below spot**, which is impossible. **The fix is the same-page pair: find a dealer publishing both its own live gold rate and its bar prices on one page, and take the ratio.** Timing cannot corrupt it, because both numbers are struck at the same moment.
+
+**What was observed.** goldtrade.ae, 19 Aug 2026 19:52, rate AED 530.45/g: 1 g **+9.75%**, 10 g **+3.07%**, 100 g **+1.71%** (PAMP 1.75, Valcambi 1.67), 1 kg **+0.93%** (Emirates 0.98, Etihad 0.87). **The curve is monotonic, which is the shape a real premium curve must have**, and that internal consistency is the main reason to trust this pair. iGold publishes a quantity ladder giving **25 bp at 5+ bars**.
+
+**Decision: F4 = 1.50% at 100 g, 0.95% at 1 kg. Confidence MODERATE, source category OBSERVED.** Conservative holds 3.00%, so the old assumption becomes the downside rather than the base.
+
+🔴 **The ladder was one denomination too pessimistic at every rung. The model's 1 kg assumption (2.00%) was worse than what 100 g actually costs (1.71%).**
+
+**Good Delivery is retired as a rung.** The third rung targeted a 400 oz bar and concluded it never clears at the model's volume. **Dubai's own Good Delivery standard is a 1 kg bar at 995+**, already rung two, and DGD is itself superseded by the UAE Good Delivery standard under Cabinet Resolution 2/16 of 2020. **The rung was aimed at the wrong object.**
+
+**What remains open.** The genuine 10 to 50 bar tier is unpublished — both dealers stop at 5 bars and say "call us" — and whether a deal strikes on the fix or on the dealer's own tick moves the answer 20 to 30 bp. **F4 is downgraded from CRITICAL to MODERATE in §16: still worth a dealer conversation, no longer setting the sign of the answer.** ⚠ **The two-way spread on buyback replaces it at the top of the dealer agenda, and is entirely unobserved.**
+
+---
+
+### D29. Aurumix carries its own float from M1
+
+**The question.** S51 held "dealer-carried at launch, own float from Y3." Is that available?
+
+**Decision: no. Own float from M1.** The side of the fork is **forced, not chosen**, and S51's source category changes from ASSUMPTION to DERIVED.
+
+**The argument is by elimination.** Three tokenised gold products were examined against their binding terms. **All three carry inventory** — Paxos holds its own PAXG *"to hedge against price risk"* (Terms 4.9), Tether's affiliate AGCL holds token inventory, Comtech may run **up to 10 kg unbacked** for 24 hours (T&C 3.5). **The float is not a design flaw to engineer away; it is what all of them need.** And each of their three routes to minimising it is closed to Aurumix:
+
+- **Comtech's route, running briefly unbacked:** closed by the `trust holdings ≥ tokens outstanding` invariant and decision 34's money-then-title-then-token ordering.
+- **Tether's route, no repurchase obligation and an agency sale where the customer bears execution risk:** closed by VARA Annex 2 III.E.4 and the formulaic buyback promise.
+- **Paxos's route, a named dealer filling instantly against a 5-second quote:** closed because **there is no dealer.** It is the single largest open item in the engagement.
+
+🔴 **A finding for the client conversation: neither PAXG nor XAUT accepts a repurchase obligation, and Tether states so explicitly. Aurumix is carrying a liability the two largest issuers in the world decline to carry, through a dealer who has not been named or asked.**
+
+**Consequence, governed by correction 12.** Price-gap risk and float cost of capital **bite from M1** rather than Y3; the premium **narrows**, which is what D28 reflects. ⚠ **Charging the wide dealer-carried premium and both float costs simultaneously double-counts under either regime.**
+
+🆕 **The finding inside this one, not framed before.** The 0.79% price-gap is **a pricing-convention cost, not a float cost.** It exists because Aurumix promises a price struck at the next published LBMA fix, hours away, and cannot buy at that price until it arrives. Paxos reduces the identical exposure to near zero with a 5-second streaming quote hedged immediately with StoneX. **The fix was chosen for a real reason — neither side selects it, and it is used identically on entry, arrears and exit — but it now costs 0.79pp from launch against a margin that was 0.54%.** Put it to the client as a priced trade-off: **neutral pricing versus price-gap cost.**
+
+---
+
+### D30. The premium is charged on net new grams, not gross inflow
+
+**The error.** `cogs(s,t) = net_of_fee(s,t) × fabrication_premium(t)` charges the premium on the full inflow every period, with no offset.
+
+**Why half of it was right.** The premium is genuinely a per-gram cost. Every gram a customer holds came from a bar bought at fix plus premium, so it does pass through proportionally.
+
+**Why the other half is wrong.** **Redeemed gold returns to the float and is re-allocated without paying the premium a second time.** Only the **net** addition to the book is procured from the dealer.
+
+**Decision:** charge the premium on `MAX(0, grams_required − recycled_grams)`. **Size: if redemptions run at 20% of inflows, premium cost was overstated by 20%.** Small in Year 1, growing as the book ages. **It moves in the business's favour.**
+
+**Consistency note.** The brief already applies this logic on the redemption side — one of its own checks is *"spread cost is exactly zero in every growing month"* — and simply had not applied it to COGS.
+
+🔴 **One dependency, and it is undesigned.** This holds only if redeemed gold genuinely returns to the float rather than going back to the dealer. **Nobody has written that down.** It interacts with the buyback mechanics and the backing invariant. **Correction 30. Settle it before the change is built.**
+
+---
+
+### The combined effect of D28, D29 and D30
+
+On a USD 75 contribution at a 5% fee, before D30:
+
+| Line | v2.3 | v2.4 |
+|---|---|---|
+| Gross margin retained | 2.15% | **3.58%** |
+| Net contribution margin | **0.54%** (USD 0.41) | **1.97%** (USD 1.47) |
+| Break-even ticket, Base rail | ~USD 29 | **USD 10.90** |
+| Minimum viable entry fee | 4.96% | **~3.07%** |
+
+**Two conclusions move and one holds.**
+
+- **The minimum-ticket problem largely dissolves at the Base rail** — break-even falls below the inherited USD 20 floor. ⚠ **At the Conservative rail it is USD 66, so the rail cost still decides it.** The floor is no longer structurally broken; it is rail-dependent.
+- 🔴 **§0.3 holds, with a different cause.** The 3% fee is now short by ~0.07pp rather than 0.79pp. *"The fee cut is unfundable"* becomes *"the fee cut breaks even and leaves nothing for anything else."* **The binding cost is no longer the premium; it is the float carry D29 brings forward to launch.**
+- **§0.1, §0.2, §0.4 and §0.5 are untouched.** None of them runs through the premium.
+
+⚠ **Every output figure in the brief was generated at F4 = 3.00% under dealer-carried float and is superseded. The reference model has not been re-run.** Brief first, model second.
+
+**Brief sections amended:** front matter, §0.3 (superseding note), §3 Layer 3 (COGS formula), §3 Layer 4 and §6.1b (unit-margin tables), §6.1 (waterfall re-cut, both columns), §8.1 F4, §8.2 S51, §11 (growth logic), §15 corrections 26 to 30, §16 (F4 downgraded, two-way spread promoted).

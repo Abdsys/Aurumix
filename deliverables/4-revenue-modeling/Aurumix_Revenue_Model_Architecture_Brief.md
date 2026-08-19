@@ -1,7 +1,7 @@
 # Aurumix — Revenue Model Architecture Brief
 
-**Date:** 2026-08-18
-**Version:** 2.1 (draft — structural sections)
+**Date:** 2026-08-19
+**Version:** 2.4 (draft — structural sections)
 **Phase:** 4, Revenue and Economic Modeling (repo folder 4; charter Phase 3)
 **Status:** Architecture for review. No spreadsheet built yet. Build follows sign-off on Section 3.
 **Supersedes:** v2.0 (2026-08-18) and v1.0 (2026-08-17, commit `668e0d5`). Every architecture change through v2.0 is recorded in `_working_architecture-decisions-v2.md` as decisions D1–D20 and is cited here at the point of use. **v2.1 carries three client decisions on top of that record: D21 the 7-year, 29-column basis; D22 the collapse of the score machinery to a tenure→tier lookup; D23 cohorts as a convolution rather than a triangle.**
@@ -11,6 +11,12 @@
 > **What this document is.** A complete, implementable plan for the Aurumix revenue and cost model. After reading it, a modeller should be able to build the workbook without asking a question. Every value, formula and structure is specified, and every assumption carries its source and confidence.
 >
 > **What changed at v2.0, in one paragraph.** v1.0's research and sourcing survived audit intact. Its *architecture* did not. Five audits — arithmetic, corpus fidelity, structural, benchmark and buildability — established that the three-state population machine drops 81% of the terminal book out of the model, that tier distribution cannot be computed from cohort averages, that a single constant hazard cannot reproduce the persistency curve v1.0 itself recommends, that a model with no cash flow cannot answer "when do we make money," and that the break-even figures in §0.3 were divisions of an opex base sized for 500 investors by a margin figure that could never meet it. v2.0 rebuilds the engine around a six-state population, five behavioural archetypes, a pre-gate block, a net-flow redemption term, and a cash and funding layer. **The findings v1.0 reached are, if anything, strengthened. The numbers it reached are withdrawn.**
+>
+> 🆕 **What changed at v2.4, in one paragraph.** Three decisions, all from one research pass recorded in `supporting/_working_dealer-premium-and-comparables-research.md`. **D28: F4, the fabrication premium, is measured rather than guessed** — 100 g at **1.50%** and 1 kg at **0.95%**, from a same-page dealer pair where the rate and the bar prices are struck at the same moment, less a published bulk gradient. The ladder was **one denomination too pessimistic at every rung**, and Good Delivery is retired as a rung because Dubai's own standard is a 1 kg bar. **D29: S51 flips to own float from M1**, because all three routes the comparables use to avoid carrying metal are closed to Aurumix. **D30: the premium is charged on net new grams, not gross inflow**, because redeemed gold returns to the float. ⚠ **Net contribution margin on a USD 75 ticket rises from 0.54% to 1.97% and the break-even ticket falls from ~USD 29 to USD 10.90 — but §0.3 survives with a different cause: the 3% fee is now short by ~0.07pp rather than 0.79pp, and the binding cost is no longer the premium, it is the 1.28% of price-gap and float capital that D29 moves onto Aurumix's book from launch.** 🔴 **The same pass found that DMCC Tradeflow cannot carry fractional customer interests and that no LBMA approved-vault network exists — corrections 26 to 30.**
+>
+> 🆕 **What changed at v2.3, in one paragraph.** One decision, and it is presentational rather than structural. **D26: the workbook is delivered on the firm's standard five-sheet architecture — Cover, Assumptions, Scenario Parameters, Model, Summary — with the machinery moved to five working sheets placed after them and hidden.** The former Opex & P&L sheet folds into Model as a second row band, so a reader can trace one visible sheet from accounts acquired to net profit and cash. Checks hides, and its master flag is mirrored to the Cover as a link. **Nothing about what is computed, or in what order, changes.** ⚠ **One real consequence: the acyclicity rule was written as "no sheet may reference a sheet to its right," and hiding inverts tab order against logical order. The test is now by sheet NAME against the §3.x.1 order, which is written onto the Cover so it cannot be lost** (§3.x.1, §3.x.4).
+>
+> 🆕 **What changed at v2.2, in one paragraph.** Two decisions. **(1) The bottom-up engine was deliberately reopened and confirmed** (D24): when most inputs are unknown, a top-down model concentrates the whole answer in one unfalsifiable penetration share, cannot produce a tornado to tell you which unknown to resolve first, and cannot see that only 53.5% of accounts ever reach the gate that unlocks 83% of the profit. The five findings in §0 are structural, so they survive a wholesale re-cut of the parameter set. **(2) §5 is rewritten** (D25): six occupational segments become **four regional ones**, and the population is re-cut from Indian to **South Asian**, after three research streams against primary sources. Each region now carries an **average ticket plus a floor share**, which derives two ticket bands and preserves both the fixed-rail-cost and the card-spend non-linearities that a single blended average would have destroyed. **Bahrain leaves the model** on the CBB Crypto-Asset Module and becomes a sized note. 🔴 **The book-weighted ticket falls from ~40 to ~31.5, so §0.3's minimum viable entry fee rises. The reference model has NOT been re-run: every output figure below still reflects the pre-D25 segmentation.**
 >
 > **What changed at v2.1, in one paragraph.** Three decisions, all taken by the client and none re-openable here. **(1) The horizon is 7 years on 29 columns — 24 monthly plus 5 annual** — matching the firm's DRODE precedent, whose Model sheet was 29 columns on exactly this split (D21, §1). **(2) The per-period score arithmetic collapses to a tenure→tier lookup plus one heavy-seller haircut** (D22, §3 Layer 5); the eligibility gate, the survival engine and the never-gated population stay as a live engine, because measurement says the rate ladder is second-order and eligibility is first-order. **(3) Cohorts become a convolution** — five monthly lifecycle curves computed to M84 on an input sheet, convolved against the monthly acquisition vector (D23, §3 Layer 2). **The workbook must not contain a cohort triangle.** The engine's shape changes; none of its findings do.
 >
@@ -79,6 +85,16 @@ The corpus called persona H "the row to be honest about." It is 18.7% of the boo
 ---
 
 ### 0.3 The planned entry-fee cut to 3% is not fundable
+
+> 🆕 🔴 **THIS FINDING SURVIVES v2.4, BUT ITS CAUSE HAS CHANGED AND THE TABLE BELOW IS SUPERSEDED** (D28, D29).
+>
+> **The premium is no longer the binding cost.** F4 is now measured, not assumed: **100 g at 1.50%, 1 kg at 0.95%**, against the 3.00 / 2.00 / 0.75 ladder this section was written on. The ladder was **one denomination too pessimistic at every rung**, and the Good Delivery argument below targeted the wrong object — **Dubai's own Good Delivery standard is a 1 kg bar, not a 400 oz bar** (research record §7.1).
+>
+> **What binds instead: the 1.28% of price-gap risk and float cost of capital that D29 moves onto Aurumix's own book from M1.** The minimum viable fee at a USD 75 ticket falls from **4.96% to ~3.07%**, so **the 3% target now sits essentially AT break-even rather than 0.79pp below it.** It is still not funded, and it now has no headroom at all rather than a large deficit.
+>
+> ⚠ **Two things follow for how this is said to the client.** First, *"the fee cut is unfundable"* becomes *"the fee cut breaks even and leaves nothing for anything else"* — a materially different conversation. Second, **the lever moved: it is no longer the dealer's premium, it is the pricing convention.** The 0.79% price-gap exists because the price is struck at the next LBMA fix, hours away; Paxos reduces the same exposure to near zero with a 5-second quote hedged instantly with a named dealer (research record §4.2). **That trade-off — neutral pricing versus price-gap cost — is now a live decision worth ~0.79pp and it has never been framed as one.**
+>
+> **The table and text below are the v2.0 position, retained until the reference model is re-run at F4 = 1.50%.**
 
 v1.0's fee ladder falls 5% → 4% → 3%. That was justified by the fabrication premium falling 3.00% → 2.00% → 0.75%, which requires Good Delivery bars. **Solved endogenously against the model's own volume, Good Delivery never clears** — at ~126 kg/year a 12.4 kg bar fills roughly ten times a year and the price-gap carry swamps the premium saving. 1 kg clears at Year 5, not Year 3.
 
@@ -214,23 +230,34 @@ Both are commercial conversations. Neither can be closed by more desk research, 
 
 ### 1.1 Sheet index
 
-Eleven sheets (D18, extended at D23). Full row bands, freeze panes and colour legend at §12.
+🆕 **Five visible sheets and five hidden working sheets** (D26, revising D18 and D23). **The five visible sheets are the firm's standard revenue-model architecture and their names and order are fixed by the `revenue-modeler` skill: Cover, Assumptions, Scenario Parameters, Model, Summary.** Everything that is machinery rather than argument is a working sheet, placed after the five and **hidden in the delivered file**. Full row bands, freeze panes and colour legend at §12.
+
+**Visible — the five, in tab order:**
 
 | # | Sheet | Purpose | Depends on |
 |---|---|---|---|
-| 1 | **Cover** | Title, version, scope, colour legend, period-count statement | — |
+| 1 | **Cover** | Title, version, scope, colour legend, period-count statement, **the logical dependency order (§3.x.1), and the master check cell** | Checks |
 | 2 | **Assumptions** | F-, S-, T-series with unit, basis, confidence, source URL, source category, sheet location | — |
 | 3 | **Scenario Parameters** | Global switch, per-parameter override, named narrative scenarios, binary switches | Assumptions |
-| 4 | **Time Series** | **29** period headers, activation flags, seasonality vectors, gold price, fee ladder, bar denomination | Assumptions, Scenario |
-| 5 | **Lifecycle Curves** *(new at v2.1)* | **Monthly to M84.** Five archetype curves carrying alive / contributing / reduced / gated / tier / grams / card-active / spend per month-since-origination. **The only monthly-to-M84 sheet in the workbook** | Assumptions, Scenario |
-| 6 | **Acquisition** | Acquisition by channel × segment → the **monthly acquisition vector**, with segment scalars and the S4/S5/S6 offsets | Time Series |
-| 7 | **ICS Validation** *(demoted from Engine)* | The full ICS formula and the nine-persona test set, run as a **validation artefact** against the collapsed lookup, plus the 5% safety gate (§3 Layer 5) | Lifecycle Curves |
-| 8 | **Model** | The convolution, contribution flow, spot lane, unit margin, AUM stock, all six revenue streams, benefit costs. **29 columns, ~200 rows** | Lifecycle Curves, Acquisition |
-| 9 | **Opex & P&L** | Opex blocks, acquisition cost, EBITDA, tax, working capital, cash, funding | Model |
-| 10 | **Summary** | Annual roll-ups, revenue mix, unit economics, break-even views, tornado inputs | Opex & P&L |
-| 11 | **Checks** | Conservation and sanity tests, all returning TRUE/FALSE, **including the D22 collapse-safety gate** | All |
+| 4 | **Model** | The convolution, contribution flow, spot lane, unit margin, AUM stock, all six revenue streams, benefit costs, **then opex, acquisition cost, EBITDA, tax, working capital, cash and funding**. **29 columns, ~280 rows** | Lifecycle Curves, Acquisition, Time Series |
+| 5 | **Summary** | Annual roll-ups, revenue mix, unit economics, break-even views, tornado inputs | Model |
 
-**The Checks sheet is where this build should exceed the benchmark**, which has none (D18).
+**Hidden — the five working sheets, placed after the visible five:**
+
+| # | Sheet | Purpose | Depends on |
+|---|---|---|---|
+| 6 | **Time Series** | **29** period headers, activation flags, seasonality vectors, gold price, fee ladder, bar denomination | Assumptions, Scenario |
+| 7 | **Lifecycle Curves** *(new at v2.1)* | **Monthly to M84.** Five archetype curves carrying alive / contributing / reduced / gated / tier / grams / card-active / spend per month-since-origination. **The only monthly-to-M84 sheet in the workbook** | Assumptions, Scenario |
+| 8 | **Acquisition** | Acquisition by channel × segment → the **monthly acquisition vector**, with segment scalars and the S4/S5/S6 offsets | Time Series |
+| 9 | **ICS Validation** *(demoted from Engine)* | The full ICS formula and the nine-persona test set, run as a **validation artefact** against the collapsed lookup, plus the 5% safety gate (§3 Layer 5) | Lifecycle Curves |
+| 10 | **Checks** | Conservation and sanity tests, all returning TRUE/FALSE, **including the D22 collapse-safety gate** | All |
+
+🆕 **Two placement decisions inside D26, both deliberate:**
+
+1. **Opex and P&L fold into the Model sheet rather than hiding.** A reader must be able to trace one visible sheet from accounts acquired to net profit and cash without unhiding anything. **The cost is height, not complexity: ~200 rows becomes ~280.** ⚠ This also resolves the inconsistency §12 records in v1.0, which listed an Opex sheet in one section and put opex rows on the Model sheet in another. **There is now one answer: opex rows live on Model.**
+2. **Checks hides, but its master flag is promoted to the Cover.** **The Checks sheet is still where this build exceeds the benchmark**, which has none (D18) — but sixteen TRUE/FALSE rows are a working artefact, not a presentation one. **Cover carries a single `ALL CHECKS PASS` cell reading the Checks master row, red on FALSE.** The signal survives; the clutter does not.
+
+⚠ **Hiding a sheet changes nothing about what it computes or when.** The dependency order at §3.x.1 is unchanged by D26. **What D26 does change is how that order is enforced — see the warning at §3.x.1 about tab position, which now runs backwards against the logical order and must not be used as the test.**
 
 ---
 
@@ -451,7 +478,7 @@ New accounts per month = `agent-driven + referral-driven + direct + partner-driv
 |---|---|---|---|
 | **Agent** | `active_agents(t) × S12 × S17_ramp(months_since_joining)` | `100 G Business_Model.md` §11.1 (client's stated primary channel); ramp shape from insurance-agency practice | **Agent stock must be grossed up for attrition.** T7 gives 5→15→40→90→200 *active* agents. At S18 = 45%/yr, holding 200 active requires ~90 recruits/yr, each re-entering the ramp at 0.20. **v1.0 omits this entirely and overstates agent output by 15–20% at steady state** |
 | **Referral** | `qualified_referrers(t) × S19 ÷ 12 × S20` | `_draft_referral-system.md` §5.4, §6 | **Structurally zero until M13.** A referrer must pass their own six-month gate and the referee must then pass theirs. **Two six-month gates in series means the channel does not reach steady state until roughly M25** |
-| **Direct** | `monthly_spend(t) ÷ effective_CAC(t) + organic` | S24, S25, S26 | `effective_CAC(t) = S15 × [1 + 0.35 × (monthly_spend ÷ 60,000)^0.7]`. **CAC must not be flat.** At USD 60,000/month spend effective CAC is USD 162, not 120 |
+| **Direct** | `monthly_spend(t) ÷ S15 + organic` | S24, S25, S26 | 🆕 **CAC is LINEAR in this model** (D27). `effective_CAC = S15`, a flat USD 120. **The convexity curve is retired to a scenario switch defaulting OFF and its calibration moves to Phase 5.** The brake on unbounded growth is the **saturation ceiling below**, not the CAC curve — see the note after this table |
 | **Partner** | `partner_AUM(t)`, no account-level acquisition | S42, S43, S44 | Partner accounts **earn no ICS and consume no benefits** (`_draft_ics-scoring.md` §1.9). Track separately throughout — structurally the highest-margin book |
 
 **The saturation rule, and it is the single most important structural fill in this layer** (S23):
@@ -464,12 +491,17 @@ new(s,t) = raw_demand(s,t)
 
 **Use cumulative-ever-acquired, never live accounts, in the numerator.** A lapsed customer is a burnt lead, not a returned one. The two denominators diverge steadily with tenure — the ten-year run put the gap at roughly **5× by Year 10** — and the correct one is the mechanism that stops the model producing an implausible late-horizon hockey stick.
 
-**Layer 1's output is a vector, not a triangle** (D23). This layer terminates in `a(s,t)` — new accounts by segment by period — and nothing else. **The segments that activate late (S4 at M13, S5 on the switch, S6 at M25) are handled by offsetting `a(s,t)`, never by giving them their own lifecycle curve.** A segment that opens at M13 has zeros in `a(s,1..12)`; the convolution at Layer 2 then places its whole book 12 months to the right automatically. **Segments differ by ticket and card-spend multiplier only. They do not differ by behaviour, and giving them separate curves would assert that they do without evidence.**
+**Layer 1's output is a vector, not a triangle** (D23). This layer terminates in `a(s,t)` — new accounts by **region** by period — and nothing else. 🆕 **The regions that activate late (R2 at M7, R3 at M13, R4 on the switch) are handled by offsetting `a(s,t)`, never by giving them their own lifecycle curve.** A region that opens at M13 has zeros in `a(s,1..12)`; the convolution at Layer 2 then places its whole book 12 months to the right automatically. **Regions differ by ticket band and card-spend multiplier only. They do not differ by behaviour, and giving them separate curves would assert that they do without evidence.**
 
-**Two structural rules the S16 matrix encodes, which matter more than its cells:**
+🆕 **R2's M7 activation is argued, not assumed** (D25, §5.4). Two reasons, both datable: the agent network is Indian and must recruit non-Indian agents before it reaches R2 at all, and CBUAE's Universal Account rollout is what makes the lowest band collectable. **Track the Universal Account as a dependency with a date rather than as a background assumption.**
 
-1. **The agent row must always be the most blue-collar-weighted row.** Agents earn a percentage of a fee on a ticket, so on pure economics they should chase S1. They will not, because S3 is where the accessible density is — labour accommodation, community organisations, employer payroll clusters. **This collides directly with §0.2: the agent channel delivers the segment on which the fixed rail cost is spread over the smallest base. If the rail lands at UAEDDS pricing, the agent channel is the loss-making channel, and the model must be able to show that.**
-2. **The B2B row is 60% S5.** Stream 6's natural partner set after the SEBI caution is Indian wallets and neobanks. **If `INDIA_ENABLED` is OFF, stream 6 must fall by roughly 60%, not stay flat.** v1.0 leaves the two switches independent and they are not.
+**Three structural rules the S16 matrix encodes, which matter more than its cells:**
+
+1. **The agent row must always be the most floor-weighted row.** Agents earn a percentage of a fee on a ticket, so on pure economics they should chase the standard band. They will not, because the floor band is where the accessible density is: labour accommodation, community organisations, employer payroll clusters. **This collides directly with §0.2: the agent channel delivers the band on which the fixed rail cost is spread over the smallest ticket. If the rail lands at UAEDDS pricing, the agent channel is the loss-making channel, and the model must be able to show that.** 🔴 **D25 adds a prior question: §5.4 finds that band may not have a direct-debit-capable account at all.**
+2. **The B2B row is 60% R4.** Stream 6's natural partner set after the SEBI caution is Indian wallets and neobanks. **If `INDIA_ENABLED` is OFF, stream 6 must fall by roughly 60%, not stay flat.** v1.0 leaves the two switches independent and they are not.
+3. 🆕 **No channel currently reaches R2, and the matrix must say so rather than imply otherwise** (D25). Until a non-Indian agent recruitment assumption is set, R2 arrives through direct and referral only, at a materially lower rate than R1.
+
+🆕 **Why linear CAC is safe here, and where the risk actually moved** (D27). The failure mode a convex CAC guards against is a model that buys unlimited growth with money. **That brake is the saturation term above, not the CAC curve** — `new` is multiplied by remaining headroom against `base × ceiling`, so spend cannot manufacture accounts that the perimeter does not contain. The two mechanisms guard the same failure and the saturation one is sourced while the CAC one is not. **One genuine consequence remains and must be stated wherever the output appears: direct-channel LTV:CAC at high spend is an UPPER BOUND under linear CAC.** Promoted output 2 (§14.3) is LTV:CAC by channel × segment, so **the direct-channel cells carry that caveat explicitly**, and the `CAC_CONVEXITY` switch exists so the sensitivity can be shown on request. **CAC uncertainty still reaches the tornado through S15's own range (80 / 120 / 200), which is a level the tornado can rank rather than a shape it cannot.**
 
 Seasonality is applied on a vector normalised to exactly **12.00** (S52a). **This is a hard build requirement: an un-normalised seasonality vector silently changes the model's annual answer**, which is one of the more common ways a monthly model goes wrong. Check formula at §12.
 
@@ -523,7 +555,9 @@ book(s, X, t) = Σ_a  weight(a)
 
 1. **Time-invariance.** Every state transition in §2d depends on `m`, never on `t`. Nothing in the six-state machine reads a calendar date. The one apparent exception is the card at M18, and it is handled on the *convolved* result — `card_active` is masked by `IF(t ≥ 18, …)` at the Model sheet, not inside the curve.
 2. **Linearity.** Every series aggregates by addition across cohorts. A convolution is exactly the sum a triangle would take, in one row instead of 72.
-3. **Segments scale, they do not diverge.** Segments differ by ticket and card spend, both of which are multiplicative on the curve. **A segment never gets its own curve**, and a later-activating segment is handled by offsetting `acq(s,t)` (Layer 1). **If a future decision makes a segment behave differently rather than merely spend differently, this equivalence breaks and the curve set must expand — say so at that point rather than quietly adding a scalar.**
+3. **Regions scale, they do not diverge.** Regions differ by ticket band and card spend, both of which are multiplicative on the curve. **A region never gets its own curve**, and a later-activating region is handled by offsetting `acq(s,t)` (Layer 1). **If a future decision makes a region behave differently rather than merely spend differently, this equivalence breaks and the curve set must expand — say so at that point rather than quietly adding a scalar.**
+
+🆕 **D25 changes what `segment_scalar` reads.** It is now a **band** scalar: each region contributes two ticket bands (S54, S55, §5.2), and the ticket and card-spend multipliers attach to the band, not to the region. **Eight bands across four regions, against v2.1's six segments, so the scalar count barely moves while both non-linearities are preserved.** ⚠ **Never apply a scalar built from a regional average ticket** — that is the specific error §5.2 exists to prevent, and it would flatten the card line by roughly 3×.
 
 #### 2d. The six states, unchanged
 
@@ -616,13 +650,17 @@ Source: `_parked_collection-economics-and-minimum-ticket.md` §2. **This is non-
 
 | Line | SIP, USD 75 | Spot, USD 620 |
 |---|---|---|
-| Gross margin (5% fee less 3% premium, 0.79% price-gap, 0.49% float CoC) | 0.72% → USD 0.54 | 0.72% → USD 4.46 |
+| 🆕 Gross margin (5% fee less **1.50%** premium, 0.79% price-gap, 0.49% float CoC) — **re-cut at D28** | **2.30% → USD 1.72** | **2.30% → USD 14.23** |
 | Rail (**one** event either way, S1 Base = USD 0.25) | (0.25) | (0.25) |
-| **Net margin** | **USD 0.29** | **USD 4.21** |
-| **Net margin as % of ticket** | **0.39%** | **0.68%** |
-| **At Conservative rail (S1 = USD 1.36, UAEDDS)** | **−USD 0.82** | **+USD 3.10** |
+| **Net margin** | **USD 1.47** | **USD 13.98** |
+| **Net margin as % of ticket** | **1.96%** | **2.25%** |
+| 🆕 **At Conservative rail (S1 = USD 1.36, UAEDDS)** | **+USD 0.36** | **+USD 12.87** |
 
-**The whole difference is the fixed rail spread over an 8.3× larger base. Spot is structurally the highest-margin inflow in the business, and it is the only inflow-linked flow that survives the adverse rail scenario.** v1.0's §0.2 treats the rail as a terminal problem for stream 1. It is not terminal if spot volume is material. **Model spot before concluding stream 1 is unsalvageable.**
+**The whole difference is still the fixed rail spread over an 8.3× larger base, and spot remains structurally the highest-margin inflow in the business.**
+
+🔴 🆕 **But one conclusion in this subsection is REVERSED by D28, and it is the important one.** At the old 3.00% premium the SIP lane went **negative at the Conservative rail (−USD 0.82)**, and the claim was that **spot was the only inflow-linked flow that survived it.** At the measured 1.50% premium the SIP lane clears the Conservative rail at **+USD 0.36**.
+
+**So the adverse rail scenario is no longer fatal to the SIP lane. It is merely thin.** The rail cost stops being an existential question for stream 1 and becomes a margin question. ⚠ **This does not make the rail unimportant — it still moves SIP net margin by 4×, from USD 1.47 to USD 0.36 — but the case no longer rests on spot volume rescuing the lane.** v1.0's §0.2 treated the rail as terminal for stream 1; it is not terminal at either rail price once the premium is measured.
 
 Two qualifications that keep this honest. **Spot earns no ICS**, so it builds no tier, no card eligibility and no credit eligibility — **it is margin without a funnel**, and v1.0's §0.4 conclusion that the SIP is an acquisition mechanism for the card still holds. And spot volume is lumpy and seasonal, so it cannot be relied on to cover a fixed cost base. **Spot improves the margin on stream 1; it does not change what the business is.**
 
@@ -1016,42 +1054,62 @@ TOTAL FUNDING     = PEAK FUNDING + AED 1.5m regulatory capital + float principal
 
 ### 3.x.1 Sheet execution order
 
+🆕 **This is a LOGICAL order, and after D26 it is no longer the tab order.** Read the warning below the diagram before using it as a test.
+
 ```
-  [1] Assumptions            no inbound dependencies
+  [1] Assumptions            no inbound dependencies                    VISIBLE
         |
-  [2] Scenario Parameters    reads Assumptions (Base/Aggressive/Conservative columns)
+  [2] Scenario Parameters    reads Assumptions (Base/Aggressive/         VISIBLE
+        |                    Conservative columns)
         |
-  [3] Time Series            reads Assumptions + Scenario; produces 29 period headers,
-        |                    activation flags, seasonality, gold price, fee ladder,
+  [3] Time Series            reads Assumptions + Scenario; produces 29  hidden
+        |                    period headers, activation flags,
+        |                    seasonality, gold price, fee ladder,
         |                    bar denomination, opex interpolation
         |
-  [4] Lifecycle Curves       reads Assumptions + Scenario ONLY.  MONTHLY TO M84.
-        |                    Five archetype curves: alive / contributing / reduced /
-        |                    gated / tier / grams / card-active / spend.
+  [4] Lifecycle Curves       reads Assumptions + Scenario ONLY.         hidden
+        |                    MONTHLY TO M84.  Five archetype curves:
+        |                    alive / contributing / reduced / gated /
+        |                    tier / grams / card-active / spend.
         |                    ** READS NO PERIOD-t QUANTITY FROM ANYWHERE. **
         |                    It is a pure function of month-since-origination.
         |
-  [5] Acquisition            reads Time Series; produces the monthly acquisition
-        |                    vector acq(s,t) by channel x segment, with the
-        |                    S4 / S5 / S6 activation offsets
+  [5] Acquisition            reads Time Series; produces the monthly    hidden
+        |                    acquisition vector acq(s,t) by channel
+        |                    x segment, with the S4 / S5 / S6
+        |                    activation offsets
         |
-  [6] ICS Validation         reads Lifecycle Curves ONLY.  Writes into the model
-        |                    NOWHERE.  Produces the nine persona results and the
-        |                    5% collapse-safety delta.  A LEAF, not a link.
+  [6] ICS Validation         reads Lifecycle Curves ONLY.  Writes into  hidden
+        |                    the model NOWHERE.  Produces the nine
+        |                    persona results and the 5% collapse-safety
+        |                    delta.  A LEAF, not a link.
         |
-  [7] Model                  reads Lifecycle Curves + Acquisition; performs the
-        |                    convolution, then flows, AUM stock, six streams,
-        |                    benefit costs.  29 columns.
+  [7] Model                  reads Lifecycle Curves + Acquisition +     VISIBLE
+        |                    Time Series; performs the convolution,
+        |                    then flows, AUM stock, six streams,
+        |                    benefit costs, THEN opex, acquisition cost,
+        |                    EBITDA, tax, working capital, cash, funding.
+        |                    29 columns.  (D26 folds the former
+        |                    [8] Opex & P&L into this sheet.)
         |
-  [8] Opex & P&L             reads Model + Time Series; produces EBITDA, tax,
-        |                    working capital, cash, funding
+  [8] Summary                reads Model; annual roll-ups,              VISIBLE
+        |                    unit economics, break-even views
         |
-  [9] Summary                reads Opex & P&L + Model; annual roll-ups, unit economics
+  [9] Checks                 reads everything; writes nothing.          hidden
+        |                    Its master row is mirrored to Cover.
         |
- [10] Checks                 reads everything; writes nothing
+ [10] Cover                  reads Checks (master flag only).           VISIBLE
+                             Otherwise static.
 ```
 
-**The rule to enforce: no sheet may reference a sheet to its right.** There is exactly one exception and it is handled at §3.x.3 item 1.
+**The rule to enforce: no sheet may reference a sheet later in the numbered order above.** There is exactly one exception and it is handled at §3.x.3 item 1.
+
+🆕 ⚠ **D26 breaks the physical form of this test and the replacement must be built deliberately.** The old rule read *"no sheet may reference a sheet to its right"*, which was a tab-position test. **With five sheets visible and the working sheets hidden behind them, tab position now runs backwards against the logical order**: Model sits at tab 4 and legitimately reads Time Series, Lifecycle Curves and Acquisition at tabs 6, 7 and 8. **A tab-position test would fail a correct workbook, and worse, a modeller who "fixes" it by reordering tabs breaks the standard five-sheet layout instead.**
+
+**So the test is by NAME, against the numbered order above, and the order is written on the Cover sheet so it cannot be lost.** Two consequences for the build:
+
+- **Cover is logically last, not first.** It is tab 1 and it reads the Checks master flag, so it is the one visible sheet with an inbound dependency. That is intentional and it is the only edge into Cover — **nothing else on Cover may reference any other sheet.**
+- **Hiding is a presentation step, applied last.** Build every sheet visible, pass all sixteen checks, then hide the five working sheets. **Never hide a sheet that has not yet passed its checks**, because a hidden sheet with a FALSE in it is exactly the failure §3.x exists to prevent.
 
 ⚠ **The ICS Validation sheet is a leaf and must stay one.** It reads the Lifecycle Curves and it is read only by Checks. **If any Model formula ever references it, the collapse has been silently un-done** and the row map at §10.1 no longer describes the workbook. Add this to the left-to-right dependency test at §3.x.4.
 
@@ -1092,7 +1150,9 @@ There are exactly two, and both are real.
 ### 3.x.4 What the Checks sheet must verify about the cascade
 
 - **Circular-reference canary.** A named cell that reports the workbook's iterative-calculation setting. Iterative calculation is a workbook property and a modeller can enable it by accident; the canary makes that visible on the Checks sheet rather than invisible in a dialog box.
-- **Left-to-right dependency test.** For each sheet, confirm no formula references a sheet later in the §3.x.1 order. **Including: no Model formula may reference the ICS Validation sheet.**
+- 🆕 **Dependency-order test, by sheet NAME and not by tab position** (D26). For each sheet, confirm no formula references a sheet later in the §3.x.1 numbered order. **Including: no Model formula may reference the ICS Validation sheet, and nothing on Cover may reference any sheet other than Checks.** ⚠ **Do not implement this as a left-to-right tab scan.** After D26 the five visible sheets sit ahead of the working sheets they depend on, so a positional test fails a correct workbook (§3.x.1).
+- 🆕 **Hidden-sheet inventory** (D26). A row listing the five sheets that must be hidden in the delivered file — Time Series, Lifecycle Curves, Acquisition, ICS Validation, Checks — and the five that must be visible. **A working sheet left visible is a cosmetic defect; a required sheet hidden is a real one.**
+- 🆕 **Cover master-flag integrity** (D26). Confirm the Cover's `ALL CHECKS PASS` cell reads the Checks master row and is not a typed value. **A hardcoded TRUE on the Cover is the single worst failure this workbook can ship**, because it hides a hidden sheet's failure behind a visible green cell.
 - **Lag integrity.** Confirm `acquisition_budget` in every period references the prior period and never the current one, **and that the lag is one month in the monthly block and one year in the annual block.**
 - **Denomination monotonicity.** Confirm `bar_grams(t) ≥ bar_grams(t−1)` for all `t` — the latch.
 - **Convolution range integrity.** Confirm every `SUMPRODUCT` in the convolution band terminates its acquisition range at the current period and never beyond it, and that the curve range is reversed against it. **A range that runs one column too far reads an acquisition figure the model has not derived yet, which is the loop §3.x.2(b) rules out.**
@@ -1202,32 +1262,141 @@ Under v1.0's Layer 5 the ladder dates above were dates. **They are not.** A memb
 
 ## 5. Segments
 
-The corpus segments by nationality and KYC document. **Every rule that binds is about country of residence.** Decision 31 is explicit: *"the table is segmented by the wrong variable. Re-cut it by country of residence."*
+> 🆕 **REWRITTEN 2026-08-19 (D25). Six occupational segments become four regional ones, and the population is re-cut from Indian to South Asian.** Three research streams were run against primary sources: Oman's NCSI monthly bulletin, Bahrain's Social Insurance wage dataset, the CBB Crypto-Asset Module text, CBUAE's Financial Stability Report 2025, AMFI July 2026 and the Abu Dhabi 2024 census. **v2.1's segment table is superseded in full.** The prior version is preserved in `supporting/_working_architecture-decisions-v2.md` at D25.
 
-| ID | Segment | Ticket | Reduced ticket (S29) | Addressable base | Penetration ceiling (S22) | **UAE-resident (S49)** | Basis |
-|---|---|---|---|---|---|---|---|
-| S1 | UAE, Indian professional / entrepreneur | **USD 75** | USD 38 | ~71,000 | 22% | **100%** | 15% of income-qualified, per occupational split |
-| S2 | UAE, Indian white-collar non-professional | **USD 40** | USD 20 (floored) | ~119,000 | 16% | **100%** | 25% of income-qualified |
-| S3 | UAE, Indian blue-collar (qualified half) | **USD 20** | USD 20 (at floor) | ~285,000 | 9% | **100%** | 60% of income-qualified |
-| S4 | Oman + Bahrain | **USD 40** | USD 20 (floored) | ~1,014,000 gross | 6% | **0%** | MEA 2025 |
-| S5 | **India resident** | **USD 30** | USD 20 (floored) | ~12.5m serviceable | 0.35% | **0%** | See §6.7 |
-| S6 | Other international | **USD 75** | USD 38 | not sized | n/a | **0%** | Each needs local licensing |
+### 5.0 The three findings that forced the re-cut
 
-**The residency split is definitional, not a judgement call** (S49). Decision 31 re-cut the segments by country of residence precisely so that residence-dependent rules could bind — and VAT is a residence-dependent rule (D14). S1–S3 are UAE-resident by construction; S4, S5 and S6 are non-resident by construction. **High confidence on the split; low confidence on the VAT consequence**, which is a tax-opinion item and is treated as one at §16.
+**1. The market is South Asian, not Indian, and this is the single largest correction in §5.** In Oman, Bangladeshi workers (605,486) outnumber Indian workers (515,361). In the UAE, non-Indian South Asians (~3.4m) outnumber Indians (~3.5m) to within the error bar. **The MEA overseas-Indians table we sized on counts PIO/OCI and historic diaspora, and omits Bangladeshis and Pakistanis entirely.** It is the wrong instrument. National statistics authorities count live visas and are both more current and more complete.
 
-**What the split buys, and the client has not heard this argument.** At the Base channel mix and segment ramp, the **non-resident share of the book rises from 0% in Y1 to roughly 42% by Y10**, driven by S5 and S4. If the export-of-services zero-rating holds, **VAT is not a cost on 42% of fee revenue by Y10**, against a competitor set that is UAE-resident-facing and pays 5% on all of it. **On this base, the international perimeter is a VAT advantage and not merely a licensing cost — a genuine argument for prioritising the S4/S5/S6 perimeter that has nothing to do with market size.**
+⚠ **This reaches past Phase 4.** The charter persona is "the NRI saver" and the agent network in Layer 1 is modelled on Indian insurance-agency practice. Both are narrower than the market. See §15 corrections 21 and 22.
 
-**The penetration ceilings carry a deliberate gradient** (S22), applied against the **income-qualified, gold-propensity-filtered** base of ~474,000 for S1–S3 — **not** the headline 4.58m. S1 has the highest smartphone and banking penetration and the lowest sensitivity to a USD 20 minimum being five times Liv Gold's; S3 is where the Liv Gold competitive problem bites hardest. **S5 at 0.35% of 12.5m is ~44,000 accounts, which alone is most of the client's Y10 target** — which is why the India switch is load-bearing and why its ceiling is set an order of magnitude tighter than the GCC ceilings.
+**2. Segmenting by occupation was solving the wrong problem.** Occupation was a proxy for ticket size. Ticket size is now carried directly by two numbers per region (§5.2), which reproduces the same economics without asserting an occupational split that rests on an uncited tertiary source. **Region is the better cut because region is what the rules and the channels attach to**, exactly as decision 31 argued.
 
-**The addressable base correction, and it goes in our favour.** Decision 31 says the launch perimeter is "~3.5 to 4M". The MEA 2025 primary table gives **4.58M** (UAE 3.57M + Oman 0.69M + Bahrain 0.33M), against 4.30M in the three banking-blocked countries. **We were understating our own perimeter by 15 to 25%.** Correct decision 31.
+**3. Bahrain is not an easy adjacency and our own client agenda has the sequencing backwards.** The CBB Crypto-Asset Module binds and a VARA licence does not passport in. See §5.3.
 
-**But the honest denominator is much smaller.** Filtering the 4.58M for working-age earners, banked status, and an income band that can sustain USD 20/month on top of remittance obligations gives roughly **1.9m income-qualified**, and applying a gold-savings propensity gives **~474,000** (range 0.35m to 0.9m). **The propensity filter has no published source and is the weakest link in the entire sizing.** S22 then multiplies this Low-confidence number by another Low-confidence number — stated here so the compounding is visible rather than hidden inside a ceiling.
+### 5.1 The four modelled regions
 
-**What this does to the client's target.** Year 10 of 60,000 to 100,000 is 1.3% to 2.2% of the headline diaspora, which is how it will be pitched. Against the realistic addressable base it is **12.6% to 21.1%.** Capturing one in five income-qualified, gold-inclined, banked Indians in the UAE, against a bank incumbent, is a demanding number. **Model 60,000 as the defensible case and treat 100,000 as requiring a distribution partnership or perimeter expansion.** The 100k target is carried as a named narrative scenario at §13 — **imposed as an input and measured against the floor**, never assumed as an output.
+| ID | Region | Addressable base | Ceiling (S22) | Implied max accounts | Avg ticket | **Floor share (S54)** | Activation | UAE-resident (S49) |
+|---|---|---|---|---|---|---|---|---|
+| R1 | **UAE, Indian** | ~640,000 | 9.5% | 60,800 | **USD 38** | **40%** | M1 | **100%** |
+| R2 | **UAE, other South Asian** | ~620,000 | 6.0% | 37,200 | **USD 26** | **60%** | **M7** | **100%** |
+| R3 | **Oman** | ~600,000 | 4.0% | 24,000 | **USD 26** | **58%** | M13 | **0%** |
+| R4 | **India resident** | ~12.5m | 0.35% | 43,750 | **USD 30** | **25%** | `INDIA_ENABLED` | **0%** |
+| | **Total** | | | **165,750** | | | | |
 
-**The incumbent nobody had found.** **Liv Gold, from Emirates NBD**: AED 15 minimum (~USD 4), digital XAU, no maintenance or transfer fees, fractional to 0.001 XAU, **convertible to physical gold with home delivery**, under a CBUAE banking licence, distributed to the installed base of the UAE's largest retail bank. RAKBANK's gold account supports standing instructions, which is functionally a gold SIP already.
+**R2 is new and it is the largest single addition to the model's perimeter.** Pakistani, Bangladeshi, Sri Lankan and Nepali residents of the UAE, ~3.4m gross. It is added because the gold-savings culture, the ticket structure and the agent channel all transfer, which is exactly what does not transfer to the populations in §5.3.
 
-**Our USD 20 minimum is five times a bank incumbent's entry point and is not a differentiator.** Differentiation has to rest on allocated title, the ICS benefit ladder, the credit facility, or India-corridor distribution. This belongs in the client conversation before it appears in a revenue projection.
+**The reconciliation check that matters: the total is 165,750 against v2.1's 164,900.** The re-cut moves where the accounts come from without inflating how many there could ever be. **A re-cut that raised the ceiling would be a re-cut that proved nothing**, so this equality is deliberate and should be preserved if any row is re-tuned.
+
+**One method now applies to every row** (this was not true before, and the two UAE rows were not comparable):
+
+```
+population  →  economically active (0.80)  →  direct-debit-capable IBAN (0.57)
+            →  discretionary capacity for USD 20/month after remittances (0.40)
+```
+
+⚠ **The unsourced gold-savings propensity filter is deleted.** It was flagged Low confidence and named "the weakest link in the entire sizing" in v2.1, and it had no published source for Indians, let alone for Pakistanis. It is replaced by the banking filter, which has a stated mechanism behind it (§5.4). **Consequence: the R1 base rises from 474,000 to ~640,000 and its ceiling falls from a blended 12.7% to 9.5%.** Base and ceiling moved together on purpose. **`base × ceiling` is the invariant, not `base`.** Changing one without the other silently re-scales the model, and the Checks sheet should assert the product.
+
+Oman's row skips the 0.80 filter because NCSI counts **expat workers**, who are working-age and economically active by definition. Applying a labour-force filter to them would double-count.
+
+R4 remains on its own basis (AMFI gold ETF folios intersected with active digital-gold holders, §6.7) because it is behavioural rather than demographic, and behavioural is better. **It is the only row not produced by the funnel above, and that is a deliberate exception, not an inconsistency.**
+
+### 5.2 Ticket and floor share: two numbers, two bands
+
+**A single average ticket per region would have destroyed two separate non-linearities**, and this is the load-bearing mechanic of the whole re-cut.
+
+- **Rail cost is a fixed fee per collection, not a percentage.** A USD 20 saver and a USD 50 saver pay the same collection cost, so margin is not linear in ticket. This is §0.3's fee floor restated.
+- **Card spend is keyed to ticket as an income proxy**, compressed by an exponent of 0.55. The card is 83.4% of Y10 gross profit. Blending to one average would have collapsed the card-spend spread from 3.75× to roughly 1.3× and quietly flattened the largest revenue line in the model.
+
+So each region carries **average ticket** and **share sitting at the USD 20 floor**, from which two bands are derived with no additional inputs:
+
+```
+floor band     = USD 20                                  at floor_share
+standard band  = (avg_ticket − floor_share × 20) ÷ (1 − floor_share)
+```
+
+| Region | Avg ticket | Floor share | → Floor band | → Standard band |
+|---|---|---|---|---|
+| R1 UAE Indian | 38 | 40% | USD 20 | **USD 50** |
+| R2 UAE other South Asian | 26 | 60% | USD 20 | **USD 35** |
+| R3 Oman | 26 | 58% | USD 20 | **USD 34** |
+| R4 India | 30 | 25% | USD 20 | **USD 33** |
+
+**Unit margin, rail cost and card spend are computed per band and summed, never on the regional average** (Layer 4). `S29`, the reduced ticket, applies to the standard band only; the floor band is already at the floor and cannot reduce, which is the F6 hard-gate rule doing its work.
+
+🔴 **This makes §0.3 worse, not better, and the direction should be stated before the model is re-run.** The book-weighted average ticket falls from roughly USD 40 to **USD 31.5**. Lower tickets against a fixed per-collection rail means **the minimum viable entry fee rises above the 3.79% in §0.3.** The re-cut does not rescue the fee schedule; it tightens it. How much is a model question and is not yet answered.
+
+**Where the ticket numbers come from.** Anchored on savings capacity rather than remittance volume, because remittance is a committed obligation and not discretionary. A recurring gold debit realistically captures 10 to 15% of monthly savings capacity. Cross-checks: Joyalukkas has already price-discovered **AED 100 (USD 27)** as the viable mass-market monthly instalment for this exact demographic; Malabar sits at AED 200. The blended USD 27 to 34 lands **below** AMFI's USD 34 Indian retail SIP average, which is the correct direction, since AMFI reflects domestic urban investors with materially more discretionary income than a Gulf blue-collar book.
+
+⚠ **AMFI is confirmed current at July 2026** (₹31,961 crore across 10.63 crore contributing accounts = ₹3,007/month = USD 34). It remains an **upper bound and not a proxy.**
+
+### 5.3 Named, sized, and deliberately not modelled
+
+**Excluding these is a decision with a number attached, not an oversight.** Each line states what it would take.
+
+| Population | Size | Why not modelled | What would change it |
+|---|---|---|---|
+| **Bahrain** | ~259,000 addressable (0.51m South Asian residents, filtered on Bahrain's own wage distribution) | 🔴 **The CBB Crypto-Asset Module binds and VARA does not passport in.** Digital tokens are securities under Art. 1 of the CBB Law (CRA-B.1.3); CRA-15.1.1 prohibits offering without written CBB approval; CRA-15.1.9 requires BD 50,000 paid-up capital and escrow at a CBB-licensed retail bank; offers must run through a **CBB-licensed digital token advisor** (CRA-15.1.22). **The 246-page text contains no reverse-solicitation exemption** | A CBB pre-application discussion under CRA-15.1.6, which is the only route to a "jurisdiction acceptable to the CBB" determination under 15.1.9(a) |
+| **Emirati** | ~1.33m | Wrong persona, not small. No remittance driver, banked with ENBD and ADIB, and Liv Gold already sits inside that relationship | A different product and a different channel. Not a marketing decision |
+| **Western expat** | ~500,000 to 600,000 | No gold-savings behaviour to build on | Nothing on the current roadmap |
+
+🔴 **The Bahrain finding reverses our own client agenda.** Item 6b currently says *"agree the launch perimeter is the UAE, then Bahrain and Oman."* **Oman is the accessible one and Bahrain is the hard one.** Oman has no VASP regime in force: FSA Decision E/35/2023 bites on local establishment and is silent on inbound marketing, which is a regulatory gap and **not a permission**. Note also that Oman's regulator is the **FSA, not the Central Bank**, which changes who the client approaches.
+
+### 5.4 Two findings that are not sizing findings
+
+**1. 🔴 The lowest-income segment may not have a payment rail at all.** Findex reports 85.7% UAE account ownership, but for low-wage workers that account is typically a **WPS payroll card with no IBAN**, which cannot carry a mandate or a debit. Our rail is AANI Request to Pay plus prefunding (decision 43), and that still needs a real account.
+
+This collides with something already in the model. Layer 1 states that the agent channel delivers disproportionately into the lowest-ticket segment, and §0.3 states that this is the segment where the fixed rail cost destroys margin. **There is now a prior question: can that segment be collected from at all?** Belongs in the Phase 2 payment work, not only here. See §15 correction 23.
+
+Moving in our favour, on a datable timeline: **CBUAE's Universal Account** is rolling out now, zero minimum balance, real IBAN, targeted explicitly at earners of **AED 5,000/month or less**. FAB Payit live May 2026, Botim IBAN wallets launched. **This is the primary justification for R2's M7 activation rather than M1**, and it should be tracked as a dependency with a date rather than assumed.
+
+**2. 🔴 CBUAE has stated it will launch digital savings and investment products for low-income earners within one to two years.** That is the central bank entering our segment directly. It is a stronger argument for speed than Liv Gold, and it belongs in the client conversation.
+
+### 5.5 What this does to the client's target
+
+Year 10 of 60,000 to 100,000 is 1.3% to 2.2% of the headline diaspora, which is how it will be pitched. Against the **implied maximum of 165,750** in §5.1 it is **36% to 60% of every account the model believes could ever exist.** That is a demanding number against a bank incumbent, and it is a more honest framing than either the diaspora percentage or v2.1's 12.6% to 21.1%.
+
+**Model 60,000 as the defensible case and treat 100,000 as requiring a distribution partnership or perimeter expansion.** The 100k target stays a named narrative scenario at §13, imposed as an input and measured against the floor, never assumed as an output.
+
+### 5.6 Competitive position, corrected in both directions
+
+**In the UAE our floor is not a differentiator.** Liv Gold (Emirates NBD) runs AED 15, digital XAU, no maintenance or transfer fees, fractional to 0.001 XAU, convertible to physical with home delivery, under a CBUAE banking licence and distributed to the largest retail bank's installed base. **Botim's O Gold is at AED 10 (~USD 2.70) and sits on an 8.5m user base that is precisely our persona.** RAKBANK supports standing instructions, which is functionally a gold SIP already.
+
+**But nobody is marketing to this segment.** Across every UAE product found, positioning is investment or lifestyle aimed at mass-affluent customers, and **not one is marketed at low-income migrant workers or at any non-Indian expatriate community.** Emirates Islamic's Sharia positioning is the closest incidental fit for Pakistani and Bangladeshi Muslims and is not framed that way. **This is a positioning and distribution gap, not a product gap**, which is consistent with decision 13.
+
+**In Oman the picture reverses and it is genuinely favourable.** KFH Bahrain and NBO Oman offer gold accounts at a **1-gram minimum (~USD 110)** with **no recurring purchase feature**. A USD 20 monthly recurring floor is real differentiation there, not a me-too.
+
+⚠ **One conversion benchmark worth carrying, because it is sobering.** Botim's O Gold: 775,000 users explored the feature against 45,000 transactions, roughly **6% conversion**, at an average ticket of AED 700 with **64% buying under AED 500**. Those are ad-hoc purchases, not monthly commitments, so a recurring debit converts to a materially lower number.
+
+### 5.7 What could not be sourced, stated as findings
+
+1. **No official UAE nationality breakdown exists.** FCSC and MoFAIC publish totals and the Emirati/non-Emirati split only. **Every nationality figure in public circulation traces to one unsourced private compilation**, which explicitly describes itself as the compiler's own research. Pakistan's and Bangladesh's own governments were the only independent checks obtained and both came in slightly below it. ⛔ **Do not present these as multiple corroborating sources in any client document.**
+2. **No payroll-card versus IBAN split is published.** This is the most important unknown in the funnel and the highest-value item to commission primary research on. A survey of 200 workers would move the estimate more than any further desk research.
+3. **No central bank in the set publishes average remittance transaction size or frequency.** World Bank RPW's "USD 200" is a methodological benchmark for fee comparison and **must not be cited as an observed average.**
+4. **CBUAE dropped the destination-country remittance breakdown from the 2025 FSR.** Country shares in circulation are FSR 2024 or 2022 vintage, and are quoted against the total rather than the personal line. Anyone mixing them is mixing vintages.
+5. **Nepal's UAE stock is unresolved**, 360k versus 700k depending on source, with Nepal's own government at the high end.
+6. **No Omani expat wage distribution is published.** Oman's ticket is inferred from Bahrain's actual distribution plus a composition argument.
+7. **No nationality-disaggregated UAE savings survey exists** for Pakistani, Bangladeshi or Sri Lankan workers. The only worker-level savings distribution found is Indian-only on 2013 wages. **This is the weakest link in the ticket estimates in §5.2.**
+8. **UN DESA 2024 migrant stock by origin was not extracted** and would give a genuine primary replacement for the UAE nationality spine. Worth doing before client delivery.
+
+### 5.8 Residency, the VAT argument, and the ceiling gradient
+
+**The residency split is definitional, not a judgement call** (S49). Decision 31 re-cut by country of residence precisely so that residence-dependent rules could bind, and VAT is a residence-dependent rule (D14). **R1 and R2 are UAE-resident by construction; R3 and R4 are non-resident by construction.** High confidence on the split; low confidence on the VAT consequence, which is a tax-opinion item and is treated as one at §16.
+
+**What the split buys, and the client has not heard this argument.** If the export-of-services zero-rating holds, **VAT is not a cost on the non-resident share of fee revenue**, against a competitor set that is UAE-resident-facing and pays 5% on all of it. On this base the international perimeter is a **VAT advantage and not merely a licensing cost**, which is an argument for prioritising R3 and R4 that has nothing to do with market size.
+
+⚠ **The 42% Y10 non-resident share carried at v2.1 is withdrawn pending the re-run.** It was computed with Bahrain and "other international" inside the perimeter, and both are now out (§5.3). **Expect the corrected share to be lower.** Do not quote 42%.
+
+**The ceiling gradient is deliberate and each step has a reason** (S22):
+
+| Region | Ceiling | Why it sits there |
+|---|---|---|
+| R1 UAE Indian | **9.5%** | Highest smartphone and banking penetration, established agent channel, lowest sensitivity to the floor. Re-based from a blended 12.7% when the propensity filter was deleted, so that `base × ceiling` held |
+| R2 UAE other South Asian | **6.0%** | Same product fit, but **no channel reaches them yet** and the propensity evidence is qualitative rather than nationality-specific. Deliberately below R1 |
+| R3 Oman | **4.0%** | No entity, no local presence, a later activation, and a regulatory gap rather than a permission |
+| R4 India | **0.35%** | An order of magnitude tighter than the GCC rows because the route is unresolved. **Even so it is 43,750 accounts, most of the client's Y10 target on its own**, which is why the India switch is load-bearing |
+
+**⚠ Correct decision 31 a second time, and on a different basis than the first correction.** Decision 31 said "~3.5 to 4M"; v2.1 corrected it to 4.58M on the MEA table. **MEA is the wrong instrument** (§5.0). The defensible perimeter is now built from national statistics authorities, is South Asian rather than Indian, and is both larger in gross population and smaller in filtered addressable base. See §15 correction 21.
 
 ---
 
@@ -1253,15 +1422,25 @@ One shape per stream, applied without exception: **Quick Facts | What It Is | Ho
 
 The fee deducted from a monthly SIP contribution before gold is bought. **It is a price, not a revenue line.** On a USD 75 contribution at a 5% fee, Aurumix discloses USD 3.75 and retains **USD 1.61**, because the fabrication premium is buried inside the fee. **Booking 5% as revenue overstates the top line by 2.3 times.**
 
-| Line | USD | % of contribution |
-|---|---|---|
-| Contribution received | 75.00 | 100.00% |
-| Paid to the dealer (0.5037 g at fix, plus 3% fabrication premium) | (73.39) | (97.85%) |
-| **Gross margin retained** | **1.61** | **2.15%** |
-| Price-gap risk carried by the float | (0.59) | (0.79%) |
-| Float cost of capital | (0.37) | (0.49%) |
-| Payment rail (AANI push, assumed) | (0.25) | (0.33%) |
-| **Net contribution margin** | **0.41** | **0.54%** |
+🆕 **Re-cut at D28's observed premium of 1.50%.** The 3.00% column is retained beside it because it is now the **Conservative scenario**, and because every output figure elsewhere in this brief was generated at 3.00% and has not yet been re-run.
+
+| Line | **At F4 = 1.50% (Base)** | % | At F4 = 3.00% (Conservative) | % |
+|---|---|---|---|---|
+| Contribution received | 75.00 | 100.00% | 75.00 | 100.00% |
+| Paid to the dealer (0.5037 g at fix, plus premium) | (72.32) | (96.42%) | (73.39) | (97.85%) |
+| **Gross margin retained** | **2.68** | **3.58%** | **1.61** | **2.15%** |
+| Price-gap risk carried by the float | (0.59) | (0.79%) | (0.59) | (0.79%) |
+| Float cost of capital | (0.37) | (0.49%) | (0.37) | (0.49%) |
+| Payment rail (AANI push, assumed) | (0.25) | (0.33%) | (0.25) | (0.33%) |
+| **Net contribution margin** | **1.47** | **1.97%** | **0.41** | **0.54%** |
+
+🆕 **Three consequences of the re-base, and the third is the one to carry into the client conversation.**
+
+1. **Net contribution margin rises ~3.6×**, from 0.54% to 1.97%.
+2. **The minimum ticket problem largely dissolves at the Base rail.** Break-even falls from ~USD 29 to **USD 10.90** — below the inherited USD 20 floor. ⚠ **At the Conservative rail (USD 1.36) it is USD 66, so the rail still decides it.** The floor is no longer structurally broken; it is rail-dependent.
+3. 🔴 **The fee-ladder finding survives, and its cause changes.** Minimum viable entry fee at USD 75 falls from 4.96% to **~3.07%**. **The client's 3% target now sits essentially AT break-even rather than 0.79pp below it.** ⚠ **But it is still not funded, and the binding cost is no longer the premium — it is the 1.28% of price-gap and float capital that D29 moves onto Aurumix's own book from M1.** §0.3's conclusion holds; its explanation does not.
+
+⚠ **Both columns assume the premium is paid on gross inflow. Under D30 it is paid on net new grams, which lowers COGS further as the book ages and churn builds.** Neither column reflects that yet.
 
 Source: `_draft_purchase-structure.md` §2.2, re-run at the verified gold price and volatility. **Verified clean under audit:** the fabrication premium is on the correct base, and `C − C(1−f)(1+p)` returns the identical USD 1.6125. **The model's revenue line for stream 1a is USD 1.61, never USD 3.75.** The difference is cost of goods sold.
 
@@ -1283,7 +1462,7 @@ Source: `_draft_purchase-structure.md` §2.2, re-run at the verified gold price 
 |---|---|---|---|
 | Base entry fee | 5.0 / 4.0 / 3.0 (Y1/Y3/Y10) | Decision 9 (F3) — client range + our arithmetic | % |
 | Tier entry-fee discount ladder | 0 / 0.4 / 0.8 / 1.2 / 1.5 | `_draft_ics-scoring.md` §6, verified against the master benefit matrix | pp |
-| Fabrication premium | 3.00 / 2.00 / 0.75 | 100 g / 1 kg / Good Delivery (F4). **Estimated, blocked on the dealer** | % |
+| 🆕 Fabrication premium | **1.50 / 0.95** | **100 g / 1 kg (F4, D28). OBSERVED on a same-page dealer pair, Moderate confidence.** Good Delivery retired as a rung. Conservative scenario holds 3.00 | % |
 | Price-gap risk (1σ) | **0.79** | Volatility 25% (S6) and a 12.1-day bar fill window at F1 | % |
 | Float cost of capital | 0.49 / 0.31 / 0.38 | F5. **No derivation exists in the corpus** — now derived from the sized float, §7.5 | % |
 | Rail cost per event | **0.25** Base / 0.10 Agg / **1.36** Cons | S1. AANI unpublished; UAEDDS at AED 5 is Emirates NBD's published tariff | USD |
@@ -1305,8 +1484,19 @@ For each segment s, each period t:
                          + reduced(s,t)      × reduced_ticket(s)
 
   net_of_fee(s,t)        = sip_inflow(s,t) × (1 − fee_applied(s,t))
-  cogs(s,t)              = net_of_fee(s,t) × fabrication_premium(t)
-  gross_margin(s,t)      = sip_inflow(s,t) − net_of_fee(s,t) × (1 + fabrication_premium(t))
+
+  🆕 D30 — THE PREMIUM IS PAID ON NET NEW GRAMS, NOT GROSS INFLOW.
+     Redeemed gold returns to the float and is re-allocated without
+     paying the premium a second time.  Only the NET addition to the
+     book is procured from the dealer.
+
+  recycled_grams(t)      = grams returned to the float by redemption
+                           and self-custody exit in period t
+  net_new_grams(t)       = MAX(0, grams_required(t) − recycled_grams(t))
+  premium_base(s,t)      = net_of_fee(s,t) × [net_new_grams(t) ÷ grams_required(t)]
+
+  cogs(s,t)              = premium_base(s,t) × fabrication_premium(t)
+  gross_margin(s,t)      = sip_inflow(s,t) − net_of_fee(s,t) − cogs(s,t)
 
   pricegap(s,t)          = sip_inflow(s,t) × pricegap_rate(t) × float_mode
   floatcoc(s,t)          = sip_inflow(s,t) × float_coc_rate(t) × float_mode
@@ -1462,10 +1652,12 @@ Take a USD 620 spot ticket against a USD 75 SIP contribution, both at the Y1 5% 
 | Gross margin at 5% less 3% premium, 0.79% price-gap, 0.49% float CoC | 0.72% → USD 0.54 | 0.72% → USD 4.46 |
 | Rail (one event either way, S1 Base = USD 0.25) | (0.25) | (0.25) |
 | **Net margin** | **USD 0.29** | **USD 4.21** |
-| **Net margin as % of ticket** | **0.39%** | **0.68%** |
-| **At the Conservative rail (S1 = USD 1.36)** | **−USD 0.82** | **+USD 3.10** |
+| **Net margin as % of ticket** | **1.96%** | **2.25%** |
+| 🆕 **At the Conservative rail (S1 = USD 1.36)** | **+USD 0.36** | **+USD 12.87** |
 
-**The whole difference is the fixed rail spread over an 8.3× larger base — §0.2's own equation running in Aurumix's favour instead of against it. The spot lane is the only inflow-linked flow that survives the adverse rail scenario, so it changes the answer to v1.0's most alarming finding. Model spot before concluding stream 1 is unsalvageable.**
+**The whole difference is the fixed rail spread over an 8.3× larger base — §0.2's own equation running in Aurumix's favour instead of against it. Spot remains structurally the highest-margin inflow in the business.**
+
+🔴 🆕 **D28 reverses one claim here.** At the old 3.00% premium the SIP lane went negative at the Conservative rail and **spot was the only inflow-linked flow that survived it.** At the measured 1.50% premium **both lanes clear both rail prices.** The adverse rail is no longer fatal to the SIP lane, only thin — it still moves SIP net margin 4×, from USD 1.47 to USD 0.36, but the case no longer depends on spot volume rescuing stream 1. **Model spot because it is the best margin in the business, not because stream 1 is otherwise unsalvageable.**
 
 Two qualifications keep it honest. **Spot earns no ICS**, so it builds no tier, no card eligibility and no credit eligibility — **it is margin without a funnel**, and the conclusion that the SIP is an acquisition mechanism for the card still stands. And spot volume is lumpy and seasonal, so it **cannot be relied on to cover a fixed cost base. Spot improves the margin on stream 1; it does not change what the business is.**
 
@@ -2303,7 +2495,7 @@ Source categories: **CITED** (a named primary or secondary source with a retriev
 | F1 | Gold price (flat) | **141.46** | USD/g | CITED | USD 4,400/oz, verified 2026-08-17. **Held flat by design: every revenue change is then attributable to the business, not the metal.** Sensitivity axis, not a scenario variable | Assumptions!B4 | High |
 | F2 | AED/USD peg | 3.6725 | — | CITED | CBUAE peg | Assumptions!B5 | High |
 | F3 | Entry fee, Y1/Y3/Y10 | 5.0 / 4.0 / 3.0 | % | CLIENT INPUT + DERIVED | Decision 9. Falls with bar denomination | Assumptions!B6 | Client range + our arithmetic |
-| F4 | Fabrication premium, Y1/Y3/Y10 | 3.00 / 2.00 / 0.75 | % | ASSUMPTION | 100 g / 1 kg / Good Delivery. **Estimated. Blocked on the dealer** | Assumptions!B7 | **Low** |
+| **F4** | 🆕 **Fabrication premium, by denomination** (D28) | **1.50 / 0.95** | % | **OBSERVED** | 🆕 **100 g / 1 kg. Good Delivery RETIRED as a rung** (§7.1 of the research record). Measured on a same-page dealer pair, goldtrade.ae 19 Aug 2026 19:52: 100 g at **+1.71%** (PAMP 1.75, Valcambi 1.67), 1 kg at **+0.93%** (Emirates 0.98, Etihad 0.87). Less the published **25 bp bulk gradient** at 5+ bars → **1.50% / 0.95%.** Full record and method in `supporting/_working_dealer-premium-and-comparables-research.md`. ⚠ **The genuine 10–50 bar tier is unpublished and still needs the dealer** | Assumptions!B7 | **Moderate** |
 | F5 | Float cost of capital | 0.49 / 0.31 / 0.38 | % | ASSUMPTION | **No derivation exists in the corpus.** v2.0 derives it from the sized float instead — §7.5 | Assumptions!B8 | **Low** |
 | F6 | SIP hard floor | 20 | USD/month | CITED | Rejected outright below; **never partially credited** | Assumptions!B9 | High |
 | F7 | Confirmed SIP gate | 6 | consecutive periods | CLIENT INPUT | Client's own figure | Assumptions!B10 | High |
@@ -2373,20 +2565,20 @@ Source categories: **CITED** (a named primary or secondary source with a retriev
 | S13 | B2B partner AUM by Y10 | 200 | 400 | 50 | USD m | ASSUMPTION | Requires a signed partner | Scen!E |
 | S14 | Vault storage rate | 0.25 | 0.15 | 0.40 | % of AUM/yr | CITED | Verified range. **Minimum binds below ~250 kg** | Scen!F |
 | S15 | Marketing CAC (base) | 120 | 80 | 200 | USD | ASSUMPTION | **No UAE gold-product benchmark.** Modified by the S25 curve | Scen!A |
-| **S16** | **Channel-to-segment mix matrix** | three-phase tables | Direct/referral +8pp toward S1/S6 | Agent +10pp toward S3 | % of channel volume | ASSUMPTION | **No published channel-mix data for any comparable product.** Two structural rules matter more than the cells (§3 Layer 1) | Scen!A |
+| **S16** | **Channel-to-region mix matrix** 🆕 **re-cut to R1–R4 (D25)** | three-phase tables | Direct/referral +8pp toward R1 | Agent +10pp toward the floor band | % of channel volume | ASSUMPTION | **No published channel-mix data for any comparable product.** Two structural rules matter more than the cells (§3 Layer 1). ⚠ **The agent row now needs a non-Indian recruitment assumption to reach R2 at all** | Scen!A |
 | **S17** | **Agent ramp factor** M1–M6/M7-12/M13+ | .20/.40/.60/.75/.85/.95 / 1.00 / 1.05 | .35→1.15 | .10→0.95 | × S12 | ASSUMPTION | Insurance-agency ramp. **Six months to full productivity happens to match the Confirmed SIP gate** — an agent cannot credibly sell the tier ladder until a client has passed it | Scen!A |
 | **S18** | **Agent annual attrition** | **45** | 30 | 60 | %/yr | TRIANGULATED | Indian life-agency attrition runs 40–60% in year one. **Missing from T7 entirely** | Scen!A |
 | **S19** | **Referral rate** | **0.45** | 0.90 | 0.18 | referrals/qualified referrer/yr | ASSUMPTION | Cap removed deliberately, so the distribution is right-skewed. **Model the mean, not the median** | Scen!A |
 | **S20** | **Referral conversion** | **62** | 72 | 48 | % | DERIVED | Exactly the M7 survival of the referred cohort, uplifted ~1.1× off our own fitted curve | Scen!A |
 | **S21** | Referral-driven accounts | `qualified_referrers × S19 ÷ 12 × S20` | | | accounts/month | DERIVED | **Two six-month gates in series → steady state not before ~M25** | Model |
-| **S22** | **Segment penetration ceiling** S1–S5 | 22 / 16 / 9 / 6 / 0.35 | 32/24/14/10/0.60 | 12/9/5/3/0.15 | % of the §5 base | ASSUMPTION | Applied to the income-qualified, propensity-filtered base. **S5 at 0.35% of 12.5m is ~44,000 accounts** | Scen!A |
+| **S22** | **Regional penetration ceiling** R1–R4 🆕 **re-cut (D25)** | **9.5 / 6.0 / 4.0 / 0.35** | 14 / 9 / 6 / 0.60 | 6 / 3.5 / 2.5 / 0.15 | % of the §5.1 base | ASSUMPTION | Applied to the **active, IBAN-capable, income-qualified** base. The unsourced gold-propensity filter is deleted (§5.1). **`base × ceiling` is the invariant: 165,750 total, held equal to v2.1's 164,900 on purpose.** R4 at 0.35% of 12.5m is ~43,750 accounts | Scen!A |
 | **S23** | **Saturation functional form** | Logistic on remaining headroom | | | — | DERIVED | **Use cumulative-ever-acquired, not live accounts.** ~5× difference by Y10. **The single most important structural fill in Block A** | Model |
 | **S24** | Marketing → accounts | `spend ÷ effective_CAC` | | | accounts | DERIVED | S15 must not be flat — see S25 | Model |
-| **S25** | **CAC diminishing returns** | `S15 × [1 + 0.35 × (spend ÷ 60,000)^0.7]` | exp 0.5, div 100,000 | exp 0.9, div 35,000 | USD | ASSUMPTION | At USD 60,000/mo spend effective CAC is **USD 162, not 120**. **A flat CAC lets the model buy unlimited growth at a constant price and makes the break-even year an artefact of the marketing budget** | Scen!A |
+| **S25** | 🆕 **CAC diminishing returns — RETIRED to a switch, default OFF** (D27) | **OFF. `effective_CAC = S15`, linear** | OFF | OFF | — | **DEMOTED, not deleted** | **The live model is linear.** The curve `S15 × [1 + 0.35 × (spend ÷ 60,000)^0.7]` is preserved on Scenario Parameters as `CAC_CONVEXITY`, default OFF, with its v2.2 flexes (exp 0.5 / div 100,000 and exp 0.9 / div 35,000) intact. **Reason for retirement: §18 item 11 — the functional form is defensible, the constants are not, and there is no UAE benchmark to calibrate them against.** Convexity is a *dynamic*, and dynamics are Phase 5's deliverable. ⚠ **Turn the switch ON before quoting direct-channel LTV:CAC at high spend** | Scen!A |
 | **S26** | Organic share of direct | 12 | 20 | 5 | % of direct | ASSUMPTION | Kept separate so the CAC curve is not applied to it | Scen!A |
 | **S27** | **Payment archetype weights + hazards** | 10/35/12/13/30 + background | see §3 Layer 5c | see §3 Layer 5c | % / monthly hazard | DERIVED (aggregate), **ASSUMPTION (decomposition)** | 🔴 **Rank 1 load-bearing.** Fitted to reproduce §0.5. **No source decomposes a lapse curve into payment archetypes — confirmed negative** | Scen!B |
 | **S28** | **Reduction capture rate** | **33** | 50 | 18 | % of would-be lapses | ASSUMPTION | **Base is set at v1.0's own illustrative third, deliberately, so v2.0 does not silently invent a different number.** Apply only to affordability-driven lapse | Scen!B |
-| **S29** | **Reduction depth** | **MAX(20, 50% of prior ticket)** | 65% of prior | Straight to 20 | USD/month | ASSUMPTION | **Corrects a real v1.0 error.** The floor is the *hard* minimum, not the *observed* landing point | Scen!B |
+| **S29** | **Reduction depth** | **MAX(20, 50% of prior ticket)** | 65% of prior | Straight to 20 | USD/month | ASSUMPTION | **Corrects a real v1.0 error.** The floor is the *hard* minimum, not the *observed* landing point. 🆕 **D25: applies to the standard band only.** The floor band is already at the floor and cannot reduce, per the F6 hard gate | Scen!B |
 | **S30** | **Hazard multiplier, REDUCED** | **1.35×** | 1.15× | 1.75× | × monthly hazard | ASSUMPTION | **Must be well above 1.0 or REDUCED becomes a free retention machine; well below the pure-lapse case or the state does no work** | Scen!B |
 | **S31** | **Withdrawal-behaviour distribution** | six buckets, §3 Layer 6 | as tabled | as tabled | % of population | ASSUMPTION | Buckets deliberately straddle the 30% kink. **Reconciles to S10 within 0.3pp in all three scenarios** | Scen!B |
 | **S32** | **Redemption rate** | **8** | 4 | 16 | % of AUM/yr | ASSUMPTION | **A different event from S10/S31 and a separate line.** PAXG turnover of 5.9% is the only comparator and it is a token-turnover figure | Scen!B |
@@ -2406,9 +2598,11 @@ Source categories: **CITED** (a named primary or secondary source with a retriev
 | **S46** | **Average spot ticket** | **620** | 1,100 | 320 | USD/event | ASSUMPTION | Scale by segment: S1/S6 ×1.6, S2/S4 ×1.0, S3 ×0.45, S5 ×0.7 | Scen!B |
 | **S47** | **Spot frequency** | **1.7** | 2.4 | 1.2 | events/attacher/yr | ASSUMPTION | ~45% of volume in the two festival windows | Scen!B |
 | **S48** | **Y1 exit-run-rate uplift** | **1.40×** | 1.25× | 1.60× | × Y1 booked opex | ASSUMPTION | **The Y1 figure is a build-up year average, not a run-rate** | Scen!F |
-| **S49** | **Resident share by segment** | 100/100/100/0/0/0 | same | same | % UAE-resident | **DERIVED, definitional** | **Falls straight out of decision 31's re-cut by country of residence** | Scen!F |
+| **S49** | **Resident share by region** 🆕 **R1–R4 (D25)** | **100 / 100 / 0 / 0** | same | same | % UAE-resident | **DERIVED, definitional** | **Falls straight out of decision 31's re-cut by country of residence.** ⚠ The Y10 non-resident share must be re-computed; the 42% at v2.1 is withdrawn (§5.8) | Scen!F |
+| 🆕 **S54** | **Floor share by region** | **40 / 60 / 58 / 25** | 30/50/48/18 | 50/70/68/33 | % of the region's book paying the USD 20 floor | ASSUMPTION | 🆕 **D25. The parameter that saves two non-linearities** (rail cost and card spend, §5.2). With S55 it derives two bands per region, so **no unit economic is ever computed on a regional average.** Anchored on Bahrain's published wage distribution and Joyalukkas' AED 100 price discovery; **weakest link is the absence of any nationality-disaggregated UAE savings survey** (§5.7 item 7) | Scen!A |
+| 🆕 **S55** | **Average monthly ticket by region** | **38 / 26 / 26 / 30** | 46/32/32/36 | 30/21/21/24 | USD/month | TRIANGULATED | 🆕 **D25.** Savings-capacity anchored, not remittance anchored. Cross-checked against Joyalukkas AED 100 and Malabar AED 200, and sits **below** AMFI's USD 34, which is the correct direction. 🔴 **Book-weighted average falls from ~40 to ~31.5, which pushes the §0.3 minimum viable entry fee UP** | Scen!A |
 | **S50** | **Float buffer days (N)** | **10** | 6 | 20 | days of trailing inflow | ASSUMPTION | The corpus rule states N without setting it | Scen!F |
-| **S51** | **Float carry mode** | **Dealer-carried at launch, own float from Y3** | dealer-carried throughout | own float from M1 | — | CITED (the fork), ASSUMPTION (the side) | **Under dealer-carried, float capital is ZERO, F5 is ZERO and price-gap drops out** | Scen!F |
+| **S51** | 🆕 **Float carry mode** (D29) | 🔴 **OWN FLOAT FROM M1** | dealer-carried throughout | own float from M1 | — | **DERIVED** (the side is now forced, not chosen) | 🆕 **Aurumix cannot avoid carrying metal, because all three routes its comparables use are closed to it: it cannot run briefly unbacked (the `trust ≥ tokens` invariant and decision 34), it cannot decline a repurchase obligation (VARA III.E.4 plus the formulaic buyback), and it cannot lean on a named dealer filling instantly because no dealer exists.** So price-gap and float capital **bite from M1**, and the premium **narrows** — which is what F4's re-base reflects. ⚠ **Charging the wide dealer-carried premium AND both float costs double-counts under either regime — correction 12** | Scen!F |
 | **S52** | **Seasonality vectors** (a) acquisition (b) card spend | tables at §12 | amplitude ×1.4 | amplitude ×0.6 | multiplier, **normalised to 12.00** | CITED drivers, ASSUMPTION amplitudes | Festival timing is not in dispute; **how much a Dubai savings signup responds to Dhanteras is** | Scen!F |
 | **S53** | **Foreign-spend seasonal vector** | 30/30/30/32/34/**55**/**60**/**56**/36/42/40/32, rescaled to a 34% mean | — | — | % of monthly spend | ASSUMPTION | **The summer travel season is the model's single largest stream-4 month even though it is the weakest total-spend month** | Scen!C |
 
@@ -2418,7 +2612,7 @@ Source categories: **CITED** (a named primary or secondary source with a retriev
 |---|---|---|---|---|---|---|---|---|
 | T1 | Entry fee base rate | 5.0% | 5.0% | 4.0% | 4.0% | 3.0% | Step, with bar denomination | CLIENT INPUT |
 | T2 | Fabrication premium | 3.00% | 3.00% | 2.00% | 2.00% | 0.75% | Step, with bar denomination | ASSUMPTION |
-| T3 | Bar denomination | 100 g | 100 g | 1 kg | 1 kg | 12.4 kg | **Threshold rule on trailing 12m inflow, latched** — §3.x.3 | DERIVED |
+| T3 | 🆕 Bar denomination | 100 g | 100 g | 1 kg | 1 kg | **1 kg** | **Threshold rule on trailing 12m inflow, latched** — §3.x.3. 🆕 **The 12.4 kg rung is RETIRED** (D28): Dubai's own Good Delivery standard is a 1 kg bar, so the ladder tops out at 1 kg and the endogenous solve now has two rungs, not three | DERIVED |
 | T4 | Tier mix: share at Gold+ | 0.0% | 15.7% | 25.0% | 41.2% | **63.0%** | **Computed by the ICS engine per archetype track, then weighted** | **OUTPUT** |
 | T5 | Tier mix: share at Sovereign | 0% | 0% | 0% | 0% | **4.4%** | **First Sovereign at M61. At v2.0 this is genuinely computed** — v1.0 carried it as an input, contradicting T4's own note | **OUTPUT** |
 | T6 | PM share (contract maturity) | — | 55% | 55% | 72% | 72% | Steps at scale | ASSUMPTION |
@@ -2560,7 +2754,7 @@ Phase 2 parked eight parameters with the note *"locks against the revenue model,
 
 | # | Parameter | What Phase 2 says | What the model solves for |
 |---|---|---|---|
-| **1** | **Entry-fee base-rate uplift to fund the discount ladder** | The ceiling is 1.5pp at Sovereign against a Y1 gross margin of 0.72% before rail. **The ceiling exceeds the available margin** | **0.696pp** — the book-weighted discount at the Y10 computed tier mix. The 1.5pp Sovereign ceiling touches only 4.4% of accounts, so the ladder costs **less than half its headline.** See §9.2 |
+| **1** | **Entry-fee base-rate uplift to fund the discount ladder** | 🆕 The ceiling is 1.5pp at Sovereign against a Y1 gross margin before rail of **2.30% at the measured premium** (was 0.72% at 3.00%, D28). ⚠ **"The ceiling exceeds the available margin" no longer holds and the item must be re-solved** | **0.696pp** — the book-weighted discount at the Y10 computed tier mix. The 1.5pp Sovereign ceiling touches only 4.4% of accounts, so the ladder costs **less than half its headline.** See §9.2 |
 | **2** | **Acquisition budget ceiling** | One board-approved cap covering member rewards plus all agent commission at every level, as a % of entry-fee revenue. Modelled on IRDAI's Expenses of Management regime | **29.1% of TOTAL revenue** (acquisition 8,458,460 against total revenue 29,032,342, cumulative). 🔴 **Expressed against entry-fee revenue as this row asks, the ceiling is 338% — which is meaningless, and confirms the brief's own flag. Total revenue is the right denominator.** The front-loading brake schedule is still unsolved |
 | **3** | **Referral reward size** | Shape settled at 30% of the referee's entry fee over six contributions, split equally, in grams. **The 30 is a placeholder** | **399% of the referee's entry fee** — i.e. **LTV does not bind and F17's 30% placeholder is affordable.** 25% of all-streams LTV (749 blended) is USD 187 of headroom against a referee entry fee of only USD 47 over a 24-month run. 🔴 **The binding constraint on the referral reward is the acquisition budget (item 2), not LTV** |
 | **4** | **Agent commission rate** | The client's only written number is 15% of a fee whose base no longer exists. Transplanted, it consumes **88% of Y1 gross margin** | **USD 175.68/account**, split across three levels on a 4/5/6 front-loaded gradient = **46.85 / 58.56 / 70.27.** Derived from an agent pool of USD 5,075,076 over 28,889 agent-sourced accounts. Subject to the item 2 ceiling |
@@ -2639,7 +2833,7 @@ The seven do not solve independently. Three of them are mutually constrained and
 
 **The row map shrinks substantially at v2.1** (D21, D22, D23). v2.0 specified a Cohort Engine of ~320 rows and an ICS Engine of ~340, both replicated across 76 columns. **The convolution removes the first, the collapse removes most of the second, and the horizon removes 47 columns.** The Model sheet drops from ~520 rows × 76 columns to **~200 rows × 29 columns**.
 
-Column layout is common to the Time Series, Acquisition, Model and Opex & P&L sheets:
+Column layout is common to the Time Series, Acquisition and Model sheets (**including Model's opex and P&L band**, D26):
 
 ```
 Col A: Row label      Col B: Unit      Col C: Source/note
@@ -2713,7 +2907,7 @@ Col D–CG  (84 cols):  m = 1 … 84   (months since origination)
 
 ⚠ **Rows 102–128 must be physically ordered gross interchange → Gold Rewards cap → net interchange**, per §3.x.2. The ordering is the resolution of the apparent circularity.
 
-**Sheet 9 — Opex & P&L**
+🆕 **Model sheet, band 2 — opex and P&L** (D26 folds the former sheet 9 into Model). ⚠ **The row numbers below are band-local and must be offset by the end of the revenue band when built.** Keep the band order and the internal spacing exactly as listed; only the origin moves.
 
 | Band | Rows | Contents |
 |---|---|---|
@@ -3278,7 +3472,7 @@ All nine live on the Checks sheet and all return **TRUE/FALSE**, never a number 
 | **Stream 0 — Redemption cost** | Linear on AUM, **accelerating** as the lapsed share rises | **(USD 0.19)** → **(USD 158)** | **None. Uncapped by construction** | F20 per event + `MAX(0, −net_flow) × spread`. **Zero spread cost in every month the book grows** |
 | **Opex** | **Step within block, scale within block** — never on the total | 894,800 → 8,695,500 | None | Log-linear within block (F32), booked in the stated month |
 | **Marketing spend** | Decision variable, **not a cost output** | 0 (Y1) → 1,200,000 (Y10) | The acquisition budget ceiling (§9 item 2) | **One source, two consumers.** Feeds acquisition; referenced by opex |
-| **Effective CAC** | **Rising with spend**, not flat | 120 → `{{UNFILLED: Y10 effective CAC, USD — not in spine; acquisition cost is published as a total (USD 1,623,205 at Y10) and not divided into an effective CAC}}` | None — it degrades without bound | `S15 × [1 + 0.35 × (spend ÷ 60,000)^0.7]`. **A flat CAC makes the break-even year an artefact of the marketing budget** |
+| **Effective CAC** | 🆕 **FLAT at S15** (D27) | **120, constant** | **The saturation ceiling, not the CAC curve** | `effective_CAC = S15`. **Convexity retired to the `CAC_CONVEXITY` switch, default OFF; calibration moves to Phase 5** (§3 Layer 1, S25). ⚠ **Direct-channel LTV:CAC at high spend is an upper bound** |
 | **Float capital** | Step with bar denomination, **latched** | ~29k → ~3.6M | None | `MAX(2 bars, 1 bar + S50 days)`. **Falls as a share of AUM — a fixed operational requirement, not a proportional drag** |
 | **Cumulative cash** | **Down throughout, flattening but never turning up inside the horizon** | 0 → **USD −14,541,529** on the ten-year run | — | ⚠ **Report the shape, not the level** (§14). On the ten-year run it bottomed at **USD −14,668,019 in M114** and was still USD −14,541,529 at M120 — **both beyond the new horizon.** A 7-year model reports a within-horizon minimum, **which is not the peak and must not be labelled as the fundraise** |
 
@@ -3294,7 +3488,11 @@ All nine live on the Checks sheet and all return **TRUE/FALSE**, never a number 
 
 ## 12. Excel structure map
 
-**Eleven sheets** (D18, extended at D23). v1.0's §11 was internally inconsistent with its own §10.1 — §11 listed an Opex sheet while §10.1 put opex rows on the Model sheet — and a 6-segment × 5-archetype cohort engine with an ICS state machine, six streams, a contra-revenue layer and two solvers lands near **600 rows × 76 columns ≈ 45,000 formulas on one tab.** That is not a workbook, it is a hazard.
+🆕 **Five visible sheets and five hidden working sheets** (D26, revising D18 and D23). **The visible five are fixed by the firm's `revenue-modeler` standard: Cover, Assumptions, Scenario Parameters, Model, Summary, in that order.** The working sheets are added after them and hidden. Full index and the two placement decisions at §1.1.
+
+**Why the machinery is not simply put on one tab.** A 6-segment × 5-archetype cohort engine with an ICS state machine, six streams, a contra-revenue layer and two solvers lands near **600 rows × 76 columns ≈ 45,000 formulas on one tab.** That is not a workbook, it is a hazard. **D26 does not reverse that argument — it separates presentation from computation rather than merging them.** The machinery still lives on its own sheets; those sheets are simply not the ones a reader opens.
+
+⚠ **v1.0's §11 was internally inconsistent with its own §10.1** — §11 listed an Opex sheet while §10.1 put opex rows on the Model sheet. **D26 settles it in §10.1's favour: opex, P&L, tax, working capital and cash are row bands on the Model sheet, and there is no separate Opex sheet.**
 
 **The structure shrinks substantially at v2.1, and it is worth showing the arithmetic:**
 
@@ -3339,7 +3537,20 @@ Colour legend    17–23   As above
 Read-me          25–32   Pointer to §3 sign-off, the SIXTEEN Checks,
                          the placeholder convention, and — first —
                          the 5% collapse-safety gate at check 15
+Master check     34      ALL CHECKS PASS:  =Checks!<master row>     [D26]
+                         GREEN on TRUE, RED fill on FALSE.
+                         A LINK, never a typed value.  This is the only
+                         inbound reference Cover is permitted to carry.
+Dependency order 36–46   The §3.x.1 logical sheet order, written out, so
+                         that the by-name dependency test survives the
+                         five hidden working sheets.               [D26]
+Sheet map        48–52   The five visible sheets, then a note naming the
+                         five hidden working sheets and why they are
+                         hidden.  A reader must never conclude that a
+                         number came from nowhere.                 [D26]
 ```
+
+🆕 ⚠ **The Cover carries the only honesty obligation D26 creates.** Hiding the machinery is a presentation choice, and it becomes a misrepresentation the moment a reader cannot find out that the machinery exists. **The sheet map at rows 48–52 is not optional**, and it must say plainly that five working sheets are present and hidden, name them, and say that unhiding them is expected rather than discouraged.
 
 ### Assumptions
 
@@ -3459,9 +3670,11 @@ Row bands at §10.1. **Freeze panes at D5.** Stream blocks are ordered by stream
 
 ⚠ **Rows 102–128 must be physically ordered gross interchange → Gold Rewards cap → net interchange**, per §3.x.2. The ordering is the resolution of the apparent circularity, so it is structural rather than cosmetic.
 
-### Opex & P&L
+#### Model, continued — the opex and P&L band 🆕
 
-Row bands at §10.1. **Freeze panes at D5.** The tax block (rows 102–112) computes in **every** column but writes a non-zero value **only in financial-year-end months** — the `IF(FY_end_flag, …, 0)` guard comes off the Time Series sheet.
+**D26 folds the former Opex & P&L sheet into Model as a second row band.** Row bands at §10.1, renumbered to continue after the benefit-cost block rather than restarting at row 1. **Freeze panes at D5, one set for the whole sheet.** The tax block computes in **every** column but writes a non-zero value **only in financial-year-end months** — the `IF(FY_end_flag, …, 0)` guard comes off the Time Series sheet.
+
+⚠ **Put a banner row and a page break between the revenue band and the opex band.** The sheet is now ~280 rows and it carries two distinct arguments: what the business earns, and what it costs. **A reader must be able to see where one ends and the other begins**, and the printed version must not split a stream block across the boundary.
 
 ### Summary
 
@@ -3789,6 +4002,16 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 | **18** | **`_draft_sip-rulebook.md` §7.1 / §7.2 / §8** | **Carries pre-decision-46 vocabulary** — continuity halving, revival, arrears, "Tenure" as a component. **Should be marked superseded in the corpus itself**, not merely worked around downstream |
 | **19** | **`_draft_credit-and-card-infrastructure.md` §7** | **Header says three of five collateral-chain links are open; the table marks two open and three designed.** The table is operative; the header is stale |
 | **20** | **`_draft_ics-scoring.md` §7.1** | **Heading reads "Six personas"; the table has nine rows, A–I.** The heading is stale, and the count matters because the build's validation set is nine tests |
+| 🆕 **21** | **Decision 31, and correction 5 above** | 🔴 **Correction 5 is itself wrong and must be superseded.** The MEA overseas-Indians table is the wrong instrument: it counts PIO/OCI and historic diaspora, and **omits Bangladeshis and Pakistanis entirely**. National statistics authorities count live visas. **Oman's Indian count is ~515k not 690k; Bahrain's is ~299k not 330k; but Oman's Bangladeshi count alone is 605k.** Rebuild the perimeter from NCSI, LMRA/iGA and sending-government sources (D25, §5.0) |
+| 🆕 **22** | **`Aurumix_Project_Charter.md`, and Layer 1's agent channel** | 🔴 **The persona is too narrow. The market is South Asian, not Indian.** Non-Indian South Asians outnumber Indians in Oman outright and match them in the UAE. The charter's "NRI saver" and the Indian insurance-agency channel model both need widening. **This is a client conversation, not a text edit** (D25, §5.0) |
+| 🆕 **23** | **`_draft_sip-rulebook.md` §6.2, `_explainer_how-we-take-money.md`** | 🔴 **The lowest-income segment may have no usable payment rail.** Findex's 85.7% UAE account ownership counts **WPS payroll cards with no IBAN**, which cannot carry a mandate or a debit. AANI R2P still needs a real account. **The payment design has never tested itself against the segment the agent channel actually delivers.** Mitigant with a date: CBUAE's Universal Account (D25, §5.4) |
+| 🆕 **24** | **Client call agenda item 6b, `_draft_entities-licensing-and-payments.md`** | 🔴 **"UAE, then Bahrain and Oman" has the sequencing backwards.** Bahrain's CBB Crypto-Asset Module binds, treats the token as a security, requires written CBB approval, BD 50,000 paid-up capital, escrow at a CBB-licensed retail bank and a CBB-licensed digital token advisor, **and contains no reverse-solicitation exemption**. Oman has no VASP regime in force and its regulator is the **FSA, not the Central Bank** (D25, §5.3) |
+| 🆕 **25** | **Phase 1 competitive set** | **Botim's O Gold is a closer competitor than Liv Gold and appears nowhere in the corpus.** AED 10 minimum, 8.5m UAE users who are precisely our persona, AED 100m+ traded. Also add **CBUAE's stated intent to launch digital savings and investment products for low-income earners within one to two years**, which is the regulator entering the segment (D25, §5.6) |
+| 🆕 **26** | **This brief, §3 Layer 4 and §6.1b** | 🔴 **The brief contradicts itself on gross margin before rail.** §6.1's waterfall gives **2.15%** gross retained (audited clean against `C − C(1−f)(1+p)` = USD 1.6125), which nets to **0.87%** after price-gap and float. But §3 Layer 4 and §6.1b both state **0.72%** for the same quantity, implying a 2.00% gross that the exact formula does not produce. **The 0.87% line is the correct one.** ⚠ **It moves the break-even ticket by ~USD 6 (28.7 vs 34.7 at the old premium), so it must be settled before the reference model is rebuilt, not after** |
+| 🆕 **27** | **`_draft_allocation-and-float.md`, decision 11, and the open item pricing the exit** | 🔴 **There is no "LBMA approved vault network." LBMA does not approve vaults** — verbatim, Good Delivery List Rules Annex A; the Approved Weighers List covers weighing only. The operative mechanism is **vault manager acceptance discretion**. **Re-cut the open item "do GD bars lose chain-of-integrity status when vaulted outside the approved network" — it is built on a network that does not exist.** Correct framing: **loss of at-sight London acceptance**, not loss of accreditation. Sharpens decision 11 |
+| 🆕 **28** | **Decision 26, `_draft_purchase-structure.md`, the ownership construct** | 🔴 **DMCC Tradeflow cannot carry fractional or sub-account customer interests, and the one Dubai tokenised-gold product does not use it as a registry.** "Tradeflow" and "warrant" appear **zero times** in Comtech's binding T&Cs; DMCC's own model is *"each warrant represents a specific item"* and *"legal title remains with the holder of the warrant."* Comtech holds the warrant and grants customers a contractual undivided interest as **agent in possession**. **Decision 26's preference for Tradeflow as the title record needs re-examining.** ✅ **One positive to carry to the client: Comtech's construct is bailment; Aurumix's is a trust, which is materially stronger on insolvency — counsel batch 1 question 2** |
+| 🆕 **29** | **`_draft_allocation-and-float.md` §, the fee-ladder justification** | **The premium ladder was one denomination too pessimistic at every rung** (D28). Observed Dubai: 100 g **1.71%**, 1 kg **0.93%**. The model carried 3.00 / 2.00 / 0.75. ⚠ **Also: Dubai's own Good Delivery standard is a 1 kg bar at 995+, not a 400 oz bar. DGD is itself superseded by the UAE Good Delivery standard (Cabinet Resolution 2/16 of 2020).** The ladder's third rung targeted the wrong object; **drop Good Delivery as a rung.** ⚠ **Every gold-price and premium figure in that draft is stale on both counts** |
+| 🆕 **30** | **`_draft_purchase-structure.md`, `_draft_allocation-and-float.md`, and this brief §3 Layer 3** | 🔴 **Undesigned and now load-bearing: does redeemed gold return to the float, or go back to the dealer?** D30 charges the fabrication premium on **net new grams**, which is only correct if recycled metal stays in the float. **Nobody has written this down.** It interacts with the buyback mechanics and with the `trust ≥ tokens` invariant. **Settle it before the D30 correction is built** |
 
 ---
 
@@ -3798,7 +4021,8 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 |---|---|---|---|
 | **AANI Request to Pay cost per collection** | 🔴 **Decides the sign of stream 1's margin.** ±USD 1.11/collection | S1 = USD 0.25 | **CRITICAL — the most valuable unknown number in the engagement** |
 | **Programme manager interchange share** | 🔴 Sizes the largest stream directly | S3 = 72%, floor 36% | **CRITICAL — take 36% into the sponsor conversation as the walk-away** |
-| **Dealer fabrication premium and spread** | Sets 70% of stream 1's cost base | F4 = 3.00% Y1 | **CRITICAL — four research passes returned nothing. The dealer is unnamed** |
+| 🆕 **Dealer fabrication premium and spread** | Sets 70% of stream 1's cost base | **F4 = 1.50% (100 g), 0.95% (1 kg)** | 🆕 **DOWNGRADED from CRITICAL to MODERATE** (D28). Measured on a same-page dealer pair rather than guessed: 100 g at +1.71%, 1 kg at +0.93%, less a published 25 bp bulk gradient. ⚠ **What remains open is the genuine 10–50 bar tier and whether the deal strikes on the fix or the dealer's own tick — worth 20–30 bp. Still needs the dealer, but no longer sets the sign of the answer** |
+| 🆕 **The two-way spread on buyback** | 🔴 **Prices every exit, and stream 0 has no offsetting revenue** | Not modelled separately | 🔴 **CRITICAL, and it replaces the premium at the top of the dealer agenda.** The premium is now observed; **the bid side is not, and it is a separate commitment from carrying inventory.** Neither PAXG nor XAUT accepts a repurchase obligation at all. ⚠ **The zero-fee-exit promise rests entirely on this number** |
 | **Prepaid versus credit** | **USD 2,304,921 of Y10 revenue and USD 7,254,180 of cumulative net profit** | Credit | **CRITICAL — "not a product choice, it is the business model." Must be settled before the September build** |
 | **Launch date** | Shifts every date in the model | M1 = Jan 2027 | **HIGH — no launch date exists in any client document** |
 | 🔴 **Does a lapsed customer keep the card and the facility?** | **Determines whether the majority of revenue decays with persistency or is immune to it** | `LAPSED_KEEPS_CARD` = ON | **CRITICAL — nobody has decided, and v1.0 silently assumes immunity by never asking** |
@@ -3945,8 +4169,8 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 | **Lapse** | Stops paying. **The balance is unaffected.** Not an exit from AUM |
 | **Leakage** | Self-custody withdrawal as a share of AUM. **Modelled as the S31 distribution, never as a rate** |
 | **The float** | Aurumix's working inventory of grams. **Five jobs**: buys the wholesale price, absorbs inflow lumpiness, warehouses net redemption outflow, absorbs large spot orders, absorbs margin-call liquidations |
-| **Bar denomination** | 100 g → 1 kg → 12.4 kg. **The margin dial: float size unlocks bar size, bar size sets the fabrication premium** |
-| **Fabrication premium** | The dealer's charge above spot. 2–5% on 100 g, 1–3% on 1 kg, under 1% on Good Delivery |
+| 🆕 **Bar denomination** | **100 g → 1 kg. Good Delivery retired as a rung** (D28) — Dubai's own Good Delivery standard is a 1 kg bar, not a 400 oz bar, so the third rung targeted the wrong object. **The margin dial: float size unlocks bar size, bar size sets the fabrication premium** |
+| 🆕 **Fabrication premium** | The dealer's charge above the fix. 🆕 **OBSERVED in Dubai on a same-page dealer pair: 9.75% at 1 g, 3.07% at 10 g, 1.71% at 100 g, 0.93% at 1 kg** (D28). Modelled at **1.50 / 0.95** after a published 25 bp bulk gradient |
 | **Price-gap risk** | The 1σ gold move over the bar fill window, carried by whoever owns the float |
 | **The rail** | The payment collection mechanism. **A fixed fee per event, which is why margin is non-linear in ticket size** |
 | **PM share** | The programme manager's retained share of gross interchange. **Floor 36%** |
@@ -3978,7 +4202,8 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 | **3b** | 🔴 **The score collapse** (D22): tenure→tier lookup plus one heavy-seller haircut; the gate, survival and persona H stay live; **the full ICS formula and the nine personas are demoted to validation and must still pass**; **the 5% safety gate reverts the collapse if it fails** | **Client — taken. Not open** | §3 Layer 5 |
 | **3c** | 🔴 **Cohorts are a convolution. The workbook must not contain a cohort triangle** (D23). Segments scale the curves; later-activating segments offset the acquisition vector | **Client — taken. Not open** | §3 Layer 2 |
 | **3d** | **B2B and credit activate at the start of the annual block (Y3), not as a stub month at M24** | Modeller | §4, §10.5 |
-| 4 | **Eleven sheets and the execution order**, including that **ICS Validation is a leaf** | Modeller | §3.x.1, §12 |
+| 4 | 🆕 **Five visible sheets and five hidden working sheets** (D26), the logical execution order, **the by-name dependency test replacing the tab-position one**, and that **ICS Validation is a leaf** | **Abdur — taken 2026-08-19. Not open** | §1.1, §3.x.1, §12 |
+| 4a | 🆕 **Opex and P&L are a row band on Model, not a sheet. Checks hides and its master flag is mirrored to Cover as a link** | **Abdur — taken 2026-08-19. Not open** | §1.1, §12 |
 | 5 | **The archetype weights and the background hazard** as the calibration starting point, not settled values | Abdur | §3 Layer 5e |
 | 6 | **Spot is in scope** and is a sub-stream of 1, not a seventh stream | Abdur | §6 |
 | 7 | **Stream 0 exists** and there is no offsetting revenue | Abdur | §6 |
@@ -4008,13 +4233,14 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 | **13** | **Model: streams 2 and 4, on the flat Gold rate, with the per-txn fee and the ATM distribution** | **Check 7: nothing before M18.** Verify the effective-PM-share row: ~43% at the Conservative contracted 55%. **Verify the ATM distribution returns non-zero where the mean returns zero** |
 | **14** | **Model: streams 3, 5 and 6.** Credit vintaged by struck LTV; partners on their own clocks | **Check 7: streams 5 and 6 are zero at M24 and first non-zero at Y3 — no stub month.** Verify stream 5 average drawn = peak × 0.42. Verify stream 6 reconciles to S13 within ~5% |
 | **15** | **Model: benefit costs, including the Gold Rewards cap** | **Check 5: the cap never goes negative.** Verify the launch-year ladder cost is one 0.4pp Silver discount |
-| **16** | **Opex & P&L, through EBITDA** | Verify the log-linear interpolation reproduces the §7.4 year table, and that the Marketing plug ties Y3 and **Y7** to the anchors, **re-cut from the published Y3/Y10 pair** |
+| **16** | 🆕 **Model band 2: opex and P&L, through EBITDA** (D26 — a row band on Model, not a separate sheet) | Verify the log-linear interpolation reproduces the §7.4 year table, and that the Marketing plug ties Y3 and **Y7** to the anchors, **re-cut from the published Y3/Y10 pair.** **Verify the band banner and page break sit between the revenue and opex bands** |
 | **17** | **Tax, with the 75% cap** | **Verify the mechanism on a synthetic profitable year**, since no modelled year is profitable. Verify tax writes only in FY-end months |
 | **18** | **Cash and funding.** Working capital, cumulative cash, the within-horizon trough | **Check 6: the acquisition ceiling is never breached, in any period, with the lag one month in the monthly block and one year in the annual block.** ⚠ **Label the trough as a within-horizon minimum, never as peak funding** (§14) |
 | **19** | **Extend to the annual block, Y3–Y7** | **Check 13: all four M24/Y3 seam tests**, including the decomposition test that each annual column is twelve monthly convolutions. Revenue continuity within ±15%, excluding streams 5 and 6 at Y3 |
 | **20** | **Summary, unit economics and the break-even views** | Verify LTV:CAC populates for every channel × segment cell, **including the loss-making ones — those are the answer, not an error.** Verify the diverging-curves chart renders |
 | **21** | **Scenario architecture: all three layers plus the ten binary switches** | **Check 8: the canary distinguishes Base from CUSTOM.** Verify `INDIA_ENABLED = OFF` moves **both** S5 and stream 6. 🔴 **Re-run check 15 under Aggressive and Conservative — an Aggressive archetype mix enriches the top of the ladder and is the most likely to trip the gate** |
 | **22** | **Checks sheet: all sixteen** | 🔴 **Row 3 reads TRUE under Base, Aggressive and Conservative. The build does not ship otherwise** |
+| **25** | 🆕 **PRESENTATION PASS, LAST (D26).** Mirror the Checks master flag to Cover as a **link**; write the §3.x.1 logical order and the sheet map onto Cover; then **hide Time Series, Lifecycle Curves, Acquisition, ICS Validation and Checks** | 🔴 **Run every check again after hiding.** **Confirm the Cover flag is a formula and not a typed TRUE** (§3.x.4). **Confirm five sheets visible in the standard order and five hidden.** ⚠ **Never hide a sheet before its checks pass** |
 | **23** | **Solvers.** Items 1–7 in the §9.4 order, with 3 and 4 solved jointly | Verify item 1 against the possible zero-uplift answer. Verify the 3/4 frontier at both rail cases |
 | **24** | **Tornados, both of them** | Verify the two rankings **differ.** If they are identical, the funding tornado is not reading the cash rows. **Reference model, ten-year run: they differed at ranks 5 and 6 — S27 archetype mix 5th on profit and 6th on funding, S1 rail cost the reverse.** ⚠ **On a 7-year horizon expect the early-biting parameters to rank higher on funding than they did**, because the trough now sits much closer to the ramp. ⚠ **A parameter returning a swing of exactly zero is a wiring failure, not a finding** — check the flex actually reaches the model (S27 was dead until a `from params import` binding was fixed, and S48 until it was read by any model code) |
 

@@ -1,50 +1,37 @@
 # Aurumix — Handoff / Context Doc
 
-> **Read this first in any new chat.** Living index, not an archive. Detail lives in the deliverables; this points at them.
-> **Last updated:** 2026-08-18 (evening). 🆕 **PHASE 4 ARCHITECTURE IS AT v2.1 AND IS WAITING ON ABDUR'S REVIEW.** The revenue model was audited on five dimensions, the engine was rebuilt (v2.0), and three client decisions were then taken on top (v2.1): **7 years as 24 monthly + 5 annual = 29 columns; the score machinery collapsed to a tenure→tier lookup; cohorts as a convolution rather than a triangle.** ⚠ **Figures in the brief are still from the v2.0 ten-year run and are illustrative.** They get re-cut *after* the architecture is signed off. **Start at §9's Phase 4 block.**
+> **Read this first in any new chat.** A living index, not an archive. Detail lives in the deliverables; this points at them.
 >
-> **Previously, 2026-08-17.** **🆕 THIS FILE WAS RESTRUCTURED. All 51 decisions now live in `deliverables/2-mechanism-design/_decisions-log.md`; §6 here is the index.** It had grown to 24,000 words and cost ~57k tokens to load, which is most of a context window spent before any work starts. Nothing was edited in the move. **🆕 Three sessions that had never been folded in are now decisions 49, 50 and 51:** the **credit and card stack** (one facility, two draw channels; a VARA Lending licence cannot advance fiat; Emirates Money already lends at 80%); **the composability reversal, which is the biggest in the project** — **AURX can be an open ERC-20 with a blocklist, and "an open DEX listing is incompatible with Option A" is WITHDRAWN**; and the **B6 rewrite onto custodied gold** (self-custody is a disposal, the Muslim-customer gap, do not put this on-chain). ⚠ **Decisions 10, 24, 33, 37, 38 and 40 are all revised by 50 and their index rows still read as settled — read 50 first.**
-> **Previously, 2026-08-13:** (🆕 **Family Portfolio and succession are designed: `_draft_family-and-succession.md`, decision 48.** Four research streams closed every open item. **The headline: the product cannot avoid probate and we must stop saying it does** — allocated ownership and probate avoidance are mutually exclusive, and we chose ownership. **It also carries three 🔴 corrections that reach decisions 23/24/25/32 and counsel batch 4: the redemption rule is Annex 2 III.E not "Issuance Rulebook III.E", the rulebook is dated 19 May 2025 not 19 June, and DIFC Trust Law Art 60(6) does NOT support the permissioned-token decision.** Earlier the same day: **The referral system is designed: decision 47 and `_draft_referral-system.md`.** Acquisition cost, not a benefit and not a score; success = the referee's own 6-consecutive gate; single level absolutely; **the IRDAI blocker is resolved and there is no number to retrieve**; **the referral programme sits on the VARA licensing critical path**. One open item and it is Abdur's: how big the reward should be. Earlier the same day: Confirmed SIP restored to 6 consecutive and now gates the score itself; Green renamed "No tier"; max LTV fixed at 80%; partner channels earn no ICS)
-> ✅ The 2026-08-07/08 staleness (SIP rulebook and revenue streams landed without a handoff update) was reconciled 2026-08-10: §7's SIP block is resolved, decisions 35/36 revised, 43 added, and the file map now carries the rulebook.
+> ⚠ **Read §0 and §9 first, then grep for what your task needs.** Loading this file whole cost ~35k tokens on 2026-08-19, which is most of a context window spent before any work starts. It was trimmed that day from 408 lines. **Keep it that way: add a pointer, not a paragraph.**
+>
+> **Last updated:** 2026-08-19. **Phase 4 is at brief v2.4 and is where the next session starts** (§9). Two things happened that day. The segment layer was rebuilt from primary sources: six occupational segments became four regional ones, the population was re-cut **from Indian to South Asian**, and **Bahrain left the model** on the CBB rulebook. Then a second pass **measured the fabrication premium instead of guessing it**, which moved §0.3 and three other things — D26 to D30, and `supporting/_working_dealer-premium-and-comparables-research.md`.
 
 ---
 
 ## 0. TL;DR
 
-Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold-backed savings token, currently pre-build with the client's app due early September. **Phases 0 (Discovery) and 1 (Market Research) are complete.** Phase 2 (Mechanism Design) is under way.
+Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold-backed savings token. The client's app is due early September.
 
-**Phase 2 decisions so far:** **delete the scarcity layer and replace the Mining Event with a three-layer allocation model plus a gold float**; **1 AURX = 1 gram** (was 0.01 g); **replace the ICS Dividend with Gold Rewards**, a fee rebate paid in grams; **SIP and spot become transaction types on one account, not classes of investor**; **the contractual lock-in is deleted**; **ICS measures behaviour only, never amount**; **custody fee recovered at entry and exit, never off the metal**.
+| Phase | State |
+|---|---|
+| 0 Discovery | ✅ Complete, client-reviewed |
+| 1 Market Research | ✅ Complete, 52-page summary delivered |
+| 2 Mechanism Design | 🔄 Design complete across eleven drafts and sixteen map sets. **What remains is propagation debt, not design** (§9 item 1) |
+| 4 Revenue Modeling | 🔄 Brief at **v2.4, awaiting Abdur's sign-off on the engine.** `reference_model/` is the oracle |
 
-**🆕 2026-08-04 added the whole legal and operating structure**, which was never in the blueprint: **direct-ownership ARVA under VARA** (removes the Reserve Asset regime and up to ~USD 4M of locked capital, at the price of proving title moves with the token); **the permissioned token is now required for the licence, not just for ICS**; **a DIFC or ADGM holding vehicle**, pending one legal answer; and **India is closed to residents on two independent bars, so the primary persona becomes the NRI and GCC saver**.
+**The product in one line:** 100% of every dollar buys allocated physical gold, 1 AURX = 1 gram, monthly SIP from USD 20, behaviour-scored benefits (ICS), a credit facility and a gold-backed card.
 
-**Three gates now govern the critical path and the client controls two:** the **bullion dealer** (still unnamed), the **title opinion**, and the **persona**.
+**Where the money actually is:** the **card is 83.4% of Year 10 gross profit**. The savings product is the funnel. **No profitable year in ten**, peak funding **USD 15.1m**. 🆕 **The entry-fee cut to 3% is still not funded, but the framing changed at v2.4: it now breaks even and leaves nothing over, rather than being short by 0.79pp** (D28/D29). **The binding cost is no longer the dealer's premium; it is the float carry.**
 
-**🆕 2026-08-05 closed the payment question, which was client additions 1, 2 and 3.** The headline: **the USDT plan was solving a problem Aurumix does not have.** A VARA licence already permits taking customer fiat directly under the Client Money Rules, with no separate Central Bank licence. Stablecoin survives in substance but not in instrument: **USDT and USDC cannot be accepted**, because the issuer must be CBUAE-registered and neither is. The customer converts on their own account at a licensed exchange and pays by bank transfer.
+**Three gates govern the critical path and the client controls two:** the **bullion dealer** (still unnamed), the **title opinion**, and the **persona**.
 
-**🆕 2026-08-06 mapped the purchase structure end to end**, both lanes, money in to cash out. **The headline: VARA Rule III.E.4 prohibits charging any fee on redemption, which kills the decaying spot redemption fee.** It is replaced by a **tenure rebate** charged at entry and paid back in grams for holding: same economics, opposite direction, legal instead of prohibited. Also verified **Rule III.B.1.c**, which makes the token ledger and the title register two halves of one ledger, and closed the returning-NRI gap as a **regulatory pause**.
+**The five things a new session most often needs to know:**
 
-**🆕 2026-08-06 second pass challenged our own token-standard reasoning and it did not survive.** **VARA mandates no token standard anywhere** (verified by regex over 348k characters of primary rulebook text) and **PAXG and XAUT are plain ERC-20 with a freeze role, claim direct allocated ownership, and are ~97% of the market.** The permissioning requirement does not come from VARA and does not come from Option A. **It comes from DIFC Trust Law Art. 60(6), and only because we chose route 2.** See revised decisions 24 and 25, and new decisions 37 to 39. Also produced the **minting and redemption process-map sets**.
-
-**🆕 2026-08-10 (second session) simplified the SIP payment layer, with Abdur's sign-off.** The headline: **UAEDDS direct debit is dropped entirely.** Launch rails are **AANI Request to Pay** (one tap a month; UPI-lineage, so the persona already knows it) plus a **prefunded balance drawn automatically each month** (the honest "set and forget"), with AANI electronic direct debit adopted when live. **The floor is a hard gate** (below USD 20 rejected, never partially credited), **grace shortens to 5 days**, **the declared pause is deleted**, and the ENBD bounce fee is **corrected from AED 105 to AED 26.25** (the 105 was the cheque/credit-card line). Decisions 35 and 36 revised, decision 43 added; full detail and the corrections-owed list in `_draft_sip-rulebook.md`.
-
-**🆕 2026-08-10 expanded the revenue set and resolved custody recovery, with Abdur's sign-off.** The headline: **retail storage is free forever and the metal is never touched** (affordable because true vault cost is likely 0.15 to 0.40%/yr, not the 0.8 to 1% in the client's doc, pending the vault quote), **card users quietly cover theirs through Gold Rewards netting**, and **the storage economics are billed instead to B2B partners as a platform fee in bps on partner AUM**: the one line that scales directly with AUM, collected from the only counterparty practical to bill. See decision 42 and diagrams 6a/6b in `Aurumix_Process_Maps_Revenue_Streams.md`. **Build consequence: the September build must be multi-tenant capable.**
-
-**🆕 2026-08-10 (third session) wrote the benefit definition layer, unblocking B4.** All five decision-44 benefits are now defined mechanically in `_draft_ics-benefits.md`, with tier as an abstract input: mechanism, floor-to-ceiling shape, funding stream, guards, edge cases and a compliance screen per benefit, ending with the closed list of numbers the scoring step must supply. The headline finding is on credit: **every observed gold-collateral LTV comparable sits at 50 to 85%** (RBI's 2025 Directions tier the Indian cap at 85/80/75 by loan size from April 2026; no UAE lender publishes one), so **the 90 to 95% ceiling is a partner outcome, not a promise**, and the ladder must still differentiate at a 75 to 85% partner max. See decision 45.
-
-**🆕 2026-08-11 closed B4 on the weighted formula — and 2026-08-12 replaced it wholesale.** The 2026-08-11 version (`(Tenure 60 + Continuity 24 + Supplementaries 13) × R`, seven tiers, an escalating strike schedule, a Silver floor, per-referee referral maths) passed every test it set itself and failed the only one that matters: **the person who has to present it could not hold it in their head.** Ten interacting rules, each individually justified, collectively unexplainable. It is superseded in full. See decision 46.
-
-**🆕 2026-08-12 — B4 re-derived from first principles, and the design is now two facts and one penalty.**
-
-```
-ICS  =  min( Record , Standing )  ×  Retention        floor of 25 once Confirmed SIP is earned
-Silver 25  ·  Gold 50  ·  Platinum 75  ·  Sovereign 100
-```
-
-**The headline is the operator.** `min`, not a weighted sum — **minimum is the arithmetic of AND**, so a long record cannot cover a bad year and a perfect year cannot cover a short record. The weighted sum's substitution property was the hole that let a ten-year lapsed saver hold the top tier, and no amount of re-weighting closes it. Five consequences: **seven tiers become five** (the benefit set cannot differentiate seven ways — LTV steps go 7.5pp → 15pp, Gold Rewards 0.15 → 0.30pp, and the card maps one-to-one onto three sponsor levels); **referrals, family and Masterclass are removed from scoring entirely** (already paid by the agent commission and the will/family ladder, and a status bonus for recruiting is the MLM shape decision 13 exists to avoid); **the strike schedule is deleted** because a trailing-12 count produces the same behaviour with no penalty table; **Retention is re-based** on a timing-neutral denominator and re-shaped to a straight line at a 30% allowance; and **Confirmed SIP is redefined** (🔄 reversed 2026-08-13, see the amendment at the end of this decision). **Six of eleven gaming attacks are now structurally impossible rather than defended against.**
-
-**🆕 A flaw review the same day found and fixed three real bugs**, all recorded in decision 46: the gate could contradict the score; a Sovereign lost the top tier for selling **21%** of their gold; and the old retention denominator made a sale **cheaper the later in the year it was made**. Also produced **`Aurumix_ICS_Score_Calculator.xlsx`** — a one-tab live model built for presenting, not auditing.
-
-All live in `deliverables/2-mechanism-design/`: allocation and float in `_draft_allocation-and-float.md`, SIP/spot/ICS in `_draft_sip-spot-and-ics.md`, entities/licences/ownership/payments in `_draft_entities-licensing-and-payments.md`, payments in `_explainer_how-we-take-money.md`, purchase lifecycle in `_draft_purchase-structure.md`, and **eight** process-map sets.
+1. **All 51 decisions live in `deliverables/2-mechanism-design/_decisions-log.md`.** §6 here is only the index. **Read the log entry before acting on any decision.**
+2. **Decision 50 reversed the token-standard chain** (AURX can be an open ERC-20 with a blocklist). Decisions 10, 24, 33, 37, 38 and 40 are all revised by it and **none of that propagation has run.**
+3. **`client container/100 G Business_Model.docx` / `.md` is the single source of truth.** ⚠ The client calls it "VERSION 3"; **say "the 100 G Business Model"**, because "V3" also meant a dead pricing formula.
+4. **v1.0's Phase 4 numbers must not be quoted anywhere.** They did not reconcile. Every figure now comes from `reference_model/`.
+5. **Plan before build.** Propose architecture changes as a plan and get agreement *before* touching code or regenerating artefacts. **The brief is the deliverable; the reference model serves it.**
 
 ---
 
@@ -64,98 +51,84 @@ All live in `deliverables/2-mechanism-design/`: allocation and float in `_draft_
 
 **Source of truth = `client container/100 G Business_Model.docx` / `.md`** (17 sections).
 
-> ⚠ **Terminology trap.** The client labels that document "VERSION 3", but "V3" also meant the third term of an old pricing formula that no longer exists. **Say "the 100 G Business Model" and retire the bare "V3".**
-
-| File | Status |
+| File | What it is |
 |---|---|
 | `client container/100 G Business_Model.md` | **CURRENT SPEC** |
-| `client container/Aurumix_Complete_Master_Reference_v2.docx.md` | **OLD model** (70/30 split, algo pool, pool-share pricing). Superseded |
+| `client container/Aurumix_Complete_Master_Reference_v2.docx.md` | **OLD model.** Superseded |
 | `Aurumix reply .docx` | Client's written answers. **Red text is their replies** |
-| `Aurumix_V3_Business_Model_Explained.md` | Our structured walkthrough, gaps flagged `⚠ GAP` |
-| `Aurumix_MD_Blueprint.md` | The MD plan. ⚠ **Stale, and B4 must precede B3** (§7) |
-| `deliverables/0-discovery/Aurumix_Project_Charter.md` | **DONE.** Client-reviewed |
-| `deliverables/0-discovery/questions-discussion.md` | **DONE.** All 15 questions with answers |
-| `deliverables/1-market-research/Aurumix_Protocol_Landscape.md` | **DONE.** 19 protocols, 13 headings, ~5,650 lines, 292 sources, registry-first. **The authoritative research artifact** |
-| `deliverables/1-market-research/Aurumix_Market_Research.md` | **DONE.** Earlier, narrower, 5 protocols. ORO entry corrected in place |
-| `deliverables/1-market-research/Aurumix_Market_Research_Summary.md` / `.html` | **DONE, DELIVERED.** 52 pages. Generated: edit body files in `_summary_working/` and rebuild, never the `.md` |
-| `deliverables/2-mechanism-design/_draft_allocation-and-float.md` | **Phase 2 working draft.** Procurement, float, denomination, premium, dividend |
-| `deliverables/2-mechanism-design/_draft_sip-rulebook.md` | 🆕 **THE CANONICAL SIP DOC** (2026-08-06, revised 2026-08-10). SIP end to end: one account, Retention anti-cycling, Confirmed SIP permanent, hard USD 20 floor, 5-day grace, push-only rails (AANI R2P + prefunding), states, anti-gaming register, proposed B4 defaults. **Where it conflicts with the two older drafts, it wins.** Carries the corrections-owed checklist in its §12 |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_SIP_Structure.md` / `Aurumix_Process_Maps_SIP_Spot_ICS.md` / `_reserve_sip-spot-ics-diagrams.md` | 🆕 SIP process-map sets from the 2026-08-07/08 session. ⚠ **Revision pass owed** for the 2026-08-10 changes (hard floor, 5-day grace, no UAEDDS, no declared pause, AED 26.25); listed in rulebook §12 |
-| `deliverables/2-mechanism-design/_draft_ics-benefits.md` | 🆕 **Phase 2 decision draft (2026-08-10).** The five ICS benefits defined mechanically before B4, tier abstract throughout: mechanism, floor-to-ceiling shape, funding stream (mapped to the six revenue streams), caps and guards, six edge cases and a four-line compliance screen per benefit. **Ends with the closed handoff list of every number B4 must supply (§7).** Carries the gold-collateral LTV research: the partner max will bind, comps run 50 to 85% |
-| `deliverables/2-mechanism-design/_draft_ics-scoring.md` | 🆕 **B4, DONE — rewritten 2026-08-12 and it supersedes the 2026-08-11 version in full.** `ICS = min(Record, Standing) × Retention`, **five tiers at 25/50/75/100**, Confirmed SIP redefined as the 6th counted period, referrals/family/Masterclass removed from scoring, strike schedule deleted, revival deleted, Retention linear at a 30% allowance on a timing-neutral denominator. §1.2 carries the load-bearing argument (**why minimum and not a sum**); §1.8 the Sovereign zero-tolerance decision and the rejected alternative; §7.4 the proof that Standing never binds a clean saver; §8 the anti-gaming table. **Its §12 is the corrections list and it is long** — rulebook §4.1, §7.1/§7.2, §9.1, §9.4, §9.5, §11, §13 |
-| `deliverables/2-mechanism-design/Aurumix_ICS_Score_Calculator.xlsx` | 🆕 **One tab, live, built for presenting (2026-08-12).** Reads top to bottom as a talk: the three questions → each one's 0–100 strip → why *lower of* and why *multiply* → the ladder → **a worked five-year story (Rajesh, USD 75/mo, one miss and one withdrawal)** → a try-it calculator that takes grams → 17 test cases → the six settings. Rebuild with `_build_ics_calculator.py`; check with `_verify_ics_calculator.py`. ⚠ **LibreOffice is not installed here, so `recalc.py` cannot run** — the verify script evaluates the stored formulas directly instead (182 formulas, 0 errors, 19/19 spot-checks against the doc) |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_ICS_Scoring.md` | 🆕 **10 diagrams (2026-08-13). THE ICS CALL SET.** How the score is *earned*, companion to the benefits set which covers what it *buys*. The gate, the three facts, the formula, **why minimum and not a sum**, why Retention multiplies, the ladder, the climb, the miss, the cycler, and **a dedicated map on the four departures from the client's §8.2** raised deliberately rather than discovered. **Map 5 is the bridge and the leave-behind**, carrying the full tier × benefit matrix. Ten-minute call set is 0, 5 and 6; thirty adds 3, 4 and 8; **3 and 8 are a pair and must not be split** (3 is the argument, 8 is the proof). ⚠ Gold Rewards rates marked **provisional**, pending the interchange share and the credit-versus-prepaid decision |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_ICS_Benefits.md` | 🆕 **8 diagrams (2026-08-10): the common engine (all five benefits named with outcomes, deliberate 12-node exception), discount plus its worked example (1b: first payment vs 56th, same USD 75, 0.6518 vs 0.6655 g), credit draw walked start to finish, card, rewards (follows the money from the shop to the grams), will/family.** Each map explains its whole benefit standalone; nodes tightened to the DRODE 2-to-6-word standard after a first pass failed it. Map 2 carries the LTV repositioning warning (partner outcome, not promise), map 4 the rejected-pool record. Ends with three client questions (base-rate uplift, plastic ladder, family pricing) |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Referrals.md` | 🆕 **4 diagrams (2026-08-13). Deliberately short, because it is a simple mechanism and padding it would suggest otherwise.** How a referral works end to end (**the leave-behind**), what counts and what earns nothing, where the money comes from with the worked example, and **one level and it stops there**. Call set is **0 and 3** at five minutes, adding 2 at ten. **Map 1 is the answer to "why doesn't a signup pay", which the client will ask because their §8.2 says "new investors onboarded".** Ends with the five departures from their document as a table rather than a fifth diagram |
-| `deliverables/2-mechanism-design/_draft_referral-system.md` | 🆕 **B5, DONE (2026-08-13). The referral system end to end.** Architecture (one budget, three rings, graduation), the gate as the success trigger, the reward and its form, the honest CAC-vs-LTV economics, the cap, single level, funding and the IRDAI-style budget ceiling, attribution, **28 edge cases**, a **16-row anti-gaming register**, the VARA compliance screen, and the agent-network interface. **§5.0 carries a withdrawn claim and says so** — an earlier invariant tested the reward against a margin that had not paid for price-gap, float or rail. **§5.4 holds the one open decision and it is Abdur's: how big the reward should be.** §13.1 resolves the IRDAI blocker and corrects our own clawback provenance. §16 is the corrections list and it reaches into the scoring draft, the benefits draft and decision 13 |
-| `deliverables/2-mechanism-design/_draft_family-and-succession.md` | 🆕 **B6, DONE (2026-08-13). Family Portfolio and the Beneficiary Transfer Instruction end to end.** Written after four parallel research streams (India/FEMA, VARA redemption, will-partner costs, DIFC/ADGM succession mechanics). 🔄 **REWRITTEN 2026-08-14 (decision 51) and the section numbers below are the new ones — the 08-13 version was "stale on arrival" once composability landed.** Now 17 sections. **§0 is a ten-point summary that carries the whole document — read it alone if nothing else.** §1 is 🆕 **the custody-state precondition, and everything depends on it** (the product only exists on gold held with us; self-custody withdrawal is a disposal); §2 the structural correction (probate cannot be avoided under Option A); §4 the Family Portfolio during life; §6 is **the trigger × beneficiary-residence matrix and it is the leave-behind**; §7 the execution sequence with the authority gate; §8 the pledged-gold ordering the client's document never states; §9 minors; §10 is 🆕 **the Muslim-customer gap, which must not be pre-judged**; §11 pricing against a verified cost floor; §13 the licensing perimeter; §14 the do-not-put-this-on-chain build decision (releases the USD 75k audit line); §15 the 2026-08-14 research pass. **§16 is the corrections list and three entries are 🔴 filing-grade.** §17 has the counsel questions, and question 1 (get VARA to confirm the in-specie/redemption split in writing) is worth more than the other two combined |
-| `deliverables/2-mechanism-design/_source_difc_trust_law_2018.txt` | 🆕 Verified primary text, DIFC Trust Law 2018. Fetched and quoted verbatim — **this is what caught the Art 60(6) misreading.** Keep; the DIFC site returns 403 to automated fetches |
-| `deliverables/2-mechanism-design/_decisions-log.md` | 🆕 **THE DECISION LOG (split out 2026-08-17). All 51 decisions in full.** §6 of this file is now only the index. **Append here, index there, same commit** |
-| `deliverables/2-mechanism-design/_draft_composability-and-ownership-route.md` | 🆕 **B-block DONE (2026-08-13), decision 50, and it is the biggest reversal in the project.** AURX can be an **open ERC-20 with a blocklist**; the permissioned-token requirement falls with the Art 60(6) misreading; **route 2 becomes the composability enabler** via a class-defined trust. §6 is the table of what it revises (decisions 10, 24, 33, 37, 38, 40); §7.1 raised the self-custody question that decision 51 answers. ⚠ Its weakest link is whether the construction **binds outsiders** (Med-Low) |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Composability.md` | 🆕 **8 diagrams (2026-08-13).** Owner vs creditor, the chain that broke, what moves when the token moves, identity at the two doors, why the wrapper fails, one hook two settings, and the four links the whole thing rests on with confidence per link. **Call set 1, 3, 4 at ten minutes; 3 and 8 are a pair and must not be split. Diagram 4 is the leave-behind** |
-| `deliverables/2-mechanism-design/_draft_credit-and-card-infrastructure.md` | 🆕 **B-block DONE (2026-08-13), decision 49.** One facility two draw channels, the four-role stack (**the issuer processor every prior draft omitted**), the provider shortlist, JIT funding on a three-second budget, the stand-in gap, the collateral chain, the liquidation ladder, the verified interchange ladder and the Sharia structure. **Nine corrections owed, two of them filing-grade** |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Credit_And_Card.md` | 🆕 **11 diagrams + an opener (2026-08-13).** Why we partner, two chains, the shortlist, setting the limit, a cash draw walked, a card tap in three seconds, when the rail fails, the collateral chain, the liquidation ladder, who is actually exposed, where the money comes from. **Call set 0, 2, 9; maps 6/7 and 9/10 are pairs. Map 3 is the leave-behind** |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Family_And_Succession.md` | 🆕 **8 diagrams (2026-08-14).** ⚠ **Map 5, the probate correction, must not be cut from any call.** **Map 4, the India inversion, is the leave-behind.** Map 7 is the September build conversation (do not put this on-chain) |
-| `deliverables/2-mechanism-design/_source_vara_issuance_rulebook_2025.txt` | 🆕 Verified primary text, VARA Issuance Rulebook. **Confirms the rulebook is dated 19 May 2025 and that the no-fee rule is Annex 2 III.E**, both of which we had wrong |
-| `deliverables/2-mechanism-design/_draft_sip-spot-and-ics.md` | **Phase 2 decision draft.** SIP/spot split, lock-in deletion, ICS structure. Problem → solution → reasoning throughout. **Formula weights deliberately not set.** ⚠ Superseded in parts by the rulebook (miss table, spot fee, grace) |
-| `deliverables/2-mechanism-design/_draft_entities-licensing-and-payments.md` | 🆕 **Phase 2 working draft.** Entities, licence stack, gold ownership construct, payment rails, India. Sources and confidence levels on every load-bearing claim |
-| `deliverables/2-mechanism-design/_draft_purchase-structure.md` | 🆕 **Phase 2 decision draft.** The full purchase lifecycle both lanes: identity gate, nine stages, where money and title sit at each moment, SIP failure ladder, the three missing SIP states, the exit, transfers. **Mechanics only; costs deliberately excluded** |
-| `deliverables/2-mechanism-design/Aurumix_Legal_Brief_and_Open_Questions.md` | 🆕 **361 lines, dated 19 Aug 2026, "for review". Client-facing, for onward instruction of counsel.** Part 1 describes the build for a lawyer with no prior exposure; Part 2 is the open legal questions. ⚠ **This file was absent from the handoff's file map until 2026-08-18** — it carries the counsel questions accumulated across the drafts, and should be checked against the composability re-cut (decision 50) and the enforcement-sale-as-redemption question Phase 4 raised, before it is sent |
-| `deliverables/2-mechanism-design/_parked_collection-economics-and-minimum-ticket.md` | 🆕 **PARKED at Abdur's instruction, not retracted.** Minimum ticket, the `C_min = R ÷ (f − c)` equation, the card exclusion, the UAEDDS tariff research. **Reopens in Phase 4.** Holds two corrections owed to `_draft_allocation-and-float.md` |
-| `deliverables/2-mechanism-design/_explainer_ownership-structure-plain-english.md` | 🆕 Seven questions answered in non-legal language. For briefing and reuse in client conversation |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Ownership_Structure.md` | 🆕 **4 diagrams in two parts** (what the customer owns / who holds it) plus two questions for counsel. **The ownership call material** |
-| `deliverables/2-mechanism-design/_explainer_how-we-take-money.md` | 🆕 **Answers client additions 1, 2 and 3 in full.** The one rule, the comparables, VARA Client Money, the four payment paths, the country tiers, the four provider jobs, and the §11.2 investor-type re-cut |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Payments.md` | 🆕 **7 diagrams, payment flow only.** Call set is 5, 6 and 7 for the client's three questions; diagram 4 (Four Payment Paths) is the leave-behind |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Minting.md` | 🆕 **8 diagrams.** SIP/spot convergence, identity gate, money-title-token ordering, **worked example (USD 75 → 0.6518 AURX)**, the two gold pots, mint circuit breakers, treasury cycle, and the five open switches |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Redemption.md` | 🆕 **7 diagrams.** Exit path, exit checks, **worked example (0.6518 AURX → USD 75.44)**, what III.E forbids, why zero-fee exit is affordable, the stress case, three protections. **Tenure rebate deliberately excluded, parked at Abdur's instruction** |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Redemption_Fee.md` | 🆕 **1 diagram. The no-fee-on-redemption decision, fixed 2026-08-06.** Three independent reasons converging on one answer. **Also carries the four reconciliations the decision forces.** Deliberately one diagram only; the rest of the exit lifecycle is not mapped yet |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Revenue_Streams.md` | 🆕 **The six revenue streams, grouped by who pays.** Streams 1 to 5 mapped 2026-08-07 (custody folded into entry fee, interchange, family/will, cardholder, lending). **Stream 6 added 2026-08-10: the B2B platform fee** (diagrams 6a/6b, decision 42). Carries its own reconciliation list including two corrections owed to §5 of this file (licence-extension fee, capital stacking) |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps_Custody_Fee.md` | Carries the reasoning for **recovering custody at entry and exit rather than off the metal** (decision 5). ⚠ **The exit half was killed by Annex 2 III.E.4** and the recovery route is now decision 42's Gold Rewards netting plus the B2B platform fee |
-| `deliverables/2-mechanism-design/Aurumix_Process_Maps.md` | **14 diagrams**, branded Mermaid, speaker notes in HTML comments. ⚠ **Predates the SIP/spot/ICS decisions and does not cover them.** Diagram 5 still says "Spot Lane" |
-| `deliverables/4-revenue-modeling/Aurumix_Revenue_Model_Architecture_Brief.md` | 🆕 **v2.1, 2026-08-18. THE THING TO REVIEW.** 4,055 lines, 23 sections. v1.0's research survived audit; its architecture did not. v2.0 rebuilt the engine (six-state population, five behavioural archetypes, pre-gate first-passage, cash and funding view, break-even as a fixed point). v2.1 then applied three client decisions — **D21** 7 years / 29 columns, **D22** collapse the score to a tenure→tier lookup, **D23** cohorts as a convolution. **Read §0 (five findings) and §3 (the engine — the sign-off gate). §3.y says what the approach cannot do.** ⚠ **All figures are from the v2.0 ten-year run and will move**; the structural findings are not expected to. §15 lists 20 corrections owed to Phase 2 |
-| `deliverables/4-revenue-modeling/reference_model/` | 🆕 **2026-08-18. The Python reference implementation and its two documents** — `NUMERICAL_SPINE.md` (703 lines, every table the brief carries) and `VALIDATION.md` (persistency calibration, 9/9 ICS personas, invariants, 9 resolved source conflicts, 10 `DERIVED_BY_MODEL` parameters). **It is the oracle for the Excel build**: every workbook cell can be checked against it. Four defect rounds were run against it before its numbers were accepted |
-| `deliverables/4-revenue-modeling/supporting/` | 🆕 **2026-08-18.** v1.0 preserved as `_v1.0.md`; the parameter completion set (~50 inputs v1.0 never supplied); the corpus-omissions extract; and `_working_architecture-decisions-v2.md`, **the D1–D20 record of every architecture change and the finding that forced it** |
-| `company container/Proposal/Aurumix_Engagement_Brief.md` | ⚠ Written against the OLD model. Superseded by the charter |
-| `company container/meeting-notes/2_June.md` | Discovery call transcript. Voice of Customer source |
+| `Aurumix_V3_Business_Model_Explained.md` | Our walkthrough, gaps flagged `⚠ GAP` |
+| `Aurumix_MD_Blueprint.md` | ⚠ **Stale in six places** (B3.3, B5.3, B6.3, B6.4, B9.3, B1.6). **Follow DRODE, not the blueprint** |
+| **0-discovery/** | |
+| `Aurumix_Project_Charter.md` | ✅ Client-reviewed. 🔴 **Persona needs widening, see §9 item 2** |
+| `questions-discussion.md` | ✅ All 15 questions answered |
+| **1-market-research/** | |
+| `Aurumix_Protocol_Landscape.md` | ✅ **The authoritative research artifact.** 19 protocols, 292 sources, registry-first |
+| `Aurumix_Market_Research.md` | ✅ Earlier, narrower, 5 protocols |
+| `Aurumix_Market_Research_Summary.md` / `.html` | ✅ **DELIVERED.** 52 pages. Generated: edit `_summary_working/`, never the `.md` |
+| **2-mechanism-design/** | |
+| `_decisions-log.md` | 🔴 **THE DECISION LOG. All 51 in full.** Append here, index in §6, same commit |
+| `Aurumix_Legal_Brief_and_Open_Questions.md` | 🔴 **361 lines, "for review". Client-facing, for onward instruction of counsel.** Part 1 describes the build for a lawyer with no prior exposure; Part 2 is the open legal questions. ⚠ **Check against decision 50 and the enforcement-sale-as-redemption question before it is sent** |
+| `_draft_sip-rulebook.md` | **THE CANONICAL SIP DOC.** Where it conflicts with the two older drafts, it wins. §12 is its corrections list |
+| `_draft_ics-scoring.md` | **B4 DONE.** `ICS = min(Record, Standing) × Retention`, five tiers. §1.2 is the load-bearing argument. §12 is a long corrections list |
+| `_draft_ics-benefits.md` | The five benefits defined mechanically. ⚠ **Written against seven tiers**, needs a tier-count pass |
+| `_draft_composability-and-ownership-route.md` | **Decision 50, the biggest reversal in the project.** §6 lists what it revises |
+| `_draft_credit-and-card-infrastructure.md` | Decision 49. One facility, two draw channels. **Nine corrections owed, two filing-grade** |
+| `_draft_family-and-succession.md` | Decision 51, rewritten onto custodied gold. **§0 carries the whole document.** Three 🔴 filing-grade corrections in §16 |
+| `_draft_referral-system.md` | Decision 47. **§5.4 holds the one open decision and it is Abdur's: reward size** |
+| `_draft_entities-licensing-and-payments.md` | Entities, licence stack, ownership construct, payment rails, India |
+| `_draft_purchase-structure.md` | Full purchase lifecycle, both lanes. **Mechanics only; costs excluded.** §8 is a ten-item reconciliation list |
+| `_draft_allocation-and-float.md` | Procurement, float, denomination, premium, dividend. ⚠ **Stale gold-price figures throughout** |
+| `_draft_sip-spot-and-ics.md` | Early decision draft. ⚠ Superseded in parts by the rulebook |
+| `_parked_collection-economics-and-minimum-ticket.md` | 🔴 **PARKED, not retracted. `C_min = R ÷ (f − c)`.** **REOPENS NOW** — it is the minimum-ticket answer (§9 item 3) |
+| `_explainer_how-we-take-money.md` | Answers client additions 1, 2 and 3 in full |
+| `_explainer_ownership-structure-plain-english.md` | Seven questions in non-legal language |
+| `Aurumix_ICS_Score_Calculator.xlsx` | One tab, live, **built for presenting.** Rebuild `_build_ics_calculator.py`, check `_verify_ics_calculator.py`. ⚠ LibreOffice absent, so `recalc.py` cannot run |
+| `_source_vara_issuance_rulebook_2025.txt` | Verified primary text. **Confirms 19 May 2025 and Annex 2 III.E** |
+| `_source_difc_trust_law_2018.txt` | Verified primary text. **Caught the Art 60(6) misreading.** Keep; DIFC site 403s |
+| **Process map sets** (16) | ICS_Scoring (10, **the ICS call set**), ICS_Benefits (8, ⚠ seven-tier pass owed), Composability (8), Credit_And_Card (11), Family_And_Succession (8, **map 5 must never be cut**), Referrals (4), Minting (8), Redemption (7), Redemption_Fee (1), Revenue_Streams, Payments (7), Custody_Fee, Ownership_Structure (4), SIP_Structure + SIP_Spot_ICS (⚠ **both owe the 2026-08-10 revision**), `Aurumix_Process_Maps.md` (14, ⚠ predates SIP/spot/ICS) |
+| **4-revenue-modeling/** | |
+| `Aurumix_Revenue_Model_Architecture_Brief.md` | 🔴 **v2.2. THE THING TO REVIEW.** ~4,100 lines, 23 sections. **Read §0** (findings), **§3** (the engine — the sign-off gate), **§3.y** (what the approach cannot do), **§5** (segments, rebuilt 2026-08-19). ⚠ **All output figures are still from the v2.0 ten-year run and will move.** §15 lists **25 corrections owed** |
+| `reference_model/` | **The oracle for the Excel build.** `NUMERICAL_SPINE.md` (703 lines) + `VALIDATION.md`. ⚠ **Not rebuilt for D21–D23, and not re-run since the D25 segment re-cut** |
+| `supporting/` | v1.0 preserved; `_working_parameter-completion-set.md` (~50 inputs v1.0 never supplied); `_working_corpus-omissions-extract.md`; **`_working_architecture-decisions-v2.md` = the D1–D30 record with the finding that forced each** |
+| 🆕 `supporting/_working_dealer-premium-and-comparables-research.md` | **The 2026-08-19 evidence pass. F4 measured; PAXG / XAUT / Comtech binding terms; Tradeflow; LBMA.** ⚠ **Read §1 before doing any premium work — it carries the same-page method that fixed a measurement error which had returned impossible sub-spot prices** |
+| **company container/** | `Proposal/Aurumix_Engagement_Brief.md` ⚠ written against the OLD model, superseded. `meeting-notes/2_June.md` = discovery transcript, Voice of Customer |
 
-⛔ **Never point a directory-scanning skill at `deliverables/1-market-research/`.** `_working/sections/`, `_summary_working/` and `_summary_working/_original/` hold overlapping copies. Pass explicit file paths.
+⛔ **Never point a directory-scanning skill at `deliverables/1-market-research/`.** Overlapping working copies. Pass explicit file paths.
 
-🔧 **Summary rebuild** (only if it is reopened): `deliverables/1-market-research/_summary_working/` → `npm install`, `python assemble.py`, `python build.py`, `node render.js`, `python lint.py`. Clean bar: four empty arrays from `render.js` (`overflowPages`, `emptyPages`, `sparsePages`, `unresolvedTocEntries`) and `TOTAL: 0` from `lint.py`.
+🔧 **Summary rebuild** (only if reopened): `_summary_working/` → `npm install`, `python assemble.py`, `python build.py`, `node render.js`, `python lint.py`. Clean bar: four empty arrays from `render.js` and `TOTAL: 0` from `lint.py`.
 
 ## 4. The product in brief
 
-- **100% of every dollar buys physical gold.** No hard cap. **1 AURX = 1 gram** (our decision, was 0.01 g).
-- **SIP**: 20 USD min / 75 USD target / no max, **amount variable month to month**.
-- **The contractual lock is deleted** (§6.19). Replaced by a declared savings goal that scores nothing. Missing a payment costs **ICS only, no financial penalty**. Discipline modelled on Indian life-insurance premium schedules.
-- **ICS (Investor Conviction Score)**, **5 tiers, 4 of them named** (No tier / Silver / Gold / Platinum / Sovereign), governs all five benefits. Measures behaviour, never amount. **Spot earns no ICS.** 🔄 Was 7 tiers until 2026-08-12; Titanium and Elite are dropped. 🔄 **Green renamed to "No tier" 2026-08-13**, because below the Confirmed SIP gate there is no score at all, not a low one.
-- **Credit facility + Gold Card**, max LTV **80% at Sovereign**, ladder **50 / 65 / 80** 🔄 **settled 2026-08-13** (was 90 to 95%, itself corrected from 110%). ⚠ **Warning/liquidation thresholds must be re-spaced, and this is more binding at 80, not less.** ⚠ **A lending partner who maxes below 80 is now a repricing event, not a parameter fill.**
-- **Pledged gold still earns ICS and dividend.** Client wants pledgers advantaged.
-- **No physical redemption.** Deliberate. Exit is cash buyback only.
-- **Family Portfolio + Digital Will**, plus a **3-tier agent network** on the Indian insurance agency model. Advisors onboard and invest for clients but cannot withdraw or sell.
-- **Fees:** entry 2 to 5%, custody 0.8 to 1%, credit fees, **merchant interchange** (the one genuinely external stream).
-- Targets: 500 (Y1) → 10 to 14k (Y3) → 60 to 100k (Y10).
+- **100% of every dollar buys physical gold.** No hard cap. **1 AURX = 1 gram.**
+- **SIP**: USD 20 min / 75 target / no max, **amount variable month to month**. 🔴 **The USD 20 floor is inherited from the client and does not clear break-even** (§9 item 3).
+- **The contractual lock is deleted.** Missing a payment costs **ICS only, no financial penalty**.
+- **ICS**, 5 tiers, 4 named (No tier / Silver / Gold / Platinum / Sovereign). Measures behaviour, never amount. **Spot earns no ICS.**
+- **Credit + Gold Card**, max LTV **80% at Sovereign**, ladder **50 / 65 / 80**. ⚠ Warning and liquidation thresholds must be re-spaced. ⚠ **A lending partner who maxes below 80 is a repricing event.**
+- **Pledged gold still earns ICS and dividend.**
+- **No physical redemption.** Exit is cash buyback only.
+- **Family Portfolio + Digital Will**, plus a **3-tier agent network** on the Indian insurance agency model.
+- **Fees:** entry 2 to 5%, custody 0.8 to 1% (⚠ **3 to 6× real cost**), credit fees, **merchant interchange**.
+- Targets: 500 (Y1) → 10 to 14k (Y3) → 60 to 100k (Y10). 🔴 **Nobody has said whether that means accounts opened or investors still contributing. They differ by 3.06×.**
 
 ## 5. Regulatory frame
 
-**Verified against the VARA and CBUAE rulebooks 2026-08-04. Full detail and URLs in `_draft_entities-licensing-and-payments.md`.**
+**Verified against the VARA and CBUAE rulebooks 2026-08-04. Detail and URLs in `_draft_entities-licensing-and-payments.md`.**
 
 - **VARA activities are licensed one by one.** Aurumix needs **Category 1 VA Issuance** (AED 100k application, 200k/yr, capital AED 1.5M or 2% of Reserve Assets). Each extra activity is +50% of the lower application fee. **No approval timeline is published anywhere; never give the client a date.**
-- **The Issuance Rulebook (effective 19 June 2025) uses gold as its worked example** and splits gold tokens into **stable-value** (full Reserve Asset regime) and **direct-ownership** (Reserve Asset rules do not apply). See decision 23.
-- **Redemption is OPTIONAL for an ARVA**, and where granted, **no fee may be charged on it**. ⚠ Reconcile against the decaying spot redemption fee.
-- **Lending and cards are CBUAE, not VARA.** Lending against pledged gold needs a bank or full Finance Company licence; the Restricted Licence category is unusable because it excludes collateral. **The CBUAE holds the sole right to issue BINs**, so a card needs a licensed bank as BIN sponsor (precedent: ADIB sponsor + Al Fardan Exchange as programme manager). **Partner for both, do not build.**
-- **A wind-down plan is MANDATORY** (Company Rulebook Part VII.A), twelve prescribed contents. See revised decision 10.
-- **VARA's remit covers Dubai including free zones, EXCEPT DIFC.** So the issuer cannot sit in DIFC.
+- **The Issuance Rulebook uses gold as its worked example** and splits gold tokens into **stable-value** and **direct-ownership**. We chose direct-ownership (decision 23).
+- **Redemption is OPTIONAL for an ARVA**, and where granted, **no fee may be charged on it** (Annex 2 III.E.4).
+- **Lending and cards are CBUAE, not VARA.** Lending against pledged gold needs a bank or full Finance Company licence. **The CBUAE holds the sole right to issue BINs**, so a card needs a bank as BIN sponsor. **Partner for both, do not build.**
+- **A wind-down plan is MANDATORY** (Company Rulebook Part VII.A), twelve prescribed contents.
+- **VARA's remit covers Dubai including free zones, EXCEPT DIFC.** The issuer cannot sit in DIFC.
 - **Travel Rule threshold is AED 3,500**, not the USD 1,000 in the client's document.
-- **Bodies now in frame:** VARA, CBUAE, SCA (if a profit share is issued), plus RBI/SEBI/IFSCA on the India side. **DIFC or ADGM enters as a holding jurisdiction, not a regulator.**
-- **Client's legal:** a Dubai firm also handling VARA compliance. We produce analysis and questions; they produce the opinion.
-- ❌ **There is no cheap compliant door.** Of 19 protocols only 4 hold a licence covering the token they issue (PAXG, XAUT, WTGOLD, MG999). The rest run a software-company licence, an adjacent trade/AML registration described as authorisation, or a halo. **The DMCC route around VARA does not exist:** Comtech issues on an expired DAFZA trade licence.
+- 🆕 **Bahrain: the CBB Crypto-Asset Module binds and VARA does not passport in.** Tokens are securities under Art. 1 CBB Law; CRA-15.1.1 needs written CBB approval; BD 50,000 capital; escrow at a CBB-licensed retail bank; offers only through a **CBB-licensed digital token advisor**. **No reverse-solicitation exemption exists in 246 pages of text.**
+- 🆕 **Oman: no VASP regime is in force.** FSA Decision E/35/2023 bites on local establishment and is silent on inbound marketing. **A gap, not a permission.** Regulator is the **FSA, not the Central Bank.**
+- **Bodies in frame:** VARA, CBUAE, SCA (if a profit share is issued), RBI/SEBI/IFSCA on India, **CBB and Oman FSA** on the GCC perimeter. DIFC or ADGM enters as a holding jurisdiction, not a regulator.
+- ❌ **There is no cheap compliant door.** Of 19 protocols only 4 hold a licence covering the token they issue. **The DMCC route around VARA does not exist.**
 
 ## 6. Decisions carried forward
 
-**Full text: `deliverables/2-mechanism-design/_decisions-log.md`.** Moved out of this file
-2026-08-17 — it was 58% of the handoff and cost ~33k tokens to load. **The titles below are
-pointers, not summaries. Read the log entry before acting on any decision.** Full reasoning
-also in `_draft_allocation-and-float.md`; full evidence in `Aurumix_Protocol_Landscape.md`.
+**Full text: `deliverables/2-mechanism-design/_decisions-log.md`. The titles below are pointers, not summaries. Read the log entry before acting.**
 
 Markers: ✅ settled · 🔄 revised or superseded · ⚠ carries a caveat · 🔴 load-bearing or unresolved
 
@@ -165,244 +138,223 @@ Markers: ✅ settled · 🔄 revised or superseded · ⚠ carries a caveat · �
 | 2 | ✅ | Mining Events: solved |
 | 3 | ✅ | The gold float is the mechanism that makes it work |
 | 4 | ✅ | 1 AURX = 1 gram, permanently |
-| 5 | 🔄 | SUPERSEDED, pending client agreement. Now: recover custody at ENTRY and EXIT, never off the… |
+| 5 | 🔄 | SUPERSEDED. Now: recover custody at ENTRY and EXIT, never off the metal |
 | 6 | ✅ | Dividend → Gold Rewards |
 | 7 | 🔴 | THE PREMIUM IS ZERO. Model it at zero everywhere |
 | 8 | ✅ | Spot: restrict benefits, not supply |
 | 9 | ✅ | Entry fee must sit at the top of the 2 to 5% range at launch |
-| 10 | ✅ | Token standard: permissioned base (ERC-3643) + optional wrapper |
+| 10 | 🔄 | **REVISED BY 50.** Token standard: permissioned base + optional wrapper |
 | 11 | ⚠ | "LBMA" means two things and the client's doc conflates them |
 | 12 | ⚠ | Sourcing is a live risk, not a theoretical one |
 | 13 | ✅ | Distribution is the actual moat |
 | 14 | ⚠ | Failure precedent: tokens die of revenue starvation, not regulators |
-| 15 | ⚠ | rwa.xyz is reliable for enumerating the market and unreliable for describing an issuer |
+| 15 | ⚠ | rwa.xyz is reliable for enumerating, unreliable for describing an issuer |
 | 16 | ⚠ | "Audited" almost never means the gold was checked |
 | 17 | ⚠ | SIP and agent precedent, now three models not two |
-| 18 | ✅ | SIP and spot are transaction types on one account, not classes of investor |
+| 18 | ✅ | SIP and spot are transaction types on one account |
 | 19 | ✅ | The contractual lock-in is deleted |
-| 20 | ✅ | ICS measures behaviour only. Investment Value is removed entirely |
+| 20 | ✅ | ICS measures behaviour only. Investment Value removed entirely |
 | 21 | ✅ | The miss-and-recover ladder, plus one financial rule |
 | 22 | 🔴 | Persistency is the number that governs the calibration |
 | 23 | ✅ | Direct-ownership ARVA (Option A), not stable-value |
-| 24 | ✅ | The token is the trigger, not the proof, and this collapses the token-standard question |
-| 25 | ⚠ | Entity structure: three routes, route 2 recommended, pending one legal answer |
-| 26 | ⚠ | Title record: Tradeflow preferred, vault books are a real fallback |
-| 27 | 🔴 | India is closed to residents, on two independent bars, and the primary persona changes |
+| 24 | 🔄 | **REVISED BY 50.** The token is the trigger, not the proof |
+| 25 | ⚠ | Entity structure: three routes, route 2 recommended |
+| 26 | ⚠ | Title record: Tradeflow preferred, vault books a real fallback |
+| 27 | 🔴 | India is closed to residents, on two independent bars |
 | 28 | 🔴 | Payments: two hard rules, and one changes the product |
-| 29 | ✅ | The money question is solved, and it is simpler than the client's plan. VARA's Client Money… |
+| 29 | ✅ | The money question is solved. VARA's Client Money Rules |
 | 30 | ✅ | Stablecoin: yes in substance, no in instrument |
-| 31 | 🔴 | The GCC is not one market, and this corrects our own headline number |
-| 32 | 🔴 | VARA prohibits charging anything on the way out, and the decaying spot redemption fee is dead |
-| 33 | ✅ | The token ledger and the title register are two halves of one ledger, and this is real… |
-| 34 | ✅ | The purchase lifecycle is ordered money, then title, then token, and never any other order |
+| 31 | 🔴 | The GCC is not one market. ⚠ **Corrected twice; see §9 item 2** |
+| 32 | 🔴 | VARA prohibits charging anything on the way out |
+| 33 | 🔄 | **REVISED BY 50.** "Open DEX listing incompatible with Option A" is **WITHDRAWN** |
+| 34 | ✅ | Money, then title, then token, and never any other order |
 | 35 | 🔄 | SUPERSEDED IN PART 2026-08-10, twice over |
-| 36 | 🔄 | REVISED 2026-08-10: two of the three states survive, and neither involves a request or a review |
-| 37 | 🔴 | DECISION 24 IS OVERSTATED AND MUST BE REWRITTEN. VARA mandates no token standard, and Option A… |
-| 38 | 🔴 | The identification requirement comes from DIFC trust law, not from VARA, and only because we… |
-| 39 | 🔴 | An ADGM Foundation defeats the ownership claim. Decision 25 treats "DIFC or ADGM" as… |
-| 40 | ✅ | Switch 3 has three landings, not two, and route 2 makes it much easier |
-| 41 | ✅ | Grams are fungible. There is no such thing as a SIP gram or a spot gram |
-| 42 | ✅ | Custody recovery solved by moving the bill to the counterparty that can be billed, and the… |
-| 43 | ✅ | The SIP payment layer goes push-only, and four states become two rules (2026-08-10, agreed… |
-| 44 | ✅ | The ICS benefit set is finalised at five, and the tenure rebate is retired (2026-08-10, agreed… |
-| 45 | ✅ | The benefit definition layer is written and B4 is unblocked (2026-08-10, third session) |
-| 46 | ✅ | B4 IS CLOSED. The ICS score is `min(Record, Standing) × Retention`, five tiers, and it… |
-| 46a | 🔄 | SUPERSEDED IN FULL BY 46. WRITTEN AND COMPLETE, THEN DELIBERATELY REOPENED (2026-08-11, Abdur) |
-| 47 | ✅ | THE REFERRAL SYSTEM IS DESIGNED (2026-08-13). It is an acquisition cost, not a benefit and not… |
-| 48 | ✅ | FAMILY PORTFOLIO AND SUCCESSION ARE DESIGNED (2026-08-13), and the headline is a promise we… |
-| 49 | ✅ | THE CREDIT AND CARD STACK IS DESIGNED (2026-08-13). One facility, two draw channels… |
-| 50 | 🔴 | AURX CAN BE AN OPEN ERC-20, AND THIS REVERSES DECISION 10 AND GUTS DECISION 33 (2026-08-13) |
-| 51 | ✅ | B6 IS REWRITTEN AND THE FAMILY PRODUCT RUNS ON CUSTODIED GOLD, NOT ON-CHAIN (2026-08-14) |
+| 36 | 🔄 | REVISED 2026-08-10: two of three states survive |
+| 37 | 🔄 | **REVISED BY 50.** VARA mandates no token standard |
+| 38 | 🔄 | **REVISED BY 50.** Art 60(6) no longer supports the permissioned token |
+| 39 | 🔴 | An ADGM Foundation defeats the ownership claim |
+| 40 | 🔄 | **REVISED BY 50.** Switch 3 has three landings, not two |
+| 41 | ✅ | Grams are fungible. No such thing as a SIP gram or a spot gram |
+| 42 | ✅ | Custody recovery: move the bill to the counterparty that can be billed |
+| 43 | ✅ | The SIP payment layer goes push-only; four states become two rules |
+| 44 | ✅ | The ICS benefit set is finalised at five; tenure rebate retired |
+| 45 | ✅ | The benefit definition layer is written and B4 is unblocked |
+| 46 | ✅ | B4 IS CLOSED. `min(Record, Standing) × Retention`, five tiers |
+| 46a | 🔄 | SUPERSEDED IN FULL BY 46 |
+| 47 | ✅ | THE REFERRAL SYSTEM IS DESIGNED. An acquisition cost, not a benefit |
+| 48 | ✅ | FAMILY PORTFOLIO AND SUCCESSION ARE DESIGNED. **Probate cannot be avoided** |
+| 49 | ✅ | THE CREDIT AND CARD STACK IS DESIGNED. One facility, two draw channels |
+| 50 | 🔴 | **AURX CAN BE AN OPEN ERC-20. Reverses 10, guts 33. Read before 10/24/33/37/38/40** |
+| 51 | ✅ | B6 REWRITTEN. The family product runs on custodied gold, not on-chain |
 
-⚠ **Decisions 10, 24, 33, 37, 38 and 40 are all revised by decision 50 and their rows above still read as settled.** The token-standard chain was rebuilt on 2026-08-13: **read 50 before relying on any of them.** In particular **"an open DEX listing is incompatible with Option A" (33) is withdrawn**, and **Art 60(6) no longer supports the permissioned token (38)**.
+**Phase 4 architecture decisions D1–D25 are recorded separately** in `deliverables/4-revenue-modeling/supporting/_working_architecture-decisions-v2.md`.
 
-**When you add a decision:** append it to the log and add its row here in the same commit.
+**When you add a decision:** append to the log and add its row here in the same commit.
 
 ## 7. Open questions
 
 **Blocking, all dealer conversations, not research:**
 - Identify a **two-way Dubai bullion dealer or accredited refiner**.
-- Will that dealer **carry the float**, and at what spread? Decides whether Aurumix needs working capital at all.
+- Will that dealer **carry the float**, and at what spread? And **will they take grams back on demand, at what spread** — a separate commitment from carrying inventory, and the zero-fee-exit argument rests on it.
 - Real Dubai **fabrication premiums, two-way spreads and minimum tickets** per denomination.
-- **DMCC Tradeflow fees and terms**, and whether warrants are available from launch.
-- 🆕 **Does Tradeflow support sub-accounts, fractional interests or a beneficial-owner layer beneath a warrant holder?** Decides how much of route 3 is available and whether the vehicle holds one warrant or many. **Arguably more important than the fees.** Also ask why Comtech put only 19 kg of 111 kg on the register.
-- 🆕 **Will a UAE PSP underwrite a gold-token merchant taking small recurring collections?** 🔄 2026-08-10: now specifically, **who will originate merchant AANI Request to Pay collections, and at what per-request cost** (decision 43). No provider publishes a policy; this sits in non-public onboarding criteria. **Not answerable by desk research.**
-- 🆕 **Indicative setup and annual cost of a DIFC or ADGM holding vehicle.** We are currently telling a founder "this costs money" without a number, which is a weak sentence.
+- **DMCC Tradeflow fees and terms**, and **does Tradeflow support sub-accounts, fractional interests or a beneficial-owner layer?** Arguably more important than the fees. Also ask why Comtech put only 19 kg of 111 kg on the register.
+- 🔴 **Who will originate merchant AANI Request to Pay collections, and at what per-request cost?** **This one number sets the minimum ticket and decides whether half the book is viable** (§9 item 3). Not answerable by desk research.
+- **Indicative setup and annual cost of a DIFC or ADGM holding vehicle.**
 
-> ⚠ **Dubai's wholesale gold market is commercially opaque by convention.** Premiums, spreads, minimum tickets and Tradeflow fees are published by nobody; four research passes have now returned the same negative result. **Several Phase 2 parameters can only be closed by a counterparty conversation.** Name this project risk to the client.
+> ⚠ **Dubai's wholesale gold market is commercially opaque by convention.** Four research passes have returned the same negative result. **Name this as project risk to the client.**
 
-**🆕 For the client's COUNSEL. These are the three only they can commission, and two of them gate the build.**
-1. 🔴 **Does title transfer with the token?** Given allocated serial-numbered bars, bailment in the terms, registration on Tradeflow, and a permissioned token. *Deliberately phrased as a combination, not as "is a warrant a document of title", so counsel can tell us which component carries it.* **Determines the product, the capital requirement and the marketing.**
-2. 🔴 **Can allocated but pooled gold be reclaimed from an onshore UAE bankruptcy estate, given gold is fungible? If uncertain, does a DIFC or ADGM vehicle materially improve it?** **Decides route 1 versus route 2.**
-3. 🔴 **Confirm the India perimeter**, and the **inheritance carve-out** for Digital Will beneficiaries. **Determines the addressable market.** 🆕 Sharpen it: **FEMA s.6(4) and s.9(d) enumerate foreign currency, foreign securities and immovable property. A tokenised commodity is none of the three.** Does either provision reach AURX, for an inheriting resident beneficiary or a returning NRI? **Design answer that needs no ruling: settle to cash for any India-resident beneficiary, so no resident ever holds the token.**
+**🔴 For the client's COUNSEL.** Consolidated in `Aurumix_Legal_Brief_and_Open_Questions.md`, which is the sendable artefact. Batches below are the working record.
 
-> 🆕 **A SECOND, LOWER-PRIORITY BATCH OF TWO, both on payments.** Neither gates the build the way the three above do. Send them separately so they do not dilute the first batch.
-> 1. **Is a published list of licensed exchanges, with no commercial arrangement, no referral fee and no data passed, "arranging" a payment token service?** **This is the only load-bearing assumption in the payment design.**
-> 2. **VARA requires overseas client money in "Client Accounts with Third-Party *Banks* outside of the UAE."** Most local-collection providers (Airwallex, Wise Business, Currencycloud, Payoneer, OpenPayd) are **e-money institutions, not banks**, and their virtual accounts sit at a partner bank **in the provider's name**. Does that satisfy the rule? **It decides whether cross-border SIP collection is economically viable at all**, because the alternative is an international wire of USD 15-50 on a USD 75 contribution. ⚠ **Soft evidence it may fail:** OKX's own UAE terms refuse deposits from "cross-border payment service providers (Revolut and Wise, etc.) and e-wallets", accepting only local UAE banks.
+**Batch 1, the three only they can commission, two of which gate the build.**
+1. **Does title transfer with the token?** Given allocated serial-numbered bars, bailment in the terms, and registration on Tradeflow. **Determines the product, the capital requirement and the marketing.**
+2. **Can allocated but pooled gold be reclaimed from an onshore UAE bankruptcy estate? If uncertain, does a DIFC or ADGM vehicle materially improve it?** **Decides route 1 versus route 2.**
+3. **Confirm the India perimeter** and the **inheritance carve-out**. Sharpened: **FEMA s.6(4) and s.9(d) enumerate foreign currency, foreign securities and immovable property. A tokenised commodity is none of the three.** **Design answer needing no ruling: settle to cash for any India-resident beneficiary.**
 
-> 🆕 **A THIRD BATCH OF THREE, all from the purchase-structure work, all cheap, each decides a mechanism.**
-> 1. **Does "equal value" in Rule III.E.1 mean full prevailing value, or realisable value net of the dealer's bid?** **It decides who absorbs the two-way spread on every single exit.** Design assumes the safe reading (full value, no haircut).
-> 2. **Is a published, formulaic buyback commitment a "right of redemption" for III.E purposes, even if the whitepaper never uses the word?** **Assume yes; confirm.** If no, the entire III.E regime is optional and the design loosens considerably.
-> 3. **Under Option A, can a periodic custody charge be satisfied by deducting the customer's own grams under express contractual authority, given they hold legal title?** Decides whether custody has any recovery route left after III.E.4 closed the exit.
+> **Batch 2, payments, lower priority. Send separately.**
+> 1. **Is a published list of licensed exchanges, with no commercial arrangement, "arranging" a payment token service?** **The only load-bearing assumption in the payment design.**
+> 2. **VARA requires overseas client money in Client Accounts with third-party _banks_.** Most local-collection providers are **e-money institutions, not banks**. Does that satisfy the rule? **It decides whether cross-border SIP collection is viable at all.**
 
-> 🆕 **A FOURTH BATCH OF FOUR, all from the 2026-08-06 second pass. Batch 1 question 1 should be re-cut using these.**
-> 1. 🔴 **Can DIFC Trust Law Art. 60(6)(a) "reasonable steps to identify… beneficiaries" be satisfied by holding wallet addresses rather than names?** **This, not VARA, decides whether the token must be permissioned.** If yes, an open ERC-20 works under route 2 and the permissioning falls away.
-> 2. 🔴 **Does an ADGM Foundation's s.29(1) vesting defeat the direct-ownership claim, and is an ADGM trust a better comparator to DIFC?** Decision 25 currently assumes DIFC and ADGM are equivalent. They are not.
-> 3. **Is there any DIFC or ADGM analogue to UCC Article 7 "control" of an electronic document of title?** If not, can WisdomTree's User Agreement §9(b) stipulation ("the blockchain reliably establishes… the person to which the document has been transferred") be replicated contractually with effect against a liquidator? **This is the named-precedent version of batch 1 question 1.**
-> 4. **Is there DIFC Court authority on the proprietary nature of a beneficiary's interest**, given the Law carries no express insolvency-remoteness clause?
+> **Batch 3, purchase structure, all cheap, each decides a mechanism.**
+> 1. **Does "equal value" in III.E.1 mean full prevailing value or realisable value net of the dealer's bid?** Decides who absorbs the spread on every exit.
+> 2. **Is a published formulaic buyback a "right of redemption" for III.E purposes?** Assume yes; confirm.
+> 3. **Can a periodic custody charge be satisfied by deducting the customer's own grams under express authority?**
 
-> ⚠ **Nine further questions arise only because Option A was chosen** (does VARA's client-asset regime reach the metal, the 2% capital component, buyback as redemption or purchase, custody-fee authority, pledge mechanism, Digital Will succession, Gold Rewards grams, VAT). Full list in `_draft_entities-licensing-and-payments.md` §8. **These are consequential, not blocking. Do not put them in the call.**
+> **Batch 4.** ⚠ **Question 1 is built on the dead Art 60(6) reading and MUST be re-cut before sending** (§9 item 1).
+> 2. **Does an ADGM Foundation's s.29(1) vesting defeat the direct-ownership claim?**
+> 3. **Is there any DIFC or ADGM analogue to UCC Art 7 "control" of an electronic document of title?**
+> 4. **Is there DIFC Court authority on the proprietary nature of a beneficiary's interest?**
+
+> ⚠ **Nine further questions arise only because Option A was chosen.** Full list in `_draft_entities-licensing-and-payments.md` §8. **Consequential, not blocking. Do not put them in the call.**
 
 **Still open, need the client:**
 - **Intended use of the finished Data Room.** Asked twice, never answered. Phrasing that lands: *"When this is finished, what's the first thing you'll do with it, and who's the first person outside your team who reads it?"*
-- **Google Drive access** (holds the differential fee structure for spot vs SIP). Blocks fee design.
+- **Google Drive access** (holds the differential fee structure for spot vs SIP).
 - **Final spot capacity %**, **fixed cost structure / operating budget**.
-- **The dividend trilemma**, as an explicit three-way choice: encumber the gold, fund from operating profit, or replace it with Gold Rewards.
-- 🆕 **Does the 60 to 100k Year 10 target mean accounts opened or investors still contributing?** On insurance persistency those are wildly different numbers and the distinction has never been drawn. **It feeds the revenue model directly.**
-
-**⚠ Client additions of 2026-07-28, recorded and DELIBERATELY NOT SCOPED.** Six asks arrived after charter sign-off, logged verbatim in the charter. **Abdur's instruction was to log them and do nothing else.** Treat the charter's unscoped state as intentional. (1) crypto/stablecoin investment, (2) which countries we can accept from, (3) payment service providers, (4) retail vs institutional split of the market, (5) minimum numbers covering annual expenses plus NRI research, (6) not India/UAE-only.
-
-> ✅ **RESOLVED 2026-08-04, and it went further than expected.** The suspicion behind item 2 is confirmed and hardened: **two independent bars close India to residents, not one** (see decision 27). **Items 2 and 3 are now answered and item 5 is unblocked.** Items 1, 4 and 6 remain unscoped. **The charter's primary persona must change from Indian resident to NRI and GCC-resident saver**, and that change gates Phase 4.
-
-**✅ RESOLVED: the SIP mechanism is settled end to end in `_draft_sip-rulebook.md` (2026-08-06, revised 2026-08-10). Every item in the old "OPEN AND ACTIVE" block landed:**
-
-- **Cycling** → the **Retention multiplier** (`R = gram-months held ÷ gram-months if never sold`, `R_applied = min(1, R/0.80)`), time-weighted and proportional, so token-fraction and window-dressing plays fail arithmetically. A month-60 cycler scores 0.3 against a perfect saver's 84. Plus 90-day collateral seasoning, LTV struck at draw, 12-month agent-commission clawback, referral points scaled by the referee's own R, and a round-trip review flag. Foolproof means unprofitable, and it now is.
-- **Confirmed SIP** → **permanent once earned.** Un-earning a historical fact is incoherent; the tier does all the punishing.
-- **Below-minimum payment** → the declared minimum is **deleted** (self-set exam); the product floor of USD 20 is a **hard gate**: below it is rejected and returned, never partially credited (2026-08-10).
-- **Frequency fixed monthly, amount variable** → stands, and the UAEDDS mandate caveat is **moot: the rail is dropped** (decision 43).
-- **Family portfolios** → open to everyone and scoring; sub-account earns its own full period, head gets capped supplementaries.
-- **Spot entry fee** → **priced at the account's earned tier** (rulebook §1.1): the old flat rate was unenforceable against a variable-amount SIP and only taxed the unsophisticated. A price lever cannot leak; ICS/credit/card/family stay SIP-earned.
-- **The empty time lever** → accepted as two levers; the entry fee already does the third job, permanently.
-
-**What remains open on SIP lives in rulebook §13** — now only the **R2P origination provider and cost** and the **round-trip thresholds**. ✅ **Closed by decision 46:** B4's weights (there are none — the formula uses a minimum, not a sum), the discount-ladder funding (time-phased; the ask may be zero), the holding allowance (now a 30% annual withdrawal allowance on a new denominator), and the 🔴 revival-restoration rule (revival is deleted outright, so there is nothing to restore). ⚠ **Rulebook §11's proposed parameter table and §4.1's definition of Confirmed SIP are both superseded** — see the corrections list in `_draft_ics-scoring.md` §12.
+- **The dividend trilemma**, as an explicit three-way choice.
+- 🔴 **Does the 60 to 100k Year 10 target mean accounts opened or investors still contributing?** **They differ by 3.06× and drive different lines.**
 
 **Open on our side:**
-- 🆕 **Pricing rule is inconsistent across three drafts.** Allocation draft says "first LBMA **AM** fix", purchase draft says "first fix after cleared funds", exit rule says "next fix after the request". **Recommend "the next published LBMA fix, AM or PM, whichever comes first", used identically on entry, arrears and exit.** AM-only adds ~20 hours for no benefit and strains the T+1 target. ⚠ **Also: "cleared funds" has no defined cut-off or timezone.** London fix, UAE bank timestamps, daylight saving.
-- 🆕 🔴 **The zero-fee-exit argument assumes Aurumix owns the float.** `_draft_purchase-structure.md` §5.4 rests on exits returning grams to the float rather than triggering a sale. Under a **dealer-carried** float an exit requires the dealer to **take grams back on demand at a fair price**, which is a separate commitment from carrying inventory. **The dealer batch asks "will you carry the float". It must also ask "will you take grams back, and at what spread."**
-- 🆕 **Sequencing bug in `_draft_purchase-structure.md` §5.3.** The exit table lists the rebate at step 7, after the burn at step 4, while its own text says "before the burn". Crediting grams to a holder whose tokens are burned would need re-minting. **Correct when the rebate mechanism is settled.**
-- 🆕 **Three exit checks owed to §5.3**, which lists only sanctions re-screen, name-match and pledge. Add **onboarding status per Rule III.E.3** (a rule requirement, and what makes identify-at-entry-and-exit sufficient), **residence re-check** (they may have moved into a regulatory pause), and a **rapid in-and-out pattern flag**. ⚠ **Checks must run before the price is struck**, or a customer can lock a price then fail a check.
-- 🆕 **Whether the float sits inside or outside the trust is undecided.** Drawn as **outside** in the minting maps, which keeps customer metal clean. Needs confirming, and the two positions must never commingle.
-- 🆕 **Bank name-match tolerance is undesigned.** The NRI and GCC base means transliterated Arabic and Indian names varying between passport and bank record. **An exact-string match will reject legitimate customers.** Matching tolerance and manual review path both owed.
-- 🆕 🔴 **Custody recovery has no clean route left.** III.E.4 killed the exit half of decision 5. Four options, all flawed: front-load into an entry fee already at the top of its range; a periodic cash bill that dies on persistency; deduct grams and burn the matching tokens (**mechanically sound, the invariant holds**, but it breaks *"you can never lose your gold"* and needs express authority to sell the customer's metal); or absorb it. ⚠ **The question underneath all four has never been asked: is 0.8 to 1% a cost or a revenue line?** Institutional allocated storage does not cost that. **If the true vault cost is 0.15 to 0.40%, absorbing it becomes viable and turns into a marketing advantage over PAXG and Comtech.** Get the vault quote; it sits in the same conversation as the dealer. ⚠ Also correct the allocation draft's claim that "deduction in grams breaks the peg": **too strong**, since burning the matching tokens preserves the invariant exactly. The conclusion stands, the reasoning does not. 🔄 **RESOLVED 2026-08-10, decision 42:** absorb at retail (zero storage fee as differentiation), recover via Gold Rewards netting and the B2B platform fee. Pending only the vault quote.
-- 🆕 **Two corrections owed to `_draft_allocation-and-float.md` sit in the parked file, and they are wrong numbers, not caveats.** The flat **0.30% payment rail is wrong** (UAE direct debit is a fixed fee per debit, not a percentage), and the **Year 1 net contribution margin of ~1.00% on USD 75 is wrong**. Parked at Abdur's instruction on 2026-08-06 so the purchase draft stays on mechanics. **They reopen in Phase 4 and they change the revenue model.**
-- 🆕 **The holding vehicle is a party in four mechanisms we have already designed.** Allocation, buyback, credit pledge and Digital Will all move title into or out of it, and the existing drafts assume Aurumix holds the metal directly. **Real work owed, not a caveat.**
-- 🆕 **Three amendments owed to `_draft_allocation-and-float.md`:** the float must be legally segregated from allocated customer metal; the entry-fee build-up needs a **per-channel rail cost** rather than a flat 0.30%; and the buyback needs reconciling against VARA's no-fee-on-redemption rule.
-- 🆕 **One reconciliation owed to `_draft_sip-spot-and-ics.md`:** the decaying spot redemption fee against the same no-fee-on-redemption rule.
-- 🆕 🔴 **Possible arithmetic conflict in the tenure rebate, and it decides whether the spot lane is profitable.** Decision 32 pays back **up to ~1.5% in grams at 12 months**. Decision 9 puts the entry fee at **5%** against a build-up of **4.15%**, so gross margin is **0.85%**. Those two numbers cannot coexist unless the 1.5% is funded by an **uplift to the spot entry fee** rather than taken out of margin. Intent is almost certainly the uplift, since the rebate replaces a 1.5% decaying fee spot already paid, **but it is not stated explicitly anywhere.** ⚠ **If it comes out of margin, the spot lane is loss-making by design.** Confirm before the entry fee hardens into the Phase 4 revenue model.
-- 🆕 **Two corrections owed to the client's document:** the Travel Rule threshold is **AED 3,500**, not USD 1,000; and §3.1's "this is not a pooled allocation" is an overclaim, since per-customer bar allocation is impossible at 1 gram tickets. **The accurate wording is "allocated and segregated from Aurumix's own metal", not "not pooled".**
-- 🆕 **Three design details deferred from the SIP/ICS draft, homeless until the register exists:** whether the credit ratio applies to all grams or only SIP-acquired grams; whether SIP or spot grams are sold first on a partial exit (only spot carries the decaying redemption fee); and whether arrears can be paid in instalments, since making good a missed period alongside the current one doubles that month's outflow.
-- **CG named payment channels as their biggest challenge.** Additions 1 to 3 are them handing it to us. Scope conversation still owed.
-- **Silver product revenue model: INTERNAL USE ONLY.** Informs our recommendation, not shared.
-- Pull IRDAI 2023 regulation text. Correct 110% → 90 to 95% LTV in the client's doc and re-space thresholds.
-- Confirm whether LBMA GD bars lose chain-of-integrity status when vaulted outside the LBMA approved-vault network. **This prices the exit.**
+- 🔴 **The minimum ticket.** §9 item 3. The live thread.
+- **Pricing rule is inconsistent across three drafts.** **Recommend "the next published LBMA fix, AM or PM, whichever comes first", used identically on entry, arrears and exit.** ⚠ "Cleared funds" has no defined cut-off or timezone.
+- **Sequencing bug in `_draft_purchase-structure.md` §5.3:** the exit table lists the rebate after the burn while its own text says before.
+- **Three exit checks owed to §5.3:** onboarding status per III.E.3, residence re-check, rapid in-and-out flag. ⚠ **Checks must run before the price is struck.**
+- **Whether the float sits inside or outside the trust is undecided.** Drawn as outside. **The two positions must never commingle.**
+- **Bank name-match tolerance is undesigned.** Transliterated names will fail an exact-string match.
+- 🔴 **Possible arithmetic conflict in the tenure rebate.** Decision 32 pays back ~1.5% at 12 months; decision 9 leaves 0.85% gross margin. **Unless the 1.5% is funded by an uplift to the spot entry fee, the spot lane is loss-making by design.** Not stated explicitly anywhere.
+- **The holding vehicle is a party in four mechanisms already designed.** Allocation, buyback, credit pledge, Digital Will. **Real work owed.**
+- **Three amendments owed to `_draft_allocation-and-float.md`:** float legally segregated from customer metal; per-channel rail cost, not a flat 0.30%; buyback reconciled against the no-fee rule.
+- **Two corrections owed to the client's document:** Travel Rule is AED 3,500; §3.1's "not a pooled allocation" is an overclaim. **Accurate wording: "allocated and segregated from Aurumix's own metal".**
+- **Three design details deferred, homeless until the register exists:** credit ratio on all grams or only SIP grams; SIP or spot grams sold first on partial exit; whether arrears can be paid in instalments.
+- **Silver product revenue model: INTERNAL USE ONLY.**
+- Confirm whether LBMA GD bars lose chain-of-integrity status when vaulted outside the approved-vault network. **This prices the exit.**
 
 ## 8. Working conventions
 
 - **Git: push directly to `main`. Never feature branches, never PRs.**
 - **Commit trailer:** `Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>`.
 - **No em dashes** in deliverables. Colons, sentence splits, parentheses. En dashes in numeric ranges are fine.
+- ⛔ **Never find-and-replace repo markdown via PowerShell.** PS 5.1 mojibakes every ✅ ⚠ § in the file. Use the Edit tool.
 - **Notion-importable markdown** for client-facing docs: single H1, GFM tables, `- [ ]` checkboxes, no HTML.
-- **Style:** decision-driven, plain language, reasoning shown. **Surface inconsistencies rather than silently fixing them.** No analogies or figurative framing in client-facing text.
-- **Agent availability is per-session.** Check the list; otherwise invoke the equivalent skills.
-- **Process maps:** brand theme block on every diagram, `graph LR`, 4 to 6 nodes, gold for solutions, concrete for problems, stone for intermediates, speaker notes in HTML comments. **Reference: `DRODE-Tokenomics/deliverables/2-mechanism-design/supporting/block3-diagrams.md`.**
+- **Style:** decision-driven, plain language, reasoning shown. **Surface inconsistencies rather than silently fixing them.** No analogies in client-facing text.
+- **Plan before build.** Architecture changes get proposed and agreed before code or artefacts move. **The brief is the deliverable; the model serves it.**
+- **Process maps:** brand theme block on every diagram, `graph LR`, 4 to 6 nodes, **2 to 6 words per node**, gold for solutions, concrete for problems, stone for intermediates, speaker notes in HTML comments. **Reference: `DRODE-Tokenomics/.../block3-diagrams.md`.**
+- **Depth benchmark:** `DRODE_Mechanism_Design_v1.md` = 1,252 lines / ~25k words / 20+ parameter tables. Per-mechanism anatomy: mechanic → how it works (numbered) → why X over Y → worked example with table → edge case, **plus a compliance note for Aurumix.** Target 1,500 to 2,000 lines.
+- 🆕 **Context discipline.** Read §0 and §9 here, then grep. **Delegate multi-file reading to subagents** — the 2026-08-19 research spent 247k agent tokens and returned 15k to the main context. **Large `Edit` calls cost twice** (old text and new text both count). ⚠ **Before overwriting a file you read earlier in a long session, `git diff` it** — handoff.md gained 30 lines mid-session and a blind rewrite would have destroyed them.
 
 **⚠ Perplexity research method, learned the hard way:**
 1. **Never embed the fact you are testing.** Ask "what is the current X", not "it reportedly uses X, confirm".
-2. **Run a dedicated recency sweep** as its own query, dated, reverse chronological.
+2. **Run a dedicated recency sweep** as its own dated query.
 3. **Never use negative source-exclusion lists.** They cause sonar-pro to skip searching entirely.
-4. **Verify the entity, not the story.** Pull the **registry record** and the **terms of issue** first. The ORO error survived a full research pass and collapsed in one minute against a company register.
-5. **Never demand a rigid citation format.** sonar-pro refuses. Ask positively: *"write the source URL in the text right after each claim."*
+4. **Verify the entity, not the story.** Pull the **registry record** and the **terms of issue** first.
+5. **Never demand a rigid citation format.** Ask positively: *"write the source URL in the text right after each claim."*
+6. 🆕 **When the question is "what does this organisation actually publish or offer", fetch its own page.** Search only finds which page to read. **Primary PDFs and government APIs beat search summaries every time** — the 2026-08-19 sizing work was rebuilt entirely on NCSI, LMRA and CBB source documents after two sonar calls degraded into "tools are disabled, I cannot verify".
 
 **🔧 openrouter MCP:**
-- ✅ **Use `perplexity/sonar-pro`. Do not use `sonar-deep-research`.** ~0.02 to 0.08 USD/query.
-- ⛔ **Never pass `max_tokens` to a Perplexity model.** It crashes the MCP parser. Constrain by instruction instead ("under 800 words, no background sections").
-- ⛔ **Never gate on `validate_model`.** Both lookup paths are unreliable; call the model directly.
-- ⚠ **The MCP response drops citations.** No `citations` or `search_results` field, so bare `[1][2]` markers resolve to nothing. **Any answer with bare bracket numerals is failed output: re-run it.**
-- ⚠ **For load-bearing claims, go to the register, not the search model.** Perplexity has contradicted itself and mis-dated events within a single session.
+- ✅ **Use `perplexity/sonar-pro`. Not `sonar-deep-research`.** ~0.02 to 0.08 USD/query.
+- ⛔ **Never pass `max_tokens`.** It crashes the MCP parser. Constrain by instruction.
+- ⛔ **Never gate on `validate_model`.** Call the model directly.
+- ⚠ **The MCP drops citations.** **Any answer with bare bracket numerals is failed output: re-run it.**
+- ⚠ **For load-bearing claims, go to the register, not the search model.**
 
 ## 9. Current status and next actions
 
-### 🆕 PHASE 4 — ARCHITECTURE AT v2.1, AWAITING REVIEW. **THIS IS WHERE THE NEXT SESSION STARTS.**
+**Phases 0 and 1 complete. Phase 2 design complete, propagation outstanding. Phase 4 architecture at v2.2, awaiting sign-off.**
 
-**What to read, in this order.** `deliverables/4-revenue-modeling/Aurumix_Revenue_Model_Architecture_Brief.md` — **§0** (five findings, ~2 pages, the whole story), then **§3** (the engine, which is the sign-off gate), then **§3.y** (what the approach cannot do, and the alternatives rejected). Everything else is reference.
+> ⚠ **The honest read on the engagement:** we were hired to design the economics, and the economics turned out to be downstream of structural questions the client has not asked. **The deliverable will look different from the proposal, and the client should hear that from us before he notices it.**
 
-**Three client decisions are TAKEN, not open** (D21–D23, recorded in the brief's front matter):
-- **D21 — 7 years, as 24 monthly + 5 annual = 29 columns.** Matches the DRODE precedent exactly. Replaces v2.0's 76 columns.
-- **D22 — the score machinery collapses** to a tenure→tier lookup. Measured cost ~2% of gross profit at Y7. The gate stays live (eligibility is first-order); the rate ladder goes (second-order). The full ICS formula and the nine personas survive as a **validation test with a 5% safety gate**, so the collapse is proved rather than assumed.
-- **D23 — no cohort triangle.** Five monthly lifecycle curves convolved against the acquisition vector (`SUMPRODUCT`). Segments scale the same curves.
+### PHASE 4 — the architecture is the gate
 
-⚠ **Do not re-cut any figure before the architecture is signed off.** Every number in the brief comes from the v2.0 **ten-year** run. The order is: agree the architecture → rebuild the reference model to the 7-year 29-column basis → re-cut ~150 figures → then build the workbook. Re-cutting first is wasted work, and it is the mistake that prompted the **plan-before-build** rule below.
+**What to read, in order:** brief **§0** (findings), **§3** (the engine, which is the sign-off gate), **§3.y** (what the approach cannot do), **§5** (segments). Everything else is reference.
+
+**Decisions taken, not open:**
+- **D21 — 7 years as 24 monthly + 5 annual = 29 columns.** Matches DRODE precedent. Replaces v2.0's 76 columns.
+- **D22 — the score machinery collapses to a tenure→tier lookup.** Measured cost ~2% of gross profit at Y7. The **gate stays live** (eligibility is first-order); the rate ladder goes (second-order). The full formula and nine personas survive as a **validation test with a 5% safety gate**, so the collapse is proved rather than assumed.
+- **D23 — no cohort triangle.** Five monthly lifecycle curves convolved against the acquisition vector (`SUMPRODUCT`).
+- 🆕 **D24 — the bottom-up engine was reopened, tested and confirmed.** Reasoning recorded so it is not re-derived: unknowns argue *against* top-down (it concentrates the answer in one unfalsifiable penetration share and cannot produce a tornado); the §0 findings are structural and survive a wholesale parameter re-cut; and v1.0 proved simpler does not mean safer.
+- 🆕 **D25 — six occupational segments become four regional ones** (R1 UAE Indian, R2 UAE other South Asian, R3 Oman, R4 India), each carrying an **average ticket plus a floor share** from which two ticket bands derive. **Bahrain, Emirati and Western expat are named, sized and deliberately not modelled.** `base × ceiling` held at 165,750 against v2.1's 164,900 on purpose.
+
+- 🆕 **D26 — the workbook ships on the firm's standard FIVE-sheet architecture** (Cover, Assumptions, Scenario Parameters, Model, Summary), with the machinery on five working sheets placed after them and **hidden**. Opex and P&L fold into Model as a second row band; Checks hides and mirrors one master flag to Cover. ⚠ **The acyclicity rule had to be rewritten, not relabelled: it was a tab-position test, and hiding inverts tab order against logical order. It is now a by-name test against the §3.x.1 order, written onto the Cover.**
+- 🆕 **D27 — CAC is LINEAR.** The convexity curve is a `CAC_CONVEXITY` switch defaulting OFF; calibration moves to Phase 5. Its constants were unsourced and the hockey-stick brake is the saturation ceiling, not the CAC curve. ⚠ **Direct-channel LTV:CAC at high spend is now an upper bound.**
+- 🆕 **D28 — F4 IS MEASURED, NOT GUESSED. 100 g at 1.50%, 1 kg at 0.95%**, against the old 3.00 / 2.00 / 0.75. **The ladder was one denomination too pessimistic at every rung.** Good Delivery is **retired as a rung** — Dubai's own GD standard is a 1 kg bar, not 400 oz, so the third rung targeted the wrong object.
+- 🆕 **D29 — S51 flips to OWN FLOAT FROM M1**, and the side is now forced rather than chosen. All three routes the comparables use to avoid carrying metal are closed to Aurumix. 🔴 **Inside this: the 0.79% price-gap is a PRICING-CONVENTION cost, not a float cost. It exists because price is struck at the next LBMA fix, hours away; Paxos gets the same exposure near zero with a 5-second quote. That trade-off is worth ~0.79pp and has never been put to the client.**
+- 🆕 **D30 — the premium is charged on NET NEW GRAMS**, not gross inflow, because redeemed gold returns to the float. ⚠ **Gated on correction 30, which is undesigned: does redeemed gold return to the float or go back to the dealer? Nobody has written it down.**
+
+🆕 **Net effect of D28–D30 on a USD 75 ticket: net contribution margin 0.54% → 1.97%, break-even ticket ~USD 29 → USD 10.90, minimum viable entry fee 4.96% → ~3.07%.** **The minimum-ticket problem largely dissolves at the Base rail** (§9 item 3 softens sharply) ⚠ **but at the Conservative rail it is USD 66, so the rail still decides it.** 🔴 **One reversal to note: the SIP lane now clears the Conservative rail (+USD 0.36 where it was −USD 0.82), so "spot is the only lane that survives the adverse rail" is WITHDRAWN.**
+
+⚠ **Do not re-cut any figure before the architecture is signed off.** Every number in the brief comes from the v2.0 ten-year run on the pre-D25 segmentation. Order: agree the architecture → rebuild the reference model → re-cut the figures → build the workbook.
 
 **Next, in order:**
-1. 🔴 **Abdur reviews §0 and §3 and signs off, or sends the engine back.** Nothing downstream is safe until this lands — changing an assumption is minutes, changing the engine is a rebuild of both the model and the spec.
-2. **Rebuild `reference_model/` to 7 years / 29 columns**, apply D22 and D23, and re-run the two equivalence tests: collapsed-lookup vs full ICS, and convolution vs cohort engine. **If the collapsed tier mix moves stream 2 by more than 5% of gross profit in any year, the collapse is unsafe and must be reverted** — measured headroom is only ~2% against a 5% tolerance, so this gate is live, not ceremonial.
-3. **Re-cut the brief's figures** from the rebuilt spine and clear the ~22 remaining `{{UNFILLED}}` markers.
-4. **Build the workbook.** Eleven sheets, ~200 rows × 29 columns. `reference_model/` is the **oracle** — every cell can be checked against it, which neither v1.0 nor the DRODE build had.
-5. **Fold the 20 corrections owed to Phase 2** (brief §15) into the corpus. Not started. Includes a **retired mechanism (the tenure rebate, decision 44) still being solved for**, a **float cost-of-capital double count**, and **stale gold-price figures throughout `_draft_allocation-and-float.md`**.
+
+**1. 🔴 THE PROPAGATION DEBT FROM DECISION 50.** The composability reversal changed the token-standard answer after six decisions and several drafts were written on the old one, and **none of it has run.** In order: **(a)** rewrite decisions 10, 24, 33, 37, 38, 40 in the log and flip their index markers; **(b)** withdraw *"an open DEX listing is incompatible with Option A"*, *"both parties must be registered holders"* and *"an unregistered recipient cannot receive AURX"* from `_draft_purchase-structure.md` §4/§6 and `_draft_entities-licensing-and-payments.md`; **(c)** re-cut **counsel batch 4 question 1**, which **must not be sent as written**; **(d)** change the invariant to `trust holdings ≥ tokens outstanding` in the minting and redemption maps; **(e)** add the self-custody-is-a-disposal rule to `_draft_ics-scoring.md` §1.5 and §10. ⚠ **Then the three filing-grade citation fixes from decision 48** (Annex 2 III.E not Issuance Rulebook III.E; 19 May not 19 June 2025; ADGM s.30 not Art 33), reaching five files. 🔴 **The client conversation changed shape: we told him the token had to be permissioned and an open listing was impossible. Both are withdrawn. He is building in September.**
+
+**2. 🆕 🔴 THE SEGMENT RE-CUT REACHES BACK INTO PHASES 0 AND 2.** D25 was built on primary sources (Oman NCSI bulletin, Bahrain Social Insurance wage dataset, the CBB rulebook text, CBUAE FSR 2025, AMFI July 2026, Abu Dhabi 2024 census). Four consequences outside Phase 4:
+   - 🔴 **The market is South Asian, not Indian.** Bangladeshis outnumber Indians in Oman (605,486 vs 515,361). **The MEA overseas-Indians table is the wrong instrument** and omits Bangladeshis and Pakistanis entirely. **Correct decision 31 a second time**, and on a different basis than the first correction.
+   - 🔴 **The charter persona ("the NRI saver") and the Indian agent-network model are both too narrow.** A client conversation, not a text edit.
+   - 🔴 **"UAE, then Bahrain and Oman" is backwards.** Oman is the accessible one; Bahrain needs CBB approval, BD 50,000 capital and a locally licensed digital token advisor.
+   - 🔴 **The lowest-income band may have no usable payment rail.** Findex's 85.7% counts **WPS payroll cards with no IBAN**, which cannot carry a mandate or a debit. Mitigant with a date: **CBUAE's Universal Account** (zero minimum balance, real IBAN, aimed at AED 5,000/month earners). Also note **CBUAE has said it will launch digital savings products for low-income earners within one to two years** — the regulator entering our segment.
+   - **Five new corrections owed, brief §15 numbers 21 to 25.**
+
+**3. 🆕 🔴 THE MINIMUM TICKET, and `_parked_collection-economics-and-minimum-ticket.md` reopens for it.** The USD 20 floor is inherited from the client and was never calculated. At the brief's own Year 1 waterfall (0.87% available after gold, price-gap and float) and the modelled USD 0.25 rail, **break-even is ~USD 29**; at any researched rail price it is **USD 47 to 249**. **40 to 60% of the book sits at the floor.** ⚠ The parked file's break-even table uses the **old 0.36% price-gap** and must be re-run at 0.79%. **Proposed resolution, not yet agreed: split the two jobs the one number is doing** — keep USD 20 as the *monthly commitment* (market-facing, against Liv Gold at AED 15 and Botim at AED 10) and set the *collection minimum* at break-even, collecting less often via the decision-43 prefunded balance. ⚠ **This rewords the six-consecutive-payments gate from months to collection periods**, which touches ICS.
+
+**4. REBUILD `reference_model/`** to 7 years / 29 columns, apply D22, D23 and **D25's four regions and eight ticket bands**, then re-run the equivalence tests: collapsed-lookup vs full ICS, and convolution vs cohort engine. **If the collapsed tier mix moves stream 2 by more than 5% of gross profit in any year, the collapse is unsafe and must be reverted** — measured headroom is ~2% against a 5% tolerance, so the gate is live, not ceremonial. 🔴 **Expect the minimum viable entry fee to rise above 3.79%**, because the book-weighted ticket falls from ~USD 40 to ~31.5 against a fixed per-collection rail.
+
+**5. RE-CUT THE BRIEF'S FIGURES** from the rebuilt spine and clear the remaining `{{UNFILLED}}` markers.
+
+**6. BUILD THE WORKBOOK.** Eleven sheets, ~200 rows × 29 columns. `reference_model/` is the **oracle** — every cell checkable against it, which neither v1.0 nor the DRODE build had.
+
+**7. FINALISE ICS. Design settled (decision 46); what remains is mechanical propagation.** Work `_draft_ics-scoring.md` §12, which touches seven sections of the rulebook. ⛔ **The "6 contributions" sweep at the top of that list is CANCELLED — do not run it.** The item with reach is the **Green → "No tier" rename**, across five files plus the xlsx and every client-facing string. Take a decision on the three open sub-items in scoring §10 (defaults proposed; none blocks). ⚠ `_draft_ics-benefits.md` §3.1's card mapping and 4-level variant are **moot at five tiers** — mark them.
+
+**8. FINALISE THE PROCESS MAPS.** ⚠ `Aurumix_Process_Maps_ICS_Benefits.md` is **written against seven tiers**. ⚠ **Both SIP map sets owe the 2026-08-10 revision** (hard floor, 5-day grace, no UAEDDS, no declared pause, AED 26.25).
+
+**9. BUILD THE RECONCILIATION REGISTER.** Maps §6's conclusions + the 15 questions + 6 delegated items + 6 parked additions onto the B-blocks, tagged **DECIDED / OURS-NOW / CLIENT-BLOCKED / COUNSEL**. **Still the unblocking artifact and it still does not exist.** The "6 delegated items" are named nowhere; reconstruct from `questions-discussion.md`.
+
+**10. FOLD THE DRAFTS INTO THE MD DOCUMENT** (`_draft_entities-licensing-and-payments.md`, `_explainer_how-we-take-money.md` + maps, `_draft_purchase-structure.md` working its §8 list of ten). **Expand `_draft_allocation-and-float.md`:** numbered procurement steps, edge cases, the entry-fee build-up as its own section, plus the three §7 amendments.
+
+**11. Cheap verification tasks.** Confirm the registered Foreign Payment Token list with CBUAE; confirm BitOasis and CoinMENA AED rails by hand; re-pull VARA's register before publishing the signpost list. ⚠ **CMA Decision No. 4 of 2026**, a reported federal virtual-asset rulebook — **Confidence: Low, single weak source.** **DIFC formalities for assigning an equitable interest** would upgrade decision 40 to usable with counsel. 🆕 **UN DESA 2024 migrant stock by origin** would replace the unsourced UAE nationality spine. ⚠ **Run `_verify_ics_calculator.py`; LibreOffice is absent here so `recalc.py` cannot run** — if another PC has it, run once as an independent check.
 
 **Open decisions that are Abdur's, not ours:**
-- 🔴 **Does a lapsed customer keep the card and the credit facility?** Worth **USD 3.39m/yr, 42% of Y10 revenue** on the ten-year run. Nobody has ever asked. It decides whether the largest revenue stream decays with persistency or is immune to it.
-- **Should card spend track the savings ticket by segment?** It is the single largest revenue driver. Currently keyed to ticket as an income proxy. If Aurumix's card is realistically a *secondary* card for everyone, that is wrong — and it changes which segment is worth acquiring.
-- **Brief length.** 4,055 lines against a 1,791-line benchmark. The build-only material (§10 row map, §12 sheet bands) could split into a companion build spec, leaving ~2,200 lines of architecture and assumptions to review.
-- **How hard to land the conclusion**, whenever profitability is re-cut. v2.0 is materially harsher than what v1.0 told the client.
-
-**Working convention, learned 2026-08-18:** 🆕 **plan before build.** Propose architecture changes as a plan and get agreement *before* touching code or regenerating artefacts. **The brief is the deliverable; the reference model serves it.**
-
-**Supporting artefacts** (all in `deliverables/4-revenue-modeling/`): `reference_model/` — the Python model plus `NUMERICAL_SPINE.md` and `VALIDATION.md`; `supporting/_working_architecture-decisions-v2.md` — the D1–D20 record with the finding that forced each; `supporting/_working_parameter-completion-set.md` — ~50 inputs v1.0 never supplied; `supporting/_working_corpus-omissions-extract.md` — Phase 2 material v1.0 dropped; `supporting/..._v1.0.md` — v1.0 preserved.
-
----
-
-- ✅ **Phase 0 COMPLETE.** Charter delivered and client-reviewed.
-- ✅ **Phase 1 COMPLETE.** Landscape (19 protocols) and the 52-page client-facing summary both delivered.
-- 🔄 **Phase 2 IN PROGRESS.** 🔄 **Recount 2026-08-17: eleven drafts, two explainers, one parked file and sixteen process-map sets** (was "four drafts, two explainers, five map sets", stale by three sessions). Solved: Mining Events, denomination, the dividend, the SIP/spot split, the lock-in, the whole legal and operating structure (ownership model, entities, licences, payment rails, India), and **the purchase lifecycle both lanes, money in to cash out**. ✅ 🆕 **ICS is now closed end to end — structure, formula, tiers and all five benefit ladders (decision 46, 2026-08-12), with a live client-facing model beside it.** What remains on ICS is propagation, not design: see next-action 1. **Still not written: the reconciliation register.** ⚠ **Custody-fee recovery has moved from solved back to open**, see §7.
-
-> 🆕 **Phase 2 grew a block that was never in the blueprint.** Next-action 5 called it "payment rails plus geographic eligibility". It turned out to be entity architecture, the licence stack, the ownership construct and the funding perimeter. **That is now a substantial section of the MD document and it was not in the plan.** ⚠ The honest read on the engagement: we were hired to design the economics, and the economics turn out to be downstream of structural questions the client has not asked. **The deliverable will look different from the proposal, and the client should hear that from us before he notices it.**
-
-**Next, in order:**
-
-0. 🆕 🔴 **THE NEXT SESSION STARTS HERE, AND IT IS NOT ICS — IT IS THE PROPAGATION DEBT FROM DECISION 50.** The composability reversal (2026-08-13) changed the token-standard answer after six decisions and several drafts had been written on the old one, and **none of that propagation has run.** In order: **(a)** rewrite decisions 10, 24, 33, 37, 38 and 40 in the log and flip their index markers; **(b)** withdraw *"an open DEX listing is incompatible with Option A"*, *"both parties must be registered holders"* and *"an unregistered recipient cannot receive AURX"* from `_draft_purchase-structure.md` §4 and §6 and `_draft_entities-licensing-and-payments.md`; **(c)** re-cut **counsel batch 4 question 1**, which is built on the dead Art 60(6) reading and **must not be sent as written**; **(d)** change the invariant to `trust holdings ≥ tokens outstanding` in the minting and redemption map sets; **(e)** add the self-custody-is-a-disposal rule to `_draft_ics-scoring.md` §1.5 and §10. ⚠ **Then the three filing-grade citation fixes from decision 48** (Annex 2 III.E not Issuance Rulebook III.E; 19 May not 19 June 2025; ADGM s.30 not Art 33), which reach five files. 🔴 **And the client conversation changed shape: we told him the token had to be permissioned and that an open listing was impossible. Both are now withdrawn. He is building in September.**
-
-1. 🔴 **FINALISING ICS. The design is settled (decision 46); what is left is propagation, and it is mechanical.** ✅ The re-derivation Abdur called for on 2026-08-11 is **done**: the score was rebuilt from scratch, the same machine did *not* come back, and every question that pass was told to re-answer is now answered ((a) the cap survives but relocated and explicable — five years is a complete record; (b) there are **no weights**, because a minimum has none; (c) one point per paid month, yes; (d) absolute, unchanged; (e) the zero-margin veteran is now a deliberate decision with the arithmetic written out in §1.8). **What remains, in order:**
-   - **Work `_draft_ics-scoring.md` §12 — the corrections list.** It is long and it touches seven sections of the rulebook (§4.1, §7.1/§7.2, §9.1, §9.4, §9.5, §11, §13). ⛔ **The "6 contributions" sweep at the top of that list is CANCELLED (2026-08-13) — do not run it.** Confirmed SIP is 6 consecutive again. The item with reach is now the **Green → "No tier" rename**, across five files plus the xlsx and every client-facing string.
-   - **Take a decision on the three open sub-items** in scoring §10 (margin-call liquidation, compliance-forced exit, frozen months in the window). Defaults are proposed for all three; none blocks.
-   - ⚠ `_draft_ics-benefits.md` §3.1's many-to-few card mapping and its 4-level variant are **moot at five tiers**. Mark them.
-2. 🆕 **FINALISE THE EXCEL — `Aurumix_ICS_Score_Calculator.xlsx`.** Built 2026-08-12 for presenting rather than auditing, and verified (182 formulas, 0 errors, 19/19 spot-checks). Rebuild with `_build_ics_calculator.py`, check with `_verify_ics_calculator.py`. ⚠ **LibreOffice is not installed on the machine it was built on, so `recalc.py` could not run** — if the other PC has LibreOffice, run it once as an independent check. Open items: whether the worked story (Rajesh) should use the client's own numbers, and whether the six settings block stays visible to the client or is hidden.
-3. 🆕 **FINALISE THE PROCESS MAPS.** Two jobs, and the first is a correction sweep, not new work:
-   - ⚠ **`Aurumix_Process_Maps_ICS_Benefits.md` (8 diagrams) is written against seven tiers** and needs a tier-count pass throughout.
-   - ⚠ **Both SIP map sets still owe the 2026-08-10 revision** (hard floor, 5-day grace, no UAEDDS, no declared pause, AED 26.25) — listed in rulebook §12.
-   - ✅ 🆕 **DONE 2026-08-13: the scoring map set is written** — `Aurumix_Process_Maps_ICS_Scoring.md`, 10 diagrams, companion to the benefits set. Covers the gate, three facts, formula, why-minimum, why-Retention-multiplies, ladder plus full benefit matrix, climb, miss, cycler, and the four client departures.
-   - Standard applies: `graph LR`, 4 to 6 nodes, **2 to 6 words per node**, detail in speaker notes (§8).
-4. **The benefit value tables are supplied in full** (`_draft_ics-scoring.md` §6) and survive unchanged in *shape* — all five ladders stepped, monotone, tier-indexed. `_draft_ics-benefits.md` §7's handoff checklist can be **marked closed** against them. **B4 preceded B3 as required.**
-3. **Build the reconciliation register.** Maps §6's conclusions + the 15 questions + 6 delegated items + 6 parked additions onto the B-blocks, tagged **DECIDED / OURS-NOW / CLIENT-BLOCKED / COUNSEL**. **Still the unblocking artifact and it still does not exist.** ⚠ It got larger on 2026-08-04: roughly a dozen new items to map. The "6 delegated items" are named nowhere as a list; only denomination is identifiable. Reconstruct from `questions-discussion.md` first.
-4. **Expand `_draft_allocation-and-float.md`:** numbered procurement-cycle steps, edge cases (inflow spike beyond float, dealer withdrawal, attestation lapse), the entry-fee build-up as its own section, **plus the three amendments in §7**.
-5. ✅ **DONE 2026-08-04. Was: "missing block, payment rails + geographic eligibility."** Now `_draft_entities-licensing-and-payments.md`. **Fold it into the MD document as its own section.**
-6. 🆕 ✅ **DONE 2026-08-05. Client additions 1, 2 and 3 are answered** in `_explainer_how-we-take-money.md` with diagrams in `Aurumix_Process_Maps_Payments.md`. **Fold both into the MD document.** ⚠ **Small verification tasks left, all cheap:** confirm the registered Foreign Payment Token list directly with CBUAE; confirm BitOasis and CoinMENA AED bank rails by hand (BitOasis blocks automated access, and three verified names are enough to publish without them); re-pull VARA's register before publishing the signpost list, since it moves. ⚠ **One loose thread worth ten minutes: CMA Decision No. 4 of 2026**, a federal virtual-asset rulebook reported to require free-zone providers to comply federally as well. **Confidence: Low, single weak source.** If real it adds a layer to the §3 licence stack.
-7. 🆕 **Fold `_draft_purchase-structure.md` into the MD document**, and work its §8 reconciliation list: **ten items across four drafts and the client's own document.** The biggest is lever 3 in `_draft_sip-spot-and-ics.md`, which changes from a decaying redemption fee to a tenure rebate.
-9. ✅ **DONE. The SIP mechanism is settled end to end** in `_draft_sip-rulebook.md` (2026-08-06, revised 2026-08-10: hard floor, 5-day grace, push-only rails, states simplified; decision 43). Next SIP work is **B4, the formula numbers**, opening with the 🔴 revival-restoration rule (rulebook §11) and the contained R2P-provider check (rulebook §13). ⚠ The rulebook's §12 lists a revision pass owed to five other files, including both SIP process-map sets.
-10. 🆕 **Rewrite decisions 24 and 25 in the drafts**, per decisions 37 to 39. Four corrections owed to `_draft_entities-licensing-and-payments.md` and `_draft_purchase-structure.md`: the ERC-3643 overstatement, the exchange-integration error, "an open DEX listing is incompatible with Option A" (VARA is silent on venues; the constraint follows from our register design), and "a peer transfer requires both parties registered" (true under Model B only). ⚠ **Get the proxy recommendation to the client before their September build**, since it is the cheapest thing on the whole list and it defuses the timing collision.
-11. 🆕 **Two contained verification tasks, both load-bearing on decisions just taken.** ~~UAEDDS variable-amount mandates~~ ✅ **MOOT 2026-08-10, rail dropped (decision 43)**; replaced by the **AANI Request to Pay origination question** (who onboards a gold-token merchant, per-request cost), which is a conversation, not desk research. And **DIFC formalities for assigning an equitable interest**, which would upgrade the decision 40 reframe from Medium confidence to something usable with counsel.
-8. ✅ **DONE 2026-08-06. Was: "process maps for the purchase structure."** Questioning pass completed, then `Aurumix_Process_Maps_Minting.md` (8 diagrams) and `Aurumix_Process_Maps_Redemption.md` (7 diagrams) written. **Still owed: a SIP failure-and-revival ladder set**, which waits on the two unresolved SIP questions in §7. ✅ **One set done ahead of the rest: `Aurumix_Process_Maps_Redemption_Fee.md`**, because the no-fee decision was locked independently and does not depend on the open items above.
-
-> 🆕 **Method note, learned the hard way on 2026-08-05.** A sonar sweep on UAE exchange AED rails returned Reddit threads and reported Binance as P2P-only; **Binance's own FAQ shows a direct AED bank withdrawal via ADCB with published fees.** **When the question is "what does this company actually offer", fetch the company's own help centre or fee page. Sonar is for finding which page to read.** The same rule caught two other errors this session: a practitioner website invented an LRS bullion prohibition that is not in RBI's list, and the register showed two Category 1 VA Issuance licensees (Tokinvest, Ctrl Alt Solutions) after a search pass said there were none. **Do not claim "first VARA-licensed issuer" without qualifying it to gold.**
-
-> 🆕 **Three gates now govern the critical path, and the client controls two of them.** The **bullion dealer** (blocks float, entry fee, buyback, spreads), the **title opinion** (blocks the product, the token standard, the capital requirement), and the **persona** (blocks the revenue model and Phase 4). **We can design around none of them.** Name it as project risk rather than absorbing it. ⚠ Our engagement fixes every knowledge gap except the legal opinion, and we have now reached that line. **The framing that matters: we converted an unbounded legal risk into three specific, forwardable questions. That is the deliverable, not homework handed back.**
-
-⚠ **The MD Blueprint is stale in six places** (B3.3, B5.3, B6.3, B6.4, B9.3, B1.6) and its format promise is wrong: it says "the Decision Log becomes the MD", but the finished **DRODE MD has no decision log**. Follow DRODE, not the blueprint. **Depth benchmark: DRODE_Mechanism_Design_v1.md = 1,252 lines / ~25k words / 20+ parameter tables.** Per-mechanism anatomy: the mechanic → how it works (numbered) → why X over Y → worked example with table → edge case, **plus a sixth element for Aurumix: a compliance note.** Target 1,500 to 2,000 lines.
+- 🔴 **Does a lapsed customer keep the card and the credit facility?** **USD 3.39m/yr, 42% of Y10 revenue.** Nobody has ever asked. It decides whether the largest stream decays with persistency or is immune to it.
+- 🔴 **The minimum-ticket resolution** in item 3 above.
+- **Should card spend track the savings ticket by segment?** The single largest revenue driver, currently keyed to ticket as an income proxy. If Aurumix's card is realistically a *secondary* card for everyone, that is wrong, and it changes which region is worth acquiring.
+- **Brief length.** ~4,100 lines against a 1,791-line benchmark. The build-only material (§10 row map, §12 sheet bands) could split into a companion build spec, leaving ~2,200 lines to review.
+- **How hard to land the conclusion.** v2.0 is materially harsher than what v1.0 told the client.
 
 **Client call agenda, in priority order:**
 
-1. 🆕 🔴 **THE TIMING COLLISION, and it goes first because delay has real cost.** Their app is due **early September**; our Data Room lands 4 to 11 September. **The token standard is now load-bearing for the licence, not just for ICS.** An anonymous bearer token cannot evidence who owns the gold and therefore cannot support direct ownership. 🔄 **WORDING CORRECTED 2026-08-05. Do not say the work is thrown away.** ERC-3643 is ERC-20-compatible, so it is **a token-contract rebuild plus a new identity layer**, while the app, wallet and exchange integration largely survive. Still urgent, far less alarming, and more accurate. **Raise it before a rebuild raises it.**
-2. 🆕 **The ownership decision**, using `Aurumix_Process_Maps_Ownership_Structure.md`. Four diagrams in two parts. **Only three things to agree:** (1) direct ownership, not a price-tracking claim; (2) the token must be permissioned; (3) send the two questions to counsel. **Everything else in the drafts is our work, not his decision.** ⚠ Keep the nine consequential counsel questions out of the room; they swamp the story.
-3. 🆕 🔴 **India**, and expect resistance. Frame as refocus, not retreat: NRIs are ~9M in the GCC alone, sit outside LRS entirely, already remit monthly, and **are the charter's real persona anyway**.
-4. 🔴 **The missing gold supplier**, framed via the buyback. *"Your document names the vault three times and the seller zero times, and the buyback promise runs entirely through the seller you haven't named."*
-5. 🔴 **Six internal contradictions in their own document**, which we do not believe have been raised: (a) §7.1 has an **empty cell** for new investor onboarding, and §7.1 says spot is ICS-only while §7.2 says spot is the entry point for new investors, who have no ICS; (b) Confirmed SIP requires 6 events "at the same monthly commitment" but they confirmed the amount is variable; (c) **second double-count**, Investment Value is both an ICS component and the multiplicand in ICS-Weighted Score; (d) credit activates at month 6, exactly when a 6-month lock expires; (e) 🆕 **buyback is "available at expiry" in every row of §6.2, so a 25-year commitment means no exit for 25 years** on a token meant to trade, which also contradicts their own "the lock is not a token lock"; (f) 🆕 §9.3 states Sovereign credit at "up to 110% of gold value" then works the example at **8,500 USD on 10,000 USD, which is 85%**. Their own row contradicts itself, so 110% was likely never intended.
-6. **The finalised decisions**, in this order: denomination (small, easy yes) → Mining Events (they gain a better monthly event) → **the lock-in deletion** (sell it with their own §6.2 table: the credit column reads "month 6" six times, so ask what the 25-year row buys) → the dividend (hardest, and the trilemma choice is theirs).
-6b. 🆕 **Payments, which answers his own additions 1, 2 and 3.** Use `Aurumix_Process_Maps_Payments.md`, call set diagrams 5, 6 and 7, and leave diagram 4 with him. **Three things to land:** delete §11.2's USDT peer-to-peer route; agree fiat is the default rail with stablecoin via customer-side conversion; agree the launch perimeter is the UAE, then Bahrain and Oman. **The line that sells it:** *"Yes, we accept stablecoin money. It arrives as dollars, because the customer converts it himself at a licensed exchange. We never hold a token, so we need no extra licence and carry no extra risk."* ⚠ **Expect resistance on Saudi, Kuwait and Qatar**, and give the corrected addressable number rather than the 9M he may already have heard.
-6c. 🆕 **ICS, and there are four departures from their §8.2 to land.** Walk it from `Aurumix_ICS_Score_Calculator.xlsx`, which is built for exactly this: three questions → the ladder → **Rajesh's five years**. The four: **(1) seven tiers become five** — sell it on their own benefits, which cannot differentiate seven ways (a 0.25pp step is USD 0.19 a month; at five tiers LTV steps double and the card maps one-to-one onto three sponsor levels); **(2) referrals, family portfolios and Masterclass no longer score** — all three survive as programmes, and referrals are already paid a commission, so scoring them too is paying twice for one behaviour; **(3) no revival or arrears** — a missed month is missed, late money is a spot purchase; **(4) Confirmed SIP stays 6 consecutive contributions, and it now gates the score itself** — before it there is no score and no tier, which is why the bottom rung is renamed from Green to **"No tier"**; the app shows a *"4 of 6"* countdown instead of a number. **The two rows that sell the whole thing:** a USD 20 saver and a USD 2,000 saver reach the top **on the same day**, and a customer can take out **a third of their gold with no effect at all**. ⚠ **Recommend showing the raw 0–100 score** — the persona knows CIBIL, and the score now names its own constraint, so the app can tell a customer exactly what to fix.
-7. **The premium is zero**, before it is embedded in any revenue projection.
-8. **"100% LBMA gold" needs re-wording.**
-9. The four client-side open items, especially the **Data Room objective**, plus the scope conversation owed on additions 1 to 3.
+1. 🔴 **THE TIMING COLLISION.** Their app is due **early September**; our Data Room lands 4 to 11 September. ⚠ **Do not say the work is thrown away.** It is a token-contract change plus an identity layer, while the app, wallet and exchange integration largely survive. **Raise it before a rebuild raises it.**
+2. 🆕 🔴 **THE PERSONA IS TOO NARROW.** The market is South Asian, not Indian. **Non-Indian South Asians outnumber Indians in Oman and match them in the UAE.** The agent network must recruit beyond the Indian community. Also: **Oman before Bahrain.**
+3. 🔴 **The ownership decision**, using `Aurumix_Process_Maps_Ownership_Structure.md`. **Only three things to agree.** ⚠ Keep the nine consequential counsel questions out of the room.
+4. 🔴 **India**, and expect resistance. Frame as refocus, not retreat.
+5. 🔴 **The missing gold supplier**, framed via the buyback. *"Your document names the vault three times and the seller zero times, and the buyback promise runs entirely through the seller you haven't named."*
+6. 🔴 **Six internal contradictions in their own document:** (a) §7.1's empty cell for new investor onboarding, and §7.1 vs §7.2 on spot; (b) Confirmed SIP requires 6 events "at the same monthly commitment" but the amount is variable; (c) Investment Value is both an ICS component and the multiplicand; (d) credit activates at month 6, exactly when a 6-month lock expires; (e) buyback "available at expiry" means a 25-year commitment has no exit for 25 years; (f) §9.3 states 110% LTV then works the example at 85%.
+7. **The finalised decisions:** denomination → Mining Events → **the lock-in deletion** (sell it with their own §6.2 table) → the dividend (hardest, and the trilemma is theirs).
+8. **Payments**, answering their additions 1 to 3. Call set: Payments maps 5, 6, 7; leave diagram 4. **The line that sells it:** *"Yes, we accept stablecoin money. It arrives as dollars, because the customer converts it himself at a licensed exchange. We never hold a token, so we need no extra licence and carry no extra risk."*
+9. **ICS, and four departures from their §8.2 to land.** Walk it from the xlsx. **The two rows that sell it:** a USD 20 saver and a USD 2,000 saver reach the top **on the same day**, and a customer can withdraw **a third of their gold with no effect at all.**
+10. **The premium is zero**, before it is embedded in any projection. **"100% LBMA gold" needs re-wording.**
+11. **The four client-side open items**, especially the **Data Room objective**, plus the scope conversation owed on additions 1 to 3.
 
 ## 10. Update protocol
 
-Append new decisions to §6, update §7 after each client call, refresh §9, and **fold Phase 2 working state into the draft doc rather than into this file**. Keep it tight: a living index, not an archive. Bump the date.
+Append new decisions to the log and index them in §6, same commit. Update §7 after each client call, refresh §9, and **fold working state into the drafts rather than into this file.** Bump the date.
+
+⚠ **Keep this file under ~250 lines.** It was 408 on 2026-08-19 and cost ~35k tokens to load. **Add a pointer, not a paragraph. If an item needs more than three lines, it belongs in a deliverable.** ⛔ **Do not add a dated "previously, on this date" block.** That pattern is what grew the file twice; the decision log and the D-record are the history.
