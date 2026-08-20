@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 
 import cohort
+import lifecycle
 import costs as C
 import ics
 import params as P
@@ -48,8 +49,12 @@ def annual_table(df: pd.DataFrame) -> pd.DataFrame:
         gross_entry_fee=("gross_entry_fee", "sum"),
         cost_of_revenue=("cost_of_revenue", "sum"),
         gross_profit=("gross_profit", "sum"),
-        cor_rail=("cor_rail", "sum"), cor_pricegap=("cor_pricegap", "sum"),
-        cor_premium=("cor_premium", "sum"), cor_float=("cor_float", "sum"),
+        cor_pricegap=("cor_pricegap", "sum"),
+        cor_premium=("cor_premium", "sum"),
+        # MEMO LINES (D31, D32). Reported alongside the P&L, in no total.
+        rail_passthrough_usd=("rail_passthrough_usd", "sum"),
+        floatcoc_memo=("floatcoc_memo", "sum"),
+        float_interest_expense=("float_interest_expense", "sum"),
         stream1_net=("stream1_net", "sum"),
         operating_cost=("operating_cost", "sum"),
         stream1_sip=("stream1_sip", "sum"), stream1_spot=("stream1_spot", "sum"),
@@ -87,7 +92,7 @@ def main():
 
     # -- survival ---------------------------------------------------------
     print("\nSURVIVAL CALIBRATION (Base)")
-    s_sourced = cohort.survival_curve("Base", P.HORIZON_MONTHS)
+    s_sourced = lifecycle.LifecycleCurves("Base", P.HORIZON_MONTHS).curve_survival
     w, bg, fit = cohort.fit_survival("Base")
     for f in fit:
         print(f"  M{f['anchor_month']:>3}: target {f['target']:.3f} | "
@@ -96,12 +101,12 @@ def main():
     rmse_src = float(np.sqrt(np.mean([f["sourced_residual_pp"] ** 2 for f in fit])))
     rmse_cal = float(np.sqrt(np.mean([f["residual_pp"] ** 2 for f in fit])))
     print(f"  RMSE sourced {rmse_src:.3f}pp vs calibrated {rmse_cal:.3f}pp")
-    print(f"  M120 survival (sourced): {s_sourced[120]:.4f}")
+    print(f"  M{P.HORIZON_MONTHS} survival (sourced): {s_sourced[P.HORIZON_MONTHS]:.4f}")
 
     surv_rows = [{"month": m, "sourced": float(s_sourced[m])}
                  for m in range(P.HORIZON_MONTHS + 1)]
     for mode in ("Aggressive", "Conservative"):
-        s = cohort.survival_curve(mode, P.HORIZON_MONTHS)
+        s = lifecycle.LifecycleCurves(mode, P.HORIZON_MONTHS).curve_survival
         for i, r in enumerate(surv_rows):
             r[mode.lower()] = float(s[i])
     pd.DataFrame(surv_rows).to_csv(f"{OUT}/survival_curves.csv", index=False)
@@ -118,17 +123,18 @@ def main():
             df.to_csv(f"{OUT}/monthly_base.csv", index=False)
             cf.to_csv(f"{OUT}/cashflow_base.csv", index=False)
         cb = SC.months_to_cash_breakeven(cf)
-        y10 = ann.loc[10] if 10 in ann.index else ann.iloc[-1]
+        terminal = (ann.loc[P.HORIZON_YEARS]
+                    if P.HORIZON_YEARS in ann.index else ann.iloc[-1])
         results[name] = {
-            "y10_revenue": float(y10["revenue"]),
-            "y10_accounts_live": float(y10["live_accounts"]),
-            "y10_holding": float(y10["holding"]),
-            "y10_aum": float(y10["aum_usd"]),
+            "terminal_revenue": float(terminal["revenue"]),
+            "terminal_accounts_live": float(terminal["live_accounts"]),
+            "terminal_holding": float(terminal["holding"]),
+            "terminal_aum": float(terminal["aum_usd"]),
             "cumulative_net_profit": float(df["net_profit"].sum()),
-            "y10_net_profit": float(y10["net_profit"]),
+            "terminal_net_profit": float(terminal["net_profit"]),
             **cb,
         }
-        print(f"  {name:<22} Y10 rev ${y10['revenue']:>12,.0f}  "
+        print(f"  {name:<22} Y{P.HORIZON_YEARS} rev ${terminal['revenue']:>12,.0f}  "
               f"peak fund ${cb['peak_funding_requirement']:>11,.0f} @M{cb['peak_funding_month']:<3} "
               f"cum NP ${df['net_profit'].sum():>13,.0f}")
 
@@ -141,7 +147,7 @@ def main():
         sol = be["solution"]
         print(f"  {be['view']:<16} solution N = "
               f"{(f'{sol:,.0f} accounts') if sol else 'NONE EXISTS'}"
-              f"   EBITDA-positive year = {be['breakeven_year_ebitda'] or 'none in 10'}")
+              f"   EBITDA-positive year = {be['breakeven_year_ebitda'] or f'none in {P.HORIZON_YEARS}'}")
         if be["extrapolated_breakeven_year"]:
             print(f"                   -> extrapolates to Y"
                   f"{be['extrapolated_breakeven_year']:.1f} on the current trajectory")
@@ -151,7 +157,7 @@ def main():
     fee_path.to_csv(f"{OUT}/minimum_entry_fee_path.csv", index=False)
     for _, r in fee_path.iterrows():
         flag = "" if r["achievable"] else "  <== NOT FUNDABLE"
-        print(f"  Y{int(r['year']):<2} v1.0 {r['v1.0 assumed fee']*100:.1f}%  "
+        print(f"  Y{int(r['year']):<2} assumed {r['assumed fee']*100:.1f}%  "
               f"min viable {r['min viable fee (binding)']*100:.2f}%  "
               f"({r['shortfall_pp']:+.2f}pp){flag}")
     print("  Opex(N), block by block (driver | fixed | variable per account):")
@@ -210,8 +216,83 @@ def main():
 
     ltv = SC.ltv_cac(base_df, "Base")
     ltv.to_csv(f"{OUT}/ltv_cac.csv", index=False)
-    ue = SC.unit_economics_by_segment("Base")
-    ue.to_csv(f"{OUT}/unit_economics.csv", index=False)
+    ue = SC.unit_economics_by_band("Base")
+    ue.to_csv(f"{OUT}/unit_economics_by_band.csv", index=False)
+
+    # -- rebuild artefacts -------------------------------------------------
+    from pnl import validate_view29, view29
+    import lifecycle as LC
+
+    view = view29(base_df)
+    view.to_csv(f"{OUT}/view29_Base.csv")
+    vchecks = validate_view29(base_df, view)
+    pd.DataFrame(vchecks).to_csv(f"{OUT}/validation_view29.csv", index=False)
+    print("")
+    print(f"{P.VIEW_COLUMNS}-COLUMN VIEW: {view.shape[0]} lines x "
+          f"{view.shape[1]} columns, "
+          f"{sum(1 for r in vchecks if r['pass'])}/{len(vchecks)} checks pass")
+
+    eq = LC.equivalence_test("Base")
+    pd.DataFrame([{"quantity": k, **v} for k, v in eq.items()
+                  if isinstance(v, dict)]).to_csv(
+        f"{OUT}/validation_convolution_equivalence.csv", index=False)
+    print(f"D23 EQUIVALENCE (convolution vs vintage triangle): "
+          f"max relative residual {eq['max_rel_pct']:.3e}%  -> "
+          f"{'PASS' if eq['pass'] else 'FAIL'}")
+
+    decomp = LC.annual_decomposition_check("Base")
+    pd.DataFrame(decomp).to_csv(f"{OUT}/validation_annual_decomposition.csv",
+                                index=False)
+    print(f"D23 ANNUAL DECOMPOSITION (check 8): "
+          f"{sum(1 for r in decomp if r['pass'])}/{len(decomp)} pass; "
+          f"convolving an annual aggregate would err up to "
+          f"{max(abs(r['annual_aggregate_would_err_pct']) for r in decomp):.1f}%")
+
+    collapse = base_model.collapse_safety_gate(base_df)
+    pd.DataFrame(collapse).to_csv(f"{OUT}/validation_collapse_gate.csv",
+                                  index=False)
+    coll_ok = all(r["within_5pct_gate"] for r in collapse)
+    peak_c = max(r["cost_pct_of_gross_profit"] for r in collapse)
+    print(f"D22 COLLAPSE SAFETY GATE: peak cost {peak_c:.2f}% of gross profit "
+          f"-> {'SAFE' if coll_ok else 'UNSAFE, REVERT TO FULL LADDER'}")
+
+    rail = SC.rail_incidence("Base")
+    rail.to_csv(f"{OUT}/rail_incidence.csv", index=False)
+    print("D31 RAIL INCIDENCE (pass-through, regressive):")
+    for _, r in rail.iterrows():
+        print(f"  {r['region']} {r['band']:<9} ticket {r['ticket_usd']:>6.2f} "
+              f"-> request {r['request_amount_usd']:>6.2f} "
+              f"({r['gross_up_pct_of_ticket']:.3f}% of ticket)")
+
+    unit = SC.book_weighted_unit_economics(base_df, "Base")
+    with open(f"{OUT}/unit_economics_headline.json", "w") as f:
+        json.dump(unit, f, indent=2, default=_j)
+    print("UNIT ECONOMICS:")
+    for k in ("usd_75_illustration", "book_weighted"):
+        u = unit[k]
+        print(f"  {k:<22} ticket {u['ticket_usd']:>7.2f}  gross "
+              f"{u['gross_margin_pct']:>6.3f}%  net contribution "
+              f"{u['net_contribution_margin_pct']:>6.3f}%")
+    print(f"  CORRECTION 26: model produces "
+          f"{unit['correction_26']['model_at_v1_premium_3pct']:.3f}% at the "
+          f"v1.0 3.00% premium (brief states 0.72% AND 2.15%)")
+
+    d33 = SC.redeemed_gold_switch_comparison()
+    d33.to_csv(f"{OUT}/d33_redeemed_gold_switch.csv", index=False)
+    print("D33 REDEEMED_GOLD_TO_FLOAT, both settings:")
+    for _, r in d33.iterrows():
+        print(f"  {str(r['REDEEMED_GOLD_TO_FLOAT']):<5} ({r['routing']:<28}) "
+              f"cum premium ${r['cumulative_premium_cost']:>12,.0f}  "
+              f"cum NP ${r['cumulative_net_profit']:>13,.0f}  "
+              f"peak fund ${r['peak_funding']:>12,.0f}")
+
+    dbt = SC.float_debt_funded_comparison()
+    dbt.to_csv(f"{OUT}/d32_float_debt_funded.csv", index=False)
+    print("D32 FLOAT_DEBT_FUNDED, both settings:")
+    for _, r in dbt.iterrows():
+        print(f"  {str(r['FLOAT_DEBT_FUNDED']):<5} ({r['treatment']:<42}) "
+              f"cum NP ${r['cumulative_net_profit']:>13,.0f}  "
+              f"interest ${r['cumulative_float_interest']:>10,.0f}")
 
     pd.DataFrame(personas).to_csv(f"{OUT}/validation_personas.csv", index=False)
     pd.DataFrame(gates).to_csv(f"{OUT}/validation_gate_mechanics.csv", index=False)
@@ -225,7 +306,7 @@ def main():
         "scenarios": results,
         "survival_fit": {"anchors": fit, "rmse_sourced_pp": rmse_src,
                          "rmse_calibrated_pp": rmse_cal,
-                         "m120_survival": float(s_sourced[120]),
+                         "m84_survival": float(s_sourced[P.HORIZON_MONTHS]),
                          "calibrated_weights": {k: float(v) for k, v in w.items()},
                          "calibrated_background_hazard": float(bg)},
         "personas_pass": f"{n_pass}/{len(personas)}",
@@ -244,19 +325,19 @@ def main():
             "opex_blocks": {k: dict(v) for k, v in be_all["fit"].items()},
             "holding_to_contributing_ratio": be_all["holding_ratio"],
         },
-        "y10_revenue_stack": {
-            "stream1_sip": float(ann_base.loc[10, "stream1_sip"]),
-            "stream1_spot": float(ann_base.loc[10, "stream1_spot"]),
-            "stream2_card_interchange": float(ann_base.loc[10, "stream2"]),
-            "stream3_family": float(ann_base.loc[10, "stream3"]),
-            "stream4_cardholder_fees": float(ann_base.loc[10, "stream4"]),
-            "stream5_credit": float(ann_base.loc[10, "stream5"]),
-            "stream6_b2b": float(ann_base.loc[10, "stream6"]),
-            "total": float(ann_base.loc[10, "revenue"]),
+        "terminal_revenue_stack": {
+            "stream1_sip": float(ann_base.loc[P.HORIZON_YEARS, "stream1_sip"]),
+            "stream1_spot": float(ann_base.loc[P.HORIZON_YEARS, "stream1_spot"]),
+            "stream2_card_interchange": float(ann_base.loc[P.HORIZON_YEARS, "stream2"]),
+            "stream3_family": float(ann_base.loc[P.HORIZON_YEARS, "stream3"]),
+            "stream4_cardholder_fees": float(ann_base.loc[P.HORIZON_YEARS, "stream4"]),
+            "stream5_credit": float(ann_base.loc[P.HORIZON_YEARS, "stream5"]),
+            "stream6_b2b": float(ann_base.loc[P.HORIZON_YEARS, "stream6"]),
+            "total": float(ann_base.loc[P.HORIZON_YEARS, "revenue"]),
         },
         "aum_reconciliation": {
-            "y10_aum": float(ann_base.loc[10, "aum_usd"]),
-            "y10_cumulative_contributions": float(
+            "terminal_aum": float(ann_base.loc[P.HORIZON_YEARS, "aum_usd"]),
+            "terminal_cumulative_contributions": float(
                 (base_df["inflow_sip"] + base_df["inflow_spot"]).sum()),
         },
         "derived_parameter_count": len(P.DERIVED_REGISTER),
@@ -264,6 +345,14 @@ def main():
     }
     with open(f"{OUT}/headline_results.json", "w") as f:
         json.dump(headline, f, indent=2, default=_j)
+
+    # -- the spine and validation documents, regenerated from THIS run ----
+    # build_spine used to be an orphan: nothing imported it and nothing called
+    # it, so NUMERICAL_SPINE.md and VALIDATION.md drifted away from the model
+    # the moment any parameter moved. Calling it here makes both documents
+    # reproducible rather than hand-maintained.
+    import build_spine
+    build_spine.build(write=True)
 
     print(f"\nOutputs written to {OUT}")
     print(f"  DERIVED_BY_MODEL parameters: {len(P.DERIVED_REGISTER)}")

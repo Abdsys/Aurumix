@@ -12,6 +12,12 @@
 >
 > **What changed at v2.0, in one paragraph.** v1.0's research and sourcing survived audit intact. Its *architecture* did not. Five audits — arithmetic, corpus fidelity, structural, benchmark and buildability — established that the three-state population machine drops 81% of the terminal book out of the model, that tier distribution cannot be computed from cohort averages, that a single constant hazard cannot reproduce the persistency curve v1.0 itself recommends, that a model with no cash flow cannot answer "when do we make money," and that the break-even figures in §0.3 were divisions of an opex base sized for 500 investors by a margin figure that could never meet it. v2.0 rebuilds the engine around a six-state population, five behavioural archetypes, a pre-gate block, a net-flow redemption term, and a cash and funding layer. **The findings v1.0 reached are, if anything, strengthened. The numbers it reached are withdrawn.**
 >
+> 🆕 **What changed at v2.6, in one paragraph.** One decision (D32, 2026-08-20, Abdur), and it is an accounting correction rather than a re-pricing. **The float cost of capital (F5, 0.49%) leaves the margin waterfall and becomes a memo line.** The reasoning: it is an **opportunity cost on equity, not a cash expense** — nobody invoices Aurumix for it — and booking an imputed equity cost inside **COGS** is not something a statutory P&L does. ⚠ **This is also an internal-consistency fix: §7.6 already treats the VARA locked-capital escalator exactly this way** — *"report the escalator as an opportunity cost, not a P&L line… as a memo line"* — and F5 was the one place the brief broke its own rule. **Net contribution margin on a USD 75 ticket 2.30% → 2.79%; minimum viable entry fee ~2.74% → ~2.26%.** 🔴 **What this does NOT mean is that the float is free.** The float **principal** is real cash — **USD 29k at Y1 rising to USD 3.6M at Y10** — it stays on the balance sheet, it stays in the funding view, and it stays inside the USD 15.1m peak-funding figure. **It stopped being a P&L line; it did not stop being money.** ⚠ **And the premise that "they hold the gold anyway" does not hold: the trust holdings are the CUSTOMER's gold and cost Aurumix no capital; the float is AURUMIX's own inventory bought with Aurumix's own money. Two different piles of metal with two different owners.** See D32.
+>
+> 🔴 **A pattern worth naming, since it has now run twice in one day.** D31 removed the rail and D32 removed the float carry. Each is individually defensible. **Cumulatively, the minimum viable entry fee has fallen 3.07% → 2.74% → 2.26% without one thing changing in the business** — the costs were re-attributed, not reduced. ⚠ **§0.3, a finding present in every version of this brief, has been dissolved by reclassification. That is a legitimate outcome and it is also exactly how a model talks itself into a number. Before this reaches the client, the remaining cost base — premium plus price-gap — should be adversarially re-checked, and the premium's replication failure (correction 36) makes that urgent rather than optional.**
+>
+> 🆕 **What changed at v2.5, in one paragraph.** One decision, and it is the client's (D31, 2026-08-20, Abdur). **The payment rail leaves the entry-fee build-up.** The principle: *the entry fee comprises only what Aurumix itself charges.* The rail is a third-party bank/PSP cost, so it is **grossed up onto the collection request and passed through** — Aurumix requests `ticket + rail`, remits the rail to the PSP, and books zero margin on it. `STREAM1a` and `STREAM1b` lose their `− rail` term. **Four consequences, and three reverse a stated finding.** ⚠ **(1) §0.3 FLIPS at the Base rail:** minimum viable entry fee falls from ~3.07% to **~2.74%**, so the 3% target becomes **fundable with ~0.26pp of headroom** rather than sitting at break-even. ⚠ **(2) The minimum-ticket problem dissolves as a margin problem** — `C_min = R ÷ (f − c)` with `R = 0` has no solution, so *every* ticket is margin-positive wherever `f > c`. ⚠ **(3) Spot stops being "structurally the highest-margin inflow"** — SIP and spot converge to an identical **2.79%**, because the entire gap between them *was* the fixed rail spread over a larger base. 🔴 **(4) S1 collapses out of the tornado**, where it ranked 6th at USD 1,607,643 of swing on cumulative net profit. **What this does NOT do is make the customer better off: the cost moved, it did not vanish, and the incidence is regressive — at the Conservative rail the gross-up is +6.8% on a USD 20 saver against +1.8% on a USD 75 one.** Full argument and the three risks it carries: D31 in `supporting/_working_architecture-decisions-v2.md`.
+>
 > 🆕 **What changed at v2.4, in one paragraph.** Three decisions, all from one research pass recorded in `supporting/_working_dealer-premium-and-comparables-research.md`. **D28: F4, the fabrication premium, is measured rather than guessed** — 100 g at **1.50%** and 1 kg at **0.95%**, from a same-page dealer pair where the rate and the bar prices are struck at the same moment, less a published bulk gradient. The ladder was **one denomination too pessimistic at every rung**, and Good Delivery is retired as a rung because Dubai's own standard is a 1 kg bar. **D29: S51 flips to own float from M1**, because all three routes the comparables use to avoid carrying metal are closed to Aurumix. **D30: the premium is charged on net new grams, not gross inflow**, because redeemed gold returns to the float. ⚠ **Net contribution margin on a USD 75 ticket rises from 0.54% to 1.97% and the break-even ticket falls from ~USD 29 to USD 10.90 — but §0.3 survives with a different cause: the 3% fee is now short by ~0.07pp rather than 0.79pp, and the binding cost is no longer the premium, it is the 1.28% of price-gap and float capital that D29 moves onto Aurumix's book from launch.** 🔴 **The same pass found that DMCC Tradeflow cannot carry fractional customer interests and that no LBMA approved-vault network exists — corrections 26 to 30.**
 >
 > 🆕 **What changed at v2.3, in one paragraph.** One decision, and it is presentational rather than structural. **D26: the workbook is delivered on the firm's standard five-sheet architecture — Cover, Assumptions, Scenario Parameters, Model, Summary — with the machinery moved to five working sheets placed after them and hidden.** The former Opex & P&L sheet folds into Model as a second row band, so a reader can trace one visible sheet from accounts acquired to net profit and cash. Checks hides, and its master flag is mirrored to the Cover as a link. **Nothing about what is computed, or in what order, changes.** ⚠ **One real consequence: the acyclicity rule was written as "no sheet may reference a sheet to its right," and hiding inverts tab order against logical order. The test is now by sheet NAME against the §3.x.1 order, which is written onto the Cover so it cannot be lost** (§3.x.1, §3.x.4).
@@ -84,8 +90,25 @@ The corpus called persona H "the row to be honest about." It is 18.7% of the boo
 
 ---
 
-### 0.3 The planned entry-fee cut to 3% is not fundable
+### 0.3 The planned entry-fee cut to 3% is not fundable — ⚠ REVERSED AT v2.5, CONDITIONALLY
 
+> 🆕 🔴 **D31 REVERSES THIS FINDING AT THE BASE RAIL. It survived v2.4 with a changed cause; at v2.5 it does not survive at all — provided the rail pass-through holds.**
+>
+> 🆕 **At v2.6 the cost base is `1.50% premium + 0.79% price-gap` and NOTHING else** — the rail passed through at D31, the float carry became a memo line at D32. **Minimum viable entry fee at a USD 75 ticket: ~2.26%.** Against the client's 3.00% target that is **0.74pp of headroom**, where v2.4 had none and v1.0 was short 0.79pp. *(v2.5 read ~2.74% and 0.26pp; superseded.)*
+>
+> 🔴 **Read that with the pattern in view.** The fee became fundable across two turns of reclassification, not because any cost fell. **Two of the four cost lines were re-attributed in a single day and the third — the premium — failed replication the same day.** ⚠ **The finding is not "the fee cut works." The finding is "the fee cut works if the premium is really 1.50% and if customers accept a grossed-up collection request," and neither of those is established.**
+>
+> ⚠ **Three conditions on the reversal, and they are the whole of it.**
+> 1. **It is fundable because the customer now pays the rail separately, not because any cost was removed.** All-in customer cost is unchanged. Do not present this to the client as a cost saving; it is a re-attribution.
+> 2. **It holds only if the pass-through is actually collectable.** If a USD 20 saver refuses a USD 21.36 request at the Conservative rail, the rail returns to Aurumix's book as churn, not as a cost line — and it lands on the segment the model can least afford to lose. **This is now the live risk, and it replaces the fee-fundability risk rather than cancelling it.**
+> 3. **The fee ladder table below has NOT been re-run**, and it was built on the pre-D28 premium as well. The ~2.74% is a single-ticket calculation; the year-by-year schedule needs the reference-model rebuild.
+>
+> 🔴 **What does NOT reverse: §0.3's structural point.** The fee schedule and the denomination schedule remain physically coupled, and the fee still cannot fall below the premium plus the float costs. **The constraint moved; it did not disappear.**
+>
+> 🆕 🔴 **AND A COUNTERVAILING FINDING LANDED THE SAME DAY.** The 2026-08-20 research pass **failed to replicate D28's 1.71% / 0.93% Dubai ask premiums** — goldtrade.ae's rate page moved 6 bp overnight while its store moved 241 bp, so the two pages do not share a clock and the pair is not simultaneous. **If F4 reverts toward 3.00%, the ~2.74% becomes ~4.2% and this reversal is itself reversed.** See `supporting/_working_dealer-bid-side-and-vaulting-research.md` §5. **Do not carry the 0.26pp of headroom to the client until F4 is re-observed.**
+>
+> **The v2.4 note is retained below as the audit trail.**
+>
 > 🆕 🔴 **THIS FINDING SURVIVES v2.4, BUT ITS CAUSE HAS CHANGED AND THE TABLE BELOW IS SUPERSEDED** (D28, D29).
 >
 > **The premium is no longer the binding cost.** F4 is now measured, not assumed: **100 g at 1.50%, 1 kg at 0.95%**, against the 3.00 / 2.00 / 0.75 ladder this section was written on. The ladder was **one denomination too pessimistic at every rung**, and the Good Delivery argument below targeted the wrong object — **Dubai's own Good Delivery standard is a 1 kg bar, not a 400 oz bar** (research record §7.1).
@@ -635,32 +658,52 @@ SPOT lane, per segment s, period t:
 
 ### Layer 4 — Unit margin, per segment and per lane
 
+🆕 **Re-cut at D31. The `− R` term is gone, and with it the non-linearity that shaped most of this section.**
+
 ```
-Net = C × (f − c) − R
+Net = C × (f − c)                            [D31: the − R term is RETIRED]
 
   C = ticket size for this lane and segment
   f = entry fee rate, less this segment's TIER-WEIGHTED discount
-  c = fabrication premium + price-gap risk + float cost of capital
-  R = fixed cost of the collection or transfer event
+  c = fabrication premium + price-gap risk        ** TWO terms at v2.6 **
+
+  NOT in c, and why:
+    payment rail (R)      -> grossed up onto the request and remitted.
+                             Zero P&L effect.                      [D31]
+    float cost of capital -> an OPPORTUNITY cost on equity, not a cash
+                             expense.  Memo line, never COGS.      [D32]
+
+  Collection request issued to the customer = C + R
 ```
 
-Source: `_parked_collection-economics-and-minimum-ticket.md` §2. **This is non-linear in ticket size**, which is why the model computes margin per segment at that segment's own ticket.
+🔴 **`c` has gone from four terms to two in one day. Both removals are defensible and neither reduced a real cost** — see the pattern note in the front matter. **Treat `c = 2.29%` as the most fragile number in this brief**, not the most settled one.
 
-**The spot lane runs the same equation in Aurumix's favour instead of against it.** At the Y1 5% fee, on v1.0's verified §0.1 build-up:
+Source: `_parked_collection-economics-and-minimum-ticket.md` §2, **with its `R` term retired by D31.**
+
+🔴 **This is the single largest simplification D31 buys, and it deserves stating plainly: unit margin is now LINEAR in ticket size.** The whole reason the model computes margin per segment at that segment's own ticket was `R` — a fixed cost spread over a variable base. **With `R` at zero, margin as a percentage is identical at every ticket**, and a USD 20 saver is exactly as profitable per dollar as a USD 75 one.
+
+⚠ **Do not delete the per-segment margin computation on the strength of this.** Two other non-linearities survive and still require it: the **tier-weighted discount** varies by segment through the archetype mix, and **card spend** is keyed to ticket as an income proxy (D25 built the ticket bands on *both* the rail and the card non-linearity — only the first one dies here). **§5.2's two-band structure stands on the card leg alone now, which is a thinner justification than it had, and §5 should say so.**
+
+**The spot lane and the SIP lane now earn the same percentage margin.** At the Y1 5% fee:
 
 | Line | SIP, USD 75 | Spot, USD 620 |
 |---|---|---|
-| 🆕 Gross margin (5% fee less **1.50%** premium, 0.79% price-gap, 0.49% float CoC) — **re-cut at D28** | **2.30% → USD 1.72** | **2.30% → USD 14.23** |
-| Rail (**one** event either way, S1 Base = USD 0.25) | (0.25) | (0.25) |
-| **Net margin** | **USD 1.47** | **USD 13.98** |
-| **Net margin as % of ticket** | **1.96%** | **2.25%** |
-| 🆕 **At Conservative rail (S1 = USD 1.36, UAEDDS)** | **+USD 0.36** | **+USD 12.87** |
+| 🆕 Gross margin (5% fee less **1.50%** premium, 0.79% price-gap) — **re-cut at D28, D32** | **2.79% → USD 2.09** | **2.79% → USD 17.30** |
+| 🆕 Rail — **PASSED THROUGH, not deducted** (D31) | — | — |
+| 🆕 Float cost of capital — **MEMO LINE, not deducted** (D32) | — | — |
+| **Net margin** | **USD 2.09** | **USD 17.30** |
+| **Net margin as % of ticket** | **2.79%** | **2.79%** |
+| 🆕 **At Conservative rail (S1 = USD 1.36)** | **unchanged — USD 2.09** | **unchanged — USD 17.30** |
 
-**The whole difference is still the fixed rail spread over an 8.3× larger base, and spot remains structurally the highest-margin inflow in the business.**
+🔴 🆕 **D31 REVERSES the headline claim of this subsection, and D28 had already reversed it once.** The sequence is worth keeping straight because it has now moved twice:
 
-🔴 🆕 **But one conclusion in this subsection is REVERSED by D28, and it is the important one.** At the old 3.00% premium the SIP lane went **negative at the Conservative rail (−USD 0.82)**, and the claim was that **spot was the only inflow-linked flow that survived it.** At the measured 1.50% premium the SIP lane clears the Conservative rail at **+USD 0.36**.
+| | Claim about spot | Status |
+|---|---|---|
+| **v1.0 / v2.0** | *"Spot is the only inflow-linked flow that survives the adverse rail"* — the SIP went negative at −USD 0.82 | **Withdrawn by D28** |
+| **v2.4** | *"Spot remains structurally the highest-margin inflow in the business"* — 2.25% vs 1.96% | 🔴 **Withdrawn by D31** |
+| **v2.5** | **Spot and SIP earn an identical 2.79%.** The entire gap between them *was* the fixed rail over an 8.3× larger base, and it was never a property of spot itself | **Current** |
 
-**So the adverse rail scenario is no longer fatal to the SIP lane. It is merely thin.** The rail cost stops being an existential question for stream 1 and becomes a margin question. ⚠ **This does not make the rail unimportant — it still moves SIP net margin by 4×, from USD 1.47 to USD 0.36 — but the case no longer rests on spot volume rescuing the lane.** v1.0's §0.2 treated the rail as terminal for stream 1; it is not terminal at either rail price once the premium is measured.
+**The rail is no longer a scenario axis for stream 1 at all.** Base, Aggressive and Conservative S1 now produce identical stream 1 margin. ⚠ **S1 does not leave the model — it moves from a margin driver to an adoption-risk driver** (§13.3, `RAIL_PASSTHROUGH`), and that is a real relocation rather than a deletion: at the Conservative rail the customer is asked for USD 21.36 instead of USD 20.00, and whether they say yes is now the question.
 
 Two qualifications that keep this honest. **Spot earns no ICS**, so it builds no tier, no card eligibility and no credit eligibility — **it is margin without a funnel**, and v1.0's §0.4 conclusion that the SIP is an acquisition mechanism for the card still holds. And spot volume is lumpy and seasonal, so it cannot be relied on to cover a fixed cost base. **Spot improves the margin on stream 1; it does not change what the business is.**
 
@@ -1430,15 +1473,20 @@ The fee deducted from a monthly SIP contribution before gold is bought. **It is 
 | Paid to the dealer (0.5037 g at fix, plus premium) | (72.32) | (96.42%) | (73.39) | (97.85%) |
 | **Gross margin retained** | **2.68** | **3.58%** | **1.61** | **2.15%** |
 | Price-gap risk carried by the float | (0.59) | (0.79%) | (0.59) | (0.79%) |
-| Float cost of capital | (0.37) | (0.49%) | (0.37) | (0.49%) |
-| Payment rail (AANI push, assumed) | (0.25) | (0.33%) | (0.25) | (0.33%) |
-| **Net contribution margin** | **1.47** | **1.97%** | **0.41** | **0.54%** |
+| 🆕 Float cost of capital — **MEMO LINE, not deducted** (D32) | — | — | — | — |
+| 🆕 Payment rail — **PASSED THROUGH, not deducted** (D31) | — | — | — | — |
+| **Net contribution margin** | **2.09** | **2.79%** | **1.03** | **1.36%** |
 
-🆕 **Three consequences of the re-base, and the third is the one to carry into the client conversation.**
+> 🆕 **D31: the rail leaves this waterfall.** The customer is asked for **USD 75.25** (Base) or **USD 76.36** (Conservative); Aurumix remits the rail to the PSP and books nothing on it. **The entry fee comprises only what Aurumix itself charges — premium, price-gap, float and margin.** ⚠ **Neither column is a customer-cost figure any more. All-in customer cost is unchanged; only the attribution moved.**
 
-1. **Net contribution margin rises ~3.6×**, from 0.54% to 1.97%.
-2. **The minimum ticket problem largely dissolves at the Base rail.** Break-even falls from ~USD 29 to **USD 10.90** — below the inherited USD 20 floor. ⚠ **At the Conservative rail (USD 1.36) it is USD 66, so the rail still decides it.** The floor is no longer structurally broken; it is rail-dependent.
-3. 🔴 **The fee-ladder finding survives, and its cause changes.** Minimum viable entry fee at USD 75 falls from 4.96% to **~3.07%**. **The client's 3% target now sits essentially AT break-even rather than 0.79pp below it.** ⚠ **But it is still not funded, and the binding cost is no longer the premium — it is the 1.28% of price-gap and float capital that D29 moves onto Aurumix's own book from M1.** §0.3's conclusion holds; its explanation does not.
+🆕 **Four consequences, and the fourth is the one to carry into the client conversation.**
+
+1. **Net contribution margin rises ~2.05×** at the measured premium, from 1.36% to **2.79%** — and it is now **identical at every ticket size and in both lanes.**
+2. 🔴 **The minimum-ticket problem dissolves as a margin problem, entirely and at both rails.** `C_min = R ÷ (f − c)` with `R = 0` has no solution: **every ticket clears wherever `f > c`.** The USD 29 / USD 66 / USD 118 / USD 249 break-even ladder is **retired**. ⚠ **What replaces it is not nothing — it is an adoption question. Will a USD 20 saver approve a USD 21.36 request?** That is the new form of the same problem and it is unmodellable pre-launch; carry it as a named risk, not a parameter.
+3. 🔴 **The fee-ladder finding REVERSES.** Minimum viable entry fee at USD 75 falls from ~3.07% to **~2.26%** across D31 and D32, so the 3% target clears with **~0.74pp of headroom.** §0.3's conclusion no longer holds; its structural point does. ⚠ **Both steps were reclassifications, not cost reductions — read this with the front-matter pattern note.**
+4. ⚠ **The incidence is regressive and it lands on the segment the model is built around.** The gross-up is **1.25% of a USD 20 ticket and 0.33% of a USD 75 one at the Base rail — 6.8% versus 1.8% at the Conservative rail.** The floor band is **40–60% of the book** and is precisely the population D25 found may lack an IBAN-capable account at all. **Aurumix's margin improved by making the poorest customer's deal worse, and the client should hear it in those words.**
+
+⚠ **What the rail pass-through does NOT touch:** redemption. **VARA Annex 2 III.E.4 forbids charging any fee on the way out**, so `F20` (USD 4.20/event) stays absorbed by Aurumix in Stream 0. 🔴 **The asymmetry is now sharp and is worth a line to counsel: Aurumix may pass through the cost of taking money in but is forbidden from passing through the cost of paying it out.**
 
 ⚠ **Both columns assume the premium is paid on gross inflow. Under D30 it is paid on net new grams, which lowers COGS further as the book ages and churn builds.** Neither column reflects that yet.
 
@@ -1464,8 +1512,8 @@ Source: `_draft_purchase-structure.md` §2.2, re-run at the verified gold price 
 | Tier entry-fee discount ladder | 0 / 0.4 / 0.8 / 1.2 / 1.5 | `_draft_ics-scoring.md` §6, verified against the master benefit matrix | pp |
 | 🆕 Fabrication premium | **1.50 / 0.95** | **100 g / 1 kg (F4, D28). OBSERVED on a same-page dealer pair, Moderate confidence.** Good Delivery retired as a rung. Conservative scenario holds 3.00 | % |
 | Price-gap risk (1σ) | **0.79** | Volatility 25% (S6) and a 12.1-day bar fill window at F1 | % |
-| Float cost of capital | 0.49 / 0.31 / 0.38 | F5. **No derivation exists in the corpus** — now derived from the sized float, §7.5 | % |
-| Rail cost per event | **0.25** Base / 0.10 Agg / **1.36** Cons | S1. AANI unpublished; UAEDDS at AED 5 is Emirates NBD's published tariff | USD |
+| 🆕 Float cost of capital — **MEMO LINE, not a margin deduction** | 0.49 / 0.31 / 0.38 | F5 (D32). Opportunity cost on equity, not a cash expense. **No derivation exists in the corpus**; derived from the sized float, §7.5. **The float PRINCIPAL stays on the balance sheet** | % |
+| 🆕 Rail cost per event — **PASS-THROUGH, memo only** | **0.25** Base / 0.10 Agg / **1.36** Cons | S1 (D31). AANI unpublished; UAEDDS at AED 5 is Emirates NBD's published tariff. **Grossed up onto the request; drives no margin line** | USD |
 | Ticket, per segment | 75 / 40 / 20 / 40 / 30 / 75 | §5 | USD/month |
 | Reduced ticket, per segment | MAX(20, 0.50 × ticket) | S29 — **not the hard-coded 20** | USD/month |
 | Gold price (flat) | **141.46** | F1, USD 4,400/oz verified 2026-08-17 | USD/g |
@@ -1499,13 +1547,31 @@ For each segment s, each period t:
   gross_margin(s,t)      = sip_inflow(s,t) − net_of_fee(s,t) − cogs(s,t)
 
   pricegap(s,t)          = sip_inflow(s,t) × pricegap_rate(t) × float_mode
-  floatcoc(s,t)          = sip_inflow(s,t) × float_coc_rate(t) × float_mode
     where float_mode = 0 under DEALER_CARRIED, 1 under OWN_FLOAT             [S51]
 
-  rail(s,t)              = [ contributing(s,t) + reduced(s,t) ] × S1
+  🆕 D32 — THE FLOAT COST OF CAPITAL IS A MEMO LINE, NOT A COGS LINE.
+     It is an opportunity cost on equity, not a cash expense.  Booking an
+     imputed equity charge inside COGS is not what a P&L does, and §7.6
+     already treats locked regulatory capital exactly this way.
+     ** The float PRINCIPAL is unaffected: it stays on the balance sheet
+        and in the funding view.  Only the imputed CARRY leaves. **
 
-  STREAM1a(s,t)          = gross_margin − pricegap − floatcoc − rail
+  floatcoc_memo(t)       = float_capital(t) × cost_of_capital ÷ 12   [§7.5]
+                           ** reported on Summary, never in a margin **
+
+  🆕 D31 — THE RAIL IS PASSED THROUGH, NOT DEDUCTED.
+     The entry fee comprises only what Aurumix charges.  The rail is a
+     third-party PSP cost: it is grossed up onto the collection request
+     and remitted.  It nets to ZERO in the P&L and must NOT appear in
+     STREAM1a.  Compute it as a MEMO row only.
+
+  rail_memo(s,t)         = [ contributing(s,t) + reduced(s,t) ] × S1
+  request_amount(s,t)    = ticket(s) + S1        [what the customer is asked for]
+
+  STREAM1a(s,t)          = gross_margin − pricegap
 ```
+
+⚠ **Keep `rail_memo` as a live row rather than deleting it, for three reasons:** it is the disclosure figure the client must publish alongside the fee; it sizes the pass-through-refusal risk in §13.3; and if D31 is ever reversed the row is already there. **It must not feed the P&L.** The Checks sheet should assert `rail_memo` appears in no revenue or cost total.
 
 **Formula — Annual (Y3–Y7)**
 
@@ -1522,13 +1588,14 @@ For each segment s, each year y:
 
   sip_inflow(s,y)        = Σ over the 12 months of [ contributing(s,m) × ticket(s)
                                 + reduced(s,m) × reduced_ticket(s) ]
-  rail(s,y)              = Σ over the 12 months of
+  rail_memo(s,y)         = Σ over the 12 months of
                              [ contributing(s,m) + reduced(s,m) ] × S1
+                           ** MEMO ONLY — passed through, never deducted [D31] **
 
   All rate-based lines are identical to the monthly form applied to the annual base.
   Seasonality does NOT apply — S52a normalises to 12.00 and cancels over a full year.
 
-  STREAM1a(s,y)          = gross_margin − pricegap − floatcoc − rail
+  STREAM1a(s,y)          = gross_margin − pricegap
 ```
 
 **Growth Logic**
@@ -1543,8 +1610,8 @@ For each segment s, each year y:
 
 **Key Uncertainties**
 
-- **The dealer quote sets 70% of the cost base and the dealer is unnamed.** Four research passes returned nothing. F4 is our estimate, Low confidence, and it is the largest single input risk in the stream.
-- **The rail cost decides the sign of the margin.** At S1 Conservative the SIP loses USD 0.82 on a USD 75 contribution. **The AANI cost is the most valuable unknown number in the engagement.**
+- 🔴 🆕 **The dealer quote now sets essentially the ENTIRE cost base, and the dealer is unnamed.** With the rail passed through (D31), F4 plus the two float costs are all that remain — so **F4's share of stream 1 cost rises from ~70% to ~54% of a smaller base, but its share of the *controllable* risk rises to nearly all of it.** ⚠ **And F4 got weaker, not stronger, on 2026-08-20: the D28 measurement FAILED REPLICATION** (`supporting/_working_dealer-bid-side-and-vaulting-research.md` §5). The 1.71% / 0.93% Dubai readings came from a dealer rate page that moved 6 bp overnight while its own store moved 241 bp — the two pages do not share a clock. **The 1 kg-vs-100 g step of ~0.78pp reproduced and is independently corroborated; the absolute level did not. Treat F4's level as Low confidence again and the ladder's shape as Observed.**
+- 🆕 **The rail no longer decides the sign of the margin — it decides whether the customer says yes.** At S1 Conservative the customer is asked for USD 21.36 rather than USD 20.00. **The AANI cost is still the most valuable unknown number in the engagement, but it is now an adoption input rather than a margin input**, and it moves churn rather than unit economics. ⚠ **This is a harder thing to model, not an easier one:** a margin hit is arithmetic, a refusal rate is behavioural and there is no source for it. **Carry it as a named risk in §13.3, not as a parameter with a Base value.**
 - Volatility at 30% rather than 25% pushes price-gap to ~0.95% and gross margin before rail to 0.56%.
 - **F5 has no derivation anywhere in the corpus.** v2.0 derives it from the sized float (§7.5) rather than carrying it as a rate, which is the fix — but the underlying cost-of-capital rate is still ours.
 - The tier-weighted discount depends entirely on the archetype mix (S27). **If the archetype weights are wrong, the discount is wrong, and it is wrong in the direction of understating cost** if the mix is more disciplined than assumed.
@@ -1593,7 +1660,7 @@ A one-off gold purchase outside the SIP schedule. **The gold is identical, the f
 | Spot frequency among attachers | **1.7** Base / 2.4 Agg / 1.2 Cons | S47 | events/attaching account/yr |
 | Spot seasonality | ~45% of volume in the Akshaya Tritiya (Apr/May) and Diwali (Oct/Nov) windows | S47, S52a | multiplier |
 | Arrears-as-spot | ~0.11 events/live account/yr at Base | Derived from the archetype miss rate × a 25–35% make-good rate | events/yr |
-| Rail cost per event | **0.25** Base (S1) — **one transfer, not a collection** | S1 | USD |
+| 🆕 Rail cost per event — **PASS-THROUGH, memo only** | **0.25** Base (S1) — **one transfer, not a collection.** Grossed up onto the order; no margin effect (D31) | S1 | USD |
 | Large-ticket threshold | one bar denomination (T3) | `_draft_purchase-structure.md` §4.2 | grams |
 
 **Formula — Monthly (M1–M24)**
@@ -1612,10 +1679,11 @@ For each segment s, each period t:
 
   fee_applied(s,t)     = SAME as stream 1a — the account's earned tier discount
   gross_margin(s,t)    = spot_inflow − spot_inflow × (1 − fee_applied) × (1 + premium)
-  pricegap / floatcoc  = as stream 1a, × float_mode                          [S51]
-  rail(s,t)            = spot_events(s,t) × S1        [ONE event, no failure mode]
+  pricegap             = as stream 1a, × float_mode                          [S51]
+  floatcoc             = MEMO ONLY — opportunity cost, not COGS        [D32]
+  rail_memo(s,t)       = spot_events(s,t) × S1   [MEMO — passed through, D31]
 
-  STREAM1b(s,t)        = gross_margin − pricegap − floatcoc − rail
+  STREAM1b(s,t)        = gross_margin − pricegap
 
   FLOAT INVARIANT TEST (a check, not a cost):
     breach(t) = COUNT of orders where spot_ticket ÷ gold_price > float_grams(t)
@@ -1629,8 +1697,8 @@ For each segment s, each period t:
   spot_events(s,y)   = attaching(s,y) × S47 + arrears_events(s,y)
                        [no seasonality term — it cancels over a full year]
   spot_inflow(s,y)   = spot_events(s,y) × spot_ticket(s)
-  rail(s,y)          = spot_events(s,y) × S1
-  STREAM1b(s,y)      = gross_margin − pricegap − floatcoc − rail
+  rail_memo(s,y)     = spot_events(s,y) × S1     [MEMO — passed through, D31]
+  STREAM1b(s,y)      = gross_margin − pricegap
 ```
 
 **Growth Logic**
@@ -1649,15 +1717,19 @@ Take a USD 620 spot ticket against a USD 75 SIP contribution, both at the Y1 5% 
 
 | Line | SIP, USD 75 | Spot, USD 620 |
 |---|---|---|
-| Gross margin at 5% less 3% premium, 0.79% price-gap, 0.49% float CoC | 0.72% → USD 0.54 | 0.72% → USD 4.46 |
-| Rail (one event either way, S1 Base = USD 0.25) | (0.25) | (0.25) |
-| **Net margin** | **USD 0.29** | **USD 4.21** |
-| **Net margin as % of ticket** | **1.96%** | **2.25%** |
-| 🆕 **At the Conservative rail (S1 = USD 1.36)** | **+USD 0.36** | **+USD 12.87** |
+| 🆕 Gross margin at 5% less **1.50%** premium, 0.79% price-gap (D28, D32) | **2.79% → USD 2.09** | **2.79% → USD 17.30** |
+| 🆕 Rail — **PASSED THROUGH** (D31) · Float CoC — **MEMO** (D32) | — | — |
+| **Net margin** | **USD 2.09** | **USD 17.30** |
+| **Net margin as % of ticket** | **2.79%** | **2.79%** |
+| 🆕 **At the Conservative rail (S1 = USD 1.36)** | **unchanged** | **unchanged** |
 
-**The whole difference is the fixed rail spread over an 8.3× larger base — §0.2's own equation running in Aurumix's favour instead of against it. Spot remains structurally the highest-margin inflow in the business.**
+🔴 🆕 **THE FINDING THIS STREAM CARRIED IS WITHDRAWN BY D31.** It said *"spot remains structurally the highest-margin inflow in the business."* **It is not, and it never was a property of spot.** The 2.25%-vs-1.96% gap was **entirely** the fixed rail spread over an 8.3× larger base. Remove the rail from the margin and the two lanes are **identical at 2.79%**.
 
-🔴 🆕 **D28 reverses one claim here.** At the old 3.00% premium the SIP lane went negative at the Conservative rail and **spot was the only inflow-linked flow that survived it.** At the measured 1.50% premium **both lanes clear both rail prices.** The adverse rail is no longer fatal to the SIP lane, only thin — it still moves SIP net margin 4×, from USD 1.47 to USD 0.36, but the case no longer depends on spot volume rescuing stream 1. **Model spot because it is the best margin in the business, not because stream 1 is otherwise unsalvageable.**
+**What survives, and it is the honest version:** spot is **larger per event** (USD 17.30 against USD 2.09), so it is worth having and worth modelling. But **it is not better per dollar**, and any argument that leans on spot's superior margin — the referral economics, the fee-ladder defence, the case for pushing spot in the app — **must be re-checked against 2.79%, not 2.25% versus 1.96%.**
+
+**This claim has now moved twice in three days.** v2.0: *spot is the only lane that survives the adverse rail* (withdrawn by D28 — the SIP clears it at +USD 0.36). v2.4: *spot is structurally the highest-margin inflow* (withdrawn by D31 — the lanes are equal). ⚠ **Both withdrawals ran the same way: a claim about spot turned out to be a claim about the rail wearing spot's clothes. Treat any remaining spot-superiority argument in this brief as suspect until re-derived.**
+
+⚠ **The two qualifications below are untouched by this and now carry the whole case for the lane.** Spot earns no ICS, and spot volume is lumpy and seasonal.
 
 Two qualifications keep it honest. **Spot earns no ICS**, so it builds no tier, no card eligibility and no credit eligibility — **it is margin without a funnel**, and the conclusion that the SIP is an acquisition mechanism for the card still stands. And spot volume is lumpy and seasonal, so it **cannot be relied on to cover a fixed cost base. Spot improves the margin on stream 1; it does not change what the business is.**
 
@@ -2218,7 +2290,13 @@ Burn-and-pay-cash. **A mandatory, uncapped, zero-revenue cost line that scales w
 
 ### 7.1 Cost of goods sold
 
-Inside stream 1: fabrication premium, price-gap risk, float cost of capital, payment rail. See §6.1. **Not an opex line.**
+🆕 **Inside stream 1, and there are now TWO, not four: fabrication premium and price-gap risk.** See §6.1. **Not an opex line.**
+
+🆕 **The float cost of capital left this list at D32.** It is an **opportunity cost on equity, not a cash expense**, and an imputed equity charge does not belong in COGS — §7.6 already applies exactly that rule to locked regulatory capital, and F5 was the one place the brief broke it. It is now `floatcoc_memo`, reported on Summary. 🔴 **The float PRINCIPAL is untouched: USD 29k at Y1 rising to USD 3.6M at Y10, on the balance sheet and inside the USD 15.1m peak-funding figure. The carry stopped being a P&L line; the float did not stop being money.** ⚠ **And it is NOT the customer's gold held anyway — the trust holdings are the customer's and cost Aurumix no capital. The float is Aurumix's own inventory, bought with Aurumix's own money, held BEFORE any customer owns it.**
+
+🆕 **The payment rail left this list at D31.** It is a third-party PSP charge, not something Aurumix charges, so it is grossed up onto the collection request and remitted — **a pass-through with zero P&L effect, carried as `rail_memo` only.** ⚠ **It must not reappear in COGS, in opex, or in any margin denominator.** The Checks sheet asserts this.
+
+⚠ **One asymmetry to hold in view, because it is a regulatory constraint and not a choice.** Aurumix may pass through the cost of collecting money but **may not pass through the cost of returning it: VARA Annex 2 III.E.4 forbids charging any fee on redemption.** So `F20` (USD 4.20/event) stays absorbed in Stream 0 while the equivalent inbound cost does not. **The cost architecture is deliberately lopsided and the client should know it is lopsided by rule, not by design.**
 
 ⚠ **Two of the four are conditional on the float carry mode (S51) and v1.0 charges them unconditionally.** Under dealer-carried, price-gap risk and float cost of capital are **zero** and the fabrication premium is **wider**. Under own float, all four bite but the premium narrows. **Charging both the float cost of capital and the full dealer premium double-counts under either regime** — correction 12.
 
@@ -2311,6 +2389,12 @@ Constructed from benchmarks. The client supplied one figure. **Salary lines are 
 
 **New at v2.0.** v1.0 charges a float cost of capital as a P&L line and never sizes the principal it is a cost of (D7). This subsection sizes it.
 
+> 🆕 🔴 **D32 finishes what D7 started, and inverts its remedy.** D7's fix was *size the principal so the charge is defensible.* **D32's fix is: size the principal and then stop charging it at all.** The float carry is an **opportunity cost on equity, not a cash expense** — no counterparty invoices Aurumix for it — so it is reported as `floatcoc_memo` on Summary and appears in no margin, no COGS line and no P&L total.
+>
+> **This subsection is now MORE load-bearing, not less.** With the carry out of the P&L, the float's entire financial expression is the **principal** sized here: **USD 29k at Y1, USD 437k at Y3, USD 3.6M at Y10**, sitting on the balance sheet and inside the USD 15.1m peak-funding requirement. ⚠ **If a reader concludes from D32 that the float is free, they have misread it — the cost moved from the P&L to the cap table.**
+>
+> 🔴 **One case where the carry becomes a REAL expense and must be restored:** if the float is ever **debt-funded** — a gold-backed working-capital facility, or dealer credit — the interest is cash, not opportunity, and it belongs in the P&L as a financing line. **D32 assumes equity funding. Make that assumption explicit on the Assumptions sheet, and put a `FLOAT_DEBT_FUNDED` switch behind it.**
+
 **The corpus sizing rule, verbatim from `_draft_allocation-and-float.md`:**
 
 > **`float ≥ one bar denomination + a buffer of N days' trailing inflow.` Two bars is the launch setting.**
@@ -2339,7 +2423,9 @@ float_coc_cost(t) = float_capital(t) × cost_of_capital ÷ 12
 
 This is correction 1 propagating into a table §13 of v1.0 does not currently list — correction 13 at §15.
 
-**Two things the model must not do with the float, both corpus rules:**
+**Three things the model must not do with the float — two corpus rules and one from D32:**
+
+- 🆕 **Do not charge the float carry to any margin, unit-economics or COGS line.** Memo only (D32). **The Checks sheet asserts `floatcoc_memo` appears in no total.**
 
 - **Do not run float capital through the P&L.** It is a balance-sheet item. Only the *cost of carrying* it hits the P&L. This mirrors F15's treatment of the AED 1.5m minimum: *"Locked, not expensed. Do not run through P&L."*
 - **Do not net the float against the VARA minimum capital without counsel.** *"[COUNSEL] whether allocated gold inventory can sit inside that requirement."* If it can, the true incremental capital need at Y1 is roughly zero, because AED 1.5m (~USD 408k) is posted anyway and dwarfs a USD 29k float. **If it cannot, the two stack.** At Y1 immaterial; **at Y10 the float is USD 3.6m against an AED 1.5m minimum and the question is worth a real answer.**
@@ -2496,7 +2582,7 @@ Source categories: **CITED** (a named primary or secondary source with a retriev
 | F2 | AED/USD peg | 3.6725 | — | CITED | CBUAE peg | Assumptions!B5 | High |
 | F3 | Entry fee, Y1/Y3/Y10 | 5.0 / 4.0 / 3.0 | % | CLIENT INPUT + DERIVED | Decision 9. Falls with bar denomination | Assumptions!B6 | Client range + our arithmetic |
 | **F4** | 🆕 **Fabrication premium, by denomination** (D28) | **1.50 / 0.95** | % | **OBSERVED** | 🆕 **100 g / 1 kg. Good Delivery RETIRED as a rung** (§7.1 of the research record). Measured on a same-page dealer pair, goldtrade.ae 19 Aug 2026 19:52: 100 g at **+1.71%** (PAMP 1.75, Valcambi 1.67), 1 kg at **+0.93%** (Emirates 0.98, Etihad 0.87). Less the published **25 bp bulk gradient** at 5+ bars → **1.50% / 0.95%.** Full record and method in `supporting/_working_dealer-premium-and-comparables-research.md`. ⚠ **The genuine 10–50 bar tier is unpublished and still needs the dealer** | Assumptions!B7 | **Moderate** |
-| F5 | Float cost of capital | 0.49 / 0.31 / 0.38 | % | ASSUMPTION | **No derivation exists in the corpus.** v2.0 derives it from the sized float instead — §7.5 | Assumptions!B8 | **Low** |
+| F5 | 🆕 **Float cost of capital — MEMO ONLY (D32)** | 0.49 / 0.31 / 0.38 | % | ASSUMPTION | 🆕 **Removed from COGS at v2.6.** An opportunity cost on equity, not a cash expense; §7.6 already treats locked capital this way and F5 was the one place the brief broke its own rule. **No derivation exists in the corpus.** ⚠ **Do not read this as the float being free — the principal is USD 29k at Y1 rising to USD 3.6M at Y10 and it sits inside peak funding** | Assumptions!B8 | **Low** |
 | F6 | SIP hard floor | 20 | USD/month | CITED | Rejected outright below; **never partially credited** | Assumptions!B9 | High |
 | F7 | Confirmed SIP gate | 6 | consecutive periods | CLIENT INPUT | Client's own figure | Assumptions!B10 | High |
 | F8 | Grace period | 5 | calendar days | CITED | `_draft_sip-rulebook.md` §7.2, revised 2026-08-10. **Rolls off weekends and holidays; crosses the month boundary; never closes two periods** | Assumptions!B11 | High |
@@ -2550,7 +2636,7 @@ Source categories: **CITED** (a named primary or secondary source with a retriev
 
 | ID | Parameter | Base | Aggressive | Conservative | Unit | Source category | Why it varies | Sheet |
 |---|---|---|---|---|---|---|---|---|
-| **S1** | **Rail cost per collection event** | **0.25** | 0.10 | **1.36** | USD | TRIANGULATED | 🔴 **The single most important unknown in the model.** AANI unpublished; UAEDDS at AED 5 is Emirates NBD's published tariff. **Conservative makes the SIP loss-making at the target ticket** | Scen!A |
+| **S1** | 🆕 **Rail cost per collection event — PASS-THROUGH (D31)** | **0.25** | 0.10 | **1.36** | USD | TRIANGULATED | 🆕 **No longer a margin driver.** Grossed up onto the request and remitted; drives `rail_memo` and the §13.3 refusal risk only. AANI unpublished; UAEDDS at AED 5 is Emirates NBD's published tariff. ⚠ **It leaves the tornado, where it ranked 6th at USD 1,607,643 of swing** — that swing does not move elsewhere, it ceases to exist in the P&L and reappears as unmodelled churn risk. **Still the number most worth a phone call, for a different reason: it sets what the customer is asked to accept** | Scen!A |
 | **S2** | **Persistency, M13 survival** | **55** | 65 | 45 | % | DERIVED | 🔴 Governs LTV, referral economics and agent commission at once. **At v2.0 it is an OUTPUT of S27, not an input** — carried here as the calibration target | Scen!A |
 | **S3** | **PM share of gross interchange** | **72** | 85 | 55 | % | TRIANGULATED | 🔴 Sizes the largest stream. **No UAE/MENA figure published. Floor is 36%** | Scen!C |
 | S4 | Monthly card spend per active card | 6,000 | 9,000 | 3,500 | AED | TRIANGULATED | Expat survey mean AED 6,170; Kinesis cap implies AED 7,345 | Scen!C |
@@ -2754,7 +2840,7 @@ Phase 2 parked eight parameters with the note *"locks against the revenue model,
 
 | # | Parameter | What Phase 2 says | What the model solves for |
 |---|---|---|---|
-| **1** | **Entry-fee base-rate uplift to fund the discount ladder** | 🆕 The ceiling is 1.5pp at Sovereign against a Y1 gross margin before rail of **2.30% at the measured premium** (was 0.72% at 3.00%, D28). ⚠ **"The ceiling exceeds the available margin" no longer holds and the item must be re-solved** | **0.696pp** — the book-weighted discount at the Y10 computed tier mix. The 1.5pp Sovereign ceiling touches only 4.4% of accounts, so the ladder costs **less than half its headline.** See §9.2 |
+| **1** | **Entry-fee base-rate uplift to fund the discount ladder** | 🆕 The ceiling is 1.5pp at Sovereign against a Y1 net contribution margin of **2.79% at the measured premium** (was 0.72%, D28/D31/D32). ⚠ **"The ceiling exceeds the available margin" no longer holds and the item must be re-solved** | **0.696pp** — the book-weighted discount at the Y10 computed tier mix. The 1.5pp Sovereign ceiling touches only 4.4% of accounts, so the ladder costs **less than half its headline.** See §9.2 |
 | **2** | **Acquisition budget ceiling** | One board-approved cap covering member rewards plus all agent commission at every level, as a % of entry-fee revenue. Modelled on IRDAI's Expenses of Management regime | **29.1% of TOTAL revenue** (acquisition 8,458,460 against total revenue 29,032,342, cumulative). 🔴 **Expressed against entry-fee revenue as this row asks, the ceiling is 338% — which is meaningless, and confirms the brief's own flag. Total revenue is the right denominator.** The front-loading brake schedule is still unsolved |
 | **3** | **Referral reward size** | Shape settled at 30% of the referee's entry fee over six contributions, split equally, in grams. **The 30 is a placeholder** | **399% of the referee's entry fee** — i.e. **LTV does not bind and F17's 30% placeholder is affordable.** 25% of all-streams LTV (749 blended) is USD 187 of headroom against a referee entry fee of only USD 47 over a 24-month run. 🔴 **The binding constraint on the referral reward is the acquisition budget (item 2), not LTV** |
 | **4** | **Agent commission rate** | The client's only written number is 15% of a fee whose base no longer exists. Transplanted, it consumes **88% of Y1 gross margin** | **USD 175.68/account**, split across three levels on a 4/5/6 front-loaded gradient = **46.85 / 58.56 / 70.27.** Derived from an agent pool of USD 5,075,076 over 28,889 agent-sourced accounts. Subject to the item 2 ceiling |
@@ -4012,6 +4098,14 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 | 🆕 **28** | **Decision 26, `_draft_purchase-structure.md`, the ownership construct** | 🔴 **DMCC Tradeflow cannot carry fractional or sub-account customer interests, and the one Dubai tokenised-gold product does not use it as a registry.** "Tradeflow" and "warrant" appear **zero times** in Comtech's binding T&Cs; DMCC's own model is *"each warrant represents a specific item"* and *"legal title remains with the holder of the warrant."* Comtech holds the warrant and grants customers a contractual undivided interest as **agent in possession**. **Decision 26's preference for Tradeflow as the title record needs re-examining.** ✅ **One positive to carry to the client: Comtech's construct is bailment; Aurumix's is a trust, which is materially stronger on insolvency — counsel batch 1 question 2** |
 | 🆕 **29** | **`_draft_allocation-and-float.md` §, the fee-ladder justification** | **The premium ladder was one denomination too pessimistic at every rung** (D28). Observed Dubai: 100 g **1.71%**, 1 kg **0.93%**. The model carried 3.00 / 2.00 / 0.75. ⚠ **Also: Dubai's own Good Delivery standard is a 1 kg bar at 995+, not a 400 oz bar. DGD is itself superseded by the UAE Good Delivery standard (Cabinet Resolution 2/16 of 2020).** The ladder's third rung targeted the wrong object; **drop Good Delivery as a rung.** ⚠ **Every gold-price and premium figure in that draft is stale on both counts** |
 | 🆕 **30** | **`_draft_purchase-structure.md`, `_draft_allocation-and-float.md`, and this brief §3 Layer 3** | 🔴 **Undesigned and now load-bearing: does redeemed gold return to the float, or go back to the dealer?** D30 charges the fabrication premium on **net new grams**, which is only correct if recycled metal stays in the float. **Nobody has written this down.** It interacts with the buyback mechanics and with the `trust ≥ tokens` invariant. **Settle it before the D30 correction is built** |
+| 🆕 **31** | **`_draft_allocation-and-float.md` §, `_parked_collection-economics-and-minimum-ticket.md`, `_explainer_how-we-take-money.md`, `_draft_sip-rulebook.md` §6** | 🔴 **THE ENTRY-FEE BUILD-UP LOSES ITS RAIL TERM** (D31). The build-up is now **premium + price-gap + float CoC + margin**, and the 0.30%-of-contribution rail line comes out. ⚠ **The parked file's entire §2 apparatus — `C_min = R ÷ (f − c)`, the break-even table at AED 1/2/3/5/10.50, and the "no viable collection below USD 118" finding — is RETIRED, not re-run.** With `R = 0` there is no minimum ticket from margin. 🔴 **But do not delete that file: its arithmetic becomes the sizing tool for the pass-through instead of the fee**, i.e. how much the customer is asked for at each rail price. **The SIP rulebook needs a disclosure line: the collection request is `commitment + rail`, and the customer must be told the rail amount before they authorise** |
+| 🆕 **32** | **`_draft_referral-system.md` §5.0 and §5.4, `_draft_allocation-and-float.md`** | **The referral payback arithmetic runs on a net margin that has now moved twice.** §5.0 tested the reward against 2.15% gross, was corrected to ~0.85–1.00% net, and D28+D31+D32 move it to **2.79%.** ⚠ **The reward is 1.67% of contribution against a 2.79% margin — it is no longer "roughly double the margin," it is roughly three-fifths of it.** The self-funding claim was withdrawn and should **stay** withdrawn (no programme recovers CAC in six months), but **§5.4's open decision on reward size must be re-taken at 2.79%, and the "quote the range, not a point" instruction in §276 can now be closed** |
+| 🆕 **33** | **This brief §5.2, and D25's justification** | ⚠ **The ticket-band structure loses one of its two supporting non-linearities.** D25 built two bands per region to preserve *"both the fixed-rail-cost and the card-spend non-linearities."* **D31 kills the first.** The bands still stand on card spend and on the tier-weighted discount, but **§5.2 currently states a justification that is half false and must be re-worded.** ⚠ **This is a documentation fix, not a re-cut — do not collapse the bands** |
+| 🆕 **34** | **`_draft_allocation-and-float.md`, this brief §7.4 and S14, `Aurumix_Process_Maps_Custody_Fee.md`** | 🔴 **CUSTODY SHOULD NOT BE AD VALOREM.** Retrieved DGCX/DCCC vaulting tariffs (via Wayback, the live domain is Cloudflare-walled) price **every** line **per kilogram**: in/out USD 2.00/kg, storage USD 0.40/kg per 7 days, minimum charge at 25 kg. **Nothing is a percentage of value.** Annualised that is ~USD 20.86/kg/yr — **3.24 bp at USD 2,000/oz gold but 1.44 bp at today's price.** ⚠ **A bp-of-AUM custody charge therefore inflates cost as gold rises, against a real charge that does not move.** Re-specify as **per-gram with a floor.** ⚠ **The retrieved tariff is 2007 vintage: the STRUCTURE is the finding, the RATE must not be quoted to the client.** Record in `supporting/_working_dealer-bid-side-and-vaulting-research.md` §4 |
+| 🆕 **35** | **This brief, Stream 0's "Dealer two-way spread" driver; `_draft_purchase-structure.md` §5.4** | **THE EMPTY PARAMETER IS NOW FILLED, AND THE BID IS NOT THE ASK RUN BACKWARDS.** Observed on a simultaneous bid/ask pair with a denominator cross-validated two ways: **bid sits at spot −1.50% (1 kg) and −1.60% (100 g)** — i.e. **near-flat across denomination, while the ask premium moves ~194 bp across the same range.** 🔴 **So fabrication cost is paid on the way in and NOT recovered on the way out, and any model that nets the two symmetrically misprices the round trip at both ends of the ladder.** Model input: **1.50% observed, 1.5–3.0% UAE uncertainty band, plan at 2.0%.** ⚠ **Plus a 0.5–4% condition haircut that is ZERO if metal never leaves the vault — which raises the priority of correction 30, not lowers it** |
+| 🆕 **36** | **This brief §0.3, §6.1a, §8.1 F4, §16, and D28 itself** | 🔴 **D28's PREMIUM MEASUREMENT FAILED REPLICATION ON 2026-08-20 AND ITS LEVEL MUST BE TREATED AS WITHDRAWN.** Re-running the same-page capture 24 hours later returned 4.14% / 3.37% against the prior day's 1.75% / 0.98%. **Diagnostic: goldtrade.ae's rate page moved 6 bp overnight while its own store moved 241 bp — the two pages share a domain but not a clock.** ⚠ **What survives is the SHAPE: the curve is monotonic on both days and the 1 kg-vs-100 g step held at 0.77–0.78pp, independently corroborated at 1.16–1.74pp on a third source. The denomination ladder is sound; its absolute level is not.** 🔴 **Every figure re-cut at F4 = 1.50% — including §0.3's 0.26pp of headroom — is provisional until a third observation. Do NOT take the fee-fundability reversal to the client on this evidence.** **Method addendum: a same-page pair must also be a same-CLOCK pair; validate by re-fetching and checking both sides moved comparably** |
+| 🆕 **37** | **This brief §3 Layer 4, §6.1a, §6.1b, §7.1, §7.5, §11 P&L, F5; `_draft_allocation-and-float.md` entry-fee build-up** | 🔴 **THE FLOAT COST OF CAPITAL LEAVES COGS AND BECOMES A MEMO LINE** (D32). It is an **opportunity cost on equity, not a cash expense**, and §11 currently books it inside COGS — which means stream 1's "net contribution margin" charges a cost the P&L never pays and does not tie to the cash flow. ⚠ **This is an internal-consistency fix as much as an accounting one: §7.6 already states the rule** — *"report the escalator as an opportunity cost, not a P&L line… as a memo line"* — **and F5 was the single place the brief broke it.** 🔴 **What must NOT be inferred: that the float is free.** The **principal** is unaffected — USD 29k at Y1 to USD 3.6M at Y10, on the balance sheet, inside peak funding. ⚠ **Restore the charge as a real financing expense if the float is ever debt-funded; add a `FLOAT_DEBT_FUNDED` switch** |
+| 🆕 **38** | **This brief §0.3, §14 break-even, §13.5 tornado, and any client-facing summary** | 🔴 **THE CUMULATIVE-RECLASSIFICATION RISK, recorded so it is not lost.** In one day D31 and D32 removed two of the four terms in `c`, and the minimum viable entry fee fell **3.07% → 2.74% → 2.26%** with **nothing changing in the business.** Each step is individually defensible; **the sequence dissolved §0.3, a finding present in every version of this brief, by re-attribution alone.** ⚠ **Compounding this, the third term — the fabrication premium — failed replication the same day (correction 36).** 🔴 **Before any of this reaches the client: adversarially re-check the two surviving cost terms, re-observe F4, and state the fee reversal as conditional. The break-even and tornado outputs must ALL be re-run — S1 leaves the tornado entirely and F5 leaves the margin, so the existing rankings are stale in two places at once** |
 
 ---
 

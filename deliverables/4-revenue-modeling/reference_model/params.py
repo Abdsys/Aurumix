@@ -45,8 +45,14 @@ def conflict(topic: str, corpus: str, param: str, brief: str, resolution: str):
 # Horizon
 # ---------------------------------------------------------------------------
 
-HORIZON_MONTHS = 120
+HORIZON_MONTHS = 84              # D21: seven years, genuinely monthly to M84
 MONTHS_PER_YEAR = 12
+HORIZON_YEARS = HORIZON_MONTHS // MONTHS_PER_YEAR
+
+# D21 reporting view: 24 monthly columns then Y3..Y7 as five annual columns.
+VIEW_MONTHLY_COLUMNS = 24
+VIEW_ANNUAL_YEARS = [3, 4, 5, 6, 7]
+VIEW_COLUMNS = VIEW_MONTHLY_COLUMNS + len(VIEW_ANNUAL_YEARS)      # 29
 
 # ---------------------------------------------------------------------------
 # ICS engine - CORPUS, _draft_ics-scoring.md
@@ -70,6 +76,23 @@ RECENT_WINDOW = 12              # trailing countable months
 # Tier thresholds - lower-bound lookup (_draft_ics-scoring.md 2.3)
 TIER_THRESHOLDS = [(100, "Sovereign"), (75, "Platinum"), (50, "Gold"), (25, "Silver")]
 TIER_ORDER = ["None", "Silver", "Gold", "Platinum", "Sovereign"]
+
+# ---------------------------------------------------------------------------
+# D22 - tenure->tier lookup collapses the ladder; the full ICS stays as harness
+#
+# The LIVE path reads tier from a tenure lookup per archetype per month, and all
+# tiers read the FLAT GOLD interchange rate. The full exact-fraction ICS engine
+# is kept intact as a VALIDATION HARNESS and is never read by the live model.
+#
+# What does NOT collapse, and must not: the eligibility gate. The run-of-6
+# first-passage distribution, the pre-gate block and the never-gated population
+# are first-order - they decide who gets a tier at all, not which tier.
+# ---------------------------------------------------------------------------
+
+COLLAPSE_TIER_LADDER = True       # D22. False restores the full ICS as live.
+COLLAPSE_INTERCHANGE_RATE = 0.0180   # flat Gold rate read by every live tier
+COLLAPSE_SAFETY_GATE = 0.05       # 5%: max tolerated stream-2 error vs the
+                                  # full ladder, as a share of gross profit
 
 # ---------------------------------------------------------------------------
 # Fixed inputs (F-series) - BRIEF 8.1 unless noted
@@ -113,19 +136,124 @@ REFERRAL_REWARD_SHARE = 0.30       # F17, placeholder shape
 REFERRAL_LAG_MONTHS = 6            # F18
 SALARY_LOADING = 1.10              # F19
 
-# Entry fee / premium step schedule (T1/T2/T3)
+# Entry fee schedule (T1). Seven-year horizon under D21.
 ENTRY_FEE_BY_YEAR = {1: .05, 2: .05, 3: .04, 4: .04, 5: .04, 6: .035, 7: .035,
                      8: .03, 9: .03, 10: .03}
-FAB_PREMIUM_BY_YEAR = {1: .03, 2: .03, 3: .02, 4: .02, 5: .02, 6: .015, 7: .015,
-                       8: .0075, 9: .0075, 10: .0075}
-BAR_GRAMS_BY_YEAR = {1: 100, 2: 100, 3: 1000, 4: 1000, 5: 1000, 6: 1000,
-                     7: 1000, 8: 12400, 9: 12400, 10: 12400}   # v1.0 ASSUMED
 
-# The denomination ladder as (grams, fabrication premium). T3 is solved against
-# the model's own volume rather than read from BAR_GRAMS_BY_YEAR, because v1.0's
-# schedule is indexed to a volume trajectory the corrected model never reaches.
-BAR_LADDER = [(100, 0.0300), (1000, 0.0200), (12400, 0.0075)]
-SOLVE_BAR_DENOMINATION = True     # set False to reproduce v1.0's fixed schedule
+# ---------------------------------------------------------------------------
+# F4 fabrication premium (D28) - SCENARIO-VARIABLE, NOT A CONSTANT
+#
+# 2026-08-19 19:52 the same-page dealer (goldtrade.ae) gave 1.71 / 0.93% at
+# 100g / 1kg. 2026-08-20, 24 hours later, the same page gave 4.14 / 3.37%.
+# Diagnostic: the rate page moved 6bp overnight, the store page moved 241bp.
+# They do not share a clock, so the two captures are not comparable and the
+# ABSOLUTE LEVEL of F4 does not replicate (correction 36).
+#
+# What survives: the 1kg-vs-100g STEP of 0.77-0.78pp is independently
+# corroborated across dealers. What is withdrawn: the level.
+#
+# Therefore F4 is carried as a scenario variable, not a constant:
+#   Base         - the measured 1.50 / 0.95% (0.55pp step; D28's own figure)
+#   Conservative - the failed-replication HIGH: 3.37% at 1kg, with 100g set one
+#                  corroborated 0.77pp step above it = 4.14%. This is exactly
+#                  the second capture, which is the honest upper observation.
+#   Aggressive   - the low observation: 0.93% at 1kg, 1.71% at 100g.
+#
+# Good Delivery (12.4kg) is RETIRED as a rung (D28): Dubai's standard bar is
+# 1kg, the 12.4kg rung was never a real procurement option at this volume, and
+# carrying it let the model claim a premium saving it could never realise.
+# ---------------------------------------------------------------------------
+
+FAB_PREMIUM_LADDER = {
+    "Base":         {100: 0.0150, 1000: 0.0095},
+    "Aggressive":   {100: 0.0171, 1000: 0.0093},
+    "Conservative": {100: 0.0414, 1000: 0.0337},
+}
+FAB_PREMIUM_CORROBORATED_STEP = 0.0077   # 100g minus 1kg, the surviving shape
+
+conflict(
+    "F4 fabrication premium level",
+    "goldtrade.ae same-page capture 2026-08-19: 1.71 / 0.93%",
+    "D28 states 1.50 / 0.95%",
+    "T2 carries 3.00 / 2.00 / 0.75% by year, assumed not observed",
+    "F4 made SCENARIO-VARIABLE (correction 36). The level failed replication "
+    "2026-08-20 (4.14 / 3.37% on the same page 24h later); only the 0.77pp "
+    "denomination STEP is corroborated. Base carries D28's 1.50/0.95, "
+    "Conservative the failed-replication high, Aggressive the low observation. "
+    "Registered PROVISIONAL: every fee-fundability reversal downstream of D31 "
+    "and D32 is conditional on F4 being re-observed.")
+
+F4_PROVISIONAL = derived(
+    "F4_provisional_flag", True,
+    "F4's absolute level failed replication on 2026-08-20 (correction 36). The "
+    "denomination shape is corroborated; the level is not. Every conclusion "
+    "that depends on the level - the minimum viable entry fee above all - is "
+    "PROVISIONAL until F4 is re-observed against a dealer whose rate page and "
+    "store page share a clock.",
+    "Low")
+
+# The denomination ladder as (grams, premium), resolved per scenario mode. T3 is
+# solved against the model's own volume: v1.0's fixed schedule is indexed to a
+# volume trajectory (80,000 investors) the corrected model never reaches.
+BAR_LADDER_GRAMS = [100, 1000]     # 12.4kg Good Delivery RETIRED by D28
+
+
+def bar_ladder(mode: str = "Base") -> list:
+    lad = FAB_PREMIUM_LADDER[mode]
+    return [(g, lad[g]) for g in BAR_LADDER_GRAMS]
+
+
+SOLVE_BAR_DENOMINATION = True     # set False to pin the launch denomination
+
+# ---------------------------------------------------------------------------
+# D30 / D33 - where redeemed gold goes, and therefore what the premium lands on
+#
+# D30 charges the fabrication premium on NET NEW grams, not gross inflow: only
+# the net addition to the book is procured from the dealer, and grams recycled
+# out of a redemption are re-allocated without re-paying fabrication.
+#
+# 🔴 D30 has an undesigned dependency (correction 30): it holds ONLY if redeemed
+# gold returns to the float. If it goes back to the dealer, there is nothing to
+# recycle and the premium lands on gross inflow after all. Nobody had written
+# this down, so D33 settles it - see the decision record.
+#
+# D33: redeemed grams return to the float up to the float ceiling; any excess is
+# sold back to the dealer at the OBSERVED BID of spot -1.50%.
+#
+# ⚠ The bid and the ask are NOT symmetric and must not be netted as though they
+# were. Correction 35 measured the bid as near-flat across denomination while
+# the ask premium moves ~194bp. Fabrication is paid on the way IN and is not
+# recovered on the way OUT.
+# ---------------------------------------------------------------------------
+
+REDEEMED_GOLD_TO_FLOAT = derived(
+    "REDEEMED_GOLD_TO_FLOAT", True,
+    "D33. Correction 30 found that D30 (premium on net new grams) has an "
+    "UNDESIGNED DEPENDENCY: it holds only if redeemed gold returns to the "
+    "float, and no source settles which. Default set to True - redeemed grams "
+    "return to the float up to the F38 ceiling, excess sold back at the "
+    "observed bid. PROVISIONAL: a defensible default settled by the modeller, "
+    "not a decision the client has taken. Both settings are run and reported.",
+    "Low")
+DEALER_BID_DISCOUNT = 0.0150      # correction 35: observed bid = spot - 1.50%
+
+# ---------------------------------------------------------------------------
+# D31 / D32 - the two re-attributions
+# ---------------------------------------------------------------------------
+
+# D31: the payment rail is a PASS-THROUGH. Aurumix asks the customer for
+# (ticket + rail), remits the rail to the PSP and books zero margin on it. It is
+# a memo line: not cost of revenue, not opex, and it must not touch EBITDA.
+RAIL_IS_PASSTHROUGH = True
+
+# D32: the float cost of capital is a MEMO line, an opportunity cost on equity.
+# Nothing invoices Aurumix for it. The float PRINCIPAL is untouched - it stays
+# on the balance sheet, in the funding view and inside peak funding.
+FLOAT_COC_IS_MEMO = True
+# The one case that restores it as a real expense: if the float is debt-funded
+# (a gold-backed working-capital facility, or dealer credit) the interest is
+# cash, not opportunity, and belongs below EBITDA as a financing line.
+FLOAT_DEBT_FUNDED = False
 
 # Tier entry-fee discount ladder, percentage POINTS (BRIEF 7.2)
 TIER_DISCOUNT_PP = {"None": 0.0, "Silver": 0.004, "Gold": 0.008,
@@ -165,12 +293,13 @@ CREDIT_LAUNCH_MONTH = 24
 
 # Redemption (F20, PARAM)
 REDEMPTION_COST_PER_EVENT = 4.20
-DEALER_TWO_WAY_SPREAD = derived(
-    "dealer_two_way_spread", 0.010,
-    "Corpus gives the net-flow spread mechanism but never a spread rate. 1.0% "
-    "two-way is a mid-market bullion dealer round-trip on 100g-1kg bars, "
-    "consistent with the 3% fabrication premium on smaller denominations.",
-    "Low")
+# ⚠ RETIRED BY D33. The old symmetric 1.0% "two-way spread" was itself a
+# DERIVED guess because no source stated a rate. Correction 35 measured the
+# actual bid at spot - 1.50%, near-flat across denomination while the ask
+# premium moves ~194bp. The two sides are NOT symmetric and are no longer
+# netted: see DEALER_BID_DISCOUNT below. Kept only so a reader searching for
+# the old name finds the reason it went.
+DEALER_TWO_WAY_SPREAD = None
 
 # Tax (F33-F35, PARAM)
 CORP_TAX_RATE = 0.09
@@ -180,7 +309,8 @@ ASSUME_QFZP = False              # F35 - conservative call
 
 VAT_RATE = 0.05                  # F36
 VAT_INPUT_DRAG = 0.20            # PARAM: haircut the zero-rating benefit 20%
-RESIDENT_SHARE = {"S1": 1.0, "S2": 1.0, "S3": 1.0, "S4": 0.0, "S5": 0.0, "S6": 0.0}
+# RESIDENT_SHARE (S49) is defined with the regions below - it is definitional
+# under D25, not a free parameter.
 
 # Float (F38/S50/S51, CORPUS _draft_allocation-and-float.md)
 FLOAT_BARS_LAUNCH = 2
@@ -193,29 +323,128 @@ RESERVE_CAPITAL_PCT = 0.02       # 2% of trailing-24m reserves (Option B only)
 OPTION_B = False                 # default OFF - Option A is the chosen route
 
 # ---------------------------------------------------------------------------
-# Segments (BRIEF 5)
+# Regions (D25) - four modelled regions replace the six occupational segments
+#
+# The six-segment cut (S1..S6) was occupational: professional / clerical /
+# labourer / GCC / India / diaspora. D25 re-cuts the population by REGION OF
+# RESIDENCE, because residence is what determines the regulatory perimeter, the
+# payment rail, the VAT treatment (S49) and the card proposition - none of which
+# an occupational cut can express.
+#
+# Each region carries TWO TICKET BANDS (S54/S55). The floor band is the USD 20
+# hard floor (F6); the standard band is solved so the two bands reproduce the
+# region's observed average ticket exactly:
+#       standard = (avg_ticket - 20 x floor_share) / (1 - floor_share)
+# Unit margin, rail and card spend are computed PER BAND and summed. Computing
+# them on the regional average is wrong wherever a fixed per-event cost or a
+# floor is involved, which is everywhere that matters.
 # ---------------------------------------------------------------------------
 
-SEGMENTS = ["S1", "S2", "S3", "S4", "S5", "S6"]
-TICKET = {"S1": 75.0, "S2": 40.0, "S3": 20.0, "S4": 40.0, "S5": 30.0, "S6": 75.0}
-ADDRESSABLE = {"S1": 71_000, "S2": 119_000, "S3": 285_000,
-               "S4": 1_014_000, "S5": 12_500_000, "S6": 50_000}
-SEGMENT_LIVE_MONTH = {"S1": 1, "S2": 1, "S3": 1, "S4": 13, "S5": 13, "S6": 25}
+SEGMENTS = ["R1", "R2", "R3", "R4"]
 
-# S22 penetration ceilings
-PENETRATION_CEILING = {
-    "Base":         {"S1": .22, "S2": .16, "S3": .09, "S4": .06, "S5": .0035, "S6": .06},
-    "Aggressive":   {"S1": .32, "S2": .24, "S3": .14, "S4": .10, "S5": .0060, "S6": .10},
-    "Conservative": {"S1": .12, "S2": .09, "S3": .05, "S4": .03, "S5": .0015, "S6": .03},
+REGION_NAME = {
+    "R1": "UAE Indian",
+    "R2": "UAE other South Asian",
+    "R3": "Oman",
+    "R4": "India resident",
 }
-S6_CEILING_NOTE = derived(
-    "S6 penetration ceiling", 0.06,
-    "S22 leaves S6 as 'n/a' and BRIEF 5 does not size the S6 base. Set the S6 "
-    "addressable base at 50,000 and its ceiling equal to S4's, since both are "
-    "small international perimeters requiring local licensing.",
-    "Low")
 
-# S29 reduction depth: reduced ticket by segment
+# Addressable base: active, IBAN-capable, income-qualified population.
+ADDRESSABLE = {"R1": 640_000, "R2": 620_000, "R3": 600_000, "R4": 12_500_000}
+
+# S55 average monthly ticket by region. Book-weighted mean is ~31.5, well below
+# the ~40 the six-segment cut implied - which is what tightens the fee.
+AVG_TICKET = {"R1": 38.0, "R2": 26.0, "R3": 26.0, "R4": 30.0}
+AVG_TICKET_BY_MODE = {
+    "Base":         {"R1": 38.0, "R2": 26.0, "R3": 26.0, "R4": 30.0},
+    "Aggressive":   {"R1": 46.0, "R2": 32.0, "R3": 32.0, "R4": 36.0},
+    "Conservative": {"R1": 30.0, "R2": 21.0, "R3": 21.0, "R4": 24.0},
+}
+
+# S54 share of each region contributing at the USD 20 hard floor.
+FLOOR_SHARE = {
+    "Base":         {"R1": 0.40, "R2": 0.60, "R3": 0.58, "R4": 0.25},
+    "Aggressive":   {"R1": 0.30, "R2": 0.50, "R3": 0.48, "R4": 0.18},
+    "Conservative": {"R1": 0.50, "R2": 0.70, "R3": 0.68, "R4": 0.33},
+}
+
+FLOOR_BAND_TICKET = SIP_HARD_FLOOR      # F6, USD 20. The floor IS the band.
+BANDS = ["floor", "standard"]
+
+
+def standard_band_ticket(region: str, mode: str = "Base") -> float:
+    """Solve the standard band so the two bands reproduce S55's average.
+
+        avg = 20 x floor_share + standard x (1 - floor_share)
+
+    Base gives R1 50.00, R2 35.00, R3 34.29, R4 33.33 - the spec's 50/35/34/33.
+    """
+    fs = FLOOR_SHARE[mode][region]
+    avg = AVG_TICKET_BY_MODE[mode][region]
+    if fs >= 1.0:
+        return FLOOR_BAND_TICKET
+    return (avg - FLOOR_BAND_TICKET * fs) / (1.0 - fs)
+
+
+def band_split(region: str, mode: str = "Base") -> dict:
+    """{band: (share_of_region, ticket)}. Sums to 1.0 by construction."""
+    fs = FLOOR_SHARE[mode][region]
+    return {"floor": (fs, FLOOR_BAND_TICKET),
+            "standard": (1.0 - fs, standard_band_ticket(region, mode))}
+
+
+# Kept for any caller that genuinely wants the regional average (reporting only).
+TICKET = dict(AVG_TICKET)
+
+# Activation month. R4 is additionally gated on INDIA_ENABLED.
+SEGMENT_LIVE_MONTH = {"R1": 1, "R2": 7, "R3": 13, "R4": 13}
+
+# S22 regional ceilings, applied to the addressable base.
+PENETRATION_CEILING = {
+    "Base":         {"R1": .095, "R2": .060, "R3": .040, "R4": .0035},
+    "Aggressive":   {"R1": .140, "R2": .090, "R3": .060, "R4": .0060},
+    "Conservative": {"R1": .060, "R2": .035, "R3": .025, "R4": .0015},
+}
+
+# S49 UAE-resident share. Falls straight out of the D25 re-cut by residence and
+# drives the VAT split: UAE residents are standard-rated, others are an export
+# of services. This is definitional, not an assumption.
+RESIDENT_SHARE = {"R1": 1.0, "R2": 1.0, "R3": 0.0, "R4": 0.0}
+
+# Check 14: base x ceiling must total 165,750 across all regions. Held equal to
+# v2.1's 164,900 deliberately - base and ceiling moved TOGETHER when the
+# propensity filter was deleted, so the product is the invariant, not either
+# factor. Asserted at import so a silent drift cannot ship.
+CEILING_ACCOUNTS_INVARIANT = 165_750.0
+
+
+def _ceiling_accounts(mode: str = "Base") -> float:
+    return sum(ADDRESSABLE[r] * PENETRATION_CEILING[mode][r] for r in SEGMENTS)
+
+
+assert abs(_ceiling_accounts("Base") - CEILING_ACCOUNTS_INVARIANT) < 1e-6, (
+    f"D25 reconciliation invariant broken: base x ceiling = "
+    f"{_ceiling_accounts('Base'):,.1f}, expected {CEILING_ACCOUNTS_INVARIANT:,.1f}")
+
+# Named, sized, deliberately NOT modelled (spec 3.3). A documented constant, not
+# a live region: each is excluded for a stated structural reason, and carrying
+# them as zero-weight regions would invite someone to switch them on.
+UNMODELLED_REGIONS = {
+    "Bahrain": {
+        "size": 259_000,
+        "reason": "CBB Crypto-Asset Module binds; no reverse-solicitation "
+                  "exemption; entry would require a CBB pre-application."},
+    "Emirati": {
+        "size": 1_330_000,
+        "reason": "Wrong persona: no remittance driver, and already served by "
+                  "Liv Gold inside ENBD/ADIB."},
+    "Western expat": {
+        "size": 550_000,
+        "reason": "No gold-savings behaviour. Sized 500-600k; midpoint carried."},
+}
+
+# S29 reduction depth. D25 note: reduction applies to the STANDARD band only -
+# the floor band is already at the F6 hard floor and cannot reduce further.
 REDUCED_TICKET_FRAC = 0.50       # of prior ticket, floored at SIP_HARD_FLOOR
 
 # ---------------------------------------------------------------------------
@@ -224,26 +453,35 @@ REDUCED_TICKET_FRAC = 0.50       # of prior ticket, floored at SIP_HARD_FLOOR
 
 CHANNELS = ["Agent", "Referral", "Direct", "B2B"]
 
+# S16 re-cut onto D25's four regions. Two structural rules are load-bearing and
+# survive the re-cut unchanged:
+#   1. The B2B row is 60% R4 (India). This is why INDIA_ENABLED and the stream-6
+#      partner AUM are NOT independent switches.
+#   2. Referral skews toward R1 relative to agent, because the referrer base is
+#      the earliest and most tenured cohort and R1 activates first.
+# Each row is renormalised at read time over the regions live in that month, so
+# a row that names a region before its activation month cannot leak volume.
 CHANNEL_MIX_PHASES = {
-    1: {  # M1-M12
-        "Agent":    {"S1": .15, "S2": .40, "S3": .45},
+    1: {  # M1-M6: R1 only is live, R2 opens at M7
+        "Agent":    {"R1": 1.00},
         "Referral": {},
-        "Direct":   {"S1": .45, "S2": .40, "S3": .15},
+        "Direct":   {"R1": 1.00},
         "B2B":      {},
     },
-    2: {  # M13-M24
-        "Agent":    {"S1": .12, "S2": .33, "S3": .38, "S4": .10, "S5": .07},
-        "Referral": {"S1": .18, "S2": .38, "S3": .33, "S4": .06, "S5": .05},
-        "Direct":   {"S1": .38, "S2": .33, "S3": .12, "S4": .07, "S5": .10},
+    2: {  # M7-M24: R2 then R3/R4 come live
+        "Agent":    {"R1": .42, "R2": .38, "R3": .12, "R4": .08},
+        "Referral": {"R1": .55, "R2": .30, "R3": .09, "R4": .06},
+        "Direct":   {"R1": .48, "R2": .32, "R3": .10, "R4": .10},
         "B2B":      {},
     },
-    3: {  # M25+
-        "Agent":    {"S1": .10, "S2": .28, "S3": .32, "S4": .12, "S5": .16, "S6": .02},
-        "Referral": {"S1": .16, "S2": .34, "S3": .30, "S4": .08, "S5": .10, "S6": .02},
-        "Direct":   {"S1": .32, "S2": .28, "S3": .10, "S4": .08, "S5": .16, "S6": .06},
-        "B2B":      {"S1": .05, "S2": .15, "S3": .10, "S4": .05, "S5": .60, "S6": .05},
+    3: {  # M25+: the mature mix
+        "Agent":    {"R1": .34, "R2": .34, "R3": .18, "R4": .14},
+        "Referral": {"R1": .45, "R2": .31, "R3": .14, "R4": .10},
+        "Direct":   {"R1": .38, "R2": .28, "R3": .14, "R4": .20},
+        "B2B":      {"R1": .15, "R2": .15, "R3": .10, "R4": .60},
     },
 }
+CHANNEL_PHASE_BOUNDARIES = (6, 24)   # phase 1 to M6, phase 2 to M24, then 3
 
 AGENT_RAMP = [0.20, 0.40, 0.60, 0.75, 0.85, 0.95] + [1.00] * 6 + [1.05]  # S17
 AGENT_ATTRITION_ANNUAL = 0.45     # S18
@@ -449,7 +687,10 @@ B2B_LAUNCH_MONTH = 24
 SPOT_ATTACH = {"Base": 0.14, "Aggressive": 0.24, "Conservative": 0.07}
 SPOT_TICKET = {"Base": 620.0, "Aggressive": 1100.0, "Conservative": 320.0}
 SPOT_FREQ = {"Base": 1.7, "Aggressive": 2.4, "Conservative": 1.2}
-SPOT_SEGMENT_SCALE = {"S1": 1.6, "S2": 1.0, "S3": 0.45, "S4": 1.0, "S5": 0.7, "S6": 1.6}
+# S46 scales the spot ticket by segment. Re-cut onto D25's regions, anchored on
+# each region's average ticket relative to the book-weighted mean, because spot
+# capacity and SIP capacity are the same underlying savings capacity.
+SPOT_SEGMENT_SCALE = {"R1": 1.30, "R2": 0.85, "R3": 0.85, "R4": 1.00}
 SPOT_TENURE_UPLIFT_PER_YEAR = derived(
     "spot_tenure_uplift", 0.30,
     "S45 says a 3-year account is 'roughly 2x as likely' to buy spot as a "
@@ -617,6 +858,34 @@ def year_of(month: int) -> int:
 
 def step_by_year(table: dict, month: int):
     return table[min(year_of(month), 10)]
+
+
+# ---------------------------------------------------------------------------
+# D21 - the 29-column reporting view
+#
+# The COMPUTE grid is genuinely monthly to M84. The REPORTING view sits on top:
+# M1..M24 monthly, then Y3..Y7 as five annual columns. That view is what the
+# Excel workbook is checked against, so it is emitted as its own artefact.
+#
+# Three aggregation rules, and getting them wrong is the classic error:
+#   RATES     never sum. They are re-derived from their own numerator and
+#             denominator over the year, or inflow-weighted where no explicit
+#             denominator exists. Summing twelve monthly percentages gives a
+#             number twelve times too large.
+#   FLOWS     sum over their twelve constituent months.
+#   SNAPSHOTS take the last month of the year. Averaging a stock across the
+#             year answers a different question from "where did it end".
+# ---------------------------------------------------------------------------
+
+VIEW_RULE_SNAPSHOT = "snapshot"
+VIEW_RULE_FLOW = "flow"
+VIEW_RULE_RATE = "rate"
+
+
+def view_columns() -> list:
+    """The 29 column labels, in order."""
+    return ([f"M{m}" for m in range(1, VIEW_MONTHLY_COLUMNS + 1)]
+            + [f"Y{y}" for y in VIEW_ANNUAL_YEARS])
 
 
 # ---------------------------------------------------------------------------

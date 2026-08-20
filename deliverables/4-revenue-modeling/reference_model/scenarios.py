@@ -20,11 +20,33 @@ def scenario_set() -> dict:
         "Base": P.Scenario(name="Base", mode="Base"),
         "Aggressive": P.Scenario(name="Aggressive", mode="Aggressive"),
         "Conservative": P.Scenario(name="Conservative", mode="Conservative"),
-        # "rail kills it": conservative rail ONLY, everything else Base.
-        "rail_kills_it": P.Scenario(
-            name="rail_kills_it", mode="Base",
-            overrides={"RAIL_COST": {k: P.RAIL_COST["Conservative"]
-                                     for k in P.RAIL_COST}}),
+        # ⚠ "RAIL KILLS IT" IS RETIRED BY D31 AND DELIBERATELY NOT REPLACED
+        # WITH A LOOKALIKE. The rail is a pass-through, so flexing S1 to its
+        # Conservative 1.36 now moves the P&L by exactly zero. Keeping the
+        # scenario would print a row of unchanged numbers under a name that
+        # promises a stress, which is worse than not having it. What the
+        # adverse rail DOES do is raise the customer's collection request from
+        # a 1.25% gross-up to a 6.80% one on the USD 20 floor band - an
+        # incidence question, reported in `rail_incidence`, not a profit one.
+        #
+        # ⚠ "PREMIUM KILLS IT" REPLACES IT, and it is the honest successor:
+        # F4's LEVEL failed replication on 2026-08-20, so the fabrication
+        # premium is now the largest genuinely uncertain term in cost of
+        # revenue. This runs the failed-replication HIGH.
+        "premium_kills_it": P.Scenario(
+            name="premium_kills_it", mode="Base",
+            overrides={"FAB_PREMIUM_LADDER":
+                       {k: P.FAB_PREMIUM_LADDER["Conservative"]
+                        for k in P.FAB_PREMIUM_LADDER}}),
+        # D33 the other way: redeemed gold goes to the dealer, so nothing
+        # recycles and D30 collapses back onto gross inflow.
+        "redeemed_to_dealer": P.Scenario(
+            name="redeemed_to_dealer", mode="Base",
+            overrides={"REDEEMED_GOLD_TO_FLOAT": False}),
+        # D32's restoring case: the float is debt-funded, so the carry is cash.
+        "float_debt_funded": P.Scenario(
+            name="float_debt_funded", mode="Base",
+            overrides={"FLOAT_DEBT_FUNDED": True}),
         # "no card": programme never launches.
         "no_card": P.Scenario(name="no_card", mode="Base", card_enabled=False),
         # "no card" variant: lands prepaid-capped at 1.00% flat.
@@ -212,87 +234,133 @@ def months_to_cash_breakeven(cf: pd.DataFrame) -> dict:
 def solve_minimum_entry_fee(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
     """The fee path at which stream 1 net contribution margin is non-negative.
 
-    v1.0's fee ladder falls 5% -> 4% -> 3% BECAUSE the fabrication premium was
-    assumed to fall 3.00% -> 2.00% -> 0.75% as the business moved onto Good
-    Delivery bars. Those two schedules are physically coupled: the premium is a
-    function of bar denomination, and denomination is a function of volume.
+    ⚠ D31 AND D32 CHANGED THIS FORMULA, AND THE CHANGE IS THE WHOLE STORY.
+    The cost term `c` used to have four components - fabrication premium, price
+    gap, float cost of capital and the payment rail. D31 removed the rail (it is
+    a pass-through the customer funds) and D32 removed the float carry (it is an
+    imputed cost of equity). `c` now has TWO terms:
 
-    The model solves denomination endogenously and Good Delivery never clears,
-    so the premium holds at 2.00%. A 3% fee less the tier-weighted discount is
-    then BELOW COST. This solver reports the fee the arithmetic actually
-    permits, year by year.
+        net = T - T(1-f)(1+p) - T x g   >= 0
 
-    Per contribution, with fee f, premium p, price-gap g, float c, rail R,
-    ticket T and collection events E = 1 per contribution:
+    with T the ticket, f the fee, p the fabrication premium and g the price gap.
+    Solving for f gives the minimum viable rate.
 
-        net = T - T(1-f)(1+p) - T*g - c - R  >= 0
+    🔴 IN ONE DAY `c` WENT FROM FOUR TERMS TO TWO AND THE MINIMUM VIABLE FEE
+    FELL, WITH NOTHING CHANGING IN THE BUSINESS. Each step is defensible on its
+    own; the sequence dissolved a finding present in every version of the brief
+    by re-attribution alone. And the largest surviving term - the fabrication
+    premium - FAILED REPLICATION on 2026-08-20. So this table is reported as
+    PROVISIONAL and conditional, never as a settled result.
 
-    Solving for f gives the minimum viable rate at that year's premium, mix and
-    rail. Reported as a CONSTRAINT, not a recommendation.
+    D25: SOLVED PER BAND, NOT ON THE REGIONAL AVERAGE. The floor band contributes
+    USD 20 and the standard band USD 33-50. Because the price gap is proportional
+    to the ticket, the two bands need the SAME fee in this two-term world - which
+    is itself the finding: removing the fixed rail removed the only term that
+    made the small ticket structurally more expensive to serve.
     """
     rows = []
-    for yr in range(1, 11):
+    for yr in range(1, P.HORIZON_YEARS + 1):
         d = df[df.year == yr]
         if d.empty:
             continue
 
         premium = float(d["fab_premium"].iloc[-1])
         bar_g = float(d["bar_grams"].iloc[-1])
-        # Weight the price-gap by inflow, not a flat mean. In the launch ramp
-        # it runs 9.0% in M1 on negligible volume and decays to 0.8% by M12;
-        # an unweighted mean lets the first, smallest month dominate the year.
+        # Weight the price-gap by inflow, not a flat mean. In the launch ramp it
+        # runs ~11% in M1 on negligible volume and decays below 1% by M12; an
+        # unweighted mean lets the smallest month dominate the whole year.
         _infl = d["inflow_sip"] + d["inflow_spot"]
         pricegap = float((d["pricegap_rate"] * _infl).sum() / max(1e-9, _infl.sum()))
+        # D30/D33: the premium lands only on net new grams, so the effective
+        # premium rate on a contribution is scaled by the recycling share.
+        nn = float((d["net_new_gram_share"] * _infl).sum() / max(1e-9, _infl.sum()))
+        eff_premium = premium * nn
+
         assumed_fee = P.ENTRY_FEE_BY_YEAR[yr]
         applied = float((d["fee_applied"] * d["inflow_sip"]).sum()
                         / max(1e-9, d["inflow_sip"].sum()))
         discount = assumed_fee - applied
 
-        # Solve each lane on ITS OWN ticket. A blended ticket mixes a ~USD 49
-        # SIP contribution with a ~USD 690 spot order and represents neither;
-        # the fixed rail is the whole point and it does not blend.
-        lanes = {}
-        for lane, infl_col, ev_col, rail_rate in (
-                ("sip", "inflow_sip", "collection_events", P.RAIL_COST[mode]),
-                ("spot", "inflow_spot", "spot_events", P.SPOT_RAIL_COST)):
-            infl = float(d[infl_col].sum())
-            ev = float(d[ev_col].sum())
-            if infl <= 0 or ev <= 0:
-                lanes[lane] = None
-                continue
-            ticket = infl / ev
-            # Float cost is carried by the SIP lane only (spot is a single push).
-            per_float = (float(d["cor_float"].sum()) / ev) if lane == "sip" else 0.0
-            per_pg = ticket * pricegap
-            residual = ticket - per_pg - per_float - rail_rate
-            min_net = 1.0 - residual / (ticket * (1.0 + premium))
-            lanes[lane] = {"ticket": ticket, "min_net": min_net,
-                           "min_headline": min_net + discount}
+        def min_fee(ticket: float) -> float:
+            """f such that T - T(1-f)(1+p_eff) - T.g = 0."""
+            if ticket <= 0:
+                return 0.0
+            residual = ticket - ticket * pricegap
+            return 1.0 - residual / (ticket * (1.0 + eff_premium))
 
-        sip, spot = lanes.get("sip"), lanes.get("spot")
-        # The binding constraint is the lane that needs the higher fee - the
-        # SIP lane, always, because the fixed rail is spread over a far smaller
-        # ticket. That is exactly the 0.2 non-linearity.
-        binding = max((l for l in (sip, spot) if l), key=lambda l: l["min_headline"])
-        min_headline = binding["min_headline"]
+        # Per band, per region (D25), plus the two lanes.
+        band_min = {}
+        for r in P.SEGMENTS:
+            for band, (share, ticket) in P.band_split(r, mode).items():
+                band_min[f"{r}_{band}"] = min_fee(ticket)
+
+        sip_ev = float(d["collection_events"].sum())
+        sip_infl = float(d["inflow_sip"].sum())
+        spot_ev = float(d["spot_events"].sum())
+        spot_infl = float(d["inflow_spot"].sum())
+        sip_ticket = sip_infl / sip_ev if sip_ev > 0 else 0.0
+        spot_ticket = spot_infl / spot_ev if spot_ev > 0 else 0.0
+
+        sip_net = min_fee(sip_ticket)
+        spot_net = min_fee(spot_ticket) if spot_ticket > 0 else 0.0
+        # The binding lane needs the higher headline fee.
+        binding_net = max(sip_net, spot_net)
+        min_headline = binding_net + discount
 
         rows.append({
-            "year": yr,
-            "bar_grams": bar_g,
-            "premium": premium,
-            "sip_ticket": sip["ticket"] if sip else None,
-            "spot_ticket": spot["ticket"] if spot else None,
-            "v1.0 assumed fee": assumed_fee,
+            "year": yr, "bar_grams": bar_g, "premium": premium,
+            "net_new_gram_share": nn, "effective_premium": eff_premium,
+            "pricegap_weighted": pricegap,
+            "sip_ticket": sip_ticket, "spot_ticket": spot_ticket,
+            "assumed fee": assumed_fee,
             "tier discount applied": discount,
-            "min viable fee SIP lane": sip["min_headline"] if sip else None,
-            "min viable fee spot lane": spot["min_headline"] if spot else None,
+            "min viable fee SIP lane": sip_net + discount,
+            "min viable fee spot lane": spot_net + discount,
             "min viable fee (binding)": min_headline,
+            "min viable fee floor band (USD 20)": min_fee(20.0) + discount,
             "shortfall_pp": (min_headline - assumed_fee) * 100,
             "achievable": min_headline <= assumed_fee,
             "stream1_sip_net": float(d["stream1_sip"].sum()),
             "stream1_net_total": float(d["stream1_net"].sum()),
+            "PROVISIONAL": "F4 failed replication 2026-08-20 (correction 36)",
+            **{f"min fee {k}": v + discount for k, v in band_min.items()},
         })
     return pd.DataFrame(rows)
+
+
+def rail_incidence(mode: str = "Base") -> pd.DataFrame:
+    """D31: who actually pays the rail now, and how much it costs them.
+
+    The rail left the P&L. It did NOT leave the transaction. Aurumix asks for
+    `ticket + rail` and remits it, so the incidence moved wholly onto the
+    customer - and it is REGRESSIVE, because the rail is a fixed amount per
+    collection while the ticket is not.
+
+    Reported per region band, because "the rail is no longer a cost" is true of
+    Aurumix and false of a USD 20 saver, for whom it is a 1.25% surcharge on
+    every single contribution. That is not a rounding error on a product whose
+    entire gross margin is ~3.6%.
+    """
+    rail = P.RAIL_COST[mode]
+    rows = []
+    for r in P.SEGMENTS:
+        for band, (share, ticket) in P.band_split(r, mode).items():
+            g = S_rail_gross_up(ticket, rail)
+            rows.append({
+                "region": r, "region_name": P.REGION_NAME[r], "band": band,
+                "share_of_region": share, "ticket_usd": ticket,
+                "rail_usd": rail,
+                "request_amount_usd": g["request_amount"],
+                "gross_up_pct_of_ticket": g["gross_up_pct"] * 100,
+                "annual_rail_cost_to_customer_usd": rail * 12.0,
+            })
+    out = pd.DataFrame(rows)
+    return out.sort_values("gross_up_pct_of_ticket", ascending=False)
+
+
+def S_rail_gross_up(ticket, rail):
+    import streams as _S
+    return _S.rail_gross_up(ticket, rail)
 
 
 # ---------------------------------------------------------------------------
@@ -300,7 +368,18 @@ def solve_minimum_entry_fee(df: pd.DataFrame, mode: str = "Base") -> pd.DataFram
 # ---------------------------------------------------------------------------
 
 TORNADO_PARAMS = [
-    ("RAIL_COST", "Rail cost per collection (S1)"),
+    # ⚠ TWO RANKINGS WENT STALE AT THE REBUILD AND ARE DELIBERATELY NOT HERE.
+    #
+    # S1 RAIL leaves the tornado entirely under D31. It is a pass-through: the
+    # customer is asked for (ticket + rail) and Aurumix remits it. Flexing a
+    # parameter that nets to zero in every P&L total would report a swing of
+    # exactly zero and invite someone to conclude the rail does not matter. It
+    # matters - to the CUSTOMER - and that incidence is reported separately as
+    # a gross-up percentage per region band, not as a profit sensitivity.
+    #
+    # F5 FLOAT COST OF CAPITAL leaves the margin under D32. It is a memo on
+    # equity, so it cannot move profit. The float PRINCIPAL still moves peak
+    # funding, and that is captured through the float sizing, not through F5.
     ("PM_SHARE", "PM share of interchange (S3)"),
     ("CARD_SPEND_AED", "Card spend per active card (S4)"),
     ("CARD_ACTIVATION", "Card activation rate (S5)"),
@@ -310,15 +389,20 @@ TORNADO_PARAMS = [
     ("SPOT_ATTACH", "Spot attach (S45)"),
     ("VAULT_RATE", "Vault storage rate (S14)"),
     ("FACILITY_TURNOVER", "Facility turnover (S40)"),
-    # G3: the three the brief ranks as load-bearing that were never flexed.
     ("ARCHETYPE_MIX", "Payment archetype mix (S27)"),
     ("CARD_FIXED", "Card programme fixed costs (F27)"),
     ("OPEX_Y1_EXIT_UPLIFT", "Y1 opex exit run-rate uplift (S48)"),
+    # NEW at the rebuild - these are now first-class drivers.
+    ("FAB_PREMIUM_LADDER", "Fabrication premium (F4, PROVISIONAL)"),
+    ("FLOOR_SHARE", "Floor-band share by region (S54)"),
+    ("AVG_TICKET_BY_MODE", "Average ticket by region (S55)"),
+    ("PENETRATION_CEILING", "Regional ceiling (S22)"),
+    ("REDEMPTION_RATE", "Redemption rate (S32)"),
+    ("LAPSED_REDEMPTION_MULT", "Lapsed-holder multiplier (S33)"),
 ]
 
-# S27 is a nested structure, F27 a flat dict of costs and S48 a scalar, so each
-# needs its own bound construction rather than a Base/Aggressive/Conservative
-# lookup. Bounds are the parameter file's own stated alternatives.
+# S27 is nested, F27 a flat cost dict and S48 a scalar, so each needs its own
+# bound construction rather than a Base/Aggressive/Conservative lookup.
 SPECIAL_TORNADO_BOUNDS = {
     "ARCHETYPE_MIX": {
         "Aggressive": {"Base": P.ARCHETYPE_MIX["Aggressive"],
@@ -337,6 +421,30 @@ SPECIAL_TORNADO_BOUNDS = {
                          "scheme_quarterly": 22_000.0},
     },
     "OPEX_Y1_EXIT_UPLIFT": {"Aggressive": 1.25, "Conservative": 1.60},
+    # F4: the bounds are the two ends of the REPLICATION FAILURE, not a
+    # comfortable band around a measured value. That is the honest range.
+    "FAB_PREMIUM_LADDER": {
+        "Aggressive": {k: P.FAB_PREMIUM_LADDER["Aggressive"]
+                       for k in P.FAB_PREMIUM_LADDER},
+        "Conservative": {k: P.FAB_PREMIUM_LADDER["Conservative"]
+                         for k in P.FAB_PREMIUM_LADDER},
+    },
+    "FLOOR_SHARE": {
+        "Aggressive": {k: P.FLOOR_SHARE["Aggressive"] for k in P.FLOOR_SHARE},
+        "Conservative": {k: P.FLOOR_SHARE["Conservative"] for k in P.FLOOR_SHARE},
+    },
+    "AVG_TICKET_BY_MODE": {
+        "Aggressive": {k: P.AVG_TICKET_BY_MODE["Aggressive"]
+                       for k in P.AVG_TICKET_BY_MODE},
+        "Conservative": {k: P.AVG_TICKET_BY_MODE["Conservative"]
+                         for k in P.AVG_TICKET_BY_MODE},
+    },
+    "PENETRATION_CEILING": {
+        "Aggressive": {k: P.PENETRATION_CEILING["Aggressive"]
+                       for k in P.PENETRATION_CEILING},
+        "Conservative": {k: P.PENETRATION_CEILING["Conservative"]
+                         for k in P.PENETRATION_CEILING},
+    },
 }
 
 
@@ -392,14 +500,14 @@ def gold_level_sensitivity(moves=(-0.30, -0.25, 0.0, 0.25, 0.30)) -> pd.DataFram
         try:
             P.GOLD_USD_PER_G = base_gold * (1.0 + mv)
             df, cf, m = run_scenario(P.Scenario(mode="Base"))
-            a = df[df.year == 10].iloc[-1]
+            a = df[df.year == P.HORIZON_YEARS].iloc[-1]
             cbk = months_to_cash_breakeven(cf)
             rows.append({
                 "gold_move": mv,
                 "gold_usd_per_g": P.GOLD_USD_PER_G,
-                "y10_aum": a["aum_usd"],
-                "y10_grams": a["grams_closing"],
-                "y10_revenue": df[df.year == 10]["revenue"].sum(),
+                "terminal_aum": a["aum_usd"],
+                "terminal_grams": a["grams_closing"],
+                "terminal_revenue": df[df.year == P.HORIZON_YEARS]["revenue"].sum(),
                 "cum_net_profit": df["net_profit"].sum(),
                 "peak_funding": cbk["peak_funding_requirement"],
             })
@@ -427,7 +535,7 @@ def gold_shock_scenarios(shock_month: int = 61,
             df, cf, m = run_scenario(P.Scenario(mode="Base"))
             post = df[df["month"] >= shock_month]
             at_shock = df[df["month"] == shock_month].iloc[0]
-            a = df[df.year == 10].iloc[-1]
+            a = df[df.year == P.HORIZON_YEARS].iloc[-1]
             cbk = months_to_cash_breakeven(cf)
             peak_liq = float(post["grams_liquidated"].max())
             rows.append({
@@ -438,7 +546,7 @@ def gold_shock_scenarios(shock_month: int = 61,
                 "peak_month_liquidation_g": peak_liq,
                 "float_grams_at_shock": float(at_shock["float_grams"]),
                 "float_covers_peak": bool(at_shock["float_grams"] >= peak_liq),
-                "y10_aum": a["aum_usd"],
+                "terminal_aum": a["aum_usd"],
                 "cum_net_profit": df["net_profit"].sum(),
                 "peak_funding": cbk["peak_funding_requirement"],
             })
@@ -458,15 +566,15 @@ def sovereign_collateral_stress(df: pd.DataFrame, mode: str = "Base") -> dict:
     needed to reach a 92% margin-call line is -46% / -29% / -13%. Only
     Sovereign is exposed inside a normal annual move.
     """
-    y10 = df[df.year == 10].iloc[-1]
-    live = (y10["tier_none"] + y10["tier_silver"] + y10["tier_gold"]
-            + y10["tier_platinum"] + y10["tier_sovereign"])
-    aum_per_holder = y10["aum_usd"] / max(1e-9, y10["holding"])
+    terminal = df[df.year == P.HORIZON_YEARS].iloc[-1]
+    live = (terminal["tier_none"] + terminal["tier_silver"] + terminal["tier_gold"]
+            + terminal["tier_platinum"] + terminal["tier_sovereign"])
+    aum_per_holder = terminal["aum_usd"] / max(1e-9, terminal["holding"])
 
     out = {"margin_call_ltv": 0.92, "gold_vol": P.GOLD_VOL[mode], "tiers": []}
     for tier in ("Gold", "Platinum", "Sovereign"):
         ltv = P.LTV_LADDER[tier]
-        n = y10[f"tier_{tier.lower()}"]
+        n = terminal[f"tier_{tier.lower()}"]
         collateral = n * aum_per_holder
         peak_drawn = (collateral * ltv * P.CREDIT_TAKEUP[mode]
                       * P.CREDIT_DRAWN_PCT[mode])
@@ -487,8 +595,8 @@ def sovereign_collateral_stress(df: pd.DataFrame, mode: str = "Base") -> dict:
             "fall_to_margin_call": fall_needed,
             "within_one_sigma": within_1sigma,
             "grams_to_liquidate": grams_to_liquidate,
-            "float_grams": y10["float_grams"],
-            "float_covers": y10["float_grams"] >= grams_to_liquidate,
+            "float_grams": terminal["float_grams"],
+            "float_covers": terminal["float_grams"] >= grams_to_liquidate,
         })
     return out
 
@@ -505,7 +613,7 @@ def pm_share_card_spend_grid() -> pd.DataFrame:
                 "CARD_SPEND_AED": {"Base": sp, "Aggressive": sp, "Conservative": sp}})
             df, cf, _ = run_scenario(sc)
             rows.append({"pm_share": pm, "card_spend_aed": sp,
-                         "y10_revenue": df[df.year == 10]["revenue"].sum(),
+                         "terminal_revenue": df[df.year == P.HORIZON_YEARS]["revenue"].sum(),
                          "cum_net_profit": df["net_profit"].sum(),
                          "peak_funding": months_to_cash_breakeven(cf)
                          ["peak_funding_requirement"]})
@@ -524,16 +632,16 @@ def solve_parameters(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
     scope - 6 is retired by decision 44, 8 is already solved in the corpus.
     """
     out = []
-    y10 = df[df.year == 10].iloc[-1]
-    yr10 = df[df.year == 10]
-    live = y10["live_accounts"]
+    terminal = df[df.year == P.HORIZON_YEARS].iloc[-1]
+    yr_last = df[df.year == P.HORIZON_YEARS]
+    live = terminal["live_accounts"]
     expected_months = float(__import__("cohort").survival_curve(
         mode, P.HORIZON_MONTHS).sum())
 
     # --- Item 1: entry-fee uplift funding the discount ladder
-    tiered = sum(y10[f"tier_{t}"] for t in
+    tiered = sum(terminal[f"tier_{t}"] for t in
                  ("none", "silver", "gold", "platinum", "sovereign"))
-    wavg_disc = sum(P.TIER_DISCOUNT_PP[t] * y10[f"tier_{t.lower()}"]
+    wavg_disc = sum(P.TIER_DISCOUNT_PP[t] * terminal[f"tier_{t.lower()}"]
                     for t in ("Silver", "Gold", "Platinum", "Sovereign")
                     ) / max(1e-9, tiered)
     out.append({
@@ -541,7 +649,7 @@ def solve_parameters(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
         "solved_value": f"{wavg_disc*100:.3f}pp",
         "arithmetic": f"Book-weighted discount at the Y10 computed tier mix = "
                       f"{wavg_disc*100:.3f}pp. The 1.5pp Sovereign ceiling applies "
-                      f"to only {y10['tier_sovereign']/max(1e-9,tiered)*100:.1f}% "
+                      f"to only {terminal['tier_sovereign']/max(1e-9,tiered)*100:.1f}% "
                       f"of accounts, so the ladder costs far less than its headline.",
         "status": "SOLVED"})
 
@@ -566,7 +674,7 @@ def solve_parameters(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
                         ["ltv_all_streams"].mean())
     max_reward = 0.25 * blended_ltv
     y1_fee = P.ENTRY_FEE_BY_YEAR[1]
-    avg_ticket = float(yr10["inflow_sip"].sum() / max(1e-9, yr10["collection_events"].sum()))
+    avg_ticket = float(yr_last["inflow_sip"].sum() / max(1e-9, yr_last["collection_events"].sum()))
     fee_over_run = avg_ticket * y1_fee * min(expected_months, 24)
     implied_pct = max_reward / max(1e-9, fee_over_run)
     out.append({
@@ -629,7 +737,7 @@ def solve_parameters(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
         "status": "NOT APPLICABLE"})
 
     # --- Item 7: B2B platform fee bps
-    partner_aum = float(y10["partner_aum"])
+    partner_aum = float(terminal["partner_aum"])
     vault_rate = P.VAULT_RATE[mode]
     target_margin = 0.0010
     min_bps = vault_rate + target_margin
@@ -694,9 +802,12 @@ def ltv_cac(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
     v1.0 flags its own LTV numbers as stale because they were computed at the
     old survival curve.
     """
-    from cohort import survival_curve
-    surv = survival_curve(mode, P.HORIZON_MONTHS)
-    expected_months = float(surv.sum())
+    import lifecycle as LC
+    # Read expected paying months off the D23 lifecycle curve, which is the
+    # live engine. Reading cohort.survival_curve here would quietly re-introduce
+    # the retired triangle as a live dependency.
+    curves = LC.LifecycleCurves(mode, P.HORIZON_MONTHS)
+    expected_months = float(curves.curve_survival.sum())
 
     # Non-card revenue is not segment-differentiated, so it is spread per
     # account-month. Card revenue IS segment-differentiated (see
@@ -713,12 +824,16 @@ def ltv_cac(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
     seg_months = {s: df[f"live_{s}"].sum() for s in P.SEGMENTS}
 
     rows = []
+    # D25: LTV is computed PER BAND, because the whole point of the two-band
+    # cut is that the average ticket describes nobody.
     for seg in P.SEGMENTS:
-        ticket = P.TICKET[seg]
+      for band, (band_share, ticket) in P.band_split(seg, mode).items():
         fee = P.ENTRY_FEE_BY_YEAR[1]
-        premium = P.FAB_PREMIUM_BY_YEAR[1]
+        premium = P.FAB_PREMIUM_LADDER[mode][P.BAR_LADDER_GRAMS[0]]
         gross = ticket - ticket * (1 - fee) * (1 + premium)
-        net_per_month = gross - P.RAIL_COST[mode]
+        # D31: the rail is NOT deducted. It is grossed onto the request and
+        # remitted, so it never reaches Aurumix's margin.
+        net_per_month = gross
         ltv_entry = net_per_month * expected_months
 
         # Card revenue this segment actually generated, per account-month.
@@ -736,7 +851,9 @@ def ltv_cac(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
                 cac = 0.0
             payback = (cac / net_per_month) if net_per_month > 0 else None
             rows.append({
-                "segment": seg, "channel": ch, "ticket": ticket,
+                "region": seg, "region_name": P.REGION_NAME[seg],
+                "band": band, "share_of_region": band_share,
+                "channel": ch, "ticket": ticket,
                 "expected_paying_months": round(expected_months, 1),
                 "net_margin_per_contribution": round(net_per_month, 4),
                 "ltv_entry_fee_only": round(ltv_entry, 2),
@@ -750,25 +867,176 @@ def ltv_cac(df: pd.DataFrame, mode: str = "Base") -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def unit_economics_by_segment(mode: str = "Base") -> pd.DataFrame:
-    """Net margin per contribution by segment AND year.
+def unit_economics_by_band(mode: str = "Base") -> pd.DataFrame:
+    """Net contribution margin per contribution, PER REGION BAND and year.
 
-    v1.0 applied the top segment's USD 75 ticket to the whole population. At
-    USD 20 the margin is negative. This shows the real per-segment picture.
+    D25 requires this to be computed per band and summed, never on the regional
+    average. R1's average ticket is USD 38, but nobody contributes 38: 40%
+    contribute 20 and 60% contribute 50. Any quantity that is non-linear in the
+    ticket gets the wrong answer from the average.
+
+    D31 and D32 have removed the rail and the float carry from the margin, so
+    the net margin is now a pure PERCENTAGE of the ticket and the bands differ
+    only in absolute dollars. That is itself the finding: removing the fixed
+    rail removed the one term that made the small ticket structurally worse.
+    The rail incidence is reported separately in `rail_incidence`.
     """
     rows = []
-    for yr in range(1, 11):
+    for yr in range(1, P.HORIZON_YEARS + 1):
         fee = P.ENTRY_FEE_BY_YEAR[yr]
-        premium = P.FAB_PREMIUM_BY_YEAR[yr]
-        for seg in P.SEGMENTS:
-            ticket = P.TICKET[seg]
-            gross = ticket - ticket * (1 - fee) * (1 + premium)
-            for rail_name in ("Base", "Conservative"):
-                rail = P.RAIL_COST[rail_name]
-                rows.append({"year": yr, "segment": seg, "ticket": ticket,
-                             "rail_case": rail_name,
-                             "gross_margin": round(gross, 4),
-                             "rail_cost": rail,
-                             "net_margin": round(gross - rail, 4),
-                             "net_margin_pct": round((gross - rail) / ticket * 100, 3)})
+        bar = P.BAR_LADDER_GRAMS[0] if yr <= 2 else P.BAR_LADDER_GRAMS[-1]
+        premium = P.FAB_PREMIUM_LADDER[mode][bar]
+        for r in P.SEGMENTS:
+            for band, (share, ticket) in P.band_split(r, mode).items():
+                gross = ticket - ticket * (1 - fee) * (1 + premium)
+                rows.append({
+                    "year": yr, "region": r, "region_name": P.REGION_NAME[r],
+                    "band": band, "share_of_region": share, "ticket": ticket,
+                    "fee": fee, "premium": premium,
+                    "gross_margin_usd": round(gross, 4),
+                    "gross_margin_pct": round(gross / ticket * 100, 3),
+                    "rail_memo_usd_NOT_deducted": P.RAIL_COST[mode],
+                    "net_margin_usd": round(gross, 4),
+                    "net_margin_pct": round(gross / ticket * 100, 3)})
+    return pd.DataFrame(rows)
+
+
+unit_economics_by_segment = unit_economics_by_band
+
+
+def book_weighted_unit_economics(df: pd.DataFrame, mode: str = "Base") -> dict:
+    """The two headline unit-economics numbers, both computed and not assumed.
+
+    The USD 75 ticket is the brief's own illustration, kept for continuity with
+    every prior version. The BOOK-WEIGHTED ticket is the one that matters, and
+    under D25 it is far lower - the six-segment cut implied roughly USD 40, the
+    four regions imply about USD 31.5 - which tightens the fee arithmetic rather
+    than loosening it.
+    """
+    import streams as _S
+    last = df[df.year == P.HORIZON_YEARS]
+    premium = float(last["fab_premium"].iloc[-1])
+    fee = float((last["fee_applied"] * last["inflow_sip"]).sum()
+                / max(1e-9, last["inflow_sip"].sum()))
+    _infl = last["inflow_sip"] + last["inflow_spot"]
+    pg = float((last["pricegap_rate"] * _infl).sum() / max(1e-9, _infl.sum()))
+    nn = float((last["net_new_gram_share"] * _infl).sum() / max(1e-9, _infl.sum()))
+    ev = float(last["collection_events"].sum())
+    book_ticket = float(last["inflow_sip"].sum()) / ev if ev > 0 else 0.0
+
+    out = {}
+    for label, ticket in (("usd_75_illustration", 75.0),
+                          ("book_weighted", book_ticket)):
+        r = _S.entry_fee_margin(ticket, 1.0, fee, premium, pg, 0.0,
+                                P.RAIL_COST[mode], net_new_gram_share=nn)
+        out[label] = {
+            "ticket_usd": ticket, "fee_applied": fee,
+            "fabrication_premium": premium, "net_new_gram_share": nn,
+            "price_gap": pg,
+            "gross_margin_usd": r["gross_margin"],
+            "gross_margin_pct": r["gross_margin_pct"] * 100,
+            "net_contribution_margin_usd": r["net"],
+            "net_contribution_margin_pct": r["net_pct"] * 100,
+            "rail_memo_usd_not_deducted": r["rail_memo"],
+            "floatcoc_memo_usd_not_deducted": r["float_coc_memo"]}
+
+    out["correction_26"] = {
+        "brief_states_layer4_and_6_1b_pct": 0.72,
+        "brief_waterfall_6_1_pct": 2.15,
+        "model_at_v1_premium_3pct": (75 - 75 * 0.95 * 1.03) / 75 * 100,
+        "model_at_D28_base_premium": out["usd_75_illustration"]["gross_margin_pct"],
+        "verdict": "The exact identity C - C(1-f)(1+p) reproduces the brief's "
+                   "own audited USD 1.6125 = 2.150% at the v1.0 3.00% premium. "
+                   "The 0.72% figure is arithmetically wrong; the waterfall is "
+                   "right. Nothing is hardcoded - the model produces this."}
+    return out
+
+
+def rail_incidence(mode: str = "Base") -> pd.DataFrame:
+    """D31: who pays the rail now, and what it costs them.
+
+    The rail left the P&L. It did NOT leave the transaction. Aurumix asks for
+    (ticket + rail) and remits it, so the incidence moved wholly onto the
+    customer - and it is REGRESSIVE, because the rail is a fixed amount per
+    collection while the ticket is not.
+
+    Reported per region band, because "the rail is no longer a cost" is true of
+    Aurumix and false of a USD 20 saver, for whom it is a 1.25% surcharge on
+    every contribution. That is not a rounding error against a gross margin of
+    roughly 3.6%.
+    """
+    import streams as _S
+    rail = P.RAIL_COST[mode]
+    rows = []
+    for r in P.SEGMENTS:
+        for band, (share, ticket) in P.band_split(r, mode).items():
+            g = _S.rail_gross_up(ticket, rail)
+            rows.append({
+                "region": r, "region_name": P.REGION_NAME[r], "band": band,
+                "share_of_region": share, "ticket_usd": ticket,
+                "rail_usd": rail,
+                "request_amount_usd": g["request_amount"],
+                "gross_up_pct_of_ticket": g["gross_up_pct"] * 100,
+                "annual_cost_to_customer_usd": rail * 12.0})
+    return pd.DataFrame(rows).sort_values("gross_up_pct_of_ticket",
+                                          ascending=False)
+
+
+def redeemed_gold_switch_comparison() -> pd.DataFrame:
+    """D33 both ways, so the default is visible rather than buried.
+
+    This settles a decision nobody had written down (correction 30). Reporting
+    only the default would repeat exactly the mistake that correction caught, so
+    both settings are run and the difference is shown.
+    """
+    rows = []
+    saved = P.REDEEMED_GOLD_TO_FLOAT
+    try:
+        for setting in (True, False):
+            P.REDEEMED_GOLD_TO_FLOAT = setting
+            df, cf, _ = run_scenario(P.Scenario(mode="Base"))
+            last = df[df.year == P.HORIZON_YEARS]
+            rows.append({
+                "REDEEMED_GOLD_TO_FLOAT": setting,
+                "routing": ("float, excess sold at bid" if setting
+                            else "all to dealer"),
+                "mean_net_new_gram_share_final_year":
+                    float(last["net_new_gram_share"].mean()),
+                "terminal_year_gross_profit": float(last["gross_profit"].sum()),
+                "cumulative_premium_cost": float(df["cor_premium"].sum()),
+                "cumulative_redemption_cost": float(df["cost_redemption"].sum()),
+                "cumulative_net_profit": float(df["net_profit"].sum()),
+                "peak_funding": months_to_cash_breakeven(cf)
+                                ["peak_funding_requirement"]})
+    finally:
+        P.REDEEMED_GOLD_TO_FLOAT = saved
+    return pd.DataFrame(rows)
+
+
+def float_debt_funded_comparison() -> pd.DataFrame:
+    """D32's one restoring case, run both ways.
+
+    If the float is EQUITY funded the carry is an opportunity cost and a memo.
+    If it is DEBT funded - a gold-backed working-capital facility, or dealer
+    credit - the interest is cash, and it belongs in the P&L below EBITDA as a
+    financing line. The switch prices the difference.
+    """
+    rows = []
+    saved = P.FLOAT_DEBT_FUNDED
+    try:
+        for setting in (False, True):
+            P.FLOAT_DEBT_FUNDED = setting
+            df, cf, _ = run_scenario(P.Scenario(mode="Base"))
+            rows.append({
+                "FLOAT_DEBT_FUNDED": setting,
+                "treatment": ("memo, equity funded" if not setting
+                              else "financing line below EBITDA, debt funded"),
+                "cumulative_ebitda": float(df["ebitda"].sum()),
+                "cumulative_float_interest":
+                    float(df["float_interest_expense"].sum()),
+                "cumulative_net_profit": float(df["net_profit"].sum()),
+                "peak_funding": months_to_cash_breakeven(cf)
+                                ["peak_funding_requirement"]})
+    finally:
+        P.FLOAT_DEBT_FUNDED = saved
     return pd.DataFrame(rows)

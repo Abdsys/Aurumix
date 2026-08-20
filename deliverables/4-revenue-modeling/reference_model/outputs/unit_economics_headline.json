@@ -1,0 +1,35 @@
+{
+  "usd_75_illustration": {
+    "ticket_usd": 75.0,
+    "fee_applied": 0.03047291916553257,
+    "fabrication_premium": 0.0095,
+    "net_new_gram_share": 0.9866047055489182,
+    "price_gap": 0.0027488112164206777,
+    "gross_margin_usd": 1.6039342015877036,
+    "gross_margin_pct": 2.1385789354502713,
+    "net_contribution_margin_usd": 1.3977733603561528,
+    "net_contribution_margin_pct": 1.8636978138082037,
+    "rail_memo_usd_not_deducted": 0.25,
+    "floatcoc_memo_usd_not_deducted": 0.0
+  },
+  "book_weighted": {
+    "ticket_usd": 31.059107686385975,
+    "fee_applied": 0.03047291916553257,
+    "fabrication_premium": 0.0095,
+    "net_new_gram_share": 0.9866047055489182,
+    "price_gap": 0.0027488112164206777,
+    "gross_margin_usd": 0.6642235345198682,
+    "gross_margin_pct": 2.138578935450276,
+    "net_contribution_margin_usd": 0.5788479109395127,
+    "net_contribution_margin_pct": 1.8636978138082085,
+    "rail_memo_usd_not_deducted": 0.25,
+    "floatcoc_memo_usd_not_deducted": 0.0
+  },
+  "correction_26": {
+    "brief_states_layer4_and_6_1b_pct": 0.72,
+    "brief_waterfall_6_1_pct": 2.15,
+    "model_at_v1_premium_3pct": 2.1499999999999964,
+    "model_at_D28_base_premium": 2.1385789354502713,
+    "verdict": "The exact identity C - C(1-f)(1+p) reproduces the brief's own audited USD 1.6125 = 2.150% at the v1.0 3.00% premium. The 0.72% figure is arithmetically wrong; the waterfall is right. Nothing is hardcoded - the model produces this."
+  }
+}

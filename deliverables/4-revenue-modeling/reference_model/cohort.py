@@ -243,8 +243,19 @@ class Vintage:
         return sum(sum(self.pop[t.name][s] for s in states) for t in self.tracks)
 
     def step_population(self, m: int) -> dict:
-        """Advance the payment axis one month. Returns the flow record."""
-        age = m - self.origin + 1
+        """Advance the payment axis one month. Returns the flow record.
+
+        AGE CONVENTION, and it was wrong before D23 found it.
+        `step_population` is first called in the month AFTER origination, so the
+        first hazard an account ever faces belongs to age 1, not age 2. The old
+        `m - origin + 1` made that first step age 2, which shifted every
+        age-dependent hazard one month earlier than `survival_curve` in this
+        same module applied it. The two disagreed by ~8% on the payment axis by
+        M84 - invisible until the D23 convolution was tested against the
+        triangle, because the mismatch only bites where a hazard is a function
+        of age (the early-lapser decay at M13).
+        """
+        age = m - self.origin
         flows = {"to_reduced": 0.0, "to_lapsed": 0.0, "to_dormant": 0.0}
         red_mult = P.REDUCED_HAZARD_MULT[self.mode]
 

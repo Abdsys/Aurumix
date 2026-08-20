@@ -480,3 +480,180 @@ On a USD 75 contribution at a 5% fee, before D30:
 ⚠ **Every output figure in the brief was generated at F4 = 3.00% under dealer-carried float and is superseded. The reference model has not been re-run.** Brief first, model second.
 
 **Brief sections amended:** front matter, §0.3 (superseding note), §3 Layer 3 (COGS formula), §3 Layer 4 and §6.1b (unit-margin tables), §6.1 (waterfall re-cut, both columns), §8.1 F4, §8.2 S51, §11 (growth logic), §15 corrections 26 to 30, §16 (F4 downgraded, two-way spread promoted).
+
+---
+
+### D31. The payment rail leaves the entry-fee build-up and becomes a pass-through
+
+**Taken 2026-08-20 by Abdur.** The principle, in his words: **the entry fee only includes what Aurumix charges.**
+
+**What changes.** The payment rail is a third-party bank/PSP charge, not an Aurumix charge. It is therefore **grossed up onto the collection request and remitted** — Aurumix asks for `ticket + rail`, passes the rail to the PSP, and books nothing on it. `STREAM1a` and `STREAM1b` lose their `− rail` term. `S1` survives as `rail_memo`, a disclosure and risk row that touches no total.
+
+```
+BEFORE:  Net = C × (f − c) − R
+AFTER:   Net = C × (f − c)          and the customer is asked for C + R
+```
+
+**The entry-fee build-up is now: fabrication premium + price-gap risk + float cost of capital + margin.** Four terms, not five.
+
+#### The arithmetic, USD 75 at a 5% fee
+
+| Line | v2.4 | **v2.5** |
+|---|---|---|
+| Gross margin retained | 3.58% | 3.58% |
+| less price-gap + float CoC | (1.28%) | (1.28%) |
+| less payment rail | **(0.33%)** | **— passed through** |
+| **Net contribution margin** | **1.97%** (USD 1.47) | **2.30%** (USD 1.72) |
+| **Minimum viable entry fee** | ~3.07% | **~2.74%** |
+| **Break-even ticket** | USD 10.90 Base / USD 66 Cons | **none — the term is gone** |
+
+#### Four consequences, three of which reverse a stated finding
+
+1. 🔴 **§0.3 REVERSES at the Base rail.** The 3% target clears with **~0.26pp of headroom** where v2.4 had none. **The fee-fundability finding, which has been in every version of this brief, does not survive D31.**
+2. 🔴 **The minimum-ticket problem dissolves as a margin problem.** `C_min = R ÷ (f − c)` with `R = 0` has no solution. The whole break-even ladder in `_parked_collection-economics-and-minimum-ticket.md` §2 — USD 47 / 71 / 118 / 249 — is **retired.** Every ticket clears wherever `f > c`.
+3. 🔴 **Spot stops being the highest-margin inflow.** SIP and spot converge to an identical **2.30%**. The 2.25%-vs-1.96% gap was *entirely* the fixed rail spread over an 8.3× larger base — a property of the rail wearing spot's clothes, not of spot.
+4. 🔴 **S1 leaves the tornado**, where it ranked 6th at USD 1,607,643 of swing on cumulative net profit. **That swing does not relocate. It ceases to exist in the P&L and reappears as unmodelled churn risk.**
+
+**And unit margin becomes LINEAR in ticket size.** `R` was the only source of the non-linearity that justified computing margin per segment at that segment's own ticket. ⚠ **Do not collapse the per-segment computation on the strength of this** — the tier-weighted discount and card spend are still non-linear in ticket. But **§5.2's two-band structure now rests on the card leg alone**, which is thinner than what D25 claimed for it (correction 33).
+
+#### The three risks this carries, and they are not small
+
+1. 🔴 **It improves Aurumix's margin by making the customer's deal worse, and the incidence is regressive.** All-in customer cost is **unchanged** — only the attribution moved. The gross-up is **1.25% of a USD 20 ticket against 0.33% of a USD 75 one** at the Base rail; **6.8% against 1.8%** at the Conservative rail. **The floor band is 40–60% of the book and is the population D25 found may lack an IBAN-capable account at all.** This must be said to the client in those words and must not be presented as a cost saving.
+2. 🔴 **It substitutes a modellable risk for an unmodellable one.** A margin hit is arithmetic; a refusal rate is behavioural and **no source exists for it.** Will a UPI-native saver — habituated to payment rails being free by regulation — approve a USD 21.36 request for a USD 20 commitment? **Nobody knows, and it lands squarely on the adoption-bridge problem that is already the engagement's central unsolved question.**
+3. ⚠ **It is asymmetric by regulation, not by choice.** VARA Annex 2 III.E.4 forbids charging any fee on redemption, so `F20` stays absorbed in Stream 0. **Aurumix may pass through the cost of taking money in but not the cost of paying it out.** Worth a line to counsel: does a grossed-up collection request itself engage any VARA disclosure or fee-transparency rule?
+
+#### What did NOT change
+
+**The structural point of §0.3 survives.** The fee schedule and the denomination schedule remain physically coupled, and the fee still cannot fall below premium plus float costs. **The constraint moved; it did not disappear.** §0.1, §0.2, §0.4 and §0.5 are untouched — none runs through the rail.
+
+⚠ **And a countervailing finding landed the same day.** The 2026-08-20 research pass **failed to replicate D28's premium measurement** (correction 36). **If F4 reverts toward 3.00%, the minimum viable fee goes from ~2.74% to ~4.2% and D31's headline reversal is itself reversed.** 🔴 **Do not carry the 0.26pp of headroom to the client until F4 is re-observed.**
+
+**Brief sections amended:** front matter (v2.5 paragraph), §0.3 (reversal box), §3 Layer 4 (equation, table, the twice-moved spot claim), §6.1a (waterfall, four consequences, both formulas, drivers, Key Uncertainties), §6.1b (drivers, both formulas, the withdrawn finding), §7.1 (COGS is three terms), §8.2 S1, §15 corrections 31 to 36.
+
+---
+
+### D32. The float cost of capital leaves COGS and becomes a memo line
+
+**Taken 2026-08-20 by Abdur.** His reasoning: *it is just an opportunity cost, not a financial impact — they hold the gold regardless.*
+
+**The first half is right and the second half is not, and the distinction decides how the change is implemented.**
+
+#### Why the change is correct
+
+**F5 is an imputed cost of equity.** No counterparty invoices Aurumix for it. **A statutory P&L does not book an equity cost of capital inside cost of goods sold**, and §11 currently does exactly that — so stream 1's "net contribution margin" charges a cost the cash flow never pays and does not reconcile to it.
+
+⚠ **It is also an internal-consistency fix, and that is the stronger argument.** §7.6 already states the house rule for locked capital, verbatim: *"Report the escalator as an opportunity cost, not a P&L line… `(required_capital − AED 1.5m) × cost_of_capital` as a **memo line**."* **F5 was the one place the brief broke its own rule.** D32 does not introduce a treatment; it applies the existing one consistently.
+
+#### 🔴 Why "they hold the gold regardless" does NOT hold
+
+**The trust holdings and the float are two different piles of metal with two different owners.**
+
+| | Trust holdings | **The float** |
+|---|---|---|
+| Whose gold | **The customer's**, held under `trust ≥ tokens` | **Aurumix's own inventory** |
+| Whose money bought it | The customer's contribution | **Aurumix's balance sheet** |
+| Capital cost to Aurumix | **Zero** | **Real** |
+
+Aurumix holds the *customer's* gold regardless — and that costs it no capital. **The float exists for a different reason entirely: you cannot buy 0.5 g from a dealer, so Aurumix must own bars BEFORE any customer owns a slice of them.** That inventory is funded from the raise. **It is not gold they were holding anyway.**
+
+#### So the implementation is a reclassification, not a deletion
+
+- **The carry** (`0.49 / 0.31 / 0.38%`) leaves every margin, COGS and P&L total → `floatcoc_memo`, reported on Summary. The Checks sheet asserts it appears in no total.
+- 🔴 **The principal is UNTOUCHED. USD 29k at Y1, USD 437k at Y3, USD 3.6M at Y10** — balance sheet, funding view, and inside the USD 15.1m peak-funding figure. **The cost moved from the P&L to the cap table. It did not stop being money.**
+- 🔴 **One case restores it as a real expense:** if the float is ever **debt-funded** — a gold-backed working-capital facility, or dealer credit — the interest is **cash, not opportunity**, and belongs in the P&L as a financing line. **D32 assumes equity funding. Make that explicit and add a `FLOAT_DEBT_FUNDED` switch.**
+
+#### The arithmetic
+
+| | v2.5 | **v2.6** |
+|---|---|---|
+| `c` = premium + price-gap + float CoC | 2.78% | **2.29%** — two terms |
+| Net contribution margin, USD 75 | 2.30% (USD 1.72) | **2.79% (USD 2.09)** |
+| Minimum viable entry fee | ~2.74% | **~2.26%** |
+| Headroom against the 3% target | 0.26pp | **0.74pp** |
+
+#### 🔴 The pattern this creates, recorded deliberately
+
+**D31 removed the rail. D32 removed the float carry. In one day, `c` went from four terms to two and the minimum viable entry fee fell 3.07% → 2.74% → 2.26% — while nothing changed in the business.** Both steps are defensible. **The sequence dissolved §0.3, a finding present in every version of this brief, by re-attribution alone.**
+
+⚠ **And the third term is the weakest of all: the fabrication premium failed replication the same day** (correction 36).
+
+🔴 **Standing instruction, and it is the point of writing this down.** **Before the fee reversal reaches the client: adversarially re-check the two surviving cost terms, re-observe F4, and state the reversal as conditional.** The honest sentence is not *"the 3% fee works."* It is: ***"the 3% fee works if the premium is really 1.50%, and if customers accept a grossed-up collection request."*** **Neither is established.**
+
+**Brief sections amended:** front matter (v2.6 paragraph and the pattern note), §0.3, §3 Layer 4 (`c` is two terms), §6.1a (waterfall, consequence 3, formula), §6.1b (table, formula), §7.1, §7.5 (the D7-inversion note and the third must-not rule), §8.1 F5, §15 corrections 37 and 38.
+
+---
+
+### D33. Redeemed gold returns to the float up to the ceiling; the excess is sold back at the observed bid
+
+**Taken 2026-08-20 during the reference-model rebuild, because the build could not proceed without it.**
+
+#### The finding that forced it
+
+**D30 charges the fabrication premium on net new grams rather than on gross inflow.** The reasoning is that only the net addition to the book is procured from a dealer: grams recycled out of a redemption are re-allocated to the next buyer without re-paying fabrication.
+
+🔴 **That reasoning holds only if redeemed gold comes back to the float. If it goes back to the dealer, there is nothing to recycle and the premium lands on gross inflow after all — D30 collapses entirely.** Correction 30 flagged this as an undesigned dependency and the corpus does not settle it anywhere. **Nobody had written down which happens.**
+
+It is not a small question. It sits at the junction of three things already decided: the buyback mechanics, the `trust ≥ tokens` backing invariant, and D29's forced own-float position. **A model cannot be built without an answer, and picking one silently is exactly the failure correction 30 caught.**
+
+#### The decision
+
+**Redeemed grams return to the float, up to the float ceiling set by F38. Any excess is sold back to the dealer at the observed bid of spot −1.50%.**
+
+The float ceiling is the natural cap and it is already computed: `MAX(2 bars, 1 bar + S50 days trailing inflow)`. Below the ceiling there is somewhere for redeemed metal to go and it displaces a dealer purchase one-for-one. Above it there is not, and holding metal beyond the sizing rule would be an unfunded inventory position that the float rule exists to prevent.
+
+⚠ **Self-custody withdrawals do not recycle.** A withdrawal to self-custody takes the metal off the platform entirely, so it is never available for re-allocation and it never reduces the premium base. Only redemptions recycle.
+
+#### 🔴 The bid and the ask are not symmetric, and must never be netted as though they were
+
+**Correction 35 measured the dealer bid as near-flat across denomination while the ask premium moves roughly 194bp.** The temptation is to model a single round-trip spread and net the two sides. **That is wrong, and it flatters both sides of the trade.**
+
+| | On the way in | On the way out |
+|---|---|---|
+| What is paid | **Full fabrication premium**, which moves with denomination | **Full bid discount**, spot −1.50%, which does not |
+| Recovered on the other side | **No** | **No** |
+
+**Fabrication is paid to acquire and is not recovered on disposal.** The model therefore pays the premium in full on net new grams and takes the bid discount in full on the excess, and books no round-trip spread anywhere.
+
+This also corrects a live error in the pre-rebuild model, which carried a symmetric `DEALER_TWO_WAY_SPREAD` of 1.0% — a figure that was itself registered as DERIVED because no source stated it. **The observed 1.50% bid replaces it.**
+
+#### Implementation
+
+- Switch **`REDEEMED_GOLD_TO_FLOAT`**, **default True**.
+- `params.DEALER_BID_DISCOUNT = 0.0150`, sourced to correction 35.
+- **Both settings are run and reported**, in `outputs/d33_redeemed_gold_switch.csv` and in the numerical spine. Reporting only the default would repeat the mistake correction 30 caught: a decision taken silently is a decision nobody can challenge.
+
+#### What it is worth, and the honest caveat
+
+**On Base assumptions the switch is close to immaterial: cumulative premium cost moves from USD 456,330 to USD 460,503, a difference of about 0.9%, and peak funding moves by roughly USD 9,000 against a USD 13.1m requirement.**
+
+⚠ **Do not read that as evidence the decision does not matter.** It is small **because the Base book grows in every month of the modelled horizon**, so redemptions are a thin trickle against inflow and there is almost always headroom to recycle into. **The two settings diverge precisely in the book states where it counts — flat, shrinking and run** — which are the states the book-state axis exists to test. **In a run scenario the recycling assumption is the difference between re-allocating metal and dumping it into a bid.**
+
+**Recorded as provisional in the derived audit log**, alongside F4. It is a defensible default settled by the modeller, not a decision the client has taken.
+
+**Brief sections to amend:** §6.0 (stream 0 formula and the dealer-spread term), §7.1 (COGS note on D30), §7.5 (float mechanics), §8.1 (new switch, and F20's spread basis), §13.3 (binary switch table), §13.4 (book-state axis — flag that this is where the switch bites).
+
+---
+
+### D34. The convolution and the vintage triangle disagreed by 8%, and both had an off-by-one
+
+**Taken 2026-08-20 during the rebuild. Not a design choice — a defect found and fixed.**
+
+#### The finding
+
+D23 requires the lifecycle-curve convolution to become the live engine, with the vintage triangle retained as an equivalence harness. **Run against each other on the same acquisition vector, the two engines disagreed by up to 8% on the payment axis.** They agreed to 4e-14 on the holding population, which is what made the cause findable: the error was in the *ageing*, not in the state machine.
+
+**Two separate off-by-one errors, in opposite directions, neither visible from either engine alone.**
+
+1. **`Vintage.step_population` computed age as `m − origin + 1`.** It is first called in the month *after* origination, so the first hazard an account ever faced was labelled age 2. This disagreed with `survival_curve` in the same module, which indexes from 1. **The triangle had been inconsistent with its own survival curve since it was written**, and the discrepancy only bites where a hazard is a function of age — which in this model is the early-lapser decay at M13, so it was invisible in aggregate.
+
+2. **The convolution offset was `t − s + 1` rather than `t − s`.** A vintage acquired in month t is observed in month t at **age zero**; it has not yet faced a hazard. The wrong offset aged every cohort by a month.
+
+#### Why this matters beyond the fix
+
+**The second error was worst exactly where the model is most closely read.** It understated the payment axis by about 8% at M1, decaying to about 4% by M20 — that is, throughout the M1–M24 monthly window that D21 makes the reporting focus, and steepest during the acquisition ramp where the gate has not yet resolved.
+
+⚠ **Neither engine could have found this alone.** The triangle was self-consistent and produced plausible numbers; the convolution was self-consistent and produced plausible numbers. **The equivalence test is the only thing that catches a defect of this shape, which is the argument for keeping the triangle rather than deleting it once D23 lands.** After the fix the two agree to 4.2e-14 relative.
+
+**Standing rule:** the equivalence test runs on every full model run and is reported in `VALIDATION.md`. **The triangle is never deleted.**
+
+**Brief sections to amend:** §3.x.4 (add the equivalence test to the checks list), §15 (new correction recording the defect).

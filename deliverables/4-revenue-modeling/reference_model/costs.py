@@ -182,19 +182,37 @@ def screening_cost(holding_accounts: float, new_accounts: float) -> float:
 # ---------------------------------------------------------------------------
 
 def redemption_cost(gross_exit_grams: float, gross_inflow_grams: float,
-                    events: float) -> dict:
-    """Dealer spread applies to NET outflow only; the float absorbs the rest.
+                    events: float, gold_px: float = None,
+                    bid_side_cost_usd: float = 0.0) -> dict:
+    """Stream 0. VARA Annex 2 III.E.4 forbids any redemption fee, so this is a
+    mandatory cost with zero revenue against it.
 
-    'That objection assumes gross exits drive physical sales. They do not.'
-    In a growing book the zero-fee rule costs nothing but the per-event handling.
+    Two terms:
+
+    HANDLING, per event: outbound payment 1.00-2.50 + AML re-screen 1.85 +
+    handling 1.00-4.50 (F20).
+
+    DEALER DISPOSAL, on net outflow only. In a growing book this is ZERO: gross
+    exits do not drive physical sales, because inflow in the same month covers
+    them and the metal is simply re-allocated. It bites only in a shrinking
+    book.
+
+    ⚠ D33 CHANGES THE RATE THIS IS CHARGED AT. The old model used a symmetric
+    1.0% "two-way spread". Correction 35 measured the bid as spot - 1.50%, and
+    near-flat across denomination while the ask premium moves ~194bp. So the
+    disposal side is charged at the OBSERVED BID, not at half a round trip, and
+    `bid_side_cost_usd` from the D33 routing is passed through here rather than
+    being netted against the fabrication premium paid on the way in.
     """
+    gold_px = P.GOLD_USD_PER_G if gold_px is None else gold_px
     net_flow = gross_inflow_grams - gross_exit_grams
     physical = max(0.0, -net_flow)
-    spread_cost = physical * P.GOLD_USD_PER_G * P.DEALER_TWO_WAY_SPREAD
+    spread_cost = physical * gold_px * P.DEALER_BID_DISCOUNT
     handling = events * P.REDEMPTION_COST_PER_EVENT
     return {"net_flow_grams": net_flow, "physical_sold_grams": physical,
             "spread_cost": spread_cost, "handling": handling,
-            "total": spread_cost + handling}
+            "bid_side_cost": bid_side_cost_usd,
+            "total": spread_cost + handling + bid_side_cost_usd}
 
 
 # ---------------------------------------------------------------------------

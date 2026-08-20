@@ -36,8 +36,62 @@ def float_grams(bar_g: float, daily_inflow_g: float, buffer_days: int) -> float:
     return max(P.FLOAT_BARS_LAUNCH * bar_g, bar_g + buffer_days * daily_inflow_g)
 
 
+def redeemed_gold_routing(redeemed_grams: float, withdrawn_grams: float,
+                          grams_required: float, float_capacity_grams: float,
+                          current_float_grams: float, gold_px: float,
+                          to_float: bool = None) -> dict:
+    """D33: where redeemed gold goes, and therefore what the premium lands on.
+
+    ⚠ THIS DECISION DID NOT EXIST. Correction 30 found that D30 (charge the
+    fabrication premium on net new grams, not gross inflow) holds ONLY if
+    redeemed gold comes back to the float. If it goes to the dealer there is
+    nothing to recycle and the premium lands on gross inflow after all. Nobody
+    had written down which. D33 settles it:
+
+        Redeemed grams return to the float up to the float ceiling. Any excess
+        is sold back to the dealer at the observed bid of spot - 1.50%.
+
+    🔴 THE TWO SIDES ARE NOT SYMMETRIC AND MUST NOT BE NETTED AS IF THEY WERE.
+    Correction 35 measured the dealer BID as near-flat across denomination while
+    the ASK premium moves ~194bp. Fabrication is paid on the way IN and is not
+    recovered on the way OUT. So the model pays the full premium to acquire and
+    takes the full bid discount to dispose; it never books the difference as a
+    round-trip spread, which would flatter both sides.
+
+    SELF-CUSTODY WITHDRAWALS DO NOT RECYCLE. A withdrawal to self-custody takes
+    the metal off the platform entirely - it is not available for re-allocation,
+    so it never reduces the premium base.
+
+    Returns the net-new-gram share the premium is charged on, plus the bid-side
+    disposal cost.
+    """
+    if to_float is None:
+        to_float = P.REDEEMED_GOLD_TO_FLOAT
+
+    redeemed_grams = max(0.0, redeemed_grams)
+    if not to_float:
+        # Everything redeemed goes straight back to the dealer. Nothing is
+        # recycled, so D30 collapses and the premium lands on gross inflow.
+        return {"recycled_grams": 0.0, "sold_back_grams": redeemed_grams,
+                "net_new_grams": grams_required,
+                "net_new_gram_share": 1.0,
+                "bid_side_cost_usd": redeemed_grams * gold_px
+                                     * P.DEALER_BID_DISCOUNT,
+                "routing": "dealer"}
+
+    headroom = max(0.0, float_capacity_grams - current_float_grams)
+    recycled = min(redeemed_grams, headroom, grams_required)
+    sold_back = max(0.0, redeemed_grams - recycled)
+    net_new = max(0.0, grams_required - recycled)
+    share = (net_new / grams_required) if grams_required > 0 else 1.0
+    return {"recycled_grams": recycled, "sold_back_grams": sold_back,
+            "net_new_grams": net_new, "net_new_gram_share": share,
+            "bid_side_cost_usd": sold_back * gold_px * P.DEALER_BID_DISCOUNT,
+            "routing": "float"}
+
+
 def solve_bar_denomination(annual_grams: float, vol: float,
-                           coc: float = None) -> tuple:
+                           coc: float = None, mode: str = "Base") -> tuple:
     """T3 solved ENDOGENOUSLY against the model's own volume.
 
     v1.0 hard-codes 100g -> 1kg at Y3 -> 12.4kg at Y8, a schedule indexed to a
@@ -53,7 +107,12 @@ def solve_bar_denomination(annual_grams: float, vol: float,
     Returns (bar_grams, premium_rate, decision_log).
     """
     coc = P.FLOAT_COC_RATE if coc is None else coc
-    ladder = P.BAR_LADDER          # [(grams, premium), ...] ascending
+    # D28 retired the 12.4kg Good Delivery rung: Dubai's standard bar is 1kg and
+    # the 12.4kg rung was never a real procurement option at this volume, so
+    # carrying it let the model claim a premium saving it could never realise.
+    # The ladder is now scenario-resolved because F4's LEVEL failed replication
+    # (correction 36) even though its denomination SHAPE is corroborated.
+    ladder = P.bar_ladder(mode)    # [(grams, premium), ...] ascending
     chosen = ladder[0]
     log = []
     for nxt in ladder[1:]:
@@ -90,23 +149,80 @@ def solve_bar_denomination(annual_grams: float, vol: float,
 
 def entry_fee_margin(inflow_usd: float, collection_events: float,
                      fee_rate: float, premium: float, pricegap: float,
-                     float_coc_usd: float, rail_cost: float) -> dict:
-    """Net = C x (f - c) - R.
+                     float_coc_usd: float, rail_cost: float,
+                     net_new_gram_share: float = 1.0) -> dict:
+    """STREAM1 = gross_margin - pricegap.   (D31, D32)
 
-    float_coc is passed as an ABSOLUTE cost derived from the sized float, not
-    as a flat % of inflow (F5 has no derivation; the corpus says so).
+    THE FORMULA, AND WHY IT IS NOT HARDCODED
+    ----------------------------------------
+    Correction 26 is a live self-contradiction in the brief: §3 Layer 4 and
+    §6.1b both state a stream-1 gross margin of 0.72%, while §6.1's own
+    waterfall gives 2.15%. The exact identity is
+
+        gross_margin = C - C(1-f)(1+p)
+
+    on a contribution C at fee f with fabrication premium p. That is what is
+    implemented. The model PRODUCES the number; neither figure is typed in.
+
+    D30 / D33 - THE PREMIUM LANDS ON NET NEW GRAMS
+    ----------------------------------------------
+    The fabrication premium is paid to the dealer only on metal Aurumix
+    actually procures. Grams recycled out of a redemption are re-allocated
+    without re-paying fabrication, so the premium base is scaled by
+
+        net_new_gram_share = net_new_grams / grams_required
+
+    `net_new_gram_share = 1.0` reproduces the old gross-inflow treatment.
+
+    D31 - THE RAIL IS NOT DEDUCTED
+    ------------------------------
+    `rail_cost` is still accepted and still returned, but ONLY as a memo. It is
+    not in `net`. Aurumix asks the customer for (ticket + rail), remits the rail
+    to the PSP and books zero margin on it. Putting it in the margin charged
+    Aurumix for a third party's fee.
+
+    D32 - THE FLOAT CARRY IS NOT DEDUCTED
+    -------------------------------------
+    `float_coc_usd` is likewise returned as a memo only. It is an imputed cost
+    of equity; nothing invoices Aurumix for it, and a statutory P&L does not
+    book an equity cost of capital inside cost of goods sold. The float
+    PRINCIPAL is untouched and stays in the funding view.
     """
     if inflow_usd <= 0:
         return {"gross_margin": 0.0, "cogs": 0.0, "pricegap": 0.0,
-                "float_coc": 0.0, "rail": 0.0, "net": 0.0}
+                "float_coc_memo": 0.0, "rail_memo": 0.0, "net": 0.0,
+                "gross_margin_pct": 0.0, "net_pct": 0.0}
+
     net_of_fee = inflow_usd * (1.0 - fee_rate)
-    cogs = net_of_fee * premium
-    gross_margin = inflow_usd - net_of_fee * (1.0 + premium)
+    premium_base = net_of_fee * max(0.0, min(1.0, net_new_gram_share))
+    cogs = premium_base * premium
+    # The exact identity, with the premium landing only on net new grams.
+    gross_margin = inflow_usd - net_of_fee - cogs
     pg = inflow_usd * pricegap
-    rail = collection_events * rail_cost
+    rail_memo = collection_events * rail_cost
+    net = gross_margin - pg
     return {"gross_margin": gross_margin, "cogs": cogs, "pricegap": pg,
-            "float_coc": float_coc_usd, "rail": rail,
-            "net": gross_margin - pg - float_coc_usd - rail}
+            # MEMO LINES. Neither appears in `net`, and check 12/13 assert that
+            # neither appears in any revenue or cost total.
+            "float_coc_memo": float_coc_usd, "rail_memo": rail_memo,
+            "net": net,
+            "gross_margin_pct": gross_margin / inflow_usd,
+            "net_pct": net / inflow_usd}
+
+
+def rail_gross_up(ticket_usd: float, rail_cost: float) -> dict:
+    """D31: what the customer is actually asked for, and what that costs them.
+
+    Aurumix requests `ticket + rail` and remits the rail. Aurumix books nothing,
+    so the P&L is unaffected - but the INCIDENCE moved onto the customer, and it
+    is regressive: a fixed USD 0.25 is 1.25% of a USD 20 floor-band contribution
+    and only 0.50% of a USD 50 standard-band one. Carried and reported per band,
+    because "the rail left the P&L" is not the same as "the rail went away".
+    """
+    if ticket_usd <= 0:
+        return {"request_amount": 0.0, "gross_up_pct": 0.0}
+    return {"request_amount": ticket_usd + rail_cost,
+            "gross_up_pct": rail_cost / ticket_usd}
 
 
 # ---------------------------------------------------------------------------
@@ -130,14 +246,29 @@ def effective_pm_share(tier: str, pm_share: float, avg_txn_aed: float) -> float:
     return net_rate / gross_rate if gross_rate > 0 else 0.0
 
 
-def interchange(spend_by_tier: dict, pm_share: float, prepaid_capped: bool = False) -> dict:
-    """Gross and net interchange, with the per-transaction fee broken out."""
+def interchange(spend_by_tier: dict, pm_share: float, prepaid_capped: bool = False,
+                collapsed: bool = None) -> dict:
+    """Gross and net interchange, with the per-transaction fee broken out.
+
+    D22: under the collapsed ladder EVERY live tier reads the FLAT GOLD RATE of
+    1.80%. The full 1.80 / 2.05 / 2.10 ladder survives only on the validation
+    path, for the 5% safety gate (check 15). Reading `P.INTERCHANGE[tier]` here
+    would silently un-do the collapse, which is precisely the failure the check
+    exists to catch.
+    """
+    if collapsed is None:
+        collapsed = P.COLLAPSE_TIER_LADDER
     gross = net = txn_fees = 0.0
     txn_count = 0.0
     for tier, spend_usd in spend_by_tier.items():
         if spend_usd <= 0:
             continue
-        rate = P.INTERCHANGE_PREPAID_CAP if prepaid_capped else P.INTERCHANGE[tier]
+        if prepaid_capped:
+            rate = P.INTERCHANGE_PREPAID_CAP
+        elif collapsed:
+            rate = P.COLLAPSE_INTERCHANGE_RATE
+        else:
+            rate = P.INTERCHANGE[tier]
         g = spend_usd * rate
         spend_aed = spend_usd * P.AED_PER_USD
         n = spend_aed / P.AVG_TXN_SIZE_AED[tier] * (1.0 + P.DECLINE_UPLIFT)
