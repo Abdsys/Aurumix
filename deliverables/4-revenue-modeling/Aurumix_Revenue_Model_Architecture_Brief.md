@@ -1441,6 +1441,100 @@ Year 10 of 60,000 to 100,000 is 1.3% to 2.2% of the headline diaspora, which is 
 
 **⚠ Correct decision 31 a second time, and on a different basis than the first correction.** Decision 31 said "~3.5 to 4M"; v2.1 corrected it to 4.58M on the MEA table. **MEA is the wrong instrument** (§5.0). The defensible perimeter is now built from national statistics authorities, is South Asian rather than Indian, and is both larger in gross population and smaller in filtered addressable base. See §15 correction 21.
 
+### 5.9 The spot-only buyer, and why the base has been sizing one lane out of two
+
+🆕 **D35, 2026-08-20, raised by Abdur.** An architecture gap, not a re-pricing. Full reasoning in `supporting/_working_architecture-decisions-v2.md`.
+
+**The finding, in one line: in the model as built, no account can exist before it starts a SIP.**
+
+Stream 1b computes spot as `attaching(s,t) = live_accounts(s,t) × S45 × tenure_uplift(s,t)`, where `live_accounts` is CONTRIBUTING + REDUCED + LAPSED_HOLDING. Every one of those is a state of an account acquired through one of the four SIP channels, and S45 is denominated **"% of live accounts/yr"**. There is no spot acquisition channel, no spot state, no spot archetype, no spot addressable base, and §6.1b says so outright: *"there is no independent spot ceiling."* **Spot is exclusively a behaviour of SIP accounts.**
+
+Three things make that a defect rather than a simplification.
+
+1. 🔴 **The mechanism design says the opposite.** `_draft_sip-spot-and-ics.md` opens with a section titled *"Separating the SIP investor from the spot buyer"*, names them *"two named customer types"*, describes spot as *"the entry point for new investors"*, and calls spot-to-SIP conversion *"the growth funnel"*. **The model runs that arrow only backwards.**
+2. 🔴 **The §5.1 funnel is SIP-specific and is applied to both lanes.** Two of its three filters (direct-debit-capable IBAN at 0.57, USD 20/month discretionary at 0.40) are recurring-mandate tests, under the claim *"One method now applies to every row."* **This brief states at §6.1b that spot needs neither**: *"One push or bank transfer, and therefore no collection-failure exposure at all."* The two facts sit on adjacent pages and were never joined.
+3. **It is flagged nowhere.** Not in L1 to L11, not in corrections 1 to 38, not in §3.y.2, not in §16. Correction 22 audited the persona for narrowness on the **nationality** axis and found a real defect; the **product** axis was never examined.
+
+⚠ **The defect is not that spot's number is too small.** Spot already reaches 49.6% of Y7 inflow because S45 to S47 are set aggressively. The defect is that **spot volume is analytically bounded by the SIP book at every parameter setting.** A walk-up buyer with a card and no IBAN is not merely un-sized, it is inexpressible.
+
+#### 5.9.1 The architecture: one population, two doors
+
+**Spot does not get its own population. It gets a wider gate through the same one.** This preserves D24's bottom-up commitment (real people, real funnel, real ceiling, no unfalsifiable single penetration share) and it prevents the double-count that a parallel fifth region would create, because **everyone who can fund a SIP can also buy spot**. The spot-capable base is a **superset**, and the spot-only population is the **residual**.
+
+```
+                    ┌── Door 1: SIP  ──► existing lifecycle, unchanged
+  regional          │
+  population  ──────┤
+                    └── Door 2: SPOT ──► HOLDER state
+                                          - no ICS, no tier, no card, no credit
+                                          - pays the full undiscounted entry fee
+                                          - sits in AUM, custody and screening
+                                          - ──► converts to SIP at S59
+```
+
+**The HOLDER state is not new machinery.** A holder who pays nothing monthly but remains in AUM, custody cost and AML screening is `LAPSED_HOLDING` with a different entry route. §5.9 reuses the state; it does not add one.
+
+#### 5.9.2 The two funnels, side by side
+
+| Filter | SIP lane (unchanged) | Spot lane | Why it differs |
+|---|---|---|---|
+| Economically active | 0.80 | **0.80** | Unchanged. Income is needed either way |
+| Payment capability | **0.57** (IBAN able to carry a mandate) | **S56** | A one-off push needs an account, not a standing authority. A WPS payroll card can push once |
+| Money capability | **0.40** (USD 20 *every month*) | **S57** | One spot ticket is ~USD 190 once. A USD 20 SIP is USD 240/yr. **Spot asks for less money, less reliably** |
+
+**Worked, on R1 (UAE Indian), to show the method is identical rather than new.** SIP: `3.5m × 0.80 × 0.57 × 0.40 = 638,400`, which reproduces §5.1's ~640,000. Spot: `3.5m × 0.80 × S56 × S57`. **Spot-only population = spot-capable − SIP-capable.**
+
+⚠ **S56 and S57 are `{{UNFILLED}}` and must not be guessed into the model.** This is precisely the failure mode §5.1 corrected when it deleted the unsourced gold-propensity filter. See §5.9.4 for what is and is not sourced.
+
+#### 5.9.3 Two acquisition routes, priced differently
+
+- **Direct spot.** Aurumix's own app, Aurumix's own CAC, through the existing four channels. Slow, and owned.
+- **Distributed spot.** Through a consumer wallet. 🆕 **This belongs inside stream 6's existing structure**, which already models volume without account-level acquisition and grants no ICS or benefits (L6). ✅ **Second benefit: stream 6 is currently ~60% dependent on R4, and §6.7 requires it to fall by roughly 60% if `INDIA_ENABLED` is OFF. A UAE wallet partner breaks that single-geography dependency.**
+
+#### 5.9.4 Calibration: what is observed, and what is not
+
+**Botim is the only observed spot funnel in the launch market**, and it is a spot funnel in the strict sense: it has **no recurring purchase facility at all** (verified 2026-08-20 against its own gold FAQ, product page and all launch coverage). Its buyers are one-off buyers by construction.
+
+| Input | Value | Basis | Confidence |
+|---|---|---|---|
+| Trades since launch | **128,000** | Vendor-disclosed at the Feb 2026 silver launch | Medium-High |
+| Total value | **AED 100m+** | Same disclosure | Medium-High |
+| Average ticket | **~AED 780** (~USD 212) | `100m ÷ 128,000` | Medium-High |
+| Conversion at exposure | **~6%** (775,000 explored → 45,000 transacted) | Carried in this brief at §5.6 | Medium |
+| Demographic | **96% blue/grey collar** (65% / 31%) | Botim press release. ⚠ Vendor-published, no methodology | Medium |
+| Repeat rate | **~2.8 purchases per buyer**, ≈1.9/yr | ⚠ **INFERRED**, assumes 45,000 = unique buyers and 128,000 = trades | **Low** |
+
+✅ **One useful validation: the inferred ~1.9 events/yr sits close to S47's unsourced 1.7**, which is the first external check that parameter has ever had. ⚠ It is an inference from two disclosures of different vintage and must not be presented as observed.
+
+🔴 **Three calibration traps, each of which would produce a wrong number.**
+
+1. ⛔ **Botim's 8.5m → 775,000 step is NOT transferable.** That is a **9.1% in-app discovery rate** off a shelf inside an app the user already opens daily. Aurumix has no equivalent placement. **Do not reuse it as a reach assumption.**
+2. ⛔ **The 6% is a conversion-at-exposure rate, not a penetration ceiling.** S58 is `reach × conversion`, and only the second term is observed. Treating 6% as the ceiling silently assumes total reach.
+3. ⚠ **§5.6 currently cites the 6% as a discount to apply to a SIP base** (*"a recurring debit converts to a materially lower number"*). **For the spot lane it applies at full strength, undiscounted.** The brief is currently using its most relevant number backwards. See correction 39.
+
+#### 5.9.5 Two findings from the same pass that land outside this section
+
+1. ✅ 🔴 **The §5.4 payment-rail risk has a dated mitigant, and it has already shipped.** §5.4 flags that the lowest-income segment may have no usable rail, WPS payroll cards carrying no IBAN, and cites CBUAE's Universal Account as a **future** remedy. **Botim launched virtual IBAN wallets on 2026-06-22 under the CBUAE Universal Accounts Framework**: no minimum salary, no minimum balance, no monthly fee, AANI transfers, onboarding under three minutes, to a base that is 96% blue and grey collar. **That converts a hoped-for mitigant into a dated one.** ⚠ It does not close §5.7 item 2, because no payroll-card-versus-IBAN split is published and adoption is unmeasured.
+2. ⚠ **The competitor's own binding terms are a differentiator for Aurumix.** Botim is a **distribution front-end, not the gold principal**: the principal is **OGOLD Precious Metals Trading LLC** (DMCC). OGold's marketing says "fully allocated"; its binding T&Cs say metal *"may be held in pooled custody arrangements"* and disclaim any guaranteed return, against Botim marketing "~3% guaranteed". Vault operator, custodian, spread and storage fee are **all unpublished**. **Allocated, serial-numbered, segregated metal is a real and checkable differentiator.** ⚠ **Registry-first caveat: no regulator register entry or licence number was retrieved for either entity.** All licensing rests on company self-description and press. **Close before any commercial dependency.**
+
+#### 5.9.6 What this breaks, stated before it is built
+
+🔴 **The `base × ceiling` invariant changes meaning.** §5.1's 165,750 is the **SIP** ceiling and it stays intact, but it stops being *the* ceiling. It must be **re-labelled** and sit alongside a separate, larger spot ceiling. ⚠ **The Checks-sheet assertion at §5.1 needs rewriting regardless**, because its stated v2.1 anchor of 164,900 does not match the reference model's actual pre-D25 total of 167,900 (the gap is exactly the S6 row, which the brief appears to drop and the model includes). **Reconcile that before the assertion is built, or it fails as written.**
+
+⚠ **The client persona conversation gains a third axis.** It is already being widened on nationality (Indian to South Asian, correction 22). This widens it on **product**. **Deliver as one conversation, not two.**
+
+⚠ **S59 is a new Low-confidence, load-bearing parameter with no source anywhere.** It must be named as an assumption and carried into the tornado, not buried. **It is also the most decision-relevant number in this section** (§5.9.7).
+
+⛔ **India is not a spot target.** SafeGold's 55m customers are Indian residents and decision 27 stands on four independent bars, sharpened by SEBI's 2025-11-08 caution on digital gold. **SafeGold and the NPCI UPI series are behavioural evidence that the one-off gold-buying habit exists at scale; they are not a reachable book.** Size R4's spot lane behind `INDIA_ENABLED` exactly as its SIP lane already is, so the switch shows the client what the India problem costs. **The reachable version of that population is the same people in the Gulf, where they are already R1 and R2.**
+
+#### 5.9.7 Why this matters to §14, and it is the reason to build it
+
+Break-even is **45,102 live accounts** (§14.1). The SIP-only ceiling is 165,750 **cumulative-ever-acquired**, and at the model's own computed 2.96× cumulative-to-live ratio, break-even needs **~133,500 cumulative-ever, or about 80% of every account the model believes could ever exist** — in a region where the S23 headroom term has throttled acquisition to 20% of raw demand. ⚠ **That estimate is optimistic on three counts**: the ratio is still rising at Y10, the solver regresses total revenue including account-free stream 6 on retail live accounts (inflating revenue per account and pulling break-even earlier than it should be), and D25's ticket re-cut pushes the required N up.
+
+**Widening the gate roughly doubles the base the ceiling is applied to.** It does not guarantee break-even, which depends entirely on S58. **It changes the question from "can we win 80% of everything possible" into one with room in it.**
+
+🔴 **And it reframes the adoption bridge.** The strategic problem has been stated as *"how do we sell a monthly commitment to a life-insurance-policyholder mindset."* **The sharper version is that the only door into the book requires a monthly mandate from people who may not hold an IBAN.** A spot door is a lower-friction entry that the mechanism design already anticipated and the model deleted. **S59, the spot-to-SIP conversion rate, is therefore not a modelling detail: it is the strategy question in numerical form, and it is the one an experiment could actually answer.**
+
 ---
 
 ## 6. Revenue streams in detail
@@ -2682,7 +2776,11 @@ Source categories: **CITED** (a named primary or secondary source with a retriev
 | **S44** | **Terminal AUM per partner** | **32** | 45 | 22 | USD m | DERIVED | Reconciles to S13 within ~5% on all three paths | Scen!E |
 | **S45** | **Spot attach rate** | **14** | 24 | 7 | % of live accounts/yr | ASSUMPTION | 🔴 **Rank 8 load-bearing — because it is missing, not because it is large** | Scen!B |
 | **S46** | **Average spot ticket** | **620** | 1,100 | 320 | USD/event | ASSUMPTION | Scale by segment: S1/S6 ×1.6, S2/S4 ×1.0, S3 ×0.45, S5 ×0.7 | Scen!B |
-| **S47** | **Spot frequency** | **1.7** | 2.4 | 1.2 | events/attacher/yr | ASSUMPTION | ~45% of volume in the two festival windows | Scen!B |
+| **S47** | **Spot frequency** | **1.7** | 2.4 | 1.2 | events/attacher/yr | ASSUMPTION | ~45% of volume in the two festival windows. 🆕 **First external check: Botim's disclosed 128,000 trades against ~45,000 buyers implies ~2.8 purchases each, ≈1.9/yr** (D35, §5.9.4). ⚠ **INFERRED from two disclosures of different vintage; supportive, not confirmatory** | Scen!B |
+| 🆕 **S56** | **Spot payment-capability filter** | `{{UNFILLED: spot lane payment filter — see §5.9.2}}` | | | share of economically active | **ASSUMPTION, unsourced** | 🆕 **D35.** Replaces the SIP lane's 0.57 IBAN filter for the spot lane only. A one-off push needs an account, not a standing mandate, so a WPS payroll card qualifies here and does not qualify for SIP. **Candidate anchor: Findex UAE account ownership 85.7%** (§5.4), which is the same figure §5.4 warns must not be read as mandate-capable. ⛔ **Do not fill by inference: §5.1 deleted the unsourced propensity filter for exactly this reason** | Scen!A |
+| 🆕 **S57** | **Spot money-capability filter** | `{{UNFILLED: spot lane discretionary filter — see §5.9.2}}` | | | share of payment-capable | **ASSUMPTION, unsourced** | 🆕 **D35.** Replaces the SIP lane's 0.40 filter. **Directionally above 0.40**: one spot ticket is ~USD 190 once, against USD 240/yr for a USD 20 SIP, so spot asks for less money less reliably. 🔴 **No published source exists**, and §5.7 item 7 (no nationality-disaggregated UAE savings survey) blocks the obvious route | Scen!A |
+| 🆕 **S58** | **Spot penetration ceiling** R1–R4 | `{{UNFILLED: spot ceiling by region — see §5.9.4}}` | | | % of the spot-only base | **ASSUMPTION, unsourced** | 🆕 **D35.** Decomposes as **`reach × conversion`**. ✅ Conversion is observed at **~6%** (Botim, 775k explored → 45k transacted). 🔴 **Reach is NOT observed and Botim's 8.5m → 775k step must not be reused**: it is a 9.1% in-app discovery rate off a shelf Aurumix does not have. ⛔ **Treating the 6% as the ceiling silently assumes total reach** | Scen!A |
+| 🆕 **S59** | **Spot-to-SIP conversion rate** | `{{UNFILLED: no source exists anywhere — see §5.9.7}}` | | | % of spot holders/yr | **ASSUMPTION, unsourced** | 🔴 🆕 **D35. The load-bearing parameter of the whole section, and the most decision-relevant number in the brief.** The mechanism design calls this arrow *"the growth funnel"* (`_draft_sip-spot-and-ics.md`); the model currently runs it only backwards. **It is the adoption-bridge question in numerical form and the one an experiment could actually answer.** ⚠ **Must be carried into the tornado, not buried** | Scen!A |
 | **S48** | **Y1 exit-run-rate uplift** | **1.40×** | 1.25× | 1.60× | × Y1 booked opex | ASSUMPTION | **The Y1 figure is a build-up year average, not a run-rate** | Scen!F |
 | **S49** | **Resident share by region** 🆕 **R1–R4 (D25)** | **100 / 100 / 0 / 0** | same | same | % UAE-resident | **DERIVED, definitional** | **Falls straight out of decision 31's re-cut by country of residence.** ⚠ The Y10 non-resident share must be re-computed; the 42% at v2.1 is withdrawn (§5.8) | Scen!F |
 | 🆕 **S54** | **Floor share by region** | **40 / 60 / 58 / 25** | 30/50/48/18 | 50/70/68/33 | % of the region's book paying the USD 20 floor | ASSUMPTION | 🆕 **D25. The parameter that saves two non-linearities** (rail cost and card spend, §5.2). With S55 it derives two bands per region, so **no unit economic is ever computed on a regional average.** Anchored on Bahrain's published wage distribution and Joyalukkas' AED 100 price discovery; **weakest link is the absence of any nationality-disaggregated UAE savings survey** (§5.7 item 7) | Scen!A |
@@ -4106,6 +4204,9 @@ v1.0's ten, plus ten new ones from the v2.0 decision record.
 | 🆕 **36** | **This brief §0.3, §6.1a, §8.1 F4, §16, and D28 itself** | 🔴 **D28's PREMIUM MEASUREMENT FAILED REPLICATION ON 2026-08-20 AND ITS LEVEL MUST BE TREATED AS WITHDRAWN.** Re-running the same-page capture 24 hours later returned 4.14% / 3.37% against the prior day's 1.75% / 0.98%. **Diagnostic: goldtrade.ae's rate page moved 6 bp overnight while its own store moved 241 bp — the two pages share a domain but not a clock.** ⚠ **What survives is the SHAPE: the curve is monotonic on both days and the 1 kg-vs-100 g step held at 0.77–0.78pp, independently corroborated at 1.16–1.74pp on a third source. The denomination ladder is sound; its absolute level is not.** 🔴 **Every figure re-cut at F4 = 1.50% — including §0.3's 0.26pp of headroom — is provisional until a third observation. Do NOT take the fee-fundability reversal to the client on this evidence.** **Method addendum: a same-page pair must also be a same-CLOCK pair; validate by re-fetching and checking both sides moved comparably** |
 | 🆕 **37** | **This brief §3 Layer 4, §6.1a, §6.1b, §7.1, §7.5, §11 P&L, F5; `_draft_allocation-and-float.md` entry-fee build-up** | 🔴 **THE FLOAT COST OF CAPITAL LEAVES COGS AND BECOMES A MEMO LINE** (D32). It is an **opportunity cost on equity, not a cash expense**, and §11 currently books it inside COGS — which means stream 1's "net contribution margin" charges a cost the P&L never pays and does not tie to the cash flow. ⚠ **This is an internal-consistency fix as much as an accounting one: §7.6 already states the rule** — *"report the escalator as an opportunity cost, not a P&L line… as a memo line"* — **and F5 was the single place the brief broke it.** 🔴 **What must NOT be inferred: that the float is free.** The **principal** is unaffected — USD 29k at Y1 to USD 3.6M at Y10, on the balance sheet, inside peak funding. ⚠ **Restore the charge as a real financing expense if the float is ever debt-funded; add a `FLOAT_DEBT_FUNDED` switch** |
 | 🆕 **38** | **This brief §0.3, §14 break-even, §13.5 tornado, and any client-facing summary** | 🔴 **THE CUMULATIVE-RECLASSIFICATION RISK, recorded so it is not lost.** In one day D31 and D32 removed two of the four terms in `c`, and the minimum viable entry fee fell **3.07% → 2.74% → 2.26%** with **nothing changing in the business.** Each step is individually defensible; **the sequence dissolved §0.3, a finding present in every version of this brief, by re-attribution alone.** ⚠ **Compounding this, the third term — the fabrication premium — failed replication the same day (correction 36).** 🔴 **Before any of this reaches the client: adversarially re-check the two surviving cost terms, re-observe F4, and state the fee reversal as conditional. The break-even and tornado outputs must ALL be re-run — S1 leaves the tornado entirely and F5 leaves the margin, so the existing rankings are stale in two places at once** |
+
+| 🆕 **39** | **This brief §5.1, §6.1b, Layer 1, Layer 2, the L-table, and `_draft_sip-spot-and-ics.md`** | 🔴 **SPOT IS MODELLED AS A BEHAVIOUR OF SIP ACCOUNTS, NOT AS A CUSTOMER** (D35, §5.9). Stream 1b drives spot off `live_accounts`, S45 is denominated *"% of live accounts/yr"*, and §6.1b states *"there is no independent spot ceiling"*, so **no account can exist before it starts a SIP.** ⚠ **The §5.1 funnel compounds it:** two of its three filters (IBAN at 0.57, USD 20/month at 0.40) are recurring-mandate tests applied under the claim *"One method now applies to every row"*, while §6.1b states spot needs neither (*"one push or bank transfer"*). **The two facts sit on adjacent pages and were never joined.** 🔴 **The defect is not the level (spot is already 49.6% of Y7 inflow) but that spot is analytically bounded by the SIP book at every parameter setting.** **Flagged nowhere: not in L1–L11, corrections 1–38, §3.y.2 or §16. Correction 22 audited the persona on nationality and did not examine the product axis.** **Resolution specified at §5.9. Adds S56–S59 and re-labels the 165,750 invariant as the SIP ceiling** |
+| 🆕 **40** | **This brief §5.6, and correction 25** | ⚠ **THE BOTIM FIGURES ARE STALE AND THE MOST RELEVANT ONE IS USED BACKWARDS.** Current disclosure is **128,000 trades and AED 100m+ since the Aug 2025 launch** (stated at the Feb 2026 silver launch), implying **~AED 780 per trade** against the AED 700 carried at §5.6. 🔴 **More important than the level: §5.6 cites the ~6% conversion as a DISCOUNT to apply to a SIP base** (*"a recurring debit converts to a materially lower number"*). **Botim has no recurring purchase facility at all**, verified against its own gold FAQ, product page and all launch coverage, **so its buyers are one-off buyers by construction and the 6% applies to the SPOT lane at full strength, undiscounted** (§5.9.4). ⚠ **Three further facts belong in the competitive set:** Botim is a **distribution front-end, not the gold principal** (the principal is **OGOLD Precious Metals Trading LLC**, DMCC); **OGold's own app carries a full SIP from AED 2** which Botim has not surfaced; and OGold's binding T&Cs say metal *"may be held in pooled custody arrangements"* against marketing that says "fully allocated", **making allocated segregated metal a checkable differentiator.** ⚠ **Registry-first gap: no register entry or licence number was retrieved for either entity** |
 
 ---
 
