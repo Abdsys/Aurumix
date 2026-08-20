@@ -3,3 +3,5 @@
 _recalc/
 __pycache__/
 *.pyc
+# LibreOffice lock files, left behind by headless recalculation
+.~lock.*#

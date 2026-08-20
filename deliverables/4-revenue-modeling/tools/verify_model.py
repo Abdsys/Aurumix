@@ -231,6 +231,24 @@ check("NO region breaches its own reachable ceiling", not breach, "; ".join(brea
 # Agent output must land only where the agent network operates.
 ash = {rn: aval("Share of agent-driven acquisition - %s" % rn) for rn in REGION_NAMES}
 check("Agent-share allocation sums to 100%", abs(sum(ash.values()) - 1.0) < 1e-9, "%r" % ash)
+_cac = {rn: sval("Marketing CAC - %s" % rn) for rn in REGION_NAMES}
+_mks = {rn: sval("Marketing spend share - %s" % rn) for rn in REGION_NAMES}
+check("CAC is regionalised, not one global figure", len(set(_cac.values())) > 1, "%r" % _cac)
+check("Marketing spend shares sum to 100%", abs(sum(_mks.values()) - 1.0) < 1e-9, "%r" % _mks)
+_ind = [rn for rn in REGION_NAMES if "India" in rn]
+_uae = [rn for rn in REGION_NAMES if rn == "UAE"]
+if _ind and _uae:
+    check("India CAC is far below the UAE's, matching the published gap",
+          _cac[_ind[0]] < _cac[_uae[0]] * 0.35,
+          "India %r vs UAE %r" % (_cac[_ind[0]], _cac[_uae[0]]))
+check("Every region acquires through its own marketing budget and CAC",
+      len([r for r in range(1, mdl.max_row + 1)
+           if mdl["A%d" % r].value == "  Direct-driven (this market's budget at its own CAC)"])
+      == len(REGION_NAMES))
+check("Every region refers from its OWN paying base",
+      len([r for r in range(1, mdl.max_row + 1)
+           if mdl["A%d" % r].value == "  Referral-driven (from this market's own base)"])
+      == len(REGION_NAMES))
 check("The agent channel is confined to the regions it operates in",
       sum(1 for v in ash.values() if v > 0) < len(REGION_NAMES),
       "agents allocated to every region: %r" % ash)
@@ -382,13 +400,43 @@ for sr_, lr_ in zip(_spc_rows, _lim_rows):
             worst = max(worst, s_ / l_)
             if s_ > l_ * 1.001:
                 per_region_ok = False
-check("PER REGION - card spend never exceeds the limit that region's gold supports",
+check("PER REGION - monthly card spend never exceeds the limit the gold supports",
       per_region_ok, "worst utilisation %.2fx" % worst)
-check("The gold-collateral cap actually BINDS early (it is not inert)", worst > 0.99,
-      "peak utilisation %.2fx" % worst)
+# Under the drawdown model the constraint is satisfied BY CONSTRUCTION - spend
+# IS the drawdown - so what matters is that annual drawdown stays inside a
+# sensible multiple of the limit rather than a monthly cap binding.
+_dr_rows = [r for r in range(1, mdl.max_row + 1)
+            if mdl["A%d" % r].value == "  Annual drawdown per card (limit x drawn x draws)"]
+_lim_rows2 = [r for r in range(1, mdl.max_row + 1)
+              if mdl["A%d" % r].value == "  Credit limit per customer (gold x LTV)"]
+check("Annual drawdown is a sane multiple of the credit limit (0.5x-3x)",
+      all(0.5 <= (mdl["%s%d" % (pc(28), d)].value or 0) / (mdl["%s%d" % (pc(28), l)].value or 1) <= 3.0
+          for d, l in zip(_dr_rows, _lim_rows2)),
+      "%r" % [round((mdl["%s%d" % (pc(28), d)].value or 0) / (mdl["%s%d" % (pc(28), l)].value or 1), 2)
+              for d, l in zip(_dr_rows, _lim_rows2)])
 lim = row("  CHECK: card spend vs credit capacity (must be <= 1.00)")
 check("Whole-book card spend stays within total credit capacity",
       all_num(lim) and max(lim) <= 1.001, "max %.2fx" % (max(lim) if all_num(lim) else -1))
+
+# ---- 8d. average ticket is DERIVED and scales with the SIP contribution ----
+_avg_rows = [r for r in range(1, mdl.max_row + 1)
+             if mdl["A%d" % r].value == "  Average transaction size (derived)"]
+check("Average transaction size is derived per region, not a single input",
+      len(_avg_rows) == len(REGION_NAMES) and rowof(asm, "Average transaction size") is None,
+      "%d rows; stale absolute input present: %s"
+      % (len(_avg_rows), rowof(asm, "Average transaction size") is not None))
+_avg = [mdl["%s%d" % (pc(28), r)].value for r in _avg_rows]
+_lims = [mdl["%s%d" % (pc(28), r)].value for r in _lim_rows2]
+# Under the drawdown model the ticket follows the CREDIT LIMIT (gold held), not
+# the monthly SIP amount - a customer with more gold can draw and spend more.
+check("Average ticket ORDERS the same way as the credit limit across regions",
+      [i for i, _ in sorted(enumerate(_avg), key=lambda t: t[1])]
+      == [i for i, _ in sorted(enumerate(_lims), key=lambda t: t[1])],
+      "limits %r -> avg txn %r" % ([round(x) for x in _lims], [round(x) for x in _avg]))
+check("Average ticket is a plausible size for a borrowed lump (AED 80-600)",
+      all(80 <= x <= 600 for x in _avg), "%r" % [round(x) for x in _avg])
+check("Average ticket sits well below the UAE all-population average of AED 313",
+      max(_avg) < 313, "max derived ticket AED %.0f" % max(_avg))
 
 # ---- 9. totals -------------------------------------------------------------
 tot = row("TOTAL NET REVENUE")

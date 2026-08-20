@@ -300,15 +300,6 @@ a_row("txn_fee", "Per-transaction processor fee", 0.10, "USD/authorised txn",
 a_row("decline_uplift", "Decline uplift on authorised txns", 0.06, "% uplift",
       "The processor fee is charged per AUTHORISATION, not per settled transaction, so declined attempts are "
       "billable to Aurumix and chargeable to nobody. ASSUMPTION.", FMT_PCT, "decline_uplift")
-a_row("avg_txn_gold", "Average transaction size", 100, "AED",
-      "RE-CUT 2026-08-20 from AED 185. Groceries, telecom top-ups, transport and bills for a blue/grey collar "
-      "base - not restaurants and retail. AED 185 implied ~10 transactions a month on the re-cut spend level, "
-      "which is not the behaviour of a primary card; AED 100 implies ~18/month. DOES NOT AFFECT REVENUE - it "
-      "drives the authorisation count, which is a COST input for the later cost build. ⚠ CARRY THIS FINDING "
-      "TO THE COST BUILD: the processor fee is flat per authorisation while Aurumix's interchange share is a "
-      "percentage, so below roughly AED 77 per transaction (at a 72% PM share and USD 0.10 per "
-      "authorisation) the fee exceeds the interchange earned. That threshold falls to ~AED 34 at the 36% PM "
-      "floor, and to ~AED 23 at a negotiated USD 0.03 fee. ASSUMPTION.", FMT_NUM, "avg_txn_gold")
 a_row("fx_margin", "FX margin on foreign spend", 0.020, "% of foreign spend",
       "Market rate ~2%, converged across four comparables. CITED.", FMT_PCT2, "fx_margin")
 a_row("atm_allowance", "Free ATM allowance (Gold)", 1000, "AED/month",
@@ -740,9 +731,27 @@ s_derived("monthly_churn", "Monthly churn rate (derived)",
           "Change persistency and this follows. Base 55% implies ~4.9%/month.", FMT_PCT2, "monthly_churn")
 sp("agent_productivity", "Agent productivity", 4, 6, 2, "accounts/agent/month",
    "Insurance agency comparator. TRIANGULATED.", FMT_NUM2, "agent_productivity")
-sp("cac_base", "Marketing CAC", 120, 80, 200, "USD",
-   "No UAE gold-product benchmark. CAC is LINEAR: the brake on unbounded growth is the SATURATION ceiling, "
-   "which is sourced, not a convexity curve, which is not. ASSUMPTION.", FMT_USD, "cac_base")
+CAC_BY_REGION = {"uae": (120, 80, 200), "gulf": (100, 70, 170), "india": (20, 12, 35)}
+for key in REGIONS:
+    b, a, c = CAC_BY_REGION[key]
+    sp("cac_" + key, "Marketing CAC - %s" % RLAB[key], b, a, c, "USD per customer",
+       "REGIONALISED 2026-08-20. A single global USD 120 was applied everywhere, which is roughly right for "
+       "the UAE and badly wrong for India. PUBLISHED BENCHMARKS: Dubai consumer fintech USD 65-220; retail "
+       "neobank account paid-only USD 35-70; GCC wealthtech funded accounts USD 80-220; 'true' fully-loaded "
+       "CAC per ACTIVATED customer USD 85-350 against USD 50-100 reported, once KYC, onboarding and "
+       "non-activating signups are counted. INDIA IS A DIFFERENT MARKET ENTIRELY: consumer fintech "
+       "INR 500-1,500 (~USD 6-18), neobank savings activation INR 1,100-1,800, wealth and broking apps "
+       "INR 2,500-5,500 (~USD 30-65); Jupiter reports a USD 5-6 paid CAC. USD 120 is ~INR 10,500 - some 7-20x "
+       "the Indian mass-market benchmark and still 2-4x its premium wealth apps. UAE is held at 120 as a "
+       "FULLY-LOADED figure; ⚠ note it sits at the top of the range for a LOW-TICKET product, and the "
+       "published low-ticket band is USD 4-70. TRIANGULATED.", FMT_USD, "cac_" + key)
+MKT_SHARE = {"uae": 0.58, "gulf": 0.16, "india": 0.26}
+for key in REGIONS:
+    sp("mktshare_" + key, "Marketing spend share - %s" % RLAB[key], MKT_SHARE[key], MKT_SHARE[key],
+       MKT_SHARE[key], "% of budget",
+       "How the marketing budget is split across markets. Defaults to each region's share of the addressable "
+       "ceiling, so spend follows the opportunity. Does not vary by scenario - it is a management decision, "
+       "not an uncertainty. Must sum to 100%.", FMT_PCT, "mktshare_" + key)
 sp("referral_rate", "Referral rate", 0.45, 0.90, 0.18, "referrals/customer/yr",
    "Cap removed deliberately, so the distribution is right-skewed. MODEL THE MEAN, NOT THE MEDIAN. ASSUMPTION.",
    FMT_NUM2, "referral_rate")
@@ -805,23 +814,44 @@ s_section("GROUP D: CARD")
 sp("pm_share", "Programme manager share of interchange", 0.72, 0.85, 0.55, "%",
    "SIZES THE LARGEST STREAM. No UAE/MENA figure is published. FLOOR IS 36% - take that into the sponsor "
    "conversation as the walk-away. TRIANGULATED.", FMT_PCT, "pm_share")
-sp("card_spend_mult", "Card spend as a multiple of the monthly SIP ticket", 8, 12, 5, "x monthly ticket",
-   "RE-EXPRESSED 2026-08-20 as a MULTIPLE rather than an absolute AED figure, for two reasons. First it "
-   "REGIONALISES for free: a region that saves more per month also spends more, because both are driven by "
-   "the same income. Second, and more important, it makes an incoherent answer unrepresentable - an absolute "
-   "figure can drift to a level the customer could not possibly transact, and AED 1,800 flat against a book "
-   "saving USD 31.50/month was already a 15.5x multiple. THE BINDING CONSTRAINT IS THE CREDIT LIMIT: under "
-   "the credit variant the card is secured on the customer's gold at 50% LTV, so monthly spend cannot exceed "
-   "the limit that gold supports. At 15.5x it did - USD 493/month against a USD 457 limit - which is not a "
-   "high estimate but an impossible one. Base 8x is anchored on the income build-up: a USD 38 saver has ~USD "
-   "300/month savings capacity, AED 3,700-5,500 income with employer housing, 60-80% remitted, leaving "
-   "~AED 700-1,500 discretionary of which the card takes most. ASSUMPTION, income-anchored.",
-   FMT_NUM2, "card_spend_mult")
-sp("card_activation", "Card activation rate", 0.50, 0.70, 0.30, "% of eligible",
-   "RE-CUT 2026-08-20 from 65%. PULSE 68.2% and Monzo 68% are NEOBANKS WHERE THE CARD IS THE PRODUCT - people "
-   "signed up FOR the card. Here the card is a secondary benefit on a savings product: the customer came for "
-   "gold. The comparable is wrong in kind, not just in level. Partly offset by the base already being "
-   "gate-filtered, hence 50% rather than lower. NO PRIMARY SOURCE EXISTS.", FMT_PCT, "card_activation")
+sp("card_activation", "Facility take-up - customers who take AND use the card", 0.18, 0.30, 0.08,
+   "% of gate-cleared",
+   "RE-BASED 2026-08-20, client decision: THE CARD IS A DRAWDOWN ON THE GOLD-COLLATERALISED FACILITY, not a "
+   "salary-repaid revolving card. Aurumix has no balance sheet to lend from - it can only extend credit "
+   "against collateral it holds, which is the customer's gold. Using the card IS borrowing, so card "
+   "activation and credit take-up are the SAME behaviour and were previously modelled as two different "
+   "populations (50% activating a card, 18% taking credit) doing what is in fact one thing. Merged onto the "
+   "credit figure, which is the better-anchored of the two: Indian gold-loan penetration is under 10% at a "
+   "point in time, uplifted here for pre-selection since these customers have already cleared a "
+   "six-payment gate. ⚠ THE OLD 50% CAME FROM NEOBANK COMPARABLES (PULSE 68.2%, Monzo 68%) WHERE THE CARD "
+   "IS THE PRODUCT - wrong in kind for a card that only lets you borrow against your own savings. "
+   "DERIVED.", FMT_PCT, "card_activation")
+sp("card_txns_per_draw", "Transactions per drawdown event", 4, 6, 2, "transactions/draw",
+   "RE-BASED 2026-08-20 from 12 transactions/MONTH once the card became a drawdown on the gold facility. "
+   "Under that model the customer borrows a lump (limit x drawn share) a couple of times a year and spends "
+   "it down, so the meaningful unit is transactions PER DRAW, not per month. At 12/month the implied ticket "
+   "collapsed to ~AED 12, which is a coffee, not a reason to pledge your gold. THE AVERAGE TICKET FALLS OUT "
+   "AS drawn amount / this number, and the draw events cancel - so the ticket depends only on how large a "
+   "draw is and how many purchases it is spent across. ⚠ IT ALSO CHANGES WHAT THE CARD IS FOR: not daily "
+   "groceries, but occasional larger needs - school fees, a medical bill, an emergency - funded by borrowing "
+   "against savings rather than liquidating them. That is a materially different product story and should be "
+   "put to the client in those words. ASSUMPTION.", FMT_NUM, "card_txns_per_draw")
+sp("card_txns_UNUSED", "Card transactions per active card per month", 12, 18, 8, "transactions/month",
+   "THE INPUT IS FREQUENCY; AVERAGE TICKET IS DERIVED FROM IT. That inversion is deliberate. Monthly spend is "
+   "already pinned by income (a multiple of the SIP ticket) and capped by the gold collateral, so specifying a "
+   "ticket size would over-determine the card and let it drift away from what the customer actually saves - "
+   "the exact problem an absolute AED 100 ticket created. Fixing frequency instead makes the average ticket "
+   "fall out as spend / frequency, which means IT SCALES WITH THE SIP CONTRIBUTION AUTOMATICALLY: a customer "
+   "on a smaller monthly savings amount gets a proportionally smaller basket, in every region, with no extra "
+   "input. WHY FREQUENCY IS THE BETTER THING TO ANCHOR: it has a published number and ticket size does not. "
+   "Visa scheme data gives ~175 transactions per card per year for the region, about 14-15/month, and UAE "
+   "low-income cash dependency fell from 84% to 69% in two years, so card usage is rising. Base is set at 12, "
+   "slightly BELOW the general anchor, because this is a secondary card earned on a savings product rather "
+   "than someone's main salary card. ⚠ THE UAE-WIDE AVERAGE TICKET OF ~AED 313 IS DELIBERATELY NOT USED - it "
+   "spans affluent expats and corporate cards, which is the same population mismatch that put card spend at "
+   "AED 6,000. NO PUBLISHED TICKET SIZE OR FREQUENCY EXISTS FOR BLUE-COLLAR GCC WORKERS SPECIFICALLY - a "
+   "confirmed negative, re-checked 2026-08-20. TRIANGULATED on frequency, DERIVED on ticket.",
+   FMT_NUM, "card_txns_per_month")
 sp("foreign_spend_share", "Foreign spend share (mean)", 0.34, 0.45, 0.24, "% of card spend",
    "Applied through the seasonal vector, not as a constant. ASSUMPTION.", FMT_PCT, "foreign_spend_share")
 sp("issuance_events", "Card issuance events", 1.06, 1.04, 1.10, "events/card/yr",
@@ -846,11 +876,11 @@ for key, nm, b, a, c, mb, ma, mc in ATM:
 _sr[0] += 1
 
 s_section("GROUP E: CREDIT, B2B AND FAMILY")
-sp("credit_takeup", "Credit take-up among eligible", 0.18, 0.30, 0.08, "%",
-   "Indian gold-loan penetration is <10% at a point in time; pre-selection uplift applied. DERIVED.",
-   FMT_PCT, "credit_takeup")
+# Credit take-up is GONE - merged into facility take-up in Group D, because
+# under the gold-drawdown model taking a card and taking credit are one act.
 sp("drawn_share", "Drawn as % of permitted limit", 0.50, 0.70, 0.30, "%",
-   "Revolving facilities draw 40-55% of permitted. TRIANGULATED.", FMT_PCT, "drawn_share")
+   "Revolving facilities draw 40-55% of permitted. This now drives CARD SPEND as well as the loan balance, "
+   "because the card is the drawdown mechanism. TRIANGULATED.", FMT_PCT, "drawn_share")
 sp("facility_turnover", "Facility turnover, peak -> average", 0.42, 0.55, 0.30, "x peak drawn",
    "AN ARITHMETIC CORRECTION, not a sensitivity, derived from Manappuram's 71-day realised tenor. It cuts "
    "the lending stream by 1.88x. DERIVED.", FMT_NUM2, "facility_turnover")
@@ -1113,20 +1143,16 @@ _mr[0] += 1
 # allocated across open regions by market size. Saturation is applied PER
 # REGION, so concentrating a channel in one market cannot push that market past
 # its own ceiling while the whole-book total still looks unbreached.
-ACQ_ROWS = ["agent_new", "direct_new", "referral_new", "other_new"]
+# Only the agent channel is computed centrally, because agent headcount is a
+# single national resource routed to the markets it operates in. Marketing and
+# referral are now computed INSIDE each region block, because each market has
+# its own CAC and its own referring base.
+ACQ_ROWS = ["agent_new"]
 ACQ_FIRST = _mr[0]
-for k, (key, label, unit) in enumerate([
-    ("agent_new", "Agent-driven new customers (routed by region below)", "accounts"),
-    ("direct_new", "Direct-driven new customers", "accounts"),
-    ("referral_new", "Referral-driven new customers", "accounts"),
-    ("other_new", "Non-agent demand (direct + referral, split by market size)", "accounts"),
-]):
-    r = ACQ_FIRST + k
-    ws_model["A%d" % r] = label
-    ws_model["A%d" % r].font = BLACK
-    ws_model["B%d" % r] = unit
-    ws_model["B%d" % r].font = SECONDARY
-    MROW[key] = r
+ws_model["A%d" % ACQ_FIRST] = "Agent-driven new customers (routed by region below)"
+ws_model["B%d" % ACQ_FIRST] = "accounts"
+ws_model["B%d" % ACQ_FIRST].font = SECONDARY
+MROW["agent_new"] = ACQ_FIRST
 _mr[0] = ACQ_FIRST + len(ACQ_ROWS)
 # Renormalisation base: the share of the region mix actually OPEN this period,
 # so a region that has not launched redistributes its share rather than losing
@@ -1160,10 +1186,19 @@ for rg in REGIONS:
     # -- customers ----------------------------------------------------------
     # Raw demand = this region's share of non-agent demand, plus whatever share
     # of agent output actually sells here. Then this region's OWN saturation.
-    _cum_row = _mr[0] + 6          # raw, sat, new, pay, churn, hold, cum
+    # direct, referral, raw, sat, new, pay, churn, hold, cum
+    _pay_row, _cum_row = _mr[0] + 5, _mr[0] + 8
+    m_row("direct_" + rg, "  Direct-driven (this market's budget at its own CAC)", "accounts",
+          lambda i, rg=rg: "=INDEX(Assumptions!$B$%d:$B$%d,%s)*%s/12*%s/%s*(1+%s)*%s" % (
+              AROW["mktg_y1"], AROW["mktg_y7"], mr("year", i), sref("mktshare_" + rg),
+              mr("n", i), sref("cac_" + rg), sref("organic_share"), _open(i, rg)), FMT_NUM2, GREEN)
+    m_row("ref_" + rg, "  Referral-driven (from this market's own base)", "accounts",
+          lambda i, rg=rg, pr=_pay_row: 0 if i == 0 else gate("referral", i, "%s*%s/12*%s*%s" % (
+              pcell(pr, i - 1), sref("referral_rate"), sref("referral_conversion"), mr("n", i))),
+          FMT_NUM2)
     m_row("raw_" + rg, "  Raw demand", "accounts",
-          lambda i, rg=rg: "=%s*%s*%s/%s+%s*%s" % (
-              mr("other_new", i), sref("mix_" + rg), _open(i, rg), mr("open_mix", i),
+          lambda i, rg=rg: "=%s+%s+%s*%s" % (
+              mr("direct_" + rg, i), mr("ref_" + rg, i),
               mr("agent_new", i), aref("agentshare_" + rg)), FMT_NUM2)
     m_row("sat_" + rg, "  Saturation (this region's own headroom)", "x",
           lambda i, rg=rg, cr=_cum_row: 1 if i == 0 else
@@ -1177,6 +1212,8 @@ for rg in REGIONS:
           else "=%s*(1-%s)^%s+%s*(1-%s)^(%s/2)" % (
               pcell(pr, i - 1), CHURN, mr("n", i), mr("new_" + rg, i), CHURN, mr("n", i)),
           FMT_NUM, BLACK_BOLD)
+    assert MROW["pay_" + rg] == _pay_row, \
+        "region row layout drifted - the referral lag would read the wrong row"
     m_row("churn_" + rg, "  Churned this period", "accounts",
           lambda i, rg=rg, pr=_pr: "=%s-%s" % (mr("new_" + rg, i), mr("pay_" + rg, i)) if i == 0
           else "=%s+%s-%s" % (pcell(pr, i - 1), mr("new_" + rg, i), mr("pay_" + rg, i)), FMT_NUM2)
@@ -1229,32 +1266,46 @@ for rg in REGIONS:
     m_row("cards_" + rg, "  Active cards", "cards",
           lambda i, rg=rg: gate("s2", i, "%s*%s" % (mr("qual_" + rg, i), sref("card_activation"))),
           FMT_NUM, BLACK_BOLD)
-    # Card spend keys off THIS region's SIP ticket, so it scales with income -
-    # but under the CREDIT variant the card is secured on the customer's own
-    # gold, so the limit that gold supports is a HARD CEILING. Early on it binds
-    # hard: at M13 the average customer holds only ~USD 209 of gold, a ~USD 105
-    # limit, against an income-implied spend of ~USD 286. Without the cap the
-    # model describes a customer who could not transact. Under PREPAID the card
-    # is loaded from salary, so gold does not constrain it and the cap lifts.
+    # THE CARD IS A DRAWDOWN ON THE GOLD FACILITY (client decision 2026-08-20).
+    # Aurumix has no balance sheet to lend from, so credit can only be extended
+    # against collateral it holds. Spending on the card IS borrowing, and the
+    # customer must repay to release their gold.
+    #
+    # Card spend is therefore NOT income-based. It is the annual drawdown:
+    #     limit (gold x LTV)  x  drawn share  x  draw events per year
+    # This is the same facility stream 5 already prices, so both now read one
+    # volume instead of two inconsistent ones. Under PREPAID the card is loaded
+    # from salary instead, and the gold does not constrain it.
     m_row("limit_" + rg, "  Credit limit per customer (gold x LTV)", "USD",
           lambda i, rg=rg: "=IF(%s=0,0,%s/%s*%s)" % (
               mr("pay_" + rg, i), mr("aum_" + rg, i), mr("pay_" + rg, i), aref("ltv_gold")), FMT_USD)
-    # Seasonality is applied INSIDE the cap, not after it: the limit is a
-    # ceiling in every month, including the December peak. Capping the average
-    # and then scaling by 1.14x would breach it in exactly the month spending
-    # is highest. (A revolving limit can technically be re-used within a month;
-    # holding to it is the conservative reading and keeps the model coherent.)
+    m_row("drawyr_" + rg, "  Annual drawdown per card (limit x drawn x draws)", "USD/yr",
+          lambda i, rg=rg: "=%s*%s*%s" % (mr("limit_" + rg, i), sref("drawn_share"),
+                                          sref("draw_events")), FMT_USD)
     m_row("spendcard_" + rg, "  Card spend per card per month", "USD",
-          lambda i, rg=rg: "=IF(%s=1,%s*%s*%s,MIN(%s*%s*%s,%s))" % (
-              sref("sw_prepaid_vs_credit"), sref("ticket_" + rg), sref("card_spend_mult"),
-              mr("seas_spend", i), sref("ticket_" + rg), sref("card_spend_mult"),
-              mr("seas_spend", i), mr("limit_" + rg, i)), FMT_USD)
+          lambda i, rg=rg: "=%s/12*%s" % (mr("drawyr_" + rg, i), mr("seas_spend", i)), FMT_USD)
     m_row("spendaed_" + rg, "  Card spend", "AED",
           lambda i, rg=rg: "=%s*%s*%s*%s" % (
               mr("cards_" + rg, i), mr("spendcard_" + rg, i), aref("aed_usd"),
               mr("n", i)), FMT_NUM)
     m_row("spendusd_" + rg, "  Card spend", "USD",
           lambda i, rg=rg: "=%s/%s" % (mr("spendaed_" + rg, i), aref("aed_usd")), FMT_USD)
+    # Average ticket is DERIVED, never input: monthly spend / transactions. It
+    # therefore scales with this region's SIP ticket automatically, and cannot
+    # drift to a basket the customer could not fund.
+    # The draw events cancel: average ticket = drawn amount / transactions per
+    # draw. So it depends only on how big a borrowing is and across how many
+    # purchases it is spent - not on how often the customer borrows.
+    m_row("avgtxn_" + rg, "  Average transaction size (derived)", "AED",
+          lambda i, rg=rg: "=IF(%s=0,0,%s*%s*%s/%s)" % (
+              sref("card_txns_per_draw"), mr("limit_" + rg, i), sref("drawn_share"),
+              aref("aed_usd"), sref("card_txns_per_draw")), FMT_NUM)
+    # MEMO for the cost build - the processor bills per AUTHORISATION, which is
+    # draws x transactions per draw, grossed up for declines. Feeds no revenue.
+    m_row("auths_" + rg, "  Card authorisations (memo - drives cost, not revenue)", "auths",
+          lambda i, rg=rg: "=%s*%s*%s*%s/12*(1+%s)" % (
+              mr("cards_" + rg, i), sref("draw_events"), sref("card_txns_per_draw"),
+              mr("n", i), aref("decline_uplift")), FMT_NUM)
 
     # -- the six streams, plus the redemption cost --------------------------
     m_row("s1a_" + rg, "  Stream 1a - Entry fee margin, SIP", "USD",
@@ -1275,16 +1326,19 @@ for rg in REGIONS:
               mr("cards_" + rg, i), sref("issuance_events"), aref("issuance_fee"),
               sref("replacement_events"), aref("replacement_fee"), aref("aed_usd"), mr("n", i))),
           FMT_USD)
-    m_row("drawn_" + rg, "  Average drawn credit balance", "USD",
-          lambda i, rg=rg: gate("s5", i, "%s*%s*(1-%s)*IF(%s=0,0,%s/%s)*%s*%s*%s" % (
-              mr("qual_" + rg, i), sref("credit_takeup"), sref("sw_prepaid_vs_credit"),
-              mr("cum_" + rg, i), mr("aum_" + rg, i), mr("cum_" + rg, i),
-              aref("ltv_gold"), sref("drawn_share"), sref("facility_turnover"))), FMT_USD)
+    # Stream 5 reads THE SAME facility and the same cardholder population as
+    # streams 2 and 4. Interchange comes from the merchant, lending fees from
+    # the borrower - two payers on one drawdown, which is not double-counting,
+    # but the VOLUME must be a single number, and now is.
+    m_row("drawn_" + rg, "  Average drawn balance outstanding", "USD",
+          lambda i, rg=rg: gate("s5", i, "%s*%s*(1-%s)*%s*%s" % (
+              mr("cards_" + rg, i), mr("limit_" + rg, i), sref("sw_prepaid_vs_credit"),
+              sref("drawn_share"), sref("facility_turnover"))), FMT_USD)
     m_row("s5_" + rg, "  Stream 5 - Lending revenue share", "USD",
-          lambda i, rg=rg: "=(%s*%s*%s+%s/%s*%s*%s*%s)*%s/12" % (
+          lambda i, rg=rg: gate("s5", i, "(%s*%s*%s+%s*%s*(1-%s)*%s*%s)*%s/12" % (
               mr("drawn_" + rg, i), aref("servicing_gross"), aref("servicing_share"),
-              mr("drawn_" + rg, i), sref("facility_turnover"), sref("draw_events"),
-              aref("origination_gross"), aref("origination_share"), mr("n", i)), FMT_USD)
+              mr("cards_" + rg, i), mr("drawyr_" + rg, i), sref("sw_prepaid_vs_credit"),
+              aref("origination_gross"), aref("origination_share"), mr("n", i)), ), FMT_USD)
     # MEMO for the cost build - redemption is a COST with no offsetting revenue
     # (VARA forbids charging for it), so the event count is carried here and the
     # cost itself arrives with the cost build. It feeds no total.
@@ -1362,10 +1416,13 @@ for key, label, parts in (
     ("s5", "Stream 5 - Lending revenue share", ["s5_" + r for r in REGIONS]),
     ("redemptions", "Redemption events (memo - drives cost, not revenue)",
      ["redem_" + r for r in REGIONS]),
+    ("auths", "Card authorisations (memo - drives cost, not revenue)",
+     ["auths_" + r for r in REGIONS]),
 ):
-    m_row(key, label, "USD" if key != "redemptions" else "events",
+    _memo = key in ("redemptions", "auths")
+    m_row(key, label, "events" if _memo else "USD",
           lambda i, p=parts: "=" + "+".join(mr(x, i) for x in p),
-          FMT_USD if key != "redemptions" else FMT_NUM)
+          FMT_NUM if _memo else FMT_USD)
 m_row("total_rev", "TOTAL NET REVENUE", "USD",
       lambda i: "=" + "+".join(mr(s, i) for s in SUBTOTALS) + "+" + mr("s6", i),
       FMT_USD, BLACK_BOLD, True)
@@ -1384,14 +1441,6 @@ for key, fn, fmt, font in (
     ("agent_new", lambda i: "=INDEX(Assumptions!$B$%d:$B$%d,%s)*%s*INDEX(Assumptions!$B$%d:$B$%d,%s)*%s"
      % (AROW["agents_y1"], AROW["agents_y7"], mr("year", i), sref("agent_productivity"),
         AROW["ramp_y1"], AROW["ramp_y7"], mr("year", i), mr("n", i)), FMT_NUM2, GREEN),
-    ("direct_new", lambda i: "=INDEX(Assumptions!$B$%d:$B$%d,%s)/12*%s/%s*(1+%s)"
-     % (AROW["mktg_y1"], AROW["mktg_y7"], mr("year", i), mr("n", i), sref("cac_base"),
-        sref("organic_share")), FMT_NUM2, GREEN),
-    ("referral_new", lambda i: 0 if i == 0 else gate("referral", i, "%s*%s/12*%s*%s" % (
-        mr("paying", i - 1), sref("referral_rate"), sref("referral_conversion"), mr("n", i))),
-     FMT_NUM2, BLACK),
-    ("other_new", lambda i: "=%s+%s" % (mr("direct_new", i), mr("referral_new", i)),
-     FMT_NUM2, BLACK),
 ):
     for i in range(N_PERIODS):
         c = ws_model[pcell(MROW[key], i)]
