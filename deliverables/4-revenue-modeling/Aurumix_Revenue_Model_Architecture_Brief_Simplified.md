@@ -6,7 +6,7 @@ workbook. The v2.6 brief is **retained in full** as the research and provenance 
 confirmed negative and correction referenced here lives there and is not repeated.
 
 **Deliverable:** `tools/Aurumix_Revenue_Model.xlsx`, built by `tools/build_revenue_model.py`,
-verified by `tools/verify_model.py` (34 checks) against a LibreOffice recalculation.
+verified by `tools/verify_model.py` (**89 checks**) against a LibreOffice recalculation.
 
 ---
 
@@ -28,6 +28,12 @@ That engine was built and validated. It reproduced every published anchor:
 
 **It then produced two numbers, and those two numbers are all the Excel model needs.** Everything else
 the engine did was resolution the spreadsheet cannot use and the client cannot audit.
+
+🔴 **Provenance gap — the anchors above are currently unverifiable from the working tree.** The five
+persistency anchors were validated in `reference_model/VALIDATION.md`, which is among the ~53 deleted
+reference-model files. **Persistency 55% is the single most load-bearing input in the model** — it drives
+the whole churn engine — so a number whose sources cannot be produced on request is a live audit risk.
+Restore that file, or re-source the anchors, before this model goes to the client.
 
 **Decision, 2026-08-20:** the engine moves to the Phase 5 simulation, where heterogeneity belongs and
 where it can be run stochastically rather than deterministically. The Excel model keeps its *outputs* as
@@ -54,10 +60,10 @@ where each one is *expressed* — as machinery, or as a parameter.
 independently, and the cost side depends on an account trajectory that only the revenue side produces.
 Building revenue first means the cost build has a book to size itself against.
 
-⚠ **One exception, and it is deliberate.** Stream 1 is reported **net of the fabrication premium**,
-because the entry fee is a *margin*, not a fee: Aurumix charges 5% and pays ~1.5% to buy the metal. That
-is cost **of revenue**, not an operating cost. Reporting stream 1 gross would read **~43% high** and the
-number would have to be walked back when costs arrive. Everything genuinely operating stays out.
+⚠ **The one cost-like item in scope is the fabrication premium, and the customer bears it.** Aurumix
+charges 5% and buys metal at roughly spot + 1.5%. Because the customer's money is spent at
+spot-plus-premium, they receive **fewer grams** — so the premium is already paid, by them, and the entry
+fee reaches Aurumix **whole**. See §3.3 for the arithmetic and for the double-count this replaced.
 
 ---
 
@@ -70,8 +76,8 @@ opening customers  +  new  −  churned  =  closing customers
 
 That is the whole population model. It runs per region (R1–R4) and totals up.
 
-**New customers** come from three channels — agents, paid marketing, referrals — subject to a saturation
-brake and acquisition seasonality:
+**New customers** come from three channels — **salesforce, paid marketing, referrals** — subject to a
+saturation brake and acquisition seasonality:
 
 ```
 new(t) = ( agents(y) × productivity × ramp(y)
@@ -93,8 +99,27 @@ monthly_churn = 1 − persistency_M13 ^ (1/12)          Base: 55% → 4.86%/mont
 Change persistency and churn follows. One number the client can argue with, instead of five archetypes
 they cannot.
 
-**Regions.** R1–R4 differ by average ticket and share of new customers. Region shares are **renormalised**
-for regions not yet open, so before R2 opens at M7 its share redistributes rather than vanishing.
+**The salesforce is deployed across every market — UAE 45%, Oman & Bahrain 10%, India 45%** (revised
+2026-08-21). An earlier cut put 100% in India, which left the licensed home market with nobody selling.
+Outside India the people are **salaried rather than commission-only**; for *revenue* that distinction does
+not matter, since both are people acquiring customers at some productivity. ⚠ **It matters enormously for
+cost** — a Dubai salesperson and an Indian commission agent are not the same expense — so this split must
+be cost-weighted when the cost build lands.
+
+⚠ **Not to be confused with stream 6.** The salesforce is **B2C**: people selling to consumers. Stream 6
+is **B2B**: partners white-labelling the platform onto their own customer books. Different motion,
+different economics, not a substitute for one another.
+
+The regional shares are **renormalised across open regions**, so a market still in licensing redistributes
+its people to the markets that are live rather than idling them.
+
+🔴 **Setting a non-zero Gulf share exposed a latent gating bug.** While the split was 100% India, no agent
+output was ever routed to an unopened region, so the *missing* opening gate on the agent channel was
+invisible — the direct and referral channels were gated all along. Giving Oman & Bahrain a share made it
+fire immediately: the region earned revenue in M12, one month before it opens. Now gated and covered by a
+check. **A parameter sitting at zero can hide a structural defect indefinitely.**
+
+**Regions.** The three regions differ by average ticket, salesforce share, marketing share and CAC.
 
 ---
 
@@ -127,12 +152,46 @@ than payers (no accruing benefit left to protect).
 
 Without this row, AUM is badly understated and streams 5 and 6 go with it.
 
-### 3.3 The fabrication premium inside stream 1
+⚠ **"AUM" in this model means COLLATERAL-ELIGIBLE AUM, and the rows are named that way** (relabelled
+2026-08-21). Two things reduce it, and only one of them is gold actually leaving:
 
-```
-net entry margin = entry_fee − (1 − entry_fee) × fabrication_premium
-                 = 5.0% − 0.95 × 1.5%  =  3.575%
-```
+| Row | What happens to the metal | Why it leaves the base |
+|---|---|---|
+| **Redemption** | Tokens burned, gold **sold**. Genuinely gone. | It no longer exists |
+| **Gold moved out of Aurumix's control** | **Nothing. It stays in the vault.** | Aurumix cannot foreclose on a token in a private wallet, so it can no longer back a credit limit |
+
+The second row was previously called *self-custody leakage* and described as decreasing AUM, which the
+client correctly challenged: a token moving to a customer's own wallet sells nothing and burns nothing.
+The arithmetic was never wrong — in this model **AUM has exactly one consumer, the card credit limit** —
+but the label was.
+
+🔴 **That single-consumer property is what makes the shared row safe.** If a later build points anything
+else at AUM — a custody fee, an AUM-based B2B fee, a reported-AUM headline — the two effects diverge and
+this row must be split in two *before* that reference is added.
+
+### 3.3 Who bears the fabrication premium
+
+**The customer does — once.** On a USD 100 contribution:
+
+| | |
+|---|---|
+| Customer pays | **100.00** |
+| Entry fee 5% → Aurumix | **5.00** |
+| Remainder, spent on metal | 95.00 |
+| Metal costs spot + 1.5%, so the customer receives | **93.60** of gold at spot |
+
+The premium is borne in **grams delivered**, not in Aurumix's fee. In the model this is the `(1 + premium)`
+divisor on *Grams purchased*; stream 1 earns the headline 5%. This matches standard gold-product practice,
+where the quoted price already includes the dealer spread.
+
+⚠ **This replaced a genuine double-count** (fixed 2026-08-21). An earlier cut applied the divisor to grams
+*and* netted the premium off the fee — `5% − 0.95 × 1.5% = 3.575%` — charging the same USD 1.40 per 100
+twice, once to the customer and again to Aurumix. Only one side of a trade can pay a spread. Two paired
+checks in `verify_model.py` now assert the incidence is single-sided, so the pair cannot silently return.
+
+**If this decision is ever reversed** and Aurumix absorbs the premium instead, the `(1 + premium)` divisor
+on *Grams purchased* must be removed in the same edit — the customer would then receive the full 95.00 of
+metal. Changing one without the other reintroduces the bug in whichever direction it is changed.
 
 ### 3.4 The ATM draw distribution — four rows
 
@@ -171,8 +230,8 @@ Spot is a **sub-stream of 1**, not a seventh stream: same fee, same gold, differ
 
 | # | Stream | Scales with | Activates |
 |---|---|---|---|
-| **1a** | Entry fee margin — SIP | Paying customers × regional ticket | M1 |
-| **1b** | Entry fee margin — SPOT | Paying customers × attach × frequency × ticket | M1 |
+| **1a** | Entry fee — SIP | Paying customers × regional ticket | M1 |
+| **1b** | Entry fee — SPOT | Paying customers × attach × frequency × ticket | M1 |
 | **2** | Card interchange | Card spend × rate × (1 − PM share), less per-txn fees | **M18** |
 | **3** | Family plan and Digital Will | Paying customers × attach × price | M1 |
 | **4** | Cardholder fees | FX margin + ATM over-allowance + issuance/replacement | **M18** |
@@ -281,7 +340,7 @@ the one an experiment could actually answer.**
 | **Churn** | `(1 − monthly)^12` reproduces the stated persistency |
 | **Eligibility bites** | qualified is strictly below the whole book |
 | **Activation** | streams 2 and 4 zero before M18; streams 5 and 6 zero at M24, first non-zero at Y3 |
-| **Stream 1 is a margin** | implied rate equals `fee − (1 − fee) × premium`, not the headline fee |
+| **Premium incidence** | stream 1 earns the *full* fee AND grams are short by exactly `(1+premium)` — a matched pair, so the premium cannot be charged twice |
 | **ATM** | the mean draw sits below the allowance, yet the distribution still earns |
 | **Stream 0** | never positive |
 | **Totals** | total equals the sum of its streams; Summary ties to Model |

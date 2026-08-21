@@ -362,9 +362,9 @@ _ar[0] += 1
 # ----------------------------------------------------- activation calendar --
 a_section("ACTIVATION CALENDAR - the single source of every activation period")
 ACTIVATIONS = [
-    ("s1a", 1, "from", "Stream 1a - Entry fee margin, SIP",
+    ("s1a", 1, "from", "Stream 1a - Entry fee, SIP",
      "M1. The core product - live at launch."),
-    ("s1b", 1, "from", "Stream 1b - Entry fee margin, SPOT",
+    ("s1b", 1, "from", "Stream 1b - Entry fee, SPOT",
      "M1. A sub-stream of 1: the same fee on the same gold through a different rail, so it needs no "
      "additional build."),
     ("s0", 1, "from", "Stream 0 - Redemption cost",
@@ -615,16 +615,19 @@ for y in range(1, 8):
 # WHERE EACH CHANNEL CAN ACTUALLY SELL. Previously every channel was allocated
 # to every region in the same proportion, which quietly put agents to work in
 # markets they do not operate in.
-AGENT_SHARE = {"uae": 0.00, "gulf": 0.00, "india": 1.00}
+AGENT_SHARE = {"uae": 0.45, "gulf": 0.10, "india": 0.45}
 for key in REGIONS:
-    a_row("agentshare_" + key, "Share of agent-driven acquisition - %s" % RLAB[key],
-          AGENT_SHARE[key], "% of agent output",
-          "CLIENT INPUT 2026-08-20: THE AGENT NETWORK OPERATES IN INDIA ONLY. Outside India acquisition is "
-          "marketing spend, referrals and organic only. ⚠ THIS CONTRADICTS THE ARCHITECTURE BRIEF, which "
-          "allocates agents across every region through its channel-to-region mix and argues that the agent "
-          "network is Indian and 'must recruit non-Indian agents before it reaches the other South Asian "
-          "market at all' - wording that assumes agents are already selling to the UAE diaspora. The client "
-          "instruction is taken as authoritative and the brief's mix is superseded. Must sum to 100%.",
+    a_row("agentshare_" + key, "Share of salesforce deployed - %s" % RLAB[key],
+          AGENT_SHARE[key], "% of salesforce",
+          "REVISED 2026-08-20. An earlier cut put 100% in India, which left the UAE - the licensed home "
+          "market - with no people selling at all. There will be a salesforce outside India; it is simply "
+          "SALARIED rather than commission-only. FOR REVENUE THE DISTINCTION DOES NOT MATTER: both are people "
+          "acquiring customers at some productivity. ⚠ IT MATTERS ENORMOUSLY FOR COST - a Dubai salesperson "
+          "and an Indian commission agent are not remotely the same expense, and this split MUST be "
+          "cost-weighted when the cost build lands. India stays high because a large agent pool is cheapest "
+          "to build there; UAE is weighted for being the core licensed market. ⚠ NOT the same thing as "
+          "stream 6: that is B2B, partners white-labelling the platform onto their own customer books, and "
+          "is not a consumer sales channel at all. Must sum to 100%. CLIENT INPUT.",
           FMT_PCT, "agentshare_" + key)
 _ar[0] += 1
 ws_assum.freeze_panes = "B6"
@@ -780,8 +783,16 @@ sp("months_to_qualify", "Average months to clear the gate", 8, 6, 11, "months",
 _sr[0] += 1
 
 s_section("GROUP C: AUM, LEAKAGE AND SPOT")
-sp("self_custody_leakage", "Self-custody leakage", 0.12, 0.06, 0.30, "% of AUM/yr",
-   "Gold withdrawn to a customer's own wallet. Free to Aurumix but it leaves AUM. ASSUMPTION.",
+sp("self_custody_leakage", "Gold moved out of Aurumix's control", 0.12, 0.06, 0.30,
+   "% of AUM/yr",
+   "RELABELLED 2026-08-21 after the client correctly objected to the old name, 'self-custody leakage'. "
+   "THE GOLD DOES NOT LEAVE THE VAULT: a token moving to a customer's own wallet sells nothing and burns "
+   "nothing, so calling it an AUM decrease was wrong. What it does leave is Aurumix's COLLATERAL-ELIGIBLE "
+   "base - Aurumix cannot foreclose on a token sitting in a private wallet, so that gold can no longer back "
+   "a credit limit. In this model AUM has exactly ONE consumer, the card credit limit, so the arithmetic was "
+   "always right and only the label was misleading. ⚠ THAT ONE-CONSUMER PROPERTY IS WHAT MAKES THIS SAFE: if "
+   "a later build points anything else at AUM - a custody fee, a reported-AUM headline - this row must be "
+   "split in two first. Contrast the redemption line, which IS gold genuinely gone. ASSUMPTION.",
    FMT_PCT, "self_custody_leakage")
 sp("redemption_rate", "Redemption rate", 0.08, 0.04, 0.16, "% of AUM/yr",
    "A DIFFERENT EVENT from self-custody and a separate line. PAXG turnover of 5.9% is the only comparator. "
@@ -1154,14 +1165,23 @@ ws_model["B%d" % ACQ_FIRST] = "accounts"
 ws_model["B%d" % ACQ_FIRST].font = SECONDARY
 MROW["agent_new"] = ACQ_FIRST
 _mr[0] = ACQ_FIRST + len(ACQ_ROWS)
-# Renormalisation base: the share of the region mix actually OPEN this period,
-# so a region that has not launched redistributes its share rather than losing
-# it. Depends only on the mix and the activation calendar, so it is computed
-# here - ahead of the region blocks that divide by it.
-m_row("open_mix", "Open-region share total (renormalisation base)", "x",
+# Renormalisation base: the share of the salesforce sitting in regions that are
+# actually OPEN this period. The regional agent term divides by this, so a
+# market that has not launched redistributes its people rather than idling them
+# - salespeople earmarked for a market still in licensing work the markets that
+# are live. Computed here, ahead of the region blocks that divide by it.
+#
+# ⚠ THIS ROW ALSO PLUGS A LEAK. Until 2026-08-21 the salesforce split was
+# 100% India / 0% elsewhere, so nothing was ever routed to an unopened region
+# and the missing gate below was invisible. Giving Oman & Bahrain a non-zero
+# share made it visible immediately: the region earned revenue in M12, a month
+# before it opens. The direct and referral channels were gated all along; only
+# the agent channel was not.
+m_row("open_mix", "Open-region salesforce share (renormalisation base)", "x",
       lambda i: "=" + "+".join(
-          "%s*%s" % (sref("mix_" + q), "1" if q not in [a[0] for a in ACTIVATIONS] else opened(q, i))
-          for q in REGIONS), FMT_NUM3)
+          "%s*%s" % (aref("agentshare_" + q), "1" if q not in [a[0] for a in ACTIVATIONS]
+                     else opened(q, i))
+          for q in REGIONS), FMT_NUM3, GREEN)
 _mr[0] += 1
 
 # ======================== ONE BLOCK PER REGION ==============================
@@ -1169,7 +1189,16 @@ _mr[0] += 1
 # and all six streams, ending in a regional subtotal. The grand total is the
 # sum of those subtotals plus the non-regional B2B line.
 CHURN = sref("monthly_churn")
-NET_FEE = "(%s-(1-%s)*%s)" % (aref("entry_fee"), aref("entry_fee"), aref("fab_premium"))
+# CLIENT DECISION 2026-08-21: the CUSTOMER bears the fabrication premium. Their
+# money buys metal at spot-plus-premium, so they receive fewer grams - which is
+# exactly what "Grams purchased" already does by dividing by (1+premium). The
+# entry fee therefore reaches Aurumix WHOLE. An earlier cut ALSO netted the
+# premium off this margin, subtracting the same USD 1.40 per USD 100 twice:
+# once from the customer's grams and once from Aurumix's fee. Only one can be
+# true. Standard practice for gold products is that the quoted price includes
+# the dealer spread, so the customer bears it. ⚠ DO NOT reintroduce a premium
+# term here without removing the (1+premium) divisor in "Grams purchased".
+NET_FEE = aref("entry_fee")
 ATM_TERMS = "+".join(
     "%s*MAX(0,%s-%s)" % (sref("atm_" + k), sref("atmm_" + k), aref("atm_allowance"))
     for k, _n, _b, _a, _c, _mb, _ma, _mc in ATM)
@@ -1196,10 +1225,13 @@ for rg in REGIONS:
           lambda i, rg=rg, pr=_pay_row: 0 if i == 0 else gate("referral", i, "%s*%s/12*%s*%s" % (
               pcell(pr, i - 1), sref("referral_rate"), sref("referral_conversion"), mr("n", i))),
           FMT_NUM2)
+    # The agent term is gated by this region's opening and renormalised across
+    # the regions that ARE open, so total agent output is conserved.
     m_row("raw_" + rg, "  Raw demand", "accounts",
-          lambda i, rg=rg: "=%s+%s+%s*%s" % (
-              mr("direct_" + rg, i), mr("ref_" + rg, i),
-              mr("agent_new", i), aref("agentshare_" + rg)), FMT_NUM2)
+          lambda i, rg=rg: "=%s+%s+IF(%s=0,0,%s*%s/%s*%s)" % (
+              mr("direct_" + rg, i), mr("ref_" + rg, i), mr("open_mix", i),
+              mr("agent_new", i), aref("agentshare_" + rg), mr("open_mix", i),
+              _open(i, rg)), FMT_NUM2)
     m_row("sat_" + rg, "  Saturation (this region's own headroom)", "x",
           lambda i, rg=rg, cr=_cum_row: 1 if i == 0 else
           "=MAX(0,1-%s/%s)" % (pcell(cr, i - 1), aref("ceil_" + rg)), FMT_NUM3)
@@ -1240,7 +1272,7 @@ for rg in REGIONS:
           lambda i, rg=rg: "=(%s+%s)*(1-%s)/%s/(1+%s)" % (
               mr("sip_" + rg, i), mr("spot_" + rg, i), aref("entry_fee"),
               aref("gold_price"), aref("fab_premium")), FMT_NUM2)
-    m_row("decay_" + rg, "  AUM decay rate (holder-weighted)", "%/period",
+    m_row("decay_" + rg, "  Collateral-eligible AUM decay rate (holder-weighted)", "%/period",
           lambda i, rg=rg: "=(%s+%s*IF(%s+%s=0,1,(%s+%s*%s)/(%s+%s)))*%s/12" % (
               sref("self_custody_leakage"), sref("redemption_rate"),
               mr("pay_" + rg, i), mr("hold_" + rg, i),
@@ -1308,9 +1340,9 @@ for rg in REGIONS:
               mr("n", i), aref("decline_uplift")), FMT_NUM)
 
     # -- the six streams, plus the redemption cost --------------------------
-    m_row("s1a_" + rg, "  Stream 1a - Entry fee margin, SIP", "USD",
+    m_row("s1a_" + rg, "  Stream 1a - Entry fee, SIP", "USD",
           lambda i, rg=rg: "=%s*%s" % (mr("sip_" + rg, i), NET_FEE), FMT_USD)
-    m_row("s1b_" + rg, "  Stream 1b - Entry fee margin, SPOT", "USD",
+    m_row("s1b_" + rg, "  Stream 1b - Entry fee, SPOT", "USD",
           lambda i, rg=rg: "=%s*%s" % (mr("spot_" + rg, i), NET_FEE), FMT_USD)
     m_row("s2_" + rg, "  Stream 2 - Card interchange", "USD",
           lambda i, rg=rg: "=%s*IF(%s=1,MIN(%s,1%%),%s)*(1-%s)" % (
@@ -1380,7 +1412,8 @@ for key, label, parts, fmt, bold in (
     ("new_total", "NEW CUSTOMERS", ["new_" + r for r in REGIONS], FMT_NUM, True),
     ("active_cards", "ACTIVE CARDS", ["cards_" + r for r in REGIONS], FMT_NUM, True),
     ("grams_held", "GRAMS HELD", ["grams_" + r for r in REGIONS], FMT_NUM, False),
-    ("aum", "AUM", ["aum_" + r for r in REGIONS], FMT_USD, True),
+    ("grams_bought", "Grams purchased", ["grams_in_" + r for r in REGIONS], FMT_NUM2, False),
+    ("aum", "COLLATERAL-ELIGIBLE AUM", ["aum_" + r for r in REGIONS], FMT_USD, True),
     ("qualified", "Cleared the six-payment gate", ["qual_" + r for r in REGIONS], FMT_NUM, False),
     ("sip_inflow", "SIP contributions", ["sip_" + r for r in REGIONS], FMT_USD, False),
     ("spot_inflow", "Spot purchase volume", ["spot_" + r for r in REGIONS], FMT_USD, False),
@@ -1391,7 +1424,7 @@ m_row("conservation", "CHECK: paying + holders = cumulative ever acquired", "del
       lambda i: "=%s+%s-%s" % (mr("paying", i), mr("holders", i), mr("cum_ever", i)), FMT_NUM3, BLACK_BOLD)
 # Sanity memo: under the credit variant the card is secured on the customer's
 # own gold, so the limit that gold supports is a hard ceiling on monthly spend.
-m_row("aum_per_cust", "  AUM per paying customer (memo)", "USD",
+m_row("aum_per_cust", "  Collateral-eligible AUM per paying customer (memo)", "USD",
       lambda i: "=IF(%s=0,0,%s/%s)" % (mr("paying", i), mr("aum", i), mr("paying", i)), FMT_USD)
 # Total monthly card spend against TOTAL credit capacity - capacity summed as
 # cards x that region's own limit. Dividing blended spend by a PAYING-weighted
@@ -1408,8 +1441,8 @@ m_row("spend_vs_limit", "  CHECK: card spend vs credit capacity (must be <= 1.00
 _mr[0] += 1
 
 for key, label, parts in (
-    ("s1a", "Stream 1a - Entry fee margin, SIP", ["s1a_" + r for r in REGIONS]),
-    ("s1b", "Stream 1b - Entry fee margin, SPOT", ["s1b_" + r for r in REGIONS]),
+    ("s1a", "Stream 1a - Entry fee, SIP", ["s1a_" + r for r in REGIONS]),
+    ("s1b", "Stream 1b - Entry fee, SPOT", ["s1b_" + r for r in REGIONS]),
     ("s2", "Stream 2 - Card interchange", ["s2_" + r for r in REGIONS]),
     ("s3", "Stream 3 - Family plan and Digital Will", ["s3_" + r for r in REGIONS]),
     ("s4", "Stream 4 - Cardholder fees", ["s4_" + r for r in REGIONS]),
@@ -1511,8 +1544,8 @@ REG_ROWS = s_block("REVENUE BY REGION", [
 ])
 
 STREAM_ROWS = s_block("REVENUE BY STREAM", [
-    ("s1a", "Stream 1a: Entry fee margin - SIP", "sum", FMT_USD, False),
-    ("s1b", "Stream 1b: Entry fee margin - SPOT", "sum", FMT_USD, False),
+    ("s1a", "Stream 1a: Entry fee - SIP", "sum", FMT_USD, False),
+    ("s1b", "Stream 1b: Entry fee - SPOT", "sum", FMT_USD, False),
     ("s2", "Stream 2: Card interchange", "sum", FMT_USD, False),
     ("s3", "Stream 3: Family plan and Digital Will", "sum", FMT_USD, False),
     ("s4", "Stream 4: Cardholder fees", "sum", FMT_USD, False),
@@ -1565,7 +1598,7 @@ s_block("CUSTOMERS AND AUM (year end)", [
     ("cum_ever", "Cumulative ever acquired", "close", FMT_NUM, False),
     ("active_cards", "Active cards", "close", FMT_NUM, False),
     ("grams_held", "Grams held", "close", FMT_NUM, False),
-    ("aum", "AUM", "close", FMT_USD, True),
+    ("aum", "Collateral-eligible AUM", "close", FMT_USD, True),
     ("rev_per_cust", "Net revenue per paying customer (annualised)", "close", FMT_USD, False),
 ])
 note(ws_summ, _sy[0],
@@ -1601,7 +1634,7 @@ print("Engine       : rolling balance, opening + new - churned = closing, by reg
 print("Kept as inputs, not engines:")
 print("  - card eligibility (%% who ever qualify, months to qualify)")
 print("  - the HOLDERS balance (stopped paying, still hold gold)")
-print("  - the fabrication premium netted inside stream 1")
+print("  - the fabrication premium, borne by the CUSTOMER in grams delivered")
 print("  - the ATM draw distribution (a mean returns exactly zero)")
 print("Deleted to the Phase 5 simulation: archetypes, run-of-6 chain, lifecycle")
 print("  curves, the convolution, the six-state machine, withdrawal buckets.")

@@ -228,8 +228,8 @@ for rn, cr_ in zip(REGION_NAMES, _cum_rows):
         breach.append("%s %.0f > %.0f" % (rn, end, cap))
 check("NO region breaches its own reachable ceiling", not breach, "; ".join(breach))
 
-# Agent output must land only where the agent network operates.
-ash = {rn: aval("Share of agent-driven acquisition - %s" % rn) for rn in REGION_NAMES}
+# The salesforce is deployed across every market, not India alone.
+ash = {rn: aval("Share of salesforce deployed - %s" % rn) for rn in REGION_NAMES}
 check("Agent-share allocation sums to 100%", abs(sum(ash.values()) - 1.0) < 1e-9, "%r" % ash)
 _cac = {rn: sval("Marketing CAC - %s" % rn) for rn in REGION_NAMES}
 _mks = {rn: sval("Marketing spend share - %s" % rn) for rn in REGION_NAMES}
@@ -249,9 +249,15 @@ check("Every region refers from its OWN paying base",
       len([r for r in range(1, mdl.max_row + 1)
            if mdl["A%d" % r].value == "  Referral-driven (from this market's own base)"])
       == len(REGION_NAMES))
-check("The agent channel is confined to the regions it operates in",
-      sum(1 for v in ash.values() if v > 0) < len(REGION_NAMES),
-      "agents allocated to every region: %r" % ash)
+# REVISED 2026-08-21. The old check asserted the OPPOSITE - that at least one
+# region had no salesforce - which encoded a cut of the model where 100% sat in
+# India and the licensed home market had nobody selling at all. Every market
+# now gets people; what differs by region is what those people COST, which is a
+# cost-build concern and deliberately absent here.
+check("Every market has a deployed salesforce, including the licensed home market",
+      all(isinstance(v, (int, float)) and v > 0 for v in ash.values()), "%r" % ash)
+check("UAE, the licensed home market, is not out-weighted by the Gulf expansion",
+      ash.get("UAE", 0) > ash.get("Oman and Bahrain", 1), "%r" % ash)
 
 # churn must reproduce the stated persistency over 12 months
 pers, churn = sval("Persistency - customers still paying after 12 months"), sval("Monthly churn rate (derived)")
@@ -274,8 +280,8 @@ check("Active cards are ZERO before the card launch month",
 # ---- 6. every stream fires on exactly the month the calendar says ----------
 # The month is READ FROM the Assumptions activation calendar, not hardcoded, so
 # these checks follow the calendar if a launch date is moved again.
-for label, nm in (("Stream 1a - Entry fee margin, SIP", "stream 1a"),
-                  ("Stream 1b - Entry fee margin, SPOT", "stream 1b"),
+for label, nm in (("Stream 1a - Entry fee, SIP", "stream 1a"),
+                  ("Stream 1b - Entry fee, SPOT", "stream 1b"),
                   ("Stream 3 - Family plan and Digital Will", "stream 3"),
                   ("Stream 2 - Card interchange", "stream 2"),
                   ("Stream 4 - Cardholder fees", "stream 4"),
@@ -295,15 +301,36 @@ redem = row("Redemption events (memo - drives cost, not revenue)")
 check("Redemption event count is retained as a cost-build memo",
       all_num(redem) and redem[28] > 0, "Y7 events %r" % redem[28])
 
-# ---- 7. stream 1 is a MARGIN, not a fee -----------------------------------
+# ---- 7. the fabrication premium is borne ONCE, by the customer ------------
+# Client decision 2026-08-21. The customer's money buys metal at spot+premium,
+# so they receive fewer grams; the entry fee reaches Aurumix whole. These two
+# checks are a matched pair and exist to catch the premium being deducted
+# TWICE - once from the customer's grams and again from Aurumix's fee, which
+# is what an earlier cut of the model did.
 fee, prem = aval("Entry fee charged"), aval("Fabrication premium paid")
-s1a, sip = row("Stream 1a - Entry fee margin, SIP"), row("SIP contributions")
-expected = fee - (1 - fee) * prem
-check("Stream 1 nets the fabrication premium (margin, not gross fee)",
-      all(abs(s1a[i] - sip[i] * expected) < 1e-6 for i in range(N) if sip[i]),
-      "implied rate %.5f vs expected %.5f" % (s1a[13] / sip[13] if sip[13] else 0, expected))
-check("Netting is material - the margin is well below the headline fee",
-      expected < fee * 0.8, "net %.3f%% vs headline %.1f%%" % (expected * 100, fee * 100))
+s1a, sip = row("Stream 1a - Entry fee, SIP"), row("SIP contributions")
+spot, grams_in, price = row("Spot purchase volume"), row("Grams purchased"), aval("Gold price (flat)")
+
+# (a) Aurumix keeps the WHOLE entry fee - no premium term on the revenue side.
+check("Stream 1 earns the full entry fee (premium is NOT netted off revenue)",
+      all_num(s1a) and all(abs(s1a[i] - sip[i] * fee) < 1e-6 for i in range(N) if sip[i]),
+      "implied rate %.5f vs headline fee %.5f" % (s1a[13] / sip[13] if sip[13] else 0, fee))
+
+# (b) ...and the customer therefore DOES bear it, in grams. Metal delivered
+# must fall short of the post-fee cash by exactly the premium factor. If the
+# (1+premium) divisor is ever dropped, nobody pays the premium and this fails.
+inflow = [(sip[i] + spot[i]) * (1 - fee) for i in range(N)]
+check("The customer bears the premium - grams delivered are short by exactly (1+premium)",
+      all_num(grams_in) and all(
+          abs(grams_in[i] * price - inflow[i] / (1 + prem)) < 1e-6 for i in range(N) if inflow[i]),
+      "M14 metal %.2f vs cash %.2f, implied premium %.5f" % (
+          grams_in[13] * price, inflow[13],
+          inflow[13] / (grams_in[13] * price) - 1 if grams_in[13] else 0))
+
+# (c) the incidence is material and lands on ONE side of the trade only.
+check("Premium incidence is material and single-sided",
+      abs(inflow[13] - grams_in[13] * price) > 1e-6 and abs(s1a[13] - sip[13] * fee) < 1e-6,
+      "customer bears %.2f USD at M14; Aurumix bears 0" % (inflow[13] - grams_in[13] * price))
 
 # ---- 8. the ATM distribution earns what a mean would not ------------------
 # Verified from the parameters directly, so the check survives the stream-4
@@ -440,7 +467,7 @@ check("Average ticket sits well below the UAE all-population average of AED 313"
 
 # ---- 9. totals -------------------------------------------------------------
 tot = row("TOTAL NET REVENUE")
-parts = ["Stream 1a - Entry fee margin, SIP", "Stream 1b - Entry fee margin, SPOT",
+parts = ["Stream 1a - Entry fee, SIP", "Stream 1b - Entry fee, SPOT",
          "Stream 2 - Card interchange", "Stream 3 - Family plan and Digital Will",
          "Stream 4 - Cardholder fees", "Stream 5 - Lending revenue share",
          "Stream 6 - B2B platform fee"]
@@ -448,7 +475,7 @@ sums = [sum(row(p)[i] for p in parts) for i in range(N)]
 check("TOTAL NET REVENUE equals the sum of its streams",
       all(abs(tot[i] - sums[i]) < 1e-6 for i in range(N)))
 check("Revenue is positive from M1 and grows", tot[0] > 0 and tot[-1] > tot[0])
-aum = row("AUM")
+aum = row("COLLATERAL-ELIGIBLE AUM")
 check("AUM is positive and grows", all(x >= 0 for x in aum) and aum[-1] > aum[0])
 check("Grams held never go negative", all(x >= 0 for x in row("GRAMS HELD")))
 
