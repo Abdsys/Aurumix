@@ -613,6 +613,38 @@ check("The two measures genuinely diverge (self-custody is actually deducted)",
 check("Summary carries the comparable custody headline, not only the collateral figure",
       rowof(summ, "Gold under custody (comparable headline)") is not None)
 
+# ---- 9a2. holding a card is not the same as having credit -----------------
+# Client correction 2026-08-21. A lapsed customer keeps the plastic but loses
+# the ICS score, so no credit line. Without this split every holder was drawing
+# down against gold they cannot borrow against.
+_cc = [r for r in range(1, mdl.max_row + 1)
+       if mdl["A%d" % r].value == "  ...of which have a live credit line"]
+check("Every region separates cardholders from credit-eligible cardholders",
+      len(_cc) == len(REGION_NAMES), "found %d" % len(_cc))
+_cc7 = sum(mdl["%s%d" % (pc(N - 1), r)].value for r in _cc)
+_cards7 = row("ACTIVE CARDS")[N - 1]
+check("Credit-eligible cardholders are strictly FEWER than cardholders",
+      0 < _cc7 < _cards7 * 0.95,
+      "Y7 %.0f of %.0f cards (%.0f%%)" % (_cc7, _cards7, 100 * _cc7 / _cards7))
+# The split must equal the paying share of the card-eligible base, otherwise
+# the ratio has been wired to the wrong populations.
+_pay7, _hold7 = row("PAYING CUSTOMERS")[N - 1], row("HOLDERS (stopped paying, still hold gold)")[N - 1]
+check("The credit-eligible share equals the paying share of the card-eligible base",
+      abs(_cc7 / _cards7 - _pay7 / (_pay7 + _hold7)) < 0.02,
+      "cards %.4f vs customers %.4f" % (_cc7 / _cards7, _pay7 / (_pay7 + _hold7)))
+# And spend must be computed on the credit subset, not on all cards - dividing
+# whole-book spend by CREDIT cards must return the per-card drawdown, not a
+# number a third of it.
+_spend7 = row("Card spend")[N - 1]
+_dr = [r for r in range(1, mdl.max_row + 1)
+       if mdl["A%d" % r].value == "  Annual drawdown per card (limit x drawn x draws)"]
+_maxdraw = max(mdl["%s%d" % (pc(N - 1), r)].value for r in _dr)
+_mindraw = min(mdl["%s%d" % (pc(N - 1), r)].value for r in _dr)
+check("Card spend is driven by CREDIT-eligible cards, not by all cardholders",
+      _mindraw * 0.9 <= _spend7 / _cc7 <= _maxdraw * 1.1,
+      "implied spend per credit card %.2f vs regional drawdowns %.2f-%.2f"
+      % (_spend7 / _cc7, _mindraw, _maxdraw))
+
 # ---- 9b. the metal price moves, so attribution must stay recoverable -------
 _px, _cagr = row("Gold price (this period)"), aval("Gold price appreciation")
 check("Gold price compounds at the stated rate, on MODEL YEAR",

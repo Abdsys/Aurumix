@@ -1742,6 +1742,26 @@ for rg in REGIONS:
     m_row("cards_" + rg, "  Active cards", "cards",
           lambda i, rg=rg: gate("s2", i, "%s*%s" % (mr("qual_" + rg, i), sref("card_activation"))),
           FMT_NUM, BLACK_BOLD)
+    # CLIENT CORRECTION 2026-08-21. HOLDING A CARD AND HAVING CREDIT ARE NOT THE
+    # SAME THING. A customer who stops paying keeps the card, but has no live
+    # ICS score, so no credit line is extended - the tier lapses from gold to
+    # silver, the plastic stays, the facility does not.
+    #
+    # The card-eligible base is paying + holders, and BY Y7 HOLDERS ARE TWO
+    # THIRDS OF IT. Without this row every one of them was drawing down against
+    # gold they cannot borrow against, and the defect grew as the book matured -
+    # card revenue was increasingly driven by exactly the customers who had
+    # stopped paying, which is the wrong direction for the whole business to
+    # lean. Worth USD 328,543 of Y7 revenue, or 7.9%.
+    #
+    # WHAT SPLITS AND WHAT DOES NOT: card spend, interchange, ATM (a cash
+    # withdrawal IS a drawdown) and lending all move to this subset. Issuance
+    # and replacement stay on ALL cards - a holder still carries plastic that
+    # gets lost and reissued.
+    m_row("ccards_" + rg, "  ...of which have a live credit line", "cards",
+          lambda i, rg=rg: "=IF(%s=0,0,%s*%s/%s)" % (
+              mr("cardbase_" + rg, i), mr("cards_" + rg, i), mr("pay_" + rg, i),
+              mr("cardbase_" + rg, i)), FMT_NUM, BLACK_BOLD)
     # THE CARD IS A DRAWDOWN ON THE GOLD FACILITY (client decision 2026-08-20).
     # Aurumix has no balance sheet to lend from, so credit can only be extended
     # against collateral it holds. Spending on the card IS borrowing, and the
@@ -1762,7 +1782,7 @@ for rg in REGIONS:
           lambda i, rg=rg: "=%s/12*%s" % (mr("drawyr_" + rg, i), mr("seas_spend", i)), FMT_USD)
     m_row("spendaed_" + rg, "  Card spend", "AED",
           lambda i, rg=rg: "=%s*%s*%s*%s" % (
-              mr("cards_" + rg, i), mr("spendcard_" + rg, i), aref("aed_usd"),
+              mr("ccards_" + rg, i), mr("spendcard_" + rg, i), aref("aed_usd"),
               mr("n", i)), FMT_NUM)
     m_row("spendusd_" + rg, "  Card spend", "USD",
           lambda i, rg=rg: "=%s/%s" % (mr("spendaed_" + rg, i), aref("aed_usd")), FMT_USD)
@@ -1780,7 +1800,7 @@ for rg in REGIONS:
     # draws x transactions per draw, grossed up for declines. Feeds no revenue.
     m_row("auths_" + rg, "  Card authorisations (memo - drives cost, not revenue)", "auths",
           lambda i, rg=rg: "=%s*%s*%s*%s/12*(1+%s)" % (
-              mr("cards_" + rg, i), sref("draw_events"), sref("card_txns_per_draw"),
+              mr("ccards_" + rg, i), sref("draw_events"), sref("card_txns_per_draw"),
               mr("n", i), aref("decline_uplift")), FMT_NUM)
 
     # -- the six streams, plus the redemption cost --------------------------
@@ -1816,7 +1836,7 @@ for rg in REGIONS:
     m_row("s4_" + rg, "  Stream 4 - Cardholder fees (FX, ATM, events)", "USD",
           lambda i, rg=rg: gate("s4", i, "%s*%s*%s+%s*(%s)*%s/%s*%s+%s*(%s*%s+%s*%s)/12/%s*%s" % (
               mr("spendusd_" + rg, i), mr("seas_foreign", i), aref("fx_margin"),
-              mr("cards_" + rg, i), ATM_TERMS, aref("atm_fee"), aref("aed_usd"), mr("n", i),
+              mr("ccards_" + rg, i), ATM_TERMS, aref("atm_fee"), aref("aed_usd"), mr("n", i),
               mr("cards_" + rg, i), sref("issuance_events"), aref("issuance_fee"),
               sref("replacement_events"), aref("replacement_fee"), aref("aed_usd"), mr("n", i))),
           FMT_USD)
@@ -1831,7 +1851,7 @@ for rg in REGIONS:
     m_row("s5_" + rg, "  Stream 5 - Lending revenue share", "USD",
           lambda i, rg=rg: gate("s5", i, "(%s*%s*%s+%s*%s*(1-%s)*%s*%s)*%s/12" % (
               mr("drawn_" + rg, i), aref("servicing_gross"), aref("servicing_share"),
-              mr("cards_" + rg, i), mr("drawyr_" + rg, i), sref("sw_prepaid_vs_credit"),
+              mr("ccards_" + rg, i), mr("drawyr_" + rg, i), sref("sw_prepaid_vs_credit"),
               aref("origination_gross"), aref("origination_share"), mr("n", i)), ), FMT_USD)
     # MEMO for the cost build - redemption is a COST with no offsetting revenue
     # (VARA forbids charging for it), so the event count is carried here and the
