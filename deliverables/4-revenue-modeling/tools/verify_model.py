@@ -392,7 +392,11 @@ check("Redemption event count is retained as a cost-build memo",
 # is what an earlier cut of the model did.
 fee, prem = aval("Entry fee charged"), aval("Fabrication premium paid")
 s1a, sip = row("Stream 1a - Entry fee, SIP"), row("SIP contributions")
-spot, grams_in, price = row("Spot purchase volume"), row("Grams purchased"), aval("Gold price (flat)")
+spot, grams_in = row("Spot purchase volume"), row("Grams purchased")
+# THE PERIOD PRICE, not the M1 price - the metal price now moves, so grams are
+# bought at whatever gold cost in that period. Using the M1 price here would
+# make this check fail from Y2 onwards for a reason that is not a defect.
+px = row("Gold price (this period)")
 
 # (a) Aurumix keeps the WHOLE entry fee - no premium term on the revenue side.
 check("Stream 1 earns the full entry fee (premium is NOT netted off revenue)",
@@ -405,15 +409,15 @@ check("Stream 1 earns the full entry fee (premium is NOT netted off revenue)",
 inflow = [(sip[i] + spot[i]) * (1 - fee) for i in range(N)]
 check("The customer bears the premium - grams delivered are short by exactly (1+premium)",
       all_num(grams_in) and all(
-          abs(grams_in[i] * price - inflow[i] / (1 + prem)) < 1e-6 for i in range(N) if inflow[i]),
+          abs(grams_in[i] * px[i] - inflow[i] / (1 + prem)) < 1e-6 for i in range(N) if inflow[i]),
       "M14 metal %.2f vs cash %.2f, implied premium %.5f" % (
-          grams_in[13] * price, inflow[13],
-          inflow[13] / (grams_in[13] * price) - 1 if grams_in[13] else 0))
+          grams_in[13] * px[13], inflow[13],
+          inflow[13] / (grams_in[13] * px[13]) - 1 if grams_in[13] else 0))
 
 # (c) the incidence is material and lands on ONE side of the trade only.
 check("Premium incidence is material and single-sided",
-      abs(inflow[13] - grams_in[13] * price) > 1e-6 and abs(s1a[13] - sip[13] * fee) < 1e-6,
-      "customer bears %.2f USD at M14; Aurumix bears 0" % (inflow[13] - grams_in[13] * price))
+      abs(inflow[13] - grams_in[13] * px[13]) > 1e-6 and abs(s1a[13] - sip[13] * fee) < 1e-6,
+      "customer bears %.2f USD at M14; Aurumix bears 0" % (inflow[13] - grams_in[13] * px[13]))
 
 # ---- 8. the ATM distribution earns what a mean would not ------------------
 # Verified from the parameters directly, so the check survives the stream-4
@@ -608,6 +612,34 @@ check("The two measures genuinely diverge (self-custody is actually deducted)",
           _cust[28], _coll[28]))
 check("Summary carries the comparable custody headline, not only the collateral figure",
       rowof(summ, "Gold under custody (comparable headline)") is not None)
+
+# ---- 9b. the metal price moves, so attribution must stay recoverable -------
+_px, _cagr = row("Gold price (this period)"), aval("Gold price appreciation")
+check("Gold price compounds at the stated rate, on MODEL YEAR",
+      all_num(_px) and abs(_px[28] - _px[0] * (1 + _cagr) ** 6) < 1e-6,
+      "M1 %.2f -> Y7 %.2f, implied CAGR %.4f" % (_px[0], _px[28], (_px[28] / _px[0]) ** (1 / 6.0) - 1))
+check("All twelve months of a model year share one price (no intra-year drift)",
+      len(set(round(x, 6) for x in _px[:12])) == 1 and len(set(round(x, 6) for x in _px[12:24])) == 1,
+      "Y1 %r Y2 %r" % (sorted(set(round(x, 2) for x in _px[:12])),
+                       sorted(set(round(x, 2) for x in _px[12:24]))))
+# The constant-price memo is what keeps execution judgeable once the metal
+# moves. If it ever equals the headline while the CAGR is positive, it has been
+# wired to the moving price and the attribution is silently gone.
+_hd = row("GOLD UNDER CUSTODY (comparable headline)")
+_const = row("  Gold under custody at the CONSTANT M1 price (memo)")
+_cg = row("GRAMS UNDER CUSTODY")
+check("A constant-price series exists and is BELOW the headline once gold has risen",
+      all_num(_hd) and all_num(_const) and (_const[28] < _hd[28] if _cagr > 0 else True)
+      and abs(_const[0] - _hd[0]) < 1e-6,
+      "Y7 headline %.0f vs constant %.0f" % (_hd[28], _const[28]))
+check("The constant-price row is grams x the M1 price, so it isolates execution",
+      all_num(_const) and all(abs(_const[i] - _cg[i] * _px[0]) < 1e-3 for i in (11, 25, 28)),
+      "Y7 %.0f vs grams x M1 price %.0f" % (_const[28], _cg[28] * _px[0]))
+# The entry fee is a percentage of a USD contribution and must NOT move with
+# gold. If it does, the price has been wired into a stream it does not touch.
+check("The entry fee is untouched by the gold price (USD-denominated, as designed)",
+      all(abs(s1a[i] - sip[i] * fee) < 1e-6 for i in range(N) if sip[i]),
+      "stream 1a still equals SIP x fee at every period")
 
 # ---- 10. Summary ties to Model --------------------------------------------
 def sumv(label, y):

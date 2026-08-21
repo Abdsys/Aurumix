@@ -268,9 +268,10 @@ def aref(k): return "Assumptions!$B$%d" % AROW[k]
 
 
 a_section("PRICING AND METAL")
-a_row("gold_price", "Gold price (flat)", 141.46, "USD/g",
-      "USD 4,400/oz verified 2026-08-17. HELD FLAT BY DESIGN so every revenue change is attributable to the "
-      "business, not the metal. CITED.", FMT_NUM2, "gold_price")
+a_row("gold_price", "Gold price at M1", 141.46, "USD/g",
+      "USD 4,400/oz verified 2026-08-17. THE STARTING PRICE - it no longer holds for the whole horizon; see "
+      "the appreciation rate below and the live 'Gold price (this period)' row on the Model. CITED.",
+      FMT_NUM2, "gold_price")
 a_row("aed_usd", "AED/USD peg", 3.6725, "AED/USD", "CBUAE peg. CITED.", FMT_NUM2, "aed_usd")
 a_row("entry_fee", "Entry fee charged", 0.050, "% of contribution",
       "Decision 9, client-stated. A SINGLE RATE throughout. CLIENT INPUT.", FMT_PCT2, "entry_fee")
@@ -542,9 +543,21 @@ FUN_HDR = _ar[0]
 section(ws_assum, FUN_HDR, "MARKET SIZING - how each region's reachable SIP account ceiling is derived", span=4)
 FUN0 = 6                                    # column F
 FUNNEL = [
-    ("uae_ind", "UAE - Indian", 4360000, 0.80, 0.57, 0.40, 0.095, "uae"),
-    ("uae_osa", "UAE - other South Asian", 3460000, 0.80, 0.57, 0.40, 0.060, "uae"),
-    ("gulf", "Oman and Bahrain", 2630000, 1.00, 0.57, 0.40, 0.040, "gulf"),
+    # CEILINGS RAISED 2026-08-21, client instruction. UAE-Indian 9.5% -> 10%,
+    # UAE-other-South-Asian 6% -> 10%, Oman & Bahrain 4% -> 6%.
+    #
+    # ⚠ THE OTHER-SOUTH-ASIAN MOVE IS THE ONE TO NOTICE. 6% vs 9.5% was not
+    # arbitrary - it encoded that this is an Indian-built product, sold through
+    # Indian agents, along Indian remittance corridors. Equalising the two at
+    # 10% ASSERTS THAT AURUMIX REACHES PAKISTANI, BANGLADESHI, NEPALI AND SRI
+    # LANKAN WORKERS AS EFFECTIVELY AS INDIAN ONES. That may be true, but it is
+    # a claim about distribution, not a number - and the v2.6 brief argued the
+    # opposite, that the agent network "must recruit non-Indian agents before it
+    # reaches the other South Asian market at all". If that recruitment does not
+    # happen, this column belongs back near 6%.
+    ("uae_ind", "UAE - Indian", 4360000, 0.80, 0.57, 0.40, 0.100, "uae"),
+    ("uae_osa", "UAE - other South Asian", 3460000, 0.80, 0.57, 0.40, 0.100, "uae"),
+    ("gulf", "Oman and Bahrain", 2630000, 1.00, 0.57, 0.40, 0.060, "gulf"),
     # India ceiling RAISED 2026-08-21 from 0.35%. It was THE BINDING CONSTRAINT
     # IN THE MODEL and nothing else was close: at Y7 India's raw demand ran at
     # ~21,900 new customers a year and saturation cut it to ~5,900 - 73% of the
@@ -552,8 +565,8 @@ FUNNEL = [
     # the UAE and 25% in Oman & Bahrain. The model wanted to grow in India and
     # was not allowed to.
     #
-    # 0.70% of 12.5m active digital-gold users is ~87,500, or 1 in 143 over
-    # seven years. Jar (20m users) and Augmont (42m registered) prove the
+    # RAISED AGAIN to 1.00% on 2026-08-21, client instruction: 125,000 of
+    # 12.5m active digital-gold users, or 1 in 100 over seven years. Jar (20m users) and Augmont (42m registered) prove the
     # behaviour exists at that scale, so 1 in 285 was hard to defend as a
     # CEILING - a number meant to bound what is ever reachable, not to forecast.
     #
@@ -565,7 +578,7 @@ FUNNEL = [
     # domestic platforms and sovereign gold bonds, with FEMA/LRS unresolved and
     # currently assumed away. If that route fails, this belongs back at 0.35% or
     # lower, and the India block should be switched off entirely.
-    ("india", "India", 12500000, 1.00, 1.00, 1.00, 0.0070, "india"),
+    ("india", "India", 12500000, 1.00, 1.00, 1.00, 0.0100, "india"),
 ]
 for k, (key, nm, pop, ea, pay, mon, ceil, rgn) in enumerate(FUNNEL):
     c = ws_assum.cell(row=FUN_HDR + 1, column=FUN0 + k)
@@ -869,6 +882,24 @@ def s_derived(key, param, formula, unit, why, fmt=FMT_PCT2, name=None):
 # Model formula resolves through Assumptions - see the mirror block below.
 def sref(k): return "'Scenario Parameters'!$B$%d" % SROW[k]
 
+
+s_section("GROUP A0: THE METAL")
+sp("gold_cagr", "Gold price appreciation", 0.081, 0.120, 0.000, "%/yr",
+   "ADDED 2026-08-21, client instruction, replacing a flat price. 8.1% is the COMPOUND ANNUAL GROWTH RATE "
+   "SINCE 1971, the end of the gold standard - chosen because it is the LONGEST window and therefore the "
+   "least cherry-picked. The shorter the window the better gold looks: ~8.6% over 50 years, ~9-10% over 20, "
+   "~13-14% over 10, and over 20% over the last 5. Taking the recent decade would have flattered the model "
+   "on a rally. CITED. "
+   "⚠ THIS IS A NOMINAL RATE AND NOTHING ELSE IN THE MODEL INFLATES. SIP tickets, spot tickets, CAC, card "
+   "fees and the B2B fee are all frozen in 2027 dollars. There is NO CONSENSUS POSITIVE LONG-RUN REAL RETURN "
+   "for gold - it is generally treated as a store of value with a near-zero real yield - so most of this 8.1% "
+   "IS INFLATION. Applying it to the metal while freezing everything else quietly asserts that gold outruns "
+   "wages, prices and costs by 8% a year for seven years, which is not a claim anyone would defend out loud. "
+   "The Model therefore also carries AUM AT THE CONSTANT M1 PRICE, and that is the honest series for judging "
+   "whether the BUSINESS grew. Conservative is set at 0.0% deliberately: it restores the original flat-price "
+   "design, under which every revenue change is attributable to the business rather than the metal.",
+   FMT_PCT2, "gold_cagr")
+_sr[0] += 1
 
 s_section("GROUP A: CUSTOMERS AND CHURN")
 sp("persistency_m13", "Persistency - customers still paying after 12 months", 0.55, 0.65, 0.45, "%",
@@ -1346,6 +1377,19 @@ _mr[0] = ACQ_FIRST + len(ACQ_ROWS)
 # share made it visible immediately: the region earned revenue in M12, a month
 # before it opens. The direct and referral channels were gated all along; only
 # the agent channel was not.
+# The metal price now moves. Compounded on MODEL YEAR, not period, so all twelve
+# months of a year share one price - a monthly compounding would imply intra-year
+# precision the annual CAGR does not carry, and would put a kink at the M24/Y3
+# boundary where the grid switches from monthly to annual.
+m_row("gold_px", "Gold price (this period)", "USD/g",
+      lambda i: "=%s*(1+%s)^(%s-1)" % (aref("gold_price"), sref("gold_cagr"), mr("year", i)),
+      FMT_NUM2, GREEN)
+note(ws_model, _mr[0],
+     "⚠ RISING GOLD CUTS BOTH WAYS AND THE MODEL CAPTURES BOTH. Metal already held appreciates, but a fixed "
+     "USD contribution BUYS FEWER GRAMS each year - so AUM does NOT simply compound at the headline rate. "
+     "Only the collateral-linked streams move with this row (card limit, and lending through it); the entry "
+     "fee is a percentage of a USD contribution and is untouched by the gold price.")
+_mr[0] += 1
 m_row("open_mix", "Open-region salesforce share (renormalisation base)", "x",
       lambda i: "=" + "+".join(
           "%s*%s" % (aref("agentshare_" + q), "1" if q not in [a[0] for a in ACTIVATIONS]
@@ -1444,7 +1488,7 @@ for rg in REGIONS:
     m_row("grams_in_" + rg, "  Grams purchased", "grams",
           lambda i, rg=rg: "=(%s+%s)*(1-%s)/%s/(1+%s)" % (
               mr("sip_" + rg, i), mr("spot_" + rg, i), aref("entry_fee"),
-              aref("gold_price"), aref("fab_premium")), FMT_NUM2)
+              mr("gold_px", i), aref("fab_premium")), FMT_NUM2)
     m_row("decay_" + rg, "  Collateral-eligible AUM decay rate (holder-weighted)", "%/period",
           lambda i, rg=rg: "=(%s+%s*IF(%s+%s=0,1,(%s+%s*%s)/(%s+%s)))*%s/12" % (
               sref("self_custody_leakage"), sref("redemption_rate"),
@@ -1481,7 +1525,7 @@ for rg in REGIONS:
           else "=%s*(1-%s)+%s" % (pcell(gc, i - 1), mr("decayr_" + rg, i), mr("grams_in_" + rg, i)),
           FMT_NUM)
     m_row("aum_" + rg, "  AUM", "USD",
-          lambda i, rg=rg: "=%s*%s" % (mr("grams_" + rg, i), aref("gold_price")), FMT_USD, BLACK_BOLD)
+          lambda i, rg=rg: "=%s*%s" % (mr("grams_" + rg, i), mr("gold_px", i)), FMT_USD, BLACK_BOLD)
 
     # -- cards --------------------------------------------------------------
     m_row("cardbase_" + rg, "  Card-eligible base", "accounts",
@@ -1619,7 +1663,7 @@ for key, label, parts, fmt, bold in (
 ):
     m_row(key, label, "-", lambda i, p=parts: "=" + "+".join(mr(x, i) for x in p), fmt, BLACK, bold)
 m_row("gold_custody", "GOLD UNDER CUSTODY (comparable headline)", "USD",
-      lambda i: "=%s*%s" % (mr("grams_custody", i), aref("gold_price")), FMT_USD, BLACK_BOLD)
+      lambda i: "=%s*%s" % (mr("grams_custody", i), mr("gold_px", i)), FMT_USD, BLACK_BOLD)
 note(ws_model, _mr[0],
      "THE NUMBER TO QUOTE AGAINST OTHER GOLD PLATFORMS, and the only one that compares like for like. "
      "Collateral-eligible AUM above is SMALLER because it also removes gold moved out of Aurumix's control "
@@ -1628,6 +1672,16 @@ note(ws_model, _mr[0],
      "GRAMS, NOT DOLLARS: every published USD figure carries the gold price of its own vintage, so a "
      "comparison in dollars is really a comparison of gold prices. Comtech Gold, the closest comparable - "
      "Dubai, DMCC-licensed, tokenised gold - holds ~141,000 g.")
+_mr[0] += 1
+m_row("gold_custody_const", "  Gold under custody at the CONSTANT M1 price (memo)", "USD",
+      lambda i: "=%s*%s" % (mr("grams_custody", i), aref("gold_price")), FMT_USD)
+m_row("metal_effect", "  of which is the metal moving, not the business", "USD",
+      lambda i: "=%s-%s" % (mr("gold_custody", i), mr("gold_custody_const", i)), FMT_USD)
+note(ws_model, _mr[0],
+     "THE HONEST SERIES FOR JUDGING EXECUTION is the constant-price row: it strips the gold price out and "
+     "leaves grams accumulated, which is the part Aurumix controls. The headline above will grow even if the "
+     "business does not. ⚠ SET GOLD APPRECIATION TO THE CONSERVATIVE SCENARIO (0.0%) TO RECOVER THE ORIGINAL "
+     "FLAT-PRICE MODEL, under which these two rows are identical by construction.")
 _mr[0] += 1
 m_row("conservation", "CHECK: paying + holders = cumulative ever acquired", "delta",
       lambda i: "=%s+%s-%s" % (mr("paying", i), mr("holders", i), mr("cum_ever", i)), FMT_NUM3, BLACK_BOLD)
