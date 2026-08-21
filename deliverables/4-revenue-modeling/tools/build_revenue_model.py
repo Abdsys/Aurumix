@@ -348,8 +348,7 @@ a_row("benef_fee", "Additional beneficiary fee", 6, "USD/yr each",
       "DELIBERATELY SMALL. At 1.5 chargeable beneficiaries it adds USD 9/yr to a USD 50 plan - an 18% uplift "
       "on a stream worth ~3.5% of revenue, so it cannot move the model and should not be tuned to try. "
       "ASSUMPTION on a cost-recovery basis.", FMT_USD, "benef_fee")
-a_row("b2b_fee", "B2B platform fee", 0.00625, "% of partner AUM/yr",
-      "Placeholder in the 0.5-0.75% band, coupled to the partner set. ASSUMPTION.", FMT_PCT2, "b2b_fee")
+# B2B platform fee MOVED TO SCENARIO PARAMETERS 2026-08-21 - see Group E.
 a_row("origination_gross", "Credit origination fee - gross", 0.0100, "% of draw",
       "Finance House UAE gold loan Key Facts Statement carries a 1% processing fee - the one gross rate with a "
       "real UAE anchor. CITED.", FMT_PCT2, "origination_gross")
@@ -1271,6 +1270,21 @@ for y in range(1, 8):
        "CWallet, Amanat and a handful of banks and exchange houses. Going much above this count means "
        "claiming partners that have not been named. ASSUMPTION on a sourced candidate set.",
        FMT_NUM, "partners_y%d" % y)
+sp("b2b_fee", "B2B platform fee", 0.0075, 0.0090, 0.0050, "% of partner AUM/yr",
+   "RAISED 2026-08-21 from 0.625%, client instruction, and PROMOTED FROM A HARDCODED ASSUMPTION TO A "
+   "SCENARIO PARAMETER at the same time - it drives the largest stream in the model and had no band at all, "
+   "which is the wrong place to be certain. "
+   "0.75% IS THE TOP OF THE CITED 0.5-0.75% BAND, NOT THE MIDDLE OF IT. That has a consequence worth stating "
+   "plainly: the aggressive case at 0.90% NOW SITS OUTSIDE THE EVIDENCE, because there is no headroom left "
+   "inside the band. Conservative at 0.50% is the band's floor. So the downside is sourced and the upside is "
+   "not - the reverse of how a scenario range should usually be built, and the direct result of putting the "
+   "base at the ceiling. "
+   "The fee is COUPLED TO THE PARTNER SET: a platform fee is what a partner will pay for gold "
+   "infrastructure it does not have to build, and the more bargaining power the partner has the lower it "
+   "goes. Indian precedent is the warning - the three incumbent providers work on a 3-6% SPREAD that "
+   "compresses hard for large partners, so a partner the size of Botim would push back on 0.75% harder than "
+   "a small wallet would. Raising the partner count and the fee together assumes neither effect bites. "
+   "ASSUMPTION at the ceiling of a cited band.", FMT_PCT2, "b2b_fee")
 sp("partner_users", "Average partner user base", 900000, 1400000, 500000, "active users",
    "THE MIX, NOT THE BIGGEST. A realistic six-partner Gulf book is roughly one Botim-scale (1.7m ACTIVE "
    "fintech users, of 8.2-8.5m app users), two at e& money scale (~1.5m subscribers), and three small "
@@ -1843,7 +1857,7 @@ m_row("partner_aum", "  Partner AUM", "USD",
 # NOT indented: this is a whole-book stream in its own right, not a sub-item of
 # a region block, and the indentation is what distinguishes the two.
 m_row("s6", "Stream 6 - B2B platform fee", "USD",
-      lambda i: "=%s*%s*%s/12" % (mr("partner_aum", i), aref("b2b_fee"), mr("n", i)),
+      lambda i: "=%s*%s*%s/12" % (mr("partner_aum", i), sref("b2b_fee"), mr("n", i)),
       FMT_USD, BLACK_BOLD)
 note(ws_model, _mr[0],
      "Stream 6 is NOT regional: partners are institutions with their own customer books, not retail "
