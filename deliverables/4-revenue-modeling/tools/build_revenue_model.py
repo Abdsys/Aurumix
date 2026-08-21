@@ -1125,8 +1125,14 @@ sp("spot_frequency", "Spot frequency", 1.7, 2.4, 1.2, "events/attacher/yr",
 _sr[0] += 1
 
 s_section("GROUP D: CARD")
-sp("pm_share", "Programme manager share of interchange", 0.72, 0.36, 0.85, "%",
-   "BANDS CORRECTED 2026-08-21 - THEY WERE INVERTED. Aggressive was 0.85 and conservative 0.55, meaning the "
+sp("pm_share", "Programme manager share of interchange", 0.60, 0.36, 0.85, "%",
+   "LOWERED 2026-08-21 from 0.72, client instruction - AURUMIX NOW KEEPS 40% RATHER THAN 28%. "
+   "0.60 sits comfortably inside the 36-85% observed range and is roughly its midpoint, so the base case "
+   "moves from the pessimistic end to a neutral one. It assumes a NEGOTIATED deal rather than a "
+   "take-it-or-leave-it one, which is reasonable for a programme with a gold-collateral proposition the "
+   "manager cannot source elsewhere - but it IS an assumption about a contract that does not exist yet, "
+   "and the only honest way to hold it is to treat 40% as a target to negotiate to, not a rate already "
+   "won. BANDS CORRECTED earlier the same day - THEY WERE INVERTED. Aggressive was 0.85 and conservative 0.55, meaning the "
    "OPTIMISTIC scenario handed MORE of the interchange to the programme manager and cut Aurumix's share from "
    "28% to 15%. Every other cost-like parameter in this model improves under Aggressive - redemption, CAC, "
    "self-custody, the holder multiplier - and this one moved the other way. Flipping the scenario made "
