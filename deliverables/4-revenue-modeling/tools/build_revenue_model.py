@@ -1163,17 +1163,72 @@ sp("draw_events", "Draw events per borrower per year", 2.1, 3.2, 1.3, "events/yr
    "MOVES WITH facility turnover - do not flex independently. DERIVED.", FMT_NUM2, "draw_events")
 sp("family_attach", "Family plan attach rate", 0.20, 0.35, 0.10, "% of customers",
    "NOTHING IS STATED ANYWHERE IN THE CORPUS. Pure assumption. Scales stream 3 linearly.", FMT_PCT, "family_attach")
+# ---- B2B REBUILT 2026-08-21 -------------------------------------------------
+# Was 6 partners x a flat USD 32m "mature AUM per partner". Two problems, and
+# they pointed in OPPOSITE directions, which is why arguing about the count
+# alone could never have fixed it:
+#
+#   - THE COUNT WAS TOO LOW. Research found ~20 candidate wallets, digital banks
+#     and exchange houses across the UAE, Oman and Bahrain, and EXACTLY ONE OF
+#     THEM ALREADY OFFERS GOLD (Botim, via O Gold). The Gulf slot is essentially
+#     empty.
+#   - THE AUM PER PARTNER WAS TOO HIGH. A flat 32m asserts every marginal
+#     partner is Botim-scale. Botim has 8.2-8.5m UAE users and 1.7m ACTIVE
+#     fintech users; the next Gulf wallet down has ~1.5m subscribers and the
+#     ones after that are far smaller. Six Botim-scale wallets do not exist.
+#
+# THE FIX IS TO STOP ASSERTING THE AUM AND DERIVE IT, so the only thing left to
+# argue about is the partner count - which is the argument we can actually win,
+# because it rests on a nameable candidate list.
+#
+# ⚠ INDIA IS EXCLUDED FROM THE B2B PARTNER POOL ENTIRELY (client decision).
+# Every large Indian app that wants gold already has one of three entrenched
+# providers on a 2-5 year contract: PhonePe (450-500m users) and MobiKwik,
+# Amazon Pay and Jar run SafeGold; Paytm (300-350m) and Google Pay run
+# MMTC-PAMP; Groww runs Augmont. That is displacement, not greenfield, into a
+# 3-6% spread that compresses hard for large partners. AND ZERODHA EXITED THE
+# CATEGORY OUTRIGHT on regulatory grounds - digital gold is not SEBI-regulated -
+# which is a second India regulatory problem on top of FEMA/LRS. The partner
+# pool here is GULF ONLY.
 for y in range(1, 8):
-    b, a, c = ([0, 1, 2, 3, 4, 5, 6][y - 1], [0, 1, 3, 5, 7, 9, 11][y - 1], [0, 1, 1, 1, 2, 2, 2][y - 1])
+    b, a, c = ([0, 1, 3, 5, 7, 9, 11][y - 1], [0, 2, 5, 8, 11, 14, 17][y - 1],
+               [0, 1, 1, 2, 3, 4, 5][y - 1])
     sp("partners_y%d" % y, "B2B partners - Y%d" % y, b, a, c, "partners",
-       "Enterprise cadence for a pre-revenue infrastructure vendor. Partner 1 signs in Y2, matching the M13 "
-       "B2B go-live - the schedule previously started at Y3 and had to move with it, or stream 6 would have "
-       "activated with no partner to earn on. TERMINAL COUNTS ARE UNCHANGED, so the pipeline accelerates by "
-       "a year without inflating the addressable partner market. ASSUMPTION.",
+       "RAISED 2026-08-21. Base now reaches 11 by Y7, against ~20 nameable Gulf candidates without a gold "
+       "product - roughly a 55% win rate on the addressable partner market, which is aggressive but "
+       "arguable for a category with one incumbent. Partner 1 signs in Y2, matching the M13 B2B go-live. "
+       "⚠ THE CANDIDATE LIST IS THE JUSTIFICATION AND IT IS FINITE: e& money, Payit, Careem Pay, Al Ansari, "
+       "LuLu Money, Rise, NOW Money, Wio, Liv, Mashreq Neo, Klip, PayBy, Jingle Pay, Thawani, BenefitPay, "
+       "CWallet, Amanat and a handful of banks and exchange houses. Going much above this count means "
+       "claiming partners that have not been named. ASSUMPTION on a sourced candidate set.",
        FMT_NUM, "partners_y%d" % y)
-sp("aum_per_partner", "AUM per partner (mature)", 32000000, 45000000, 22000000, "USD",
-   "Requires a signed partner. Partner AUM earns NO tier and consumes NO benefits - structurally the "
-   "highest-margin book. DERIVED.", FMT_USD, "aum_per_partner")
+sp("partner_users", "Average partner user base", 900000, 1400000, 500000, "active users",
+   "THE MIX, NOT THE BIGGEST. A realistic six-partner Gulf book is roughly one Botim-scale (1.7m ACTIVE "
+   "fintech users, of 8.2-8.5m app users), two at e& money scale (~1.5m subscribers), and three small "
+   "wallets at a few hundred thousand - which averages near 900k. ⚠ USE ACTIVE USERS, NOT REGISTERED: "
+   "Botim's own numbers separate 8.5m app users, 3m KYC'd and 1.7m active fintech users, and adopting the "
+   "headline would overstate this by 5x. CITED for the two largest, ASSUMPTION for the tail.",
+   FMT_NUM, "partner_users")
+sp("partner_adoption", "Partner users adopting gold (mature)", 0.06, 0.10, 0.03, "% of partner users",
+   "OBSERVED ANCHOR: O Gold reports 75,000 ACTIVE users against Botim's 1.7m active fintech users - 4.4% - "
+   "and 775,000 who merely explored the feature. Base is set at 6%, ABOVE the observed 4.4%, because that "
+   "figure is roughly six months after the gold feature launched and adoption should mature; 6% is a 1.4x "
+   "maturation, not a doubling. ⚠ THE 4.4% IS THE ONLY OBSERVED GOLD-ADOPTION RATE FOR A GULF WALLET THAT "
+   "EXISTS. TRIANGULATED.", FMT_PCT, "partner_adoption")
+sp("aum_per_partner_user", "AUM per adopting partner user", 350, 500, 220, "USD",
+   "DERIVED FROM BOTIM'S OWN DISCLOSURES AND CROSS-CHECKED AGAINST OUR OWN BOOK - two independent routes "
+   "to nearly the same number, which is why this is the firmest input in the B2B block. Botim: AED 100m+ "
+   "of gold across 128,000 trades since Aug 2025, against 75,000 active O Gold users, implies ~USD 363 per "
+   "active user. Aurumix's own direct book runs at ~USD 302 of gold per customer. A partner's users are "
+   "buying the same product with the same wallets. DERIVED.", FMT_USD, "aum_per_partner_user")
+s_derived("aum_per_partner", "AUM per partner (derived)",
+          "=%s*%s*%s" % (sref("partner_users"), sref("partner_adoption"),
+                         sref("aum_per_partner_user")), "USD",
+          "NO LONGER A TYPED NUMBER. Was a flat USD 32m asserted as 'mature AUM per partner' with no "
+          "derivation. Now users x adoption x AUM per adopting user, every term of which has an external "
+          "anchor. THE POINT OF THE CHANGE: the only remaining argument is the PARTNER COUNT, which rests "
+          "on a nameable candidate list and is the argument that can actually be won. DERIVED.",
+          FMT_USD, "aum_per_partner")
 _sr[0] += 1
 
 s_section("GROUP F: REGIONS")
