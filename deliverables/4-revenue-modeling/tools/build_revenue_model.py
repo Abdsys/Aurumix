@@ -368,6 +368,37 @@ SPOT_TICKET = (
 for key, tkt, _tnote in SPOT_TICKET:   # NB: not "note" - that shadows note()
     a_row("spotticket_" + key, "Spot ticket - %s" % RLAB[key], tkt, "USD/purchase",
           _tnote, FMT_USD, "spotticket_" + key)
+
+# ---- Spot attach: REGIONALISED on affordability ----------------------------
+# REGIONALISED 2026-08-21, from a single global 14%.
+#
+# ⚠ STILL NO SOURCE - v2.6 records it as a confirmed negative: "there is no
+# spot-attach benchmark for any comparable gold or savings product anywhere."
+# What changed is not the evidence but the STRUCTURE: a flat rate asserted that
+# a UAE customer and an Indian customer face the same decision, and they do not.
+#
+# THE DRIVER IS AFFORDABILITY, and it is observable. A spot purchase costs:
+#     UAE              190 / 33.60 = 5.7 MONTHS of that customer's saving
+#     Oman & Bahrain   145 / 26.00 = 5.6 months
+#     India             40 / 30.00 = 1.3 months
+# Committing six months of savings in one go is a rare act; committing five
+# weeks' worth is an ordinary one. That gap - not appetite for gold - is why
+# attach should differ, and it is why INDIA IS THE HIGH ONE despite being the
+# poorest market. The population is also self-selected: these are people who
+# already chose to buy gold every month, so a low attach was always hard to
+# defend for them, and hardest of all in India where festive buying is close to
+# universal.
+SPOT_ATTACH = (("uae", 0.12), ("gulf", 0.10), ("india", 0.25))
+for key, att in SPOT_ATTACH:
+    a_row("spotattach_" + key, "Spot attach rate - %s" % RLAB[key], att, "% of customers/yr",
+          "Share of paying customers who make ANY spot purchase in a year - NOT a monthly rate, and NOT how "
+          "often a buyer buys (that is the separate frequency input). Set on the affordability ratio above: "
+          "the spot ticket as a multiple of the same customer's monthly SIP. ⚠ NO PUBLISHED BENCHMARK EXISTS "
+          "- confirmed negative. ⚠ KNOWN SIMPLIFICATION: v2.6 applied a TENURE UPLIFT here ('a 3-year account "
+          "is ~2x as likely to buy spot as a 6-month account') which v3.0 dropped, so this is flat from day "
+          "one and OVERSTATES SPOT IN THE EARLY YEARS, when nearly every account is young. Restore the uplift "
+          "in the Phase 5 simulation. ASSUMPTION, structured on an observable driver.",
+          FMT_PCT, "spotattach_" + key)
 # CONFIRMED NEGATIVE, recorded so it is not re-searched: no published average
 # ticket exists anywhere for South Asian expatriate or blue-collar customers in
 # the Gulf specifically - the same gap already hit on transaction frequency.
@@ -514,7 +545,27 @@ FUNNEL = [
     ("uae_ind", "UAE - Indian", 4360000, 0.80, 0.57, 0.40, 0.095, "uae"),
     ("uae_osa", "UAE - other South Asian", 3460000, 0.80, 0.57, 0.40, 0.060, "uae"),
     ("gulf", "Oman and Bahrain", 2630000, 1.00, 0.57, 0.40, 0.040, "gulf"),
-    ("india", "India", 12500000, 1.00, 1.00, 1.00, 0.0035, "india"),
+    # India ceiling RAISED 2026-08-21 from 0.35%. It was THE BINDING CONSTRAINT
+    # IN THE MODEL and nothing else was close: at Y7 India's raw demand ran at
+    # ~21,900 new customers a year and saturation cut it to ~5,900 - 73% of the
+    # demand the acquisition engine generated was thrown away, against 19% in
+    # the UAE and 25% in Oman & Bahrain. The model wanted to grow in India and
+    # was not allowed to.
+    #
+    # 0.70% of 12.5m active digital-gold users is ~87,500, or 1 in 143 over
+    # seven years. Jar (20m users) and Augmont (42m registered) prove the
+    # behaviour exists at that scale, so 1 in 285 was hard to defend as a
+    # CEILING - a number meant to bound what is ever reachable, not to forecast.
+    #
+    # ⚠ THIS IS THE MOST DANGEROUS NUMBER IN THE FUNNEL. Revenue moves almost
+    # linearly with it and it is the least falsifiable input here, so it must
+    # never be moved to make an output look better. The real question it answers
+    # is not "how big is Indian gold demand" - plainly enormous - but "what is
+    # Aurumix's RIGHT TO WIN": a Dubai-vaulted product competing with entrenched
+    # domestic platforms and sovereign gold bonds, with FEMA/LRS unresolved and
+    # currently assumed away. If that route fails, this belongs back at 0.35% or
+    # lower, and the India block should be switched off entirely.
+    ("india", "India", 12500000, 1.00, 1.00, 1.00, 0.0070, "india"),
 ]
 for k, (key, nm, pop, ea, pay, mon, ceil, rgn) in enumerate(FUNNEL):
     c = ws_assum.cell(row=FUN_HDR + 1, column=FUN0 + k)
@@ -832,20 +883,12 @@ sp("lapsed_redemption_mult", "Holder redemption multiplier", 2.2, 1.6, 3.5, "x t
    "Customers who stopped paying redeem FASTER - they have no accruing benefit left to protect. Because "
    "holders become the majority of the book by Y4, this is the DOMINANT AUM DECAY TERM from roughly Y4. "
    "ASSUMPTION.", FMT_NUM2, "lapsed_redemption_mult")
-sp("spot_attach", "Spot attach rate", 0.14, 0.24, 0.07, "% of customers/yr",
-   "⚠ NO SOURCE. NOT DERIVED, NOT OBSERVED - CHOSEN. The v2.6 brief records it as a confirmed negative: "
-   "'S45, S46 and S47 are all Low confidence with no published source. There is no spot-attach benchmark for "
-   "any comparable gold or savings product anywhere.' Load-bearing because it is MISSING, not because it is "
-   "large. WHAT IT ASSERTS, in plain terms: 14% x 1.7 = 0.238 purchases per paying customer per year, i.e. "
-   "the average customer makes a one-off gold purchase about once every four years. The only cross-check is "
-   "Augmont's 0.85 transactions per REGISTERED user per year, which we sit at 28% of - but their average "
-   "transaction is Rs 331, so they are counting micro-savings rather than lumps. It bounds this number; it "
-   "does not confirm it. "
-   "⚠ KNOWN SIMPLIFICATION WITH A KNOWN DIRECTION: v2.6 applied a TENURE UPLIFT here - 'a 3-year account is "
-   "~2x as likely to buy spot as a 6-month account' - which the v3.0 simplification dropped. This rate is "
-   "now flat from day one. If 14% was calibrated on a mature book, SPOT IS OVERSTATED IN THE EARLY YEARS, "
-   "when nearly every account is young. Not rebuilt because spot is ~1.4% of Y7 revenue; restore the uplift "
-   "in the Phase 5 simulation. ASSUMPTION.", FMT_PCT, "spot_attach")
+sp("spot_attach_mult", "Spot attach scenario multiplier", 1.00, 1.70, 0.50, "x the regional attach",
+   "REGIONALISED 2026-08-21. The attach LEVEL now sits per region on Assumptions (UAE 12%, Oman & Bahrain "
+   "10%, India 25%); this dial carries only the uncertainty around it, preserving the old 14/24/7 spread "
+   "(1.00 / 1.70 / 0.50). ONE DIAL, NOT THREE TRIPLETS - nine numbers to defend, and a scenario could "
+   "otherwise silently invert the regional ordering that affordability establishes. See the regional rows on "
+   "Assumptions for the reasoning. ASSUMPTION about spread.", FMT_NUM2, "spot_attach_mult")
 sp("spot_ticket_mult", "Spot ticket scenario multiplier", 1.00, 1.35, 0.70, "x the observed ticket",
    "REPLACED the global 'Average spot ticket' on 2026-08-21. The LEVEL is no longer a scenario input: each "
    "region now carries its own OBSERVED ticket on Assumptions (UAE 190 from Botim, India 40 from Augmont, "
@@ -1325,10 +1368,14 @@ for rg in REGIONS:
     m_row("sip_" + rg, "  SIP contributions", "USD",
           lambda i, rg=rg: gate("s1a", i, "%s*%s*%s" % (mr("pay_" + rg, i), sref("ticket_" + rg),
                                                         mr("n", i))), FMT_USD)
+    # paying x attach x its dial x frequency x ticket x its dial, /12 for the
+    # annual frequency, x months in period. BOTH scenario dials appear exactly
+    # once - dropping either silently pins that half of spot to the base case.
     m_row("spot_" + rg, "  Spot purchase volume", "USD",
-          lambda i, rg=rg: gate("s1b", i, "%s*%s*%s*%s*%s/12*%s" % (
-              mr("pay_" + rg, i), aref("spotticket_" + rg), sref("spot_attach"),
-              sref("spot_frequency"), sref("spot_ticket_mult"), mr("n", i))), FMT_USD)
+          lambda i, rg=rg: gate("s1b", i, "%s*%s*%s*%s*%s*%s/12*%s" % (
+              mr("pay_" + rg, i), aref("spotattach_" + rg), sref("spot_attach_mult"),
+              sref("spot_frequency"), aref("spotticket_" + rg), sref("spot_ticket_mult"),
+              mr("n", i))), FMT_USD)
     m_row("grams_in_" + rg, "  Grams purchased", "grams",
           lambda i, rg=rg: "=(%s+%s)*(1-%s)/%s/(1+%s)" % (
               mr("sip_" + rg, i), mr("spot_" + rg, i), aref("entry_fee"),

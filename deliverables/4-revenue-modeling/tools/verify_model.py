@@ -212,11 +212,43 @@ REGION_NAMES = [asm["A%d" % r].value.split(" - ", 1)[1] for r in ceil_rows]
 check("At least three regional ceilings are defined", len(ceil_rows) >= 3,
       "found %d: %r" % (len(ceil_rows), REGION_NAMES))
 ceil_tot = sum(asm["B%d" % r].value for r in ceil_rows)
-# Re-anchored 2026-08-20: the UAE Indian population was corrected from 3.5m to
-# the official 4.36m, which legitimately raises the ceiling. The check still
-# guards against accidental rescaling, just against the corrected figure.
-check("Reachable ceilings sum to the market-size anchor (~181,150, within 1%)",
-      abs(ceil_tot - 181150) / 181150 < 0.01, "%.0f vs 181,150" % ceil_tot)
+# REPLACED 2026-08-21. This was an anchor hardcoded at ~181,150, and it had
+# already been bumped once (the UAE Indian population correction, 3.5m -> 4.36m)
+# and would have been bumped again here (the India ceiling, 0.35% -> 0.70%).
+# A magic number that is edited every time it fires is a RATCHET, NOT A TRIPWIRE
+# - it can only ever confirm the number someone last typed.
+#
+# Replaced by an INDEPENDENT RECOMPUTATION from the raw funnel inputs. This
+# genuinely catches what the anchor was meant to catch - a regional ceiling
+# quietly becoming a typed number, or decoupling from the funnel above it - and
+# it needs no maintenance when a population or a ceiling legitimately changes.
+_fh = next(r for r in range(1, asm.max_row + 1) if asm["A%d" % r].value == "Funnel step")
+_frow = {}
+for r in range(_fh, min(_fh + 14, asm.max_row + 1)):
+    lab = (asm["A%d" % r].value or "").strip()
+    for k in ("Source population", "x Economically", "x Payment", "x Money", "x Penetration", "Feeds model"):
+        if lab.startswith(k):
+            _frow[k] = r
+_fcols = [c for c in range(2, 14) if asm.cell(row=_frow["Feeds model"], column=c).value]
+_recomputed = {}
+for c in _fcols:
+    v = 1.0
+    for k in ("Source population", "x Economically", "x Payment", "x Money", "x Penetration"):
+        v *= asm.cell(row=_frow[k], column=c).value
+    _recomputed.setdefault(asm.cell(row=_frow["Feeds model"], column=c).value, 0.0)
+    _recomputed[asm.cell(row=_frow["Feeds model"], column=c).value] += v
+_mismatched = []
+for r in ceil_rows:
+    rn = asm["A%d" % r].value.split(" - ", 1)[1]
+    if abs(asm["B%d" % r].value - _recomputed.get(rn, -1)) > 1:
+        _mismatched.append((rn, asm["B%d" % r].value, _recomputed.get(rn)))
+check("Every regional ceiling RECOMPUTES from population x filters x penetration",
+      not _mismatched and len(_recomputed) == len(ceil_rows),
+      "%r" % _mismatched[:3])
+# Wide band, so it only fires on a wild rescale rather than on every legitimate
+# correction. Deliberately loose - the check above is the precise one.
+check("Total reachable ceiling is the right order of magnitude (50k-500k)",
+      50_000 < ceil_tot < 500_000, "%.0f" % ceil_tot)
 
 # The funnel must be live arithmetic, not typed numbers.
 _fa = wbf["Assumptions"]
