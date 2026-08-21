@@ -1192,14 +1192,19 @@ sp("facility_turnover", "Facility turnover, peak -> average", 0.42, 0.55, 0.30, 
    "the lending stream by 1.88x. DERIVED.", FMT_NUM2, "facility_turnover")
 sp("draw_events", "Draw events per borrower per year", 2.1, 3.2, 1.3, "events/yr",
    "MOVES WITH facility turnover - do not flex independently. DERIVED.", FMT_NUM2, "draw_events")
-sp("family_attach", "Family plan attach rate", 0.08, 0.15, 0.04, "% of NEW customers",
-   "LOWERED 2026-08-21 from 0.20. ⚠ THE UNIT ALSO CHANGED, AND THAT MATTERS: it is now the share of NEW "
+sp("family_attach", "Family plan attach rate", 0.15, 0.25, 0.08, "% of NEW customers",
+   "SET AT 0.15 on 2026-08-21, client instruction - the same day it came DOWN from 0.20 to 0.08, so it has "
+   "landed close to where it started. What has genuinely changed is not the number but the STRUCTURE. ⚠ THE UNIT ALSO CHANGED, AND THAT MATTERS: it is now the share of NEW "
    "customers who take the plan when they join, feeding a SUBSCRIBER BALANCE that then churns - not a "
    "standing share of the whole book that could never fall. The steady-state share of paying customers "
    "holding a plan therefore lands BELOW this number. "
    "NOTHING IS STATED ANYWHERE IN THE CORPUS and no attach benchmark exists for this kind of add-on; 20% "
-   "was high for an OPTIONAL PAID extra on a savings product, where low single digits to low teens is the "
-   "normal range. ASSUMPTION.", FMT_PCT, "family_attach")
+   "is at the top of the normal range for an OPTIONAL PAID extra on a savings product, which is low single "
+   "digits to low teens. ⚠ IT IS NOT EQUIVALENT TO THE OLD 20% AND SHOULD NOT BE READ AS A PARTIAL "
+   "REVERSAL: 20% was a permanent share of the whole book that could never decay, while 15% applies once, "
+   "on joining, to a balance that then churns at ~7.1% a month. The standing share of paying customers "
+   "holding a plan settles near 10.5%, not 15%. NOTHING IS STATED ANYWHERE IN THE CORPUS and no attach "
+   "benchmark exists for this kind of add-on. ASSUMPTION.", FMT_PCT, "family_attach")
 sp("family_churn", "Family plan cancellation rate (incremental)", 0.25, 0.15, 0.40, "%/yr",
    "ADDED 2026-08-21. INCREMENTAL IS THE KEY WORD: this is cancellation by customers who STAY WITH AURUMIX. "
    "Subscribers already disappear when they stop paying their SIP, and that was the only churn stream 3 had "
