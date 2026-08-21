@@ -328,18 +328,18 @@ a_row("family_price", "Family plan / Digital Will price", 50, "USD/yr",
       "for a WHOLE HOUSEHOLD (Monarch 99.99/yr, Zeta 59.99/yr, Greenlight 5.99/mo). "
       "SET AT USD 50/yr, client instruction 2026-08-21. That is essentially TRUST & WILL'S USD 49/yr "
       "MEMBERSHIP - a defensible anchor in that it matches the best-known product in the category, but "
-      "⚠ NOTE WHOSE PRODUCT IT IS: Trust & Will sells to US customers who paid 199-599 up front for an "
+      "NOTE WHOSE PRODUCT IT IS: Trust & Will sells to US customers who paid 199-599 up front for an "
       "estate plan, not to a migrant worker saving USD 30 a month. At 50 the plan is 14% OF EVERYTHING "
       "THE CUSTOMER SAVES IN A YEAR, against 10% at 36 and 33% at the original 120. It is no longer "
       "absurd, but it is priced at a developed-market benchmark for an emerging-market customer, and "
-      "that is the line an adviser would push on. ⚠ A ONE-OFF SETUP FEE IS NOT MODELLED - if the client wants the full "
+      "that is the line an adviser would push on. A ONE-OFF SETUP FEE IS NOT MODELLED - if the client wants the full "
       "industry structure, that is a second row, not a bigger number here. CITED comparators, ASSUMPTION on "
       "the point in the range.", FMT_USD, "family_price")
 a_row("benef_fee", "Additional beneficiary fee", 6, "USD/yr each",
       "ADDED 2026-08-21, client instruction. Charged per named beneficiary BEYOND THE FIRST, which the plan "
       "includes - the standard shape for this kind of add-on, and the reason the formula carries a MAX(0, "
       "n-1) rather than charging every beneficiary. "
-      "⚠ NO COMPARABLE EXISTS: will services price PER WILL, not per beneficiary. DIFC charges more for a "
+      "NO COMPARABLE EXISTS: will services price PER WILL, not per beneficiary. DIFC charges more for a "
       "MIRROR will (two people) and more again for guardianship, but nobody publishes a per-beneficiary "
       "tariff. So this is priced on COST RECOVERY, which is the defensible basis available: every named "
       "beneficiary needs identity capture and AML screening, and Sumsub screening already sits in this "
@@ -373,7 +373,7 @@ a_row("ltv_gold", "LTV against collateral", 0.50, "% of collateral",
 # it near 0.20x. Deriving a number from a related one imports that number's
 # flatness. These are now OBSERVED per region.
 #
-# ⚠ EACH IS THE SIZE OF ONE PURCHASE, not an annual sum. Annual spend per
+# EACH IS THE SIZE OF ONE PURCHASE, not an annual sum. Annual spend per
 # buying customer is this x spot frequency (1.7/yr). Both sources below quote
 # average ticket PER TRANSACTION, so the basis matches with no conversion.
 SPOT_TICKET = (
@@ -385,7 +385,7 @@ SPOT_TICKET = (
      "country, same segment, same product, same period. Note 64% of its users buy under AED 500, so the "
      "mean sits above the median and this figure is, if anything, generous."),
     ("gulf", 145,
-     "⚠ INFERRED - THE WEAKEST OF THE THREE. No GCC platform outside the UAE publishes an average ticket; "
+     "INFERRED - THE WEAKEST OF THE THREE. No GCC platform outside the UAE publishes an average ticket; "
      "this is a CONFIRMED NEGATIVE, not a gap in the search. Taken as the UAE figure scaled by the regional "
      "income gap (SIP 26.00/33.60 = 0.77x). Do not present this as sourced."),
     ("india", 40,
@@ -394,7 +394,7 @@ SPOT_TICKET = (
      "the same act as a spot purchase, which is why it is preferred to the alternatives. REJECTED: SafeGold "
      "Rs 5,000-8,000 (May 2026) - that book skews to investors, while Aurumix's Indian customer saves USD 30 "
      "a month; MMTC-PAMP Rs 800-1,200 - closer to routine micro-saving than a lump; Rs 230 industry-wide - a "
-     "LinkedIn aggregate, not a citable source. ⚠ WEAKER THAN THE UAE FIGURE: right country and right "
+     "LinkedIn aggregate, not a citable source. WEAKER THAN THE UAE FIGURE: right country and right "
      "behaviour, but Aurumix's Indian customer is poorer than Augmont's average buyer, so 40 may be generous."),
 )
 for key, tkt, _tnote in SPOT_TICKET:   # NB: not "note" - that shadows note()
@@ -404,7 +404,7 @@ for key, tkt, _tnote in SPOT_TICKET:   # NB: not "note" - that shadows note()
 # ---- Spot attach: REGIONALISED on affordability ----------------------------
 # REGIONALISED 2026-08-21, from a single global 14%.
 #
-# ⚠ STILL NO SOURCE - v2.6 records it as a confirmed negative: "there is no
+# STILL NO SOURCE - v2.6 records it as a confirmed negative: "there is no
 # spot-attach benchmark for any comparable gold or savings product anywhere."
 # What changed is not the evidence but the STRUCTURE: a flat rate asserted that
 # a UAE customer and an Indian customer face the same decision, and they do not.
@@ -432,8 +432,8 @@ for key, att in SPOT_ATTACH:
     a_row("spotattach_" + key, "Spot attach rate - %s" % RLAB[key], att, "% of customers/yr",
           "Share of paying customers who make ANY spot purchase in a year - NOT a monthly rate, and NOT how "
           "often a buyer buys (that is the separate frequency input). Set on the affordability ratio above: "
-          "the spot ticket as a multiple of the same customer's monthly SIP. ⚠ NO PUBLISHED BENCHMARK EXISTS "
-          "- confirmed negative. ⚠ KNOWN SIMPLIFICATION: v2.6 applied a TENURE UPLIFT here ('a 3-year account "
+          "the spot ticket as a multiple of the same customer's monthly SIP. NO PUBLISHED BENCHMARK EXISTS "
+          "- confirmed negative. KNOWN SIMPLIFICATION: v2.6 applied a TENURE UPLIFT here ('a 3-year account "
           "is ~2x as likely to buy spot as a 6-month account') which v3.0 dropped, so this is flat from day "
           "one and OVERSTATES SPOT IN THE EARLY YEARS, when nearly every account is young. Restore the uplift "
           "in the Phase 5 simulation. ASSUMPTION, structured on an observable driver.",
@@ -452,7 +452,7 @@ a_row("gate_run", "Confirmed SIP gate", 6, "consecutive payments",
 a_row("redemption_cost", "Cost per redemption event (memo - for the cost build)", 3.20, "USD",
       "RE-CUT 2026-08-20 from 4.20: the outbound bank transfer fee (USD 1.00-2.50) is REMOVED - that is the "
       "customer's cost to bear, not Aurumix's. What remains is Sumsub AML re-screening at 1.85 plus "
-      "operational handling at ~1.35, both of which Aurumix genuinely pays. ⚠ NOT IN THE REVENUE MODEL: "
+      "operational handling at ~1.35, both of which Aurumix genuinely pays. NOT IN THE REVENUE MODEL: "
       "redemption is a COST and arrives with the cost build. This row is carried so the driver is documented "
       "and the unit rate already agreed. THE FINDING IT CARRIES IS UNCHANGED AND IS THE POINT - VARA Annex 2 "
       "III.E.4 forbids charging ANY fee on redemption, verified verbatim at primary source, so the cost is "
@@ -504,7 +504,7 @@ ACTIVATIONS = [
      "the VAT and reporting treatment differs."),
     ("india", 1, "from", "Region opens - India",
      "M1 (client decision 2026-08-20, moved earlier from M13). The India payment route is ASSUMED SOLVED in "
-     "this model. ⚠ That is a live assumption, not a settled fact - if the route is not solved, this region "
+     "this model. That is a live assumption, not a settled fact - if the route is not solved, this region "
      "does not open at all and roughly a quarter of terminal revenue goes with it."),
 ]
 for key, per, kind, label, src in ACTIVATIONS:
@@ -584,7 +584,7 @@ FUNNEL = [
     # CEILINGS RAISED 2026-08-21, client instruction. UAE-Indian 9.5% -> 10%,
     # UAE-other-South-Asian 6% -> 10%, Oman & Bahrain 4% -> 6%.
     #
-    # ⚠ THE OTHER-SOUTH-ASIAN MOVE IS THE ONE TO NOTICE. 6% vs 9.5% was not
+    # THE OTHER-SOUTH-ASIAN MOVE IS THE ONE TO NOTICE. 6% vs 9.5% was not
     # arbitrary - it encoded that this is an Indian-built product, sold through
     # Indian agents, along Indian remittance corridors. Equalising the two at
     # 10% ASSERTS THAT AURUMIX REACHES PAKISTANI, BANGLADESHI, NEPALI AND SRI
@@ -608,7 +608,7 @@ FUNNEL = [
     # behaviour exists at that scale, so 1 in 285 was hard to defend as a
     # CEILING - a number meant to bound what is ever reachable, not to forecast.
     #
-    # ⚠ THIS IS THE MOST DANGEROUS NUMBER IN THE FUNNEL. Revenue moves almost
+    # THIS IS THE MOST DANGEROUS NUMBER IN THE FUNNEL. Revenue moves almost
     # linearly with it and it is the least falsifiable input here, so it must
     # never be moved to make an output look better. The real question it answers
     # is not "how big is Indian gold demand" - plainly enormous - but "what is
@@ -655,7 +655,7 @@ fun_row("pop", "Source population", [f[2] for f in FUNNEL], FMT_NUM,
         "NATIONALS including dependants, which is why the economically-active filter below applies. Oman and "
         "Bahrain is an expatriate WORKER count. INDIA IS NOT A DEMOGRAPHIC BASE - it is sized BEHAVIOURALLY "
         "from gold ETF folios intersected with active digital-gold holders, so its filters are 100%. "
-        "⚠ HELD STATIC over the horizon, which is conservative: the UAE Indian community grew ~12% in the "
+        "HELD STATIC over the horizon, which is conservative: the UAE Indian community grew ~12% in the "
         "single year to Dec 2024.")
 fun_row("ea", "  x Economically active", [f[3] for f in FUNNEL], FMT_PCT,
         "Oman and Bahrain is 100% because the source counts EXPAT WORKERS, who are working-age and "
@@ -722,7 +722,7 @@ ws_assum["B%d" % r] = "=" + "+".join(aref("ceil_" + k).replace("Assumptions!", "
 ws_assum["B%d" % r].font = BLACK_BOLD
 ws_assum["B%d" % r].number_format = FMT_NUM
 ws_assum["C%d" % r] = "accounts"
-ws_assum["D%d" % r] = ("~181,150, against the brief's 165,750. ⚠ THE BRIEF'S 'base x ceiling is the "
+ws_assum["D%d" % r] = ("~181,150, against the brief's 165,750. THE BRIEF'S 'base x ceiling is the "
                        "invariant' RULE IS DELIBERATELY BROKEN HERE, and the distinction matters: that rule "
                        "guards against a METHODOLOGICAL re-cut quietly inflating the market by re-tuning "
                        "filters, which proves nothing. This is not that - it is a DATA CORRECTION. The UAE "
@@ -738,7 +738,7 @@ _ar[0] += 1
 # this tests that answer against what a real platform in the same market has
 # actually seen. THESE ROWS FEED NOTHING - they are evidence, not inputs.
 #
-# ⚠ WHY THIS IS A CROSS-CHECK AND NOT THE METHOD. Replacing the funnel with
+# WHY THIS IS A CROSS-CHECK AND NOT THE METHOD. Replacing the funnel with
 # platform user counts was considered and rejected on the data:
 #   (a) "USERS" IS NOT A DEFINED UNIT. For the SAME UAE product the published
 #       figures are 8.5m (can access), 1.5m (OGold users), 775,000 (explored the
@@ -775,7 +775,7 @@ c.value = "=%s/%s" % (aref("ceil_uae").replace("Assumptions!", ""),
 c.font, c.number_format = BLACK_BOLD, '0.00"x"'
 ws_assum["C%d" % r] = "x observed"
 ws_assum["D%d" % r] = (
-    "⚠ LIVE, SO IT MOVES IF ANYONE RAISES A CEILING - which is the point. Two INDEPENDENT methods landing "
+    "LIVE, SO IT MOVES IF ANYONE RAISES A CEILING - which is the point. Two INDEPENDENT methods landing "
     "within ~2x is the strongest defence of the funnel in this model: the funnel says the UAE can reach "
     "~113,000 SIP accounts, and a real UAE gold app in the same segment has ~75,000 active users today. "
     "Our addressable base of ~1.43m sits against 775,000 who explored that product - same order again. "
@@ -791,7 +791,7 @@ ws_assum["C%d" % r] = "-"
 ws_assum["D%d" % r] = (
     "CONFIRMED NEGATIVE, recorded so it is not re-searched. No GCC platform outside the UAE publishes a "
     "user count. India publishes only REGISTERED counts (Jar 35m, Augmont 42m) which cannot be deduplicated "
-    "or converted to active users, so no comparable cross-check can be built. ⚠ NOTE THAT INDIA'S OWN BASE "
+    "or converted to active users, so no comparable cross-check can be built. NOTE THAT INDIA'S OWN BASE "
     "IS ALREADY user-derived - its 12.5m is 'holds a gold ETF folio or actively buys digital gold', which is "
     "why its three filters all sit at 1.00 - AND IT IS THE LEAST TRACEABLE BASE IN THE MODEL. That is the "
     "evidence that a user-based method does not automatically produce a better-sourced number.")
@@ -805,17 +805,17 @@ for y in range(1, 8):
     a_row("agents_y%d" % y, "Active agents - Y%d" % y, AGENTS[y - 1], "agents",
           "RAISED 50% on 2026-08-21. A STOCK, NOT A FLOW: at 45% attrition, holding 186 active needs ~84 "
           "recruits a year just to stand still, and reaching 186 from 8 means recruiting and training "
-          "several hundred people over seven years. ⚠ COMPOUNDS WITH AGENT PRODUCTIVITY, raised from 4 to 6 "
-          "the same day - together they are 2.25x the agent output the model carried this morning. ⚠ AND IT "
+          "several hundred people over seven years. COMPOUNDS WITH AGENT PRODUCTIVITY, raised from 4 to 6 "
+          "the same day - together they are 2.25x the agent output the model carried this morning. AND IT "
           "IS A COST THIS MODEL CANNOT SEE: agents are paid, and the salesforce is now 45% UAE / 10% Oman & "
           "Bahrain / 45% India, where a Dubai salesperson and an Indian commission agent are not remotely "
           "the same expense. CLIENT INPUT.", FMT_NUM, "agents_y%d" % y)
 for y in range(1, 8):
     a_row("mktg_y%d" % y, "Marketing spend - Y%d" % y, MKTG[y - 1], "USD/yr",
           "RAISED 50% on 2026-08-21, client instruction. A DECISION VARIABLE and an input to acquisition, "
-          "not an output of a cost table. 🔴 THE SINGLE LARGEST LEVER IN THE MODEL AND THE ONLY ONE THAT IS "
+          "not an output of a cost table. THE SINGLE LARGEST LEVER IN THE MODEL AND THE ONLY ONE THAT IS "
           "PURELY A SPENDING CHOICE: measured sensitivity puts +50% here at +28.5% customers and +29.3% "
-          "gold. ⚠ IT IS ALSO THE ONE THE REVENUE-ONLY SCOPE FLATTERS MOST. This model has no cost side yet, "
+          "gold. IT IS ALSO THE ONE THE REVENUE-ONLY SCOPE FLATTERS MOST. This model has no cost side yet, "
           "so an extra USD 1.9m of marketing across the horizon appears here as pure upside. It is not - it "
           "is USD 1.9m of spend, and whether it is worth making is a question only the cost build can "
           "answer. DO NOT PRESENT THE UPLIFT FROM THIS ROW AS PROFIT.", FMT_USD, "mktg_y%d" % y)
@@ -832,10 +832,10 @@ for key in REGIONS:
           "REVISED 2026-08-20. An earlier cut put 100% in India, which left the UAE - the licensed home "
           "market - with no people selling at all. There will be a salesforce outside India; it is simply "
           "SALARIED rather than commission-only. FOR REVENUE THE DISTINCTION DOES NOT MATTER: both are people "
-          "acquiring customers at some productivity. ⚠ IT MATTERS ENORMOUSLY FOR COST - a Dubai salesperson "
+          "acquiring customers at some productivity. IT MATTERS ENORMOUSLY FOR COST - a Dubai salesperson "
           "and an Indian commission agent are not remotely the same expense, and this split MUST be "
           "cost-weighted when the cost build lands. India stays high because a large agent pool is cheapest "
-          "to build there; UAE is weighted for being the core licensed market. ⚠ NOT the same thing as "
+          "to build there; UAE is weighted for being the core licensed market. NOT the same thing as "
           "stream 6: that is B2B, partners white-labelling the platform onto their own customer books, and "
           "is not a consumer sales channel at all. Must sum to 100%. CLIENT INPUT.",
           FMT_PCT, "agentshare_" + key)
@@ -940,7 +940,7 @@ sp("gold_cagr", "Gold price appreciation", 0.081, 0.120, 0.000, "%/yr",
    "least cherry-picked. The shorter the window the better gold looks: ~8.6% over 50 years, ~9-10% over 20, "
    "~13-14% over 10, and over 20% over the last 5. Taking the recent decade would have flattered the model "
    "on a rally. CITED. "
-   "⚠ THIS IS A NOMINAL RATE AND NOTHING ELSE IN THE MODEL INFLATES. SIP tickets, spot tickets, CAC, card "
+   "THIS IS A NOMINAL RATE AND NOTHING ELSE IN THE MODEL INFLATES. SIP tickets, spot tickets, CAC, card "
    "fees and the B2B fee are all frozen in 2027 dollars. There is NO CONSENSUS POSITIVE LONG-RUN REAL RETURN "
    "for gold - it is generally treated as a store of value with a near-zero real yield - so most of this 8.1% "
    "IS INFLATION. Applying it to the metal while freezing everything else quietly asserts that gold outruns "
@@ -964,7 +964,7 @@ sp("agent_productivity", "Agent productivity", 6, 8, 3, "accounts/agent/month",
    "RAISED 2026-08-21 from 4, client instruction. The insurance agency comparator that produced 4 is for "
    "agents selling a COMPLEX UNDERWRITTEN PRODUCT with medical questions and multi-page forms; a gold SIP "
    "signup is a fraction of that work, so the comparator was conservative for this product. "
-   "⚠ COMPOUNDS WITH THE AGENT HEADCOUNT, which was raised 50% the same day - together they are 2.25x the "
+   "COMPOUNDS WITH THE AGENT HEADCOUNT, which was raised 50% the same day - together they are 2.25x the "
    "agent output the model carried this morning. Both are execution assumptions with no external anchor at "
    "the new level; if either disappoints, the other does not compensate. TRIANGULATED at 4, ASSUMPTION at 6."
    , FMT_NUM2, "agent_productivity")
@@ -1002,7 +1002,7 @@ for key in REGIONS:
        "INR 500-1,500 (~USD 6-18), neobank savings activation INR 1,100-1,800, wealth and broking apps "
        "INR 2,500-5,500 (~USD 30-65); Jupiter reports a USD 5-6 paid CAC. USD 120 is ~INR 10,500 - some 7-20x "
        "the Indian mass-market benchmark and still 2-4x its premium wealth apps. UAE is held at 120 as a "
-       "FULLY-LOADED figure; ⚠ note it sits at the top of the range for a LOW-TICKET product, and the "
+       "FULLY-LOADED figure; note it sits at the top of the range for a LOW-TICKET product, and the "
        "published low-ticket band is USD 4-70. TRIANGULATED.", FMT_USD, "cac_" + key)
 MKT_SHARE = {"uae": 0.58, "gulf": 0.16, "india": 0.26}
 for key in REGIONS:
@@ -1015,7 +1015,7 @@ sp("referral_rate", "Referral rate", 0.60, 1.10, 0.25, "referrals/customer/yr",
    "RAISED 2026-08-21 from 0.45, client instruction. Cap removed deliberately, so the distribution is "
    "right-skewed - MODEL THE MEAN, NOT THE MEDIAN. 0.60 means the average customer produces roughly three "
    "referrals every five years; the mean is pulled up by a small number of highly social referrers, which is "
-   "the normal shape for a trust-based product inside a tight diaspora community. ⚠ IT IS STILL AN "
+   "the normal shape for a trust-based product inside a tight diaspora community. IT IS STILL AN "
    "ASSUMPTION WITH NO EXTERNAL ANCHOR, and it compounds: referrals feed the paying base, which feeds more "
    "referrals. That loop is the reason this parameter is more load-bearing than its size suggests. "
    "ASSUMPTION.", FMT_NUM2, "referral_rate")
@@ -1026,7 +1026,7 @@ sp("organic_share", "Organic share of direct", 0.25, 0.40, 0.10, "% of direct",
    "cost never applies to it - THAT IS ALSO WHY IT IS AN ATTRACTIVE NUMBER TO RAISE, and why it deserves "
    "scepticism. 0.25 says a quarter of paid-driven signups arrive again for free through word of mouth, app "
    "store discovery and community effects. Defensible for a product sold inside a dense diaspora network "
-   "where the paid campaign and the community overlap almost completely. ⚠ NO EXTERNAL ANCHOR AT EITHER "
+   "where the paid campaign and the community overlap almost completely. NO EXTERNAL ANCHOR AT EITHER "
    "LEVEL, and it is arithmetically identical to a 12% CAC reduction - so raising this AND cutting CAC in "
    "the same pass is close to taking the same benefit twice. ASSUMPTION.", FMT_PCT, "organic_share")
 sp("seasonality_amplitude", "Seasonality amplitude", 1.00, 1.40, 0.60, "x deviation from 1.0",
@@ -1052,12 +1052,12 @@ _sr[0] += 1
 s_section("GROUP C: AUM, LEAKAGE AND SPOT")
 sp("self_custody_leakage", "Gold moved out of Aurumix's control", 0.06, 0.03, 0.18,
    "% of AUM/yr",
-   "HALVED 2026-08-21 from 0.12, client instruction. ⚠ NOTE IT HAS ZERO EFFECT ON GOLD UNDER CUSTODY - measured, not asserted - because self-custodied metal never left the vault and was never in that measure. It moves ONLY the collateral-eligible base and therefore the card credit limit, worth ~0.2% of Y7 revenue. RELABELLED earlier the same day after the client correctly objected to the old name, 'self-custody leakage'. "
+   "HALVED 2026-08-21 from 0.12, client instruction. NOTE IT HAS ZERO EFFECT ON GOLD UNDER CUSTODY - measured, not asserted - because self-custodied metal never left the vault and was never in that measure. It moves ONLY the collateral-eligible base and therefore the card credit limit, worth ~0.2% of Y7 revenue. RELABELLED earlier the same day after the client correctly objected to the old name, 'self-custody leakage'. "
    "THE GOLD DOES NOT LEAVE THE VAULT: a token moving to a customer's own wallet sells nothing and burns "
    "nothing, so calling it an AUM decrease was wrong. What it does leave is Aurumix's COLLATERAL-ELIGIBLE "
    "base - Aurumix cannot foreclose on a token sitting in a private wallet, so that gold can no longer back "
    "a credit limit. In this model AUM has exactly ONE consumer, the card credit limit, so the arithmetic was "
-   "always right and only the label was misleading. ⚠ THAT ONE-CONSUMER PROPERTY IS WHAT MAKES THIS SAFE: if "
+   "always right and only the label was misleading. THAT ONE-CONSUMER PROPERTY IS WHAT MAKES THIS SAFE: if "
    "a later build points anything else at AUM - a custody fee, a reported-AUM headline - this row must be "
    "split in two first. Contrast the redemption line, which IS gold genuinely gone. ASSUMPTION.",
    FMT_PCT, "self_custody_leakage")
@@ -1068,7 +1068,7 @@ sp("redemption_rate", "Redemption rate", 0.06, 0.035, 0.12, "% of AUM/yr",
    "separate line: this is metal actually sold and tokens burned. VARA forbids charging any fee on it. "
    "ASSUMPTION, now aligned to the single available comparator.", FMT_PCT, "redemption_rate")
 sp("lapsed_redemption_mult", "Holder redemption multiplier", 1.6, 1.3, 2.8, "x the paying rate",
-   "LOWERED 2026-08-21 from 2.2, client instruction. ⚠ THIS IS THE WEAKEST OF THE THREE DECAY CHANGES. The "
+   "LOWERED 2026-08-21 from 2.2, client instruction. THIS IS THE WEAKEST OF THE THREE DECAY CHANGES. The "
    "LOGIC behind a multiplier above 1.0 is untouched and still holds: customers who stopped paying redeem "
    "faster, because they have no accruing benefit left to protect. Lowering it to 1.6 weakens that argument "
    "without new evidence for the smaller number - it says lapsed customers are stickier than previously "
@@ -1085,13 +1085,13 @@ sp("spot_ticket_mult", "Spot ticket scenario multiplier", 1.00, 1.35, 0.70, "x t
    "REPLACED the global 'Average spot ticket' on 2026-08-21. The LEVEL is no longer a scenario input: each "
    "region now carries its own OBSERVED ticket on Assumptions (UAE 190 from Botim, India 40 from Augmont, "
    "Oman & Bahrain 145 inferred). This parameter carries only the UNCERTAINTY around those observations, as "
-   "a single dial. ⚠ WHY ONE DIAL AND NOT THREE: three regional triplets would be nine numbers to defend and "
+   "a single dial. WHY ONE DIAL AND NOT THREE: three regional triplets would be nine numbers to defend and "
    "would let a scenario silently invert the regional ordering that the sources establish. One multiplier "
    "flexes the level and PRESERVES the ordering. Aggressive 1.35 puts the UAE at ~257, still under the "
    "AED 1,000 mark; conservative 0.70 puts it at ~133, below Botim's own sub-AED-500 majority. ASSUMPTION "
    "about spread, applied to observed levels.", FMT_NUM2, "spot_ticket_mult")
 sp("spot_frequency", "Spot frequency", 1.7, 2.4, 1.2, "events/attacher/yr",
-   "⚠ PROVENANCE CORRECTED 2026-08-21 - THE NUMBER STANDS, ITS OLD CITATION DID NOT. The previous note read "
+   "PROVENANCE CORRECTED 2026-08-21 - THE NUMBER STANDS, ITS OLD CITATION DID NOT. The previous note read "
    "'Botim's 128,000 trades against ~45,000 buyers implies ~1.9/yr'. THE 45,000 IS NOT A BUYER COUNT, IT IS "
    "A TRANSACTION COUNT: Khaleej Times, Nov 2025, says 775,000 users EXPLORED the feature, 'completing over "
    "45,000 transactions'. The 128,000 is also transactions, to Feb 2026. So the old derivation divided "
@@ -1113,7 +1113,7 @@ sp("spot_frequency", "Spot frequency", 1.7, 2.4, 1.2, "events/attacher/yr",
 # spot is a cross-sell to people who are already paying, so the arrow would have
 # pointed from SIP customers back to SIP customers.
 #
-# ⚠ THE DECISION NOT TO BUILD THAT POPULATION IS ECONOMIC, NOT LAZY. A spot-only
+# THE DECISION NOT TO BUILD THAT POPULATION IS ECONOMIC, NOT LAZY. A spot-only
 # buyer is worth 1.7 x ticket x 5% a year - USD 16 in the UAE, USD 3.40 in
 # India - against a CAC of 120 and 20. That is a 6-8 YEAR PAYBACK ON SPOT
 # REVENUE ALONE, so paid spot acquisition is dominated by simply acquiring a SIP
@@ -1138,7 +1138,7 @@ sp("card_activation", "Facility take-up - customers who take AND use the card", 
    "populations (50% activating a card, 18% taking credit) doing what is in fact one thing. Merged onto the "
    "credit figure, which is the better-anchored of the two: Indian gold-loan penetration is under 10% at a "
    "point in time, uplifted here for pre-selection since these customers have already cleared a "
-   "six-payment gate. ⚠ THE OLD 50% CAME FROM NEOBANK COMPARABLES (PULSE 68.2%, Monzo 68%) WHERE THE CARD "
+   "six-payment gate. THE OLD 50% CAME FROM NEOBANK COMPARABLES (PULSE 68.2%, Monzo 68%) WHERE THE CARD "
    "IS THE PRODUCT - wrong in kind for a card that only lets you borrow against your own savings. "
    "DERIVED.", FMT_PCT, "card_activation")
 sp("card_txns_per_draw", "Transactions per drawdown event", 4, 6, 2, "transactions/draw",
@@ -1147,7 +1147,7 @@ sp("card_txns_per_draw", "Transactions per drawdown event", 4, 6, 2, "transactio
    "it down, so the meaningful unit is transactions PER DRAW, not per month. At 12/month the implied ticket "
    "collapsed to ~AED 12, which is a coffee, not a reason to pledge your gold. THE AVERAGE TICKET FALLS OUT "
    "AS drawn amount / this number, and the draw events cancel - so the ticket depends only on how large a "
-   "draw is and how many purchases it is spent across. ⚠ IT ALSO CHANGES WHAT THE CARD IS FOR: not daily "
+   "draw is and how many purchases it is spent across. IT ALSO CHANGES WHAT THE CARD IS FOR: not daily "
    "groceries, but occasional larger needs - school fees, a medical bill, an emergency - funded by borrowing "
    "against savings rather than liquidating them. That is a materially different product story and should be "
    "put to the client in those words. ASSUMPTION.", FMT_NUM, "card_txns_per_draw")
@@ -1194,13 +1194,13 @@ sp("draw_events", "Draw events per borrower per year", 2.1, 3.2, 1.3, "events/yr
    "MOVES WITH facility turnover - do not flex independently. DERIVED.", FMT_NUM2, "draw_events")
 sp("family_attach", "Family plan attach rate", 0.15, 0.25, 0.08, "% of NEW customers",
    "SET AT 0.15 on 2026-08-21, client instruction - the same day it came DOWN from 0.20 to 0.08, so it has "
-   "landed close to where it started. What has genuinely changed is not the number but the STRUCTURE. ⚠ THE UNIT ALSO CHANGED, AND THAT MATTERS: it is now the share of NEW "
+   "landed close to where it started. What has genuinely changed is not the number but the STRUCTURE. THE UNIT ALSO CHANGED, AND THAT MATTERS: it is now the share of NEW "
    "customers who take the plan when they join, feeding a SUBSCRIBER BALANCE that then churns - not a "
    "standing share of the whole book that could never fall. The steady-state share of paying customers "
    "holding a plan therefore lands BELOW this number. "
    "NOTHING IS STATED ANYWHERE IN THE CORPUS and no attach benchmark exists for this kind of add-on; 20% "
    "is at the top of the normal range for an OPTIONAL PAID extra on a savings product, which is low single "
-   "digits to low teens. ⚠ IT IS NOT EQUIVALENT TO THE OLD 20% AND SHOULD NOT BE READ AS A PARTIAL "
+   "digits to low teens. IT IS NOT EQUIVALENT TO THE OLD 20% AND SHOULD NOT BE READ AS A PARTIAL "
    "REVERSAL: 20% was a permanent share of the whole book that could never decay, while 15% applies once, "
    "on joining, to a balance that then churns at ~7.1% a month. The standing share of paying customers "
    "holding a plan settles near 10.5%, not 15%. NOTHING IS STATED ANYWHERE IN THE CORPUS and no attach "
@@ -1222,7 +1222,7 @@ sp("benef_count", "Beneficiaries named per plan", 2.5, 3.5, 1.6, "beneficiaries"
    "migrant workers who remit ~80% of income to families at home, typically supporting a spouse, children "
    "and parents. Household sizes in the source countries run ~4.4 in India, ~4.5 in Bangladesh and ~6.8 in "
    "Pakistan, so naming 2-3 beneficiaries is conservative against the family they actually support. "
-   "⚠ NOT THE SAME AS HOUSEHOLD SIZE - a beneficiary is a named, identity-verified person on a legal "
+   "NOT THE SAME AS HOUSEHOLD SIZE - a beneficiary is a named, identity-verified person on a legal "
    "instrument, and people name fewer than they support. ASSUMPTION anchored on demographics.",
    FMT_NUM2, "benef_count")
 s_derived("family_churn_m", "Family plan monthly churn, combined (derived)",
@@ -1250,7 +1250,7 @@ s_derived("family_churn_m", "Family plan monthly churn, combined (derived)",
 # argue about is the partner count - which is the argument we can actually win,
 # because it rests on a nameable candidate list.
 #
-# ⚠ INDIA IS EXCLUDED FROM THE B2B PARTNER POOL ENTIRELY (client decision).
+# INDIA IS EXCLUDED FROM THE B2B PARTNER POOL ENTIRELY (client decision).
 # Every large Indian app that wants gold already has one of three entrenched
 # providers on a 2-5 year contract: PhonePe (450-500m users) and MobiKwik,
 # Amazon Pay and Jar run SafeGold; Paytm (300-350m) and Google Pay run
@@ -1266,7 +1266,7 @@ for y in range(1, 8):
        "RAISED 2026-08-21. Base now reaches 11 by Y7, against ~20 nameable Gulf candidates without a gold "
        "product - roughly a 55% win rate on the addressable partner market, which is aggressive but "
        "arguable for a category with one incumbent. Partner 1 signs in Y2, matching the M13 B2B go-live. "
-       "⚠ THE CANDIDATE LIST IS THE JUSTIFICATION AND IT IS FINITE: e& money, Payit, Careem Pay, Al Ansari, "
+       "THE CANDIDATE LIST IS THE JUSTIFICATION AND IT IS FINITE: e& money, Payit, Careem Pay, Al Ansari, "
        "LuLu Money, Rise, NOW Money, Wio, Liv, Mashreq Neo, Klip, PayBy, Jingle Pay, Thawani, BenefitPay, "
        "CWallet, Amanat and a handful of banks and exchange houses. Going much above this count means "
        "claiming partners that have not been named. ASSUMPTION on a sourced candidate set.",
@@ -1274,7 +1274,7 @@ for y in range(1, 8):
 sp("partner_users", "Average partner user base", 900000, 1400000, 500000, "active users",
    "THE MIX, NOT THE BIGGEST. A realistic six-partner Gulf book is roughly one Botim-scale (1.7m ACTIVE "
    "fintech users, of 8.2-8.5m app users), two at e& money scale (~1.5m subscribers), and three small "
-   "wallets at a few hundred thousand - which averages near 900k. ⚠ USE ACTIVE USERS, NOT REGISTERED: "
+   "wallets at a few hundred thousand - which averages near 900k. USE ACTIVE USERS, NOT REGISTERED: "
    "Botim's own numbers separate 8.5m app users, 3m KYC'd and 1.7m active fintech users, and adopting the "
    "headline would overstate this by 5x. CITED for the two largest, ASSUMPTION for the tail.",
    FMT_NUM, "partner_users")
@@ -1282,7 +1282,7 @@ sp("partner_adoption", "Partner users adopting gold (mature)", 0.06, 0.10, 0.03,
    "OBSERVED ANCHOR: O Gold reports 75,000 ACTIVE users against Botim's 1.7m active fintech users - 4.4% - "
    "and 775,000 who merely explored the feature. Base is set at 6%, ABOVE the observed 4.4%, because that "
    "figure is roughly six months after the gold feature launched and adoption should mature; 6% is a 1.4x "
-   "maturation, not a doubling. ⚠ THE 4.4% IS THE ONLY OBSERVED GOLD-ADOPTION RATE FOR A GULF WALLET THAT "
+   "maturation, not a doubling. THE 4.4% IS THE ONLY OBSERVED GOLD-ADOPTION RATE FOR A GULF WALLET THAT "
    "EXISTS. TRIANGULATED.", FMT_PCT, "partner_adoption")
 sp("aum_per_partner_user", "AUM per adopting partner user", 350, 500, 220, "USD",
    "DERIVED FROM BOTIM'S OWN DISCLOSURES AND CROSS-CHECKED AGAINST OUR OWN BOOK - two independent routes "
@@ -1317,7 +1317,7 @@ for key, tb, ta, tc, mix in RDATA:
 # REMOVED 2026-08-21: "Share of new customers - <region>", derived as each
 # region's share of the addressable ceiling.
 #
-# ⚠ IT WAS NOT MERELY UNUSED, IT WAS MISLEADING. The row asserted that a
+# IT WAS NOT MERELY UNUSED, IT WAS MISLEADING. The row asserted that a
 # region's share of acquisition equals its share of the ceiling. That stopped
 # being true when acquisition went region-by-region: new customers now fall out
 # of each market's OWN marketing budget, OWN CAC, OWN salesforce share and OWN
@@ -1560,7 +1560,7 @@ _mr[0] = ACQ_FIRST + len(ACQ_ROWS)
 # - salespeople earmarked for a market still in licensing work the markets that
 # are live. Computed here, ahead of the region blocks that divide by it.
 #
-# ⚠ THIS ROW ALSO PLUGS A LEAK. Until 2026-08-21 the salesforce split was
+# THIS ROW ALSO PLUGS A LEAK. Until 2026-08-21 the salesforce split was
 # 100% India / 0% elsewhere, so nothing was ever routed to an unopened region
 # and the missing gate below was invisible. Giving Oman & Bahrain a non-zero
 # share made it visible immediately: the region earned revenue in M12, a month
@@ -1574,7 +1574,7 @@ m_row("gold_px", "Gold price (this period)", "USD/g",
       lambda i: "=%s*(1+%s)^(%s-1)" % (aref("gold_price"), sref("gold_cagr"), mr("year", i)),
       FMT_NUM2, GREEN)
 note(ws_model, _mr[0],
-     "⚠ RISING GOLD CUTS BOTH WAYS AND THE MODEL CAPTURES BOTH. Metal already held appreciates, but a fixed "
+     "RISING GOLD CUTS BOTH WAYS AND THE MODEL CAPTURES BOTH. Metal already held appreciates, but a fixed "
      "USD contribution BUYS FEWER GRAMS each year - so AUM does NOT simply compound at the headline rate. "
      "Only the collateral-linked streams move with this row (card limit, and lending through it); the entry "
      "fee is a percentage of a USD contribution and is untouched by the gold price.")
@@ -1598,7 +1598,7 @@ CHURN = sref("monthly_churn")
 # premium off this margin, subtracting the same USD 1.40 per USD 100 twice:
 # once from the customer's grams and once from Aurumix's fee. Only one can be
 # true. Standard practice for gold products is that the quoted price includes
-# the dealer spread, so the customer bears it. ⚠ DO NOT reintroduce a premium
+# the dealer spread, so the customer bears it. DO NOT reintroduce a premium
 # term here without removing the (1+premium) divisor in "Grams purchased".
 NET_FEE = aref("entry_fee")
 ATM_TERMS = "+".join(
@@ -1875,7 +1875,7 @@ note(ws_model, _mr[0],
      "THE NUMBER TO QUOTE AGAINST OTHER GOLD PLATFORMS, and the only one that compares like for like. "
      "Collateral-eligible AUM above is SMALLER because it also removes gold moved out of Aurumix's control "
      "- a token in a private wallet cannot back a credit limit, but THE METAL IS STILL IN THE VAULT, so it "
-     "is still gold under custody. PAXG, Kinesis and Comtech all publish the custody measure. ⚠ COMPARE IN "
+     "is still gold under custody. PAXG, Kinesis and Comtech all publish the custody measure. COMPARE IN "
      "GRAMS, NOT DOLLARS: every published USD figure carries the gold price of its own vintage, so a "
      "comparison in dollars is really a comparison of gold prices. Comtech Gold, the closest comparable - "
      "Dubai, DMCC-licensed, tokenised gold - holds ~141,000 g.")
@@ -1887,7 +1887,7 @@ m_row("metal_effect", "  of which is the metal moving, not the business", "USD",
 note(ws_model, _mr[0],
      "THE HONEST SERIES FOR JUDGING EXECUTION is the constant-price row: it strips the gold price out and "
      "leaves grams accumulated, which is the part Aurumix controls. The headline above will grow even if the "
-     "business does not. ⚠ SET GOLD APPRECIATION TO THE CONSERVATIVE SCENARIO (0.0%) TO RECOVER THE ORIGINAL "
+     "business does not. SET GOLD APPRECIATION TO THE CONSERVATIVE SCENARIO (0.0%) TO RECOVER THE ORIGINAL "
      "FLAT-PRICE MODEL, under which these two rows are identical by construction.")
 _mr[0] += 1
 m_row("conservation", "CHECK: paying + holders = cumulative ever acquired", "delta",
