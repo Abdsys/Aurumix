@@ -591,6 +591,24 @@ aum = row("COLLATERAL-ELIGIBLE AUM")
 check("AUM is positive and grows", all(x >= 0 for x in aum) and aum[-1] > aum[0])
 check("Grams held never go negative", all(x >= 0 for x in row("GRAMS HELD")))
 
+# Two AUM measures, and the ordering between them is structural. Custody removes
+# ONLY redemption; collateral-eligible also removes gold moved out of Aurumix's
+# control. Custody can therefore never be the smaller of the two - if it ever is,
+# the two decay rates have been wired to the wrong balances.
+_cust, _coll = row("GRAMS UNDER CUSTODY"), row("GRAMS HELD")
+check("Gold under custody is never below collateral-eligible gold",
+      all_num(_cust) and all_num(_coll) and all(c >= h - 1e-6 for c, h in zip(_cust, _coll)),
+      "min gap %r" % (min(c - h for c, h in zip(_cust, _coll)) if all_num(_cust) else None))
+# ...and it must be STRICTLY larger once self-custody has had time to bite,
+# otherwise the self-custody term has been dropped from the collateral decay and
+# the two rows are silently identical.
+check("The two measures genuinely diverge (self-custody is actually deducted)",
+      _cust[28] > _coll[28] * 1.02,
+      "Y7 custody %,.0f vs collateral %,.0f".replace("%,", "{:,").replace(".0f", ".0f}").format(
+          _cust[28], _coll[28]))
+check("Summary carries the comparable custody headline, not only the collateral figure",
+      rowof(summ, "Gold under custody (comparable headline)") is not None)
+
 # ---- 10. Summary ties to Model --------------------------------------------
 def sumv(label, y):
     r = rowof(summ, label)

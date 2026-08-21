@@ -1451,10 +1451,34 @@ for rg in REGIONS:
               mr("pay_" + rg, i), mr("hold_" + rg, i),
               mr("pay_" + rg, i), mr("hold_" + rg, i), sref("lapsed_redemption_mult"),
               mr("pay_" + rg, i), mr("hold_" + rg, i), mr("n", i)), FMT_PCT2)
+    # TWO DECAY RATES, because two different things are being measured. Added
+    # 2026-08-21 after the client compared this model's AUM to tokenised gold
+    # platforms and found it low - correctly, because we were publishing the
+    # SMALLER of two legitimate numbers.
+    #   - The rate above removes BOTH redemption and gold moved out of Aurumix's
+    #     control, and drives the CREDIT LIMIT. Right for that: Aurumix cannot
+    #     foreclose on a token in a private wallet.
+    #   - The rate below removes ONLY REDEMPTION, because self-custody moves a
+    #     token, not the metal. THE GOLD IS STILL IN THE VAULT. This is
+    #     "gold under custody" - the measure PAXG, Kinesis and Comtech publish,
+    #     and therefore THE ONLY ONE ANY EXTERNAL COMPARISON CAN USE.
+    # Publishing only the collateral figure understated the comparable headline
+    # by ~18%.
+    m_row("decayr_" + rg, "  Redemption-only decay rate (metal actually leaving)", "%/period",
+          lambda i, rg=rg: "=%s*IF(%s+%s=0,1,(%s+%s*%s)/(%s+%s))*%s/12" % (
+              sref("redemption_rate"),
+              mr("pay_" + rg, i), mr("hold_" + rg, i),
+              mr("pay_" + rg, i), mr("hold_" + rg, i), sref("lapsed_redemption_mult"),
+              mr("pay_" + rg, i), mr("hold_" + rg, i), mr("n", i)), FMT_PCT2)
     _gr = _mr[0]
-    m_row("grams_" + rg, "  Grams held", "grams",
+    m_row("grams_" + rg, "  Grams held (collateral-eligible)", "grams",
           lambda i, rg=rg, gr=_gr: "=%s" % mr("grams_in_" + rg, i) if i == 0
           else "=%s*(1-%s)+%s" % (pcell(gr, i - 1), mr("decay_" + rg, i), mr("grams_in_" + rg, i)),
+          FMT_NUM)
+    _gc = _mr[0]
+    m_row("custg_" + rg, "  Grams under custody (vaulted, incl. self-custodied)", "grams",
+          lambda i, rg=rg, gc=_gc: "=%s" % mr("grams_in_" + rg, i) if i == 0
+          else "=%s*(1-%s)+%s" % (pcell(gc, i - 1), mr("decayr_" + rg, i), mr("grams_in_" + rg, i)),
           FMT_NUM)
     m_row("aum_" + rg, "  AUM", "USD",
           lambda i, rg=rg: "=%s*%s" % (mr("grams_" + rg, i), aref("gold_price")), FMT_USD, BLACK_BOLD)
@@ -1585,6 +1609,7 @@ for key, label, parts, fmt, bold in (
     ("new_total", "NEW CUSTOMERS", ["new_" + r for r in REGIONS], FMT_NUM, True),
     ("active_cards", "ACTIVE CARDS", ["cards_" + r for r in REGIONS], FMT_NUM, True),
     ("grams_held", "GRAMS HELD", ["grams_" + r for r in REGIONS], FMT_NUM, False),
+    ("grams_custody", "GRAMS UNDER CUSTODY", ["custg_" + r for r in REGIONS], FMT_NUM, True),
     ("grams_bought", "Grams purchased", ["grams_in_" + r for r in REGIONS], FMT_NUM2, False),
     ("aum", "COLLATERAL-ELIGIBLE AUM", ["aum_" + r for r in REGIONS], FMT_USD, True),
     ("qualified", "Cleared the six-payment gate", ["qual_" + r for r in REGIONS], FMT_NUM, False),
@@ -1593,8 +1618,21 @@ for key, label, parts, fmt, bold in (
     ("card_spend_usd", "Card spend", ["spendusd_" + r for r in REGIONS], FMT_USD, False),
 ):
     m_row(key, label, "-", lambda i, p=parts: "=" + "+".join(mr(x, i) for x in p), fmt, BLACK, bold)
+m_row("gold_custody", "GOLD UNDER CUSTODY (comparable headline)", "USD",
+      lambda i: "=%s*%s" % (mr("grams_custody", i), aref("gold_price")), FMT_USD, BLACK_BOLD)
+note(ws_model, _mr[0],
+     "THE NUMBER TO QUOTE AGAINST OTHER GOLD PLATFORMS, and the only one that compares like for like. "
+     "Collateral-eligible AUM above is SMALLER because it also removes gold moved out of Aurumix's control "
+     "- a token in a private wallet cannot back a credit limit, but THE METAL IS STILL IN THE VAULT, so it "
+     "is still gold under custody. PAXG, Kinesis and Comtech all publish the custody measure. ⚠ COMPARE IN "
+     "GRAMS, NOT DOLLARS: every published USD figure carries the gold price of its own vintage, so a "
+     "comparison in dollars is really a comparison of gold prices. Comtech Gold, the closest comparable - "
+     "Dubai, DMCC-licensed, tokenised gold - holds ~141,000 g.")
+_mr[0] += 1
 m_row("conservation", "CHECK: paying + holders = cumulative ever acquired", "delta",
       lambda i: "=%s+%s-%s" % (mr("paying", i), mr("holders", i), mr("cum_ever", i)), FMT_NUM3, BLACK_BOLD)
+m_row("custody_check", "CHECK: custody >= collateral-eligible (must be >= 0)", "grams",
+      lambda i: "=%s-%s" % (mr("grams_custody", i), mr("grams_held", i)), FMT_NUM3, BLACK_BOLD)
 # Sanity memo: under the credit variant the card is secured on the customer's
 # own gold, so the limit that gold supports is a hard ceiling on monthly spend.
 m_row("aum_per_cust", "  Collateral-eligible AUM per paying customer (memo)", "USD",
@@ -1770,7 +1808,9 @@ s_block("CUSTOMERS AND AUM (year end)", [
     ("holders", "Holders (stopped paying, still hold gold)", "close", FMT_NUM, False),
     ("cum_ever", "Cumulative ever acquired", "close", FMT_NUM, False),
     ("active_cards", "Active cards", "close", FMT_NUM, False),
-    ("grams_held", "Grams held", "close", FMT_NUM, False),
+    ("grams_custody", "Grams under custody", "close", FMT_NUM, False),
+    ("gold_custody", "Gold under custody (comparable headline)", "close", FMT_USD, True),
+    ("grams_held", "Grams held (collateral-eligible)", "close", FMT_NUM, False),
     ("aum", "Collateral-eligible AUM", "close", FMT_USD, True),
     ("rev_per_cust", "Net revenue per paying customer (annualised)", "close", FMT_USD, False),
 ])
