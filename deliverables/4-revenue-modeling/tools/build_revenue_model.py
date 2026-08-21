@@ -766,16 +766,28 @@ ws_assum["D%d" % r] = (
     "evidence that a user-based method does not automatically produce a better-sourced number.")
 _ar[0] += 2
 
-AGENTS = [5, 15, 40, 60, 90, 106, 124]
-MKTG = [60000, 180000, 250000, 400000, 600000, 850000, 1100000]
+# Both schedules RAISED 50% on 2026-08-21, client instruction.
+AGENTS = [8, 23, 60, 90, 135, 159, 186]        # was 5, 15, 40, 60, 90, 106, 124
+MKTG = [90000, 270000, 375000, 600000, 900000, 1275000, 1650000]   # was 60k..1.1m
 RAMP = [0.60, 0.85, 1.00, 1.00, 1.00, 1.00, 1.00]
 for y in range(1, 8):
     a_row("agents_y%d" % y, "Active agents - Y%d" % y, AGENTS[y - 1], "agents",
-          "A STOCK, not a flow: at 45% attrition, holding 200 active needs ~90 recruits a year. CLIENT INPUT.",
-          FMT_NUM, "agents_y%d" % y)
+          "RAISED 50% on 2026-08-21. A STOCK, NOT A FLOW: at 45% attrition, holding 186 active needs ~84 "
+          "recruits a year just to stand still, and reaching 186 from 8 means recruiting and training "
+          "several hundred people over seven years. ⚠ COMPOUNDS WITH AGENT PRODUCTIVITY, raised from 4 to 6 "
+          "the same day - together they are 2.25x the agent output the model carried this morning. ⚠ AND IT "
+          "IS A COST THIS MODEL CANNOT SEE: agents are paid, and the salesforce is now 45% UAE / 10% Oman & "
+          "Bahrain / 45% India, where a Dubai salesperson and an Indian commission agent are not remotely "
+          "the same expense. CLIENT INPUT.", FMT_NUM, "agents_y%d" % y)
 for y in range(1, 8):
     a_row("mktg_y%d" % y, "Marketing spend - Y%d" % y, MKTG[y - 1], "USD/yr",
-          "A DECISION VARIABLE and an input to acquisition, not an output of a cost table.", FMT_USD, "mktg_y%d" % y)
+          "RAISED 50% on 2026-08-21, client instruction. A DECISION VARIABLE and an input to acquisition, "
+          "not an output of a cost table. 🔴 THE SINGLE LARGEST LEVER IN THE MODEL AND THE ONLY ONE THAT IS "
+          "PURELY A SPENDING CHOICE: measured sensitivity puts +50% here at +28.5% customers and +29.3% "
+          "gold. ⚠ IT IS ALSO THE ONE THE REVENUE-ONLY SCOPE FLATTERS MOST. This model has no cost side yet, "
+          "so an extra USD 1.9m of marketing across the horizon appears here as pure upside. It is not - it "
+          "is USD 1.9m of spend, and whether it is worth making is a question only the cost build can "
+          "answer. DO NOT PRESENT THE UPLIFT FROM THIS ROW AS PROFIT.", FMT_USD, "mktg_y%d" % y)
 for y in range(1, 8):
     a_row("ramp_y%d" % y, "Agent blended ramp - Y%d" % y, RAMP[y - 1], "x productivity",
           "Six months to full productivity, which happens to match the six-payment gate.", FMT_NUM2, "ramp_y%d" % y)
@@ -917,9 +929,37 @@ s_derived("monthly_churn", "Monthly churn rate (derived)",
           "=1-%s^(1/12)" % sref("persistency_m13"), "%/month",
           "DERIVED, not typed: the monthly rate that reproduces the persistency above over twelve months. "
           "Change persistency and this follows. Base 55% implies ~4.9%/month.", FMT_PCT2, "monthly_churn")
-sp("agent_productivity", "Agent productivity", 4, 6, 2, "accounts/agent/month",
-   "Insurance agency comparator. TRIANGULATED.", FMT_NUM2, "agent_productivity")
-CAC_BY_REGION = {"uae": (120, 80, 200), "gulf": (100, 70, 170), "india": (20, 12, 35)}
+sp("agent_productivity", "Agent productivity", 6, 8, 3, "accounts/agent/month",
+   "RAISED 2026-08-21 from 4, client instruction. The insurance agency comparator that produced 4 is for "
+   "agents selling a COMPLEX UNDERWRITTEN PRODUCT with medical questions and multi-page forms; a gold SIP "
+   "signup is a fraction of that work, so the comparator was conservative for this product. "
+   "⚠ COMPOUNDS WITH THE AGENT HEADCOUNT, which was raised 50% the same day - together they are 2.25x the "
+   "agent output the model carried this morning. Both are execution assumptions with no external anchor at "
+   "the new level; if either disappoints, the other does not compensate. TRIANGULATED at 4, ASSUMPTION at 6."
+   , FMT_NUM2, "agent_productivity")
+# RE-ANCHORED 2026-08-21 after the client asked for the evidence BEFORE cutting.
+# The research says the cut is justified and that the old number was anchored on
+# the wrong segment entirely - which the note below had already recorded without
+# anyone acting on it.
+#
+# USD 120 sat inside the GCC WEALTHTECH band of 80-220, and that band is for
+# FUNDED ACCOUNTS OVER USD 10,000. Aurumix's customer saves USD 33.60 a month.
+# The mass-market comparators are far lower: KSA retail neobank account opening
+# at USD 35-70 PAID-ONLY (9-22 blended), and UAE-expat remittance apps at USD
+# 6-14 install-to-first-send.
+#
+# UAE is set at 85 rather than at the 35-70 band, DELIBERATELY ABOVE IT: opening
+# a neobank account or installing a remittance app is a one-off act, while this
+# product needs a RECURRING commitment, KYC, and six consecutive payments before
+# the customer is worth anything. That is a harder sale and should cost more.
+# But it is not a USD 10,000 wealthtech account, and it should never have been
+# priced like one.
+#
+# India 20 -> 15. Published cost of acquiring a financial user in India is
+# INR 850-1,200 (~USD 10-14, and reportedly 3x its 2020 level); 15 is INR ~1,320,
+# still just above the top of that range. Oman & Bahrain has no published figure
+# and is scaled off the UAE as before.
+CAC_BY_REGION = {"uae": (85, 55, 140), "gulf": (75, 50, 125), "india": (15, 9, 26)}
 for key in REGIONS:
     b, a, c = CAC_BY_REGION[key]
     sp("cac_" + key, "Marketing CAC - %s" % RLAB[key], b, a, c, "USD per customer",
@@ -940,13 +980,24 @@ for key in REGIONS:
        "How the marketing budget is split across markets. Defaults to each region's share of the addressable "
        "ceiling, so spend follows the opportunity. Does not vary by scenario - it is a management decision, "
        "not an uncertainty. Must sum to 100%.", FMT_PCT, "mktshare_" + key)
-sp("referral_rate", "Referral rate", 0.45, 0.90, 0.18, "referrals/customer/yr",
-   "Cap removed deliberately, so the distribution is right-skewed. MODEL THE MEAN, NOT THE MEDIAN. ASSUMPTION.",
-   FMT_NUM2, "referral_rate")
+sp("referral_rate", "Referral rate", 0.60, 1.10, 0.25, "referrals/customer/yr",
+   "RAISED 2026-08-21 from 0.45, client instruction. Cap removed deliberately, so the distribution is "
+   "right-skewed - MODEL THE MEAN, NOT THE MEDIAN. 0.60 means the average customer produces roughly three "
+   "referrals every five years; the mean is pulled up by a small number of highly social referrers, which is "
+   "the normal shape for a trust-based product inside a tight diaspora community. ⚠ IT IS STILL AN "
+   "ASSUMPTION WITH NO EXTERNAL ANCHOR, and it compounds: referrals feed the paying base, which feeds more "
+   "referrals. That loop is the reason this parameter is more load-bearing than its size suggests. "
+   "ASSUMPTION.", FMT_NUM2, "referral_rate")
 sp("referral_conversion", "Referral conversion", 0.62, 0.72, 0.48, "%",
    "The M7 survival of the referred cohort, uplifted ~1.1x. DERIVED.", FMT_PCT, "referral_conversion")
-sp("organic_share", "Organic share of direct", 0.12, 0.20, 0.05, "% of direct",
-   "Kept separate so the CAC never applies to it. ASSUMPTION.", FMT_PCT, "organic_share")
+sp("organic_share", "Organic share of direct", 0.25, 0.40, 0.10, "% of direct",
+   "RAISED 2026-08-21 from 0.12, client instruction. Kept separate from CAC deliberately, so the acquisition "
+   "cost never applies to it - THAT IS ALSO WHY IT IS AN ATTRACTIVE NUMBER TO RAISE, and why it deserves "
+   "scepticism. 0.25 says a quarter of paid-driven signups arrive again for free through word of mouth, app "
+   "store discovery and community effects. Defensible for a product sold inside a dense diaspora network "
+   "where the paid campaign and the community overlap almost completely. ⚠ NO EXTERNAL ANCHOR AT EITHER "
+   "LEVEL, and it is arithmetically identical to a 12% CAC reduction - so raising this AND cutting CAC in "
+   "the same pass is close to taking the same benefit twice. ASSUMPTION.", FMT_PCT, "organic_share")
 sp("seasonality_amplitude", "Seasonality amplitude", 1.00, 1.40, 0.60, "x deviation from 1.0",
    "Festival TIMING is sourced; how hard a Dubai savings signup responds to Dhanteras is the open question. "
    "Applied to the deviation from 1.0, then renormalised, so the vectors stay at exactly 12.000.",
@@ -968,9 +1019,9 @@ sp("months_to_qualify", "Average months to clear the gate", 8, 6, 11, "months",
 _sr[0] += 1
 
 s_section("GROUP C: AUM, LEAKAGE AND SPOT")
-sp("self_custody_leakage", "Gold moved out of Aurumix's control", 0.12, 0.06, 0.30,
+sp("self_custody_leakage", "Gold moved out of Aurumix's control", 0.06, 0.03, 0.18,
    "% of AUM/yr",
-   "RELABELLED 2026-08-21 after the client correctly objected to the old name, 'self-custody leakage'. "
+   "HALVED 2026-08-21 from 0.12, client instruction. ⚠ NOTE IT HAS ZERO EFFECT ON GOLD UNDER CUSTODY - measured, not asserted - because self-custodied metal never left the vault and was never in that measure. It moves ONLY the collateral-eligible base and therefore the card credit limit, worth ~0.2% of Y7 revenue. RELABELLED earlier the same day after the client correctly objected to the old name, 'self-custody leakage'. "
    "THE GOLD DOES NOT LEAVE THE VAULT: a token moving to a customer's own wallet sells nothing and burns "
    "nothing, so calling it an AUM decrease was wrong. What it does leave is Aurumix's COLLATERAL-ELIGIBLE "
    "base - Aurumix cannot foreclose on a token sitting in a private wallet, so that gold can no longer back "
@@ -979,13 +1030,20 @@ sp("self_custody_leakage", "Gold moved out of Aurumix's control", 0.12, 0.06, 0.
    "a later build points anything else at AUM - a custody fee, a reported-AUM headline - this row must be "
    "split in two first. Contrast the redemption line, which IS gold genuinely gone. ASSUMPTION.",
    FMT_PCT, "self_custody_leakage")
-sp("redemption_rate", "Redemption rate", 0.08, 0.04, 0.16, "% of AUM/yr",
-   "A DIFFERENT EVENT from self-custody and a separate line. PAXG turnover of 5.9% is the only comparator. "
-   "VARA forbids charging any fee on it. ASSUMPTION.", FMT_PCT, "redemption_rate")
-sp("lapsed_redemption_mult", "Holder redemption multiplier", 2.2, 1.6, 3.5, "x the paying rate",
-   "Customers who stopped paying redeem FASTER - they have no accruing benefit left to protect. Because "
-   "holders become the majority of the book by Y4, this is the DOMINANT AUM DECAY TERM from roughly Y4. "
-   "ASSUMPTION.", FMT_NUM2, "lapsed_redemption_mult")
+sp("redemption_rate", "Redemption rate", 0.06, 0.035, 0.12, "% of AUM/yr",
+   "LOWERED 2026-08-21 from 0.08, client instruction - AND THIS ONE MOVES TOWARDS THE EVIDENCE, not away "
+   "from it. PAXG turnover of 5.9% is the only comparator that exists, and 8% sat above it for no stated "
+   "reason; 6% sits essentially on it. A DIFFERENT EVENT from gold moving out of Aurumix's control, and a "
+   "separate line: this is metal actually sold and tokens burned. VARA forbids charging any fee on it. "
+   "ASSUMPTION, now aligned to the single available comparator.", FMT_PCT, "redemption_rate")
+sp("lapsed_redemption_mult", "Holder redemption multiplier", 1.6, 1.3, 2.8, "x the paying rate",
+   "LOWERED 2026-08-21 from 2.2, client instruction. ⚠ THIS IS THE WEAKEST OF THE THREE DECAY CHANGES. The "
+   "LOGIC behind a multiplier above 1.0 is untouched and still holds: customers who stopped paying redeem "
+   "faster, because they have no accruing benefit left to protect. Lowering it to 1.6 weakens that argument "
+   "without new evidence for the smaller number - it says lapsed customers are stickier than previously "
+   "assumed, which is the convenient direction. Because holders become the majority of the book by Y4, this "
+   "remains the DOMINANT AUM DECAY TERM from roughly Y4, so the change is not cosmetic. ASSUMPTION, and the "
+   "first one to revisit if AUM is challenged.", FMT_NUM2, "lapsed_redemption_mult")
 sp("spot_attach_mult", "Spot attach scenario multiplier", 1.00, 1.70, 0.50, "x the regional attach",
    "REGIONALISED 2026-08-21. The attach LEVEL now sits per region on Assumptions (UAE 12%, Oman & Bahrain "
    "10%, India 25%); this dial carries only the uncertainty around it, preserving the old 14/24/7 spread "
