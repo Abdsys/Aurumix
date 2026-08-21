@@ -1125,9 +1125,21 @@ sp("spot_frequency", "Spot frequency", 1.7, 2.4, 1.2, "events/attacher/yr",
 _sr[0] += 1
 
 s_section("GROUP D: CARD")
-sp("pm_share", "Programme manager share of interchange", 0.72, 0.85, 0.55, "%",
-   "SIZES THE LARGEST STREAM. No UAE/MENA figure is published. FLOOR IS 36% - take that into the sponsor "
-   "conversation as the walk-away. TRIANGULATED.", FMT_PCT, "pm_share")
+sp("pm_share", "Programme manager share of interchange", 0.72, 0.36, 0.85, "%",
+   "BANDS CORRECTED 2026-08-21 - THEY WERE INVERTED. Aggressive was 0.85 and conservative 0.55, meaning the "
+   "OPTIMISTIC scenario handed MORE of the interchange to the programme manager and cut Aurumix's share from "
+   "28% to 15%. Every other cost-like parameter in this model improves under Aggressive - redemption, CAC, "
+   "self-custody, the holder multiplier - and this one moved the other way. Flipping the scenario made "
+   "interchange fall 46% in the good case and rise 61% in the bad one. "
+   "Aggressive is now 0.36, THE DOCUMENTED FLOOR, which is the best deal observed anywhere and the right "
+   "walk-away to take into a sponsor conversation - at that level Aurumix keeps 64% rather than 28%, and "
+   "interchange more than doubles. Conservative is 0.85. "
+   "WHY AURUMIX ONLY GETS A SLICE AT ALL: it is not a bank and cannot issue cards, so a programme manager "
+   "holds the BIN, the scheme membership, settlement and dispute handling, and takes the majority for it. "
+   "That much is normal. 72% is near the BAD END of the 36-85% range, so the base case is deliberately "
+   "unfavourable - THIS IS A COMMERCIAL NEGOTIATION, NOT A MODELLING ASSUMPTION, and it is one of the few "
+   "places where a better contract directly doubles a revenue line. No UAE/MENA figure is published. "
+   "TRIANGULATED.", FMT_PCT, "pm_share")
 sp("card_activation", "Facility take-up - customers who take AND use the card", 0.18, 0.30, 0.08,
    "% of gate-cleared",
    "RE-BASED 2026-08-20, client decision: THE CARD IS A DRAWDOWN ON THE GOLD-COLLATERALISED FACILITY, not a "
