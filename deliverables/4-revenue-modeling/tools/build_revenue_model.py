@@ -315,8 +315,21 @@ a_row("replacement_fee", "Card replacement fee", 100, "AED per event",
 _ar[0] += 1
 
 a_section("OTHER STREAM PRICING")
-a_row("family_price", "Family plan / Digital Will price", 120, "USD/yr",
-      "Price is ours; the cost floor is verified. ASSUMPTION.", FMT_USD, "family_price")
+a_row("family_price", "Family plan / Digital Will price", 36, "USD/yr",
+      "RE-PRICED 2026-08-21 from USD 120/yr. THE OLD PRICE WAS ABOVE TRUST & WILL'S PREMIUM US MEMBERSHIP "
+      "(USD 49/yr) AND WAS 33% OF EVERYTHING THE CUSTOMER SAVES IN A YEAR - a USD 30/month saver puts away "
+      "USD 360, and we were charging 120 of it. "
+      "THE INDUSTRY MODEL IS A ONE-OFF FEE PLUS A SMALL ANNUAL UPDATE LAYER, and it is the annual layer this "
+      "row represents: Trust & Will USD 199 one-off + USD 49/yr; Farewill GBP 100 + GBP 10/yr; Epilogue "
+      "C$139 with NO subscription at all; other platforms renew updates at ~C$4.50/yr. Formal UAE will "
+      "registration is a different product entirely and one-off - DIFC AED 10,000 single / 15,000 mirror, "
+      "Abu Dhabi Civil Court AED 950 as the cheapest formal route. Indian online wills run INR 500-4,000 "
+      "basic. Family add-ons on finance apps are usually BUNDLED FREE; where charged it is USD 5-15/month "
+      "for a WHOLE HOUSEHOLD (Monarch 99.99/yr, Zeta 59.99/yr, Greenlight 5.99/mo). "
+      "USD 36/yr (USD 3/month) sits below Trust & Will's 49, above Farewill's ~13, and at 10% of annual "
+      "savings rather than a third. ⚠ A ONE-OFF SETUP FEE IS NOT MODELLED - if the client wants the full "
+      "industry structure, that is a second row, not a bigger number here. CITED comparators, ASSUMPTION on "
+      "the point in the range.", FMT_USD, "family_price")
 a_row("b2b_fee", "B2B platform fee", 0.00625, "% of partner AUM/yr",
       "Placeholder in the 0.5-0.75% band, coupled to the partner set. ASSUMPTION.", FMT_PCT2, "b2b_fee")
 a_row("origination_gross", "Credit origination fee - gross", 0.0100, "% of draw",
@@ -1161,8 +1174,31 @@ sp("facility_turnover", "Facility turnover, peak -> average", 0.42, 0.55, 0.30, 
    "the lending stream by 1.88x. DERIVED.", FMT_NUM2, "facility_turnover")
 sp("draw_events", "Draw events per borrower per year", 2.1, 3.2, 1.3, "events/yr",
    "MOVES WITH facility turnover - do not flex independently. DERIVED.", FMT_NUM2, "draw_events")
-sp("family_attach", "Family plan attach rate", 0.20, 0.35, 0.10, "% of customers",
-   "NOTHING IS STATED ANYWHERE IN THE CORPUS. Pure assumption. Scales stream 3 linearly.", FMT_PCT, "family_attach")
+sp("family_attach", "Family plan attach rate", 0.08, 0.15, 0.04, "% of NEW customers",
+   "LOWERED 2026-08-21 from 0.20. ⚠ THE UNIT ALSO CHANGED, AND THAT MATTERS: it is now the share of NEW "
+   "customers who take the plan when they join, feeding a SUBSCRIBER BALANCE that then churns - not a "
+   "standing share of the whole book that could never fall. The steady-state share of paying customers "
+   "holding a plan therefore lands BELOW this number. "
+   "NOTHING IS STATED ANYWHERE IN THE CORPUS and no attach benchmark exists for this kind of add-on; 20% "
+   "was high for an OPTIONAL PAID extra on a savings product, where low single digits to low teens is the "
+   "normal range. ASSUMPTION.", FMT_PCT, "family_attach")
+sp("family_churn", "Family plan cancellation rate (incremental)", 0.25, 0.15, 0.40, "%/yr",
+   "ADDED 2026-08-21. INCREMENTAL IS THE KEY WORD: this is cancellation by customers who STAY WITH AURUMIX. "
+   "Subscribers already disappear when they stop paying their SIP, and that was the only churn stream 3 had "
+   "- which implicitly assumed nobody ever cancels the plan while remaining a customer. "
+   "NO PRODUCT-SPECIFIC DATA EXISTS - not for digital will memberships, not for finance-app family plans; "
+   "Trust & Will, Farewill and Epilogue publish none. The only benchmark is generic mobile subscription "
+   "apps: above 10%/month poor, 6-10%/month average, under 6%/month good. 25%/yr is ~2.4%/month, INSIDE the "
+   "'good' band, which is the right place for an add-on bundled into an ongoing savings relationship rather "
+   "than a standalone app fighting for attention every month. ASSUMPTION on a generic benchmark.",
+   FMT_PCT, "family_churn")
+s_derived("family_churn_m", "Family plan monthly churn, combined (derived)",
+          "=1-(1-%s)*(1-%s)^(1/12)" % (sref("monthly_churn"), sref("family_churn")),
+          "%/month",
+          "TWO WAYS TO LOSE A SUBSCRIBER, COMBINED MULTIPLICATIVELY, NOT ADDED: they leave Aurumix entirely "
+          "(the SIP churn on the left) or they stay and cancel the plan (the incremental rate on the right). "
+          "Adding the two would double-count the overlap - a customer cannot both leave and separately "
+          "cancel. DERIVED.", FMT_PCT2, "family_churn_m")
 # ---- B2B REBUILT 2026-08-21 -------------------------------------------------
 # Was 6 partners x a flat USD 32m "mature AUM per partner". Two problems, and
 # they pointed in OPPOSITE directions, which is why arguing about the count
@@ -1709,9 +1745,22 @@ for rg in REGIONS:
           lambda i, rg=rg: "=%s*IF(%s=1,MIN(%s,1%%),%s)*(1-%s)" % (
               mr("spendusd_" + rg, i), sref("sw_prepaid_vs_credit"), aref("ic_gold"),
               aref("ic_gold"), sref("pm_share")), FMT_USD)
+    # A SUBSCRIBER BALANCE, not a percentage of the live book. Stream 3 used to
+    # be paying x attach x price, which cannot fall except when customers leave -
+    # it assumed nobody ever cancels while staying a customer. Same rolling
+    # shape as the customer engine: opening x survival + new x half-period
+    # survival, so a subscriber acquired mid-period is not charged a full one.
+    _sb = _mr[0]
+    m_row("subs_" + rg, "  Family plan subscribers", "subscribers",
+          lambda i, rg=rg, sb=_sb: gate("s3", i, "%s*%s*(1-%s)^(%s/2)" % (
+              mr("new_" + rg, i), sref("family_attach"), sref("family_churn_m"), mr("n", i)))
+          if i == 0 else gate("s3", i, "%s*(1-%s)^%s+%s*%s*(1-%s)^(%s/2)" % (
+              pcell(sb, i - 1), sref("family_churn_m"), mr("n", i),
+              mr("new_" + rg, i), sref("family_attach"), sref("family_churn_m"), mr("n", i))),
+          FMT_NUM2)
     m_row("s3_" + rg, "  Stream 3 - Family plan and Digital Will", "USD",
-          lambda i, rg=rg: gate("s3", i, "%s*%s*%s/12*%s" % (
-              mr("pay_" + rg, i), sref("family_attach"), aref("family_price"), mr("n", i))), FMT_USD)
+          lambda i, rg=rg: "=%s*%s/12*%s" % (
+              mr("subs_" + rg, i), aref("family_price"), mr("n", i)), FMT_USD)
     m_row("s4_" + rg, "  Stream 4 - Cardholder fees (FX, ATM, events)", "USD",
           lambda i, rg=rg: gate("s4", i, "%s*%s*%s+%s*(%s)*%s/%s*%s+%s*(%s*%s+%s*%s)/12/%s*%s" % (
               mr("spendusd_" + rg, i), mr("seas_foreign", i), aref("fx_margin"),
