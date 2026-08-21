@@ -641,6 +641,34 @@ check("The entry fee is untouched by the gold price (USD-denominated, as designe
       all(abs(s1a[i] - sip[i] * fee) < 1e-6 for i in range(N) if sip[i]),
       "stream 1a still equals SIP x fee at every period")
 
+# ---- 9c. stream 3 is a SUBSCRIBER BALANCE, not a share of the book ---------
+_subrows = [r for r in range(1, mdl.max_row + 1)
+            if mdl["A%d" % r].value == "  Family plan subscribers"]
+check("Every region carries a family plan subscriber balance",
+      len(_subrows) == len(REGION_NAMES), "found %d" % len(_subrows))
+_sub7 = sum(mdl["%s%d" % (pc(N - 1), r)].value for r in _subrows)
+_att = aval("Family plan attach rate")
+# The whole point of the rebuild: attach applies to NEW customers and the
+# balance churns, so the standing share of the book must land BELOW the attach
+# rate. If it equals it, the balance has been wired as a percentage again.
+check("Subscribers settle BELOW the attach rate (the balance actually churns)",
+      _sub7 / row("PAYING CUSTOMERS")[N - 1] < _att * 0.95,
+      "Y7 penetration %.3f vs attach %.3f" % (_sub7 / row("PAYING CUSTOMERS")[N - 1], _att))
+check("Family plan churn EXCEEDS SIP churn (an incremental rate is applied)",
+      aval("Family plan monthly churn, combined (derived)") > aval("Monthly churn rate (derived)"),
+      "combined %.4f vs SIP %.4f" % (aval("Family plan monthly churn, combined (derived)"),
+                                     aval("Monthly churn rate (derived)")))
+# Revenue per subscriber must equal plan + beneficiary fee on names beyond the
+# first. Catches the MAX(0,...) being dropped, or the fee applied to every name.
+_price, _bfee, _bn = aval("Family plan / Digital Will price"),     aval("Additional beneficiary fee"), aval("Beneficiaries named per plan")
+_expect = _price + max(0.0, _bn - 1) * _bfee
+_s3 = row("Stream 3 - Family plan and Digital Will")
+check("Revenue per subscriber = plan fee + beneficiary fee beyond the FIRST",
+      abs(_s3[N - 1] / _sub7 - _expect) < 1e-6,
+      "implied %.2f vs expected %.2f" % (_s3[N - 1] / _sub7, _expect))
+check("The beneficiary fee is a real uplift but stays small",
+      1.0 < _expect / _price < 1.5, "uplift %.2fx" % (_expect / _price))
+
 # ---- 10. Summary ties to Model --------------------------------------------
 def sumv(label, y):
     r = rowof(summ, label)

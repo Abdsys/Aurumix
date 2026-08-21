@@ -315,7 +315,7 @@ a_row("replacement_fee", "Card replacement fee", 100, "AED per event",
 _ar[0] += 1
 
 a_section("OTHER STREAM PRICING")
-a_row("family_price", "Family plan / Digital Will price", 36, "USD/yr",
+a_row("family_price", "Family plan / Digital Will price", 50, "USD/yr",
       "RE-PRICED 2026-08-21 from USD 120/yr. THE OLD PRICE WAS ABOVE TRUST & WILL'S PREMIUM US MEMBERSHIP "
       "(USD 49/yr) AND WAS 33% OF EVERYTHING THE CUSTOMER SAVES IN A YEAR - a USD 30/month saver puts away "
       "USD 360, and we were charging 120 of it. "
@@ -326,10 +326,28 @@ a_row("family_price", "Family plan / Digital Will price", 36, "USD/yr",
       "Abu Dhabi Civil Court AED 950 as the cheapest formal route. Indian online wills run INR 500-4,000 "
       "basic. Family add-ons on finance apps are usually BUNDLED FREE; where charged it is USD 5-15/month "
       "for a WHOLE HOUSEHOLD (Monarch 99.99/yr, Zeta 59.99/yr, Greenlight 5.99/mo). "
-      "USD 36/yr (USD 3/month) sits below Trust & Will's 49, above Farewill's ~13, and at 10% of annual "
-      "savings rather than a third. ⚠ A ONE-OFF SETUP FEE IS NOT MODELLED - if the client wants the full "
+      "SET AT USD 50/yr, client instruction 2026-08-21. That is essentially TRUST & WILL'S USD 49/yr "
+      "MEMBERSHIP - a defensible anchor in that it matches the best-known product in the category, but "
+      "⚠ NOTE WHOSE PRODUCT IT IS: Trust & Will sells to US customers who paid 199-599 up front for an "
+      "estate plan, not to a migrant worker saving USD 30 a month. At 50 the plan is 14% OF EVERYTHING "
+      "THE CUSTOMER SAVES IN A YEAR, against 10% at 36 and 33% at the original 120. It is no longer "
+      "absurd, but it is priced at a developed-market benchmark for an emerging-market customer, and "
+      "that is the line an adviser would push on. ⚠ A ONE-OFF SETUP FEE IS NOT MODELLED - if the client wants the full "
       "industry structure, that is a second row, not a bigger number here. CITED comparators, ASSUMPTION on "
       "the point in the range.", FMT_USD, "family_price")
+a_row("benef_fee", "Additional beneficiary fee", 6, "USD/yr each",
+      "ADDED 2026-08-21, client instruction. Charged per named beneficiary BEYOND THE FIRST, which the plan "
+      "includes - the standard shape for this kind of add-on, and the reason the formula carries a MAX(0, "
+      "n-1) rather than charging every beneficiary. "
+      "⚠ NO COMPARABLE EXISTS: will services price PER WILL, not per beneficiary. DIFC charges more for a "
+      "MIRROR will (two people) and more again for guardianship, but nobody publishes a per-beneficiary "
+      "tariff. So this is priced on COST RECOVERY, which is the defensible basis available: every named "
+      "beneficiary needs identity capture and AML screening, and Sumsub screening already sits in this "
+      "model at ~USD 1.85 per check in the redemption cost memo. USD 6/yr covers that with margin without "
+      "becoming a second subscription. "
+      "DELIBERATELY SMALL. At 1.5 chargeable beneficiaries it adds USD 9/yr to a USD 50 plan - an 18% uplift "
+      "on a stream worth ~3.5% of revenue, so it cannot move the model and should not be tuned to try. "
+      "ASSUMPTION on a cost-recovery basis.", FMT_USD, "benef_fee")
 a_row("b2b_fee", "B2B platform fee", 0.00625, "% of partner AUM/yr",
       "Placeholder in the 0.5-0.75% band, coupled to the partner set. ASSUMPTION.", FMT_PCT2, "b2b_fee")
 a_row("origination_gross", "Credit origination fee - gross", 0.0100, "% of draw",
@@ -1192,6 +1210,16 @@ sp("family_churn", "Family plan cancellation rate (incremental)", 0.25, 0.15, 0.
    "'good' band, which is the right place for an add-on bundled into an ongoing savings relationship rather "
    "than a standalone app fighting for attention every month. ASSUMPTION on a generic benchmark.",
    FMT_PCT, "family_churn")
+sp("benef_count", "Beneficiaries named per plan", 2.5, 3.5, 1.6, "beneficiaries",
+   "ADDED 2026-08-21. THE FIRST IS INCLUDED IN THE PLAN PRICE, so only the excess over 1.0 is charged - at "
+   "2.5 that is 1.5 chargeable. "
+   "No platform publishes beneficiaries-per-will. What anchors it is who these customers are: South Asian "
+   "migrant workers who remit ~80% of income to families at home, typically supporting a spouse, children "
+   "and parents. Household sizes in the source countries run ~4.4 in India, ~4.5 in Bangladesh and ~6.8 in "
+   "Pakistan, so naming 2-3 beneficiaries is conservative against the family they actually support. "
+   "⚠ NOT THE SAME AS HOUSEHOLD SIZE - a beneficiary is a named, identity-verified person on a legal "
+   "instrument, and people name fewer than they support. ASSUMPTION anchored on demographics.",
+   FMT_NUM2, "benef_count")
 s_derived("family_churn_m", "Family plan monthly churn, combined (derived)",
           "=1-(1-%s)*(1-%s)^(1/12)" % (sref("monthly_churn"), sref("family_churn")),
           "%/month",
@@ -1758,9 +1786,14 @@ for rg in REGIONS:
               pcell(sb, i - 1), sref("family_churn_m"), mr("n", i),
               mr("new_" + rg, i), sref("family_attach"), sref("family_churn_m"), mr("n", i))),
           FMT_NUM2)
+    # Plan fee plus the beneficiary fee on every name BEYOND THE FIRST. The
+    # MAX(0,...) is load-bearing: without it a conservative scenario with fewer
+    # than one beneficiary per plan would generate NEGATIVE beneficiary revenue
+    # and quietly net it off the plan fee.
     m_row("s3_" + rg, "  Stream 3 - Family plan and Digital Will", "USD",
-          lambda i, rg=rg: "=%s*%s/12*%s" % (
-              mr("subs_" + rg, i), aref("family_price"), mr("n", i)), FMT_USD)
+          lambda i, rg=rg: "=%s*(%s+MAX(0,%s-1)*%s)/12*%s" % (
+              mr("subs_" + rg, i), aref("family_price"), sref("benef_count"),
+              aref("benef_fee"), mr("n", i)), FMT_USD)
     m_row("s4_" + rg, "  Stream 4 - Cardholder fees (FX, ATM, events)", "USD",
           lambda i, rg=rg: gate("s4", i, "%s*%s*%s+%s*(%s)*%s/%s*%s+%s*(%s*%s+%s*%s)/12/%s*%s" % (
               mr("spendusd_" + rg, i), mr("seas_foreign", i), aref("fx_margin"),
