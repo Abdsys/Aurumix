@@ -1,6 +1,0 @@
-archetype,weight,pay_prob,monthly_hazard,ever_gate_prob,mean_gate_month
-Perfect payer,0.1,0.995,0.016,0.9063,6.1
-Occasional misser,0.35,0.93,0.023,0.8364,7.6
-Alternating misser,0.12,0.55,0.034,0.2357,23.6
-Reducer,0.13,0.97,0.018,0.8861,6.6
-Early lapser,0.3,0.6,0.216,0.0367,14.7

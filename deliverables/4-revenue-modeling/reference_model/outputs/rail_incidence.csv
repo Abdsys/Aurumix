@@ -1,9 +1,0 @@
-region,region_name,band,share_of_region,ticket_usd,rail_usd,request_amount_usd,gross_up_pct_of_ticket,annual_cost_to_customer_usd
-R1,UAE Indian,floor,0.4,20.0,0.25,20.25,1.25,3.0
-R2,UAE other South Asian,floor,0.6,20.0,0.25,20.25,1.25,3.0
-R4,India resident,floor,0.25,20.0,0.25,20.25,1.25,3.0
-R3,Oman,floor,0.58,20.0,0.25,20.25,1.25,3.0
-R4,India resident,standard,0.75,33.333333333333336,0.25,33.583333333333336,0.75,3.0
-R3,Oman,standard,0.42000000000000004,34.285714285714285,0.25,34.535714285714285,0.7291666666666666,3.0
-R2,UAE other South Asian,standard,0.4,35.0,0.25,35.25,0.7142857142857143,3.0
-R1,UAE Indian,standard,0.6,50.0,0.25,50.25,0.5,3.0

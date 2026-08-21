@@ -1,3 +1,0 @@
-FLOAT_DEBT_FUNDED,treatment,cumulative_ebitda,cumulative_float_interest,cumulative_net_profit,peak_funding
-False,"memo, equity funded",-12331144.378734045,0.0,-12331144.378734045,13082257.883741606
-True,"financing line below EBITDA, debt funded",-12331144.378734045,62680.48920978301,-12393824.867943827,13144938.372951394
