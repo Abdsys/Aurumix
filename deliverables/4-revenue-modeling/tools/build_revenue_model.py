@@ -330,16 +330,47 @@ a_row("servicing_share", "Credit servicing - Aurumix share", 0.70, "% of gross",
       FMT_PCT, "servicing_share")
 a_row("ltv_gold", "LTV against collateral", 0.50, "% of collateral",
       "_draft_ics-scoring.md sec 6.2, settled 2026-08-13. CITED.", FMT_PCT, "ltv_gold")
-# Spot is regionalised the same way SIP is. The multipliers are the regional SIP
-# tickets divided by the book-weighted average ticket, because both are proxies
-# for the SAME person's income - so a region that saves more per month also buys
-# a larger one-off ticket. Normalised to average 1.00 at the base region mix, so
-# the "average spot ticket" scenario parameter means exactly what it says.
-for key, mult in (("uae", 1.07), ("gulf", 0.83), ("india", 0.95)):
-    a_row("spotmult_" + key, "Spot ticket multiplier - %s" % RLAB[key], mult, "x average",
-          "Derived from the regional SIP ticket relative to the book-weighted average of ~USD 31.5. Weighted "
-          "across the region mix these average 1.00, so they redistribute the spot ticket without changing "
-          "its level. DERIVED.", FMT_NUM2, "spotmult_" + key)
+# ---- Spot ticket: OBSERVED per region, replacing a derived multiplier -------
+# REBUILT 2026-08-21. Until now the regional spot ticket was a multiplier
+# derived from the regional SIP ticket, on the reasoning that both proxy the
+# same person's income. That was internally consistent and EXTERNALLY WRONG.
+#
+# SIP tickets barely differ across regions (33.60 / 26.00 / 30.00 - a 12%
+# spread), so the derivation compressed the real gap into 12% AND POINTED IT
+# THE WRONG WAY: it put India at 0.95x the UAE, where the published data puts
+# it near 0.20x. Deriving a number from a related one imports that number's
+# flatness. These are now OBSERVED per region.
+#
+# ⚠ EACH IS THE SIZE OF ONE PURCHASE, not an annual sum. Annual spend per
+# buying customer is this x spot frequency (1.7/yr). Both sources below quote
+# average ticket PER TRANSACTION, so the basis matches with no conversion.
+SPOT_TICKET = (
+    ("uae", 190,
+     "OBSERVED, PRIMARY. Botim gold: average ticket AED 700, Khaleej Times, Nov 2025 (= USD 191 at the "
+     "peg). CROSS-CHECKS against the same platform's own volume disclosure - AED 100m over 128,000 trades "
+     "implies AED 781. THE STRONGEST COMPARABLE IN THIS MODEL: Botim is a messaging app that became the "
+     "default for Gulf expats and added gold in Aug 2025, so its users ARE Aurumix's customers - same "
+     "country, same segment, same product, same period. Note 64% of its users buy under AED 500, so the "
+     "mean sits above the median and this figure is, if anything, generous."),
+    ("gulf", 145,
+     "⚠ INFERRED - THE WEAKEST OF THE THREE. No GCC platform outside the UAE publishes an average ticket; "
+     "this is a CONFIRMED NEGATIVE, not a gap in the search. Taken as the UAE figure scaled by the regional "
+     "income gap (SIP 26.00/33.60 = 0.77x). Do not present this as sourced."),
+    ("india", 40,
+     "OBSERVED, PROXY. Augmont: average festive-season purchase Rs 3,300, Times of India, Sep 2025 "
+     "(= ~USD 38). Augmont is a licensed refiner and digital gold platform; a festive lump is structurally "
+     "the same act as a spot purchase, which is why it is preferred to the alternatives. REJECTED: SafeGold "
+     "Rs 5,000-8,000 (May 2026) - that book skews to investors, while Aurumix's Indian customer saves USD 30 "
+     "a month; MMTC-PAMP Rs 800-1,200 - closer to routine micro-saving than a lump; Rs 230 industry-wide - a "
+     "LinkedIn aggregate, not a citable source. ⚠ WEAKER THAN THE UAE FIGURE: right country and right "
+     "behaviour, but Aurumix's Indian customer is poorer than Augmont's average buyer, so 40 may be generous."),
+)
+for key, tkt, _tnote in SPOT_TICKET:   # NB: not "note" - that shadows note()
+    a_row("spotticket_" + key, "Spot ticket - %s" % RLAB[key], tkt, "USD/purchase",
+          _tnote, FMT_USD, "spotticket_" + key)
+# CONFIRMED NEGATIVE, recorded so it is not re-searched: no published average
+# ticket exists anywhere for South Asian expatriate or blue-collar customers in
+# the Gulf specifically - the same gap already hit on transaction frequency.
 _ar[0] += 1
 
 a_section("SIP RULES")
@@ -803,17 +834,31 @@ sp("lapsed_redemption_mult", "Holder redemption multiplier", 2.2, 1.6, 3.5, "x t
    "ASSUMPTION.", FMT_NUM2, "lapsed_redemption_mult")
 sp("spot_attach", "Spot attach rate", 0.14, 0.24, 0.07, "% of customers/yr",
    "Load-bearing because it is MISSING, not because it is large. ASSUMPTION.", FMT_PCT, "spot_attach")
-sp("spot_ticket", "Average spot ticket", 300, 530, 200, "USD/event",
-   "RE-ANCHORED 2026-08-20 from USD 620. Botim - a UAE gold-buying app with a 96% blue/grey collar base, and "
-   "the ONLY OBSERVED SPOT FUNNEL IN THE LAUNCH MARKET - reports an average ticket of ~AED 780 (~USD 212). "
-   "USD 620 sat at 2.9x the only observed figure for this demographic, which is the same population-mismatch "
-   "error corrected on card spend the same day. USD 300 stays ABOVE the observed figure, on the argument that "
-   "a considered purchase into an allocated-gold savings product is larger than a casual in-app buy, but no "
-   "longer multiples above it. Conservative sits at USD 200, just below Botim. Scaled by region below. "
-   "ASSUMPTION anchored on one observation.", FMT_USD, "spot_ticket")
+sp("spot_ticket_mult", "Spot ticket scenario multiplier", 1.00, 1.35, 0.70, "x the observed ticket",
+   "REPLACED the global 'Average spot ticket' on 2026-08-21. The LEVEL is no longer a scenario input: each "
+   "region now carries its own OBSERVED ticket on Assumptions (UAE 190 from Botim, India 40 from Augmont, "
+   "Oman & Bahrain 145 inferred). This parameter carries only the UNCERTAINTY around those observations, as "
+   "a single dial. ⚠ WHY ONE DIAL AND NOT THREE: three regional triplets would be nine numbers to defend and "
+   "would let a scenario silently invert the regional ordering that the sources establish. One multiplier "
+   "flexes the level and PRESERVES the ordering. Aggressive 1.35 puts the UAE at ~257, still under the "
+   "AED 1,000 mark; conservative 0.70 puts it at ~133, below Botim's own sub-AED-500 majority. ASSUMPTION "
+   "about spread, applied to observed levels.", FMT_NUM2, "spot_ticket_mult")
 sp("spot_frequency", "Spot frequency", 1.7, 2.4, 1.2, "events/attacher/yr",
-   "External check: Botim's 128,000 trades against ~45,000 buyers implies ~1.9/yr. INFERRED from two "
-   "disclosures of different vintage - supportive, not confirmatory. ASSUMPTION.", FMT_NUM2, "spot_frequency")
+   "⚠ PROVENANCE CORRECTED 2026-08-21 - THE NUMBER STANDS, ITS OLD CITATION DID NOT. The previous note read "
+   "'Botim's 128,000 trades against ~45,000 buyers implies ~1.9/yr'. THE 45,000 IS NOT A BUYER COUNT, IT IS "
+   "A TRANSACTION COUNT: Khaleej Times, Nov 2025, says 775,000 users EXPLORED the feature, 'completing over "
+   "45,000 transactions'. The 128,000 is also transactions, to Feb 2026. So the old derivation divided "
+   "transactions by transactions across two different windows - the result was the growth in cumulative "
+   "trades, not a frequency. CONFIRMED NEGATIVE: Botim has never published a unique-buyer count, so no "
+   "frequency can be derived from it, and no published frequency exists ANYWHERE for ad-hoc lump gold "
+   "purchases. Comparators are 0.85/yr (Augmont, per REGISTERED user, at an average transaction of Rs 331 - "
+   "micro-saving, not lumps) and 264/yr (Jar, Rs 10/day auto-roundups) - a 300x spread, neither being this "
+   "product. WHAT DOES SUPPORT 1.7 is a cross-check on the COMBINED basis, attach x frequency x ticket, "
+   "which is comparable: Aurumix India implies ~Rs 838/yr of gold per paying customer against Augmont's "
+   "~Rs 281/yr per registered user. 3x, and defensible - our customers are engaged SIP savers, not dormant "
+   "registrations. Behaviourally 1.7 is also about right for festive lumps: Dhanteras, Akshaya Tritiya and a "
+   "wedding is roughly two events. ASSUMPTION, cross-checked on the combined basis, NOT directly sourced.",
+   FMT_NUM2, "spot_frequency")
 sp("spot_to_sip", "Spot-to-SIP conversion", 0.08, 0.15, 0.03, "% of spot buyers/yr",
    "NO SOURCE EXISTS ANYWHERE - re-confirmed by search 2026-08-20, a CONFIRMED NEGATIVE rather than a gap in "
    "the searching. The mechanism design calls this arrow 'the growth funnel' and names spot 'the entry point "
@@ -1266,8 +1311,8 @@ for rg in REGIONS:
                                                         mr("n", i))), FMT_USD)
     m_row("spot_" + rg, "  Spot purchase volume", "USD",
           lambda i, rg=rg: gate("s1b", i, "%s*%s*%s*%s*%s/12*%s" % (
-              mr("pay_" + rg, i), aref("spotmult_" + rg), sref("spot_attach"),
-              sref("spot_frequency"), sref("spot_ticket"), mr("n", i))), FMT_USD)
+              mr("pay_" + rg, i), aref("spotticket_" + rg), sref("spot_attach"),
+              sref("spot_frequency"), sref("spot_ticket_mult"), mr("n", i))), FMT_USD)
     m_row("grams_in_" + rg, "  Grams purchased", "grams",
           lambda i, rg=rg: "=(%s+%s)*(1-%s)/%s/(1+%s)" % (
               mr("sip_" + rg, i), mr("spot_" + rg, i), aref("entry_fee"),

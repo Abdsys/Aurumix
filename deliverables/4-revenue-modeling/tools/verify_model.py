@@ -370,10 +370,25 @@ ceil_share = [asm["B%d" % r].value / ceil_tot for r in ceil_rows]
 check("Region mix is DERIVED from market size (mix == ceiling share)",
       all(abs(m - c) < 1e-9 for m, c in zip(mix, ceil_share)),
       "mix %r vs ceilings %r" % ([round(x, 4) for x in mix], [round(x, 4) for x in ceil_share]))
-smult = [aval("Spot ticket multiplier - %s" % r) for r in REGION_NAMES]
-check("Spot ticket multipliers average ~1.00 at the region mix (they redistribute, not re-level)",
-      abs(sum(m * w for m, w in zip(smult, mix)) - 1.0) < 0.02,
-      "weighted %.4f" % sum(m * w for m, w in zip(smult, mix)))
+# REPLACED 2026-08-21. The old check asserted the regional spot multipliers
+# averaged 1.00 - a property of a DERIVED number that no longer exists. The
+# tickets are now observed per region, so the thing worth defending is that
+# they still carry the ORDERING the sources establish.
+stkt = {r: aval("Spot ticket - %s" % r) for r in REGION_NAMES}
+check("Every region carries its own observed spot ticket",
+      all(isinstance(v, (int, float)) and v > 0 for v in stkt.values()), "%r" % stkt)
+# The finding that motivated the rebuild: published UAE tickets run ~5x India's.
+# The old SIP-derived multiplier put India at 0.95x the UAE, inverting this.
+check("UAE spot ticket is MULTIPLES of India's, as the published data shows",
+      stkt["UAE"] > stkt["India"] * 3,
+      "UAE %r vs India %r (ratio %.2f)" % (stkt["UAE"], stkt["India"], stkt["UAE"] / stkt["India"]))
+# Tie the UAE figure to its source in AED, the unit Botim reported it in, so a
+# drift in the peg or the ticket shows up against the observation itself.
+_aed = stkt["UAE"] * aval("AED/USD peg")
+check("UAE spot ticket still reconciles to Botim's observed AED 700",
+      600 <= _aed <= 800, "implies AED %.0f" % _aed)
+check("The inferred Gulf ticket sits between the two observed ones",
+      stkt["India"] < stkt["Oman and Bahrain"] < stkt["UAE"], "%r" % stkt)
 # The point of regionalising: as the mix shifts, the implied blended spot ticket
 # must MOVE. If it is constant the regional scaling is not wired through.
 spot, pay_all = row("Spot purchase volume"), row("PAYING CUSTOMERS")

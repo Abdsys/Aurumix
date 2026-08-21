@@ -228,6 +228,38 @@ detected. **If the simulation is descoped, those two cells become unsourced assu
 
 Spot is a **sub-stream of 1**, not a seventh stream: same fee, same gold, different rail.
 
+**The spot ticket is now OBSERVED per region** (rebuilt 2026-08-21), replacing a multiplier derived from
+the regional SIP ticket. ⚠ Each figure is the size of **one purchase**, not an annual sum.
+
+| Region | Ticket | Basis | Strength |
+|---|---|---|---|
+| **UAE** | **$190** | Botim gold, AED 700 avg ticket, Khaleej Times Nov 2025. Cross-checks against AED 100m ÷ 128k trades = AED 781 | **Strongest comparable in the model** — same country, same segment, same product |
+| **India** | **$40** | Augmont, ₹3,300 festive purchase, Times of India Sep 2025 | Proxy — right behaviour, but our customer is poorer than Augmont's average buyer |
+| **Oman & Bahrain** | **$145** | UAE scaled by the income gap (0.77×) | ⚠ **Inferred. No source.** Do not present as sourced |
+
+🔴 **The old derivation was internally consistent and externally wrong.** It scaled spot off the SIP
+ticket, on the logic that both proxy the same person's income. But SIP tickets barely differ across
+regions ($33.60 / $26.00 / $30.00 — a 12% spread), so the derivation compressed the real gap into 12%
+**and pointed it the wrong way**: it put India at **0.95×** the UAE where the published data puts it near
+**0.20×**. Deriving a number from a related one imports that number's flatness. This is the argument for
+observing regional parameters wherever a source exists.
+
+**One scenario dial, not three.** Levels sit on Assumptions; a single *spot ticket scenario multiplier*
+(0.70 / 1.00 / 1.35) carries the uncertainty. Three regional triplets would be nine numbers to defend and
+would let a scenario silently invert the ordering the sources establish.
+
+⚠ **Spot frequency (1.7/yr) is an assumption, not a citation** — provenance corrected 2026-08-21. The
+earlier note derived it from "128,000 trades against ~45,000 buyers", but **the 45,000 is a transaction
+count, not a buyer count**; the calculation divided transactions by transactions across two different
+time windows. Botim has never published unique buyers, and **no published frequency exists anywhere for
+ad-hoc lump gold purchases** — comparators run from 0.85/yr (Augmont, per registered user) to 264/yr
+(Jar, ₹10/day roundups), a 300× spread bracketing a product that is neither. What supports 1.7 is a
+cross-check on the **combined** basis: attach × frequency × ticket implies ~₹838/yr of gold per Indian
+paying customer against Augmont's ~₹281/yr per registered user — 3×, and the right side to err on.
+
+**Confirmed negative, recorded so it is not re-searched:** no published average ticket or frequency exists
+for South Asian expatriate or blue-collar customers in the Gulf specifically.
+
 | # | Stream | Scales with | Activates |
 |---|---|---|---|
 | **1a** | Entry fee — SIP | Paying customers × regional ticket | M1 |
