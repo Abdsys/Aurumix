@@ -257,6 +257,26 @@ ad-hoc lump gold purchases** — comparators run from 0.85/yr (Augmont, per regi
 cross-check on the **combined** basis: attach × frequency × ticket implies ~₹838/yr of gold per Indian
 paying customer against Augmont's ~₹281/yr per registered user — 3×, and the right side to err on.
 
+⚠ **Spot attach (14%) has no source either.** v2.6 records it as a confirmed negative — *"there is no
+spot-attach benchmark for any comparable gold or savings product anywhere."* It asserts that the average
+customer makes a one-off purchase about **once every four years** (14% × 1.7 = 0.238/yr). Augmont's
+0.85 transactions per registered user bounds it but does not confirm it, their average transaction being
+₹331 — micro-savings, not lumps.
+
+⚠ **Flat attach is a known simplification with a known direction.** v2.6 applied a **tenure uplift** — *"a
+3-year account is ~2× as likely to buy spot as a 6-month account"* — which v3.0 dropped. The rate is now
+flat from day one, so if 14% was calibrated on a mature book, **spot is overstated in the early years**
+when nearly every account is young. Not rebuilt, because spot is ~1.4% of Y7 revenue; the uplift belongs
+in the Phase 5 simulation.
+
+**Spot has no independent funnel, and that is deliberate.** v2.6 §6.1b: *"there is no independent spot
+ceiling… spot is exclusively a behaviour of SIP accounts."* Re-confirmed by client decision 2026-08-21,
+on economics: a spot-only buyer is worth `1.7 × ticket × 5%` a year — **$16 in the UAE, $3.40 in India**
+— against a CAC of $120 and $20, a **6–8 year payback on spot revenue alone**. Paid spot acquisition is
+dominated by simply acquiring a SIP customer with the same money. A spot funnel would only pay if buyers
+arrived at near-zero marginal cost, and its value would then rest entirely on a conversion rate that has
+no source. The dead `Spot-to-SIP conversion` parameter was removed in consequence.
+
 **Confirmed negative, recorded so it is not re-searched:** no published average ticket or frequency exists
 for South Asian expatriate or blue-collar customers in the Gulf specifically.
 

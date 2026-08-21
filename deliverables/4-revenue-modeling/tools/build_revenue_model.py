@@ -833,7 +833,19 @@ sp("lapsed_redemption_mult", "Holder redemption multiplier", 2.2, 1.6, 3.5, "x t
    "holders become the majority of the book by Y4, this is the DOMINANT AUM DECAY TERM from roughly Y4. "
    "ASSUMPTION.", FMT_NUM2, "lapsed_redemption_mult")
 sp("spot_attach", "Spot attach rate", 0.14, 0.24, 0.07, "% of customers/yr",
-   "Load-bearing because it is MISSING, not because it is large. ASSUMPTION.", FMT_PCT, "spot_attach")
+   "⚠ NO SOURCE. NOT DERIVED, NOT OBSERVED - CHOSEN. The v2.6 brief records it as a confirmed negative: "
+   "'S45, S46 and S47 are all Low confidence with no published source. There is no spot-attach benchmark for "
+   "any comparable gold or savings product anywhere.' Load-bearing because it is MISSING, not because it is "
+   "large. WHAT IT ASSERTS, in plain terms: 14% x 1.7 = 0.238 purchases per paying customer per year, i.e. "
+   "the average customer makes a one-off gold purchase about once every four years. The only cross-check is "
+   "Augmont's 0.85 transactions per REGISTERED user per year, which we sit at 28% of - but their average "
+   "transaction is Rs 331, so they are counting micro-savings rather than lumps. It bounds this number; it "
+   "does not confirm it. "
+   "⚠ KNOWN SIMPLIFICATION WITH A KNOWN DIRECTION: v2.6 applied a TENURE UPLIFT here - 'a 3-year account is "
+   "~2x as likely to buy spot as a 6-month account' - which the v3.0 simplification dropped. This rate is "
+   "now flat from day one. If 14% was calibrated on a mature book, SPOT IS OVERSTATED IN THE EARLY YEARS, "
+   "when nearly every account is young. Not rebuilt because spot is ~1.4% of Y7 revenue; restore the uplift "
+   "in the Phase 5 simulation. ASSUMPTION.", FMT_PCT, "spot_attach")
 sp("spot_ticket_mult", "Spot ticket scenario multiplier", 1.00, 1.35, 0.70, "x the observed ticket",
    "REPLACED the global 'Average spot ticket' on 2026-08-21. The LEVEL is no longer a scenario input: each "
    "region now carries its own OBSERVED ticket on Assumptions (UAE 190 from Botim, India 40 from Augmont, "
@@ -859,11 +871,23 @@ sp("spot_frequency", "Spot frequency", 1.7, 2.4, 1.2, "events/attacher/yr",
    "registrations. Behaviourally 1.7 is also about right for festive lumps: Dhanteras, Akshaya Tritiya and a "
    "wedding is roughly two events. ASSUMPTION, cross-checked on the combined basis, NOT directly sourced.",
    FMT_NUM2, "spot_frequency")
-sp("spot_to_sip", "Spot-to-SIP conversion", 0.08, 0.15, 0.03, "% of spot buyers/yr",
-   "NO SOURCE EXISTS ANYWHERE - re-confirmed by search 2026-08-20, a CONFIRMED NEGATIVE rather than a gap in "
-   "the searching. The mechanism design calls this arrow 'the growth funnel' and names spot 'the entry point "
-   "for new investors'. THE STRATEGY QUESTION IN NUMERICAL FORM, and the one an experiment could answer.",
-   FMT_PCT, "spot_to_sip")
+# REMOVED 2026-08-21: "Spot-to-SIP conversion", 8%/yr. It was defined and
+# REFERENCED NOWHERE - a dead input that implied a population the model does not
+# have. Converting spot buyers into SIP customers only means something if
+# spot-only buyers EXIST as a separate balance, and in this model they do not:
+# spot is a cross-sell to people who are already paying, so the arrow would have
+# pointed from SIP customers back to SIP customers.
+#
+# ⚠ THE DECISION NOT TO BUILD THAT POPULATION IS ECONOMIC, NOT LAZY. A spot-only
+# buyer is worth 1.7 x ticket x 5% a year - USD 16 in the UAE, USD 3.40 in
+# India - against a CAC of 120 and 20. That is a 6-8 YEAR PAYBACK ON SPOT
+# REVENUE ALONE, so paid spot acquisition is dominated by simply acquiring a SIP
+# customer with the same money. A spot funnel is only worth building if the
+# buyers arrive at near-zero marginal cost (festive, organic, referral), and its
+# value would then sit entirely in a conversion rate that HAS NO SOURCE - a
+# confirmed negative, re-checked 2026-08-20. Client decision 2026-08-21: leave
+# spot as a cross-sell and let the Phase 5 simulation carry the two-population
+# question, which is where heterogeneity belongs under the v3.0 scope decision.
 _sr[0] += 1
 
 s_section("GROUP D: CARD")
@@ -892,22 +916,13 @@ sp("card_txns_per_draw", "Transactions per drawdown event", 4, 6, 2, "transactio
    "groceries, but occasional larger needs - school fees, a medical bill, an emergency - funded by borrowing "
    "against savings rather than liquidating them. That is a materially different product story and should be "
    "put to the client in those words. ASSUMPTION.", FMT_NUM, "card_txns_per_draw")
-sp("card_txns_UNUSED", "Card transactions per active card per month", 12, 18, 8, "transactions/month",
-   "THE INPUT IS FREQUENCY; AVERAGE TICKET IS DERIVED FROM IT. That inversion is deliberate. Monthly spend is "
-   "already pinned by income (a multiple of the SIP ticket) and capped by the gold collateral, so specifying a "
-   "ticket size would over-determine the card and let it drift away from what the customer actually saves - "
-   "the exact problem an absolute AED 100 ticket created. Fixing frequency instead makes the average ticket "
-   "fall out as spend / frequency, which means IT SCALES WITH THE SIP CONTRIBUTION AUTOMATICALLY: a customer "
-   "on a smaller monthly savings amount gets a proportionally smaller basket, in every region, with no extra "
-   "input. WHY FREQUENCY IS THE BETTER THING TO ANCHOR: it has a published number and ticket size does not. "
-   "Visa scheme data gives ~175 transactions per card per year for the region, about 14-15/month, and UAE "
-   "low-income cash dependency fell from 84% to 69% in two years, so card usage is rising. Base is set at 12, "
-   "slightly BELOW the general anchor, because this is a secondary card earned on a savings product rather "
-   "than someone's main salary card. ⚠ THE UAE-WIDE AVERAGE TICKET OF ~AED 313 IS DELIBERATELY NOT USED - it "
-   "spans affluent expats and corporate cards, which is the same population mismatch that put card spend at "
-   "AED 6,000. NO PUBLISHED TICKET SIZE OR FREQUENCY EXISTS FOR BLUE-COLLAR GCC WORKERS SPECIFICALLY - a "
-   "confirmed negative, re-checked 2026-08-20. TRIANGULATED on frequency, DERIVED on ticket.",
-   FMT_NUM, "card_txns_per_month")
+# REMOVED 2026-08-21: "Card transactions per active card per month", 12/mo.
+# SUPERSEDED when the card became a drawdown on the gold facility - the
+# meaningful unit became transactions PER DRAW (above), and this row was left
+# behind, still scenario-flexed and read by nothing. At 12/month the implied
+# ticket collapsed to ~AED 12, which is a coffee, not a reason to pledge your
+# gold. The Visa anchor it carried (~175 txns/card/yr regionally, 14-15/month)
+# is retained in the note on card_txns_per_draw, which is where it now bears.
 sp("foreign_spend_share", "Foreign spend share (mean)", 0.34, 0.45, 0.24, "% of card spend",
    "Applied through the seasonal vector, not as a constant. ASSUMPTION.", FMT_PCT, "foreign_spend_share")
 sp("issuance_events", "Card issuance events", 1.06, 1.04, 1.10, "events/card/yr",
@@ -971,17 +986,18 @@ for key, tb, ta, tc, mix in RDATA:
        "blue-collar book - it is an upper bound, not a proxy. UAE is the ceiling-weighted blend of the former "
        "Indian (USD 38) and other South Asian (USD 26) rows. Book-weighted average ~USD 31.45. TRIANGULATED.",
        FMT_USD, "ticket_" + key)
-for key, tb, ta, tc, mix in RDATA:
-    s_derived("mix_" + key, "Share of new customers - %s" % RLAB[key],
-              "=%s/(%s)" % (aref("ceil_" + key), "+".join(aref("ceil_" + k) for k in REGIONS)),
-              "% of new",
-              "DERIVED from market size: each region's share of acquisition equals its share of the "
-              "addressable ceiling, so acquisition follows the opportunity. Previously these were four typed "
-              "numbers with no basis, which sent 34% of acquisition to Oman and Bahrain - a market that is "
-              "16% of the opportunity - and only 8% to India, which is 26% of it. Because they are derived "
-              "they sum to 1.000 by construction and cannot drift out of line with the ceilings. Shares are "
-              "RENORMALISED on the Model for regions not yet open, so a region that opens later redistributes "
-              "rather than vanishing.", FMT_PCT, "mix_" + key)
+# REMOVED 2026-08-21: "Share of new customers - <region>", derived as each
+# region's share of the addressable ceiling.
+#
+# ⚠ IT WAS NOT MERELY UNUSED, IT WAS MISLEADING. The row asserted that a
+# region's share of acquisition equals its share of the ceiling. That stopped
+# being true when acquisition went region-by-region: new customers now fall out
+# of each market's OWN marketing budget, OWN CAC, OWN salesforce share and OWN
+# referring base, so the regional split is an EMERGENT RESULT, not an input. A
+# reader would have taken a stale derived row for the driver. Its note also
+# claimed the shares were "RENORMALISED on the Model for regions not yet open",
+# which stopped being true when that renormalisation was rewired to the
+# salesforce split. Found by the orphan check added the same day.
 _sr[0] += 1
 
 section(ws_scen, _sr[0], "STRUCTURAL SWITCHES - the two that move revenue", span=5)

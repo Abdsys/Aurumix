@@ -92,6 +92,57 @@ _mismatch = [(n, _mirror[r]) for r, n in _params if r in _mirror and _mirror[r] 
 check("Mirrored labels match their Scenario Parameters labels exactly",
       not _mismatch, "%r" % _mismatch[:3])
 
+# NO ORPHANS. Added 2026-08-21 after "Spot-to-SIP conversion" was found defined,
+# mirrored, scenario-flexed - and referenced by nothing. A dead input is worse
+# than a missing one: it reads as a modelled mechanism, it implies a population
+# the model does not have, and flipping the scenario appears to do something.
+# Mirroring alone never catches this, because an orphan mirrors perfectly.
+import re as _re
+
+
+def _cited(formula, sheet=None):
+    """Every $B$n row a formula touches, EXPANDING RANGES.
+
+    Ranges matter: the annual schedules are read as INDEX(Assumptions!$B$a:$B$b,
+    year), so only the first row carries the sheet prefix. Matching single cells
+    alone reports rows 2..n of every schedule as orphans."""
+    pat = (r"%s!\$B\$(\d+)(?::\$B\$(\d+))?" % sheet) if sheet else r"(?<![!\w])\$B\$(\d+)(?::\$B\$(\d+))?"
+    out = set()
+    for lo, hi in _re.findall(pat, formula):
+        lo = int(lo)
+        out.update(range(lo, int(hi) + 1) if hi else [lo])
+    return out
+
+
+_used_asm = set()          # Assumptions rows the Model reads
+for _r in wbf["Model"].iter_rows():
+    for _c in _r:
+        if isinstance(_c.value, str) and _c.value.startswith("="):
+            _used_asm |= _cited(_c.value, "Assumptions")
+_used_sc = set()           # Scenario rows other Scenario formulas read
+for _r in _fsc.iter_rows():
+    for _c in _r:
+        if isinstance(_c.value, str) and _c.value.startswith("="):
+            # Derived rows refer to their OWN sheet BY NAME ("'Scenario
+            # Parameters'!$B$10"), not as a bare local ref, so both forms count.
+            _used_sc |= _cited(_c.value) | _cited(_c.value, "'Scenario Parameters'")
+
+# Map each mirrored Assumptions row back to the Scenario row it came from.
+_mirror_asm = {}
+for r in range(1, _fasm.max_row + 1):
+    b = _fasm["B%d" % r].value
+    if isinstance(b, str) and b.startswith("=") and "Scenario Parameters" in b:
+        _mirror_asm[r] = (int(b.split("$B$")[1].split(")")[0].strip()),
+                          (_fasm["A%d" % r].value or "").strip())
+# A parameter EARNS ITS PLACE if the Model reads its Assumptions mirror, OR a
+# derived scenario parameter reads it upstream (persistency, for instance, is
+# consumed by the monthly-churn derivation rather than by the Model directly -
+# it is mirrored for visibility, at the client's explicit request).
+_orphans = sorted(n for r, (sr, n) in _mirror_asm.items()
+                  if r not in _used_asm and sr not in _used_sc)
+check("NO ORPHANED scenario parameters - every one is read by the Model or a derivation",
+      not _orphans, "scenario-flexed but referenced nowhere: %r" % _orphans)
+
 
 def rowof(ws, label):
     """Exact match INCLUDING indentation, and it must be UNIQUE.
@@ -363,13 +414,27 @@ check("Partner count rises monotonically once B2B is live",
       "%r" % [sval("B2B partners - Y%d" % y) for y in range(1, 8)])
 
 # ---- 8b. regions are handled consistently across BOTH inflow lanes --------
-mix = [sval("Share of new customers - %s" % r) for r in REGION_NAMES]
-check("Region acquisition shares sum to 1.000", all_num(mix) and abs(sum(mix) - 1.0) < 1e-9,
-      "sum %r" % (sum(mix) if all_num(mix) else mix))
+# REPLACED 2026-08-21. The two checks here read a "Share of new customers" row
+# that has been deleted: it claimed acquisition followed the ceiling share, but
+# acquisition is now driven per region by budget, CAC, salesforce and referrals,
+# so the split is an OUTCOME. Both checks were also tautological - the row was
+# derived from the ceilings, so testing it against the ceilings proved nothing.
+# What is worth asserting is that the OUTCOME is sane.
 ceil_share = [asm["B%d" % r].value / ceil_tot for r in ceil_rows]
-check("Region mix is DERIVED from market size (mix == ceiling share)",
-      all(abs(m - c) < 1e-9 for m, c in zip(mix, ceil_share)),
-      "mix %r vs ceilings %r" % ([round(x, 4) for x in mix], [round(x, 4) for x in ceil_share]))
+check("Region ceiling shares sum to 1.000", abs(sum(ceil_share) - 1.0) < 1e-9,
+      "sum %r" % sum(ceil_share))
+_newr = [r for r in range(1, mdl.max_row + 1) if mdl["A%d" % r].value == "  New customers"]
+_newy7 = [mdl["%s%d" % (pc(N - 1), r)].value for r in _newr]
+check("Every region is still acquiring at Y7 (none has been starved by the mix)",
+      len(_newy7) == len(REGION_NAMES) and all_num(_newy7) and all(v > 0 for v in _newy7),
+      "Y7 new by region %r" % [round(v, 1) for v in _newy7])
+# The emergent split should bear SOME relation to opportunity - not equality,
+# since CAC and salesforce deliberately differ, but not a wild inversion either.
+_share = [v / sum(_newy7) for v in _newy7]
+check("Emergent regional acquisition is within 3x of each region's opportunity share",
+      all(c / 3 <= s <= c * 3 for s, c in zip(_share, ceil_share)),
+      "acquired %r vs opportunity %r" % ([round(x, 3) for x in _share],
+                                         [round(x, 3) for x in ceil_share]))
 # REPLACED 2026-08-21. The old check asserted the regional spot multipliers
 # averaged 1.00 - a property of a DERIVED number that no longer exists. The
 # tickets are now observed per region, so the thing worth defending is that
