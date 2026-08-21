@@ -681,6 +681,71 @@ ws_assum["D%d" % r] = ("~181,150, against the brief's 165,750. ⚠ THE BRIEF'S '
 AROW["ceil_total"] = r
 declare("ceil_total", "Assumptions", "$B$%d" % r)
 _ar[0] += 1
+
+# ---- CROSS-CHECK against observed platform users ---------------------------
+# Added 2026-08-21. The funnel derives the market from population and filters;
+# this tests that answer against what a real platform in the same market has
+# actually seen. THESE ROWS FEED NOTHING - they are evidence, not inputs.
+#
+# ⚠ WHY THIS IS A CROSS-CHECK AND NOT THE METHOD. Replacing the funnel with
+# platform user counts was considered and rejected on the data:
+#   (a) "USERS" IS NOT A DEFINED UNIT. For the SAME UAE product the published
+#       figures are 8.5m (can access), 1.5m (OGold users), 775,000 (explored the
+#       feature) and 75,000 (active). A 113x spread - choosing between them is a
+#       judgement at least as large as any filter it would replace, but it would
+#       LOOK like an observation, which is worse.
+#   (b) INDIA CANNOT BE DEDUPLICATED. Jar reports 35m registered (Sep 2025) and
+#       Augmont 42m; the same person is on several. No industry estimate of
+#       UNIQUE digital gold investors exists - a confirmed negative. Registered
+#       is not active either: Augmont runs 0.85 transactions per registered user
+#       per year, so most are dormant.
+#   (c) OMAN & BAHRAIN HAS NO PUBLISHED USER COUNT AT ALL, so the method could
+#       not be applied uniformly - which was its main appeal.
+#   (d) BEHAVIOUR IS NOT CAPACITY, and this is the one that decides it. A Jar
+#       user saving Rs 10/day proves they will buy gold digitally; it does NOT
+#       prove they can commit Rs 2,640/month to a SIP. The funnel's filters are
+#       not measuring appetite for gold - appetite is not in doubt - they are
+#       measuring capacity for a RECURRING commitment. Swapping in platform
+#       users would delete that test and replace it with nothing.
+r = _ar[0]
+ws_assum["A%d" % r] = "CROSS-CHECK vs observed market evidence (memo - feeds nothing)"
+ws_assum["A%d" % r].font = BLACK_BOLD
+_ar[0] += 1
+a_row("xchk_uae_obs", "  O Gold active users, UAE (observed)", 75000, "users",
+      "OBSERVED. O Gold, the gold engine behind Botim, reported at 75,000 ACTIVE users. The same product is "
+      "also reported at 775,000 'explored the feature', 1.5m 'users' and 8.5m 'can access' - ACTIVE is the "
+      "only one of the four comparable to a reachable-accounts figure, and it is the most conservative. "
+      "CITED.", FMT_NUM, "xchk_uae_obs")
+r = _ar[0]
+ws_assum["A%d" % r] = "  Our UAE ceiling as a multiple of observed active users"
+c = ws_assum["B%d" % r]
+c.value = "=%s/%s" % (aref("ceil_uae").replace("Assumptions!", ""),
+                      aref("xchk_uae_obs").replace("Assumptions!", ""))
+c.font, c.number_format = BLACK_BOLD, '0.00"x"'
+ws_assum["C%d" % r] = "x observed"
+ws_assum["D%d" % r] = (
+    "⚠ LIVE, SO IT MOVES IF ANYONE RAISES A CEILING - which is the point. Two INDEPENDENT methods landing "
+    "within ~2x is the strongest defence of the funnel in this model: the funnel says the UAE can reach "
+    "~113,000 SIP accounts, and a real UAE gold app in the same segment has ~75,000 active users today. "
+    "Our addressable base of ~1.43m sits against 775,000 who explored that product - same order again. "
+    "If this multiple drifts far above ~2x, the ceiling has stopped being defensible by evidence and is "
+    "being set by the answer someone wanted. DERIVED from a cited observation.")
+AROW["xchk_uae_ratio"] = r
+_ar[0] += 1
+r = _ar[0]
+ws_assum["A%d" % r] = "  Oman & Bahrain / India (no comparable figure)"
+ws_assum["B%d" % r] = "n/a"
+ws_assum["B%d" % r].font = SECONDARY
+ws_assum["C%d" % r] = "-"
+ws_assum["D%d" % r] = (
+    "CONFIRMED NEGATIVE, recorded so it is not re-searched. No GCC platform outside the UAE publishes a "
+    "user count. India publishes only REGISTERED counts (Jar 35m, Augmont 42m) which cannot be deduplicated "
+    "or converted to active users, so no comparable cross-check can be built. ⚠ NOTE THAT INDIA'S OWN BASE "
+    "IS ALREADY user-derived - its 12.5m is 'holds a gold ETF folio or actively buys digital gold', which is "
+    "why its three filters all sit at 1.00 - AND IT IS THE LEAST TRACEABLE BASE IN THE MODEL. That is the "
+    "evidence that a user-based method does not automatically produce a better-sourced number.")
+_ar[0] += 2
+
 AGENTS = [5, 15, 40, 60, 90, 106, 124]
 MKTG = [60000, 180000, 250000, 400000, 600000, 850000, 1100000]
 RAMP = [0.60, 0.85, 1.00, 1.00, 1.00, 1.00, 1.00]

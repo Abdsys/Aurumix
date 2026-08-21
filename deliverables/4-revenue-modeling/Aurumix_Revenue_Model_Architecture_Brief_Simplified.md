@@ -200,6 +200,36 @@ to the mean returns **exactly zero**, and stream 4 silently loses a component. T
 materially more, generated almost entirely by a small high-cash tail. This is a Jensen error in miniature
 and it points the opposite way to the usual one.
 
+### 3.5 Market sizing, and why it is not built from platform user counts
+
+The funnel derives the market from **population × three capacity filters × a penetration ceiling**. The
+alternative — start from the published user counts of digital gold platforms and apply a penetration % to
+those — was researched and rejected 2026-08-21. It is a better idea in principle, because it starts from
+proven behaviour rather than judgement filters. The published data cannot carry it:
+
+| Problem | Evidence |
+|---|---|
+| **"Users" is not a defined unit** | The *same* UAE product is reported at **8.5m** (can access), **1.5m** (users), **775,000** (explored) and **75,000** (active). A **113× spread** — choosing between them is a judgement as large as any filter it replaces, but it would *look* like an observation |
+| **India cannot be deduplicated** | Jar 35m registered, Augmont 42m; the same person is on several. **No estimate of unique digital gold investors exists** — a confirmed negative. Registered ≠ active either: Augmont runs 0.85 transactions per registered user per year |
+| **Oman & Bahrain has no user count at all** | So the method could not be applied uniformly — which was its main appeal |
+| 🔴 **Behaviour is not capacity** | A Jar user saving ₹10/day proves they will buy gold digitally. It does **not** prove they can commit ₹2,640/month to a SIP. The filters are not measuring appetite for gold — appetite is not in doubt — they measure capacity for a **recurring** commitment |
+
+⚠ **India's base already uses that method, and it is the least traceable number in the model.** Its 12.5m
+is *"holds a gold ETF folio or actively buys digital gold"*, which is why its three filters all sit at
+1.00. That is the evidence a user-based method does not automatically produce a better-sourced figure.
+
+**What the data is good for is a cross-check, and it passes.** A live memo row on Assumptions:
+
+| | Derived funnel | Observed |
+|---|---|---|
+| UAE addressable base | 1.43m | **775,000** explored O Gold |
+| UAE reachable SIP | 113,416 | **75,000** active O Gold users |
+| | | **Ratio 1.51×** |
+
+Two independent methods landing within ~2× is the strongest defence of the funnel in this model. The row
+is **live**, so it moves if anyone raises a ceiling — that is the point. ⚠ **If the multiple drifts far
+above ~2×, the ceiling has stopped being set by evidence and is being set by the answer someone wanted.**
+
 ---
 
 ## 4. What was deleted, and where it went
