@@ -389,7 +389,14 @@ for key, tkt, _tnote in SPOT_TICKET:   # NB: not "note" - that shadows note()
 # already chose to buy gold every month, so a low attach was always hard to
 # defend for them, and hardest of all in India where festive buying is close to
 # universal.
-SPOT_ATTACH = (("uae", 0.12), ("gulf", 0.10), ("india", 0.25))
+# India raised 0.25 -> 0.35 on 2026-08-21, client instruction. Defensible on the
+# same affordability logic that set the split: at 1.3 months of saving per
+# purchase a festive lump is an ORDINARY act in India, so a third of customers
+# doing it once a year is unremarkable. UAE and Oman & Bahrain DELIBERATELY LEFT
+# ALONE - at 5.7 and 5.6 months per purchase, asserting that a fifth or a
+# quarter of those customers commit most of half a year's savings in one go
+# every year is not something that survives being asked out loud.
+SPOT_ATTACH = (("uae", 0.12), ("gulf", 0.10), ("india", 0.35))
 for key, att in SPOT_ATTACH:
     a_row("spotattach_" + key, "Spot attach rate - %s" % RLAB[key], att, "% of customers/yr",
           "Share of paying customers who make ANY spot purchase in a year - NOT a monthly rate, and NOT how "
