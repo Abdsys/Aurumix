@@ -796,19 +796,56 @@ ws_assum["D%d" % r] = (
     "evidence that a user-based method does not automatically produce a better-sourced number.")
 _ar[0] += 2
 
-# Both schedules RAISED 50% on 2026-08-21, client instruction.
-AGENTS = [8, 23, 60, 90, 135, 159, 186]        # was 5, 15, 40, 60, 90, 106, 124
+# REGIONALISED 2026-08-26. Agents now BELONG to a region rather than sitting in
+# a national pool routed by a "share of salesforce" input. UAE and Oman &
+# Bahrain are ZERO by design: those markets are acquired top-down through
+# marketing at their own CAC, plus referral. India carries the agent network.
+AGENTS_BY_REGION = {
+    "uae":   [0, 0, 0, 0, 0, 0, 0],
+    "gulf":  [0, 0, 0, 0, 0, 0, 0],
+    "india": [40, 40, 60, 177, 298, 356, 420],
+}
 MKTG = [90000, 270000, 375000, 600000, 900000, 1275000, 1650000]   # was 60k..1.1m
 RAMP = [0.60, 0.85, 1.00, 1.00, 1.00, 1.00, 1.00]
-for y in range(1, 8):
-    a_row("agents_y%d" % y, "Active agents - Y%d" % y, AGENTS[y - 1], "agents",
-          "RAISED 50% on 2026-08-21. A STOCK, NOT A FLOW: at 45% attrition, holding 186 active needs ~84 "
-          "recruits a year just to stand still, and reaching 186 from 8 means recruiting and training "
-          "several hundred people over seven years. COMPOUNDS WITH AGENT PRODUCTIVITY, raised from 4 to 6 "
-          "the same day - together they are 2.25x the agent output the model carried this morning. AND IT "
-          "IS A COST THIS MODEL CANNOT SEE: agents are paid, and the salesforce is now 45% UAE / 10% Oman & "
-          "Bahrain / 45% India, where a Dubai salesperson and an Indian commission agent are not remotely "
-          "the same expense. CLIENT INPUT.", FMT_NUM, "agents_y%d" % y)
+AGENT_NOTE = (
+    "REGIONALISED 2026-08-26, replacing a single national pool split 45/10/45 by a 'share of salesforce' "
+    "input. AGENTS NOW BELONG TO A REGION. UAE and Oman & Bahrain are set to ZERO: those markets are "
+    "acquired top-down through marketing at their own CAC, plus referral. India carries the agent network. "
+    "THE RAMP IS NO LONGER TYPED - and the schedule it replaces was never the client's. The old "
+    "5/15/40/90/200 entered the corpus in the v1.0 brief as 'Active agents | Client input REQUIRED', a "
+    "placeholder flagged as a question to ask; by the v2.6 rebuild spec the word 'required' had dropped and "
+    "the source column read 'CLIENT INPUT'. That sequence appears in four documents, all of them ours, and "
+    "in no client source: the 100 G Business Model gives the three-tier agent STRUCTURE (S11.1) and the 15% "
+    "commission, but no headcount anywhere. The only genuine client instruction was a +50% raise on "
+    "2026-08-21, which scaled a placeholder rather than replacing it. "
+    "THIS ROW IS NOW OBSERVED. It is Angel One's DISCLOSED Authorised Person count - 42 / 40 / 63 / 186 / "
+    "313 across FY18-FY22, a 7.45x rise over four years from a small base - indexed to Y1 and anchored at "
+    "40 (client decision 2026-08-26). An Angel One AP is a SEBI-registered independent person who acquires "
+    "and services retail investors on commission, which is the same animal as an Aurumix agent. The tail "
+    "(Y6-Y7) is extended at Prudent Corporate Advisory's mature rate, whose MFD base went 14,007 (FY20) to "
+    "33,308 (FY25), ~19%/yr. "
+    "THE OBSERVED Y2 DIP IS FLATTENED, client instruction: Angel One's own FY19 fell 5% on FY18, which is "
+    "what real networks do - you recruit, most wash out, the survivors compound from year 3. Held FLAT at "
+    "Y2 instead, which is not a free year: at 45% attrition it still means ~18 hires purely to stand still. "
+    "TWO CAVEATS ON THE COMPARATORS. Angel One's FY18 is NOT that company's year one - it was founded in "
+    "1996 and was rebuilding the AP channel, so this is 'a distributor network scaling from a small base', "
+    "not 'a startup's first five years'. And both comparators RECRUIT PRE-LICENSED PROFESSIONALS onto a "
+    "platform rather than creating agents from nothing; gold is not a securities product so Aurumix needs "
+    "no ARN or SEBI registration, which removes the barrier but also removes the ready pool to poach from. "
+    "CROSS-CHECKED, AND THIS IS THE STRONGEST PART: sizing agents bottom-up so they are India's primary "
+    "channel independently gives ~470 at Y7 against this curve's 420 - two unrelated methods, 12% apart. "
+    "Y4 IS THE YEAR TO QUESTION: 60 to 177 needs 144 hires against a base of 60, nearly tripling the "
+    "network in twelve months. It is inherited from Angel One's real FY20-FY21 jump (63 to 186), so it is "
+    "observed rather than invented, but it is the year the plan has to actually deliver. "
+    "AND IT IS A COST THIS MODEL CANNOT SEE: 857 hires across seven years to end with 420 active, ~224 in "
+    "Y7 alone, needing 5-6 full-time recruiters and ~28 supervisors at a 1:15 span. "
+    "OBSERVED (Angel One FY18-FY22, Prudent FY20-FY25); the Y1 anchor is a CLIENT DECISION.")
+for key in REGIONS:
+    for y in range(1, 8):
+        a_row("agents_%s_y%d" % (key, y),
+              "Active agents - %s - Y%d" % (RLAB[key], y),
+              AGENTS_BY_REGION[key][y - 1], "agents", AGENT_NOTE, FMT_NUM,
+              "agents_%s_y%d" % (key, y))
 for y in range(1, 8):
     a_row("mktg_y%d" % y, "Marketing spend - Y%d" % y, MKTG[y - 1], "USD/yr",
           "RAISED 50% on 2026-08-21, client instruction. A DECISION VARIABLE and an input to acquisition, "
@@ -821,23 +858,12 @@ for y in range(1, 8):
 for y in range(1, 8):
     a_row("ramp_y%d" % y, "Agent blended ramp - Y%d" % y, RAMP[y - 1], "x productivity",
           "Six months to full productivity, which happens to match the six-payment gate.", FMT_NUM2, "ramp_y%d" % y)
-# WHERE EACH CHANNEL CAN ACTUALLY SELL. Previously every channel was allocated
-# to every region in the same proportion, which quietly put agents to work in
-# markets they do not operate in.
-AGENT_SHARE = {"uae": 0.45, "gulf": 0.10, "india": 0.45}
-for key in REGIONS:
-    a_row("agentshare_" + key, "Share of salesforce deployed - %s" % RLAB[key],
-          AGENT_SHARE[key], "% of salesforce",
-          "REVISED 2026-08-20. An earlier cut put 100% in India, which left the UAE - the licensed home "
-          "market - with no people selling at all. There will be a salesforce outside India; it is simply "
-          "SALARIED rather than commission-only. FOR REVENUE THE DISTINCTION DOES NOT MATTER: both are people "
-          "acquiring customers at some productivity. IT MATTERS ENORMOUSLY FOR COST - a Dubai salesperson "
-          "and an Indian commission agent are not remotely the same expense, and this split MUST be "
-          "cost-weighted when the cost build lands. India stays high because a large agent pool is cheapest "
-          "to build there; UAE is weighted for being the core licensed market. NOT the same thing as "
-          "stream 6: that is B2B, partners white-labelling the platform onto their own customer books, and "
-          "is not a consumer sales channel at all. Must sum to 100%. CLIENT INPUT.",
-          FMT_PCT, "agentshare_" + key)
+# DELETED 2026-08-26: "Share of salesforce deployed - <region>" (45/10/45).
+# Those three inputs, and the open-region renormalisation row on the Model that
+# divided by them, existed ONLY to route a single national agent pool to the
+# markets it worked in. Once headcount belongs to a region there is nothing to
+# route: the agent block above IS the allocation. Three inputs and one model row
+# removed - this change makes the model smaller, not bigger.
 _ar[0] += 1
 ws_assum.freeze_panes = "B6"
 
@@ -959,14 +985,28 @@ s_derived("monthly_churn", "Monthly churn rate (derived)",
           "=1-%s^(1/12)" % sref("persistency_m13"), "%/month",
           "DERIVED, not typed: the monthly rate that reproduces the persistency above over twelve months. "
           "Change persistency and this follows. Base 55% implies ~4.9%/month.", FMT_PCT2, "monthly_churn")
-sp("agent_productivity", "Agent productivity", 6, 8, 3, "accounts/agent/month",
-   "RAISED 2026-08-21 from 4, client instruction. The insurance agency comparator that produced 4 is for "
-   "agents selling a COMPLEX UNDERWRITTEN PRODUCT with medical questions and multi-page forms; a gold SIP "
-   "signup is a fraction of that work, so the comparator was conservative for this product. "
-   "COMPOUNDS WITH THE AGENT HEADCOUNT, which was raised 50% the same day - together they are 2.25x the "
-   "agent output the model carried this morning. Both are execution assumptions with no external anchor at "
-   "the new level; if either disappoints, the other does not compensate. TRIANGULATED at 4, ASSUMPTION at 6."
-   , FMT_NUM2, "agent_productivity")
+sp("agent_productivity", "Agent productivity", 6, 9, 3, "accounts/agent/month",
+   "RE-EVIDENCED 2026-08-26. Base HOLDS at 6; the BANDS widen from 8/3 to 9/3 and the justification is "
+   "rebuilt on measured comparators instead of resting on a single insurance-agency analogy. "
+   "WHAT THE EVIDENCE SAYS. IRDAI's Annual Report FY25 gives 270.22 lakh new individual policies against "
+   "31.23 lakh individual agents - 8.65 policies per agent per YEAR, or 0.72/month, across the whole book "
+   "INCLUDING dormant agents. Adjusting for dormancy (MicroSave measures up to 43% inactive across the top "
+   "four BC network managers) puts an ACTIVE Indian life agent at roughly 1.5-3 per month. "
+   "BEWARE ONE WIDELY-CIRCULATED FIGURE: an analyst piece states Indian productivity as '0.87 policies per "
+   "agent per year'. That is an ARITHMETIC SLIP - it divides 27.02 lakh by 31.23 lakh when the numerator is "
+   "270.22 lakh. The correct figure is 8.65. Do not cite the 0.87. "
+   "THE CLOSER COMPARATOR IS THE BANK MITRA / BC NETWORK, which opens a light, form-based account for the "
+   "same demographic through the same field model: 20-30 accounts per month when the account is FREE, and "
+   "about 2 per month once a fee is introduced - a 93% collapse, measured by MicroSave. AURUMIX CHARGES 5% "
+   "ON ENTRY. That is the datapoint arguing 6 is at the OPTIMISTIC end rather than the conservative one, "
+   "and it is why the conservative band moves from 3 to... 3, but now for a stated reason rather than as a "
+   "round number. "
+   "THE OLD NOTE argued 6 was conservative because a gold SIP signup is a fraction of the work of an "
+   "underwritten insurance policy. That is true, and it is why 6 survives as Base - but it argues only "
+   "against the insurance figure and is silent on the fee-friction evidence, which points the other way. "
+   "COMPOUNDS WITH HEADCOUNT: both are execution assumptions, and if either disappoints the other does not "
+   "compensate. TRIANGULATED at 6, with the band now evidence-led in both directions.",
+   FMT_NUM2, "agent_productivity")
 # RE-ANCHORED 2026-08-21 after the client asked for the evidence BEFORE cutting.
 # The research says the cut is justified and that the old number was anchored on
 # the wrong segment entirely - which the note below had already recorded without
@@ -1003,13 +1043,22 @@ for key in REGIONS:
        "the Indian mass-market benchmark and still 2-4x its premium wealth apps. UAE is held at 120 as a "
        "FULLY-LOADED figure; note it sits at the top of the range for a LOW-TICKET product, and the "
        "published low-ticket band is USD 4-70. TRIANGULATED.", FMT_USD, "cac_" + key)
-MKT_SHARE = {"uae": 0.58, "gulf": 0.16, "india": 0.26}
+MKT_SHARE = {"uae": 0.74, "gulf": 0.18, "india": 0.08}
 for key in REGIONS:
     sp("mktshare_" + key, "Marketing spend share - %s" % RLAB[key], MKT_SHARE[key], MKT_SHARE[key],
        MKT_SHARE[key], "% of budget",
-       "How the marketing budget is split across markets. Defaults to each region's share of the addressable "
-       "ceiling, so spend follows the opportunity. Does not vary by scenario - it is a management decision, "
-       "not an uncertainty. Must sum to 100%.", FMT_PCT, "mktshare_" + key)
+       "RE-BASED 2026-08-26 from 58/16/26, when India moved to an agent-led channel. India falls to 8% - a "
+       "SUPPORT budget, not an acquisition engine - and UAE and Oman & Bahrain absorb the residual, split "
+       "roughly 80:20 by each region's share of its own reachable ceiling. "
+       "THE REASON IS STRUCTURAL, NOT A PREFERENCE. UAE and Oman & Bahrain now have NO agent channel at "
+       "all, so marketing plus referral is the WHOLE of their acquisition and the budget has to carry it. "
+       "India's 420 agents carry ~57% of its new accounts by Y7, so its budget does not. "
+       "WHAT THIS FIXES: holding India at 26% meant a USD 1.65m budget at a USD 15 CAC buying 35,750 "
+       "accounts a year, which is what the model did before. India LOOKED agent-led while actually being "
+       "carried by a cheap-CAC assumption - marketing was 67% of Indian raw demand at Y7 and agents only "
+       "11%, the reverse of how the business is described. "
+       "Does not vary by scenario - it is a management decision, not an uncertainty. Must sum to 100%.",
+       FMT_PCT, "mktshare_" + key)
 sp("referral_rate", "Referral rate", 0.60, 1.10, 0.25, "referrals/customer/yr",
    "RAISED 2026-08-21 from 0.45, client instruction. Cap removed deliberately, so the distribution is "
    "right-skewed - MODEL THE MEAN, NOT THE MEDIAN. 0.60 means the average customer produces roughly three "
@@ -1034,18 +1083,31 @@ sp("seasonality_amplitude", "Seasonality amplitude", 1.00, 1.40, 0.60, "x deviat
    FMT_NUM2, "seasonality_amplitude")
 _sr[0] += 1
 
-s_section("GROUP B: CARD ELIGIBILITY - the two cells that replace the archetype engine")
-sp("ever_qualify", "Customers who EVER clear the six-payment gate", 0.55, 0.65, 0.45, "% of customers",
-   "THE SINGLE MOST LOAD-BEARING PARAMETER IN THE MODEL. The card streams are ~83% of gross profit and every "
-   "one of them requires clearing the six-payment gate. Assuming everyone qualifies - which any plain churn "
-   "model does implicitly - OVERSTATES THE BUSINESS BY ~59%. Base 55% is the OUTPUT of the run-of-6 "
-   "first-passage engine built and validated against the archetype mix; that engine has moved to the Phase 5 "
-   "simulation, and this cell is what it produced.", FMT_PCT, "ever_qualify")
-sp("months_to_qualify", "Average months to clear the gate", 8, 6, 11, "months",
-   "Gate arrival is a DISTRIBUTION, not a date: a customer who misses month 4 cannot qualify before month 9. "
-   "The validated mean is M8.0, against the naive assumption of M6. Those two extra months are full-fee "
-   "revenue that carries no benefit cost, and they push every downstream ladder date to the right. DERIVED.",
-   FMT_NUM, "months_to_qualify")
+s_section("GROUP B: ICS BENEFIT ENTITLEMENT - no longer gates ACCESS, only BENEFITS")
+sp("ever_qualify", "Customers who EVER reach an ICS benefit tier", 0.55, 0.65, 0.45, "% of customers",
+   "REPURPOSED 2026-08-26 (CG decision). THIS CELL NO LONGER GATES ACCESS TO ANYTHING. The card and the "
+   "credit facility are now open to the whole book regardless of SIP status or ICS tier; what ICS still "
+   "governs is BENEFITS - fee discounts, better FX rates, family-wallet pricing, gold reward rebates. "
+   "IT FEEDS NO REVENUE ROW TODAY. It is carried as a memo on the Model so the ICS-entitled population is "
+   "already computed when the cost and discount build lands, because every one of those benefits is a "
+   "give-back that has to be sized against a population. Deleting it would mean rebuilding it a day later. "
+   "WHAT IT USED TO DO, AND WHY THE CHANGE IS LARGE: it restricted the card streams to the 55% who ever "
+   "cleared a six-payment gate, so removing it widens the card population by 1/0.55 = 1.82x AND removes the "
+   "~8-month lag before anyone qualified. The old note called this 'the single most load-bearing parameter "
+   "in the model' and claimed the card streams were ~83% of gross profit; BOTH STATEMENTS ARE NOW STALE - "
+   "there is no gross-profit line in this build at all, and on the current numbers the card streams are a "
+   "far smaller share of revenue than that. "
+   "The 55% itself is unchanged and still the OUTPUT of the run-of-6 first-passage engine validated against "
+   "the archetype mix, which now lives in the Phase 5 simulation. Whether ICS ENTITLEMENT should use the "
+   "same threshold as the old payment gate is an OPEN QUESTION for the mechanism-design update - it is "
+   "inherited here, not decided.", FMT_PCT, "ever_qualify")
+sp("months_to_qualify", "Average months to reach an ICS benefit tier", 8, 6, 11, "months",
+   "REPURPOSED 2026-08-26 with the row above - it no longer delays card access, only benefit entitlement. "
+   "Tier arrival is a DISTRIBUTION, not a date: a customer who misses month 4 cannot qualify before month 9. "
+   "The validated mean is M8.0, against the naive assumption of M6. UNDER THE OLD DESIGN those two extra "
+   "months pushed every card ladder date to the right and were worth real revenue; under the new one they "
+   "delay only the point at which a customer starts COSTING money in discounts, which is the opposite sign. "
+   "DERIVED.", FMT_NUM, "months_to_qualify")
 _sr[0] += 1
 
 s_section("GROUP C: AUM, LEAKAGE AND SPOT")
@@ -1147,17 +1209,29 @@ sp("pm_share", "Programme manager share of interchange", 0.60, 0.36, 0.85, "%",
    "places where a better contract directly doubles a revenue line. No UAE/MENA figure is published. "
    "TRIANGULATED.", FMT_PCT, "pm_share")
 sp("card_activation", "Facility take-up - customers who take AND use the card", 0.18, 0.30, 0.08,
-   "% of gate-cleared",
-   "RE-BASED 2026-08-20, client decision: THE CARD IS A DRAWDOWN ON THE GOLD-COLLATERALISED FACILITY, not a "
-   "salary-repaid revolving card. Aurumix has no balance sheet to lend from - it can only extend credit "
-   "against collateral it holds, which is the customer's gold. Using the card IS borrowing, so card "
-   "activation and credit take-up are the SAME behaviour and were previously modelled as two different "
-   "populations (50% activating a card, 18% taking credit) doing what is in fact one thing. Merged onto the "
-   "credit figure, which is the better-anchored of the two: Indian gold-loan penetration is under 10% at a "
-   "point in time, uplifted here for pre-selection since these customers have already cleared a "
-   "six-payment gate. THE OLD 50% CAME FROM NEOBANK COMPARABLES (PULSE 68.2%, Monzo 68%) WHERE THE CARD "
-   "IS THE PRODUCT - wrong in kind for a card that only lets you borrow against your own savings. "
-   "DERIVED.", FMT_PCT, "card_activation")
+   "% of card-eligible base",
+   "RE-BASED AGAIN 2026-08-26 (CG decision): the denominator changed from GATE-CLEARED customers to the "
+   "WHOLE CARD-ELIGIBLE BASE, because access is no longer gated. The RATE holds at 18% on client "
+   "instruction, and that decision deserves to be stated plainly rather than buried. "
+   "18% WAS CALIBRATED ON A PRE-SELECTED POPULATION. It is Indian gold-loan penetration - under 10% at a "
+   "point in time - uplifted BECAUSE the customers it applied to had already proven six consecutive "
+   "payments. Removing the gate removes that pre-selection but keeps the uplift, so the rate is now applied "
+   "to a materially less committed population than the one it was derived from. The arithmetic is "
+   "unambiguous: the base widens 1.82x and the conversion rate does not fall, so the card population rises "
+   "1.82x on this change alone. IF CARD REVENUE IS CHALLENGED, THIS IS THE FIRST CELL TO LOOK AT - the "
+   "defensible alternative is ~10%, the unadjusted benchmark. "
+   "AGAINST THAT: open access plus ICS discounts is a genuinely different proposition from a gated facility, "
+   "and there is no benchmark at all for an open gold-collateralised card, so 18% is not refutable either. "
+   "It is a judgement, and it should be presented as one. CLIENT DECISION on the level; DERIVED on the "
+   "benchmark beneath it. "
+   "CARRIED FORWARD FROM 2026-08-20, and still true: THE CARD IS A DRAWDOWN ON THE GOLD-COLLATERALISED "
+   "FACILITY, not a salary-repaid revolving card. Aurumix has no balance sheet to lend from - it can only "
+   "extend credit against collateral it holds, which is the customer's gold. Using the card IS borrowing, "
+   "so card activation and credit take-up are the SAME behaviour; they were once modelled as two different "
+   "populations (50% activating a card, 18% taking credit) doing what is in fact one thing. THE OLD 50% "
+   "CAME FROM NEOBANK COMPARABLES (PULSE 68.2%, Monzo 68%) WHERE THE CARD IS THE PRODUCT - wrong in kind "
+   "for a card that only lets you borrow against your own savings, and worth remembering now that access is "
+   "open, because an open card invites exactly that comparison again.", FMT_PCT, "card_activation")
 sp("card_txns_per_draw", "Transactions per drawdown event", 4, 6, 2, "transactions/draw",
    "RE-BASED 2026-08-20 from 12 transactions/MONTH once the card became a drawdown on the gold facility. "
    "Under that model the customer borrows a lump (limit x drawn share) a couple of times a year and spends "
@@ -1177,9 +1251,23 @@ sp("card_txns_per_draw", "Transactions per drawdown event", 4, 6, 2, "transactio
 # is retained in the note on card_txns_per_draw, which is where it now bears.
 sp("foreign_spend_share", "Foreign spend share (mean)", 0.34, 0.45, 0.24, "% of card spend",
    "Applied through the seasonal vector, not as a constant. ASSUMPTION.", FMT_PCT, "foreign_spend_share")
-sp("issuance_events", "Card issuance events", 1.06, 1.04, 1.10, "events/card/yr",
-   "1.00 at activation plus reissues - a tier upgrade forces a physical reissue. ASSUMPTION.",
-   FMT_NUM2, "issuance_events")
+sp("reissue_rate", "Card REISSUE rate (excludes first issue)", 0.06, 0.04, 0.10, "reissues/card/yr",
+   "CORRECTED 2026-08-26, and this replaces 'Card issuance events' at 1.06/card/yr. "
+   "THE OLD ROW WAS A REAL DEFECT, not a re-cut. 1.06 events per card per YEAR was applied to the STOCK of "
+   "active cards, which charged the AED 75 issuance fee to every existing cardholder every single year - an "
+   "ANNUAL FEE, not an issuance fee, and the row's own note said so: '1.00 at activation plus reissues'. The "
+   "1.00 belongs to the year a card is ACTIVATED and must be charged on NEW cards; only the 0.06 residual is "
+   "a recurring per-card event. "
+   "WHAT IT WAS WORTH. At Y7 it charged ~33,980 issuance events against ~9,100 real ones, roughly 3.7x too "
+   "many, or ~USD 507,000 - about 11% of total revenue. It predates the 2026-08-26 access change, but that "
+   "change multiplied the card stock by 1.82x and so multiplied the error with it, taking issuance from "
+   "~6% of revenue to ~15% before this fix. IT WAS THE LARGEST SINGLE ERROR IN THE MODEL. "
+   "0.06 is what remains once first issue is removed: a tier upgrade forces a physical reissue, and under "
+   "the ICS design tier changes are the main trigger. ASSUMPTION. "
+   "STILL NOT IMPLEMENTED, and it belongs to the discount build: the fee input's own note says issuance is "
+   "'waived at upper tiers'. Nothing waives it. Under the new design that waiver is exactly the kind of ICS "
+   "benefit being priced tomorrow, so wire it there rather than here.",
+   FMT_NUM2, "reissue_rate")
 sp("replacement_events", "Card replacement events", 0.11, 0.07, 0.18, "events/card/yr",
    "Industry-normal loss/theft/damage is 8-15% annually. ASSUMPTION.", FMT_NUM2, "replacement_events")
 ATM = [("a500", "AED 0-500", 0.60, 0.42, 0.74, 250, 300, 200),
@@ -1579,25 +1667,19 @@ _mr[0] += 1
 # single national resource routed to the markets it operates in. Marketing and
 # referral are now computed INSIDE each region block, because each market has
 # its own CAC and its own referring base.
-ACQ_ROWS = ["agent_new"]
-ACQ_FIRST = _mr[0]
-ws_model["A%d" % ACQ_FIRST] = "Agent-driven new customers (routed by region below)"
-ws_model["B%d" % ACQ_FIRST] = "accounts"
-ws_model["B%d" % ACQ_FIRST].font = SECONDARY
-MROW["agent_new"] = ACQ_FIRST
-_mr[0] = ACQ_FIRST + len(ACQ_ROWS)
-# Renormalisation base: the share of the salesforce sitting in regions that are
-# actually OPEN this period. The regional agent term divides by this, so a
-# market that has not launched redistributes its people rather than idling them
-# - salespeople earmarked for a market still in licensing work the markets that
-# are live. Computed here, ahead of the region blocks that divide by it.
+# NO CENTRAL AGENT ROW ANY MORE (2026-08-26). Agent output used to be computed
+# once nationally here and then sliced by a "share of salesforce" input, with an
+# open-region renormalisation row so a market still in licensing redistributed
+# its people rather than idling them. Headcount now belongs to a region, so both
+# the central row and the renormalisation are gone: each region block computes
+# its own agent output from its own headcount, and a region with zero agents
+# contributes zero by construction rather than by a routing rule.
 #
-# THIS ROW ALSO PLUGS A LEAK. Until 2026-08-21 the salesforce split was
-# 100% India / 0% elsewhere, so nothing was ever routed to an unopened region
-# and the missing gate below was invisible. Giving Oman & Bahrain a non-zero
-# share made it visible immediately: the region earned revenue in M12, a month
-# before it opens. The direct and referral channels were gated all along; only
-# the agent channel was not.
+# THE GATE THE OLD RENORMALISATION EXISTED TO PLUG IS NOW STRUCTURAL. It caught
+# a leak on 2026-08-21 - Oman & Bahrain earning agent revenue in M12, a month
+# before it opens, because the agent channel was the one channel never gated on
+# region opening. The per-region row below carries the same opening gate as
+# direct and referral, so the three channels are now handled identically.
 # The metal price now moves. Compounded on MODEL YEAR, not period, so all twelve
 # months of a year share one price - a monthly compounding would imply intra-year
 # precision the annual CAGR does not carry, and would put a kink at the M24/Y3
@@ -1610,12 +1692,6 @@ note(ws_model, _mr[0],
      "USD contribution BUYS FEWER GRAMS each year - so AUM does NOT simply compound at the headline rate. "
      "Only the collateral-linked streams move with this row (card limit, and lending through it); the entry "
      "fee is a percentage of a USD contribution and is untouched by the gold price.")
-_mr[0] += 1
-m_row("open_mix", "Open-region salesforce share (renormalisation base)", "x",
-      lambda i: "=" + "+".join(
-          "%s*%s" % (aref("agentshare_" + q), "1" if q not in [a[0] for a in ACTIVATIONS]
-                     else opened(q, i))
-          for q in REGIONS), FMT_NUM3, GREEN)
 _mr[0] += 1
 
 # ======================== ONE BLOCK PER REGION ==============================
@@ -1650,7 +1726,7 @@ for rg in REGIONS:
     # Raw demand = this region's share of non-agent demand, plus whatever share
     # of agent output actually sells here. Then this region's OWN saturation.
     # direct, referral, raw, sat, new, pay, churn, hold, cum
-    _pay_row, _cum_row = _mr[0] + 5, _mr[0] + 8
+    _pay_row, _cum_row = _mr[0] + 6, _mr[0] + 9
     m_row("direct_" + rg, "  Direct-driven (this market's budget at its own CAC)", "accounts",
           lambda i, rg=rg: "=INDEX(Assumptions!$B$%d:$B$%d,%s)*%s/12*%s/%s*(1+%s)*%s" % (
               AROW["mktg_y1"], AROW["mktg_y7"], mr("year", i), sref("mktshare_" + rg),
@@ -1659,13 +1735,19 @@ for rg in REGIONS:
           lambda i, rg=rg, pr=_pay_row: 0 if i == 0 else gate("referral", i, "%s*%s/12*%s*%s" % (
               pcell(pr, i - 1), sref("referral_rate"), sref("referral_conversion"), mr("n", i))),
           FMT_NUM2)
-    # The agent term is gated by this region's opening and renormalised across
-    # the regions that ARE open, so total agent output is conserved.
+    # THIS REGION'S OWN AGENTS (2026-08-26). Reads this region's headcount block
+    # directly - no national pool, no renormalisation. A region with a zero
+    # headcount contributes zero by construction, which is why UAE and Oman &
+    # Bahrain need no switch to turn agents off. Carries the same opening gate
+    # as direct and referral, so all three channels are handled identically.
+    m_row("agent_" + rg, "  Agent-driven (this market's own agents)", "accounts",
+          lambda i, rg=rg: "=INDEX(Assumptions!$B$%d:$B$%d,%s)*%s*INDEX(Assumptions!$B$%d:$B$%d,%s)*%s*%s"
+          % (AROW["agents_%s_y1" % rg], AROW["agents_%s_y7" % rg], mr("year", i),
+             sref("agent_productivity"), AROW["ramp_y1"], AROW["ramp_y7"], mr("year", i),
+             mr("n", i), _open(i, rg)), FMT_NUM2, GREEN)
     m_row("raw_" + rg, "  Raw demand", "accounts",
-          lambda i, rg=rg: "=%s+%s+IF(%s=0,0,%s*%s/%s*%s)" % (
-              mr("direct_" + rg, i), mr("ref_" + rg, i), mr("open_mix", i),
-              mr("agent_new", i), aref("agentshare_" + rg), mr("open_mix", i),
-              _open(i, rg)), FMT_NUM2)
+          lambda i, rg=rg: "=%s+%s+%s" % (
+              mr("direct_" + rg, i), mr("ref_" + rg, i), mr("agent_" + rg, i)), FMT_NUM2)
     m_row("sat_" + rg, "  Saturation (this region's own headroom)", "x",
           lambda i, rg=rg, cr=_cum_row: 1 if i == 0 else
           "=MAX(0,1-%s/%s)" % (pcell(cr, i - 1), aref("ceil_" + rg)), FMT_NUM3)
@@ -1752,34 +1834,70 @@ for rg in REGIONS:
     m_row("cardbase_" + rg, "  Card-eligible base", "accounts",
           lambda i, rg=rg: "=%s+%s*%s" % (mr("pay_" + rg, i), mr("hold_" + rg, i),
                                           sref("sw_lapsed_keeps_card")), FMT_NUM2)
-    m_row("qual_" + rg, "  Cleared the six-payment gate", "accounts",
+    # CLIENT DECISION 2026-08-26 (CG): THE CARD AND THE CREDIT FACILITY ARE NO
+    # LONGER ELIGIBILITY-GATED. Anyone on the book can take them. ICS still
+    # governs BENEFITS - fee discounts, better FX, family-wallet pricing, gold
+    # reward rebates - but it no longer governs ACCESS.
+    #
+    # This row therefore stops feeding the card chain and becomes a MEMO. It is
+    # kept, not deleted, because tomorrow's cost and discount work needs an
+    # ICS-entitled population to attach the benefit costs to, and rebuilding it
+    # a day later would be wasted work. It feeds nothing today - confirm that by
+    # searching for its key: no other formula reads it.
+    m_row("qual_" + rg, "  Reaches an ICS benefit tier (memo - drives discounts, not access)", "accounts",
           lambda i, rg=rg: "=IF(%s>1,%s*%s,IF(%s>%s,INDEX(%s,1,%s-%s)*%s,0))" % (
               mr("n", i), mr("cardbase_" + rg, i), sref("ever_qualify"),
               mr("period_idx", i), sref("months_to_qualify"), mrng("cardbase_" + rg),
-              mr("period_idx", i), sref("months_to_qualify"), sref("ever_qualify")), FMT_NUM)
+              mr("period_idx", i), sref("months_to_qualify"), sref("ever_qualify")), FMT_NUM,
+          SECONDARY)
+    # Cards now come off the CARD-ELIGIBLE BASE directly - the whole book - not
+    # off the gate-cleared subset. That is a 1/0.55 = 1.82x wider population,
+    # and it arrives at once rather than lagging the ~8 months the gate took.
+    # Take-up HOLDS at 18% (client decision, same day). Note what that assumes:
+    # 18% was Indian gold-loan penetration (<10%) uplifted BECAUSE the population
+    # had been pre-selected by six proven payments. Removing the gate removes the
+    # pre-selection but keeps the uplift, so this rate is now applied to a less
+    # committed population than the one it was calibrated on. It is the single
+    # most optimistic assumption in the card chain and the first place to look if
+    # card revenue is challenged.
     m_row("cards_" + rg, "  Active cards", "cards",
-          lambda i, rg=rg: gate("s2", i, "%s*%s" % (mr("qual_" + rg, i), sref("card_activation"))),
+          lambda i, rg=rg: gate("s2", i, "%s*%s" % (mr("cardbase_" + rg, i), sref("card_activation"))),
           FMT_NUM, BLACK_BOLD)
-    # CLIENT CORRECTION 2026-08-21. HOLDING A CARD AND HAVING CREDIT ARE NOT THE
-    # SAME THING. A customer who stops paying keeps the card, but has no live
-    # ICS score, so no credit line is extended - the tier lapses from gold to
-    # silver, the plastic stays, the facility does not.
+    # SUPERSEDED 2026-08-26 (CG). This row used to restrict credit to the PAYING
+    # share of cardholders: a lapsed customer kept the plastic but lost the
+    # facility, because the ICS tier lapsed. Access is no longer ICS-gated, and a
+    # lapsed holder still owns gold sitting in the vault, so the collateral that
+    # backs a facility is still there. EVERY CARD NOW CARRIES A CREDIT LINE.
     #
-    # The card-eligible base is paying + holders, and BY Y7 HOLDERS ARE TWO
-    # THIRDS OF IT. Without this row every one of them was drawing down against
-    # gold they cannot borrow against, and the defect grew as the book matured -
-    # card revenue was increasingly driven by exactly the customers who had
-    # stopped paying, which is the wrong direction for the whole business to
-    # lean. Worth USD 328,543 of Y7 revenue, or 7.9%.
+    # THE ROW IS KEPT rather than deleted, and it is worth understanding why the
+    # change is aggregate-NEUTRAL. Total credit capacity was already correct:
+    #     ccards x limit  =  [cards x paying/base] x [AUM/paying x LTV]
+    #                     =   cards x AUM x LTV / base
+    # The "paying" terms cancel, so holders' gold was ALWAYS in the pool - the
+    # old pair simply spread it over fewer cards at a larger limit each. Opening
+    # lines to holders changes the LABELLING, not the total. What it does fix is
+    # the reported per-customer limit below, which divided AUM by paying
+    # customers only and therefore read ~2.7x too high per head once holders
+    # became two thirds of the base. That figure feeds the average-transaction
+    # plausibility check, so the display error was real even though the
+    # aggregate was not.
+    m_row("ccards_" + rg, "  ...of which have a live credit line (now all of them)", "cards",
+          lambda i, rg=rg: "=%s" % mr("cards_" + rg, i), FMT_NUM, BLACK_BOLD)
+    # NEW CARDS THIS PERIOD - a FLOW, not a stock (added 2026-08-26). The
+    # issuance fee is a one-off charged when a card is activated, so it has to
+    # be levied on this row. Charging it on the card STOCK, which is what the
+    # model did until today, turns a one-off into an annual fee.
     #
-    # WHAT SPLITS AND WHAT DOES NOT: card spend, interchange, ATM (a cash
-    # withdrawal IS a drawdown) and lending all move to this subset. Issuance
-    # and replacement stay on ALL cards - a holder still carries plastic that
-    # gets lost and reissued.
-    m_row("ccards_" + rg, "  ...of which have a live credit line", "cards",
-          lambda i, rg=rg: "=IF(%s=0,0,%s*%s/%s)" % (
-              mr("cardbase_" + rg, i), mr("cards_" + rg, i), mr("pay_" + rg, i),
-              mr("cardbase_" + rg, i)), FMT_NUM, BLACK_BOLD)
+    # Cards are 18% of the card-eligible base, and with holders retained that
+    # base is cumulative-ever-acquired, so it only grows and this flow is simply
+    # the increment. The MAX(0,...) exists for the case where the "holders keep
+    # the card" switch is turned OFF: the base then becomes paying customers
+    # only, which CAN fall, and a shrinking card book must not book negative
+    # issuance revenue.
+    m_row("newcards_" + rg, "  ...newly issued this period (flow, drives the issuance fee)", "cards",
+          lambda i, rg=rg: "=%s" % mr("cards_" + rg, i) if i == 0
+          else "=MAX(0,%s-%s)" % (mr("cards_" + rg, i), pcell(MROW["cards_" + rg], i - 1)),
+          FMT_NUM2)
     # THE CARD IS A DRAWDOWN ON THE GOLD FACILITY (client decision 2026-08-20).
     # Aurumix has no balance sheet to lend from, so credit can only be extended
     # against collateral it holds. Spending on the card IS borrowing, and the
@@ -1790,9 +1908,27 @@ for rg in REGIONS:
     # This is the same facility stream 5 already prices, so both now read one
     # volume instead of two inconsistent ones. Under PREPAID the card is loaded
     # from salary instead, and the gold does not constrain it.
+    # DENOMINATOR CORRECTED 2026-08-26: AUM is now spread over the CARD-ELIGIBLE
+    # BASE, not over paying customers alone. The old divisor was a leftover from
+    # when only payers could borrow; with holders at ~two thirds of the base it
+    # overstated the per-head limit by ~2.7x. The AGGREGATE was unaffected (see
+    # the credit-line row above - the terms cancelled), but this row is read on
+    # its own as "what limit does a customer actually get", and it feeds the
+    # average-transaction-size check, so the overstatement was live in both.
+    #
+    # NO MINIMUM BALANCE IS APPLIED, and that is deliberate. A floor - "no card
+    # below USD 200 of gold" - cannot be represented in an average-based engine:
+    # there is no balance DISTRIBUTION here to apply it to, only a mean, so any
+    # floor would require inventing a distribution. That is precisely the
+    # heterogeneity this build pushed to the Phase 5 simulation. KNOWN
+    # SIMPLIFICATION: the model therefore issues notional limits to customers
+    # whose real balance would be too small to bother, and the error runs one
+    # way - it flatters the card streams. Size it in Phase 5, where balances are
+    # distributed, and re-impose a floor there if it matters.
     m_row("limit_" + rg, "  Credit limit per customer (gold x LTV)", "USD",
           lambda i, rg=rg: "=IF(%s=0,0,%s/%s*%s)" % (
-              mr("pay_" + rg, i), mr("aum_" + rg, i), mr("pay_" + rg, i), aref("ltv_gold")), FMT_USD)
+              mr("cardbase_" + rg, i), mr("aum_" + rg, i), mr("cardbase_" + rg, i),
+              aref("ltv_gold")), FMT_USD)
     m_row("drawyr_" + rg, "  Annual drawdown per card (limit x drawn x draws)", "USD/yr",
           lambda i, rg=rg: "=%s*%s*%s" % (mr("limit_" + rg, i), sref("drawn_share"),
                                           sref("draw_events")), FMT_USD)
@@ -1852,10 +1988,19 @@ for rg in REGIONS:
               mr("subs_" + rg, i), aref("family_price"), sref("benef_count"),
               aref("benef_fee"), mr("n", i)), FMT_USD)
     m_row("s4_" + rg, "  Stream 4 - Cardholder fees (FX, ATM, events)", "USD",
-          lambda i, rg=rg: gate("s4", i, "%s*%s*%s+%s*(%s)*%s/%s*%s+%s*(%s*%s+%s*%s)/12/%s*%s" % (
+          # THREE COMPONENTS, TWO DIFFERENT BASES - the distinction is the whole
+          # point of the 2026-08-26 correction:
+          #   FX      -> card SPEND         (a rate on volume)
+          #   ATM     -> card STOCK         (a recurring per-cardholder event)
+          #   REISSUE -> card STOCK         (recurring: tier upgrades)
+          #   REPLACE -> card STOCK         (recurring: loss, theft, damage)
+          #   ISSUE   -> NEW cards, a FLOW  (one-off at activation)
+          # Only the last one changed, and it was the largest error in the model.
+          lambda i, rg=rg: gate("s4", i, "%s*%s*%s+%s*(%s)*%s/%s*%s+%s*%s/%s+%s*(%s*%s+%s*%s)/12/%s*%s" % (
               mr("spendusd_" + rg, i), mr("seas_foreign", i), aref("fx_margin"),
               mr("ccards_" + rg, i), ATM_TERMS, aref("atm_fee"), aref("aed_usd"), mr("n", i),
-              mr("cards_" + rg, i), sref("issuance_events"), aref("issuance_fee"),
+              mr("newcards_" + rg, i), aref("issuance_fee"), aref("aed_usd"),
+              mr("cards_" + rg, i), sref("reissue_rate"), aref("issuance_fee"),
               sref("replacement_events"), aref("replacement_fee"), aref("aed_usd"), mr("n", i))),
           FMT_USD)
     # Stream 5 reads THE SAME facility and the same cardholder population as
@@ -1915,7 +2060,8 @@ for key, label, parts, fmt, bold in (
     ("grams_custody", "GRAMS UNDER CUSTODY", ["custg_" + r for r in REGIONS], FMT_NUM, True),
     ("grams_bought", "Grams purchased", ["grams_in_" + r for r in REGIONS], FMT_NUM2, False),
     ("aum", "COLLATERAL-ELIGIBLE AUM", ["aum_" + r for r in REGIONS], FMT_USD, True),
-    ("qualified", "Cleared the six-payment gate", ["qual_" + r for r in REGIONS], FMT_NUM, False),
+    ("qualified", "Reaches an ICS benefit tier (memo - drives discounts, not access)",
+     ["qual_" + r for r in REGIONS], FMT_NUM, False),
     ("sip_inflow", "SIP contributions", ["sip_" + r for r in REGIONS], FMT_USD, False),
     ("spot_inflow", "Spot purchase volume", ["spot_" + r for r in REGIONS], FMT_USD, False),
     ("card_spend_usd", "Card spend", ["spendusd_" + r for r in REGIONS], FMT_USD, False),
@@ -1964,6 +2110,42 @@ m_row("spend_vs_limit", "  CHECK: card spend vs credit capacity (must be <= 1.00
           mr("n", i), mr("credit_capacity", i)), '0.00"x"', BLACK_BOLD)
 _mr[0] += 1
 
+# ---- SERVICING LOAD: REPORTED, NOT CAPPED (2026-08-26) ---------------------
+# Paying customers per agent, for the regions that have agents. An agent both
+# acquires and services, so there is some ceiling on the book one person can
+# carry - but WHAT that ceiling is depends entirely on what servicing involves,
+# and for this product it has not been designed. The comparators span an order
+# of magnitude: an Indian microfinance loan officer manages 345 in practice and
+# 500-550 at full stretch (CreditAccess Grameen, FY23 concall) because they
+# physically attend weekly cash-collection meetings; a Bank Mitra carries ~2,335
+# (SIDBI) because servicing is on-demand; a life agent's book is effectively
+# unbounded because a policy needs one renewal nudge a year.
+#
+# AURUMIX SITS AT THE LIGHT END - the SIP is a standing auto-debit and the
+# product is in an app, so nobody is collecting cash - which is why this is a
+# REPORTED DIAGNOSTIC AND NOT A CONSTRAINT. It blocks nothing. It exists so the
+# number is visible on the sheet and can be argued with, rather than hiding
+# inside the arithmetic while a scenario quietly drives it somewhere absurd.
+# Set a real ceiling only once the servicing model is defined - which is a
+# mechanism-design question, not a modelling one. The 100 G Business Model S11.1
+# says agents "assist investors in joining the ecosystem and maintaining their
+# SIP" and pays a trail commission at each Mining Event, which implies an
+# ongoing role but never defines it.
+section(ws_model, _mr[0], "SERVICING LOAD - reported, not capped")
+_mr[0] += 1
+for rg in REGIONS:
+    m_row("bookperagent_" + rg, "  Paying customers per agent - %s" % RLAB[rg], "customers",
+          lambda i, rg=rg: "=IF(%s=0,0,%s/%s)" % (
+              mr("agent_" + rg, i), mr("pay_" + rg, i),
+              "(%s/%s/%s)" % (mr("agent_" + rg, i), sref("agent_productivity"), mr("n", i))),
+          FMT_NUM2)
+note(ws_model, _mr[0],
+     "Blank where a region has no agents, which is UAE and Oman & Bahrain by design. Compare against "
+     "345-550 (microfinance loan officer, heavy weekly servicing) and ~2,335 (Bank Mitra, on-demand "
+     "servicing). Aurumix's servicing is lighter than either, so a high number here is not automatically "
+     "wrong - but it should be a decision rather than an accident.")
+_mr[0] += 2
+
 for key, label, parts in (
     ("s1a", "Stream 1a - Entry fee, SIP", ["s1a_" + r for r in REGIONS]),
     ("s1b", "Stream 1b - Entry fee, SPOT", ["s1b_" + r for r in REGIONS]),
@@ -1992,19 +2174,12 @@ m_row("total_check", "CHECK: regional subtotals + B2B = sum of streams", "delta"
                                        ("s1a", "s1b", "s2", "s3", "s4", "s5", "s6"))),
       FMT_NUM3, BLACK_BOLD)
 
-# ---- now fill the reserved acquisition rows -------------------------------
+# ---- no reserved acquisition rows remain -----------------------------------
+# The single deferred row here was the national agent pool, which had to be
+# written late because the region blocks divided into it. Agent output is now
+# computed inside each region block from that region's own headcount, so
+# nothing is left to back-fill.
 CEIL = "+".join(aref("ceil_" + k) for k in REGIONS)
-for key, fn, fmt, font in (
-    ("agent_new", lambda i: "=INDEX(Assumptions!$B$%d:$B$%d,%s)*%s*INDEX(Assumptions!$B$%d:$B$%d,%s)*%s"
-     % (AROW["agents_y1"], AROW["agents_y7"], mr("year", i), sref("agent_productivity"),
-        AROW["ramp_y1"], AROW["ramp_y7"], mr("year", i), mr("n", i)), FMT_NUM2, GREEN),
-):
-    for i in range(N_PERIODS):
-        c = ws_model[pcell(MROW[key], i)]
-        c.value = fn(i)
-        c.font = font
-        c.number_format = fmt
-        c.alignment = Alignment(horizontal="center")
 
 ws_model.freeze_panes = "C8"
 

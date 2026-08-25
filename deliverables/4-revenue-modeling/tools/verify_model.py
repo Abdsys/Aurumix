@@ -311,9 +311,68 @@ for rn, cr_ in zip(REGION_NAMES, _cum_rows):
         breach.append("%s %.0f > %.0f" % (rn, end, cap))
 check("NO region breaches its own reachable ceiling", not breach, "; ".join(breach))
 
-# The salesforce is deployed across every market, not India alone.
-ash = {rn: aval("Share of salesforce deployed - %s" % rn) for rn in REGION_NAMES}
-check("Agent-share allocation sums to 100%", abs(sum(ash.values()) - 1.0) < 1e-9, "%r" % ash)
+# ---- AGENTS ARE REGIONAL (rewritten 2026-08-26) ---------------------------
+# The three checks here previously tested a "share of salesforce" input that no
+# longer exists: agent headcount now belongs to a region, so there is no
+# national pool to allocate and nothing to sum to 100%. What replaces them is
+# stricter, because it tests the ENGINE rather than the input - a region with no
+# agents must produce no agent accounts in every single period, which the old
+# share-based routing could only assert at the input.
+_agent_rows = [r for r in range(1, mdl.max_row + 1)
+               if mdl["A%d" % r].value == "  Agent-driven (this market's own agents)"]
+check("Every region has its own agent-driven row",
+      len(_agent_rows) == len(REGION_NAMES),
+      "found %d for %d regions" % (len(_agent_rows), len(REGION_NAMES)))
+
+_heads = {rn: [aval("Active agents - %s - Y%d" % (rn, y)) for y in range(1, 8)]
+          for rn in REGION_NAMES}
+check("Agent headcount is stated per region, not as one national pool",
+      all(all_num(v) for v in _heads.values()), "%r" % _heads)
+
+# The point of the restructure: agents belong to India, and the Gulf markets are
+# acquired top-down. If someone later gives UAE a headcount this check fails,
+# which is correct - that is a decision that should be made deliberately.
+_agent_by_region = dict(zip(REGION_NAMES, _agent_rows))
+for rn, ar_ in _agent_by_region.items():
+    vals = [mdl["%s%d" % (pc(i), ar_)].value for i in range(N)]
+    heads = _heads[rn]
+    if all_num(heads) and max(heads) == 0:
+        check("%s has no agents, so earns NO agent accounts in any period" % rn,
+              all_num(vals) and all(abs(v) < 1e-9 for v in vals),
+              "max %r" % (max(vals) if all_num(vals) else vals))
+    else:
+        check("%s has agents and they actually produce accounts" % rn,
+              all_num(vals) and max(vals) > 0)
+
+_ind_name = [rn for rn in REGION_NAMES if "India" in rn]
+if _ind_name:
+    check("India carries the agent network",
+          max(_heads[_ind_name[0]]) > 0, "%r" % _heads[_ind_name[0]])
+    # Agents must be India's largest single channel - that is what "agent-led"
+    # means, and it is the thing the marketing re-base was done to achieve.
+    _ir = REGION_NAMES.index(_ind_name[0])
+    _dir_rows = [r for r in range(1, mdl.max_row + 1)
+                 if mdl["A%d" % r].value == "  Direct-driven (this market's budget at its own CAC)"]
+    _ref_rows = [r for r in range(1, mdl.max_row + 1)
+                 if mdl["A%d" % r].value == "  Referral-driven (from this market's own base)"]
+    _ag = mdl["%s%d" % (pc(N - 1), _agent_rows[_ir])].value
+    _dr = mdl["%s%d" % (pc(N - 1), _dir_rows[_ir])].value
+    _rf = mdl["%s%d" % (pc(N - 1), _ref_rows[_ir])].value
+    if all_num([_ag, _dr, _rf]):
+        check("India is AGENT-LED at Y7 - agents beat marketing and referral separately",
+              _ag > _dr and _ag > _rf,
+              "agent %.0f vs direct %.0f vs referral %.0f" % (_ag, _dr, _rf))
+        check("India agents are a MAJORITY of its acquisition at Y7",
+              _ag / (_ag + _dr + _rf) > 0.50,
+              "agent share %.1f%%" % (100 * _ag / (_ag + _dr + _rf)))
+
+# The routing apparatus must be GONE, not merely unused - a stale renormalisation
+# row silently dividing by zero would be worse than either design.
+check("The national agent pool and its renormalisation row are removed",
+      not [r for r in range(1, mdl.max_row + 1)
+           if mdl["A%d" % r].value in ("Agent-driven new customers (routed by region below)",
+                                       "Open-region salesforce share (renormalisation base)")])
+
 _cac = {rn: sval("Marketing CAC - %s" % rn) for rn in REGION_NAMES}
 _mks = {rn: sval("Marketing spend share - %s" % rn) for rn in REGION_NAMES}
 check("CAC is regionalised, not one global figure", len(set(_cac.values())) > 1, "%r" % _cac)
@@ -332,29 +391,73 @@ check("Every region refers from its OWN paying base",
       len([r for r in range(1, mdl.max_row + 1)
            if mdl["A%d" % r].value == "  Referral-driven (from this market's own base)"])
       == len(REGION_NAMES))
-# REVISED 2026-08-21. The old check asserted the OPPOSITE - that at least one
-# region had no salesforce - which encoded a cut of the model where 100% sat in
-# India and the licensed home market had nobody selling at all. Every market
-# now gets people; what differs by region is what those people COST, which is a
-# cost-build concern and deliberately absent here.
-check("Every market has a deployed salesforce, including the licensed home market",
-      all(isinstance(v, (int, float)) and v > 0 for v in ash.values()), "%r" % ash)
-check("UAE, the licensed home market, is not out-weighted by the Gulf expansion",
-      ash.get("UAE", 0) > ash.get("Oman and Bahrain", 1), "%r" % ash)
+# REVISED TWICE. On 2026-08-21 the check asserted that EVERY market has a
+# deployed salesforce, correcting an earlier cut where 100% sat in India and the
+# licensed home market had nobody selling. On 2026-08-26 the design changed
+# again and deliberately went back to agents-in-India-only - but for a different
+# reason, and with the hole plugged rather than ignored. The UAE is no longer
+# "a market with nobody selling"; it is a market acquired top-down through
+# marketing at its own CAC, which is why its marketing SHARE rose from 58% to
+# 74% in the same change. The replacement check is therefore not about agents at
+# all - it is that a market without agents must be funded to acquire without
+# them. That is the substantive risk the 08-21 check was reaching for.
+for rn in REGION_NAMES:
+    _h = _heads.get(rn) or [0]
+    if all_num(_h) and max(_h) == 0:
+        check("%s has no agents, so it must carry a real marketing budget" % rn,
+              _mks.get(rn, 0) > 0.10,
+              "marketing share %.0f%%" % (100 * _mks.get(rn, 0)))
+check("UAE, the licensed home market, still takes the largest marketing share",
+      _mks.get("UAE", 0) > max(v for k, v in _mks.items() if k != "UAE"), "%r" % _mks)
 
 # churn must reproduce the stated persistency over 12 months
 pers, churn = sval("Persistency - customers still paying after 12 months"), sval("Monthly churn rate (derived)")
 check("Derived monthly churn reproduces the stated persistency over 12 months",
       abs((1 - churn) ** 12 - pers) < 1e-9, "(1-%.5f)^12 = %.4f vs %.2f" % (churn, (1 - churn) ** 12, pers))
 
-# ---- 5. eligibility - the two cells that replace the archetype engine ------
-q, cards = row("Cleared the six-payment gate"), row("ACTIVE CARDS")
-ever_q = sval("Customers who EVER clear the six-payment gate")
-check("Qualified customers never exceed the card-eligible base x the qualify rate",
+# ---- 5. ACCESS IS UNGATED; ICS ENTITLEMENT IS NOT (rewritten 2026-08-26) ---
+# CG's decision: the card and the credit facility are open to the whole book.
+# ICS governs BENEFITS, not ACCESS. These checks were inverted before - they
+# asserted that eligibility BITES, i.e. that the card population was strictly
+# below the book. The opposite is now required, and the old check would have
+# passed silently on a stale build, so it has to flip rather than be deleted.
+q, cards = row("Reaches an ICS benefit tier (memo - drives discounts, not access)"), row("ACTIVE CARDS")
+ever_q = sval("Customers who EVER reach an ICS benefit tier")
+takeup = sval("Facility take-up - customers who take AND use the card")
+check("ICS-entitled population never exceeds the book x the entitlement rate",
       all(q[i] <= (pay[i] + hold[i]) * ever_q + 1e-6 for i in range(N)))
-check("ELIGIBILITY BITES - qualified is strictly below the whole book",
+check("ICS entitlement STILL bites - it is a subset, ready for the discount build",
       q[-1] < (pay[-1] + hold[-1]) * 0.999,
-      "qualified %.0f vs book %.0f" % (q[-1], pay[-1] + hold[-1]))
+      "entitled %.0f vs book %.0f" % (q[-1], pay[-1] + hold[-1]))
+# THE CORE ASSERTION OF THIS CHANGE. Cards must come off the whole card-eligible
+# base at the take-up rate. If anyone re-gates access, this fails immediately.
+_cb = row("Card-eligible base") if any(
+    mdl["A%d" % r].value == "Card-eligible base" for r in range(1, mdl.max_row + 1)) else None
+_live = [i for i in range(N) if cards[i] > 0]
+if _live:
+    base_now = [(pay[i] + hold[i]) for i in _live]
+    check("ACCESS IS UNGATED - cards equal take-up x the WHOLE eligible base",
+          all(abs(cards[i] - b * takeup) < max(1.0, b * 1e-6)
+              for i, b in zip(_live, base_now)),
+          "M%d cards %.0f vs base %.0f x %.2f = %.0f" % (
+              _live[-1] + 1, cards[_live[-1]], base_now[-1], takeup, base_now[-1] * takeup))
+    check("Cards are NOT restricted to the ICS-entitled subset any more",
+          cards[_live[-1]] > q[_live[-1]] * takeup * 1.5,
+          "cards %.0f vs entitled x take-up %.0f" % (
+              cards[_live[-1]], q[_live[-1]] * takeup))
+# Every card now carries a credit line - the paying/lapsed split is retired.
+# These are REGIONAL rows (leading spaces), so they are not reachable through
+# row(), which only resolves whole-book totals. Summed across regions instead.
+_cc_rows = [r for r in range(1, mdl.max_row + 1)
+            if mdl["A%d" % r].value == "  ...of which have a live credit line (now all of them)"]
+_card_rows = [r for r in range(1, mdl.max_row + 1)
+              if mdl["A%d" % r].value == "  Active cards"]
+check("Every region reports credit-line cards", len(_cc_rows) == len(REGION_NAMES))
+_cc = [sum(mdl["%s%d" % (pc(i), r)].value or 0 for r in _cc_rows) for i in range(N)]
+_ac = [sum(mdl["%s%d" % (pc(i), r)].value or 0 for r in _card_rows) for i in range(N)]
+check("Every active card carries a live credit line",
+      all(abs(_cc[i] - _ac[i]) < 1e-6 for i in range(N)),
+      "max gap %.6f" % max(abs(_cc[i] - _ac[i]) for i in range(N)))
 card_m = aval("Stream 2 - Card interchange")
 check("Active cards are ZERO before the card launch month",
       all(abs(x) < 1e-9 for x in cards[:card_m - 1]) and cards[card_m - 1] > 0,
@@ -576,10 +679,69 @@ check("Average ticket ORDERS the same way as the credit limit across regions",
       [i for i, _ in sorted(enumerate(_avg), key=lambda t: t[1])]
       == [i for i, _ in sorted(enumerate(_lims), key=lambda t: t[1])],
       "limits %r -> avg txn %r" % ([round(x) for x in _lims], [round(x) for x in _avg]))
-check("Average ticket is a plausible size for a borrowed lump (AED 80-600)",
-      all(80 <= x <= 600 for x in _avg), "%r" % [round(x) for x in _avg])
+# BAND WIDENED 2026-08-26, and the reason matters more than the band. The old
+# floor of AED 80 was calibrated when the card was GATED: fewer cardholders,
+# each with a larger limit. Opening access spreads the SAME collateral pool over
+# ~2.7x more cards, so the per-head limit falls by the same factor and the
+# ticket falls with it - from ~AED 277 to ~AED 90. That is arithmetic, not a
+# defect, and re-imposing an AED 80 floor would just be asserting the old design.
+check("Average ticket is a plausible size for a borrowed lump (AED 40-600)",
+      all(40 <= x <= 600 for x in _avg), "%r" % [round(x) for x in _avg])
 check("Average ticket sits well below the UAE all-population average of AED 313",
       max(_avg) < 313, "max derived ticket AED %.0f" % max(_avg))
+
+# ---- 8e. THE SMALL-TICKET WARNING THAT OPENING ACCESS CREATES --------------
+# The processor bills PER AUTHORISATION, so a transaction below a break-even
+# size costs Aurumix money no matter how many of them there are. Opening the
+# card shrank the average ticket, which pushes every region towards that line.
+# The aggregate spend did not change - the same pool is simply spent in more,
+# smaller transactions - so this is a pure COST effect that the revenue-only
+# scope cannot show, and it lands squarely in tomorrow's cost build.
+_ic = aval("Interchange - Gold")
+_pm = sval("Programme manager share of interchange")
+_fee = aval("Per-transaction processor fee")
+_dec = aval("Decline uplift on authorised txns")
+_aed = aval("AED/USD peg")
+_net_rate = _ic * (1 - _pm)                       # what Aurumix keeps per AED spent
+_cost_txn = _fee * (1 + _dec) * _aed              # what it pays per authorisation
+_breakeven = _cost_txn / _net_rate if _net_rate else 0
+check("Average ticket clears the minimum PROFITABLE transaction size",
+      all(x > _breakeven for x in _avg),
+      "break-even AED %.0f at %.0f%% PM share; regional tickets %r"
+      % (_breakeven, 100 * _pm, [round(x) for x in _avg]))
+check("Ticket headroom over break-even is at least 25% in every region",
+      all(x > _breakeven * 1.25 for x in _avg),
+      "thinnest region is %.2fx break-even" % (min(_avg) / _breakeven if _breakeven else 0))
+
+# ---- 8f. THE ISSUANCE FEE IS A ONE-OFF, NOT AN ANNUAL FEE -----------------
+# Fixed 2026-08-26. It was charged at 1.06 events/card/YEAR against the card
+# STOCK, which billed every existing cardholder AED 75 annually. It must be
+# levied on the NEW-CARD FLOW. These checks exist because the defect was
+# invisible for months: the number looked plausible, the formula parsed, and
+# nothing tied it back to how many cards were actually issued.
+_nc_rows = [r for r in range(1, mdl.max_row + 1)
+            if mdl["A%d" % r].value == "  ...newly issued this period (flow, drives the issuance fee)"]
+check("Every region reports a NEW-CARD flow, distinct from the card stock",
+      len(_nc_rows) == len(REGION_NAMES), "found %d" % len(_nc_rows))
+_nc = [sum(mdl["%s%d" % (pc(i), r)].value or 0 for r in _nc_rows) for i in range(N)]
+_cards_all = [sum(mdl["%s%d" % (pc(i), r)].value or 0 for r in _card_rows) for i in range(N)]
+check("New cards are never negative",
+      all(x >= -1e-9 for x in _nc), "min %.4f" % min(_nc))
+# The flow must be STRICTLY smaller than the stock once the book has matured -
+# if they are equal, the fee is back on the stock and the defect has returned.
+check("New cards are a FLOW - far below the card stock at Y7",
+      _cards_all[N - 1] > 0 and _nc[N - 1] < _cards_all[N - 1] * 0.5,
+      "Y7 new %.0f vs stock %.0f (%.0f%%)"
+      % (_nc[N - 1], _cards_all[N - 1], 100 * _nc[N - 1] / _cards_all[N - 1]))
+# And the flow must reconcile to the change in the stock, which is what makes
+# it a real flow rather than another ratio applied to the same base.
+_growth = [_cards_all[i] - _cards_all[i - 1] for i in range(1, N_MONTHLY)]
+check("New cards reconcile to the period-on-period growth in the card stock",
+      all(abs(_nc[i + 1] - max(0.0, _growth[i])) < max(1.0, abs(_growth[i]) * 1e-6)
+          for i in range(len(_growth))),
+      "worst gap %.4f" % max(abs(_nc[i + 1] - max(0.0, _growth[i])) for i in range(len(_growth))))
+check("The stale per-year issuance-events input is gone",
+      rowof(sc, "Card issuance events") is None and rowof(asm, "Card issuance events") is None)
 
 # ---- 9. totals -------------------------------------------------------------
 tot = row("TOTAL NET REVENUE")
@@ -613,37 +775,53 @@ check("The two measures genuinely diverge (self-custody is actually deducted)",
 check("Summary carries the comparable custody headline, not only the collateral figure",
       rowof(summ, "Gold under custody (comparable headline)") is not None)
 
-# ---- 9a2. holding a card is not the same as having credit -----------------
-# Client correction 2026-08-21. A lapsed customer keeps the plastic but loses
-# the ICS score, so no credit line. Without this split every holder was drawing
-# down against gold they cannot borrow against.
+# ---- 9a2. EVERY CARD NOW CARRIES CREDIT (rewritten 2026-08-26) ------------
+# SUPERSEDES the 2026-08-21 correction that split cardholders from credit-
+# eligible cardholders. That split existed because a lapsed customer lost their
+# ICS score and therefore their facility. Access is no longer ICS-gated and the
+# lapsed customer's gold is still in the vault, so the collateral is still
+# there: every card has a line.
+#
+# THE AGGREGATE DID NOT MOVE, and that is worth asserting rather than assuming.
+# Old:  ccards x limit = [cards x paying/base] x [AUM/paying x LTV]
+# New:  cards  x limit =  cards               x [AUM/base   x LTV]
+# The "paying" terms cancelled, so total credit capacity is identical either
+# way - holders' gold was always in the pool. What changed is the per-head
+# limit, which used to divide by paying customers only and so read high once
+# holders became most of the base.
 _cc = [r for r in range(1, mdl.max_row + 1)
-       if mdl["A%d" % r].value == "  ...of which have a live credit line"]
-check("Every region separates cardholders from credit-eligible cardholders",
+       if mdl["A%d" % r].value == "  ...of which have a live credit line (now all of them)"]
+check("Every region still reports a credit-line row",
       len(_cc) == len(REGION_NAMES), "found %d" % len(_cc))
 _cc7 = sum(mdl["%s%d" % (pc(N - 1), r)].value for r in _cc)
 _cards7 = row("ACTIVE CARDS")[N - 1]
-check("Credit-eligible cardholders are strictly FEWER than cardholders",
-      0 < _cc7 < _cards7 * 0.95,
-      "Y7 %.0f of %.0f cards (%.0f%%)" % (_cc7, _cards7, 100 * _cc7 / _cards7))
-# The split must equal the paying share of the card-eligible base, otherwise
-# the ratio has been wired to the wrong populations.
+check("Credit-eligible cardholders now EQUAL cardholders - access is ungated",
+      _cards7 > 0 and abs(_cc7 - _cards7) < max(1.0, _cards7 * 1e-6),
+      "Y7 %.0f of %.0f cards" % (_cc7, _cards7))
+# The per-head limit must now be AUM over the CARD-ELIGIBLE BASE. If anyone
+# reverts the denominator to paying customers, the limit inflates by the
+# holder ratio and this fails.
 _pay7, _hold7 = row("PAYING CUSTOMERS")[N - 1], row("HOLDERS (stopped paying, still hold gold)")[N - 1]
-check("The credit-eligible share equals the paying share of the card-eligible base",
-      abs(_cc7 / _cards7 - _pay7 / (_pay7 + _hold7)) < 0.02,
-      "cards %.4f vs customers %.4f" % (_cc7 / _cards7, _pay7 / (_pay7 + _hold7)))
-# And spend must be computed on the credit subset, not on all cards - dividing
-# whole-book spend by CREDIT cards must return the per-card drawdown, not a
-# number a third of it.
+_lim = [r for r in range(1, mdl.max_row + 1)
+        if mdl["A%d" % r].value == "  Credit limit per customer (gold x LTV)"]
+_aum7 = row("COLLATERAL-ELIGIBLE AUM")[N - 1]
+_ltv = aval("LTV against collateral")
+_impl = _aum7 / (_pay7 + _hold7) * _ltv
+_wavg = sum(mdl["%s%d" % (pc(N - 1), r)].value for r in _lim) / len(_lim)
+check("Credit limit is AUM over the CARD-ELIGIBLE BASE, not over payers alone",
+      abs(_wavg - _impl) < _impl * 0.25,
+      "regional mean limit %.2f vs book-implied %.2f" % (_wavg, _impl))
+# Spend must still reconcile to the per-card drawdown - with credit cards and
+# all cards now equal, this catches spend being wired to the wrong row.
 _spend7 = row("Card spend")[N - 1]
 _dr = [r for r in range(1, mdl.max_row + 1)
        if mdl["A%d" % r].value == "  Annual drawdown per card (limit x drawn x draws)"]
 _maxdraw = max(mdl["%s%d" % (pc(N - 1), r)].value for r in _dr)
 _mindraw = min(mdl["%s%d" % (pc(N - 1), r)].value for r in _dr)
-check("Card spend is driven by CREDIT-eligible cards, not by all cardholders",
-      _mindraw * 0.9 <= _spend7 / _cc7 <= _maxdraw * 1.1,
-      "implied spend per credit card %.2f vs regional drawdowns %.2f-%.2f"
-      % (_spend7 / _cc7, _mindraw, _maxdraw))
+check("Card spend reconciles to the per-card annual drawdown",
+      _cc7 > 0 and _mindraw * 0.9 <= _spend7 / _cc7 <= _maxdraw * 1.1,
+      "implied spend per card %.2f vs regional drawdowns %.2f-%.2f"
+      % (_spend7 / _cc7 if _cc7 else 0, _mindraw, _maxdraw))
 
 # ---- 9b. the metal price moves, so attribution must stay recoverable -------
 _px, _cagr = row("Gold price (this period)"), aval("Gold price appreciation")
