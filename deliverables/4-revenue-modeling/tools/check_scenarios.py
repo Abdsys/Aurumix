@@ -59,14 +59,25 @@ def run(idx):
     wb["Scenario Parameters"][CELL] = idx
     wb.save(TMP)
     wb.close()
-    p = subprocess.run([sys.executable, os.path.join(HERE, "recalc_lo.py"), TMP],
-                       capture_output=True, text=True, cwd=HERE)
-    # recalc_lo prints a JSON object, but may print other lines around it - take
-    # the outermost braces rather than assuming the whole of stdout is JSON.
-    out = p.stdout or ""
-    assert "{" in out and "}" in out, "recalc produced no JSON:\n%s\n%s" % (out[-800:], (p.stderr or "")[-800:])
-    d = json.loads(out[out.index("{"):out.rindex("}") + 1])
-    assert d["status"] == "success" and d["total_errors"] == 0, d
+    # LibreOffice first, the pure-Python engine as fallback. LibreOffice is the
+    # preferred route because it is closer to what the client's Excel will do,
+    # but it is not installed on every build machine and this check must not be
+    # silently skippable - a scenario band that is the wrong way round is
+    # invisible to every other test, so losing this one loses the only thing
+    # that catches it.
+    d = None
+    for engine in ("recalc_lo.py", "recalc_py.py"):
+        p = subprocess.run([sys.executable, os.path.join(HERE, engine), TMP],
+                           capture_output=True, text=True, cwd=HERE)
+        out = p.stdout or ""
+        if "{" not in out or "}" not in out:
+            continue
+        cand = json.loads(out[out.index("{"):out.rindex("}") + 1])
+        if cand.get("status") == "success":
+            d = cand
+            break
+    assert d is not None and d["total_errors"] == 0, \
+        "no recalc engine succeeded (LibreOffice absent AND python engine failed)"
     m = load_workbook(os.path.join(HERE, "_recalc", os.path.basename(TMP)),
                       data_only=True)["Model"]
     out = {}

@@ -38,6 +38,16 @@
         "_verify_ics_calculator.py"
       ],
       "updated_at": "2026-08-14"
+    },
+    "4a": {
+      "status": "in_progress",
+      "files": [
+        "build_revenue_model.py",
+        "check_scenarios.py",
+        "recalc_py.py",
+        "verify_model.py"
+      ],
+      "updated_at": "2026-08-26"
     }
   }
 }
