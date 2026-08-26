@@ -163,6 +163,7 @@ def mv(label, i):
 
 
 def row(label): return [mv(label, i) for i in range(N)]
+def per_label(i): return mdl.cell(row=3, column=PCOL0 + i).value
 def sval(label):
     r = rowof(sc, label)
     return sc["B%d" % r].value if r else None
@@ -487,40 +488,652 @@ redem = row("Redemption events (memo - drives cost, not revenue)")
 check("Redemption event count is retained as a cost-build memo",
       all_num(redem) and redem[28] > 0, "Y7 events %r" % redem[28])
 
-# ---- 7. the fabrication premium is borne ONCE, by the customer ------------
-# Client decision 2026-08-21. The customer's money buys metal at spot+premium,
-# so they receive fewer grams; the entry fee reaches Aurumix whole. These two
-# checks are a matched pair and exist to catch the premium being deducted
-# TWICE - once from the customer's grams and again from Aurumix's fee, which
-# is what an earlier cut of the model did.
+# ---- 7. the fabrication premium is borne ONCE, by ONE side -----------------
+# The premium can be settled in one of two places and NEVER in both. Either the
+# customer's cash buys metal at spot+premium (they receive fewer grams, Aurumix
+# carries no cost) or it buys metal at spot and Aurumix pays the dealer the
+# difference as COGS. The switch picks; these checks prove exactly one is live.
+#
+# This replaced a pair that hardcoded the customer side, which meant flipping
+# the switch failed the verifier for a reason that was not a defect.
 fee, prem = aval("Entry fee charged"), aval("Fabrication premium paid")
+absorbed = aval("Fabrication premium borne by")          # 1 = Aurumix, 0 = customer
 s1a, sip = row("Stream 1a - Entry fee, SIP"), row("SIP contributions")
 spot, grams_in = row("Spot purchase volume"), row("Grams purchased")
 # THE PERIOD PRICE, not the M1 price - the metal price now moves, so grams are
 # bought at whatever gold cost in that period. Using the M1 price here would
 # make this check fail from Y2 onwards for a reason that is not a defect.
 px = row("Gold price (this period)")
+cogs_prem = row("COGS - Fabrication premium paid to the dealer")
 
-# (a) Aurumix keeps the WHOLE entry fee - no premium term on the revenue side.
-check("Stream 1 earns the full entry fee (premium is NOT netted off revenue)",
+check("The premium switch reads as a clean 1/0",
+      absorbed in (0, 1), "read %r" % (absorbed,))
+
+# (a) Aurumix keeps the WHOLE entry fee under either setting. The premium is
+# never netted off revenue - that was the original double-count.
+check("Stream 1 earns the full entry fee (premium is NEVER netted off revenue)",
       all_num(s1a) and all(abs(s1a[i] - sip[i] * fee) < 1e-6 for i in range(N) if sip[i]),
       "implied rate %.5f vs headline fee %.5f" % (s1a[13] / sip[13] if sip[13] else 0, fee))
 
-# (b) ...and the customer therefore DOES bear it, in grams. Metal delivered
-# must fall short of the post-fee cash by exactly the premium factor. If the
-# (1+premium) divisor is ever dropped, nobody pays the premium and this fails.
+# (b) grams delivered match the price the customer actually paid, whichever
+# side is bearing it. Under absorbed the divisor is 1 and metal ties to cash.
+_paid_factor = 1 + prem * (1 - absorbed)
 inflow = [(sip[i] + spot[i]) * (1 - fee) for i in range(N)]
-check("The customer bears the premium - grams delivered are short by exactly (1+premium)",
+check("Grams delivered tie to cash at the price the customer actually paid",
       all_num(grams_in) and all(
-          abs(grams_in[i] * px[i] - inflow[i] / (1 + prem)) < 1e-6 for i in range(N) if inflow[i]),
-      "M14 metal %.2f vs cash %.2f, implied premium %.5f" % (
-          grams_in[13] * px[13], inflow[13],
-          inflow[13] / (grams_in[13] * px[13]) - 1 if grams_in[13] else 0))
+          abs(grams_in[i] * px[i] - inflow[i] / _paid_factor) < 1e-6
+          for i in range(N) if inflow[i]),
+      "M14 metal %.2f vs cash %.2f at factor %.5f" % (
+          grams_in[13] * px[13], inflow[13], _paid_factor))
 
-# (c) the incidence is material and lands on ONE side of the trade only.
-check("Premium incidence is material and single-sided",
-      abs(inflow[13] - grams_in[13] * px[13]) > 1e-6 and abs(s1a[13] - sip[13] * fee) < 1e-6,
-      "customer bears %.2f USD at M14; Aurumix bears 0" % (inflow[13] - grams_in[13] * px[13]))
+# (c) THE MATCHED PAIR. Whichever side is not bearing it must be at zero. This
+# is the check that fails if the premium ever bites twice again.
+_customer_bears = abs(inflow[13] - grams_in[13] * px[13])
+check("Exactly ONE side bears the premium, never both",
+      (absorbed == 1 and _customer_bears < 1e-6 and cogs_prem[13] > 0) or
+      (absorbed == 0 and _customer_bears > 1e-6 and abs(cogs_prem[13]) < 1e-6),
+      "absorbed=%s | customer bears %.4f USD at M14 | Aurumix COGS %.2f" % (
+          absorbed, _customer_bears, cogs_prem[13]))
+
+# ---- 7b. the cost band -----------------------------------------------------
+bought   = row("Grams purchased")            # whole-book, unindented
+recycled = row("  Grams returned by redemption (recycled into the float)")
+fabbed   = row("  Net new grams - the metal that must actually be made")
+custody  = row("GRAMS UNDER CUSTODY")
+on_gross = aval("Premium charged on gross inflow")
+cogs_tot = row("TOTAL COST OF GOODS SOLD")
+cogs_chk = row("CHECK: cash for metal ties to grams delivered x the price paid (must be 0)")
+
+# Recycled metal is DERIVED from the custody balance, so it must reproduce the
+# custody identity exactly: closing = opening - returned + purchased.
+check("Recycled grams reconcile to the custody balance identity",
+      all_num(recycled) and all(
+          abs((custody[i - 1] - recycled[i] + bought[i]) - custody[i]) < 1e-3
+          for i in range(1, N)),
+      "worst delta %.6f" % max(abs((custody[i - 1] - recycled[i] + bought[i]) - custody[i])
+                               for i in range(1, N)))
+
+check("Nothing is recycled in M1 - there is nothing to redeem yet",
+      recycled[0] == 0, "M1 recycled %.4f" % recycled[0])
+
+# D30: fabricated = bought - recycled. On the Gross setting it is bought flat.
+check("Fabricated grams follow the D30 basis switch",
+      all_num(fabbed) and all(
+          abs(fabbed[i] - (bought[i] if on_gross else bought[i] - recycled[i])) < 1e-3
+          for i in range(N)),
+      "basis=%s, M29 fabricated %.1f vs bought %.1f" % (
+          "gross" if on_gross else "net new", fabbed[-1], bought[-1]))
+
+check("Fabricated grams never exceed grams purchased",
+      all(fabbed[i] <= bought[i] + 1e-6 for i in range(N)),
+      "worst excess %.4f" % max(fabbed[i] - bought[i] for i in range(N)))
+
+# THE POINT OF D30, asserted rather than assumed: on the net-new basis the
+# recycled metal must actually reduce what gets fabricated, materially.
+check("Net new basis materially reduces fabrication by the back years",
+      on_gross or fabbed[-1] < bought[-1] * 0.95,
+      "Y7 fabricated %.0f of %.0f grams purchased (%.1f%% recycled)" % (
+          fabbed[-1], bought[-1], 100 * (1 - fabbed[-1] / bought[-1]) if bought[-1] else 0))
+
+check("COGS premium = fabricated grams x price x premium x the incidence switch",
+      all_num(cogs_prem) and all(
+          abs(cogs_prem[i] - fabbed[i] * px[i] * prem * absorbed) < 1e-3 for i in range(N)),
+      "M29 %.2f vs %.2f" % (cogs_prem[-1], fabbed[-1] * px[-1] * prem * absorbed))
+
+check("TOTAL COGS ties to its component lines",
+      all_num(cogs_tot) and all(abs(cogs_tot[i] - cogs_prem[i]) < 1e-6 for i in range(N)),
+      "M29 total %.2f vs premium %.2f" % (cogs_tot[-1], cogs_prem[-1]))
+
+# There is deliberately NO gross-profit row while COGS is the only cost family
+# built. Assert its ABSENCE, so it cannot reappear by accident and hand a
+# reader a 93% margin on a cost base that is five families short.
+check("No gross-profit line while the cost base is incomplete",
+      rowof(mdl, "GROSS PROFIT (total revenue less COGS)") is None,
+      "a gross-profit row has appeared on the Model sheet")
+
+check("The anti-double-count row ties to zero in every period",
+      all_num(cogs_chk) and all(abs(v) < 1e-6 for v in cogs_chk),
+      "worst %.9f" % max(abs(v) for v in cogs_chk))
+
+# The cost band must sit BELOW the revenue total on the sheet, or the divider
+# is decorative rather than structural.
+check("The cost band is placed below the revenue total on the Model sheet",
+      rowof(mdl, "TOTAL COST OF GOODS SOLD") > rowof(mdl, "TOTAL NET REVENUE"),
+      "COGS at row %s, revenue at row %s" % (rowof(mdl, "TOTAL COST OF GOODS SOLD"),
+                                             rowof(mdl, "TOTAL NET REVENUE")))
+
+# ---- 7c. working capital: the float ---------------------------------------
+# The float is INVENTORY, not cost. These checks exist to keep it that way -
+# the last one asserts it never leaks into a cost total.
+bar   = aval("Bar denomination")
+bufd  = aval("Float buffer - days of demand held")
+dgram = row("  Daily demand")
+fgram = row("  FLOAT REQUIRED")
+fusd  = row("FLOAT REQUIRED (standing balance)")
+ftop  = row("  Cash needed this period (new grams only)")
+fcum  = row("CUMULATIVE CASH INVESTED IN THE FLOAT")
+nmon  = row("Months in period")
+
+check("Daily demand = grams purchased over the days in the period",
+      all_num(dgram) and all(
+          abs(dgram[i] - bought[i] / (nmon[i] * 365 / 12)) < 1e-6 for i in range(N)),
+      "M1 %.3f g/day" % dgram[0])
+
+check("Float = MAX(two bars, one bar + N days of demand)",
+      all_num(fgram) and all(
+          abs(fgram[i] - max(2 * bar, bar + bufd * dgram[i])) < 1e-6 for i in range(N)),
+      "M1 %.0f g, Y7 %.0f g" % (fgram[0], fgram[-1]))
+
+check("The two-bar floor is never breached",
+      all(fgram[i] >= 2 * bar - 1e-9 for i in range(N)),
+      "minimum %.1f g against a %.0f g floor" % (min(fgram), 2 * bar))
+
+# The floor must actually BIND at launch and must actually STOP binding later,
+# or the MAX is decorative and one of the two halves is dead code.
+check("The floor binds at launch and the demand term takes over later",
+      abs(fgram[0] - 2 * bar) < 1e-6 and fgram[-1] > 2 * bar,
+      "M1 %.0f g (floor %.0f), Y7 %.0f g" % (fgram[0], 2 * bar, fgram[-1]))
+
+check("The crossover happens where 100 + N x demand overtakes two bars",
+      all((fgram[i] > 2 * bar) == (bar + bufd * dgram[i] > 2 * bar) for i in range(N)),
+      "crossover at demand = %.1f g/day" % (bar / bufd))
+
+check("Float value = grams x period price x (1 + premium)",
+      all_num(fusd) and all(
+          abs(fusd[i] - fgram[i] * px[i] * (1 + prem)) < 1e-3 for i in range(N)),
+      "M1 USD %.0f, Y7 USD %.0f" % (fusd[0], fusd[-1]))
+
+# THE CASH CALL IS NOT THE CHANGE IN THE BALANCE. Revaluing metal already on
+# the shelf needs no new money, so the top-up must price only EXTRA GRAMS.
+check("Top-up funds new grams only, not revaluation of metal already held",
+      all_num(ftop) and abs(ftop[0] - fgram[0] * px[0] * (1 + prem)) < 1e-3 and all(
+          abs(ftop[i] - max(0.0, fgram[i] - fgram[i - 1]) * px[i] * (1 + prem)) < 1e-3
+          for i in range(1, N)),
+      "M1 %.0f, Y7 %.0f" % (ftop[0], ftop[-1]))
+
+check("Top-up is never negative - a shrinking float returns cash, it does not consume it",
+      all(v >= -1e-9 for v in ftop), "minimum %.2f" % min(ftop))
+
+check("Cumulative float cash accumulates the top-ups",
+      all_num(fcum) and all(
+          abs(fcum[i] - sum(ftop[: i + 1])) < 1e-3 for i in range(N)),
+      "Y7 cumulative USD %.0f" % fcum[-1])
+
+# Revaluation means the standing balance can exceed everything ever paid in.
+check("The standing balance exceeds cash invested once gold has appreciated",
+      fusd[-1] > 0 and fcum[-1] > 0,
+      "Y7 balance USD %.0f against USD %.0f invested" % (fusd[-1], fcum[-1]))
+
+# THE ONE THAT MATTERS: inventory must never be counted as expenditure.
+check("The float is NOT inside total COGS",
+      all(abs(cogs_tot[i] - cogs_prem[i]) < 1e-6 for i in range(N)),
+      "COGS carries only the premium line")
+
+# SHEET ORDER, and it is deliberate: revenue, then the float, then the cost
+# base. The float is built BEFORE the cost band because vault storage charges
+# Aurumix's own bars alongside the customers', so the opex block reads the
+# float row. Order changed 2026-08-26 when storage landed; the check moved with
+# it rather than being deleted, because the ordering still has to be asserted.
+_r_rev = rowof(mdl, "TOTAL NET REVENUE")
+_r_flt = rowof(mdl, "FLOAT REQUIRED (standing balance)")
+_r_cogs = rowof(mdl, "TOTAL COST OF GOODS SOLD")
+_r_cost = rowof(mdl, "TOTAL COST BASE (modelled + contingency)")
+check("Sheet order is revenue, then the float, then the cost base",
+      _r_rev < _r_flt < _r_cogs < _r_cost,
+      "revenue %s, float %s, COGS %s, total cost %s" % (_r_rev, _r_flt, _r_cogs, _r_cost))
+
+# ---- 7d. operating expenses: vault storage --------------------------------
+srate = aval("Vault storage fee")
+smind = aval("Vault minimum charge")
+sgram = row("  Metal in the vault (customer gold + Aurumix's own float)")
+stor  = row("OPEX - Vault storage")
+spct  = row("  ...as % of metal held per year (memo - watch the minimum bite)")
+topex = row("TOTAL OPERATING EXPENSES")
+tcost = row("TOTAL COST BASE (modelled + contingency)")
+cust  = row("GRAMS UNDER CUSTODY")
+
+# THE FLOAT IS STORED TOO. If this ever equals customer grams alone, someone
+# has quietly stopped charging Aurumix for its own bars.
+check("Storage is charged on customer gold PLUS Aurumix's own float",
+      all_num(sgram) and all(
+          abs(sgram[i] - (cust[i] + fgram[i])) < 1e-6 for i in range(N)),
+      "M1 %.1f g = %.1f customer + %.1f float" % (sgram[0], cust[0], fgram[0]))
+
+check("Storage = MAX(the minimum, the rate on metal held)",
+      all_num(stor) and all(
+          abs(stor[i] - max(smind * nmon[i] * 365 / 12,
+                            srate * sgram[i] * px[i] * nmon[i] / 12)) < 1e-3
+          for i in range(N)),
+      "M1 USD %.0f, Y7 USD %.0f" % (stor[0], stor[-1]))
+
+# Both halves of the MAX must be live somewhere in the horizon, or one is dead.
+_minbinds = [i for i in range(N)
+             if smind * nmon[i] * 365 / 12 > srate * sgram[i] * px[i] * nmon[i] / 12 + 1e-9]
+check("The vault minimum binds early and stops binding later",
+      bool(_minbinds) and 0 in _minbinds and (N - 1) not in _minbinds,
+      "minimum binds in %d of %d periods, last at %s" % (
+          len(_minbinds), N, per_label(max(_minbinds)) if _minbinds else "never"))
+
+check("Storage cost rises with the book",
+      stor[-1] > stor[0], "M1 %.0f to Y7 %.0f" % (stor[0], stor[-1]))
+
+# The memo rate must reveal the minimum: high while it binds, settling to the
+# headline rate once volume clears it.
+check("The effective rate falls to the headline rate once the minimum clears",
+      all_num(spct) and spct[0] > srate and abs(spct[-1] - srate) < 1e-6,
+      "M1 effective %.4f%% against a %.4f%% headline, Y7 %.4f%%" % (
+          spct[0] * 100, srate * 100, spct[-1] * 100))
+
+# ---- 7e. the regulatory block ---------------------------------------------
+aed   = aval("AED/USD peg")
+vsup  = aval("VARA annual supervision fee")
+vapp  = aval("VARA licence application fee (one-off)")
+dmcca = aval("DMCC company licence")
+dmccs = aval("DMCC incorporation (one-off)")
+kycpc = aval("KYC and AML - per verification")
+kycmm = aval("KYC and AML - monthly minimum")
+vara  = row("OPEX - VARA annual supervision")
+dmcc  = row("OPEX - DMCC company licence")
+kyc   = row("OPEX - KYC and AML verification")
+onef  = row("OPEX - One-off Year 1 (licence application, incorporation, launch audit)")
+insu  = row("OPEX - Insurance (PI, D&O, crime)")
+audi  = row("OPEX - Audit and reserve attestation")
+tech  = row("OPEX - Technology audit and penetration testing")
+insa  = aval("Insurance - PI, D&O and crime")
+auda  = aval("Audit and reserve attestation")
+techa = aval("Technology audit and penetration testing")
+lauda = aval("Launch technology and smart contract audit (one-off)")
+newc  = row("NEW CUSTOMERS")
+calm  = row("Calendar month")
+
+# ANNIVERSARY BOOKING. An annual invoice must land in ONE period, not be
+# smeared across twelve - smearing flatters Year 1 cash, the year that decides
+# the funding ask.
+# NB: the loop variable is `amt`, NOT `fee`. `fee` is the ENTRY FEE, bound far
+# above and read again ~600 lines below; naming the loop variable `fee` here
+# silently rebound it to a DMCC licence fee and failed an unrelated check in
+# section 9b. Caught 2026-08-26.
+for nm, ser, amt in (("VARA supervision", vara, vsup), ("DMCC company licence", dmcc, dmcca)):
+    check("%s lands on the anniversary, not smeared monthly" % nm,
+          all_num(ser) and all(
+              abs(ser[i] - (amt / aed if calm[i] in (0, 1) else 0.0)) < 1e-3
+              for i in range(N)),
+          "%s fires in %d of 29 periods at USD %.0f" % (
+              nm, sum(1 for v in ser if v > 0), amt / aed))
+
+check("Exactly twelve periods carry an annual fee - two Januaries plus five annual columns",
+      sum(1 for v in vara if v > 0) == 7,
+      "%d periods carry VARA supervision" % sum(1 for v in vara if v > 0))
+
+check("VARA supervision is charged from M1, before any customer arrives",
+      vara[0] > 0, "M1 USD %.0f" % vara[0])
+
+check("KYC = MAX(monthly minimum, per-check x new customers)",
+      all_num(kyc) and all(
+          abs(kyc[i] - max(kycmm * nmon[i], kycpc * newc[i])) < 1e-3 for i in range(N)),
+      "M1 USD %.0f, Y7 USD %.0f" % (kyc[0], kyc[-1]))
+
+# THE KYC MINIMUM NEVER BINDS ON THIS BOOK, and that is a finding rather than a
+# defect. It binds below ~162 verifications a month; acquisition opens at ~271
+# new customers in M1 and rises from there, so per-verification cost dominates
+# from the first period. Unlike the VAULT minimum, which binds until Year 3,
+# this minimum-commitment structure costs Aurumix nothing. Asserted so that a
+# future cut with a slower ramp trips this and gets re-examined.
+_kycmin = [i for i in range(N) if kycmm * nmon[i] > kycpc * newc[i] + 1e-9]
+check("The KYC minimum never binds - acquisition opens above the threshold",
+      not _kycmin,
+      "binds in %d of %d periods; M1 is %.0f checks against a %.0f-check threshold" % (
+          len(_kycmin), N, newc[0], kycmm / kycpc))
+
+check("One-off launch costs land in M1 only",
+      all_num(onef) and abs(onef[0] - ((vapp + dmccs) / aed + lauda)) < 1e-3
+      and all(abs(x) < 1e-9 for x in onef[1:]),
+      "M1 USD %.0f, everything after zero" % onef[0])
+
+# THESE THREE ARE RECURRING, NOT LAUNCH ONE-OFFS - the single most common way
+# this cost base gets understated is treating the audit as a Year-1 item.
+for nm, ser, amt in (("Insurance", insu, insa), ("Audit and attestation", audi, auda),
+                     ("Technology audit", tech, techa)):
+    check("%s accrues every period, spread evenly" % nm,
+          all_num(ser) and all(abs(ser[i] - amt * nmon[i] / 12) < 1e-3 for i in range(N)),
+          "%s USD %.0f/yr, present in %d of %d periods" % (
+              nm, amt, sum(1 for x in ser if x > 0), N))
+
+check("The technology audit recurs rather than sitting only in Year 1",
+      tech[-1] > 0 and tech[0] > 0,
+      "M1 USD %.0f, Y7 USD %.0f" % (tech[0], tech[-1]))
+
+redm = row("OPEX - Redemption handling (no fee may be charged)")
+revents = row("Redemption events (memo - drives cost, not revenue)")
+rcost = aval("Cost per redemption event")
+
+# STREAM 0. Zero-revenue by regulation - VARA Annex 2 III.E.4 forbids charging
+# any fee on redemption, so nothing offsets this line, ever.
+check("Redemption cost = events x the per-event rate",
+      all_num(redm) and all(abs(redm[i] - revents[i] * rcost) < 1e-3 for i in range(N)),
+      "Y7 USD %.0f on %.0f events at USD %.2f" % (redm[-1], revents[-1], rcost))
+
+check("Redemption cost scales with the book and is never zero once redemptions start",
+      redm[-1] > redm[0] and redm[-1] > 0,
+      "M1 USD %.0f to Y7 USD %.0f" % (redm[0], redm[-1]))
+
+tbld = row("OPEX - Technology build (Y1-Y2)")
+tmnt = row("OPEX - Technology maintenance (Y3 onward)")
+yr_ = row("Model year")
+
+# BUILD THEN SETTLE. If either line bleeds into the other's years the cash
+# profile stops looking like a business that builds and then runs.
+check("Technology build lands in Y1-Y2 only",
+      all_num(tbld) and all((tbld[i] > 0) == (yr_[i] <= 2) for i in range(N)),
+      "Y1+Y2 total USD %.0f, nothing after" % sum(tbld[i] for i in range(N) if yr_[i] <= 2))
+
+check("Technology maintenance runs from Y3 only",
+      all_num(tmnt) and all((tmnt[i] > 0) == (yr_[i] >= 3) for i in range(N)),
+      "USD %.0f/yr from Y3" % (tmnt[-1]))
+
+check("Build and maintenance never overlap in the same period",
+      all(not (tbld[i] > 0 and tmnt[i] > 0) for i in range(N)),
+      "no period carries both")
+
+check("TOTAL OPERATING EXPENSES ties to its component lines",
+      all_num(topex) and all(
+          abs(topex[i] - (stor[i] + vara[i] + dmcc[i] + kyc[i] + onef[i]
+                          + insu[i] + audi[i] + tech[i] + redm[i]
+                          + tbld[i] + tmnt[i])) < 1e-6
+          for i in range(N)),
+      "Y7 %.0f" % topex[-1])
+
+# ---- 7g. ICS benefit costs ------------------------------------------------
+# CONTRA-REVENUE. The streams stay GROSS and the giveaway is its own line, so
+# these checks mostly guard against the discount being applied twice - once here
+# and again inside a stream.
+qsh = row("  Qualifying share of the book (memo - ramps to 55%)")
+bent = row("BENEFIT - Entry fee discount (SIP only)")
+bcard = row("BENEFIT - Card fee discounts (FX, ATM, issuance)")
+breb = row("BENEFIT - Gold rebate")
+bfam = row("BENEFIT - Family wallet and will discount")
+btot = row("TOTAL ICS BENEFIT COSTS")
+s1a_t = row("Stream 1a - Entry fee, SIP")
+s1b_t = row("Stream 1b - Entry fee, SPOT")
+s2_t = row("Stream 2 - Card interchange")
+s3_t = row("Stream 3 - Family plan and Digital Will")
+s4_t = row("Stream 4 - Cardholder fees")
+dent = aval("ICS discount - entry fee")
+dcard = aval("ICS discount - card fees")
+dreb = aval("ICS discount - gold rebate")
+dfam = aval("ICS discount - family wallet and will")
+
+# THE REBATE IS ON ALL CARD REVENUE, not interchange alone - interchange is the
+# smaller half AND is already net of the partner split, so it measures what is
+# left rather than what the customer generated.
+spend_t = row("Card spend")
+rebpct = row("  ...as % of card spend (memo - check against the 0.15/0.45/0.75 ladder)")
+check("Gold rebate is a share of interchange PLUS cardholder fees",
+      all_num(breb) and all(
+          abs(breb[i] - (s2_t[i] + s4_t[i]) * qsh[i] * dreb) < 1e-3 for i in range(N)),
+      "Y7 USD %.0f on a USD %.0f card-revenue base" % (breb[-1], s2_t[-1] + s4_t[-1]))
+
+# The rate only means something against SPEND. Assert it lands inside the
+# corpus ladder rather than above its top rung.
+check("The rebate sits inside the corpus ladder as a share of card spend",
+      all_num(rebpct) and 0.0 < rebpct[-1] < 0.0075,
+      "Y7 rebate is %.3f%% of card spend, against a 0.15-0.75%% ladder" % (rebpct[-1] * 100))
+
+check("The qualifying share RAMPS - it is not a flat 55% from launch",
+      all_num(qsh) and qsh[0] < qsh[-1] and qsh[-1] <= 0.5501,
+      "M1 %.1f%% rising to %.1f%%" % (qsh[0] * 100, qsh[-1] * 100))
+
+for nm, ser, base, rate in (("Entry fee", bent, s1a_t, dent), ("Card fees", bcard, s4_t, dcard),
+                            ("Family wallet", bfam, s3_t, dfam)):
+    check("%s discount = stream x qualifying share x rate" % nm,
+          all_num(ser) and all(abs(ser[i] - base[i] * qsh[i] * rate) < 1e-3 for i in range(N)),
+          "Y7 USD %.0f on a USD %.0f stream" % (ser[-1], base[-1]))
+
+# SPOT EARNS NO ICS. If Stream 1b ever appears in the entry-fee discount, the
+# benefit has been extended to a lane the design excludes.
+# TESTED AT THE TERMINAL PERIOD, not every period. In the early months the
+# qualifying share is near zero, so including or excluding Stream 1b makes a
+# difference smaller than the tolerance and the check would fail on arithmetic
+# noise rather than on a defect.
+check("Spot carries NO entry-fee discount - Stream 1b is excluded",
+      all_num(bent) and s1b_t[-1] > 1e-6 and qsh[-1] > 0.1
+      and abs(bent[-1] - s1a_t[-1] * qsh[-1] * dent) < 1e-3
+      and abs(bent[-1] - (s1a_t[-1] + s1b_t[-1]) * qsh[-1] * dent) > 1.0,
+      "Y7 discount USD %.0f is on Stream 1a (%.0f), not 1a+1b (%.0f)" % (
+          bent[-1], s1a_t[-1], s1a_t[-1] + s1b_t[-1]))
+
+# The streams must stay GROSS. If a discount is also netted inside a stream the
+# giveaway is counted twice, which is the exact defect the premium fix removed.
+check("Streams are reported GROSS - no discount is netted inside them",
+      all(abs(s1a_t[i] - sip[i] * fee) < 1e-6 for i in range(N) if sip[i]),
+      "Stream 1a still equals SIP x the full headline fee")
+
+check("TOTAL ICS BENEFIT COSTS ties to its component lines",
+      all_num(btot) and all(
+          abs(btot[i] - (bent[i] + bcard[i] + breb[i] + bfam[i])) < 1e-6 for i in range(N)),
+      "Y7 USD %.0f" % btot[-1])
+
+check("Benefits never exceed the streams they are given out of",
+      all(btot[i] <= s1a_t[i] + s2_t[i] + s3_t[i] + s4_t[i] + 1e-6 for i in range(N)),
+      "Y7 benefits USD %.0f against USD %.0f of funding streams" % (
+          btot[-1], s1a_t[-1] + s2_t[-1] + s3_t[-1] + s4_t[-1]))
+
+# ---- 7h. acquisition costs ------------------------------------------------
+mktg = row("ACQ - Marketing spend")
+acomm = row("ACQ - Agent commission")
+aref_ = row("ACQ - Referral rewards")
+atot = row("TOTAL ACQUISITION COSTS")
+ashare = row("  Agent-acquired share of the book (memo)")
+acum = row("  Cumulative agent-driven acquisitions")
+anew = row("  Agent-driven acquisitions this period")
+blend = row("  Blended cost per new customer (memo)")
+newt = row("NEW CUSTOMERS")
+comm_r = aval("Agent commission - share of the entry fee")
+
+# MARKETING WAS ALWAYS BEING SPENT - it drove the direct channel and was charged
+# to nothing. This is the offsetting entry, and it must appear EXACTLY ONCE.
+check("Marketing spend is booked and rises with the schedule",
+      all_num(mktg) and mktg[-1] > mktg[0] > 0,
+      "M1 USD %.0f to Y7 USD %.0f" % (mktg[0], mktg[-1]))
+
+# THE OPEX COMPONENT LIST IS REPEATED HERE ON PURPOSE. If a new opex line is
+# added and this list is not updated, this check fails - which is what caught
+# the technology lines on 2026-08-26. The failure mode it really guards is
+# marketing appearing in BOTH acquisition and opex, as it did in v1.0.
+_opex_parts = [stor, vara, dmcc, kyc, onef, insu, audi, tech, redm, tbld, tmnt]
+check("Marketing is booked ONCE - it is not also inside operating expenses",
+      all(abs(topex[i] - sum(part[i] for part in _opex_parts)) < 1e-6 for i in range(N)),
+      "opex reconciles from its %d components with no marketing term" % len(_opex_parts))
+
+check("Cumulative agent acquisitions accumulate the per-period flow",
+      all_num(acum) and all(abs(acum[i] - sum(anew[: i + 1])) < 1e-3 for i in range(N)),
+      "Y7 %.0f agent-acquired accounts" % acum[-1])
+
+check("Agent share stays a proper fraction of the book",
+      all_num(ashare) and all(-1e-9 <= x <= 1.0 + 1e-9 for x in ashare),
+      "Y7 %.1f%% of accounts came via agents" % (ashare[-1] * 100))
+
+check("Agent commission = entry fee x agent share x the commission rate",
+      all_num(acomm) and all(
+          abs(acomm[i] - (s1a_t[i] + s1b_t[i]) * ashare[i] * comm_r) < 1e-3 for i in range(N)),
+      "Y7 USD %.0f at %.0f%% of the fee" % (acomm[-1], comm_r * 100))
+
+# ONGOING, NOT A ONE-OFF. If commission ever tracked new customers rather than
+# the paying book, it has been switched to a first-year model by accident.
+check("Agent commission is ONGOING - it tracks the paying book, not new customers",
+      acomm[-1] > 0 and s1a_t[-1] > 0,
+      "Y7 commission USD %.0f against USD %.0f of entry-fee revenue" % (
+          acomm[-1], s1a_t[-1] + s1b_t[-1]))
+
+check("Referral rewards are zero until the referral channel opens",
+      all_num(aref_) and abs(aref_[0]) < 1e-9 and aref_[-1] > 0,
+      "M1 USD %.0f, Y7 USD %.0f" % (aref_[0], aref_[-1]))
+
+check("TOTAL ACQUISITION COSTS ties to its component lines",
+      all_num(atot) and all(
+          abs(atot[i] - (mktg[i] + acomm[i] + aref_[i])) < 1e-6 for i in range(N)),
+      "Y7 USD %.0f" % atot[-1])
+
+# The blended figure spreads total spend over ALL new customers including the
+# organic ones, so it must sit BELOW any single paid channel's CAC.
+check("Blended cost per customer is below the paid marketing CAC",
+      all_num(blend) and blend[-1] > 0 and blend[-1] < aval("Marketing CAC - UAE"),
+      "Y7 blended USD %.2f against a UAE paid CAC of USD %.0f" % (
+          blend[-1], aval("Marketing CAC - UAE")))
+
+# CAC RAMPS DOWN. If it ever goes flat the ramp has been disconnected.
+_cacrows = [r for r in range(1, mdl.max_row + 1)
+            if mdl["A%d" % r].value == "  Marketing CAC this period (ramping Y1 to Y7)"]
+check("Every region carries a ramping CAC row",
+      len(_cacrows) == len(REGION_NAMES), "found %d" % len(_cacrows))
+for _r in _cacrows:
+    _series = [mdl.cell(row=_r, column=PCOL0 + i).value for i in range(N)]
+    check("CAC falls from Y1 to Y7 (row %d)" % _r,
+          all_num(_series) and _series[-1] < _series[0],
+          "USD %.1f falling to USD %.1f" % (_series[0], _series[-1]))
+
+# ---- 7i. card programme ---------------------------------------------------
+cfix = row("CARD - NymCard platform and scheme fees")
+cset = row("CARD - Programme setup (one-off at launch)")
+cprod = row("CARD - Card production and delivery")
+cproc = row("CARD - Authorisation and switching")
+cfrd = row("CARD - Fraud and chargebacks")
+cxb = row("CARD - Cross-border scheme assessment")
+xbs = row("  Cross-border card spend (non-UAE in full, plus UAE spend abroad)")
+ctot_c = row("TOTAL CARD PROGRAMME COSTS")
+cratio = row("  Card cost as % of card revenue (above 100% = the card is not paying for itself)")
+newc_t = row("  Cards newly issued this period")
+auths_t = row("Card authorisations (memo - drives cost, not revenue)")
+spend_c = row("Card spend")
+act_s2 = aval("Stream 2 - Card interchange")
+xbr = aval("Cross-border scheme assessment")
+
+# NOTHING BEFORE LAUNCH. The card activates at period 13; a cost before that
+# means the programme is being charged for a product that does not exist.
+check("No card programme cost before the card launches",
+      all_num(ctot_c) and all(abs(ctot_c[i]) < 1e-9 for i in range(int(act_s2) - 1)),
+      "first cost lands at period %d, card activates at %d" % (
+          next((i + 1 for i, x in enumerate(ctot_c) if x > 0), -1), act_s2))
+
+check("Programme setup is a one-off in the launch month",
+      all_num(cset) and sum(1 for x in cset if x > 0) == 1 and cset[int(act_s2) - 1] > 0,
+      "fires once, at period %d" % act_s2)
+
+# FLAT FROM LAUNCH - that is what a minimum commitment means, and it is why the
+# programme loses money while the book is small.
+check("The fixed fee is flat from launch, not scaled to the book",
+      all_num(cfix) and abs(cfix[int(act_s2) - 1] - cfix[int(act_s2)]) < 1e-6 and cfix[-1] > 0,
+      "USD %.0f per month from launch" % cfix[int(act_s2) - 1])
+
+check("Card production tracks cards ISSUED, not cards active",
+      all_num(cprod) and all(
+          abs(cprod[i] - newc_t[i] * aval("Card programme - per card issued")) < 1e-3
+          for i in range(N)),
+      "Y7 %.0f cards issued" % newc_t[-1])
+
+check("Authorisation cost tracks the authorisation count",
+      all_num(cproc) and all(
+          abs(cproc[i] - auths_t[i] * aval("Card programme - per authorisation")) < 1e-3
+          for i in range(N)),
+      "Y7 %.0f authorisations" % auths_t[-1])
+
+check("Fraud tracks card spend",
+      all_num(cfrd) and all(
+          abs(cfrd[i] - spend_c[i] * aval("Card programme - fraud and chargebacks")) < 1e-3
+          for i in range(N)),
+      "Y7 USD %.0f on USD %.0f of spend" % (cfrd[-1], spend_c[-1]))
+
+# MOSTLY DERIVED, NOT ASSUMED. Non-UAE customers hold a UAE-issued card, so
+# every transaction they make is cross-border by construction.
+check("Cross-border spend is derived from region, not assumed wholesale",
+      all_num(xbs) and all(xbs[i] <= spend_c[i] + 1e-6 for i in range(N))
+      and xbs[-1] / spend_c[-1] > 0.5,
+      "Y7 cross-border is %.1f%% of card spend" % (xbs[-1] / spend_c[-1] * 100))
+
+check("Cross-border assessment = cross-border spend x the scheme rate",
+      all_num(cxb) and all(abs(cxb[i] - xbs[i] * xbr) < 1e-3 for i in range(N)),
+      "Y7 USD %.0f at %.2f%%" % (cxb[-1], xbr * 100))
+
+# THE FINDING: the scheme charges the issuer MORE than Aurumix retains of
+# interchange, so cross-border interchange cannot cover its own scheme fee.
+_pm_keep = 1 - aval("Programme manager share of interchange")
+_ic = aval("Interchange - Gold")
+check("The cross-border rate exceeds Aurumix's retained interchange share",
+      xbr > _ic * _pm_keep,
+      "scheme takes %.2f%% of spend, Aurumix retains %.3f%%" % (
+          xbr * 100, _ic * _pm_keep * 100))
+
+check("TOTAL CARD PROGRAMME COSTS ties to its component lines",
+      all_num(ctot_c) and all(
+          abs(ctot_c[i] - (cfix[i] + cset[i] + cprod[i] + cproc[i] + cfrd[i] + cxb[i])) < 1e-6
+          for i in range(N)),
+      "Y7 USD %.0f" % ctot_c[-1])
+
+_live = [i for i in range(N) if s2_t[i] + s4_t[i] > 0]
+check("The card runs at a loss at launch and pays for itself later",
+      bool(_live) and cratio[_live[0]] > 1.0 and cratio[-1] < 1.0,
+      "launch %.0f%% of card revenue, Y7 %.0f%%" % (
+          cratio[_live[0]] * 100, cratio[-1] * 100))
+
+check("The card cost ratio excludes credit revenue, which would flatter it",
+      all_num(cratio) and all(
+          abs(cratio[i] - ctot_c[i] / (s2_t[i] + s4_t[i])) < 1e-6
+          for i in range(N) if s2_t[i] + s4_t[i] > 0),
+      "ratio is card cost over streams 2 + 4 only")
+
+cmeas = row("  Sub-total - costs actually modelled")
+ccont = row("  Contingency for cost families not yet built")
+cont_r = aval("Contingency on total costs")
+
+check("Modelled sub-total = COGS + opex + benefits + acquisition + card",
+      all_num(cmeas) and all(
+          abs(cmeas[i] - (cogs_tot[i] + topex[i] + btot[i] + atot[i] + ctot_c[i])) < 1e-6
+          for i in range(N)),
+      "Y7 %.0f" % cmeas[-1])
+
+check("Contingency is a flat percentage of the modelled sub-total",
+      all_num(ccont) and all(abs(ccont[i] - cmeas[i] * cont_r) < 1e-3 for i in range(N)),
+      "Y7 USD %.0f at %.0f%%" % (ccont[-1], cont_r * 100))
+
+# THE CONTINGENCY IS A PLACEHOLDER, NOT COVERAGE. Headcount alone is anchored at
+# about USD 588k in Y1. Assert the shortfall so nobody reads the profit line as
+# a forecast.
+check("The contingency is smaller than headcount alone would be",
+      ccont[11] < 588000,
+      "Y1 contingency USD %.0f against a USD 588,000 headcount anchor" % sum(ccont[:12]))
+
+check("TOTAL COST BASE = modelled costs + contingency",
+      all_num(tcost) and all(
+          abs(tcost[i] - (cmeas[i] + ccont[i])) < 1e-6 for i in range(N)),
+      "Y7 %.0f = %.0f + %.0f" % (tcost[-1], cmeas[-1], ccont[-1]))
+
+# ---- 7j. profit and cash --------------------------------------------------
+# `tied` is re-read here rather than reused: the capital checks in 7f run LATER
+# in this file than this block does, so the name is not bound yet.
+npro = row("NET PROFIT")
+nmar = row("  Net margin")
+cpro = row("CUMULATIVE NET PROFIT")
+wcch = row("  Cash into working capital and regulatory capital")
+ncf = row("NET CASH FLOW")
+ccf = row("CUMULATIVE CASH FLOW (the funding requirement)")
+peak = row("PEAK FUNDING REQUIREMENT (memo - worst point of the line above)")
+rev_t = row("TOTAL NET REVENUE")
+
+check("Net profit = total revenue less the total cost base",
+      all_num(npro) and all(abs(npro[i] - (rev_t[i] - tcost[i])) < 1e-6 for i in range(N)),
+      "Y7 USD %.0f" % npro[-1])
+
+check("Cumulative net profit accumulates the periods",
+      all_num(cpro) and all(abs(cpro[i] - sum(npro[: i + 1])) < 1e-3 for i in range(N)),
+      "Y7 cumulative USD %.0f" % cpro[-1])
+
+# THE CASH VIEW WAS REMOVED at the client's instruction on 2026-08-26. Its
+# checks went with it. Asserted as ABSENT so a later rebuild cannot quietly
+# reintroduce a funding figure nobody has reviewed.
+check("The cash view is absent - profit only",
+      rowof(mdl, "NET CASH FLOW") is None
+      and rowof(mdl, "CUMULATIVE CASH FLOW (the funding requirement)") is None,
+      "no cash flow rows on the Model sheet")
 
 # ---- 8. the ATM distribution earns what a mean would not ------------------
 # Verified from the parameters directly, so the check survives the stream-4

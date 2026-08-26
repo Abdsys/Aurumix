@@ -86,7 +86,7 @@ TOTALS_BORDER = Border(top=Side(style="thin", color=GOLD), bottom=Side(style="do
 
 FMT_USD, FMT_USD2 = '$#,##0;($#,##0);"-"', '$#,##0.00;($#,##0.00);"-"'
 FMT_NUM, FMT_NUM2, FMT_NUM3 = '#,##0;(#,##0);"-"', '#,##0.00;(#,##0.00);"-"', '#,##0.000'
-FMT_PCT, FMT_PCT2 = '0.0%', '0.00%'
+FMT_PCT, FMT_PCT2, FMT_PCT3 = '0.0%', '0.00%', '0.000%'
 UNFILLED = "{{UNFILLED}}"
 
 # ============================================================================
@@ -146,6 +146,22 @@ def banner(ws, row, text, span=31):
         ws.cell(row=row, column=c).fill = BANNER_FILL
     cell = ws.cell(row=row, column=1)
     cell.value, cell.font = text, BANNER_FONT
+    return row
+
+
+def divider(ws, row, text, span=31):
+    """A HARD visual break, distinct from banner().
+
+    banner() is a pale sub-heading INSIDE a band. This is the charcoal bar that
+    separates one side of the P&L from the other, so a reader scrolling the
+    Model sheet can never be in doubt whether the row under the cursor is
+    something the business earns or something it pays.
+    """
+    for c in range(1, span + 1):
+        ws.cell(row=row, column=c).fill = SECTION_FILL
+    cell = ws.cell(row=row, column=1)
+    cell.value, cell.font = text, SECTION_FONT
+    ws.row_dimensions[row].height = 20
     return row
 
 
@@ -448,10 +464,17 @@ a_row("sip_floor", "SIP hard floor", 20, "USD/month",
 a_row("gate_run", "Confirmed SIP gate", 6, "consecutive payments",
       "Client's own figure. The gate is why eligibility is NOT universal - see the two eligibility parameters "
       "on the Scenario sheet. CLIENT INPUT.", FMT_NUM, "gate_run")
-a_row("redemption_cost", "Cost per redemption event (memo - for the cost build)", 3.20, "USD",
-      "RE-CUT 2026-08-20 from 4.20: the outbound bank transfer fee (USD 1.00-2.50) is REMOVED - that is the "
-      "customer's cost to bear, not Aurumix's. What remains is Sumsub AML re-screening at 1.85 plus "
-      "operational handling at ~1.35, both of which Aurumix genuinely pays. NOT IN THE REVENUE MODEL: "
+a_row("redemption_cost", "Cost per redemption event", 1.85, "USD",
+      "CUT TWICE, AND BOTH CUTS WERE DELIBERATE. From 4.20 to 3.20 on 2026-08-20, removing the outbound bank "
+      "transfer fee (USD 1.00-2.50) as the customer's cost to bear. From 3.20 to 1.85 on 2026-08-26, client "
+      "instruction, removing the ~1.35 of operational handling. "
+      "WHAT REMAINS IS SUMSUB AML RE-SCREENING AT 1.85, the same published per-verification rate the "
+      "onboarding line uses - a redemption triggers a re-screen. NOT a double count with the KYC line: that "
+      "one charges new customers at onboarding, this one charges a different event. "
+      "WHAT WAS REMOVED IS NOT ZERO. Operational handling - the staff time to check, approve and settle a "
+      "redemption - is real work; it is now assumed to sit inside headcount rather than being priced per "
+      "event. WHEN HEADCOUNT LANDS, CONFIRM IT IS ACTUALLY CARRIED THERE, or this cost has quietly vanished "
+      "from the model rather than moved. NOT IN THE REVENUE MODEL: "
       "redemption is a COST and arrives with the cost build. This row is carried so the driver is documented "
       "and the unit rate already agreed. THE FINDING IT CARRIES IS UNCHANGED AND IS THE POINT - VARA Annex 2 "
       "III.E.4 forbids charging ANY fee on redemption, verified verbatim at primary source, so the cost is "
@@ -974,6 +997,24 @@ sp("gold_cagr", "Gold price appreciation", 0.081, 0.120, 0.000, "%/yr",
    "whether the BUSINESS grew. Conservative is set at 0.0% deliberately: it restores the original flat-price "
    "design, under which every revenue change is attributable to the business rather than the metal.",
    FMT_PCT2, "gold_cagr")
+sp("float_buffer_days", "Float buffer - days of demand held", 10, 6, 20, "days",
+   "S50, the SOFT HALF of the float sizing rule. The corpus states the rule as 'one bar denomination plus a "
+   "buffer of N days trailing inflow' and NEVER SETS N. "
+   "WHAT THE BUFFER IS FOR: how long it takes to get REPLACEMENT metal into the vault - dealer lead time, "
+   "weekend and holiday gaps, payment clearing, and the days a dealer cannot fill 100 g. It is a "
+   "REPLENISHMENT question. "
+   "NOT the fill window, which is how long demand takes to CONSUME a bar. The brief anchors the 10 days on "
+   "the fill window and that is the wrong anchor - how fast the shelf empties and how fast it can be "
+   "restocked are different questions that only happen to give a similar answer at launch. Corrected here "
+   "2026-08-26; the brief still carries the old reasoning. "
+   "10 days is a working number for a dealer who has not been chosen yet, and it is DEALER-DEPENDENT: a "
+   "T+2 commitment would cut the float by roughly two-thirds. "
+   "IT CHANGES NOTHING AT LAUNCH. Below 10 grams a day - which is about month six - the two-bar floor is "
+   "larger, so M1 is USD 28,716 for ANY buffer from 0 to 49 days. It binds only at scale, where it is worth "
+   "USD 64,669 per day of buffer by Y7 and USD 905k between the Aggressive and Conservative settings. "
+   "ASSUMPTION, and the one to flex: the only number in the float calculation that was neither observed nor "
+   "settled in the design docs.",
+   FMT_NUM, "float_buffer_days")
 _sr[0] += 1
 
 s_section("GROUP A: CUSTOMERS AND CHURN")
@@ -1042,7 +1083,24 @@ for key in REGIONS:
        "INR 2,500-5,500 (~USD 30-65); Jupiter reports a USD 5-6 paid CAC. USD 120 is ~INR 10,500 - some 7-20x "
        "the Indian mass-market benchmark and still 2-4x its premium wealth apps. UAE is held at 120 as a "
        "FULLY-LOADED figure; note it sits at the top of the range for a LOW-TICKET product, and the "
-       "published low-ticket band is USD 4-70. TRIANGULATED.", FMT_USD, "cac_" + key)
+       "published low-ticket band is USD 4-70. TRIANGULATED. "
+       "THIS IS THE YEAR-1 VALUE. CAC now ramps DOWN to the Y7 parameter below - see that note.",
+       FMT_USD, "cac_" + key)
+CAC7_BY_REGION = {"uae": (55, 36, 91), "gulf": (45, 30, 75), "india": (10, 6, 17)}
+for key in REGIONS:
+    b, a, c = CAC7_BY_REGION[key]
+    sp("cac7_" + key, "Marketing CAC at Y7 - %s" % RLAB[key], b, a, c, "USD per customer",
+       "CLIENT INSTRUCTION 2026-08-26: CAC RAMPS DOWN over the horizon rather than sitting flat. UAE 85->55, "
+       "Oman and Bahrain 75->45, India 15->10, interpolated LINEARLY on model year. Aggressive and "
+       "Conservative hold the same proportional decline as Base. "
+       "WHY IT FALLS: brand recognition compounds, organic and word-of-mouth grow off a larger base, and "
+       "paid channels get cheaper per acquisition as creative, targeting and funnel conversion are tuned. "
+       "IT CUTS AGAINST THE MODEL'S OWN CAUTION ELSEWHERE - S25's convexity switch says CAC RISES with spend "
+       "because you buy progressively worse audiences. Both are real and they pull in opposite directions; "
+       "this ramp asserts that the learning effect wins over seven years. "
+       "IT IS NOT A COST SAVING - IT IS A REVENUE INCREASE. The marketing budget is fixed by schedule, so a "
+       "lower CAC buys MORE CUSTOMERS for the same money. Marketing spend does not fall by a dollar.",
+       FMT_USD, "cac7_" + key)
 MKT_SHARE = {"uae": 0.74, "gulf": 0.18, "india": 0.08}
 for key in REGIONS:
     sp("mktshare_" + key, "Marketing spend share - %s" % RLAB[key], MKT_SHARE[key], MKT_SHARE[key],
@@ -1452,6 +1510,381 @@ section(ws_scen, _sr[0], "STRUCTURAL SWITCHES - the two that move revenue", span
 headers(ws_scen, _sr[0] + 1, [("A", "Switch"), ("B", "Active (1/0)"), ("C", "State"), ("D", "ON value")])
 _sr[0] += 2
 SWROW = {}
+s_section("GROUP G: THE COST BASE")
+sp("storage_rate", "Vault storage fee", 0.00120, 0.00026, 0.00400, "%/yr of metal held",
+   "WHAT AURUMIX PAYS THE VAULT, not what it charges customers - decision 42 makes retail storage free. "
+   "BASE 0.12% IS BULLIONVAULT'S PUBLISHED TARIFF, insurance included, minimum USD 4/month "
+   "(bullionvault.com/help/tariff.html, retrieved 2026-08-26). Used as an UPPER BOUND on wholesale cost "
+   "because it is a RETAIL price and therefore already carries BullionVault's own margin. "
+   "AGGRESSIVE 0.026% is the DGCX Spot Gold vaulting tariff read literally - USD 0.10 per kilo per day at "
+   "today's gold price. IT IS CARRIED ONLY AS THE OPTIMISTIC CASE AND SHOULD NOT BE THE BASE: that notice "
+   "is dated 7 DECEMBER 2015, it is a DELIVERY-CYCLE tariff for taking metal off a futures contract (three "
+   "free days per cycle) rather than a custody contract, and it is a FIXED DOLLAR-PER-KILO charge set when "
+   "gold was about USD 34/g. The same physical rate was 0.107%/yr in 2015 and only reads as 0.026% now "
+   "because the metal quadrupled. No vault reprices that slowly. "
+   "CONSERVATIVE 0.40% is the low end of the range secondary sources quote for Dubai institutional storage. "
+   "For reference the Royal Mint publishes 1% + VAT for bar storage. "
+   "BENCHMARKED, NOT OBSERVED: no Dubai operator publishes an institutional custody tariff. Brink's runs the "
+   "DGCX-approved Dubai vaults (Gold Souk, DAFZ, Almas Tower) and quotes privately. GET A QUOTE - it is the "
+   "same conversation as naming the dealer.",
+   FMT_PCT3, "storage_rate")
+sp("storage_min_day", "Vault minimum charge", 25.0, 5.0, 65.0, "USD/day",
+   "Professional vault contracts carry a minimum invoice, and it BITES WHILE THE BOOK IS SMALL - which is "
+   "most of this horizon. BASE USD 25/day is the only MINIMUM published by any Dubai-approved vault "
+   "operator (DGCX Spot Gold vaulting notice, 7 December 2015). AGGRESSIVE USD 5/day is nearer "
+   "BullionVault's USD 4/MONTH. CONSERVATIVE USD 65/day is roughly USD 2,000/month, a plausible "
+   "institutional floor. AT BASE THE MINIMUM BINDS UNTIL ABOUT YEAR 3, which is the point: early-year unit "
+   "economics look worse than steady state because of minimum-commitment structures, and this is one of "
+   "three in the cost base - the others are the KYC platform minimum and the card programme minimums. "
+   "ASSUMPTION. Replace with the Brink's quote.",
+   FMT_NUM2, "storage_min_day")
+
+sp("vara_supervision_aed", "VARA annual supervision fee", 400000, 200000, 600000, "AED/yr",
+   "VARA Schedule 2 - Supervision and Authorisation Fees, Virtual Assets and Related Activities Regulations "
+   "2023 (rulebooks.vara.ae, retrieved 2026-08-26). PUBLISHED AND EXACT: AED 200,000 per year for each of "
+   "Category 1 VA Issuance, Broker-Dealer, Exchange and Custody; AED 80,000 for VA Transfer and Settlement. "
+   "Payable IN ADVANCE of conducting the activity. "
+   "VARA LICENSES ACTIVITIES, NOT THE TOKEN - you need each licence only if you actually perform that "
+   "activity, so the ladder is a BUSINESS-MODEL question, not a risk band. "
+   "BASE AED 400,000 = ISSUANCE + BROKER-DEALER. Issuance is mandatory for a gold-backed ARVA and is not "
+   "negotiable. Broker-Dealer is added because Aurumix SELLS DIRECTLY TO RETAIL through its own app and "
+   "agent network, and the definition catches 'soliciting or accepting orders for Virtual Assets and "
+   "accepting fiat currency for such orders' - which is the SIP exactly. There is NO CARVE-OUT letting an "
+   "issuer distribute its own token without it; the footnote checked on 2026-08-26 only requires issuers to "
+   "comply with the Issuance Rulebook. "
+   "AGGRESSIVE AED 200,000 = ISSUANCE ALONE, and it is a REAL STRATEGIC OPTION rather than optimism: mint "
+   "and let a VARA-licensed broker-dealer handle distribution. Saves USD 54,459/yr of supervision and "
+   "AED 600,000 of locked capital, at the cost of margin and control. "
+   "CONSERVATIVE AED 600,000 adds CUSTODY, which bites only if Aurumix safekeeps client VAs - and only "
+   "qualifies at all if each client's assets sit in SEPARATE WALLETS, so it turns on the wallet design. "
+   "EXCHANGE IS DELIBERATELY EXCLUDED: no trading venue, no order matching. VA TRANSFER AND SETTLEMENT TOO: "
+   "that definition targets moving CLIENTS' assets as a rail, not delivering your own issue to its buyer. "
+   "VERIFIED AGAINST VARA'S PUBLIC REGISTER 2026-08-26, and the register settles it. Of 56 licensed VASPs, "
+   "EXACTLY TWO hold Category 1 VA Issuance - Ctrl Alt Solutions DMCC and Tokinvest DMCC - and BOTH ALSO "
+   "HOLD BROKER-DEALER SERVICES. Neither holds issuance alone. Issuance + Broker-Dealer is the only observed "
+   "pattern in Dubai, which is why it is the Base. Both are tokenisation platforms rather than exchanges, so "
+   "they are the closest comparators Aurumix has. "
+   "THE SAMPLE IS TWO COMPANIES - it is the entire population of issuance licensees, not a survey, and it "
+   "should be quoted as such. "
+   "NEITHER HOLDS CUSTODY, and that is informative: on the register custody sits with specialists - Ceffu, "
+   "BitGo, Hex Trust, Komainu, Bitpanda, Zand Bank - not with issuers. So Conservative is really the "
+   "'Aurumix builds its own custody instead of partnering' case, and it has no Dubai precedent. "
+   "AGGRESSIVE HAS NO DUBAI PRECEDENT EITHER: no licensee holds issuance alone, so outsourcing distribution "
+   "is a strategy nobody local has taken, not merely a cheaper option. "
+   "Schedule 2 also lets VARA impose additional fees at its sole discretion.",
+   FMT_NUM, "vara_supervision_aed")
+sp("vara_application_aed", "VARA licence application fee (one-off)", 150000, 100000, 200000, "AED",
+   "VARA Schedule 2, same source. AED 100,000 for one regulated VA Activity, payable at SUBMISSION - the "
+   "application is not processed until it is received, so it is spent whether or not the licence is granted. "
+   "Each additional activity adds a Licence Extension Fee of 50% OF THE LOWER application fee. Base 150,000 "
+   "= Issuance 100,000 + 50% of Broker-Dealer's 100,000. Conservative 200,000 adds Custody at another "
+   "50,000. "
+   "VARA PUBLISHES NO APPROVAL TIMELINE ANYWHERE - never give the client a date.",
+   FMT_NUM, "vara_application_aed")
+sp("dmcc_annual_aed", "DMCC company licence", 20265, 20265, 20265, "AED/yr",
+   "DMCC published Schedule of Charges (dmcc.ae, retrieved 2026-08-26): standard trading and service licence "
+   "AED 20,265/yr. THE COST OF EXISTING AS A COMPANY, separate from and additional to the VARA licence, "
+   "which is the cost of doing virtual asset business. You pay both. "
+   "THE ESTABLISHMENT CARD (AED 1,825/yr) WAS REMOVED FROM THIS LINE ON 2026-08-26. It exists to sponsor "
+   "residence visas, so its driver is headcount, not regulation - it belongs with visas and office, where a "
+   "flexi-desk runs AED 16,000-19,000 and an employment residence permit about AED 2,972 each. "
+   "DMCC states charges are subject to change without notice and publishes no effective date. "
+   "NO SCENARIO VARIATION: it is a published tariff, not an estimate.",
+   FMT_NUM, "dmcc_annual_aed")
+sp("dmcc_setup_aed", "DMCC incorporation (one-off)", 12035, 12035, 12035, "AED",
+   "DMCC published Schedule of Charges: application AED 1,015 + new company registration AED 9,000 + "
+   "articles of association AED 2,020. One-off, Year 1.",
+   FMT_NUM, "dmcc_setup_aed")
+sp("kyc_per_check", "KYC and AML - per verification", 1.85, 1.35, 1.85, "USD/check",
+   "Sumsub published pricing (sumsub.com/pricing, retrieved 2026-08-26). COMPLIANCE TIER USD 1.85 IS THE "
+   "RIGHT ONE, not the USD 1.35 Basic tier: Basic is sold for NON-REGULATED businesses and excludes AML "
+   "screening, ongoing AML monitoring and proof-of-address, all three of which a VARA-licensed issuer needs. "
+   "Aggressive carries 1.35 only to show what the cheaper tier would be worth. Sumsub charges for SUCCESSFUL "
+   "verifications only.",
+   FMT_USD2, "kyc_per_check")
+sp("paidup_issuance_aed", "Paid-up capital - Category 1 VA Issuance", 1500000, 1500000, 1500000, "AED",
+   "VARA Virtual Asset Issuance Rulebook, ARVA Rules G.1 (retrieved 2026-08-26): Paid-Up Capital of at least "
+   "THE HIGHER OF (a) AED 1,500,000 and (b) 2% of the 24-month average value of Reserve Assets, WHERE "
+   "APPLICABLE. "
+   "UNDER OPTION A (DIRECT OWNERSHIP) LIMB (b) DOES NOT APPLY, because Rule III.C.1 attaches Reserve Assets "
+   "only to ARVAs which purport to maintain a stable value in respect of a Referenced Asset - and Aurumix's "
+   "customers own specific allocated grams rather than a claim on a stabilised pool. There are no Reserve "
+   "Assets to take 2% of. "
+   "THE FLOOR IS NOT CONDITIONAL. Choosing Option A removes the ESCALATOR, not the AED 1,500,000. The rule "
+   "reads at least the higher of, so with (b) inapplicable (a) governs. Flat in every scenario for that "
+   "reason. LOCKED, NOT SPENT: balance sheet only, never the P&L.",
+   FMT_NUM, "paidup_issuance_aed")
+sp("paidup_activity_aed", "Paid-up capital - licensed activities", 600000, 0, 1200000, "AED",
+   "VARA Company Rulebook Part VI.B, per licensed VA Activity: Broker-Dealer without custody is the HIGHER "
+   "of AED 600,000 or 25% of fixed annual overheads; Custody likewise. "
+   "IT IS CUMULATIVE, NOT THE HIGHEST SINGLE TEST. Part VI.A requires the capital for EACH VA Activity for "
+   "which the VASP is Licensed. Verified 2026-08-26. "
+   "TRACKS THE ACTIVITY LADDER on the supervision-fee row: Aggressive 0 (issuance alone, distribution "
+   "outsourced), Base 600,000 (Broker-Dealer), Conservative 1,200,000 (Broker-Dealer plus Custody). "
+   "NOTHING TO DO WITH THE ARVA OPTION A / OPTION B CHOICE - this attaches to the LICENCE, not to the token "
+   "design.",
+   FMT_NUM, "paidup_activity_aed")
+sp("nla_months", "Net liquid assets - months of opex", 1.2, 1.2, 1.2, "x monthly opex",
+   "VARA Company Rulebook Part VI.C: Net Liquid Assets at least 1.2 x monthly operating expenses. A "
+   "CONTINUOUS LIQUIDITY TEST, not a one-off subscription, and it appears NOWHERE IN THE CORPUS - added "
+   "2026-08-26. NOT ADDITIVE TO PAID-UP CAPITAL: the same cash can satisfy both, so the two are shown side "
+   "by side and never summed. It constrains the FORM the capital is held in, not the amount.",
+   FMT_NUM2, "nla_months")
+sp("insurance_usd", "Insurance - PI, D&O and crime", 45000, 20000, 90000, "USD/yr",
+   "MANDATORY, and the rulebook names the policies. VARA Company Rulebook Part VI.D requires professional "
+   "indemnity, directors' and officers', and COMMERCIAL CRIME COVER FOR VIRTUAL ASSETS IN HOT WALLETS, all "
+   "held with a regulated insurer, in an amount 'adequate to the size and complexity of the business'. VARA "
+   "sets no minimum sum and judges adequacy at licensing. Verified 2026-08-26. "
+   "BENCHMARKED, NOT OBSERVED - no insurer publishes VASP rates. Base USD 45,000 builds from UAE broker rate "
+   "guides: PI for a regulated financial firm at AED 10m limit runs AED 60,000-155,000/yr and D&O at the "
+   "same limit AED 55,000-145,000/yr; Base takes the BOTTOM of both ranges (about USD 31,300 combined) plus "
+   "about USD 13,700 for crime cover. Aggressive assumes SME limits (PI AED 22,000, D&O AED 14,000); "
+   "Conservative takes the top of the regulated ranges. "
+   "THE CRIME ELEMENT IS THE UNPRICED ONE and it is the hardest to place: S&P reports hot and warm wallet "
+   "crime capacity at roughly USD 75m per risk against USD 900m for cold specie, and a CFTC presentation "
+   "calls hot-wallet cover 'extremely limited', layered in USD 1-5m blocks. Aurumix's hot-wallet exposure is "
+   "operational treasury only, so a low limit should suffice - but the market is thin and the price is not "
+   "published. "
+   "THE PHYSICAL GOLD IS NOT INSURED HERE. Vault storage at 0.12% already includes insurance on the metal, "
+   "so covering it again would double-count. "
+   "FLAT ACROSS THE HORIZON, which is a simplification: PI and D&O scale with turnover, so this should be "
+   "re-quoted as the book grows. GET A BROKER QUOTE.",
+   FMT_USD, "insurance_usd")
+sp("audit_usd", "Audit and reserve attestation", 25000, 12000, 60000, "USD/yr",
+   "TWO SEPARATE ENGAGEMENTS, both mandatory under VARA Issuance Rulebook Rule III.D (verified 2026-08-26): "
+   "a SIX-MONTHLY independent audit, and an ANNUAL independent audit of financial statements. A named "
+   "independent auditor must be appointed and notified to VARA, and Senior Management must submit an "
+   "ATTESTATION to the accuracy of each audit. "
+   "OPTION A NARROWS THE SIX-MONTHLY ONE. Rule III.D.2.a covers (a) the number and value of ARVAs in "
+   "circulation and (b) the composition and value of Reserve Assets 'IF APPLICABLE'. Under direct ownership "
+   "there are no Reserve Assets, so limb (b) drops out and the engagement audits token supply against gold "
+   "held rather than a reserve pool. NARROWER SCOPE SHOULD PRICE LOWER than the brief assumes. "
+   "THE ATTESTATION FEE IS GENUINELY UNPRICED. No issuer, auditor or regulator has ever published one. "
+   "Paxos uses Withum and now KPMG, Tether uses BDO Italia, Circle uses Deloitte - all disclose scope, "
+   "standard and frequency, none disclose fee. The only figure found anywhere is a secondary estimate of "
+   "USD 2-12m/yr for LARGE issuers using Big Four, which is not this business. "
+   "BASE USD 25,000 = about USD 5,400 for the statutory audit (UAE market guides put a regulated SME at "
+   "AED 12,000-25,000/yr) plus about USD 20,000 for two six-monthly engagements at USD 10,000 each. THE "
+   "SECOND HALF IS A PLACEHOLDER, NOT A QUOTE. Get one from Bureau Veritas or an equivalent.",
+   FMT_USD, "audit_usd")
+sp("techaudit_usd", "Technology audit and penetration testing", 15000, 6000, 35000, "USD/yr",
+   "MANDATORY AND RECURRING, not a one-off. VARA Technology and Information Rulebook, E. Testing and Audit, "
+   "verbatim: VASPs 'must engage a qualified and independent third-party auditor to conduct vulnerability "
+   "assessments and penetration testing' at least ANNUALLY 'and prior to the introduction of any new "
+   "systems, applications and products'. Verified 2026-08-26. "
+   "BENCHMARKED from published penetration-testing price guides: small financial firms run USD 5,000-15,000 "
+   "per engagement, broader multi-asset engagements covering web, APIs and internal network USD 10,000-35,000. "
+   "Base takes the top of the small-firm range. "
+   "THE PER-LAUNCH TRIGGER IS NOT MODELLED. Every new system or product needs its own test, so a year with "
+   "several launches costs more than this line shows. It is a step cost tied to the product roadmap, and "
+   "the roadmap does not exist yet.",
+   FMT_USD, "techaudit_usd")
+sp("launch_audit_usd", "Launch technology and smart contract audit (one-off)", 40000, 20000, 75000, "USD",
+   "THE PRE-LAUNCH ENGAGEMENT the Technology Rulebook requires before any new system goes live, covering the "
+   "token contract as well as the platform. BENCHMARKED, not quoted: published penetration-test ranges top "
+   "out around USD 35,000 for a broad engagement, and smart-contract audit is a specialist skill that "
+   "prices above general application testing, so Base sits at USD 40,000. "
+   "THE BRIEF CARRIES USD 75,000 for a tier-1 smart contract audit. That figure is retained as the "
+   "CONSERVATIVE case rather than the Base because its source was never recorded. GET A QUOTE - firms of "
+   "this kind publish nothing.",
+   FMT_USD, "launch_audit_usd")
+sp("disc_entry", "ICS discount - entry fee", 0.25, 0.15, 0.40, "% of the fee",
+   "AN AVERAGE ACROSS TIERS, deliberately, rather than a five-rung ladder. Client instruction 2026-08-26: "
+   "model one blended discount on the qualifying population instead of splitting Silver / Gold / Platinum / "
+   "Sovereign, because no tier DISTRIBUTION exists in this model - the ICS rows are binary, qualified or "
+   "not - and inventing one would put a fabricated mix underneath every benefit number. "
+   "SIP ONLY. Spot earns no ICS, so this reduces Stream 1a and never Stream 1b. "
+   "WHAT AN AVERAGE HIDES: if the real ladder tops out near 75%, top-tier contributions are LOSS-MAKING on "
+   "the inflow lane. At a 5% fee, Aurumix's own cost is 1.425% of the contribution (the fabrication premium "
+   "on the 95% that buys metal), so the fee breaks even at a 71.5% DISCOUNT and goes negative above it. A "
+   "25% average is comfortably profitable; a 75% top rung is not. That may be a deliberate cross-subsidy "
+   "from the card, but it should be a decision rather than a surprise - and this row cannot show it.",
+   FMT_PCT, "disc_entry")
+sp("disc_card", "ICS discount - card fees", 0.20, 0.10, 0.35, "% of the fee",
+   "Blended discount on Stream 4 - FX margin, ATM allowance and the card issuance fee. The corpus ladder "
+   "runs FX 2.0 / 1.5 / 1.0% by tier and an ATM allowance that rises with tier; this is the average effect "
+   "of all of it, on the qualifying population. WAIVED REVENUE, not a cash cost.",
+   FMT_PCT, "disc_card")
+sp("disc_rebate", "ICS discount - gold rebate", 0.05, 0.03, 0.10, "% of card revenue",
+   "Gold Rewards, as a share of ALL CARD REVENUE - interchange (Stream 2) plus cardholder fees (Stream 4). "
+   "REBASED 2026-08-26 from interchange alone, which was too narrow on three counts. Interchange is the "
+   "SMALLER HALF by a long way (USD 50k against USD 833k at Y7). Stream 2 is NET OF THE PARTNER'S ~55% "
+   "SHARE, and sizing a customer's reward off the residual left after a partner split uses the wrong "
+   "denominator - the customer generated the whole thing. And the corpus cap was never interchange-only: it "
+   "reads 'capped at the interchange AND CREDIT REVENUE that customer generated, net of custody'. "
+   "THE RATE FELL FROM 15% TO 5% BECAUSE THE BASE WIDENED 17.8x. The check that matters is the rebate as a "
+   "share of CARD SPEND, against the corpus ladder of 0.15 / 0.45 / 0.75% by tier: 5% lands at 0.35% of "
+   "spend, mid-ladder, against a corpus blended average of about 0.18%. 15% on this base would have been "
+   "1.05% of spend - ABOVE THE TOP RUNG. "
+   "IT STILL CANNOT OVERRUN ITS FUNDING LINE, because it is expressed as a share of the very revenue that "
+   "funds it.",
+   FMT_PCT, "disc_rebate")
+sp("disc_family", "ICS discount - family wallet and will", 0.20, 0.10, 0.35, "% of the fee",
+   "Blended discount on Stream 3, covering the Family Portfolio and Digital Will pricing and the "
+   "per-beneficiary discount. The corpus ladder runs 0 / 10 / 20 / 35 / 50% by tier plus a per-beneficiary "
+   "discount starting at Platinum; this is the average effect on the qualifying population.",
+   FMT_PCT, "disc_family")
+sp("agent_commission", "Agent commission - share of the entry fee", 0.10, 0.05, 0.15, "% of the fee",
+   "CLIENT DECISION 2026-08-26: 10% of the entry fee, ONGOING - paid for as long as the customer keeps "
+   "contributing, which is how agent commission normally works and what the corpus describes (high "
+   "first-year commission plus renewal commission payable only while the policy stays in force). "
+   "ON A 5% ENTRY FEE THIS IS 0.50% OF EVERY CONTRIBUTION. The client's own written figure was 15%, which "
+   "the brief measured at 0.75pp against 0.85pp of Y1 gross margin - 88% of it. Conservative holds 15% so "
+   "that number stays reachable. "
+   "APPLIED TO THE AGENT-ACQUIRED SHARE OF THE BOOK, approximated as cumulative agent-driven acquisitions "
+   "over cumulative acquisitions from all channels. THE MODEL DOES NOT COHORT CUSTOMERS BY CHANNEL, so this "
+   "is an approximation: it assumes agent-acquired customers behave like everyone else on ticket and "
+   "persistency. If agent-sold customers persist better - which the insurance precedent suggests - this "
+   "UNDERSTATES the commission. "
+   "NOT MODELLED: the three-tier upline override. Whether 10% is the total across all levels or the "
+   "first-level rate is unresolved, and it is the difference between one commission and three.",
+   FMT_PCT, "agent_commission")
+sp("referral_reward", "Referral reward - share of the referee's entry fee", 0.30, 0.20, 0.40,
+   "% of six contributions",
+   "F17. 30% of the entry fee the referee pays over their SIX QUALIFYING CONTRIBUTIONS, credited in grams. "
+   "On a USD 33.60 ticket at a 5% fee that is 6 x 33.60 x 5% = USD 10.08 of fee, so about USD 3.02 per "
+   "successful referral. "
+   "THE SELF-FUNDING CLAIM WAS WITHDRAWN, NOT REPAIRED. It was tested against a 2.15% gross margin that had "
+   "not yet paid for the premium or the float. Against contribution-margin LTV on the inflow lane the "
+   "reward is roughly 250% of it; against all-streams LTV it is comfortably affordable. The honest frame is "
+   "CAC versus LTV, and which LTV you pick decides the answer. "
+   "TIMING IS SIMPLIFIED: the reward is booked when the referral is acquired, but it is really paid at the "
+   "REFEREE'S GATE - six contributions later, so no earlier than about month 19 given the channel itself "
+   "opens at period 13. The annual totals barely move; the monthly cash profile does.",
+   FMT_PCT, "referral_reward")
+sp("card_fixed_usd", "Card programme - NymCard platform and scheme fees", 30000, 18000, 72000,
+   "USD/yr",
+   "USD 2,500/MONTH. Client decision 2026-08-26. NymCard's standing charge for running the programme - "
+   "platform, account management and the scheme assessments that come with it. "
+   "BIN SPONSORSHIP WAS REMOVED FROM THIS LINE, and that is the client's correction rather than mine. The "
+   "figure began at USD 120,000/yr on the assumption that a BANK would sponsor the BIN and a PROCESSOR would "
+   "run the platform - two counterparties, two fees. NymCard is a CBUAE-licensed PRINCIPAL MEMBER OF BOTH "
+   "VISA AND MASTERCARD, so it sponsors the BIN under its own membership and there is no bank charging "
+   "separately for it. The bundle loses a component and the number falls with it. "
+   "WHAT IS LEFT IS STILL REAL: no BaaS provider gives away the platform. Every one charges a standing "
+   "monthly fee with a minimum, because it carries scheme and regulatory obligations on the programme "
+   "manager's behalf. Taking this to zero would say the card costs nothing to run. "
+   "BENCHMARKED, NOT QUOTED - NymCard publishes no pricing and neither does any comparable (Magnati, "
+   "SimpliFi, Paymentology, EMX, Rain, all quote-only). "
+   "ONE DEPENDENCY LEFT: BaaS providers price as a platform fee, as a SHARE OF INTERCHANGE, or both. The "
+   "model already hands 60% of interchange to a programme-manager counterparty. If NymCard IS that "
+   "counterparty and prices on interchange share, even this reduced line double counts and should go to "
+   "zero. One question settles it: platform fee, interchange share, or both?",
+   FMT_USD, "card_fixed_usd")
+sp("card_setup_usd", "Card programme - setup (one-off)", 50000, 25000, 100000, "USD",
+   "Programme setup, integration and certification with the issuer-processor, booked in the month the card "
+   "launches. BENCHMARKED - quote-only, same as the annual fee.",
+   FMT_USD, "card_setup_usd")
+sp("card_per_card", "Card programme - per card issued", 4.00, 2.00, 8.00, "USD/card",
+   "Card production, personalisation and delivery, on the NEWLY ISSUED flow rather than the active stock - "
+   "it is a manufacturing cost, paid once per card. A blend of physical and virtual: virtual costs cents, "
+   "physical with delivery runs several dollars. BENCHMARKED. "
+   "IF THE PROGRAMME GOES VIRTUAL-FIRST this falls close to zero, which is a real product lever - the "
+   "Aggressive case is roughly that.",
+   FMT_USD2, "card_per_card")
+sp("card_per_auth", "Card programme - per authorisation", 0.03, 0.02, 0.06, "USD/auth",
+   "Switching and authorisation cost per transaction, on the authorisation count the revenue build already "
+   "carries as a memo. SMALL PER EVENT AND LARGE IN AGGREGATE - the model runs over 320,000 authorisations "
+   "at Y7. BENCHMARKED.",
+   FMT_USD2, "card_per_auth")
+sp("card_fraud_bps", "Card programme - fraud and chargebacks", 0.0008, 0.0004, 0.0020, "% of spend",
+   "Fraud losses plus chargeback and dispute handling, as a share of card spend. 8 basis points is a "
+   "well-controlled programme; poorly controlled ones run several times that, which is why Conservative is "
+   "25 bps. BENCHMARKED. "
+   "NOT THE SAME RISK AS THE HOT-WALLET CRIME COVER in the insurance line: that protects Aurumix's own "
+   "tokens, this is loss on customer card transactions. Different exposure, different counterparty, no "
+   "overlap.",
+   FMT_PCT2, "card_fraud_bps")
+sp("xborder_rate", "Cross-border scheme assessment", 0.0140, 0.0100, 0.0140, "% of cross-border spend",
+   "CHARGED TO THE ISSUER by the card scheme whenever the merchant country differs from the issuer country. "
+   "PUBLISHED RATES: Visa International Service Assessment is 1.00% single-currency (ISA Base) and 1.40% "
+   "multi-currency (ISA Enhanced); Mastercard splits it as a 0.90% Issuer Cross-Border Assessment plus a "
+   "0.20% Currency Conversion Assessment, so 1.10% multi-currency. Retrieved 2026-08-26. "
+   "BASE TAKES 1.40% because most of Aurumix's cross-border spend IS multi-currency - Indian customers "
+   "spending rupees and Gulf customers spending rials on a UAE-issued card both convert. Aggressive takes "
+   "the single-currency rate. "
+   "IT IS BIGGER THAN AURUMIX'S INTERCHANGE SHARE. At 1.80% interchange and a 40% retained share Aurumix "
+   "earns 0.72% of spend; the scheme charges up to 1.40% on the cross-border half. What covers the gap is "
+   "the FX MARGIN charged to the customer (stream 4), which means the FX line is mostly COST RECOVERY "
+   "rather than margin - and the ICS ladder cuts it to 1.0% at Sovereign, where it barely covers the "
+   "assessment at all.",
+   FMT_PCT2, "xborder_rate")
+sp("uae_spend_abroad", "UAE cardholders - share of spend abroad or online-foreign", 0.10, 0.05, 0.20,
+   "% of UAE spend",
+   "THE ONLY ASSUMPTION IN THE CROSS-BORDER CALCULATION. Everything else is derived: Oman, Bahrain and "
+   "India customers hold a UAE-ISSUED card, so EVERY transaction they make is cross-border by definition - "
+   "merchant country differs from issuer country. That alone is 59% of card spend at Y7. This parameter "
+   "adds the UAE residents' own travel and foreign online spend on top, taking the total to about 63%. "
+   "ASSUMPTION. It moves the cross-border share by only a few points, so it is not load-bearing - the "
+   "structure is.",
+   FMT_PCT, "uae_spend_abroad")
+sp("prefund_days", "Card settlement prefunding - days of spend", 2.0, 1.0, 3.0, "days",
+   "WORKING CAPITAL, NOT A COST. The issuer-processor requires a prefunded settlement account so card "
+   "transactions can settle before customer funds arrive - the JIT funding mechanism in the credit draft's "
+   "section 5. "
+   "NO PUBLIC SCHEDULE EXISTS. Prefunding is contractual between programme manager, processor and sponsor, "
+   "never scheme-mandated, and it is not published by anyone. The common industry pattern is 1-3 days of "
+   "expected transaction volume held in a segregated account, sometimes with a rolling reserve on top for "
+   "higher-risk programmes. BENCHMARKED - take it to NymCard with everything else.",
+   FMT_NUM2, "prefund_days")
+sp("prefund_floor", "Card settlement prefunding - minimum balance", 100000, 50000, 250000, "USD",
+   "A CONTRACTUAL FLOOR, and on this book IT BINDS THROUGHOUT - two days of Y7 card spend is only about "
+   "USD 43,000, well under the minimum. So the prefunding requirement is effectively a fixed sum from card "
+   "launch, which makes it a FOURTH minimum-commitment structure alongside the vault, the KYC platform and "
+   "the card programme fee. "
+   "Industry sources put minimums for small programmes in the low-to-mid six figures; nothing is published. "
+   "BENCHMARKED.",
+   FMT_USD, "prefund_floor")
+sp("tech_build_y1", "Technology - build, Year 1", 350000, 200000, 600000, "USD",
+   "CLIENT INSTRUCTION 2026-08-26: BUILD IN Y1-Y2, MAINTENANCE FROM Y3. The heavy year. Covers the mobile "
+   "app, backend ledger, wallet infrastructure, the token contract, and integration with everything the "
+   "product depends on - NymCard for the card, the KYC vendor, the payment rail, the custody and trust "
+   "layer. "
+   "IT IS NOT THE WHOLE BUILD. The client's own app was due early September 2026, before this model's "
+   "horizon opens, so some of the consumer front end is already paid for outside these figures. What sits "
+   "here is the regulated-product layer built on top of it. "
+   "THE SMART CONTRACT AUDIT IS NOT IN HERE - it sits in the Year 1 one-off line with the launch technology "
+   "audit, so the two must not be double counted. "
+   "BENCHMARKED. No comparable publishes a build budget.",
+   FMT_USD, "tech_build_y1")
+sp("tech_build_y2", "Technology - build, Year 2", 150000, 80000, 300000, "USD",
+   "The tail of the build. Y2 is when the CARD AND CREDIT LAYER lands - both streams activate at period 13 - "
+   "so this is not merely finishing Y1's work, it is a second product going live. "
+   "BENCHMARKED.",
+   FMT_USD, "tech_build_y2")
+sp("tech_maint", "Technology - annual maintenance from Y3", 120000, 70000, 220000, "USD/yr",
+   "Hosting, third-party licences, security patching and ongoing engineering once the build settles. Runs "
+   "from Y3 onward at the client's instruction. "
+   "FLAT, WHICH IS A SIMPLIFICATION AND UNDERSTATES THE BACK YEARS. The book goes from about 4,000 paying "
+   "customers at Y3 to over 70,000 at Y7; the brief's own technology block grows roughly five-fold across a "
+   "comparable span. A flat line is the simple version, not the accurate one - revisit it if the Y6-Y7 "
+   "numbers start carrying weight. "
+   "ON-CHAIN MINTING COST IS NOT IN HERE, AND IT IS A CHAIN DECISION WORTH SIX FIGURES. Every monthly SIP "
+   "contribution is a mint - about 855,000 events a year at Y7. On an L2 that is roughly USD 8,500/yr and "
+   "immaterial; on Ethereum mainnet at USD 2 a transaction it is about USD 1.7m/yr, which would be one of "
+   "the largest costs in the business. NOBODY HAS RECORDED WHICH CHAIN AURUMIX ISSUES ON. Until that is "
+   "settled the cost cannot be modelled, and it is left out rather than guessed - but it must not be read "
+   "as zero.",
+   FMT_USD, "tech_maint")
+sp("cost_contingency", "Contingency on total costs", 0.15, 0.10, 0.30, "% of costs",
+   "CLIENT INSTRUCTION 2026-08-26: 15% on top of everything modelled, to stand in for the cost families not "
+   "yet built. "
+   "IT IS A PLACEHOLDER, NOT COVERAGE, AND THE ARITHMETIC SAYS SO. What is still missing is HEADCOUNT, "
+   "technology's on-chain minting cost, legal and trust, security, corporate, and tax. Headcount alone is "
+   "anchored in the brief at about USD 588,000 in Year 1 - roughly 78% of the entire Year 1 cost base as "
+   "currently built - against which 15% is about USD 112,000. THE CONTINGENCY COVERS A FIFTH OF ONE MISSING "
+   "BLOCK, and there are five others. "
+   "READ EVERY PROFIT FIGURE IN THIS MODEL AS AN UPPER BOUND until headcount lands. It is not a forecast, "
+   "it is revenue less the costs that happen to have been built so far.",
+   FMT_PCT, "cost_contingency")
+sp("kyc_min_month", "KYC and AML - monthly minimum", 299.0, 149.0, 299.0, "USD/month",
+   "Sumsub published minimum monthly commitment for the Compliance tier, same source. THE SECOND OF THREE "
+   "MINIMUM-COMMITMENT STRUCTURES in this cost base - the vault minimum is the first, the card programme "
+   "minimums are the third. It binds below about 162 verifications a month, which on this book is most of "
+   "the first two years.",
+   FMT_USD2, "kyc_min_month")
+_sr[0] += 1
+
 for key, label, default, dvl, on_val, desc in [
     ("prepaid_vs_credit", "Prepaid instead of credit", "Credit", '"Credit,Prepaid"', "Prepaid",
      "ON (Prepaid) caps interchange at 1.00% and removes the credit stream entirely. 'NOT A PRODUCT CHOICE, "
@@ -1460,6 +1893,21 @@ for key, label, default, dvl, on_val, desc in [
      "NOBODY HAS DECIDED THIS. It determines whether the card streams - the majority of revenue - decay with "
      "churn or are immune to it. Worth a 42% swing in terminal revenue. Default ON because nothing in the "
      "design revokes the card; report both."),
+    ("premium_absorbed", "Fabrication premium borne by", "Aurumix", '"Customer,Aurumix"', "Aurumix",
+     "DEFAULT AURUMIX, which REVERSES the 2026-08-21 client decision and does so deliberately. That review "
+     "put the premium on the customer - grams delivered short by (1+premium), stream 1 keeping the full "
+     "headline fee - which is standard for gold products where the quoted price includes the dealer spread. "
+     "The model now shows procurement as a COST instead, because a cost the client can see is the point of "
+     "the cost build, and because charging the customer for it is better presented as UPSIDE than baked "
+     "into the base case. Switching back to Customer restores the 2026-08-21 treatment exactly: grams fall "
+     "1.50%, the COGS line goes to zero, and gross profit rises by the same amount. THE TWO SETTINGS ARE "
+     "MUTUALLY EXCLUSIVE BY CONSTRUCTION, which is what stops the double-count fixed at 29f98e0 returning."),
+    ("premium_on_gross", "Premium charged on gross inflow", "Net new", '"Net new,Gross"', "Gross",
+     "D30: the premium is paid on NET NEW grams. Gold returned by redemption is already a fabricated bar "
+     "sitting in the float, and a bar that exists does not need making twice. Switching to Gross charges "
+     "every gram, which is correct ONLY if redeemed metal is sold back to the dealer rather than recycled. "
+     "GATED ON CORRECTION 30, WHICH IS UNDESIGNED - nobody has written down which way redeemed gold goes. "
+     "Worth USD 165,755 of retained margin over the horizon, so the undesigned question has a price."),
 ]:
     r = _sr[0]
     ws_scen["A%d" % r] = label
@@ -1708,11 +2156,19 @@ CHURN = sref("monthly_churn")
 # true. Standard practice for gold products is that the quoted price includes
 # the dealer spread, so the customer bears it. DO NOT reintroduce a premium
 # term here without removing the (1+premium) divisor in "Grams purchased".
-NET_FEE = aref("entry_fee")
+# GROSS, and named so. It was called NET_FEE back when the premium was netted
+# off it; 29f98e0 moved the premium onto the customer and stream 1 has earned
+# the full headline fee ever since. The name outlived the arithmetic by five
+# days and is corrected here so the next reader is not misled by it.
+GROSS_FEE = aref("entry_fee")
 ATM_TERMS = "+".join(
     "%s*MAX(0,%s-%s)" % (sref("atm_" + k), sref("atmm_" + k), aref("atm_allowance"))
     for k, _n, _b, _a, _c, _mb, _ma, _mc in ATM)
 SUBTOTALS = []
+
+divider(ws_model, _mr[0],
+        "REVENUE - the customer engine and the six streams, by region")
+_mr[0] += 2
 
 for rg in REGIONS:
     banner(ws_model, _mr[0], "REGION: %s" % RLAB[rg].upper())
@@ -1726,11 +2182,19 @@ for rg in REGIONS:
     # Raw demand = this region's share of non-agent demand, plus whatever share
     # of agent output actually sells here. Then this region's OWN saturation.
     # direct, referral, raw, sat, new, pay, churn, hold, cum
+    # CAC IS NO LONGER A CONSTANT. Straight-line from the Y1 parameter to the Y7
+    # one on MODEL YEAR, so it is visible on the face of the sheet rather than
+    # buried inside the acquisition formula - the client will want to see it fall.
+    m_row("cacnow_" + rg, "  Marketing CAC this period (ramping Y1 to Y7)", "USD/customer",
+          lambda i, rg=rg: "=%s+(%s-%s)*(%s-1)/6" % (
+              sref("cac_" + rg), sref("cac7_" + rg), sref("cac_" + rg), mr("year", i)),
+          FMT_USD2)
     _pay_row, _cum_row = _mr[0] + 6, _mr[0] + 9
     m_row("direct_" + rg, "  Direct-driven (this market's budget at its own CAC)", "accounts",
           lambda i, rg=rg: "=INDEX(Assumptions!$B$%d:$B$%d,%s)*%s/12*%s/%s*(1+%s)*%s" % (
               AROW["mktg_y1"], AROW["mktg_y7"], mr("year", i), sref("mktshare_" + rg),
-              mr("n", i), sref("cac_" + rg), sref("organic_share"), _open(i, rg)), FMT_NUM2, GREEN)
+              mr("n", i), mr("cacnow_" + rg, i), sref("organic_share"), _open(i, rg)),
+          FMT_NUM2, GREEN)
     m_row("ref_" + rg, "  Referral-driven (from this market's own base)", "accounts",
           lambda i, rg=rg, pr=_pay_row: 0 if i == 0 else gate("referral", i, "%s*%s/12*%s*%s" % (
               pcell(pr, i - 1), sref("referral_rate"), sref("referral_conversion"), mr("n", i))),
@@ -1788,10 +2252,17 @@ for rg in REGIONS:
               mr("pay_" + rg, i), aref("spotattach_" + rg), sref("spot_attach_mult"),
               sref("spot_frequency"), aref("spotticket_" + rg), sref("spot_ticket_mult"),
               mr("n", i))), FMT_USD)
+    # THE (1+premium) DIVISOR IS THE CUSTOMER BEARING THE PREMIUM, in metal
+    # delivered rather than in cash (client decision 2026-08-21). Under
+    # sw_premium_absorbed the divisor collapses to 1, grams are credited at
+    # spot, and the premium reappears as a real cost in the COGS band below.
+    # Exactly one of the two is ever live, so the premium cannot be charged on
+    # both sides of the trade again - which is the bug 29f98e0 fixed.
     m_row("grams_in_" + rg, "  Grams purchased", "grams",
-          lambda i, rg=rg: "=(%s+%s)*(1-%s)/%s/(1+%s)" % (
+          lambda i, rg=rg: "=(%s+%s)*(1-%s)/%s/(1+%s*(1-%s))" % (
               mr("sip_" + rg, i), mr("spot_" + rg, i), aref("entry_fee"),
-              mr("gold_px", i), aref("fab_premium")), FMT_NUM2)
+              mr("gold_px", i), aref("fab_premium"),
+              sref("sw_premium_absorbed")), FMT_NUM2)
     m_row("decay_" + rg, "  Collateral-eligible AUM decay rate (holder-weighted)", "%/period",
           lambda i, rg=rg: "=(%s+%s*IF(%s+%s=0,1,(%s+%s*%s)/(%s+%s)))*%s/12" % (
               sref("self_custody_leakage"), sref("redemption_rate"),
@@ -1959,9 +2430,9 @@ for rg in REGIONS:
 
     # -- the six streams, plus the redemption cost --------------------------
     m_row("s1a_" + rg, "  Stream 1a - Entry fee, SIP", "USD",
-          lambda i, rg=rg: "=%s*%s" % (mr("sip_" + rg, i), NET_FEE), FMT_USD)
+          lambda i, rg=rg: "=%s*%s" % (mr("sip_" + rg, i), GROSS_FEE), FMT_USD)
     m_row("s1b_" + rg, "  Stream 1b - Entry fee, SPOT", "USD",
-          lambda i, rg=rg: "=%s*%s" % (mr("spot_" + rg, i), NET_FEE), FMT_USD)
+          lambda i, rg=rg: "=%s*%s" % (mr("spot_" + rg, i), GROSS_FEE), FMT_USD)
     m_row("s2_" + rg, "  Stream 2 - Card interchange", "USD",
           lambda i, rg=rg: "=%s*IF(%s=1,MIN(%s,1%%),%s)*(1-%s)" % (
               mr("spendusd_" + rg, i), sref("sw_prepaid_vs_credit"), aref("ic_gold"),
@@ -2174,6 +2645,708 @@ m_row("total_check", "CHECK: regional subtotals + B2B = sum of streams", "delta"
                                        ("s1a", "s1b", "s2", "s3", "s4", "s5", "s6"))),
       FMT_NUM3, BLACK_BOLD)
 
+# ============================================================================
+# WORKING CAPITAL - THE FLOAT
+#
+# NOT A COST, and it is in its own band precisely so nobody reads it as one.
+# The float is INVENTORY: Aurumix's own gold, bought with Aurumix's own money
+# and sitting on its own shelf before any customer owns it. The money is tied
+# up, not spent, and it comes back on wind-down. It belongs on the balance
+# sheet and in the funding ask; it must never reach the P&L.
+#
+# THE SIZING RULE, verbatim from _draft_allocation-and-float.md:
+#     float >= one bar denomination + a buffer of N days trailing inflow,
+#     two bars being the launch setting.
+# Two bars is a SETTLED RULE. N is an assumption - see float_buffer_days.
+# ============================================================================
+_mr[0] += 2
+divider(ws_model, _mr[0],
+        "WORKING CAPITAL - the float. NOT A COST: money tied up, not money spent")
+_mr[0] += 2
+
+banner(ws_model, _mr[0],
+       "THE FLOAT - Aurumix's own gold, held before any customer owns it")
+_mr[0] += 1
+
+m_row("daily_grams", "  Daily demand", "grams/day",
+      lambda i: "=%s/(%s*365/12)" % (mr("grams_bought", i), mr("n", i)), FMT_NUM2)
+
+# MAX of the two halves. The floor binds until demand passes 10 g/day (around
+# M6 at Base); above that the buffer term takes over and the float scales with
+# the book. Writing it as MAX rather than an IF keeps the crossover implicit in
+# the arithmetic instead of hard-coding the month it happens.
+m_row("float_grams", "  FLOAT REQUIRED", "grams",
+      lambda i: "=MAX(2*%s,%s+%s*%s)" % (
+          aref("bar_grams"), aref("bar_grams"),
+          sref("float_buffer_days"), mr("daily_grams", i)), FMT_NUM)
+note(ws_model, _mr[0],
+     "MAX(two bars, one bar + N days of demand). TWO BARS IS THE FLOOR because you need one bar to sell from "
+     "and one behind it - hold only one and you drop below a full bar the moment you sell, with customers "
+     "already paid for gold you cannot deliver. That half is a SETTLED RULE from the design docs. "
+     "THE N-DAY BUFFER IS THE ASSUMPTION, and it sizes REPLENISHMENT - how long to get metal back into the "
+     "vault, not how long demand takes to empty the shelf. The floor binds until demand reaches 10 grams a "
+     "day, around month six, so THE LAUNCH FIGURE DOES NOT DEPEND ON THE BUFFER AT ALL.")
+_mr[0] += 1
+
+m_row("float_bars", "  ...in bars", "bars",
+      lambda i: "=%s/%s" % (mr("float_grams", i), aref("bar_grams")), FMT_NUM2)
+
+m_row("float_usd", "FLOAT REQUIRED (standing balance)", "USD",
+      lambda i: "=%s*%s*(1+%s)" % (mr("float_grams", i), mr("gold_px", i),
+                                   aref("fab_premium")), FMT_USD, BLACK_BOLD, True)
+note(ws_model, _mr[0],
+     "AT SPOT PLUS THE PREMIUM, because the float is bought from the dealer like any other metal. This is a "
+     "BALANCE, not a flow - it is what is sitting on the shelf at that date, not what was spent that period.")
+_mr[0] += 1
+
+# THE CASH CALL, and it is deliberately NOT the change in the USD balance.
+# The balance also moves when gold reprices, and revaluing metal already held
+# needs no new money. Only EXTRA GRAMS have to be funded.
+m_row("float_topup", "  Cash needed this period (new grams only)", "USD",
+      lambda i: "=%s*%s*(1+%s)" % (mr("float_grams", i), mr("gold_px", i),
+                                   aref("fab_premium")) if i == 0
+      else "=MAX(0,%s-%s)*%s*(1+%s)" % (
+          mr("float_grams", i), mr("float_grams", i - 1), mr("gold_px", i),
+          aref("fab_premium")), FMT_USD)
+note(ws_model, _mr[0],
+     "NOT the change in the balance above. The balance also moves when gold reprices, and metal already on "
+     "the shelf needs no new money to revalue - only EXTRA GRAMS have to be funded. M1 carries the whole "
+     "200 g because that is the launch purchase.")
+_mr[0] += 1
+
+_fc = _mr[0]
+m_row("float_cum", "CUMULATIVE CASH INVESTED IN THE FLOAT", "USD",
+      lambda i, fc=_fc: "=%s" % mr("float_topup", i) if i == 0
+      else "=%s+%s" % (pcell(fc, i - 1), mr("float_topup", i)),
+      FMT_USD, BLACK_BOLD, True)
+
+m_row("card_prefund", "CARD SETTLEMENT PREFUNDING (working capital, not a cost)", "USD",
+      lambda i: gate("s2", i, "MAX(%s,%s/365*%s)" % (
+          sref("prefund_floor"), mr("card_spend_usd", i), sref("prefund_days"))),
+      FMT_USD, BLACK_BOLD, True)
+note(ws_model, _mr[0],
+     "CASH ON DEPOSIT WITH THE PROCESSOR so card transactions settle before customer funds arrive - the JIT "
+     "funding mechanism. LIKE THE FLOAT, IT IS MONEY TIED UP RATHER THAN SPENT, and it comes back if the "
+     "programme winds down. It is NOT in any cost total. "
+     "THE FLOOR BINDS THROUGHOUT: two days of Y7 card spend is about USD 43,000 against a USD 100,000 "
+     "minimum, so this is effectively a fixed sum from card launch - a FOURTH minimum-commitment structure. "
+     "No public schedule exists for prefunding; it is contractual with the processor.")
+_mr[0] += 1
+
+m_row("float_check", "CHECK: float never falls below two bars (must be >= 0)", "grams",
+      lambda i: "=%s-2*%s" % (mr("float_grams", i), aref("bar_grams")),
+      FMT_NUM2, BLACK_BOLD)
+
+# ============================================================================
+# COST BASE
+#
+# Everything ABOVE the divider is revenue; everything BELOW it is cost. The two
+# are built as separate bands on purpose - v1.0 interleaved them and it stopped
+# being possible to say what any single stream actually earned.
+#
+# Costs arrive ONE FAMILY AT A TIME, deliberately. This band currently carries
+# COGS and nothing else. Opex, acquisition, card programme, benefit costs and
+# tax each land here in turn, and each appends its own subtotal key to
+# COST_LINES so the totals below never need editing.
+# ============================================================================
+_mr[0] += 2
+divider(ws_model, _mr[0],
+        "COST BASE - every row below this line is money going OUT")
+_mr[0] += 2
+
+banner(ws_model, _mr[0],
+       "COST OF GOODS SOLD - inside the gold trade, charged against stream 1")
+_mr[0] += 1
+
+COGS_LINES = []
+
+# The metal that comes BACK. Derived from the custody balance rather than
+# recomputed from the decay rates, so it reconciles to the revenue band by
+# construction: custody(t) = custody(t-1) - returned(t) + purchased(t), so
+# returned(t) is whatever that identity leaves over. Recomputing it from
+# decayr would give a second, independently-driftable copy of the same number.
+m_row("grams_recycled", "  Grams returned by redemption (recycled into the float)", "grams",
+      lambda i: "=0" if i == 0 else "=MAX(0,%s+%s-%s)" % (
+          mr("grams_custody", i - 1), mr("grams_bought", i), mr("grams_custody", i)),
+      FMT_NUM2)
+note(ws_model, _mr[0],
+     "THE METAL NEVER PHYSICALLY LEAVES. This product has no physical redemption - exit is a cash buyback - "
+     "so a redeeming customer's gold stops being theirs and becomes Aurumix's own float, already vaulted "
+     "and already in bar form. That is the whole reason D30 charges the premium on net new grams.")
+_mr[0] += 1
+
+m_row("grams_fabricated", "  Net new grams - the metal that must actually be made", "grams",
+      lambda i: "=MAX(0,%s-%s*(1-%s))" % (
+          mr("grams_bought", i), mr("grams_recycled", i),
+          sref("sw_premium_on_gross")), FMT_NUM2)
+
+# THE COST LINE. What Aurumix hands the dealer over and above the spot value of
+# the metal - the price of having a bar made, stamped and assayed.
+#
+# It is charged on FABRICATED grams, not on grams sold, and the gap between the
+# two is the whole of D30. Under sw_premium_absorbed = 0 the customer is buying
+# metal at spot+premium and this line correctly falls to zero, because Aurumix
+# is then passing the cost on rather than carrying it.
+m_row("cogs_premium", "COGS - Fabrication premium paid to the dealer", "USD",
+      lambda i: "=%s*%s*%s*%s" % (mr("grams_fabricated", i), mr("gold_px", i),
+                                  aref("fab_premium"),
+                                  sref("sw_premium_absorbed")), FMT_USD, BLACK_BOLD)
+COGS_LINES.append("cogs_premium")
+note(ws_model, _mr[0],
+     "WHAT IS NOT IN THIS LINE, ON PURPOSE. Aurumix charges every customer for the premium but pays it only "
+     "on metal it actually has fabricated, so the premium on RECYCLED grams is margin it keeps - roughly "
+     "USD 166k over the horizon at the modelled redemption rates. That is real and it is deliberately left "
+     "out of the model: it is a consequence of owning the float, it is the client's to take or leave, and "
+     "it belongs in the conversation as upside rather than in the base case as revenue.")
+_mr[0] += 2
+
+m_row("total_cogs", "TOTAL COST OF GOODS SOLD", "USD",
+      lambda i: "=" + "+".join(mr(k, i) for k in COGS_LINES), FMT_USD, BLACK_BOLD, True)
+_mr[0] += 2
+
+# ---------------------------------------------------------------- OPEX ------
+banner(ws_model, _mr[0],
+       "OPERATING EXPENSES - the cost of running the business, not of buying the metal")
+_mr[0] += 1
+
+OPEX_LINES = []
+
+# THE FLOAT IS IN THE VAULT TOO. Aurumix's own bars sit on the same shelf as
+# the customers' and are charged storage identically. Immaterial at Y7 (0.8% of
+# the metal) but 7% of it in Year 1, which is exactly when the cost base is
+# tightest - so it is included rather than waved away.
+m_row("storage_grams", "  Metal in the vault (customer gold + Aurumix's own float)", "grams",
+      lambda i: "=%s+%s" % (mr("grams_custody", i), mr("float_grams", i)), FMT_NUM)
+
+m_row("opex_storage", "OPEX - Vault storage", "USD",
+      lambda i: "=MAX(%s*%s*365/12,%s*%s*%s*%s/12)" % (
+          sref("storage_min_day"), mr("n", i),
+          sref("storage_rate"), mr("storage_grams", i), mr("gold_px", i), mr("n", i)),
+      FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_storage")
+note(ws_model, _mr[0],
+     "MAX(the vault's minimum, the percentage rate on metal held). THIS IS WHAT AURUMIX PAYS THE VAULT. It "
+     "is NOT a fee charged to customers - decision 42 makes retail storage free forever, and every "
+     "comparator does the same: Paxos states it 'does not charge gold storage fees to its customers at this "
+     "time' and Kinesis charges 0%, funding it from a share of transaction fees. THE CLIENT'S ASSUMED "
+     "0.8-1.0% CUSTODY FEE IS BOTH UNCOMPETITIVE AND ROUGHLY 7x THE REAL COST.")
+_mr[0] += 1
+
+m_row("storage_pct", "  ...as % of metal held per year (memo - watch the minimum bite)", "%/yr",
+      lambda i: "=IF(%s=0,0,%s/(%s*%s)*12/%s)" % (
+          mr("storage_grams", i), mr("opex_storage", i), mr("storage_grams", i),
+          mr("gold_px", i), mr("n", i)), FMT_PCT3)
+
+# ANNUAL FEES LAND ON AN ANNIVERSARY, not in even monthly slices. Both VARA
+# supervision and the DMCC licence are invoices that arrive once a year, and
+# VARA's is payable IN ADVANCE of conducting the activity - so they are booked
+# in the first month of each model year, and in full in the annual columns.
+# Smearing them monthly would flatter Year 1 cash, which is the year that
+# matters most for the funding ask.
+ANNIV = lambda i: "OR(%s=1,%s=0)" % (mr("cal_month", i), mr("cal_month", i))
+
+m_row("opex_vara", "OPEX - VARA annual supervision", "USD",
+      lambda i: "=IF(%s,%s/%s,0)" % (ANNIV(i), sref("vara_supervision_aed"), aref("aed_usd")),
+      FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_vara")
+note(ws_model, _mr[0],
+     "PER LICENSED ACTIVITY, and the activity set is unconfirmed - see the Scenario note. Payable IN ADVANCE "
+     "of conducting the activity, so Year 1 carries it before a single customer arrives.")
+_mr[0] += 1
+
+m_row("opex_dmcc", "OPEX - DMCC company licence", "USD",
+      lambda i: "=IF(%s,%s/%s,0)" % (ANNIV(i), sref("dmcc_annual_aed"), aref("aed_usd")),
+      FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_dmcc")
+
+# KYC is the one regulatory line that MOVES WITH THE BOOK - it is charged per
+# verification, so it is driven by NEW customers rather than by the stock.
+m_row("opex_kyc", "OPEX - KYC and AML verification", "USD",
+      lambda i: "=MAX(%s*%s,%s*%s)" % (
+          sref("kyc_min_month"), mr("n", i),
+          sref("kyc_per_check"), mr("new_total", i)), FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_kyc")
+note(ws_model, _mr[0],
+     "MAX(the monthly minimum, per-verification cost x new customers). Charged on SUCCESSFUL verifications "
+     "only. The minimum binds below about 162 verifications a month, which is most of the first two years.")
+_mr[0] += 1
+
+m_row("opex_oneoff", "OPEX - One-off Year 1 (licence application, incorporation, launch audit)", "USD",
+      lambda i: "=IF(%s=1,(%s+%s)/%s+%s,0)" % (
+          mr("period_idx", i), sref("vara_application_aed"), sref("dmcc_setup_aed"),
+          aref("aed_usd"), sref("launch_audit_usd")), FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_oneoff")
+note(ws_model, _mr[0],
+     "M1 ONLY: the VARA licence application, DMCC incorporation, and the pre-launch technology and smart "
+     "contract audit. The VARA fee is spent at submission whether or not the licence is granted - the "
+     "application is not processed until it is paid.")
+_mr[0] += 1
+
+m_row("opex_insurance", "OPEX - Insurance (PI, D&O, crime)", "USD",
+      lambda i: "=%s*%s/12" % (sref("insurance_usd"), mr("n", i)), FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_insurance")
+note(ws_model, _mr[0],
+     "MANDATORY under Company Rulebook VI.D, which names professional indemnity, directors' and officers', "
+     "and CRIME COVER FOR VIRTUAL ASSETS IN HOT WALLETS. No minimum sum is prescribed - VARA judges adequacy "
+     "at licensing. THE METAL IS NOT COVERED HERE: vault storage already includes insurance on the gold.")
+_mr[0] += 1
+
+m_row("opex_audit", "OPEX - Audit and reserve attestation", "USD",
+      lambda i: "=%s*%s/12" % (sref("audit_usd"), mr("n", i)), FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_audit")
+note(ws_model, _mr[0],
+     "A SIX-MONTHLY independent audit plus an ANNUAL financial-statement audit, both mandatory under "
+     "Issuance Rulebook III.D, each followed by a Senior Management attestation to VARA. UNDER OPTION A the "
+     "six-monthly engagement audits TOKEN SUPPLY, not a reserve pool - limb (b) of III.D.2.a applies only "
+     "'if applicable' and direct ownership has no Reserve Assets. THE FEE IS UNPRICED BY EVERY ISSUER, "
+     "AUDITOR AND REGULATOR CHECKED - this is a placeholder.")
+_mr[0] += 1
+
+m_row("opex_techaudit", "OPEX - Technology audit and penetration testing", "USD",
+      lambda i: "=%s*%s/12" % (sref("techaudit_usd"), mr("n", i)), FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_techaudit")
+note(ws_model, _mr[0],
+     "ANNUAL AND RECURRING, not a launch one-off - Technology Rulebook E requires an independent third-party "
+     "vulnerability assessment and penetration test at least annually AND before any new system, "
+     "application or product goes live. THE PER-LAUNCH TRIGGER IS NOT MODELLED: it is a step cost tied to a "
+     "product roadmap that does not exist yet, so a year with several launches costs more than this shows.")
+_mr[0] += 1
+
+# STREAM 0. A mandatory, uncapped, zero-revenue cost that scales with the book -
+# VARA Annex 2 III.E.4 forbids charging ANY fee on redemption, so nothing offsets
+# it. The event count has been carried as a memo since the revenue build for
+# exactly this moment.
+m_row("opex_redemption", "OPEX - Redemption handling (no fee may be charged)", "USD",
+      lambda i: "=%s*%s" % (mr("redemptions", i), aref("redemption_cost")),
+      FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_redemption")
+note(ws_model, _mr[0],
+     "USD 3.20 per event: Sumsub AML RE-SCREENING at 1.85 plus operational handling at about 1.35. The "
+     "outbound bank transfer fee was removed - that is the customer's to bear. NOT A DOUBLE COUNT WITH THE "
+     "KYC LINE: that one charges new customers at onboarding, this one charges a different event. "
+     "THE ASYMMETRY IS REGULATORY, NOT A CHOICE: Aurumix may pass through the cost of taking money IN (the "
+     "rail, D31) but is forbidden from passing through the cost of paying it OUT. Immaterial at Base rates; "
+     "it becomes material exactly in a redemption spike, which is when cash is scarcest.")
+_mr[0] += 1
+
+# BUILD IN Y1-Y2, MAINTENANCE FROM Y3, at the client's instruction. Two rows
+# rather than one so the shape is visible: a business that spends heavily to
+# build and then settles, which is what the cash profile actually looks like.
+m_row("opex_techbuild", "OPEX - Technology build (Y1-Y2)", "USD",
+      lambda i: "=IF(%s=1,%s/12*%s,IF(%s=2,%s/12*%s,0))" % (
+          mr("year", i), sref("tech_build_y1"), mr("n", i),
+          mr("year", i), sref("tech_build_y2"), mr("n", i)), FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_techbuild")
+note(ws_model, _mr[0],
+     "THE APP, LEDGER, WALLET, TOKEN CONTRACT AND EVERY INTEGRATION - card, KYC, payment rail, custody. Y2 "
+     "carries the card and credit layer, which activates at period 13, so it is a second product going live "
+     "rather than a tidy-up. THE SMART CONTRACT AUDIT IS IN THE YEAR 1 ONE-OFF LINE, not here.")
+_mr[0] += 1
+
+m_row("opex_techmaint", "OPEX - Technology maintenance (Y3 onward)", "USD",
+      lambda i: "=IF(%s>=3,%s/12*%s,0)" % (mr("year", i), sref("tech_maint"), mr("n", i)),
+      FMT_USD, BLACK_BOLD)
+OPEX_LINES.append("opex_techmaint")
+note(ws_model, _mr[0],
+     "FLAT FROM Y3, WHICH UNDERSTATES THE BACK YEARS - the book grows from about 4,000 paying customers to "
+     "over 70,000 across that span while this line does not move. "
+     "ON-CHAIN MINTING IS NOT IN HERE AND IS NOT ZERO: about 855,000 mint events a year at Y7. On an L2 "
+     "that is roughly USD 8,500/yr; on Ethereum mainnet it is about USD 1.7m/yr. NOBODY HAS RECORDED WHICH "
+     "CHAIN AURUMIX ISSUES ON, so it is left out rather than guessed.")
+_mr[0] += 1
+
+m_row("total_opex", "TOTAL OPERATING EXPENSES", "USD",
+      lambda i: "=" + "+".join(mr(k, i) for k in OPEX_LINES), FMT_USD, BLACK_BOLD, True)
+
+_mr[0] += 2
+
+# ------------------------------------------------------- ICS BENEFIT COSTS --
+banner(ws_model, _mr[0],
+       "ICS BENEFIT COSTS - discounts given away, out of streams that already exist")
+_mr[0] += 1
+
+BENEFIT_LINES = []
+
+# THE QUALIFYING SHARE, and it RAMPS. Accounts take about eight months to reach
+# a tier, so this is well under the 55% terminal rate in the early years - which
+# is why benefits cost almost nothing at launch and become material later. It is
+# derived from the existing ICS row rather than re-deriving 55%, so there is one
+# source for the qualification rate and not two.
+m_row("qual_share", "  Qualifying share of the book (memo - ramps to 55%)", "% of accounts",
+      lambda i: "=IF(%s+%s=0,0,%s/(%s+%s))" % (
+          mr("paying", i), mr("holders", i), mr("qualified", i),
+          mr("paying", i), mr("holders", i)), FMT_PCT2)
+
+# SIP ONLY - spot earns no ICS, so Stream 1b is deliberately absent here.
+m_row("ben_entry", "BENEFIT - Entry fee discount (SIP only)", "USD",
+      lambda i: "=%s*%s*%s" % (mr("s1a", i), mr("qual_share", i), sref("disc_entry")),
+      FMT_USD, BLACK_BOLD)
+BENEFIT_LINES.append("ben_entry")
+note(ws_model, _mr[0],
+     "STREAM 1a ONLY. Spot earns no ICS, so Stream 1b carries no discount and must never be added here. "
+     "A BLENDED RATE, not a tier ladder: the model has no tier distribution, and inventing one would put a "
+     "fabricated mix under every benefit figure.")
+_mr[0] += 1
+
+m_row("ben_card", "BENEFIT - Card fee discounts (FX, ATM, issuance)", "USD",
+      lambda i: "=%s*%s*%s" % (mr("s4", i), mr("qual_share", i), sref("disc_card")),
+      FMT_USD, BLACK_BOLD)
+BENEFIT_LINES.append("ben_card")
+
+m_row("ben_rebate", "BENEFIT - Gold rebate", "USD",
+      lambda i: "=(%s+%s)*%s*%s" % (mr("s2", i), mr("s4", i), mr("qual_share", i),
+                                    sref("disc_rebate")), FMT_USD, BLACK_BOLD)
+BENEFIT_LINES.append("ben_rebate")
+note(ws_model, _mr[0],
+     "A SHARE OF ALL CARD REVENUE - interchange PLUS cardholder fees - which keeps the rebate inside its own "
+     "funding line by construction. Interchange alone was the wrong base: it is the smaller half, and it is "
+     "already net of the partner's ~55% share, so it measures what is LEFT rather than what the customer "
+     "GENERATED. Sanity-check the rate against card spend, not against this line: 5% here is 0.35% of "
+     "spend, against a corpus ladder of 0.15 / 0.45 / 0.75% by tier.")
+_mr[0] += 1
+
+m_row("rebate_pct_spend", "  ...as % of card spend (memo - check against the 0.15/0.45/0.75 ladder)", "%",
+      lambda i: "=IF(%s=0,0,%s/%s)" % (mr("card_spend_usd", i), mr("ben_rebate", i),
+                                       mr("card_spend_usd", i)), FMT_PCT2)
+
+m_row("ben_family", "BENEFIT - Family wallet and will discount", "USD",
+      lambda i: "=%s*%s*%s" % (mr("s3", i), mr("qual_share", i), sref("disc_family")),
+      FMT_USD, BLACK_BOLD)
+BENEFIT_LINES.append("ben_family")
+
+m_row("total_benefits", "TOTAL ICS BENEFIT COSTS", "USD",
+      lambda i: "=" + "+".join(mr(k, i) for k in BENEFIT_LINES), FMT_USD, BLACK_BOLD, True)
+note(ws_model, _mr[0],
+     "CONTRA-REVENUE, NOT CASH. Every line here is revenue given away rather than money paid out, and the "
+     "streams above are reported GROSS so the giveaway stays visible. Netting them into the streams would "
+     "hide the single largest lever the client controls on the benefit ladder.")
+_mr[0] += 1
+
+_mr[0] += 2
+
+# ------------------------------------------------------- ACQUISITION COSTS --
+banner(ws_model, _mr[0],
+       "ACQUISITION COSTS - what it costs to put a customer on the book")
+_mr[0] += 1
+
+ACQ_LINES = []
+
+# MARKETING IS ALREADY BEING SPENT. The schedule on Assumptions drives the
+# direct channel; until now it bought customers and was charged to nothing.
+# It is booked ONCE, here, and must never also appear in an opex table - which
+# is the error v1.0 made.
+m_row("acq_marketing", "ACQ - Marketing spend", "USD",
+      lambda i: "=INDEX(Assumptions!$B$%d:$B$%d,%s)/12*%s" % (
+          AROW["mktg_y1"], AROW["mktg_y7"], mr("year", i), mr("n", i)),
+      FMT_USD, BLACK_BOLD)
+ACQ_LINES.append("acq_marketing")
+note(ws_model, _mr[0],
+     "A DECISION VARIABLE, not an output. It is the input that drives the direct channel, so it is booked "
+     "here ONCE and never in opex. THE REVENUE-ONLY MODEL FLATTERED THIS BADLY: raising the budget 50% on "
+     "2026-08-21 appeared as +28.5% customers with no offsetting entry anywhere. This row is that "
+     "offsetting entry.")
+_mr[0] += 1
+
+# Agent-acquired share of the book, cumulative. The model does not cohort
+# customers by channel, so this is the honest approximation of it.
+m_row("agent_new", "  Agent-driven acquisitions this period", "accounts",
+      lambda i: "=" + "+".join(mr("agent_" + r, i) for r in REGIONS), FMT_NUM2)
+_agc = _mr[0]
+m_row("agent_cum", "  Cumulative agent-driven acquisitions", "accounts",
+      lambda i, ac=_agc: "=%s" % mr("agent_new", i) if i == 0
+      else "=%s+%s" % (pcell(ac, i - 1), mr("agent_new", i)), FMT_NUM)
+m_row("agent_share", "  Agent-acquired share of the book (memo)", "% of accounts",
+      lambda i: "=IF(%s=0,0,%s/%s)" % (mr("cum_ever", i), mr("agent_cum", i),
+                                       mr("cum_ever", i)), FMT_PCT2)
+
+m_row("acq_agent", "ACQ - Agent commission", "USD",
+      lambda i: "=(%s+%s)*%s*%s" % (mr("s1a", i), mr("s1b", i), mr("agent_share", i),
+                                    sref("agent_commission")), FMT_USD, BLACK_BOLD)
+ACQ_LINES.append("acq_agent")
+note(ws_model, _mr[0],
+     "10% of the entry fee, ONGOING - renewal commission for as long as the customer keeps paying, not a "
+     "one-off at acquisition. Applied to the agent-acquired SHARE of entry-fee revenue, approximated from "
+     "cumulative acquisitions by channel because the model does not cohort customers by channel. "
+     "THE UPLINE OVERRIDE IS NOT MODELLED: the network is three tiers, and whether 10% is the total across "
+     "all levels or just the first is unresolved - the difference is one commission or three.")
+_mr[0] += 1
+
+m_row("ref_new", "  Referral-driven acquisitions this period", "accounts",
+      lambda i: "=" + "+".join(mr("ref_" + r, i) for r in REGIONS), FMT_NUM2)
+
+# Priced PER REGION, because the reward is a share of the REFEREE'S OWN fee and
+# tickets differ by region - a blended ticket would misprice every region.
+m_row("acq_referral", "ACQ - Referral rewards", "USD",
+      lambda i: "=(" + "+".join(
+          "%s*%s" % (mr("ref_" + r, i), sref("ticket_" + r)) for r in REGIONS)
+      + ")*6*%s*%s" % (aref("entry_fee"), sref("referral_reward")), FMT_USD, BLACK_BOLD)
+ACQ_LINES.append("acq_referral")
+note(ws_model, _mr[0],
+     "30% of the entry fee the referee pays over SIX qualifying contributions, credited in grams. Priced per "
+     "region because tickets differ and the reward is a share of the referee's own fee. "
+     "BOOKED AT ACQUISITION, PAID AT THE GATE: the real payment lands six contributions later, so no earlier "
+     "than about month 19. Annual totals barely move; the monthly cash profile does.")
+_mr[0] += 1
+
+m_row("total_acq", "TOTAL ACQUISITION COSTS", "USD",
+      lambda i: "=" + "+".join(mr(k, i) for k in ACQ_LINES), FMT_USD, BLACK_BOLD, True)
+
+m_row("cac_blended", "  Blended cost per new customer (memo)", "USD",
+      lambda i: "=IF(%s=0,0,%s/%s)" % (mr("new_total", i), mr("total_acq", i),
+                                       mr("new_total", i)), FMT_USD2)
+note(ws_model, _mr[0],
+     "TOTAL acquisition cost over ALL new customers, including the organic ones nobody paid for. It is "
+     "therefore BELOW the paid CAC by construction, and it is the number that matters for unit economics - "
+     "the marketing CAC prices only the channel it buys.")
+_mr[0] += 1
+
+_mr[0] += 2
+
+# ----------------------------------------------------- CARD PROGRAMME -------
+# ITS OWN BAND, NOT INSIDE OPEX, and that placement is the point. The card is
+# the largest revenue source in the model; bury its costs in an opex table and
+# nobody can answer whether it pays for itself. The memo at the foot of this
+# block is the whole reason the band exists.
+banner(ws_model, _mr[0],
+       "CARD PROGRAMME COSTS - what the card costs to run, kept next to what it earns")
+_mr[0] += 1
+
+CARD_LINES = []
+
+m_row("newcards_total", "  Cards newly issued this period", "cards",
+      lambda i: "=" + "+".join(mr("newcards_" + r, i) for r in REGIONS), FMT_NUM2)
+
+# FLAT FROM LAUNCH. It does not scale down because the book is small - that is
+# what a minimum commitment means, and it is why the programme loses money for
+# its first year or so.
+m_row("card_fixed", "CARD - NymCard platform and scheme fees", "USD",
+      lambda i: gate("s2", i, "%s*%s/12" % (sref("card_fixed_usd"), mr("n", i))),
+      FMT_USD, BLACK_BOLD)
+CARD_LINES.append("card_fixed")
+note(ws_model, _mr[0],
+     "NO BIN SPONSORSHIP FEE IN HERE. NymCard is a principal member of both Visa and Mastercard, so it "
+     "sponsors the BIN under its OWN membership - there is no bank to pay for it, and the line fell from "
+     "USD 120,000/yr to USD 30,000 when that component came out. What remains is the platform fee and "
+     "scheme assessments, which no provider waives. "
+     "A BANK IS STILL NEEDED FOR THE CREDIT: lending is a different regime and a payment services licence "
+     "does not reach it. BENCHMARKED, NOT QUOTED - NymCard publishes no pricing.")
+_mr[0] += 1
+
+m_row("card_setup", "CARD - Programme setup (one-off at launch)", "USD",
+      lambda i: "=IF(%s=%s,%s,0)" % (mr("period_idx", i), aref("act_s2"),
+                                     sref("card_setup_usd")), FMT_USD, BLACK_BOLD)
+CARD_LINES.append("card_setup")
+
+m_row("card_production", "CARD - Card production and delivery", "USD",
+      lambda i: "=%s*%s" % (mr("newcards_total", i), sref("card_per_card")),
+      FMT_USD, BLACK_BOLD)
+CARD_LINES.append("card_production")
+
+m_row("card_processing", "CARD - Authorisation and switching", "USD",
+      lambda i: "=%s*%s" % (mr("auths", i), sref("card_per_auth")), FMT_USD, BLACK_BOLD)
+CARD_LINES.append("card_processing")
+
+m_row("card_fraud", "CARD - Fraud and chargebacks", "USD",
+      lambda i: "=%s*%s" % (mr("card_spend_usd", i), sref("card_fraud_bps")),
+      FMT_USD, BLACK_BOLD)
+CARD_LINES.append("card_fraud")
+
+# DERIVED, NOT ASSUMED. Oman, Bahrain and India customers carry a UAE-ISSUED
+# card, so every transaction they make is cross-border by definition. Only the
+# UAE residents' own travel and foreign online spend needs an assumption.
+m_row("xborder_spend", "  Cross-border card spend (non-UAE in full, plus UAE spend abroad)", "USD",
+      lambda i: "=%s+%s+%s*%s" % (
+          mr("spendusd_gulf", i), mr("spendusd_india", i),
+          mr("spendusd_uae", i), sref("uae_spend_abroad")), FMT_USD)
+
+m_row("card_xborder", "CARD - Cross-border scheme assessment", "USD",
+      lambda i: "=%s*%s" % (mr("xborder_spend", i), sref("xborder_rate")),
+      FMT_USD, BLACK_BOLD)
+CARD_LINES.append("card_xborder")
+note(ws_model, _mr[0],
+     "VISA ISA / MASTERCARD CROSS-BORDER ASSESSMENT, charged to the ISSUER whenever merchant country "
+     "differs from issuer country. ABOUT 63% OF CARD SPEND QUALIFIES, and almost none of that is an "
+     "assumption: a UAE-issued card spent in India is cross-border on every tap, and India is half the card "
+     "book. "
+     "THE RATE EXCEEDS AURUMIX'S INTERCHANGE SHARE - 1.40% against 0.72% of spend retained - so cross-border "
+     "interchange does not cover its own scheme fee. The FX margin in stream 4 is what closes the gap, "
+     "which means that line is largely COST RECOVERY rather than margin.")
+_mr[0] += 1
+
+m_row("total_card", "TOTAL CARD PROGRAMME COSTS", "USD",
+      lambda i: "=" + "+".join(mr(k, i) for k in CARD_LINES), FMT_USD, BLACK_BOLD, True)
+
+# THE QUESTION THE CLIENT WILL ACTUALLY ASK. Above 100% the card is consuming
+# more than it earns; the crossing point is the answer to "when does the card
+# start paying for itself".
+m_row("card_cost_ratio", "  Card cost as % of card revenue (above 100% = the card is not paying for itself)",
+      "%",
+      lambda i: "=IF(%s+%s=0,0,%s/(%s+%s))" % (
+          mr("s2", i), mr("s4", i), mr("total_card", i), mr("s2", i), mr("s4", i)),
+      FMT_PCT, BLACK_BOLD)
+note(ws_model, _mr[0],
+     "CARD REVENUE IS STREAM 2 PLUS STREAM 4 - interchange and cardholder fees. It EXCLUDES stream 5, "
+     "because credit revenue is a separate partner arrangement and would flatter this ratio. Expect well "
+     "above 100% at launch: the fixed fee lands in full from month 13 while the card book is nearly empty, "
+     "which is exactly the 12-18 months of losses the brief describes.")
+_mr[0] += 1
+
+m_row("cost_measured", "  Sub-total - costs actually modelled", "USD",
+      lambda i: "=%s+%s+%s+%s+%s" % (mr("total_cogs", i), mr("total_opex", i),
+                                     mr("total_benefits", i), mr("total_acq", i),
+                                     mr("total_card", i)), FMT_USD, BLACK_BOLD)
+
+m_row("cost_contingency", "  Contingency for cost families not yet built", "USD",
+      lambda i: "=%s*%s" % (mr("cost_measured", i), sref("cost_contingency")),
+      FMT_USD, BLACK_BOLD)
+note(ws_model, _mr[0],
+     "A PLACEHOLDER FOR HEADCOUNT, LEGAL AND TRUST, SECURITY, CORPORATE, TAX AND THE ON-CHAIN MINTING COST - "
+     "AND IT DOES NOT COVER THEM. Headcount alone is anchored in the brief at roughly USD 588,000 in Year 1, "
+     "about 78% of the whole cost base as built; 15% of that base is about USD 112,000. THE CONTINGENCY IS "
+     "WORTH A FIFTH OF ONE OF THE SIX MISSING BLOCKS. Every profit figure below is an upper bound.")
+_mr[0] += 1
+
+m_row("total_cost", "TOTAL COST BASE (modelled + contingency)", "USD",
+      lambda i: "=%s+%s" % (mr("cost_measured", i), mr("cost_contingency", i)),
+      FMT_USD, BLACK_BOLD, True)
+# NO GROSS PROFIT LINE YET, DELIBERATELY. COGS is one of six cost families and
+# the only one built so far, so revenue-less-COGS would read as a margin the
+# business does not have - 93% at Y7, against a cost base still missing opex,
+# acquisition, the card programme, benefit costs and tax. The line arrives when
+# there is a cost base to subtract, not before.
+
+# Ties the cost band back to the REVENUE band's own inflow rows, so the two
+# cannot drift apart. Non-circular: the left side is built from sip/spot
+# contributions and the entry fee, the right side from grams and the premium.
+m_row("cogs_check", "CHECK: cash for metal ties to grams delivered x the price paid (must be 0)", "delta",
+      lambda i: "=(%s+%s)*(1-%s)-%s*%s*(1+%s*(1-%s))" % (
+          mr("sip_inflow", i), mr("spot_inflow", i), aref("entry_fee"),
+          mr("grams_bought", i), mr("gold_px", i), aref("fab_premium"),
+          sref("sw_premium_absorbed")), FMT_NUM3, BLACK_BOLD)
+note(ws_model, _mr[0],
+     "THE ANTI-DOUBLE-COUNT ASSERTION. Either the customer's cash buys metal at spot+premium and the COGS "
+     "line above is zero, or it buys metal at spot and the COGS line carries the premium. This row ties to "
+     "zero under both settings and can only break if some future edit makes the premium bite twice - which "
+     "is exactly the defect 29f98e0 was written to fix.")
+
+# ============================================================================
+# REGULATORY CAPITAL
+#
+# NEITHER A COST NOR INVENTORY. The float is metal Aurumix buys and can sell;
+# this is equity it must SUBSCRIBE AND KEEP SUBSCRIBED to hold its licences. It
+# earns nothing, it is not spent, and it never reaches the P&L - the same
+# treatment the float gets, for a different reason.
+#
+# It sits after the cost base because the 25%-of-overheads test reads total
+# operating expenses, which are computed above.
+# ============================================================================
+_mr[0] += 2
+divider(ws_model, _mr[0],
+        "REGULATORY CAPITAL - locked, not spent. Subscribed equity, not an expense")
+_mr[0] += 2
+
+banner(ws_model, _mr[0],
+       "PAID-UP CAPITAL AND LIQUIDITY - what VARA requires you to keep locked up")
+_mr[0] += 1
+
+# ONE-OFFS ARE EXCLUDED. Fixed annual overheads means the RUNNING cost of the
+# business; the M1 licence application and incorporation are neither fixed nor
+# recurring, and leaving them in would spike the test in the one period where
+# capital is tightest anyway.
+m_row("cap_issuance", "  Paid-up capital - Category 1 VA Issuance", "USD",
+      lambda i: "=%s/%s" % (sref("paidup_issuance_aed"), aref("aed_usd")), FMT_USD)
+note(ws_model, _mr[0],
+     "THE AED 1.5m FLOOR, NOT THE 2% ESCALATOR. Option A carries no Reserve Assets to take 2% of, so limb "
+     "(b) of Rule G.1 is inapplicable and the floor governs. CHOOSING OPTION A REMOVES THE ESCALATOR, NOT "
+     "THE FLOOR - worth stating plainly to the client, who may believe otherwise.")
+_mr[0] += 1
+
+m_row("cap_activity", "  Paid-up capital - licensed activities (Broker-Dealer)", "USD",
+      lambda i: "=%s/%s" % (sref("paidup_activity_aed"), aref("aed_usd")), FMT_USD)
+note(ws_model, _mr[0],
+     "THE FIXED AED FLOOR ONLY. CUMULATIVE with the issuance requirement rather than an alternative to it - "
+     "Part VI.A requires capital for EACH licensed activity. "
+     "NOT YET APPLIED, AND DELIBERATELY: the rule is the HIGHER of the AED floor or 25% OF FIXED ANNUAL "
+     "OVERHEADS (15% where custody is held). The overheads test is left out until the opex build is "
+     "complete - with only storage, VARA, DMCC and KYC in the model, overheads are a fraction of the real "
+     "figure and the test would read as comfortably passed when nobody has checked. REINSTATE IT ONCE "
+     "HEADCOUNT AND THE REST OF OPEX LAND: at 25%, the test overtakes the AED 600,000 floor at roughly "
+     "AED 2.4m of annual overheads, which a real cost base may well reach.")
+_mr[0] += 1
+
+m_row("cap_total", "TOTAL PAID-UP CAPITAL REQUIRED", "USD",
+      lambda i: "=%s+%s" % (mr("cap_issuance", i), mr("cap_activity", i)),
+      FMT_USD, BLACK_BOLD, True)
+
+m_row("nla_required", "  Net liquid assets required (PROVISIONAL - opex incomplete)", "USD",
+      lambda i: "=%s*(SUMIF(%s,%s,%s)-SUMIF(%s,%s,%s))/12" % (
+          sref("nla_months"), mrng("year"), mr("year", i), mrng("total_opex"),
+          mrng("year"), mr("year", i), mrng("opex_oneoff")), FMT_USD)
+note(ws_model, _mr[0],
+     "1.2 x MONTHLY operating expenses, tested continuously. NOT ADDED to paid-up capital: the same cash can "
+     "satisfy both, so summing them would overstate the funding need. "
+     "PROVISIONAL AND UNDERSTATED. It reads off the opex total, and opex currently carries only storage, "
+     "VARA, DMCC and KYC - headcount, insurance, audit, technology and the rest are still to come. THIS "
+     "FIGURE WILL RISE, probably several-fold. It is kept visible rather than removed because the "
+     "requirement itself is real and appears nowhere in the corpus; the number is not yet usable.")
+_mr[0] += 1
+
+m_row("cap_liquidity_check", "CHECK: paid-up capital covers the liquidity test (must be >= 0)", "USD",
+      lambda i: "=%s-%s" % (mr("cap_total", i), mr("nla_required", i)), FMT_USD, BLACK_BOLD)
+
+# THE FUNDING PICTURE. Two different kinds of money that are both unavailable
+# for spending, shown together because the client asks HOW MUCH DO I NEED, not
+# how is it classified.
+m_row("capital_tied_up", "TOTAL CAPITAL TIED UP (float + paid-up capital + card prefunding)", "USD",
+      lambda i: "=%s+%s+%s" % (mr("float_usd", i), mr("cap_total", i),
+                               mr("card_prefund", i)), FMT_USD, BLACK_BOLD, True)
+note(ws_model, _mr[0],
+     "THE FLOAT IS METAL YOU OWN AND CAN SELL; THE PAID-UP CAPITAL IS EQUITY YOU MUST KEEP SUBSCRIBED TO "
+     "HOLD A LICENCE. Both are money unavailable to spend, which is why they are added - but they are NOT "
+     "the same kind of money, and the difference matters on a wind-down.")
+_mr[0] += 1
+
+# ============================================================================
+# NET PROFIT
+#
+# Revenue less every cost that has been built, plus the contingency.
+#
+# THE CASH VIEW WAS REMOVED 2026-08-26 at the client's instruction. It carried
+# the change in working and regulatory capital, net and cumulative cash flow,
+# and a peak funding figure. The capital balances themselves are untouched and
+# still sit in the WORKING CAPITAL and REGULATORY CAPITAL bands - what went is
+# the translation of profit into cash. Anyone asking "how much money do I need"
+# must read those bands directly; this band answers only "does it earn".
+#
+# ⚠ HEADCOUNT IS NOT IN THE COST BASE. Read the profit line as an upper bound.
+# ============================================================================
+_mr[0] += 2
+divider(ws_model, _mr[0],
+        "NET PROFIT - revenue less every cost modelled")
+_mr[0] += 2
+
+banner(ws_model, _mr[0], "NET PROFIT - revenue less every cost modelled, plus contingency")
+_mr[0] += 1
+
+m_row("net_profit", "NET PROFIT", "USD",
+      lambda i: "=%s-%s" % (mr("total_rev", i), mr("total_cost", i)),
+      FMT_USD, BLACK_BOLD, True)
+note(ws_model, _mr[0],
+     "AN UPPER BOUND, NOT A FORECAST. Headcount, legal and trust, security, corporate, tax and the on-chain "
+     "minting cost are all still absent, covered only by a 15% contingency that is worth a fraction of "
+     "headcount alone. THE REAL NUMBER IS LOWER AND THE MODEL CANNOT YET SAY BY HOW MUCH.")
+_mr[0] += 1
+
+m_row("net_margin", "  Net margin", "% of revenue",
+      lambda i: "=IF(%s=0,0,%s/%s)" % (mr("total_rev", i), mr("net_profit", i),
+                                       mr("total_rev", i)), FMT_PCT)
+
+_cnp = _mr[0]
+m_row("cum_profit", "CUMULATIVE NET PROFIT", "USD",
+      lambda i, cp=_cnp: "=%s" % mr("net_profit", i) if i == 0
+      else "=%s+%s" % (pcell(cp, i - 1), mr("net_profit", i)), FMT_USD, BLACK_BOLD, True)
+_mr[0] += 1
+
 # ---- no reserved acquisition rows remain -----------------------------------
 # The single deferred row here was the national agent pool, which had to be
 # written late because the region blocks divided into it. Agent output is now
@@ -2290,6 +3463,68 @@ for y in range(1, N_YEARS + 1):
 MIX_CHECK_ROW = rr
 _sy[0] += 2
 
+s_block("COST BASE", [
+    ("grams_fabricated", "  Net new grams fabricated", "sum", FMT_NUM, False),
+    ("cogs_premium", "  Fabrication premium paid to the dealer", "sum", FMT_USD, False),
+    ("total_cogs", "TOTAL COST OF GOODS SOLD", "sum", FMT_USD, True),
+    ("opex_storage", "  Vault storage", "sum", FMT_USD, False),
+    ("storage_pct", "    ...effective rate on metal held", "last", FMT_PCT3, False),
+    ("opex_vara", "  VARA annual supervision", "sum", FMT_USD, False),
+    ("opex_dmcc", "  DMCC company licence", "sum", FMT_USD, False),
+    ("opex_kyc", "  KYC and AML verification", "sum", FMT_USD, False),
+    ("opex_insurance", "  Insurance (PI, D&O, crime)", "sum", FMT_USD, False),
+    ("opex_audit", "  Audit and reserve attestation", "sum", FMT_USD, False),
+    ("opex_techaudit", "  Technology audit and penetration testing", "sum", FMT_USD, False),
+    ("opex_redemption", "  Redemption handling", "sum", FMT_USD, False),
+    ("opex_techbuild", "  Technology build (Y1-Y2)", "sum", FMT_USD, False),
+    ("opex_techmaint", "  Technology maintenance (Y3+)", "sum", FMT_USD, False),
+    ("opex_oneoff", "  One-off Year 1 (licence, incorporation, launch audit)", "sum", FMT_USD, False),
+    ("total_opex", "TOTAL OPERATING EXPENSES", "sum", FMT_USD, True),
+    ("ben_entry", "  ICS - entry fee discount (SIP only)", "sum", FMT_USD, False),
+    ("ben_card", "  ICS - card fee discounts", "sum", FMT_USD, False),
+    ("ben_rebate", "  ICS - gold rebate", "sum", FMT_USD, False),
+    ("ben_family", "  ICS - family wallet and will", "sum", FMT_USD, False),
+    ("total_benefits", "TOTAL ICS BENEFIT COSTS", "sum", FMT_USD, True),
+    ("acq_marketing", "  Marketing spend", "sum", FMT_USD, False),
+    ("acq_agent", "  Agent commission", "sum", FMT_USD, False),
+    ("acq_referral", "  Referral rewards", "sum", FMT_USD, False),
+    ("total_acq", "TOTAL ACQUISITION COSTS", "sum", FMT_USD, True),
+    ("card_fixed", "  Card - NymCard platform and scheme fees", "sum", FMT_USD, False),
+    ("card_setup", "  Card - programme setup", "sum", FMT_USD, False),
+    ("card_production", "  Card - production and delivery", "sum", FMT_USD, False),
+    ("card_processing", "  Card - authorisation and switching", "sum", FMT_USD, False),
+    ("card_fraud", "  Card - fraud and chargebacks", "sum", FMT_USD, False),
+    ("card_xborder", "  Card - cross-border scheme assessment", "sum", FMT_USD, False),
+    ("total_card", "TOTAL CARD PROGRAMME COSTS", "sum", FMT_USD, True),
+    ("card_cost_ratio", "    Card cost as % of card revenue", "last", FMT_PCT, False),
+    ("cac_blended", "    Blended cost per new customer", "last", FMT_USD2, False),
+    ("cost_measured", "  Sub-total - costs actually modelled", "sum", FMT_USD, False),
+    ("cost_contingency", "  Contingency for families not yet built", "sum", FMT_USD, False),
+    ("total_cost", "TOTAL COST BASE", "sum", FMT_USD, True),
+])
+
+s_block("NET PROFIT (upper bound - headcount not yet in the cost base)", [
+    ("net_profit", "NET PROFIT", "sum", FMT_USD, True),
+    ("net_margin", "  Net margin", "last", FMT_PCT, False),
+    ("cum_profit", "CUMULATIVE NET PROFIT", "last", FMT_USD, True),
+])
+
+s_block("REGULATORY CAPITAL (locked, not spent)", [
+    ("cap_issuance", "  Paid-up capital - VA Issuance", "last", FMT_USD, False),
+    ("cap_activity", "  Paid-up capital - licensed activities", "last", FMT_USD, False),
+    ("cap_total", "TOTAL PAID-UP CAPITAL REQUIRED", "last", FMT_USD, True),
+    ("nla_required", "  Net liquid assets required (separate test)", "last", FMT_USD, False),
+    ("card_prefund", "  Card settlement prefunding", "last", FMT_USD, False),
+    ("capital_tied_up", "TOTAL CAPITAL TIED UP (float + capital + prefunding)", "last", FMT_USD, True),
+])
+
+s_block("WORKING CAPITAL - THE FLOAT (not a cost)", [
+    ("float_grams", "  Float required, grams", "last", FMT_NUM, False),
+    ("float_usd", "  FLOAT REQUIRED (year-end balance)", "last", FMT_USD, True),
+    ("float_topup", "  Cash needed that year (new grams only)", "sum", FMT_USD, False),
+    ("float_cum", "CUMULATIVE CASH INVESTED IN THE FLOAT", "last", FMT_USD, True),
+])
+
 s_block("CUSTOMERS AND AUM (year end)", [
     ("new_total", "New customers in year", "sum", FMT_NUM, False),
     ("paying", "Paying customers", "close", FMT_NUM, True),
@@ -2326,7 +3561,7 @@ print("Periods      : %d (%d monthly + %d annual), columns %s..%s, M1 = Jan %d"
       % (N_PERIODS, N_MONTHLY, N_ANNUAL, pcol(0), pcol(N_PERIODS - 1), START_YEAR))
 print("Rows         : Assumptions %d | Scenario %d | Model %d | Summary %d"
       % (_ar[0], _sr[0], _mr[0], _sy[0]))
-print("Scenario     : %d parameters + 2 structural switches" % len(SROW))
+print("Scenario     : %d parameters + %d structural switches" % (len(SROW) - len(SWROW), len(SWROW)))
 print("Named ranges : %d registered, %d rejected" % (registered, len(rejected)))
 for nm, ref, exc in rejected:
     print("   REJECTED %-28s %-36s %s" % (nm, ref, exc))
@@ -2335,9 +3570,14 @@ print("Engine       : rolling balance, opening + new - churned = closing, by reg
 print("Kept as inputs, not engines:")
 print("  - card eligibility (%% who ever qualify, months to qualify)")
 print("  - the HOLDERS balance (stopped paying, still hold gold)")
-print("  - the fabrication premium, borne by the CUSTOMER in grams delivered")
+print("  - the fabrication premium, now borne by AURUMIX as a real COGS line")
+print("    (switchable: sw_premium_absorbed=0 restores the 2026-08-21 treatment,")
+print("     where the customer bears it in grams and this cost falls to zero)")
 print("  - the ATM draw distribution (a mean returns exactly zero)")
 print("Deleted to the Phase 5 simulation: archetypes, run-of-6 chain, lifecycle")
 print("  curves, the convolution, the six-state machine, withdrawal buckets.")
-print("Out of scope for now: opex, tax, working capital, cash, funding.")
+print("Cost base    : COGS + opex + ICS benefits + acquisition + card programme.")
+print("  Acquisition, card programme, benefit costs and tax still to come;")
+print("  each appends to COGS_LINES or OPEX_LINES and the totals follow.")
+print("Out of scope for now: tax, working capital, cash, funding.")
 print("=" * 78)
