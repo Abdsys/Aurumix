@@ -3347,6 +3347,97 @@ m_row("cum_profit", "CUMULATIVE NET PROFIT", "USD",
       else "=%s+%s" % (pcell(cp, i - 1), mr("net_profit", i)), FMT_USD, BLACK_BOLD, True)
 _mr[0] += 1
 
+# ============================ UNIT ECONOMICS ================================
+# ADDED 2026-08-31. The model computed revenue per paying customer and cost per
+# NEW customer and never divided one by the other, so the first question any
+# client asks - what is a customer worth against what they cost - had to be
+# assembled by hand from two memo rows that are not even on the same basis.
+#
+# NOTHING HERE IS A NEW ASSUMPTION. Every row below is arithmetic on rows that
+# already exist, which is why it belongs in this model rather than in the
+# Phase 5 simulation: it needs no distribution, no cohort and no new input.
+#
+# NO LTV AND NO LTV:CAC HERE, DELIBERATELY. CLIENT DECISION 2026-08-31, and it
+# is the right one. Both were built and then removed: they require an average
+# customer LIFE, and the only life this model can produce is a single blended
+# figure derived from the whole-book leak. That figure swings from 13 to 19
+# months across the horizon on nothing but the AGE MIX of the base - a fast
+# acquisition year floods the book with young accounts, which churn hardest,
+# and the measured life falls even though no customer behaved differently.
+# An LTV resting on it would look precise and would not be. THE HONEST ANSWER
+# NEEDS COHORT RESOLUTION - track the January 2027 joiners as their own decaying
+# group - which is a Phase 5 simulation job under the v3.0 scope decision.
+#
+# WHAT SURVIVES NEEDS NO LIFE ESTIMATE AT ALL. Payback is CAC over monthly
+# contribution. The treadmill row is subtraction. The funding need is a running
+# total. None of them ask how long anyone stays, so none of them get better
+# with cohorts - which is exactly why they belong here and the LTV rows do not.
+banner(ws_model, _mr[0], "UNIT ECONOMICS - payback, the acquisition treadmill and the funding need")
+_mr[0] += 1
+
+_pay_r = MROW["paying"]
+m_row("attrition", "  Customers lost to holders this period", "accounts",
+      lambda i, pr=_pay_r: "=MAX(0,%s-%s)" % (mr("new_total", i), mr("paying", i)) if i == 0
+      else "=MAX(0,%s+%s-%s)" % (pcell(pr, i - 1), mr("new_total", i), mr("paying", i)),
+      FMT_NUM)
+note(ws_model, _mr[0],
+     "OPENING BASE PLUS NEW LESS CLOSING BASE. Nobody counts leavers directly; they are what is left when "
+     "the balance does not tie. THIS IS THE END OF A PAYING RELATIONSHIP, NOT OF THE CUSTOMER: a lapsed "
+     "customer becomes a holder, keeps their gold and may still carry a card, so the tail is thin but it "
+     "is not zero. Deliberately NOT converted into an average life here - see the section note above.")
+_mr[0] += 1
+
+m_row("profit_preacq", "PROFIT BEFORE ACQUISITION COST", "USD",
+      lambda i: "=%s-%s+%s" % (mr("total_rev", i), mr("total_cost", i), mr("total_acq", i)),
+      FMT_USD, BLACK_BOLD, True)
+note(ws_model, _mr[0],
+     "THE RIGHT NUMERATOR TO SET AGAINST CAC, because acquisition is the thing being paid for and must not "
+     "sit on both sides. DELIBERATELY CONSERVATIVE: it still carries the FIXED cost base - licences, "
+     "insurance, technology - so it understates what a marginal customer contributes and improves with "
+     "scale by construction. A true marginal contribution would need a fixed/variable split this model "
+     "does not carry, and inventing one would put a judgement call under the payback below.")
+_mr[0] += 1
+
+m_row("contrib_per_cust", "  Contribution per paying customer (annualised)", "USD",
+      lambda i: "=IF(%s=0,0,%s/%s/%s*12)" % (mr("paying", i), mr("profit_preacq", i),
+                                             mr("paying", i), mr("n", i)), FMT_USD2)
+
+m_row("payback_months", "  Payback on contribution", "months",
+      lambda i: '=IF(%s<=0,"",%s/(%s/12))' % (mr("contrib_per_cust", i), mr("cac_blended", i),
+                                              mr("contrib_per_cust", i)), FMT_NUM2)
+note(ws_model, _mr[0],
+     "CAC OVER MONTHLY CONTRIBUTION - IT NEEDS NO LIFE ESTIMATE, which is why it is here and an LTV:CAC "
+     "ratio is not. AGAINST THE BLENDED COST PER NEW CUSTOMER, which includes the organic and referred "
+     "arrivals nobody paid for, so it is the honest denominator for the book as a whole. Set against the "
+     "UAE PAID CAC alone the payback is materially longer - the marketing CAC prices only the channel it "
+     "buys. Blank where contribution is negative, which is the early years.")
+_mr[0] += 1
+
+m_row("new_per_net", "NEW CUSTOMERS ACQUIRED PER NET CUSTOMER ADDED", "accounts",
+      lambda i, pr=_pay_r: '=""' if i == 0
+      else '=IF(%s-%s<=0,"",%s/(%s-%s))' % (
+          mr("paying", i), pcell(pr, i - 1), mr("new_total", i),
+          mr("paying", i), pcell(pr, i - 1)), FMT_NUM2)
+note(ws_model, _mr[0],
+     "THE TREADMILL, AND THE SINGLE MOST IMPORTANT STRUCTURAL FACT IN THIS MODEL. Growth here is BOUGHT, "
+     "not compounded: by Y7 the base grows by a small fraction of what is acquired and the rest leaks to "
+     "holders. Blank where the base shrinks, which is a worse outcome than a large ratio, not a better one.")
+_mr[0] += 1
+
+m_row("funding_now", "  Funding required to date (P&L deficit + capital tied up)", "USD",
+      lambda i: "=MAX(0,-%s)+%s" % (mr("cum_profit", i), mr("capital_tied_up", i)), FMT_USD)
+_fpk = _mr[0]
+m_row("funding_peak", "PEAK FUNDING NEED", "USD",
+      lambda i, fp=_fpk: "=%s" % mr("funding_now", i) if i == 0
+      else "=MAX(%s,%s)" % (pcell(fp, i - 1), mr("funding_now", i)),
+      FMT_USD, BLACK_BOLD, True)
+note(ws_model, _mr[0],
+     "A RUNNING PEAK, so it never falls once reached - the business must be funded for the worst point it "
+     "passes through, not for where it ends. IT INHERITS THE NET PROFIT CAVEAT: headcount, legal, security, "
+     "corporate and tax are still absent from the cost base, so the deficit is an UNDERSTATEMENT and the "
+     "real funding need is higher. The capital component is locked, not spent, and comes back.")
+_mr[0] += 1
+
 # ---- no reserved acquisition rows remain -----------------------------------
 # The single deferred row here was the national agent pool, which had to be
 # written late because the region blocks divided into it. Agent output is now
@@ -3507,6 +3598,16 @@ s_block("NET PROFIT (upper bound - headcount not yet in the cost base)", [
     ("net_profit", "NET PROFIT", "sum", FMT_USD, True),
     ("net_margin", "  Net margin", "last", FMT_PCT, False),
     ("cum_profit", "CUMULATIVE NET PROFIT", "last", FMT_USD, True),
+])
+
+s_block("UNIT ECONOMICS (derived - no new assumptions)", [
+    ("profit_preacq", "PROFIT BEFORE ACQUISITION COST", "sum", FMT_USD, True),
+    ("contrib_per_cust", "  Contribution per paying customer (annualised)", "last", FMT_USD2, False),
+    ("attrition", "  Customers lost to holders", "sum", FMT_NUM, False),
+    ("cac_blended", "  Blended CAC (repeated here so payback can be read)", "last", FMT_USD2, False),
+    ("payback_months", "PAYBACK ON CONTRIBUTION (months)", "last", FMT_NUM2, True),
+    ("new_per_net", "NEW CUSTOMERS ACQUIRED PER NET CUSTOMER ADDED", "last", FMT_NUM2, True),
+    ("funding_peak", "PEAK FUNDING NEED (P&L deficit + capital tied up)", "last", FMT_USD, True),
 ])
 
 s_block("REGULATORY CAPITAL (locked, not spent)", [
