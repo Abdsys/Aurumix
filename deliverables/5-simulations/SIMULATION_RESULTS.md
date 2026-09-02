@@ -23,7 +23,7 @@ At today's unit economics a UAE customer does not pay for their own replacement.
 | ICS giveback, top-loaded ladder at full ceiling | **6.3% of revenue** | Front-loaded, 18.4%. Shape costs three times more than generosity |
 | Margin calls at Sovereign's 80% loan-to-value | **Certain** | Over a quarter of the credit book called in the median path |
 
-The recommendation that matters most is to treat the B2B channel as the business and resource it that way now. The recommendations that cost nothing are to build the loyalty ladder top-loaded, put customers on the prefunded balance, cap the credit line's top rung, and size the float from the payment calendar. Together those move the raise from USD 4.7m to about USD 4.0m and the giveback from 11% of revenue to 6%.
+The recommendation that matters most is to treat the B2B channel as the business and resource it that way now. The recommendations that cost nothing are to build the loyalty ladder top-loaded, default customers to the prefunded balance, size the float from the payment calendar, and reopen the spot door. The float policy moves the raise from USD 4.7m to about USD 4.0m. The ladder shape moves the giveback from 11% of revenue to 6%. One recommendation does cost something, and it is the credit line's top rung.
 
 ---
 
@@ -63,7 +63,7 @@ The dotted line is O Gold's 75,000 active users in the UAE. It is the only obser
 
 The retail unit margin is about six dollars a year. That is the number to sit with.
 
-Revenue per paying customer excluding B2B is USD 41. The entry fee on a USD 33.60 ticket is USD 20 a year. The card, the family plan and the credit share add another USD 21, spread thinly because only 18% of the book takes a card. Serving costs, the fabrication premium, the loyalty giveback, the card programme, KYC and redemption handling, take USD 13. Replacing the 45% of customers who lapse every year takes USD 17 at blended cost. Fifteen percent contingency on all of it leaves USD 6.50. At UAE acquisition cost it leaves minus USD 2.67.
+Revenue per paying customer excluding B2B is USD 41. The entry fee on a USD 33.60 ticket is USD 20 a year. Spot purchases, the card, the family plan and the credit share add another USD 21, spread thinly because only 18% of the book takes a card. Serving costs, the fabrication premium, the loyalty giveback, the card programme, KYC and redemption handling, take USD 13. Replacing the 45% of customers who lapse every year takes USD 17 at blended cost. Fifteen percent contingency on all of it leaves USD 6.50. At UAE acquisition cost it leaves minus USD 2.67.
 
 Three things drive that.
 
@@ -81,15 +81,15 @@ The four inputs that move the answer most are partner adoption, partner assets p
 
 ### What changed
 
-This simulation did not change a fee, the way the copper work did. The entry fee is already at the top of the client's range. What it did was rank the levers by what they cost, so the recommendation is a list of things to do in order rather than one number to change. Four of them are free.
+This simulation did not end with a fee change. The entry fee is already at the top of the client's range. What it did was rank the levers by what they cost, so the recommendation is a list of things to do in order rather than one number to change. Four of them are free.
 
 | Lever | What it does | Cost to Aurumix |
 |:--|:--|:--|
 | Treat B2B as the business | Covers fixed costs with 3.5 partners | A sales function, not a model change |
 | Top-load the loyalty ladder | Giveback falls from 11.1% to 6.3% of revenue at the same headline | Free |
-| Push the prefunded balance | Gate share 47% to 55%, plus 10,000 paying customers by year seven | Onboarding design |
+| Push the prefunded balance | Gate share 47% to 55%, plus about 9,000 paying customers by year seven | Onboarding design |
 | Size the float from the calendar | Frees about USD 0.7m of the raise | A procurement process |
-| Cap the credit line's top rung | Turns a certain margin call into a 1-in-5 event | Product change |
+| Cap the credit line's top rung | Turns a certain margin call into a coin flip with almost nothing called | Product change, some lending revenue |
 | Open the spot door | A spot-only customer pays back in 1.9 years in the UAE | Already built |
 
 The rest of the document shows the evidence for each.
@@ -120,7 +120,7 @@ The revenue model's peak funding need is USD 2.29m. Across 2,000 paths, with eve
 
 The distribution is skewed right. That is not a modelling choice. The client's own scenario table has a wider downside than upside on most inputs, acquisition cost most of all, and the simulation takes those ranges at face value. The dotted red line is the revenue model. The dashed black line is where nine paths in ten are covered.
 
-The float model in Section 3.6 lowers this by about USD 0.7m, to roughly USD 4.0m at the 90% line, because the revenue model holds eight times more gold than a calendar-aware policy needs.
+The float section below lowers this by about USD 0.7m, to roughly USD 4.0m at the 90% line, because the revenue model holds eight times more gold than a calendar-aware policy needs.
 
 ---
 
@@ -241,7 +241,7 @@ The client chose to leave the float unhedged. At this size that costs almost not
 
 ### The spot door
 
-In August the spot-only customer was deleted from the revenue model. A spot buyer was worth the entry fee on 1.7 purchases a year, USD 16 in the UAE, against USD 120 to acquire. Six to eight years to pay back.
+In August the spot-only customer was deleted from the revenue model. A spot buyer was worth the entry fee on 1.7 purchases a year, USD 16 in the UAE, against the USD 120 acquisition cost the model carried at the time. Six to eight years to pay back.
 
 That calculation priced the spot buyer on the entry fee alone. Since then the card has been opened to everyone.
 
@@ -315,7 +315,7 @@ The question was what it takes to be profitable. The answer has two parts, and t
 | How much to raise? | **USD 4.7m** for nine paths in ten. About USD 4.0m with the float fixed |
 | What can we give back? | **Six percent of revenue** at the full headline if the ladder is top-loaded. Eighteen if it is not |
 | What is the credit risk? | **The Sovereign rung.** An 80% loan-to-value makes a margin call certain |
-| What is free? | The ladder shape, the rail, the float policy and the spot door |
+| What is free? | The ladder shape, the rail default, the float policy and the spot door. The loan-to-value cap costs some lending revenue |
 
 I want to be direct about the first row because it is easy to soften. The retail economics as designed do not cover their own acquisition in the home market. That is not a parameter problem. It is the shape of a business that charges 5% on a USD 34 ticket and loses 45% of its customers a year. The partner channel fixes it, and the partner channel is a sales plan, not a modelling assumption.
 
@@ -332,7 +332,7 @@ I want to be direct about the first row because it is easy to soften. The retail
 | Giveback cost depends on shape three to one over ceiling | Build the ladder top-loaded. Keep the Sovereign headline, cut the Silver and Gold rungs |
 | Prefunded rail lifts tier share eight points | Default new customers to the prefunded balance at onboarding |
 | Float over-held eight times | Size procurement from the payment calendar. Name the dealer and get the lead time |
-| Sovereign 80% loan-to-value is a certain margin call | Cap the top rung at 65% or re-space the call line before a lender prices it |
+| Sovereign 80% loan-to-value is a certain margin call | Cap the top rung at 65% before a lender prices it. Moving the call line alone does not fix it |
 | Spot buyer pays back in 1.9 years | Reopen the spot door as a second entry route |
 | Regulatory delay adds USD 0.74m | Plan the raise on a 12-month licence delay, not a launch date |
 
@@ -372,9 +372,9 @@ I want to be direct about the first row because it is easy to soften. The retail
 
 #### 4. Cap the credit line's top rung
 
-**Finding:** at 80% loan-to-value a margin call is certain within seven years and over a quarter of the credit book is called in the median path. At 65% the probability of any call is about a fifth and the median share called is zero.
+**Finding:** at 80% loan-to-value a margin call is certain within seven years and over a quarter of the credit book is called in the median path. At 65% the chance of any call falls to 43%, the median share called is zero, and the tenth-worst path calls 4.5%. Moving the call line does not rescue the 80% rung. Even at a 95% call line the trigger is a 16% gold fall and a call arrives in four paths out of five.
 
-**Recommendation:** cap Sovereign at 65% loan-to-value, or move the call line so that the 80% rung needs a 20% gold move rather than 6%. Settle this before a lending partner prices the facility.
+**Recommendation:** cap Sovereign at 65% loan-to-value. Settle this before a lending partner prices the facility.
 
 **Rationale:** Sovereign holders are few and they are the largest balances. A certain margin call on your best customers is a reputational event, not a credit event.
 
@@ -408,7 +408,7 @@ The simulation's inputs have no data behind them. The first year of operation wi
 
 | Metric | Simulation assumes | Watch for |
 |:--|--:|:--|
-| Persistency at month 13 | 55% | Below 50% moves the raise up by USD 0.5m |
+| Persistency at month 13 | 55% | At 50% year-seven profit falls by about USD 90k. The raise barely moves |
 | Share reaching a tier by month 12 | 50% | Below 40% means the archetype mix is worse than assumed |
 | Share on the prefunded balance | 30% | This is the lever. Push it toward 75% |
 | Mean months to first tier | 8 | Above 10 means Request to Pay is dominating |

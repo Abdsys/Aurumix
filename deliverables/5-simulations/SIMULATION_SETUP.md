@@ -233,7 +233,7 @@ Where:
 - CAC is the cost to replace one customer, USD 37 blended or USD 55 in the UAE alone
 - $A$ is assets under management per partner and $f$ is the platform fee
 
-Keeping the two apart matters. Blending B2B revenue into a per-customer figure hides whether the retail business stands on its own. It does not, and Section 3 of the results document is about that.
+Keeping the two apart matters. Blending B2B revenue into a per-customer figure hides whether the retail business stands on its own. It does not, and Part 2 of the results document is about that.
 
 ---
 
