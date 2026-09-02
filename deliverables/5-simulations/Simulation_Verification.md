@@ -120,6 +120,29 @@ The ladder envelope (cumulative 84-mo cost, % of agent revenue) confirms the sha
 2. **Excess redemptions are sold back to the dealer at a swept two-way spread** (0.5/1.0/2.0%), the recycling credit capped at that month's purchases. Equivalence at base is untouched (36/36).
 3. **The spread is second-order and the pause is the damage.** At every run size and spread tested, sell-back costs $0.7k–6k cumulative; the run's −$375k Y7 hit is lost contributions and AUM. Even a late-horizon worst case — 25% of a 200k-gram book exiting against ~10k of monthly purchases, at 2% — is ~$160k, under 4% of Y7 revenue. **The buyback-spread question the brief marks CRITICAL is real for cash management and immaterial for the P&L; what matters is whether customers keep paying.**
 
+### The float — rebuilt as inventory, unhedged (client decision 2026-09-02)
+
+**Why.** The workbook holds `1 bar + 10 days of average demand`. The 10 is a guess, demand is not smooth, the float is unhedged gold with no P&L line for price moves, and there is no carry cost.
+
+**What was built.** Daily resolution inside every month. Payday clustering (60% of SIP volume in 5 days). Spot as random lumps. An **order-up-to policy that reads the SIP calendar forward** — scheduled demand is known ahead, so the float is positioned *before* the payday cluster, with safety stock only for the unscheduled spot part. Dealer lead time 2 days, 100 g bars, 99% service level. Redemptions refill; excess is sold back at the spread. Daily mark-to-market on the gold path. Carry at 6%/yr. **No hedge — Aurumix owns the variance.**
+
+⚠ **A first version with a rolling-history safety stock ran 6.9% stock-out days** — it reacted to the payday cluster after it hit. A stock-out here means a customer has paid and their gram is not allocated. The calendar-aware policy cuts that to **0.28%** (about one day a year).
+
+| | Workbook rule | Inventory model |
+|---|---|---|
+| Float at Y7 | **3,406 g** (~$780k) | **441 g average**, peaking at 2,750 g just before payday |
+| Stock-out days | not measured | 0.28% |
+| Carry cost, 7 yrs cumulative | 0 (not modelled) | ~$24k |
+| Mark-to-market P&L, 7 yrs (400 paths) | not modelled | p10 +$1k · p50 +$27k · p90 +$69k; worst single year p10 **−$15k** |
+| **Safe raise p90** (same 400 paths) | $4.52m | **$3.81m** |
+
+**Findings.**
+1. **The workbook holds ~8× more float than a calendar-aware policy needs.** That is ~$0.7m of the raise that a procurement process can release.
+2. **Unhedged is fine at this size.** The float is small, so the price variance is small — a worst year around −$15k against a Y7 profit of $847k. The decision to own the variance costs almost nothing.
+3. **The float is a procurement discipline, not a capital item.** What matters is delivery reliability: lead time 1 → 5 days moves the float from 335 g to 718 g, still a fraction of the workbook's figure.
+
+**Assumptions taken, all swept:** lead 2 days (1/3/5), service 99% (95/99/99.9), payday share 60% (40/80), carry 6% (4/8). ⚠ **Dealer terms are the unverified input** — the bullion dealer is still unnamed. A weekly-delivery or minimum-order dealer raises the float materially.
+
 ## 4. Assumptions made on my own authority (all swept)
 
 | Assumption | Value | Basis |

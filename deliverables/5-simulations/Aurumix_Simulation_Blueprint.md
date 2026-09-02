@@ -515,6 +515,8 @@ Customer lifecycle and heterogeneity · the gate and the five-tier ladder · all
 
 **Stage 3 — Solver.** Search over inputs for the threshold, the ICS affordability envelope, and the break-even spot conversion rate. Sweeps and tornado. Delivers Q1, Q6, and the **prescriptive lever ranking**.
 
+**Stage 2b — The float as inventory (added 2026-09-02, client decision: UNHEDGED).** The workbook's `1 bar + 10 days` rule is replaced by a daily inventory model: payday-clustered SIP demand, spot as random lumps, a calendar-aware order-up-to policy with dealer lead time and 100 g lots, safety stock from a service level, redemption netting, sell-back of excess, daily mark-to-market on the gold path, and a carry cost. Aurumix owns the price variance. Outputs: float size at service level, stock-out rate, carry, MTM P&L distribution, and the effect on the raise. `src/floatmodel.py`, `scripts/run_float.py`.
+
 ⚠ **Each stage ships something standalone.** Stage 1 answers the tier and concentration questions even if Stage 3 is never reached.
 
 ## Data Requirements
