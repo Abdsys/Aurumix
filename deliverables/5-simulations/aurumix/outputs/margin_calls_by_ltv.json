@@ -1,0 +1,22 @@
+{
+ "0.5": {
+  "P_any_call": 0.045,
+  "called_share_p50": 0.0,
+  "called_share_p90": 0.0
+ },
+ "0.59": {
+  "P_any_call": 0.195,
+  "called_share_p50": 0.0,
+  "called_share_p90": 0.007370362043140998
+ },
+ "0.725": {
+  "P_any_call": 0.84625,
+  "called_share_p50": 0.04492528966515505,
+  "called_share_p90": 0.17149059246307427
+ },
+ "0.8": {
+  "P_any_call": 1.0,
+  "called_share_p50": 0.2840725781271184,
+  "called_share_p90": 0.4378897124647639
+ }
+}

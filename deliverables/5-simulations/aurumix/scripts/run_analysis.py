@@ -70,25 +70,36 @@ churn_annual = 1 - (1 - p0["monthly_churn"]) ** 12
 blended_cac = annual(o, "acq_cost", 7) / annual(o, "new", 7)
 replace_pc = churn_annual * blended_cac        # per paying customer per year
 
+# B2B is NOT per-customer revenue: it is a fixed block that scales with
+# partners. So the fixed cost base is covered EITHER by N retail customers at
+# their unit margin OR by K partners at AUM/partner x fee. Report both, never
+# a blend - blending hides that the retail business may not stand alone.
+b2b_per_partner = p0["partner_aum"] * p0["b2b_fee"]
+
+# replacement CAC: blended (Y7 mix, India-agent heavy) vs UAE-marketing-only
+cac_uae_only = p0["cac_uae_y7"]
 A["q1_threshold"] = {}
 for cont in (0.15, 0.30, 0.50):
-    k = 1 + cont                                # contingency on all costs
-    margin = rev_pc - k * (serve_pc + replace_pc)
-    margin_ex = rev_pc_ex - k * (serve_pc + replace_pc)
-    A["q1_threshold"][f"contingency_{int(cont*100)}"] = {
-        "paying_needed_with_b2b": float(k * fixed / margin) if margin > 0 else None,
-        "paying_needed_ex_b2b": float(k * fixed / margin_ex) if margin_ex > 0 else None,
-        "margin_per_customer": float(margin),
-    }
+    k = 1 + cont
+    row = {}
+    for tag, cac in (("blended_cac", blended_cac), ("uae_cac", cac_uae_only)):
+        margin_ex = rev_pc_ex - k * (serve_pc + churn_annual * cac)
+        row[tag] = {"margin_per_customer": float(margin_ex),
+                    "paying_needed_ex_b2b": float(k * fixed / margin_ex)
+                    if margin_ex > 0 else None}
+    row["partners_to_cover_fixed_alone"] = float(k * fixed / b2b_per_partner)
+    A["q1_threshold"][f"contingency_{int(cont*100)}"] = row
 
 print(f"\nQ1a. PROFITABILITY THRESHOLD - steady state (acquisition replaces churn only)")
-print(f"  revenue/payer ${rev_pc:.0f} (${rev_pc_ex:.0f} ex-B2B) | serve ${serve_pc:.0f}"
-      f" | churn-replacement ${replace_pc:.0f}  (churn {churn_annual:.0%} x CAC ${blended_cac:.0f})")
+print(f"  retail revenue/payer ${rev_pc_ex:.0f} | serve ${serve_pc:.0f} | churn {churn_annual:.0%}/yr"
+      f" | CAC blended ${blended_cac:.0f} / UAE-only ${cac_uae_only:.0f}")
+print(f"  fixed cost base ${fixed:,.0f}/yr | one B2B partner = ${b2b_per_partner:,.0f}/yr")
 for cont in (15, 30, 50):
     t = A["q1_threshold"][f"contingency_{cont}"]
-    w = f"{t['paying_needed_with_b2b']:,.0f}" if t["paying_needed_with_b2b"] else "unreachable"
-    ex = f"{t['paying_needed_ex_b2b']:,.0f}" if t["paying_needed_ex_b2b"] else "unreachable"
-    print(f"  contingency {cont}%: {w} paying with B2B | {ex} without B2B")
+    b = t["blended_cac"]["paying_needed_ex_b2b"]; u = t["uae_cac"]["paying_needed_ex_b2b"]
+    bs = f"{b:,.0f}" if b else "unreachable"; us = f"{u:,.0f}" if u else "unreachable"
+    print(f"  contingency {cont}%: RETAIL ALONE needs {bs} paying (blended CAC) / {us} (UAE CAC)"
+          f"  |  OR {t['partners_to_cover_fixed_alone']:.1f} B2B partners cover fixed costs by themselves")
 print(f"  (cross-check: O Gold runs 75,000 active users in the UAE alone)")
 
 # ═════════════════════════════════════════════════════════════════════════════

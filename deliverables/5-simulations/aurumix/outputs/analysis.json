@@ -1,19 +1,37 @@
 {
  "q1_threshold": {
   "contingency_15": {
-   "paying_needed_with_b2b": 17401.44818342194,
-   "paying_needed_ex_b2b": 76035.06209697535,
-   "margin_per_customer": 28.395621951616164
+   "blended_cac": {
+    "margin_per_customer": 6.498645893086518,
+    "paying_needed_ex_b2b": 76035.06209697535
+   },
+   "uae_cac": {
+    "margin_per_customer": -2.6709616087433474,
+    "paying_needed_ex_b2b": null
+   },
+   "partners_to_cover_fixed_alone": 3.485890257686683
   },
   "contingency_30": {
-   "paying_needed_with_b2b": 23403.625544572402,
-   "paying_needed_ex_b2b": 283527.2729834199,
-   "margin_per_customer": 23.86707233112159
+   "blended_cac": {
+    "margin_per_customer": 1.9700962725919453,
+    "paying_needed_ex_b2b": 283527.2729834199
+   },
+   "uae_cac": {
+    "margin_per_customer": -8.395546990346162,
+    "paying_needed_ex_b2b": null
+   },
+   "partners_to_cover_fixed_alone": 3.940571595645816
   },
   "contingency_50": {
-   "paying_needed_with_b2b": 36149.56382845669,
-   "paying_needed_ex_b2b": null,
-   "margin_per_customer": 17.829006170462172
+   "blended_cac": {
+    "margin_per_customer": -4.0679698880674735,
+    "paying_needed_ex_b2b": null
+   },
+   "uae_cac": {
+    "margin_per_customer": -16.02832749914991,
+    "paying_needed_ex_b2b": null
+   },
+   "partners_to_cover_fixed_alone": 4.546813379591326
   }
  },
  "q2_tier_mix_m84": {

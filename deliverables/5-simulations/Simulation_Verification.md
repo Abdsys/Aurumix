@@ -36,15 +36,19 @@ Three stages, per the blueprint:
 
 ### Q1 — What does it take to be profitable? *(steady state, no market ceiling involved)*
 
-Revenue $63/payer-yr ($41 ex-B2B) · serving $13 · churn-replacement $17 (45%/yr × $37 CAC):
+⚠ **Corrected after self-audit.** My first cut spread B2B revenue per customer. B2B does not scale with customers — it is a fixed block that scales with *partners*. So the fixed cost base ($430k/yr) is covered **either** by N retail customers at their unit margin **or** by K partners. Reporting a blend hides whether retail stands alone. It does not:
 
-| Contingency | Paying needed, with B2B | Without B2B |
-|---|---|---|
-| 15% | **17,400** | 76,000 |
-| 30% | 23,400 | 283,500 |
-| 50% | 36,150 | unreachable |
+Retail revenue **$41**/payer-yr · serving **$13** · churn **45%/yr** · CAC blended **$37** (India-agent heavy) or UAE-only **$55**:
 
-Cross-check that bypasses the (unsourced) market funnel: O Gold runs 75,000 active users in the UAE alone. **With B2B the threshold is plausible; without it, it is heroic.** Which leads to—
+| Contingency | Retail alone, blended CAC | Retail alone, UAE CAC | **or** partners covering fixed costs by themselves |
+|---|---|---|---|
+| 15% | **76,000** paying | **unreachable** | **3.5** |
+| 30% | 283,500 | unreachable | 3.9 |
+| 50% | unreachable | unreachable | 4.5 |
+
+**The retail unit margin at 15% contingency is ~$6 per customer per year.** At UAE acquisition cost it is negative — a UAE retail customer does not pay for their own replacement. The O Gold cross-check (75,000 active users in the UAE) sits *at* the blended-CAC threshold, not comfortably above it.
+
+**Three and a half partners cover the entire fixed base.** Which leads to—
 
 ### The single largest finding: the business as modelled is a B2B bet
 
@@ -86,7 +90,16 @@ The ladder envelope (cumulative 84-mo cost, % of agent revenue) confirms the sha
 ### Q5 — Gold and the credit book
 
 - **A −30% crash barely moves the P&L** (Y7 −$460): flows repurchase at the new price, so USD-AUM is nearly invariant — v2.6's §14.4a claim, confirmed independently.
-- The risk is the **stock**, not the flow: margin calls appear in **4.8% of paths** at the flat 50% LTV (a call needs gold −41% from a vintage's strike). ⚠ At the tier ladder's 80% rung the trigger is −6% — **Sovereign LTV converts a 1-in-20 tail into a routine event.** The LTV ladder is the credit-risk decision, and the workbook doesn't carry it.
+- The risk is the **stock**, not the flow — and it is set by the LTV rung. Run at each rung of the ladder (800 paths each, call line 85% current LTV):
+
+| Struck LTV | Rung | Gold move that triggers a call | P(any call in 7 yrs) | Share of originations called, p50 / p90 |
+|---|---|---|---|---|
+| 50% | Silver / workbook flat | −41% | **4.5%** | 0% / 0% |
+| 59% | tier-mix weighted | −31% | 19.5% | 0% / 0.7% |
+| 72.5% | Platinum | −15% | 84.6% | 4.5% / 17.1% |
+| **80%** | **Sovereign** | **−6%** | **100%** | **28.4% / 43.8%** |
+
+**At Sovereign's 80% LTV a margin call is certain within the horizon and over a quarter of the book gets called in the median path.** The LTV ladder is the credit-risk decision of the whole design — and it is the one benefit the workbook does not carry (flat 50% for everyone). The counter-argument is that Sovereign is 1.1% of tiered accounts; the response is that they are also the largest balances.
 
 ### Stress table (Y7 profit | cumulative | peak funding)
 
