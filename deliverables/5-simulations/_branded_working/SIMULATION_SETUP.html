@@ -1,0 +1,3037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<title>Aurumix Gold Savings Simulation &mdash; Tokenomics.net</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script>window.__katexReady=new Promise(function(res){window.__katexResolve=res;});</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});window.__katexResolve();"
+  onerror="window.__katexResolve();"></script>
+
+<style>
+/**
+ * Tokenomics.net Brand System CSS
+ * Version: 2.0.0
+ * Aesthetic: "The Institution" — Private Museum Standard
+ *
+ * Single source of truth for all branded document templates.
+ * Link in compose.html or individual templates via relative path.
+ *
+ * Brand References:
+ *   - tokenomics_visual_standard_v1.2.md
+ *   - Tokenomics_net_Brand_Strategy_Branded.docx
+ */
+
+/* ================================================================
+   FONT LOADING
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap');
+
+
+/* ================================================================
+   CUSTOM PROPERTIES
+   ================================================================ */
+
+:root {
+  /* Brand Colors — LOCKED (Visual Standard v1.2) */
+  --warm-charcoal: #1A1714;
+  --warm-white: #FAF8F5;
+  --gold: #B8956E;
+  --light-gold: #D4B896;
+  --dark-gold: #96734A;
+  --concrete: #9A9590;
+  --stone: #D4CFC8;
+  --stone-light: #E8E4DF;
+  --border-light: #E5E2DE;
+
+  /* Semantic Status Colors */
+  --success: #4A7C59;
+  --success-light: #E8F0EB;
+  --warning: #C4783C;
+  --warning-light: #F5EDDF;
+  --danger: #8C3D3D;
+  --danger-light: #F3E8E8;
+  --info: #3D6B8C;
+  --info-light: #E8EFF5;
+
+  /* Semantic Text Colors */
+  --text-primary: #1A1714;
+  --text-secondary: #5A5652;
+  --text-tertiary: #9A9590;
+
+  /* Typography — LOCKED */
+  --font-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Libre Franklin', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+
+  /* Page Dimensions — Portrait (Letter) */
+  --page-width: 8.5in;
+  --page-height: 11in;
+  --safe-margin: 0.5in;
+  --safe-margin-top: 0.6in;
+  --safe-margin-bottom: 0.6in;
+
+  /* Page Dimensions — Landscape (Letter) */
+  --page-width-landscape: 11in;
+  --page-height-landscape: 8.5in;
+
+  /* Footer Positioning */
+  --footer-inset-left: 0.5in;
+  --footer-inset-right: 0.5in;
+
+  /* Spacing Scale */
+  --space-2xs: 0.125rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Gold Accent Widths */
+  --accent-thin: 1px;
+  --accent-medium: 2px;
+  --accent-thick: 4px;
+  --accent-heavy: 6px;
+}
+
+
+/* ================================================================
+   RESET + BASE
+   ================================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--warm-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ================================================================
+   PAGE CONTAINER SYSTEM
+   ================================================================ */
+
+/* Portrait Page */
+.page {
+  width: var(--page-width);
+  height: var(--page-height);
+  position: relative;
+  overflow: hidden;
+  background: var(--warm-white);
+  margin: 0 auto;
+}
+
+/* Landscape Page */
+.page--landscape {
+  width: var(--page-width-landscape);
+  height: var(--page-height-landscape);
+  --footer-inset-left: 0.7in;
+  --footer-inset-right: 0.7in;
+}
+
+/* Safe zone for content (respects margins) */
+.page-content {
+  position: absolute;
+  top: var(--safe-margin-top);
+  left: var(--safe-margin);
+  right: var(--safe-margin);
+  bottom: var(--safe-margin-bottom);
+}
+
+/* Full-bleed container (edge to edge) */
+.page-bleed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ================================================================
+   TYPOGRAPHY SCALE
+   Print-optimized sizes (pt for precision)
+   ================================================================ */
+
+/* Display — hero titles on covers */
+.text-display {
+  font-family: var(--font-serif);
+  font-size: 42pt;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1, .text-h1 {
+  font-family: var(--font-serif);
+  font-size: 32pt;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+h2, .text-h2 {
+  font-family: var(--font-serif);
+  font-size: 22pt;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+h3, .text-h3 {
+  font-family: var(--font-serif);
+  font-size: 16pt;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+h4, .text-h4 {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+p, .text-body {
+  font-family: var(--font-sans);
+  font-size: 10.5pt;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.text-body-large {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.text-caption {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.text-meta {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--concrete);
+}
+
+.text-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+
+.text-small {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+
+/* ================================================================
+   LISTS
+   ================================================================ */
+
+ul, ol {
+  font-family: var(--font-sans);
+  font-size: 10.5pt;
+  line-height: 1.65;
+  margin-bottom: var(--space-md);
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: var(--space-xs);
+}
+
+li::marker {
+  color: var(--gold);
+}
+
+
+/* ================================================================
+   WORDMARK
+   ================================================================ */
+
+.wordmark {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+  display: inline-block;
+}
+
+.wordmark-period {
+  color: var(--gold);
+}
+
+.wordmark--light {
+  color: var(--warm-white);
+}
+
+.wordmark--dark {
+  color: var(--warm-charcoal);
+}
+
+.wordmark--sm { font-size: 14px; }
+.wordmark--md { font-size: 18px; }
+.wordmark--lg { font-size: 24px; }
+.wordmark--xl { font-size: 36px; }
+.wordmark--2xl { font-size: 48px; }
+
+
+/* ================================================================
+   GOLD ACCENT LINES / RULES
+   ================================================================ */
+
+.gold-rule {
+  border: none;
+  border-bottom: var(--accent-medium) solid var(--gold);
+  margin: var(--space-lg) 0;
+}
+
+.gold-rule--thin {
+  border-bottom-width: var(--accent-thin);
+}
+
+.gold-rule--thick {
+  border-bottom-width: var(--accent-thick);
+}
+
+.gold-rule--heavy {
+  border-bottom-width: var(--accent-heavy);
+}
+
+.gold-rule--short {
+  width: 60px;
+}
+
+.gold-rule--short-center {
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stone-rule {
+  border: none;
+  border-bottom: 1px solid var(--stone);
+  margin: var(--space-lg) 0;
+}
+
+.gold-bar-left {
+  border-left: var(--accent-thick) solid var(--gold);
+  padding-left: var(--space-md);
+}
+
+.gold-bar-top {
+  border-top: var(--accent-heavy) solid var(--gold);
+}
+
+
+/* ================================================================
+   CALLOUT BOXES
+   ================================================================ */
+
+.callout {
+  background: var(--stone-light);
+  border-left: var(--accent-thick) solid var(--gold);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.callout-title {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.callout-body {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.callout--dark {
+  background: var(--warm-charcoal);
+  border-left-color: var(--gold);
+}
+
+.callout--dark .callout-title {
+  color: var(--warm-white);
+}
+
+.callout--dark .callout-body {
+  color: var(--stone);
+}
+
+
+/* ================================================================
+   PULL QUOTES
+   ================================================================ */
+
+.pull-quote {
+  text-align: center;
+  padding: var(--space-xl) var(--space-2xl);
+  margin: var(--space-xl) 0;
+  border-top: var(--accent-medium) solid var(--gold);
+  border-bottom: var(--accent-medium) solid var(--gold);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pull-quote-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18pt;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.pull-quote-attribution {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 500;
+  color: var(--concrete);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* ================================================================
+   STAT CARDS
+   ================================================================ */
+
+.stat-row {
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.stat-card {
+  flex: 1;
+  padding: var(--space-lg);
+  border: 1px solid var(--border-light);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.stat-card--gold {
+  border-color: var(--gold);
+  border-width: 2px;
+}
+
+.stat-value {
+  font-family: var(--font-serif);
+  font-size: 28pt;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.1;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+/* ================================================================
+   DATA TABLES
+   ================================================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  line-height: 1.5;
+  margin-bottom: var(--space-lg);
+}
+
+thead th {
+  background: var(--warm-charcoal);
+  color: var(--warm-white);
+  font-weight: 600;
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--gold);
+}
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--stone-light);
+}
+
+tbody tr:hover {
+  background: var(--stone);
+}
+
+tfoot td {
+  padding: 10px 14px;
+  font-weight: 600;
+  background: rgba(184, 149, 110, 0.08);
+  border-top: 2px solid var(--gold);
+  color: var(--text-primary);
+}
+
+.table-caption {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  color: var(--concrete);
+  margin-top: var(--space-xs);
+  font-style: italic;
+}
+
+
+/* ================================================================
+   IMAGE PLACEHOLDERS
+   ================================================================ */
+
+.image-placeholder {
+  background: var(--stone-light);
+  border: 2px dashed var(--stone);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--concrete);
+  overflow: hidden;
+}
+
+.image-placeholder-label {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 500;
+  color: var(--concrete);
+  margin-bottom: var(--space-xs);
+}
+
+.image-placeholder-prompt {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  color: var(--stone);
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+/* When image is loaded, hide placeholder UI */
+.image-placeholder[style*="background-image"] .image-placeholder-label,
+.image-placeholder[style*="background-image"] .image-placeholder-prompt {
+  display: none;
+}
+
+
+/* ================================================================
+   LOGO (SVG <img> tag)
+   ================================================================ */
+
+.logo {
+  display: inline-block;
+  height: auto;
+  vertical-align: middle;
+}
+
+.logo--sm { width: 90px; }
+.logo--md { width: 120px; }
+.logo--lg { width: 150px; }
+.logo--xl { width: 200px; }
+.logo--cover { width: 160px; }
+.logo--2xl { width: 280px; }
+
+
+/* ================================================================
+   CTA BUTTONS
+   ================================================================ */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn--gold {
+  background: var(--gold);
+  color: var(--warm-white);
+}
+
+.btn--gold-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+}
+
+.btn--dark {
+  background: var(--warm-charcoal);
+  color: var(--warm-white);
+}
+
+
+
+
+/* ================================================================
+   PAGE NUMBERS
+   ================================================================ */
+
+.page-number {
+  position: absolute;
+  bottom: 0.25in;
+  right: var(--footer-inset-right);
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  color: var(--concrete);
+  font-variant-numeric: tabular-nums;
+}
+
+.page-number--left {
+  right: auto;
+  left: var(--footer-inset-left);
+}
+
+
+/* ================================================================
+   TOC ENTRY
+   ================================================================ */
+
+.toc-entry {
+  display: flex;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--stone);
+}
+
+.toc-entry-text {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 400;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.toc-entry-dots {
+  flex: 1;
+  min-width: 20px;
+}
+
+.toc-entry-page {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  padding-left: 8px;
+}
+
+.toc-entry--section {
+  padding-top: 14px;
+  border-bottom: 1px solid var(--stone);
+}
+
+.toc-entry--section .toc-entry-text {
+  font-weight: 600;
+  font-size: 11pt;
+}
+
+.toc-entry--sub {
+  padding-left: 24px;
+}
+
+.toc-entry--sub .toc-entry-text {
+  font-size: 10pt;
+  color: var(--text-secondary);
+}
+
+
+/* ================================================================
+   FINDINGS / NUMBERED ITEMS
+   ================================================================ */
+
+.finding {
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.finding-number {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.finding-content {
+  flex: 1;
+}
+
+.finding-title {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.finding-body {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+
+/* ================================================================
+   CONTACT GRID
+   ================================================================ */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.contact-item-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--concrete);
+  margin-bottom: var(--space-2xs);
+}
+
+.contact-item-value {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  color: var(--text-primary);
+}
+
+
+/* ================================================================
+   UTILITY CLASSES
+   ================================================================ */
+
+/* Text Alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Colors */
+.text-gold { color: var(--gold); }
+.text-charcoal { color: var(--warm-charcoal); }
+.text-white { color: var(--warm-white); }
+.text-concrete { color: var(--concrete); }
+
+/* Backgrounds */
+.bg-charcoal { background: var(--warm-charcoal); }
+.bg-white { background: var(--warm-white); }
+.bg-stone { background: var(--stone); }
+.bg-stone-light { background: var(--stone-light); }
+
+/* Margins */
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-2xl { margin-top: var(--space-2xl); }
+.mt-3xl { margin-top: var(--space-3xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mb-2xl { margin-bottom: var(--space-2xl); }
+
+/* Mermaid diagrams — block layout so SVG height flows naturally */
+figure.mermaid,
+figure .mermaid {
+  display: block;
+  overflow: visible;
+  margin: 0.15in 0;
+  text-align: center;
+}
+figure.mermaid svg,
+figure .mermaid svg {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Print utilities */
+.keep-together {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.break-before {
+  break-before: page;
+  page-break-before: always;
+}
+
+.break-after {
+  break-after: page;
+  page-break-after: always;
+}
+
+/* Flexbox helpers */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { align-items: center; justify-content: center; }
+.flex-between { justify-content: space-between; }
+.flex-end { justify-content: flex-end; }
+.flex-1 { flex: 1; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.gap-xl { gap: var(--space-xl); }
+
+
+/* ================================================================
+   PRINT MEDIA
+   ================================================================ */
+
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+
+@page landscape {
+  size: 11in 8.5in;
+  margin: 0;
+}
+
+@media print {
+  *, *::before, *::after {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  /* Each .page triggers a page break */
+  .page {
+    page-break-after: always;
+    break-after: page;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Landscape pages use named @page rule */
+  .page--landscape {
+    page: landscape;
+  }
+
+  /* Prevent orphaned headings */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Keep blocks together */
+  .callout,
+  .stat-card,
+  .finding,
+  figure,
+  blockquote,
+  .keep-together {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Table handling */
+  table { page-break-inside: auto; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Orphans/widows */
+  p { orphans: 3; widows: 3; }
+
+
+  /* Hide screen-only elements */
+  .screen-only { display: none !important; }
+}
+
+
+/* ================================================================
+   SHARED COMPONENTS — EXTENDED
+   Recommendation cards, scoring, strengths/risks, timeline,
+   pricing, checklists
+   ================================================================ */
+
+/* Recommendation Cards */
+.recommendation-card {
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--gold);
+  padding: var(--space-lg);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.recommendation-number {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.recommendation-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.recommendation-title {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  margin-bottom: 4px;
+}
+
+.recommendation-body {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.priority-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 7pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.priority-tag--high { background: var(--danger-light); color: var(--danger); }
+.priority-tag--medium { background: var(--warning-light); color: var(--warning); }
+.priority-tag--low { background: var(--success-light); color: var(--success); }
+
+/* Scoring & Verdict */
+.verdict-display {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid var(--border-light);
+  margin-bottom: 20px;
+}
+
+.verdict-score {
+  font-family: var(--font-serif);
+  font-size: 48pt;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.verdict-label {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+}
+
+.verdict-display--success { border-color: var(--success); }
+.verdict-display--success .verdict-score { color: var(--success); }
+.verdict-display--warning { border-color: var(--warning); }
+.verdict-display--warning .verdict-score { color: var(--warning); }
+.verdict-display--danger { border-color: var(--danger); }
+.verdict-display--danger .verdict-score { color: var(--danger); }
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.score-label {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: var(--warm-charcoal);
+  width: 2in;
+  flex-shrink: 0;
+}
+
+.score-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--stone-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--gold);
+}
+
+.score-fill--success { background: var(--success); }
+.score-fill--warning { background: var(--warning); }
+.score-fill--danger { background: var(--danger); }
+
+.score-value {
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--gold);
+  width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Strengths & Risks Boxes */
+.strengths-risks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3in;
+}
+
+.strengths-box {
+  background: var(--success-light);
+  border-left: 4px solid var(--success);
+  padding: var(--space-lg);
+}
+
+.risks-box {
+  background: var(--danger-light);
+  border-left: 4px solid var(--danger);
+  padding: var(--space-lg);
+}
+
+.sr-box-title {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.strengths-box .sr-box-title { color: var(--success); }
+.risks-box .sr-box-title { color: var(--danger); }
+
+.sr-item {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding: 4px 0;
+  padding-left: 18px;
+  position: relative;
+}
+
+.sr-item::before {
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+.strengths-box .sr-item::before { content: '✓'; color: var(--success); }
+.risks-box .sr-item::before { content: '⚠'; color: var(--danger); font-size: 8pt; }
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 48px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: var(--gold);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-node {
+  position: absolute;
+  left: -48px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 1;
+}
+
+.timeline-date {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  margin-bottom: 4px;
+}
+
+.timeline-body {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Pricing Columns */
+.pricing-columns {
+  display: flex;
+  gap: 0.2in;
+}
+
+.pricing-card {
+  flex: 1;
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card--featured {
+  border: 2px solid var(--gold);
+}
+
+.pricing-header {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pricing-card--featured .pricing-header {
+  background: var(--gold);
+}
+
+.pricing-name {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--warm-charcoal);
+}
+
+.pricing-card--featured .pricing-name {
+  color: var(--warm-white);
+}
+
+.pricing-price {
+  font-family: var(--font-serif);
+  font-size: 28pt;
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  padding: 16px;
+}
+
+.pricing-card--featured .pricing-price {
+  color: var(--warm-charcoal);
+}
+
+.pricing-features {
+  padding: 0 16px 16px;
+  flex: 1;
+}
+
+.pricing-feature {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pricing-feature::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.pricing-feature--excluded {
+  color: var(--concrete);
+}
+
+.pricing-feature--excluded::before {
+  content: '—';
+  color: var(--concrete);
+}
+
+/* Checklist Items */
+.checklist-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.checklist-check {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid var(--border-light);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10pt;
+  margin-top: 2px;
+}
+
+.checklist-item--checked .checklist-check {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--warm-white);
+}
+
+.checklist-item--checked .checklist-check::after {
+  content: '✓';
+}
+
+.checklist-item-title {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--warm-charcoal);
+}
+
+.checklist-item-desc {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Scope Section Headers */
+.scope-header {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+
+.scope-header--in {
+  background: var(--success-light);
+  color: var(--success);
+  border-left: 4px solid var(--success);
+}
+
+.scope-header--out {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-left: 4px solid var(--danger);
+}
+
+
+/* ================================================================
+   WORKSHEET PRIMITIVES — Fill-in Areas, Answer Boxes, Rating Scales
+   ================================================================ */
+
+/* Module badge — course module identifier pill */
+.module-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  background: var(--warning-light);
+  border: 1px solid var(--light-gold);
+  border-radius: 20px;
+  padding: 3px 12px;
+  line-height: 1.4;
+}
+
+/* Worksheet instruction bar */
+.worksheet-instruction {
+  background: var(--warm-white);
+  border: 1.5px solid var(--light-gold);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.worksheet-instruction-title {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+
+.worksheet-instruction-body {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Lined area — ruled-paper fill-in space */
+.lined-area {
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    var(--border-light) 27px,
+    var(--border-light) 28px
+  );
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  min-height: 112px;
+  padding: 6px 8px 0 8px;
+}
+
+.lined-area--tall { min-height: 168px; }
+.lined-area--short { min-height: 56px; }
+
+/* Answer box — bordered blank area */
+.answer-box {
+  border: 1.5px solid var(--stone);
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-height: 48px;
+  background: var(--warm-white);
+}
+
+.answer-box--gold {
+  border-color: var(--light-gold);
+  background: linear-gradient(135deg, var(--warm-white) 0%, #FDF8F2 100%);
+}
+
+.answer-box-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--concrete);
+  margin-bottom: 4px;
+}
+
+/* Canvas zone — labeled region for framework canvases */
+.canvas-zone {
+  border: 1.5px dashed var(--stone);
+  border-radius: 4px;
+  padding: 8px 10px;
+  background: var(--warm-white);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.canvas-zone-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.canvas-zone-hint {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-style: italic;
+  color: var(--concrete);
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+/* Rating scale — 1-5 circle rating system */
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.rating-label {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-primary);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.rating-scale {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.rating-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--stone);
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.rating-circle--filled {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* Fill blank — inline underline blank */
+.fill-blank {
+  display: inline-block;
+  border-bottom: 1.5px solid var(--stone);
+  min-width: 120px;
+  height: 1.2em;
+  vertical-align: baseline;
+}
+
+.fill-blank--short { min-width: 60px; }
+.fill-blank--long { min-width: 200px; }
+
+/* Fill cell — empty table cell for student input */
+td.fill-cell {
+  background: var(--warm-white);
+  border: 1px solid var(--border-light);
+  min-height: 32px;
+}
+
+td.fill-cell--highlight {
+  background: linear-gradient(135deg, var(--warm-white) 0%, #FDF8F2 100%);
+  border-color: var(--light-gold);
+}
+
+
+/* ================================================================
+   SLIDE / PRESENTATION PRIMITIVES — Large Typography, Screen Display
+   ================================================================ */
+
+/* Slide typography scale — enlarged for screen projection */
+.slide-display {
+  font-family: var(--font-serif);
+  font-size: 54pt;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--warm-charcoal);
+}
+
+.slide-h1 {
+  font-family: var(--font-serif);
+  font-size: 40pt;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--warm-charcoal);
+}
+
+.slide-h2 {
+  font-family: var(--font-serif);
+  font-size: 30pt;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--warm-charcoal);
+}
+
+.slide-h3 {
+  font-family: var(--font-sans);
+  font-size: 22pt;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--warm-charcoal);
+}
+
+.slide-body {
+  font-family: var(--font-sans);
+  font-size: 18pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.slide-body-large {
+  font-family: var(--font-sans);
+  font-size: 22pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.slide-caption {
+  font-family: var(--font-sans);
+  font-size: 14pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--concrete);
+}
+
+.slide-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 14pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+.slide-meta {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  font-weight: 400;
+  color: var(--concrete);
+}
+
+/* Slide number — larger for presentation */
+.slide-number {
+  position: absolute;
+  bottom: 0.35in;
+  right: var(--footer-inset-right);
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  color: var(--concrete);
+}
+
+.slide-number--light {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Slide big number — hero stat display */
+.slide-big-number {
+  font-family: var(--font-serif);
+  font-size: 96pt;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.slide-big-label {
+  font-family: var(--font-sans);
+  font-size: 18pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-top: 12px;
+}
+
+/* Slide bullets — generously spaced list */
+.slide-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slide-bullets li {
+  font-family: var(--font-sans);
+  font-size: 18pt;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  padding: 10px 0 10px 32px;
+  position: relative;
+}
+
+.slide-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Slide horizontal process — left-to-right step flow */
+.slide-process {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+
+.slide-process-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 0 12px;
+}
+
+.slide-process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  right: -10%;
+  width: 20%;
+  height: 2px;
+  background: var(--light-gold);
+}
+
+.slide-process-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: 18pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin-bottom: 12px;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.slide-process-title {
+  font-family: var(--font-sans);
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  margin-bottom: 6px;
+}
+
+.slide-process-desc {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Slide key takeaway box */
+.slide-takeaway {
+  background: var(--stone-light);
+  border-left: 6px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 28px 32px;
+}
+
+.slide-takeaway-label {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.slide-takeaway-text {
+  font-family: var(--font-serif);
+  font-size: 24pt;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--warm-charcoal);
+}
+
+/* Slide wordmark — bottom-left branding */
+.slide-wordmark {
+  position: absolute;
+  bottom: 0.35in;
+  left: var(--footer-inset-left);
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--concrete);
+  letter-spacing: 0.02em;
+}
+
+.slide-wordmark--light {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Slide gold accent bar */
+.slide-gold-bar {
+  width: 80px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+/* Dark slide background */
+.page--slide-dark {
+  background: var(--warm-charcoal);
+}
+
+.page--slide-dark .slide-display,
+.page--slide-dark .slide-h1,
+.page--slide-dark .slide-h2,
+.page--slide-dark .slide-h3 {
+  color: var(--warm-white);
+}
+
+.page--slide-dark .slide-body,
+.page--slide-dark .slide-body-large,
+.page--slide-dark .slide-caption {
+  color: var(--stone);
+}
+
+.page--slide-dark .slide-big-label {
+  color: var(--stone);
+}
+
+
+/* ================================================================
+   DIAGRAM COMPONENTS
+   ================================================================ */
+
+.diagram-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.diagram-area img,
+.diagram-area .image-placeholder {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  object-fit: contain;
+  display: block;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+}
+
+.diagram-caption {
+  font-family: var(--font-sans);
+  font-size: 8.5pt;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  line-height: 1.45;
+}
+
+.diagram-source {
+  font-family: var(--font-sans);
+  font-size: 7.5pt;
+  color: var(--concrete);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.diagram-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-light);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 7.5pt;
+  color: var(--text-secondary);
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.diagram-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 18pt;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.diagram-stage-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.diagram-stage-desc {
+  font-family: var(--font-sans);
+  font-size: 8.5pt;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.diagram-subtitle {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  margin-bottom: 6px;
+}
+
+
+/* ================================================================
+   FORMULA COMPONENTS (KaTeX)
+   ================================================================ */
+
+.formula-display-block {
+  background: var(--stone-light);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+  padding: 20px 24px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.formula-display-block .katex {
+  font-size: 1.4em;
+}
+
+.formula-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.formula-explanation {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.notation-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.notation-table th {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--concrete);
+  background: var(--stone-light);
+  border: 1px solid var(--border-light);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.notation-table td {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  padding: 6px 10px;
+  vertical-align: top;
+}
+
+.notation-symbol {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  white-space: nowrap;
+}
+
+.notation-table td.notation-symbol {
+  width: 60px;
+  text-align: center;
+}
+
+.formula-series-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.formula-series-item:last-child {
+  border-bottom: none;
+}
+
+.formula-series-item .formula-display-block {
+  margin-top: 6px;
+}
+
+
+/* ================================================================
+   AUTO-CONTINUATION
+   ================================================================ */
+
+/* Hide heading + gold rule on continuation pages */
+.page[data-continuation] .content-heading,
+.page[data-continuation] .heading-rule {
+  display: none;
+}
+
+
+/* ================================================================
+   SCREEN PREVIEW MODE
+   ================================================================ */
+
+@media screen {
+  body {
+    background: #d5d2cd;
+    padding: 40px;
+  }
+
+  .page {
+    box-shadow: 0 2px 16px rgba(26, 23, 20, 0.12), 0 8px 40px rgba(26, 23, 20, 0.06);
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+
+}
+
+</style>
+<style>
+
+    .page--cover-minimal-typographic {
+      background: var(--warm-white);
+    }
+
+    .page--cover-minimal-typographic .cover-gold-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--gold);
+    }
+
+    .page--cover-minimal-typographic .cover-content {
+      position: absolute;
+      top: 50%;
+      left: 0.7in;
+      right: 0.7in;
+      transform: translateY(-55%);
+    }
+
+    .page--cover-minimal-typographic .cover-eyebrow {
+      margin-bottom: 16px;
+    }
+
+    .page--cover-minimal-typographic .cover-title {
+      font-family: var(--font-serif);
+      font-size: 42pt;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--warm-charcoal);
+      margin-bottom: 20px;
+    }
+
+    .page--cover-minimal-typographic .cover-subtitle {
+      font-family: var(--font-sans);
+      font-size: 13pt;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 5.5in;
+    }
+
+    .page--cover-minimal-typographic .cover-rule {
+      border: none;
+      border-bottom: 1px solid var(--stone);
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    .page--cover-minimal-typographic .cover-bottom {
+      position: absolute;
+      bottom: 0.8in;
+      left: 0.7in;
+      right: 0.7in;
+    }
+
+    .page--cover-minimal-typographic .cover-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: 9pt;
+      font-weight: 500;
+      color: var(--concrete);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  
+
+    .page--special-table-of-contents .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+    }
+
+    .page--special-table-of-contents .toc-title {
+      font-family: var(--font-serif);
+      font-size: 32pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 8px;
+    }
+
+    .page--special-table-of-contents .toc-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 28px;
+      width: 100%;
+    }
+
+    .page--special-table-of-contents .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .page--special-table-of-contents::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gold);
+    }
+    /* Hide title and rule on continuation pages */
+    .page--special-table-of-contents[data-continuation] .toc-title,
+    .page--special-table-of-contents[data-continuation] .toc-rule {
+      display: none;
+    }
+  
+
+    .page--special-executive-summary .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+    }
+
+    .page--special-executive-summary .summary-title {
+      font-family: var(--font-serif);
+      font-size: 28pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 6px;
+    }
+
+    .page--special-executive-summary .summary-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .page--special-executive-summary .summary-intro {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .page--special-executive-summary .stats-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .page--special-executive-summary .stats-row .stat-card {
+      flex: 1;
+      padding: 18px 16px;
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--gold);
+      break-inside: avoid;
+    }
+
+    .page--special-executive-summary .stats-row .stat-value {
+      font-family: var(--font-serif);
+      font-size: 24pt;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .page--special-executive-summary .stats-row .stat-label {
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hide heading and rule on continuation pages */
+    .page--special-executive-summary[data-continuation] .summary-title,
+    .page--special-executive-summary[data-continuation] .summary-rule {
+      display: none;
+    }
+  
+
+    .page--section-typographic {
+      background: var(--warm-white);
+    }
+
+    .page--section-typographic .section-content {
+      position: absolute;
+      top: 2in;
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+    }
+
+    .page--section-typographic .section-number {
+      font-family: var(--font-serif);
+      font-size: 48pt;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .page--section-typographic .section-title {
+      font-family: var(--font-serif);
+      font-size: 32pt;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--warm-charcoal);
+      margin-bottom: 20px;
+    }
+
+    .page--section-typographic .section-rule {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .page--section-typographic .section-subtitle {
+      font-family: var(--font-sans);
+      font-size: 12pt;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 5.5in;
+    }
+
+    
+
+    .page--content-single-column .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .page--content-single-column .content-heading {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .page--content-single-column .heading-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .page--content-single-column .content-image {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      margin-bottom: 6px;
+      flex-shrink: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .page--content-single-column .content-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .page--content-single-column .image-caption {
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      color: var(--concrete);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    /* Hide heading and rule on continuation pages */
+    .page--content-single-column[data-continuation] .content-heading,
+    .page--content-single-column[data-continuation] .heading-rule,
+    .page--content-single-column[data-continuation] .content-image,
+    .page--content-single-column[data-continuation] .image-caption {
+      display: none;
+    }
+  
+
+    .page--content-recommendation-cards .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .page--content-recommendation-cards .rec-heading {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .page--content-recommendation-cards .heading-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .page--content-recommendation-cards .rec-desc {
+      font-family: var(--font-sans);
+      font-size: 10.5pt;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .page--content-recommendation-cards .rec-list {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* Hide heading and rule on continuation pages */
+    .page--content-recommendation-cards[data-continuation] .rec-heading,
+    .page--content-recommendation-cards[data-continuation] .heading-rule {
+      display: none;
+    }
+  
+
+    .page--special-appendix .content-area {
+      position: absolute;
+      top: 120px;
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+    }
+
+    .page--special-appendix .appendix-header {
+      background: var(--stone-light);
+      padding: 20px var(--safe-margin) 20px;
+      border-bottom: 3px solid var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .page--special-appendix .appendix-title {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 4px;
+    }
+
+    .page--special-appendix .appendix-subtitle {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .page--special-appendix .appendix-body {
+      font-family: var(--font-sans);
+      font-size: 9.5pt;
+      line-height: 1.55;
+    }
+
+    .page--special-appendix .appendix-body table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .page--special-appendix .appendix-body th {
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--warm-charcoal);
+      color: var(--warm-white);
+      font-weight: 600;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .page--special-appendix .appendix-body td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: top;
+    }
+
+    .page--special-appendix .appendix-body td:first-child {
+      font-weight: 600;
+      white-space: nowrap;
+      width: 25%;
+    }
+
+    /* Also supports h4+p format for non-glossary appendices (references, stakeholder journeys) */
+    .page--special-appendix .appendix-body h4 {
+      font-size: 10pt;
+      margin-bottom: 4px;
+      break-after: avoid;
+    }
+
+    .page--special-appendix .appendix-body p {
+      font-size: 9.5pt;
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    /* Hide header on continuation pages */
+    .page--special-appendix[data-continuation] .appendix-header {
+      display: none;
+    }
+  
+
+    .page--closing-back-cover {
+      background: var(--warm-charcoal);
+    }
+
+    .page--closing-back-cover .back-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      text-align: center;
+    }
+
+    .page--closing-back-cover .back-tagline {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      font-weight: 400;
+      color: var(--concrete);
+      letter-spacing: 0.05em;
+      margin-top: 20px;
+    }
+
+    .page--closing-back-cover .back-legal {
+      position: absolute;
+      bottom: 0.75in;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      color: var(--concrete);
+      text-align: center;
+      white-space: nowrap;
+    }
+  
+</style>
+<style>
+
+#document-pages > .page { page-break-after: always; break-after: page; }
+#document-pages > .page:last-child { page-break-after: avoid; break-after: avoid; }
+
+.page--content-single-column .content-area h3,
+.page--special-appendix .content-area h3 {
+  font-family: var(--font-serif); font-size: 14pt; font-weight: 700; color: var(--warm-charcoal);
+  line-height: 1.25; margin: 18px 0 8px; break-after: avoid;
+}
+.page--content-single-column .content-area h3:first-child { margin-top: 0; }
+.page--content-single-column .content-area h4,
+.page--special-appendix .content-area h4 {
+  font-family: var(--font-sans); font-size: 10pt; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--gold-dark, #8A6D3B); margin: 14px 0 6px; break-after: avoid;
+}
+/* body type stays at the template's document scale (10.5pt), as in the
+   Stockpile deliverable; only spacing is set here */
+.page--content-single-column .content-area p,
+.page--content-single-column .content-area li { font-family: var(--font-sans); font-size: 10pt; line-height: 1.55; }
+.page--content-single-column .content-area p { margin: 0 0 9px; }
+.page--content-single-column .content-area ul,
+.page--content-single-column .content-area ol { margin: 0 0 10px; padding-left: 18px; }
+.page--content-single-column .content-area li { margin-bottom: 4px; }
+
+.page--content-single-column .content-area table,
+.page--special-appendix .content-area table {
+  width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 8pt; table-layout: auto;
+}
+.page--special-appendix .content-area table { margin: 3px 0 8px; font-size: 7.5pt; }
+.page--special-appendix .content-area td { padding: 2px 6px; }
+.page--special-appendix .content-area th { padding: 3px 6px; }
+.page--special-appendix .content-area h4 { margin: 8px 0 3px; }
+.page--special-appendix .content-area p { margin: 0 0 6px; }
+.page--content-single-column .content-area th,
+.page--special-appendix .content-area th {
+  text-align: left; padding: 6px 8px; background: var(--warm-charcoal); color: var(--warm-white);
+  font-family: var(--font-sans); font-weight: 600; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.page--content-single-column .content-area td,
+.page--special-appendix .content-area td {
+  padding: 5px 8px; border-bottom: 1px solid var(--border-light); vertical-align: top;
+  font-family: var(--font-sans); line-height: 1.4; overflow-wrap: anywhere;
+}
+.page--content-single-column .content-area tbody tr:nth-child(even),
+.page--special-appendix .content-area tbody tr:nth-child(even) { background: var(--stone-light); }
+.content-area th.num, .content-area td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* charts */
+.content-area figure.chart { margin: 10px 0 14px; break-inside: avoid; }
+.content-area figure.chart img { width: 100%; height: auto; display: block; border: 1px solid var(--border-light); }
+.content-area figure.chart figcaption {
+  font-family: var(--font-sans); font-size: 8pt; color: var(--text-secondary); margin-top: 5px; font-style: italic;
+}
+
+/* formulas */
+.formula-display-block { background: var(--warm-white); border: 1px solid var(--border-light); border-left: 4px solid var(--gold);
+  padding: 12px 20px; margin: 12px 0; text-align: center; break-inside: avoid; overflow-x: auto; }
+.formula-display-block .katex { font-size: 1.15em; }
+.content-area .katex-display { margin: 0; }
+
+/* code */
+.content-area pre { background: var(--stone-light); border: 1px solid var(--border-light); padding: 10px 12px;
+  font-size: 8pt; line-height: 1.5; margin: 8px 0 12px; overflow-x: auto; break-inside: avoid; }
+.content-area code { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; }
+
+/* appendix */
+.page--special-appendix .content-area { font-family: var(--font-sans); font-size: 8.5pt; }
+.page--special-appendix .content-area > *:first-child { margin-top: 0; }
+.page--special-appendix .content-area p { font-size: 8.5pt; line-height: 1.5; margin: 0 0 9px; }
+.page--special-appendix .content-area ul { margin: 0 0 8px; padding-left: 16px; list-style: disc; }
+.page--special-appendix .content-area li { font-size: 8pt; line-height: 1.45; margin-bottom: 2px; }
+
+/* executive summary */
+.page--special-executive-summary .finding { break-inside: avoid; }
+.page--special-executive-summary .summary-intro { margin-bottom: 10px; }
+
+/* recommendation cards */
+.page--content-recommendation-cards .recommendation-card { break-inside: avoid; }
+.page--content-recommendation-cards .recommendation-body p { margin: 0 0 6px; }
+
+/* contents */
+.page--special-table-of-contents .toc-entry { align-items: baseline; padding-top: 4px; padding-bottom: 4px; }
+.page--special-table-of-contents .toc-entry--sub { padding-top: 2px; padding-bottom: 2px; }
+.page--special-table-of-contents .toc-entry-page { min-width: 2.4em; text-align: right; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+.page--special-table-of-contents .toc-entry-text { flex: 0 1 auto; }
+.page--special-table-of-contents .toc-entry-dots { flex: 1 1 auto; }
+
+/* callouts */
+.page--content-single-column .content-area .callout { break-inside: avoid; margin: 10px 0 12px; }
+
+/* continuation pages hide the heading and rule */
+.page[data-continuation] .content-heading, .page[data-continuation] .heading-rule,
+.page[data-continuation] .toc-title, .page[data-continuation] .toc-rule,
+.page[data-continuation] .appendix-header, .page[data-continuation] .rec-heading, .page[data-continuation] .rec-desc { display: none; }
+.page--special-appendix[data-continuation] .content-area { top: var(--safe-margin-top); }
+
+@media screen {
+  body { background: #E8E4DE; padding: 24px 0; }
+  #document-pages > .page { box-shadow: 0 2px 16px rgba(0,0,0,0.18); margin: 0 auto 24px; }
+}
+
+</style>
+</head>
+<body>
+<main id="document-pages">
+<div class="page page--cover-minimal-typographic" data-template="cover-minimal-typographic">
+  <div class="cover-gold-bar"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow text-eyebrow">Prepared for Aurumix</div>
+    <h1 class="cover-title">Aurumix Gold Savings Simulation</h1>
+    <p class="cover-subtitle">How the simulation is built. The customer, the score, the gold, the float, and what happens each month.</p>
+    <hr class="cover-rule">
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-meta">
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gVG9rZW5vbWljcy5uZXQgTG9nbyAtIERhcmsgVGV4dCAoZm9yIGxpZ2h0IGJhY2tncm91bmRzKSAtLT4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTUwIDEzIj4NCiAgPGRlZnM+DQogICAgPHN0eWxlPg0KICAgICAgLnRleHQgeyBmaWxsOiAjMWExNzE1OyB9DQogICAgICAuZG90IHsgZmlsbDogI2I4OTU2ZTsgfQ0KICAgIDwvc3R5bGU+DQogIDwvZGVmcz4NCiAgPCEtLSB0b2tlbm9taWNzIC0tPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTIuNCw1LjI0SDB2LTEuODFoMi40Vi42OWgyLjE0djIuNzNoNC4ydjEuODFoLTQuMnY0LjEyYzAsMS4yMS42NywxLjU4LDIuMTEsMS41OC44LDAsMS40NS0uMiwyLjA5LS4zOWwuMzYsMS44MWMtLjcxLjI3LTEuODcuNS0yLjg0LjUtMi4wNCwwLTMuODctLjgtMy44Ny0zLjN2LTQuMzJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNMjAuNDMsOC4xYzAsMi44OS0yLjQyLDQuODUtNS40NCw0Ljg1cy01LjQ1LTEuOTUtNS40NS00Ljg1LDIuNDItNC44NSw1LjQ1LTQuODUsNS40NCwxLjk1LDUuNDQsNC44NVpNMTguMzQsOC4xYzAtMS45LTEuNDktMy4wMi0zLjM1LTMuMDJzLTMuMzYsMS4xMi0zLjM2LDMuMDIsMS40OSwzLjAyLDMuMzYsMy4wMiwzLjM1LTEuMTIsMy4zNS0zLjAyWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTI0LjE4LDguMWw1LjY1LTQuNjdoMy4wNWwtNS4wNyw0LjA4LDUuMjcsNS4yNGgtMi44bC00LjA0LTMuOTgtMi4wNywxLjY3djIuMzFoLTIuMThWMGgyLjE4djguMVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik00MS4zNyw5LjIybDEuNzUuOTFjLS41OCwxLjQ2LTIuMzgsMi44Mi00Ljk0LDIuODItMy4xOCwwLTUuNTEtMS45Ny01LjUxLTQuODVzMi4yNS00Ljg1LDUuNTEtNC44NSw1LjEzLDIuMDQsNS4xMyw0Ljcydi43NWgtOC41NmMuMjksMS40OSwxLjY1LDIuNDIsMy40NCwyLjQyLDEuNTgsMCwyLjc1LS43OCwzLjItMS45MlpNMzQuODMsNy4xMmg2LjM2Yy0uMTUtLjk4LTEuMzMtMi4xLTMuMTMtMi4xLTEuNTEsMC0yLjgyLjczLTMuMjQsMi4xWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTQ0Ljg5LDMuNDNoMi4xOHYxLjIzYy42Ny0uNzYsMS44Ny0xLjQsMy41My0xLjQsMi42NSwwLDQuMTUsMS44MSw0LjE1LDQuNDJ2NS4wOGgtMi4xOHYtNC43MmMwLTEuNjUtLjg3LTIuODItMi42NC0yLjgyLTEuODUsMC0yLjg1LDEuMTQtMi44NSwyLjg2djQuNjloLTIuMThWMy40M1oiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik02Ny4wOSw4LjFjMCwyLjg5LTIuNDIsNC44NS01LjQ0LDQuODVzLTUuNDUtMS45NS01LjQ1LTQuODUsMi40Mi00Ljg1LDUuNDUtNC44NSw1LjQ0LDEuOTUsNS40NCw0Ljg1Wk02NSw4LjFjMC0xLjktMS40OS0zLjAyLTMuMzUtMy4wMnMtMy4zNiwxLjEyLTMuMzYsMy4wMiwxLjQ5LDMuMDIsMy4zNiwzLjAyLDMuMzUtMS4xMiwzLjM1LTMuMDJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNNjguNjYsMy40M2gyLjE4djEuMTljLjY5LS43NiwxLjcxLTEuMzcsMy4zNS0xLjM3czIuNzEuNjYsMy4zNCwxLjc0Yy45MS0xLjA1LDIuMTgtMS43NCwzLjg3LTEuNzQsMi45NiwwLDQuMzgsMS44MSw0LjM4LDQuNTF2NC45OWgtMi4xOHYtNC43MmMwLTEuNjUtLjc1LTIuODItMi41My0yLjgyLTEuODcsMC0yLjc2LDEuMTQtMi43NiwyLjg2djQuNjloLTIuMTh2LTQuNzJjMC0xLjY1LS43NS0yLjgyLTIuNTMtMi44Mi0xLjg5LDAtMi43NiwxLjE0LTIuNzYsMi44NnY0LjY5aC0yLjE4VjMuNDNaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNODcuODMsMGgyLjI1djIuMThoLTIuMjVWMFpNOTAuMDUsMTIuNzVoLTIuMThWMy40M2gyLjE4djkuMzJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNOTcuMTEsMy4yNWMyLjQ5LDAsNC4yNywxLjQsNC44NywyLjg5bC0xLjc1Ljk4Yy0uMzgtMS4wOC0xLjU4LTIuMDYtMy4xNC0yLjA2LTEuOTUsMC0zLjQ0LDEuMTQtMy40NCwzLjA0czEuNDksMy4wNCwzLjQ0LDMuMDRjMS41NiwwLDIuNzYtLjk4LDMuMTQtMi4wNmwxLjczLDEuMDFjLS42MiwxLjQ3LTIuMzYsMi44Ni00Ljg1LDIuODYtMy4xMSwwLTUuNTQtMS45Ny01LjU0LTQuODVzMi40NC00Ljg1LDUuNTQtNC44NVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xMDMuOTUsOS40MWMuOTgsMS4yNCwyLjMzLDEuNzgsNC4wMiwxLjc4LDEuNTEsMCwyLjUzLS4zNCwyLjUzLTEuMTRzLS44Mi0uODMtMy4wOS0xLjFjLTIuNDktLjMtNC4zOC0uNzEtNC4zOC0yLjY4LDAtMS43NiwxLjc1LTMuMDIsNC41MS0zLjAyLDIuMjksMCw0LjA3Ljg1LDQuODksMS45MmwtMS40LDEuMzFjLS43MS0uOTItMi0xLjQ3LTMuNTgtMS40N3MtMi4zMy40My0yLjMzLDEuMDYuNzEuNzUsMi44Ljk5YzIuNTYuMyw0LjczLjYsNC43MywyLjc3cy0yLjI0LDMuMTEtNC42NSwzLjExLTQuNTMtLjc4LTUuNTgtMi4xN2wxLjU1LTEuMzdaIi8+DQogIDwhLS0gZ29sZCBwZXJpb2QgLS0+DQogIDxwYXRoIGNsYXNzPSJkb3QiIGQ9Ik0xMTQsMTAuMTdoMi42NHYyLjU4aC0yLjY0di0yLjU4WiIvPg0KICA8IS0tIG5ldCAtLT4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xMTguNTYsMy40M2gyLjE4djEuMjNjLjY3LS43NiwxLjg3LTEuNCwzLjUzLTEuNCwyLjY1LDAsNC4xNCwxLjgxLDQuMTQsNC40MnY1LjA4aC0yLjE4di00LjcyYzAtMS42NS0uODctMi44Mi0yLjY0LTIuODItMS44NSwwLTIuODUsMS4xNC0yLjg1LDIuODZ2NC42OWgtMi4xOFYzLjQzWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTEzOC41OCw5LjIybDEuNzUuOTFjLS41OCwxLjQ2LTIuMzgsMi44Mi00Ljk0LDIuODItMy4xOCwwLTUuNTEtMS45Ny01LjUxLTQuODVzMi4yNS00Ljg1LDUuNTEtNC44NSw1LjEzLDIuMDQsNS4xMyw0Ljcydi43NWgtOC41NmMuMjksMS40OSwxLjY1LDIuNDIsMy40NCwyLjQyLDEuNTgsMCwyLjc1LS43OCwzLjItMS45MlpNMTMyLjA0LDcuMTJoNi4zNmMtLjE1LS45OC0xLjMzLTIuMS0zLjEzLTIuMS0xLjUxLDAtMi44Mi43My0zLjI0LDIuMVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xNDMuMjksNS4yNGgtMi40di0xLjgxaDIuNFYuNjloMi4xNHYyLjczaDQuMnYxLjgxaC00LjJ2NC4xMmMwLDEuMjEuNjcsMS41OCwyLjExLDEuNTguOCwwLDEuNDUtLjIsMi4wOS0uMzlsLjM2LDEuODFjLS43MS4yNy0xLjg3LjUtMi44NC41LTIuMDQsMC0zLjg3LS44LTMuODctMy4zdi00LjMyWiIvPg0KPC9zdmc+DQo=" alt="Tokenomics.net" class="logo logo--cover">
+      <span>September 2026</span>
+    </div>
+  </div>
+</div>
+<div class="page page--special-table-of-contents" data-template="special-table-of-contents" data-auto-continue>
+  <div class="content-area">
+    <h1 class="toc-title">Contents</h1>
+    <hr class="toc-rule">
+    <div class="toc-list" data-text-role="toc-entries"><div class="toc-entry toc-entry--section" data-toc-ref="sec-1"><span class="toc-entry-text">1. Objective</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-2"><span class="toc-entry-text">2. Two engines, one company</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-3"><span class="toc-entry-text">3. The customer</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-4"><span class="toc-entry-text">4. The gate and the score</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-5"><span class="toc-entry-text">5. What a tier buys</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-6"><span class="toc-entry-text">6. Four independent clocks</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-7"><span class="toc-entry-text">7. Gold, partners and the draws</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-8"><span class="toc-entry-text">8. What happens each month</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-9"><span class="toc-entry-text">9. The float as inventory</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-10"><span class="toc-entry-text">10. The credit book under a moving price</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-11"><span class="toc-entry-text">11. The threshold</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-12"><span class="toc-entry-text">12. Stress scenarios</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-13"><span class="toc-entry-text">13. What was verified and how</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-14"><span class="toc-entry-text">14. Assumptions and limits</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div><div class="toc-entry toc-entry--section" data-toc-ref="sec-15"><span class="toc-entry-text">15. Running the simulation</span><span class="toc-entry-dots"></span><span class="toc-entry-page">000</span></div></div>
+  </div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-1">
+  <div class="section-content">
+    <div class="section-number">01</div>
+    <h2 class="section-title">Objective</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">What the simulation is for, and why it asks what has to be true rather than what will happen.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Aurumix sells gold by the gram. A customer commits to a monthly amount from USD 20. Every dollar buys allocated physical gold in a Dubai vault. One AURX token is one gram. The customer pays a 5% entry fee and nothing else. Behind the savings product sit a card, a credit line against the gold, a family plan, and a platform fee from B2B partners who white-label the product.</p><p>The revenue model built in Phase 4 says this business makes USD 847k in year seven and needs USD 2.29m of funding at its worst point. Those are single numbers. They rest on about ninety assumptions, and the client has no customer data yet. None. No waitlist, no pilot, no partner in the pipeline.</p><p>So the simulation does not ask "what will happen." It asks three harder questions. What has to be true for this business to be profitable? How much can Aurumix afford to give back to loyal customers? And how much money does it need to raise so that it is still standing in nine paths out of ten?</p><p>That framing matters. A forecast built on unsourced inputs is a guess with decimal places. A threshold is different. It says "you need this many paying customers" and that number does not care whether the market funnel is right. I think that is the only honest deliverable at this stage, and the document is built around it.</p><p>The simulation runs 2,000 seven-year paths. Each path draws its own customer behaviour, gold price, marketing response and partner deals. Underneath it, 200,000 simulated customers each live their own seven years. The revenue model is the centre case. The simulation is the spread around it, and the source of two numbers the revenue model could not compute for itself.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-2">
+  <div class="section-content">
+    <div class="section-number">02</div>
+    <h2 class="section-title">Two engines, one company</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">A line-for-line port of the revenue model, and a population of individual customers that grows the same book.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>The simulation has two layers and they describe the same company.</p><p>The first layer is a line-for-line port of the Phase 4 revenue model into Python. Every stream, every cost, the float and the regulatory capital. With every input pinned to its base value, the port reproduces the workbook's 29 periods to within floating-point error. That test is the reason the rest of the results can be trusted. If the port drifted from the workbook, every stochastic result would be arguing with a number the client has already seen.</p><p>The second layer is the population. The revenue model uses one average customer and multiplies. The simulation creates individual customers, each with a ticket, a payment personality, a payment rail and a way in. It runs them month by month. Whether a customer earns a loyalty tier depends on six consecutive payments, and six in a row is a property of one person's history. It cannot be recovered from an average. That is the whole reason to build agents rather than aggregates.</p><p>The two layers meet at acquisition. The population engine takes its new customers each month from the ported revenue model, so both layers grow the same book.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-3">
+  <div class="section-content">
+    <div class="section-number">03</div>
+    <h2 class="section-title">The customer</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Region, ticket, payment archetype, payment rail and entry door. What each customer carries at birth.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Each simulated customer carries five things at birth. A region, a monthly ticket, a payment archetype, a payment rail, and an entry door.</p><p><strong>Region</strong> is one of the UAE, Oman and Bahrain together, or India. It sets the average ticket, the acquisition cost and when the market opens.</p><p><strong>Ticket</strong> is the amount the customer means to save each month. The revenue model uses one number per region, USD 33.60 in the UAE. Savings books are not like that. Half the book sits at the USD 20 floor and a thin tail saves far more. The simulation draws each customer's ticket from a distribution fitted to two facts, the regional mean and the share at the floor:</p><div class="formula-display-block">\[\text{ticket} = \max\left(20,\; X\right), \qquad X \sim \text{Lognormal}(\mu, \sigma)\]</div><p>Where:</p><ul><li>\(\mu\) and \(\sigma\) are solved so that \(P(X \le 20) = 0.50\) and \(E[\max(20, X)]\) equals the regional mean</li><li>\(20\) is the USD floor, below which a payment is refused</li></ul><p>For the UAE that gives \(\sigma = 0.87\). The top tenth of customers then contributes about 30% of all money saved. The floor share is not sourced, but it is a defensible shape. Assuming a flat book would be the less credible choice.</p><p>The amount is variable month to month with no maximum. A customer at the floor pays exactly the floor. Whether they pay at all is the archetype's job, described next.</p><p><strong>Archetype</strong> is the customer's payment discipline. Five types, taken from the Phase 4 research:</p><table><thead><tr><th class="">Archetype</th><th class="num">Share</th><th class="num">Pays in a given month</th><th class="num">Own monthly lapse hazard</th><th class="">Terminal tier</th></tr></thead><tbody><tr><td class="">Perfect payer</td><td class="num">10%</td><td class="num">99.5%</td><td class="num">0.0%</td><td class="">Only type that reaches Sovereign</td></tr><tr><td class="">Occasional misser</td><td class="num">35%</td><td class="num">93%</td><td class="num">0.7%</td><td class="">Platinum, sometimes Sovereign</td></tr><tr><td class="">Alternating misser</td><td class="num">12%</td><td class="num">55%</td><td class="num">1.8%</td><td class="">Gold for life</td></tr><tr><td class="">Reducer</td><td class="num">13%</td><td class="num">97%</td><td class="num">0.2%</td><td class="">By record</td></tr><tr><td class="">Early lapser</td><td class="num">30%</td><td class="num">60%</td><td class="num">20.0%</td><td class="">Rarely tiers, mostly gone by month 13</td></tr></tbody></table><p>A background hazard of 1.6% per month applies to everyone on top of their own. The shares are the weakest input in the whole model. No published source anywhere decomposes a savings-lapse curve into behavioural types. The simulation does not assume them. It sweeps them, and reports what the answer looks like across the plausible range.</p><p><strong>Rail</strong> is how the customer pays. Aurumix launches with two, and they demand different things every month. On Request to Pay the customer taps to approve each payment. On the prefunded balance they load once and the balance draws automatically. The rulebook makes the distinction itself. It only allows "set and forget" to be promised on the prefunded balance. So a prefunded customer draws from a mix tilted toward discipline. Thirty percent of customers start prefunded and 35% of those are re-drawn into the disciplined archetypes. Both numbers are unsourced and both are swept. This is the one lever over payment behaviour that Aurumix actually controls.</p><p><strong>Door</strong> is whether the customer arrived through a monthly SIP or a one-off spot purchase. Spot buyers can now hold a card, so a spot-only customer is worth more than the entry fee alone.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-4">
+  <div class="section-content">
+    <div class="section-number">04</div>
+    <h2 class="section-title">The gate and the score</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Six consecutive payments open the gate. The score is computed from three facts on the ledger, not looked up.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>The loyalty system is called ICS. It decides which benefit tier a customer sits in, and every tier discount reads it.</p><p>Nothing happens until the gate. A customer earns Confirmed SIP status on their sixth consecutive counted month. A counted month is one accepted payment at or above the floor. A miss resets the streak to zero. That single rule is why tier arrival is a distribution and not a date. A customer who misses month four cannot qualify before month nine.</p><p>Once gated, the score is computed from three facts on the payment and token ledgers. Months is the count of counted periods since the qualifying run began. It starts at six on gate day and never falls. Recent is the count of counted periods in the trailing twelve calendar months. Sold is the share of gold the customer had a year ago that they no longer hold.</p><p>Each fact maps to a component:</p><div class="formula-display-block">\[\text{Record}(m) = \begin{cases} m \times \tfrac{50}{12} & m \le 12 \\[4pt] 50 + (m-12)\times\tfrac{50}{48} & 12 < m \le 60 \\[4pt] 100 & m > 60 \end{cases}\]</div><div class="formula-display-block">\[\text{Standing} = \text{Recent} \times \tfrac{100}{12}\]</div><div class="formula-display-block">\[\text{Retention} = \begin{cases} 1 & \text{Sold} \le 0.30 \\[4pt] 1 - \dfrac{\text{Sold} - 0.30}{0.70} & \text{Sold} > 0.30 \end{cases}\]</div><p>And the score is the smaller of the first two, scaled by the third:</p><div class="formula-display-block">\[\text{ICS} = \min(\text{Record}, \text{Standing}) \times \text{Retention}, \quad \text{floored at } 25 \text{ once gated}\]</div><p>Where:</p><ul><li>\(m\) is Months, the counted periods since the run began</li><li>Recent runs from 0 to 12</li><li>Sold runs from 0 to 1, recomputed monthly against the gold held twelve months earlier plus gold bought since</li></ul><p>The minimum is the arithmetic of "and". A long record cannot cover a dead year. A good year cannot cover a short record. That is why the alternating misser caps at Gold forever. Their Recent never climbs above six, so Standing never climbs above fifty, and no amount of tenure lifts it. Retention is a veto. Sell more than 30% of your gold in a year and the score falls in proportion, to zero if you empty the account.</p><p>Tiers threshold the score at 25, 50, 75 and 100. A perfect payer reaches Silver at month six, Gold at twelve, Platinum at thirty-six and Sovereign at sixty. The Phase 4 model could not carry this formula and used a lookup instead. The lookup put every rung six months late. The simulation computes the real thing.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-5">
+  <div class="section-content">
+    <div class="section-number">05</div>
+    <h2 class="section-title">What a tier buys</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Five benefits priced by tier, generated from three dials, with one rule only an agent model can enforce.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Five benefits, each priced by tier. The benefit ladder in the base case:</p><table><thead><tr><th class="">Benefit</th><th class="num">None</th><th class="num">Silver</th><th class="num">Gold</th><th class="num">Platinum</th><th class="num">Sovereign</th></tr></thead><tbody><tr><td class="">Entry fee paid</td><td class="num">5.00%</td><td class="num">4.50%</td><td class="num">4.00%</td><td class="num">3.50%</td><td class="num">3.00%</td></tr><tr><td class="">Family plan discount</td><td class="num">0%</td><td class="num">10%</td><td class="num">20%</td><td class="num">35%</td><td class="num">50%</td></tr><tr><td class="">Card FX margin charged</td><td class="num">2.0%</td><td class="num">2.0%</td><td class="num">1.5%</td><td class="num">1.25%</td><td class="num">1.0%</td></tr><tr><td class="">Credit line, loan to value</td><td class="num">50%</td><td class="num">50%</td><td class="num">65%</td><td class="num">72.5%</td><td class="num">80%</td></tr><tr><td class="">Gold rewards, share of card spend</td><td class="num">0</td><td class="num">0.15%</td><td class="num">0.45%</td><td class="num">0.60%</td><td class="num">0.75%</td></tr></tbody></table><p>Three rows come straight from the mechanism design. The entry-fee row takes the full 2.0 point ceiling the design allows and steps it evenly. The middle rungs of the FX and loan-to-value rows are interpolated.</p><p>The whole ladder is generated from three dials so it can be swept. The ceiling is how much the top tier gets. The steepness is how much of that the lower tiers get, from top-loaded to front-loaded. The breadth is which benefits are laddered at all. Three dials are something a client can argue about. Twenty independent rates are not.</p><p>Gold rewards carry one rule that only an agent model can enforce. A customer's rewards never exceed the revenue that customer generated. The revenue model applies a rate to aggregate card revenue and cannot see the cap.</p><p>The loan-to-value row is different in kind. It is not a discount. It gives leverage. A Sovereign customer borrows against 80% of their gold where a Silver borrows against 50%. That raises revenue and raises risk at the same time, and it is the row that drives the credit-book results in Section 10.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-6">
+  <div class="section-content">
+    <div class="section-number">06</div>
+    <h2 class="section-title">Four independent clocks</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Stopping the SIP, letting the card go dormant, repaying credit and redeeming gold each tick on their own clock.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>The revenue model has one churn rate. A customer stops paying and becomes a holder who keeps their gold. That collapses several behaviours into one, and then needs a switch to say whether holders keep their card.</p><p>The simulation separates them. A customer can stop paying the SIP, let the card go dormant, repay the credit line, or redeem the gold. Each has its own clock. Stopping the SIP does not stop the card. This is the client's own framing, that it may be churn of a feature rather than of the platform, and it turns a coin-flip switch into a rate that can be argued about.</p><p>Card dormancy has no published rate anywhere. I looked. Not for the UAE, not for the Gulf, not for fintech cards globally. Only definitions exist. So it is carried as an assumption and swept from zero to 2% per month.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-7">
+  <div class="section-content">
+    <div class="section-number">07</div>
+    <h2 class="section-title">Gold, partners and the draws</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Gold as geometric Brownian motion, partners as lumpy arrivals, and every other input drawn from the client's own scenario table.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Three things are random at the path level on top of customer behaviour.</p><p><strong>Gold</strong> follows geometric Brownian motion, sampled monthly:</p><div class="formula-display-block">\[P_{t+1} = P_t \cdot \exp\left[(\mu - \tfrac{1}{2}\sigma^2)\Delta t + \sigma\sqrt{\Delta t}\cdot Z_t\right]\]</div><p>Where:</p><ul><li>\(P_t\) is the gold price in USD per gram at month \(t\), starting at 141.50</li><li>\(\mu = 8.1\%\) is the annual drift, the same appreciation the revenue model uses</li><li>\(\sigma = 15\%\) is the annual volatility, the long-run realised figure for gold, swept from 10% to 22%</li><li>\(\Delta t = 1/12\)</li><li>\(Z_t\) is a standard normal draw</li></ul><p>There is one gold path per run and it hits every customer at once. The client chose not to hedge. Aurumix owns the price variance on the gold it holds.</p><p><strong>Partner arrivals</strong> replace the revenue model's straight line of one to eleven B2B partners. Each year's planned net adds become a Poisson draw, with a 25% chance of a dead year. Eleven enterprise deals cannot be a smooth curve, and the client has no pipeline yet.</p><p><strong>Every other uncertain input</strong> is drawn once per path from a distribution anchored on the revenue model's own scenario table. The base value is the mode. The Aggressive and Conservative values are treated as the tenth and ninetieth percentiles of a PERT distribution. That grounds every draw in a range the client has already seen and signed. It also means the median path lands below base, because the client's own ranges are wider on the downside. That is not a modelling choice. It is what their scenario table says.</p><p>Thirty-two parameters are drawn this way. Persistency, the three regional acquisition costs, referral rate and conversion, spot behaviour, the programme manager's share of interchange, facility take-up, family attach, partner economics, and the contingency on the cost base.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-8">
+  <div class="section-content">
+    <div class="section-number">08</div>
+    <h2 class="section-title">What happens each month</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">The order of operations inside every one of the eighty-four months.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Every month, in this order.</p><p>The gold price advances. New customers arrive from the ported acquisition engine and are assigned their region, ticket, archetype, rail and door. Each living customer decides whether to pay, at their archetype's probability, and how much, around their ticket. The streak updates, the gate fires for anyone reaching six, and the score and tier are recomputed. Gold accumulates at the current price, net of the entry fee. Cards are taken up by a share of the eligible book, spend runs against the credit limit at the tier's loan-to-value, and rewards are paid up to the cap. Family plans attach on new customers and cancel at the workbook's rate. Redemptions and moves to self-custody drain gold. Then the four clocks tick. SIP lapse, card dormancy, credit repayment, exit.</p><p>The aggregates then flow through the ported revenue model. Revenue by stream, the fabrication premium, the vault, the licences, the ICS giveback, acquisition cost, the card programme, contingency, net profit, capital tied up and the funding line.</p><p>Redemption has one rule worth stating. Money paid after the five-day grace is a spot purchase, not a late contribution. It earns the fee, buys gold at that day's price, and does not restore the streak. Redeemed gold refills the float. Any excess above what new buyers absorb that month is sold back to the dealer at a two-way spread, swept at 0.5%, 1% and 2%.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-9">
+  <div class="section-content">
+    <div class="section-number">09</div>
+    <h2 class="section-title">The float as inventory</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">The float sized from the payment calendar with dealer lead time, service level, carry and mark-to-market. Unhedged.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Aurumix has to own gold before customers do, so that a gram is allocated the moment a payment lands. The revenue model sizes that float as one bar plus ten days of average demand. The ten is a guess and the float earns no line in the profit and loss.</p><p>The simulation treats the float as an inventory problem at daily resolution. Sixty percent of a month's SIP volume lands in the five days after payday. Spot purchases arrive as random lumps. Because SIP payments are scheduled, the float is positioned before the payday cluster, using the calendar rather than reacting to history:</p><div class="formula-display-block">\[S_d = \sum_{k=1}^{L} D_{d+k} \;+\; z_{0.99}\,\sigma_{\text{spot}}\sqrt{L} \;+\; 100, \quad \text{rounded up to whole bars}\]</div><p>Where:</p><ul><li>\(S_d\) is the order-up-to level in grams on day \(d\)</li><li>\(D_{d+k}\) is the scheduled SIP demand \(k\) days ahead</li><li>\(L = 2\) is the dealer's delivery lead time in days, swept from 1 to 5</li><li>\(z_{0.99}\) is the normal quantile for a 99% service level</li><li>\(\sigma_{\text{spot}}\) is the standard deviation of the unscheduled spot demand</li><li>\(100\) is one bar, held as a buffer</li></ul><p>Orders arrive after the lead time in 100 gram bars. The float never falls below two bars. It is marked to market daily on the gold path and carries a cost of 6% a year, swept from 4% to 8%. Unhedged. A first version of this policy used a rolling history for safety stock and ran out of gold on 7% of days, because it reacted to payday after payday hit. The calendar version runs out on 0.3% of days.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-10">
+  <div class="section-content">
+    <div class="section-number">10</div>
+    <h2 class="section-title">The credit book under a moving price</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Margin calls tracked by vintage, and why the loan-to-value rung decides everything.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Margin calls are a property of when a loan was struck and at what loan-to-value. So drawn balances are tracked by vintage, each carrying the gold price on the day it was drawn. A vintage is called when the current price falls far enough that the loan exceeds 85% of the collateral's value:</p><div class="formula-display-block">\[\frac{P_t}{P_0} < \frac{\text{LTV}_{\text{struck}}}{0.85}\]</div><p>Where:</p><ul><li>\(P_0\) is the gold price when the vintage was drawn</li><li>\(P_t\) is the price now</li><li>\(\text{LTV}_{\text{struck}}\) is the tier's loan-to-value at origination</li><li>\(0.85\) is the call line, taken from the client's own worked example and swept from 0.75 to 0.95</li></ul><p>The arithmetic is simple and the consequence is not. At 50% loan-to-value a call needs gold to fall 41% from the strike. At 80%, the Sovereign rung, it needs 6%.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-11">
+  <div class="section-content">
+    <div class="section-number">11</div>
+    <h2 class="section-title">The threshold</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">The steady-state threshold, with retail customers and B2B partners kept apart.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>The question the client asked is what it takes to be profitable. The simulation answers it at steady state, where the book is flat and acquisition only replaces churn. Then the fixed cost base has to be covered by retail customers or by B2B partners, and the two are kept apart:</p><div class="formula-display-block">\[N^* = \frac{k \cdot F}{r - k\,(s + c \cdot \text{CAC})} \qquad\qquad K^* = \frac{k \cdot F}{A \cdot f}\]</div><p>Where:</p><ul><li>\(N^*\) is the number of paying retail customers that covers fixed costs on their own</li><li>\(K^*\) is the number of B2B partners that covers fixed costs on their own</li><li>\(F\) is the annual fixed cost base, about USD 430k</li><li>\(k\) is one plus the contingency, swept at 15%, 30% and 50%</li><li>\(r\) is retail revenue per paying customer per year, about USD 41 excluding B2B</li><li>\(s\) is the serving cost per customer, about USD 13</li><li>\(c\) is annual churn, 45%</li><li>CAC is the cost to replace one customer, USD 37 blended or USD 55 in the UAE alone</li><li>\(A\) is assets under management per partner and \(f\) is the platform fee</li></ul><p>Keeping the two apart matters. Blending B2B revenue into a per-customer figure hides whether the retail business stands on its own. It does not, and Part 2 of the results document is about that.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-12">
+  <div class="section-content">
+    <div class="section-number">12</div>
+    <h2 class="section-title">Stress scenarios</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Seven scenarios, including a redemption run built as a jump rather than a rate.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Seven, each run against the base.</p><p><strong>Gold crash.</strong> A 30% fall from month 24 onward. Tests the credit book and the collateral base.</p><p><strong>Redemption run.</strong> A quarter of custody exits in month 24 while existing customers cut contributions to 40% of normal. A run is a jump, not a rate. A rate-based redemption model converges toward balance with inflows and never overshoots, so the run has to be built as a discrete event.</p><p><strong>Zero B2B.</strong> No partners, ever. Tests whether the retail business stands alone.</p><p><strong>Adoption failure.</strong> Persistency at 45%, acquisition costs at the conservative end, and fewer customers reaching a tier.</p><p><strong>Regulatory delay.</strong> Twelve months of licences, insurance, audit and technology build with no revenue, because VARA publishes no approval timeline.</p><p><strong>Ticket compression.</strong> Every regional ticket at its conservative value.</p><p><strong>Combined tail.</strong> The crash, the run and a B2B slump together.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-13">
+  <div class="section-content">
+    <div class="section-number">13</div>
+    <h2 class="section-title">What was verified and how</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Two gates that had to pass, and one published figure deliberately not chased.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>Two gates had to pass before any result was reported.</p><p>The population engine reproduces the Phase 4 research figures when given the Phase 4 inputs. The alternating misser's 24% chance of ever reaching six in a row, the mean gate month of 8.1, the persistency curve at every anchor. Thirty-four checks. That proves the code is right. It proves nothing about Aurumix, because those figures came from the same unsourced archetype mix.</p><p>The ported revenue model reproduces the calculated workbook. Thirty-six series, all 29 periods, zero error. That is what makes the simulation an extension of the model rather than a rival to it.</p><p>One published figure was deliberately not chased. The Phase 4 research put Sovereign at 1.2% of tiered accounts. That number came from the lookup that capped the occasional misser at Platinum by construction. Under the real formula a clean trailing year plus sixty counted months scores 100, and it should. In the simulated book Sovereign lands at 1.1% anyway.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-14">
+  <div class="section-content">
+    <div class="section-number">14</div>
+    <h2 class="section-title">Assumptions and limits</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">Where the evidence is strong, where it is judgement, and what is not modelled.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p><strong>The demand side is judgement.</strong> The cost side is well sourced. VARA and DMCC fee schedules, the KYC provider's price list, the Visa interchange schedule, Zand's banking tariff. The demand side is not. The market funnel filters are made up. The archetype mix has no source. Persistency's validation file is missing from the repository. No client data exists. Every one of those is swept rather than assumed, and the profitability threshold is built so that it does not depend on the funnel at all.</p><p><strong>Contingency stands in for headcount.</strong> Staff, legal, security and tax are not modelled. A 15% contingency on all costs is the placeholder, and it is swept to 50% so the threshold can be read against the cost that is not yet built.</p><p><strong>B2B is a straight line with noise, not a business.</strong> Partner economics rest on one observed anchor, O Gold's 75,000 active users, and a lumpy arrival process. There is no pipeline to calibrate to.</p><p><strong>The buyback spread is second order.</strong> It is in the model and swept. At every run size tested it costs a few thousand dollars. What hurts in a run is customers pausing their contributions.</p><p><strong>Gold volatility is from general knowledge.</strong> Fifteen percent is the long-run realised figure. It is not a fetched citation. It is swept.</p><p><strong>No competitive response, no regulatory change, no intra-month price moves.</strong> Margin calls are tested monthly.</p><p><strong>The supply side is out of scope.</strong> Circulating supply and free float are a separate phase.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--section-typographic" data-template="section-typographic" data-toc-id="sec-15">
+  <div class="section-content">
+    <div class="section-number">15</div>
+    <h2 class="section-title">Running the simulation</h2>
+    <hr class="section-rule">
+    <p class="section-subtitle">How to reproduce every figure in the results document.</p>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--content-single-column" data-template="content-single-column" data-auto-continue>
+  <div class="content-area">
+    <div data-text-role="body"><p>The simulation is a Python project using NumPy, SciPy and Pandas. From the <code>aurumix/</code> directory:</p><pre><code>pip install -r requirements.txt
+python scripts/extract_params.py
+python scripts/verify_stage1.py
+python scripts/verify_stage2_equivalence.py
+python scripts/run_mc.py 2000
+python scripts/run_analysis.py
+python scripts/run_float.py
+python -m src.visualize</code></pre><p>The first script reads every parameter from the calculated workbook into a JSON file, so the port cannot drift by transcription. The two verification scripts must pass before the rest means anything. Every script uses fixed seeds. Every figure in the results document can be regenerated.</p><p>Outputs are written to <code>outputs/</code>, charts to <code>outputs/charts/</code>. Total runtime is under ten minutes.</p></div>
+  </div>
+  <div class="page-number" data-text-role="page-number"></div>
+</div>
+<div class="page page--closing-back-cover" data-template="closing-back-cover">
+  <div class="back-center">
+    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gVG9rZW5vbWljcy5uZXQgTG9nbyAtIExpZ2h0IFRleHQgKGZvciBkYXJrIGJhY2tncm91bmRzKSAtLT4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTUwIDEzIj4NCiAgPGRlZnM+DQogICAgPHN0eWxlPg0KICAgICAgLnRleHQgeyBmaWxsOiAjZmFmOGY1OyB9DQogICAgICAuZG90IHsgZmlsbDogI2I4OTU2ZTsgfQ0KICAgIDwvc3R5bGU+DQogIDwvZGVmcz4NCiAgPCEtLSB0b2tlbm9taWNzIC0tPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTIuNCw1LjI0SDB2LTEuODFoMi40Vi42OWgyLjE0djIuNzNoNC4ydjEuODFoLTQuMnY0LjEyYzAsMS4yMS42NywxLjU4LDIuMTEsMS41OC44LDAsMS40NS0uMiwyLjA5LS4zOWwuMzYsMS44MWMtLjcxLjI3LTEuODcuNS0yLjg0LjUtMi4wNCwwLTMuODctLjgtMy44Ny0zLjN2LTQuMzJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNMjAuNDMsOC4xYzAsMi44OS0yLjQyLDQuODUtNS40NCw0Ljg1cy01LjQ1LTEuOTUtNS40NS00Ljg1LDIuNDItNC44NSw1LjQ1LTQuODUsNS40NCwxLjk1LDUuNDQsNC44NVpNMTguMzQsOC4xYzAtMS45LTEuNDktMy4wMi0zLjM1LTMuMDJzLTMuMzYsMS4xMi0zLjM2LDMuMDIsMS40OSwzLjAyLDMuMzYsMy4wMiwzLjM1LTEuMTIsMy4zNS0zLjAyWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTI0LjE4LDguMWw1LjY1LTQuNjdoMy4wNWwtNS4wNyw0LjA4LDUuMjcsNS4yNGgtMi44bC00LjA0LTMuOTgtMi4wNywxLjY3djIuMzFoLTIuMThWMGgyLjE4djguMVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik00MS4zNyw5LjIybDEuNzUuOTFjLS41OCwxLjQ2LTIuMzgsMi44Mi00Ljk0LDIuODItMy4xOCwwLTUuNTEtMS45Ny01LjUxLTQuODVzMi4yNS00Ljg1LDUuNTEtNC44NSw1LjEzLDIuMDQsNS4xMyw0Ljcydi43NWgtOC41NmMuMjksMS40OSwxLjY1LDIuNDIsMy40NCwyLjQyLDEuNTgsMCwyLjc1LS43OCwzLjItMS45MlpNMzQuODMsNy4xMmg2LjM2Yy0uMTUtLjk4LTEuMzMtMi4xLTMuMTMtMi4xLTEuNTEsMC0yLjgyLjczLTMuMjQsMi4xWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTQ0Ljg5LDMuNDNoMi4xOHYxLjIzYy42Ny0uNzYsMS44Ny0xLjQsMy41My0xLjQsMi42NSwwLDQuMTUsMS44MSw0LjE1LDQuNDJ2NS4wOGgtMi4xOHYtNC43MmMwLTEuNjUtLjg3LTIuODItMi42NC0yLjgyLTEuODUsMC0yLjg1LDEuMTQtMi44NSwyLjg2djQuNjloLTIuMThWMy40M1oiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik02Ny4wOSw4LjFjMCwyLjg5LTIuNDIsNC44NS01LjQ0LDQuODVzLTUuNDUtMS45NS01LjQ1LTQuODUsMi40Mi00Ljg1LDUuNDUtNC44NSw1LjQ0LDEuOTUsNS40NCw0Ljg1Wk02NSw4LjFjMC0xLjktMS40OS0zLjAyLTMuMzUtMy4wMnMtMy4zNiwxLjEyLTMuMzYsMy4wMiwxLjQ5LDMuMDIsMy4zNiwzLjAyLDMuMzUtMS4xMiwzLjM1LTMuMDJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNNjguNjYsMy40M2gyLjE4djEuMTljLjY5LS43NiwxLjcxLTEuMzcsMy4zNS0xLjM3czIuNzEuNjYsMy4zNCwxLjc0Yy45MS0xLjA1LDIuMTgtMS43NCwzLjg3LTEuNzQsMi45NiwwLDQuMzgsMS44MSw0LjM4LDQuNTF2NC45OWgtMi4xOHYtNC43MmMwLTEuNjUtLjc1LTIuODItMi41My0yLjgyLTEuODcsMC0yLjc2LDEuMTQtMi43NiwyLjg2djQuNjloLTIuMTh2LTQuNzJjMC0xLjY1LS43NS0yLjgyLTIuNTMtMi44Mi0xLjg5LDAtMi43NiwxLjE0LTIuNzYsMi44NnY0LjY5aC0yLjE4VjMuNDNaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNODcuODMsMGgyLjI1djIuMThoLTIuMjVWMFpNOTAuMDUsMTIuNzVoLTIuMThWMy40M2gyLjE4djkuMzJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNOTcuMTEsMy4yNWMyLjQ5LDAsNC4yNywxLjQsNC44NywyLjg5bC0xLjc1Ljk4Yy0uMzgtMS4wOC0xLjU4LTIuMDYtMy4xNC0yLjA2LTEuOTUsMC0zLjQ0LDEuMTQtMy40NCwzLjA0czEuNDksMy4wNCwzLjQ0LDMuMDRjMS41NiwwLDIuNzYtLjk4LDMuMTQtMi4wNmwxLjczLDEuMDFjLS42MiwxLjQ3LTIuMzYsMi44Ni00Ljg1LDIuODYtMy4xMSwwLTUuNTQtMS45Ny01LjU0LTQuODVzMi40NC00Ljg1LDUuNTQtNC44NVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xMDMuOTUsOS40MWMuOTgsMS4yNCwyLjMzLDEuNzgsNC4wMiwxLjc4LDEuNTEsMCwyLjUzLS4zNCwyLjUzLTEuMTRzLS44Mi0uODMtMy4wOS0xLjFjLTIuNDktLjMtNC4zOC0uNzEtNC4zOC0yLjY4LDAtMS43NiwxLjc1LTMuMDIsNC41MS0zLjAyLDIuMjksMCw0LjA3Ljg1LDQuODksMS45MmwtMS40LDEuMzFjLS43MS0uOTItMi0xLjQ3LTMuNTgtMS40N3MtMi4zMy40My0yLjMzLDEuMDYuNzEuNzUsMi44Ljk5YzIuNTYuMyw0LjczLjYsNC43MywyLjc3cy0yLjI0LDMuMTEtNC42NSwzLjExLTQuNTMtLjc4LTUuNTgtMi4xN2wxLjU1LTEuMzdaIi8+DQogIDwhLS0gZ29sZCBwZXJpb2QgLS0+DQogIDxwYXRoIGNsYXNzPSJkb3QiIGQ9Ik0xMTQsMTAuMTdoMi42NHYyLjU4aC0yLjY0di0yLjU4WiIvPg0KICA8IS0tIG5ldCAtLT4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xMTguNTYsMy40M2gyLjE4djEuMjNjLjY3LS43NiwxLjg3LTEuNCwzLjUzLTEuNCwyLjY1LDAsNC4xNCwxLjgxLDQuMTQsNC40MnY1LjA4aC0yLjE4di00LjcyYzAtMS42NS0uODctMi44Mi0yLjY0LTIuODItMS44NSwwLTIuODUsMS4xNC0yLjg1LDIuODZ2NC42OWgtMi4xOFYzLjQzWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTEzOC41OCw5LjIybDEuNzUuOTFjLS41OCwxLjQ2LTIuMzgsMi44Mi00Ljk0LDIuODItMy4xOCwwLTUuNTEtMS45Ny01LjUxLTQuODVzMi4yNS00Ljg1LDUuNTEtNC44NSw1LjEzLDIuMDQsNS4xMyw0Ljcydi43NWgtOC41NmMuMjksMS40OSwxLjY1LDIuNDIsMy40NCwyLjQyLDEuNTgsMCwyLjc1LS43OCwzLjItMS45MlpNMTMyLjA0LDcuMTJoNi4zNmMtLjE1LS45OC0xLjMzLTIuMS0zLjEzLTIuMS0xLjUxLDAtMi44Mi43My0zLjI0LDIuMVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xNDMuMjksNS4yNGgtMi40di0xLjgxaDIuNFYuNjloMi4xNHYyLjczaDQuMnYxLjgxaC00LjJ2NC4xMmMwLDEuMjEuNjcsMS41OCwyLjExLDEuNTguOCwwLDEuNDUtLjIsMi4wOS0uMzlsLjM2LDEuODFjLS43MS4yNy0xLjg3LjUtMi44NC41LTIuMDQsMC0zLjg3LS44LTMuODctMy4zdi00LjMyWiIvPg0KPC9zdmc+DQo=" alt="Tokenomics.net" class="logo logo--2xl">
+    <p class="back-tagline">Built by founders. Designed for founders.</p>
+  </div>
+  <div class="back-legal">Prepared by Tokenomics.net for Aurumix. © 2026. Confidential.</div>
+</div>
+</main>
+<script>
+(function(){
+  'use strict';
+  var BUFFER=8;
+  function isAtomic(el){
+    if(!el||el.nodeType!==1)return false;
+    var s=window.getComputedStyle(el);
+    var bi=s.getPropertyValue('break-inside')||s.getPropertyValue('-webkit-break-inside');
+    if(bi==='avoid')return true;
+    var t=el.tagName.toLowerCase();
+    if(t==='table'||t==='figure'||t==='blockquote'||t==='pre')return true;
+    if(el.classList.contains('callout')||el.classList.contains('stats-row')||
+       el.classList.contains('finding')||el.classList.contains('formula-display-block')||
+       el.classList.contains('recommendation-card'))return true;
+    return false;
+  }
+  function isWrapper(el){
+    if(!el||el.nodeType!==1)return false;
+    if(el.tagName.toLowerCase()!=='div')return false;
+    if(el.hasAttribute('data-text-role')&&el.children.length>1)return true;
+    return false;
+  }
+  function flattenWrappers(ca){
+    var changed=true;
+    while(changed){changed=false;
+      var ch=Array.prototype.slice.call(ca.children);
+      for(var i=0;i<ch.length;i++){
+        if(isWrapper(ch[i])){
+          var w=ch[i],p=w.parentNode,nx=w.nextSibling;
+          var inner=Array.prototype.slice.call(w.children);
+          for(var j=0;j<inner.length;j++)p.insertBefore(inner[j],nx);
+          p.removeChild(w);changed=true;break;
+        }
+      }
+    }
+  }
+  function makeCont(orig){
+    var c=document.createElement('div');
+    c.className=orig.className;
+    c.setAttribute('data-template',orig.getAttribute('data-template')||'');
+    c.setAttribute('data-auto-continue','');
+    c.setAttribute('data-continuation','');
+    var ca=document.createElement('div');
+    ca.className='content-area';
+    c.appendChild(ca);
+    if(orig.querySelector('.page-number')){
+      var pn=document.createElement('div');
+      pn.className='page-number';
+      pn.setAttribute('data-text-role','page-number');
+      c.appendChild(pn);
+    }
+    return c;
+  }
+  function getCA(p){return p.querySelector('.content-area');}
+  function neutralizeLayout(ca){
+    var cs=window.getComputedStyle(ca);
+    if(cs.display==='flex'||cs.display==='inline-flex'||cs.overflow==='hidden'){
+      ca.style.display='block';ca.style.flexDirection='';ca.style.overflow='visible';
+    }
+  }
+  function process(page,depth){
+    depth=depth||0;
+    if(depth>200)return[page];
+    var ca=getCA(page);
+    if(!ca)return[page];
+    flattenWrappers(ca);
+    neutralizeLayout(ca);
+    var uh=ca.clientHeight-BUFFER;
+    if(ca.scrollHeight<=uh+BUFFER){page.setAttribute('data-auto-continued','');return[page];}
+    var ch=[];for(var i=0;i<ca.children.length;i++)ch.push(ca.children[i]);
+    var si=-1,ar=ca.getBoundingClientRect();
+    for(var i=0;i<ch.length;i++){
+      if(ch[i].classList.contains('page-number'))continue;
+      if(ch[i].getBoundingClientRect().bottom-ar.top>uh){si=i;break;}
+    }
+    if(si===-1){page.setAttribute('data-auto-continued','');return[page];}
+    var nd=0;
+    for(var n=0;n<ch.length;n++){
+      if(!ch[n].classList.contains('page-number')&&
+         !ch[n].classList.contains('content-heading')&&
+         !ch[n].classList.contains('rec-heading')&&!ch[n].classList.contains('rec-desc')&&
+         ch[n].tagName.toLowerCase()!=='hr')nd++;
+    }
+    if(si===0&&nd<=1){page.setAttribute('data-auto-continued','');return[page];}
+    while(si>1){var pv=ch[si-1];if(!pv||pv.nodeType!==1)break;var pt=pv.tagName.toLowerCase();if(pt==='h3'||pt==='h4'||pt==='h5'){si--;}else{break;}}
+    if(si<1)si=1;
+    var cp=makeCont(page);
+    page.parentNode.insertBefore(cp,page.nextSibling);
+    var cca=getCA(cp),tm=[];
+    for(var j=si;j<ch.length;j++){if(!ch[j].classList.contains('page-number'))tm.push(ch[j]);}
+    for(var k=0;k<tm.length;k++)cca.appendChild(tm[k]);
+    page.setAttribute('data-auto-continued','');
+    return[page].concat(process(cp,depth+1));
+  }
+  function renumber(){
+    var pp=document.querySelectorAll('#document-pages > .page');
+    var c=0;
+    for(var i=0;i<pp.length;i++){
+      var n=pp[i].querySelector('.page-number');
+      if(n){c++;n.textContent=String(c);}
+    }
+  }
+  function populateTOC(){
+    var ee=document.querySelectorAll('.toc-entry[data-toc-ref]');
+    for(var i=0;i<ee.length;i++){
+      var ref=ee[i].getAttribute('data-toc-ref');if(!ref)continue;
+      var t=document.getElementById(ref);
+      if(!t)t=document.querySelector('.page[data-toc-id="'+ref+'"]');
+      if(!t)continue;
+      var pg=t.closest?t.closest('#document-pages > .page'):null;
+      if(!pg&&t.classList&&t.classList.contains('page'))pg=t;
+      if(!pg)continue;
+      var nm=pg.querySelector('.page-number');if(!nm)continue;
+      var sp=ee[i].querySelector('.toc-entry-page');if(sp)sp.textContent=nm.textContent;
+    }
+  }
+  function overflows(page){
+    var ca=getCA(page);
+    if(!ca)return false;
+    var b=ca.getBoundingClientRect().bottom;
+    var ch=ca.children;
+    for(var i=0;i<ch.length;i++){
+      if(ch[i].classList.contains('page-number'))continue;
+      if(ch[i].getBoundingClientRect().bottom-b>1)return true;
+    }
+    return false;
+  }
+  function run(){
+    var a=Array.prototype.slice.call(document.querySelectorAll('.page[data-auto-continue]'));
+    for(var i=0;i<a.length;i++)process(a[i],0);
+    renumber();
+    populateTOC();
+    for(var pass=0;pass<4;pass++){
+      var again=Array.prototype.slice.call(document.querySelectorAll('.page[data-auto-continue]')).filter(overflows);
+      if(again.length===0)break;
+      for(var j=0;j<again.length;j++)process(again[j],0);
+      renumber();
+      populateTOC();
+    }
+    document.body.setAttribute('data-render-complete','1');
+    document.dispatchEvent(new Event('auto-continue-complete'));
+  }
+  function start(){
+    // formulas must be typeset before pages are measured and split
+    var k=window.__katexReady||Promise.resolve();
+    k.then(function(){return document.fonts.ready;}).then(function(){
+      var imgs=Array.prototype.slice.call(document.images).filter(function(im){return !im.complete;});
+      return Promise.all(imgs.map(function(im){return new Promise(function(r){im.onload=im.onerror=r;});}));
+    }).then(run);
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',start);}else{start();}
+})();
+</script>
+</body>
+</html>

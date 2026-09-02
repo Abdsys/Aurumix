@@ -1,0 +1,33 @@
+{
+  "title": "Aurumix Gold Savings: Simulation Results",
+  "eyebrow": "Prepared for Aurumix",
+  "subtitle": "What it takes for the business to be profitable, how much to raise, and what can be given back. Two thousand seven-year paths over two hundred thousand simulated customers.",
+  "date": "September 2026",
+  "tagline": "Built by founders. Designed for founders.",
+  "legal": "Prepared by Tokenomics.net for Aurumix. © 2026. Confidential.",
+  "executive_summary": {
+    "intro": [
+      "The retail savings business does not stand on its own at the current design. It needs B2B partners to be profitable, and there are none yet. The revenue model's year-seven profit of USD 847k is real, but a third of its revenue comes from eleven partnerships nobody has started. That is the finding. Everything else in this document is about what to do with it."
+    ],
+    "stats": [
+      { "value": "76,000", "label": "Retail customers to stand alone" },
+      { "value": "USD 4.7m", "label": "Safe raise, 90% of paths" },
+      { "value": "38%", "label": "Break-even by year seven" }
+    ],
+    "findings": [
+      { "title": "Retail does not stand alone", "body": "Six dollars of margin per customer a year at blended acquisition cost. Negative at UAE cost. Retail alone needs 76,000 paying customers, right at O Gold's observed UAE user base." },
+      { "title": "Three and a half partners cover the fixed base", "body": "One partner is worth the revenue of 3,500 retail customers with no acquisition cost, no churn and no giveback. Partner adoption moves the answer more than any other input, and the pipeline is empty." },
+      { "title": "The revenue model's raise is a coin flip", "body": "USD 2.29m is the median of 2,000 paths. Nine paths in ten are covered at USD 4.7m. The float fix brings that to about USD 4.0m." },
+      { "title": "Ladder shape costs three times more than generosity", "body": "The full Sovereign headline costs 6.3% of revenue if the ladder is top-loaded and 18.4% if it is front-loaded. The headline is nearly free. The early rungs are where the money goes." },
+      { "title": "Sovereign's 80% loan-to-value makes a margin call certain", "body": "At 80% a call needs only a 6% gold fall and arrives in every path. At 65% it needs 24% and the median share called is zero. Cap the top rung before a lender prices it." },
+      { "title": "Four recommendations are free", "body": "Top-load the ladder, default customers to the prefunded balance, size the float from the payment calendar, and reopen the spot door. None of them costs Aurumix anything to adopt." }
+    ]
+  },
+  "parts": {
+    "1": { "subtitle": "What the client asked, why a spreadsheet cannot answer it, and what was verified before any number was reported." },
+    "2": { "subtitle": "The retail unit margin, why it is six dollars, and the levers ranked by what they cost." },
+    "3": { "subtitle": "The raise, break-even, the loyalty ladder, where profit sits, the rail, the float, the spot door, the credit book, and seven stress scenarios." },
+    "4": { "subtitle": "What the findings mean for the business, six recommendations, and the numbers to watch in year one." },
+    "5": { "subtitle": "Simulation configuration, chart reference, and methodology notes." }
+  }
+}

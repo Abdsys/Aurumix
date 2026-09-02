@@ -1,0 +1,25 @@
+{
+  "title": "Aurumix Gold Savings Simulation",
+  "eyebrow": "Prepared for Aurumix",
+  "subtitle": "How the simulation is built. The customer, the score, the gold, the float, and what happens each month.",
+  "date": "September 2026",
+  "tagline": "Built by founders. Designed for founders.",
+  "legal": "Prepared by Tokenomics.net for Aurumix. © 2026. Confidential.",
+  "sections": {
+    "1": { "subtitle": "What the simulation is for, and why it asks what has to be true rather than what will happen." },
+    "2": { "subtitle": "A line-for-line port of the revenue model, and a population of individual customers that grows the same book." },
+    "3": { "subtitle": "Region, ticket, payment archetype, payment rail and entry door. What each customer carries at birth." },
+    "4": { "subtitle": "Six consecutive payments open the gate. The score is computed from three facts on the ledger, not looked up." },
+    "5": { "subtitle": "Five benefits priced by tier, generated from three dials, with one rule only an agent model can enforce." },
+    "6": { "subtitle": "Stopping the SIP, letting the card go dormant, repaying credit and redeeming gold each tick on their own clock." },
+    "7": { "subtitle": "Gold as geometric Brownian motion, partners as lumpy arrivals, and every other input drawn from the client's own scenario table." },
+    "8": { "subtitle": "The order of operations inside every one of the eighty-four months." },
+    "9": { "subtitle": "The float sized from the payment calendar with dealer lead time, service level, carry and mark-to-market. Unhedged." },
+    "10": { "subtitle": "Margin calls tracked by vintage, and why the loan-to-value rung decides everything." },
+    "11": { "subtitle": "The steady-state threshold, with retail customers and B2B partners kept apart." },
+    "12": { "subtitle": "Seven scenarios, including a redemption run built as a jump rather than a rate." },
+    "13": { "subtitle": "Two gates that had to pass, and one published figure deliberately not chased." },
+    "14": { "subtitle": "Where the evidence is strong, where it is judgement, and what is not modelled." },
+    "15": { "subtitle": "How to reproduce every figure in the results document." }
+  }
+}
