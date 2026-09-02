@@ -521,9 +521,9 @@ Customer lifecycle and heterogeneity · the gate and the five-tier ladder · all
 
 | Need | Source | Status |
 |---|---|---|
-| Gold volatility | To source at build | 🔴 `{{UNFILLED}}` — **do not guess** |
-| Card dormancy hazard | Card-industry data | 🔴 `{{UNFILLED}}` — sourceable |
-| Interchange split, gross vs effective | NymCard / UAE PM terms | 🔴 Research owed — decides whether stream 4 really exceeds stream 2 by 17× |
+| Gold volatility | General knowledge of long-run realised gold vol (~15%/yr); **not a fetched citation** | ⚠ Assumed, swept 10–22% |
+| Card dormancy hazard | 🔴 **Researched 2026-09-02: CONFIRMED SOURCING NEGATIVE.** No published dormancy or attrition *rate* for consumer cards — UAE, GCC, global or fintech — only inactivity *definitions* (90 days to 12 months). My earlier note "genuinely sourceable" was wrong | Swept assumption, 0 / 1 / 2 %/month |
+| Interchange split, gross vs effective | ✅ **Researched 2026-09-02.** Visa UAE IRF (eff. 19 Dec 2024, primary source): prepaid consumer 1.00% cap AED 50 — **the workbook's prepaid cap is exact**; credit Classic 1.15 / Gold **1.15** / Platinum **1.80** / Signature 2.05 / Infinite 2.10%. ⚠ **The workbook's "Gold 1.8%" is a Platinum rate under a Gold label.** Published BaaS splits (Sacra 2021 model): brand keeps ~0.28% of spend after network, sponsor and PM — vs the workbook's 0.72%. Sensitivity through the engine: at 0.28% take, Y7 profit −$33k. **Stream 2 is too small for the split to matter; stream 4's 17× dominance is structural** (FX and fees are not subject to the split) | Settled. Tier-label mismatch logged for Phase 4 |
 | Everything else | Workbook + corpus | ✅ Available |
 
 ## 🔴 Escalation protocol — agreed 2026-09-02

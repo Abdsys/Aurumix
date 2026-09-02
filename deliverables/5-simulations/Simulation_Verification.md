@@ -131,9 +131,23 @@ The ladder envelope (cumulative 84-mo cost, % of agent revenue) confirms the sha
 | Rail discipline gap | 35% re-draw to disciplined mix, swept | Unsourced by construction; the lever result reads directionally |
 | Acquisition noise | 10% CV lognormal | Demand-noise convention |
 
+## 4b. The two researches, closed 2026-09-02 (Perplexity sonar-pro, then primary-source verification)
+
+**Card dormancy — confirmed sourcing negative.** No published dormancy or attrition *rate* exists for consumer cards in the UAE, GCC, globally, or for fintech-issued cards; only inactivity *definitions* (90 days to 12 months). My blueprint claim that it was "genuinely sourceable" is retracted. Carried as a swept assumption (0 / 1 / 2 % per month) on an independent clock from SIP lapse. **Swept through the agent book:** 2%/month dormancy cuts active cards at M84 by 40% (36,104 → 21,748) and cumulative card revenue by 40%, but total agent revenue by only **0.9%** — the card is a small stream next to the entry fee, so the missing source is harmless to the profitability answer. What it does change is the *credit book*: fewer active cards means fewer margin-callable positions.
+
+**Interchange — settled at primary source.** Visa UAE interchange schedule, effective 19 December 2024:
+
+| Product | Domestic gross rate |
+|---|---|
+| Prepaid consumer | **1.00%** cap AED 50 — the workbook's prepaid-switch cap is exact |
+| Credit Classic / **Gold** | 1.15% / **1.15%** |
+| Credit **Platinum** | **1.80%** |
+| Credit Signature / Infinite | 2.05% / 2.10% |
+
+⚠ **The workbook's "Interchange – Gold 1.8%" is a Platinum rate under a Gold label.** Logged for Phase 4. The only published brand-share benchmark (Sacra's BaaS unit-economics model, 2021) leaves the brand ~0.28% of spend after network, sponsor bank and programme manager — the workbook keeps 0.72%. Run through the engine, the most conservative take costs **$33k of Y7 profit**. **Stream 2 is too small for the split to matter, and stream 4's 17× dominance is structural** — FX margin and cardholder fees are charged to the customer and never enter the interchange split. Mastercard's UAE schedule is bot-blocked at source and unverified.
+
 ## 5. What remains before client documentation
 
-1. **Your review of this summary** — especially the B2B finding's framing (escalation rule: it's close to the "structural" line we agreed).
-2. `SIMULATION_SETUP.md` + `SIMULATION_RESULTS.md` to the Stockpile standard (charts included).
-3. Card dormancy hazard and the interchange gross-vs-effective split — researched, then a re-run (both are second-order against the B2B finding).
-4. Phase 4 fix list stands as logged (redemption unit cost $1.85→$3.28, the tiered-vs-spot discount, the payment filter).
+1. **Your review of this summary** — especially the B2B finding's framing (escalation rule: it's at the "structural" line we agreed). **Client documents are paused on your instruction.**
+2. `SIMULATION_SETUP.md` + `SIMULATION_RESULTS.md` to the Stockpile standard (charts included), once released.
+3. Phase 4 fix list stands as logged (redemption unit cost $1.85→$3.28, the tiered-vs-spot discount, the payment filter, and now the Gold/Platinum interchange label).

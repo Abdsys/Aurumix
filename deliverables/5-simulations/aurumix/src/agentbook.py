@@ -62,7 +62,7 @@ def run_book(seed=20270101, scale=2.0, months=C.HORIZON_MONTHS,
              prefunded_share=C.RAIL_PREFUNDED_SHARE,
              discipline_shift=C.RAIL_DISCIPLINE_SHIFT,
              rho_quality=0.0, ladder=None, archetypes=None,
-             region_weights=None):
+             region_weights=None, card_dormancy_monthly=0.0):
     """
     Run the full 84-month book with continuous acquisition. Acquisition per
     month comes from the ported deterministic engine's own new-customer series,
@@ -200,6 +200,15 @@ def run_book(seed=20270101, scale=2.0, months=C.HORIZON_MONTHS,
                 got = fresh & (rng.random(pool.n) < take)
             pool.card_active |= got
             pool.card_drawn_flag |= fresh
+            # Card dormancy - an INDEPENDENT clock from SIP lapse (blueprint
+            # Q9). Researched 2026-09-02 via Perplexity: no published dormancy
+            # or attrition RATE exists for consumer cards - UAE, GCC, global or
+            # fintech - only inactivity DEFINITIONS (90 days to 12 months).
+            # Confirmed sourcing negative; carried as a swept assumption.
+            dorm = card_dormancy_monthly
+            if dorm > 0:
+                gone = pool.card_active & (rng.random(pool.n) < dorm)
+                pool.card_active &= ~gone
 
             # card spend keyed to ticket as income proxy, at the tier's FX/rewards
             limit = pool.grams * C.GOLD_PRICE_M1 * ladder["ltv"][pool.tier]
