@@ -3,10 +3,11 @@ STAGE 3 ANALYSIS
 ==============================================================================
 
 Q1a. PROFITABILITY THRESHOLD - steady state (acquisition replaces churn only)
-  revenue/payer $63 ($41 ex-B2B) | serve $13 | churn-replacement $17  (churn 45% x CAC $37)
-  contingency 15%: 17,401 paying with B2B | 76,035 without B2B
-  contingency 30%: 23,404 paying with B2B | 283,527 without B2B
-  contingency 50%: 36,150 paying with B2B | unreachable without B2B
+  retail revenue/payer $41 | serve $13 | churn 45%/yr | CAC blended $37 / UAE-only $55
+  fixed cost base $429,674/yr | one B2B partner = $141,750/yr
+  contingency 15%: RETAIL ALONE needs 76,035 paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.5 B2B partners cover fixed costs by themselves
+  contingency 30%: RETAIL ALONE needs 283,527 paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.9 B2B partners cover fixed costs by themselves
+  contingency 50%: RETAIL ALONE needs unreachable paying (blended CAC) / unreachable (UAE CAC)  |  OR 4.5 B2B partners cover fixed costs by themselves
   (cross-check: O Gold runs 75,000 active users in the UAE alone)
 
 Q2. TIER MIX at M84 (the thing the workbook cannot compute):
@@ -62,11 +63,11 @@ Q6. TORNADO - Y7 net profit swing, scenario-range width per parameter:
 STRESS SCENARIOS (Y7 net profit | cumulative at Y7 | peak funding):
   base                          846,578 |    1,055,365 |    2,291,169
   s1_gold_crash_30              846,118 |    1,053,005 |    2,286,703
-  s2_redemption_run_x5          976,001 |    1,301,297 |    2,295,315
+  s2_redemption_run_25pct_M24      471,853 |     -253,804 |    2,340,652
   s3_zero_b2b                  -712,672 |   -4,047,635 |    5,499,734
   s4_adoption_failure           723,465 |      253,811 |    2,366,206
   s5_regulatory_delay           846,578 |      316,281 |    3,030,253
   s6_ticket_compression         732,307 |      662,485 |    2,301,188
-  s7_combined_tail              124,641 |   -1,686,915 |    3,183,398
+  s7_combined_tail             -378,929 |   -3,231,325 |    4,222,128
 
 wrote C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\5-simulations\aurumix\outputs\analysis.json

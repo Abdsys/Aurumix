@@ -158,6 +158,13 @@ class DetModel:
                             / (paying[i] + holders[i]))
                 decay_elig = (p["self_custody_rate"] + p["redemption_rate"] * base_mix) * m / 12
                 decay_cust = p["redemption_rate"] * base_mix * m / 12
+                # REDEMPTION PANIC hook (stress s2/s7). A run is a JUMP, not a
+                # rate: a share of custody leaves in one period. A rate-based
+                # model converges toward inflow/outflow balance and never
+                # overshoots, so it cannot represent a run on its own.
+                if p.get("panic_period") is not None and per[i] == p["panic_period"]:
+                    decay_elig = min(1.0, decay_elig + p["panic_share"])
+                    decay_cust = min(1.0, decay_cust + p["panic_share"])
                 grams_elig[i] = (grams_elig[i - 1] if i else 0.0) * (1 - decay_elig) + bought[i]
                 grams_cust[i] = (grams_cust[i - 1] if i else 0.0) * (1 - decay_cust) + bought[i]
                 aum[i] = grams_elig[i] * gold[i]
@@ -224,6 +231,8 @@ class DetModel:
                 if per[i] >= p["act_0"]:
                     redeem_ev[i] = ((paying[i] + holders[i] * p["holder_redemption_mult"])
                                     * p["redemption_rate"] * m / 12)
+                    if p.get("panic_period") is not None and per[i] == p["panic_period"]:
+                        redeem_ev[i] += p["panic_share"] * (paying[i] + holders[i])
 
             R[name] = dict(paying=paying, holders=holders, cum=cum, new=new,
                            grams_elig=grams_elig, grams_cust=grams_cust,
@@ -274,7 +283,17 @@ class DetModel:
         returned = np.maximum(0.0, prev_cust + o["grams_bought"] - o["grams_cust"])
         net_new = np.maximum(0.0, o["grams_bought"] - returned * (1 - p["sw_premium_gross"]))
         o["net_new_grams"] = net_new
-        o["cogs"] = net_new * gold * p["fab_premium"] * p["sw_premium_aurumix"]
+        fab = net_new * gold * p["fab_premium"] * p["sw_premium_aurumix"]
+
+        # SELL-BACK (added 2026-09-02, client-agreed). The recycling credit is
+        # bounded by demand: redeemed grams above what new purchases absorb
+        # cannot sit in the float unpriced - they are sold back to the dealer
+        # at a two-way spread. Zero at base rates (redemptions < purchases);
+        # a real cash cost in a redemption run. Spread swept 0.5/1.0/2.0%.
+        excess = np.maximum(0.0, returned - o["grams_bought"])
+        o["excess_redeemed_grams"] = excess
+        o["sellback_cost"] = excess * gold * p.get("buyback_spread", 0.01)
+        o["cogs"] = fab + o["sellback_cost"]
 
         # ── opex (R232-R255) ─────────────────────────────────────────────────
         metal = o["grams_cust"] + float_req

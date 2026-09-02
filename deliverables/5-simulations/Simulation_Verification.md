@@ -107,14 +107,18 @@ The ladder envelope (cumulative 84-mo cost, % of agent revenue) confirms the sha
 |---|---|---|---|
 | Base | +847k | +1,055k | 2.29m |
 | Gold crash −30% | +846k | +1,053k | 2.29m |
-| Redemption run ×5 | +976k | +1,301k | 2.30m |
+| **Redemption run** — 25% of custody exits at M24, contributions pause to 40%, sell-back at 1% | **+472k** | **−254k** | 2.34m |
 | **Zero B2B** | **−713k** | **−4,048k** | **5.50m** |
 | Adoption failure | +723k | +254k | 2.37m |
 | Regulatory delay 12mo | +847k | +316k | 3.03m |
 | Ticket compression | +732k | +662k | 2.30m |
-| **Combined tail** | **+125k** | **−1,687k** | **3.18m** |
+| **Combined tail** — crash + run + B2B slump | **−379k** | **−3,231k** | **4.22m** |
 
-⚠ **The redemption run showing a profit is a model limitation, not a finding:** returned gold recycles into the float and cuts COGS, and **the two-way buyback spread is not modelled** (open question in the brief §10). Read it as "the P&L doesn't break," not "runs are good." The cash-out mechanics belong to the spread question the client hasn't answered.
+**The redemption run, resolved (client challenge 2026-09-02).** The first cut showed a run *raising* profit. Decomposed line by line, the client's intuition was right on every line it named — card and lending revenue −$60k, handling +$124k, AUM −39% — but one line swamped them: **COGS −$212k**, because the workbook pays the fabrication premium only on net-new grams and treats every redeemed gram as a bar it need not make. Three things were then established and are now in the model:
+
+1. **A rate-based redemption model cannot produce a run.** Redemptions are a rate on the stock; the stock is built from the flow; the two converge and never overshoot. Even at 5× redemptions and 40% contributions, a growing book buys more gold than it returns (48k vs 44k grams at Y7). **A run is a jump, not a rate** — now a discrete "share of custody exits in one month" hook, swept 10/25/40%.
+2. **Excess redemptions are sold back to the dealer at a swept two-way spread** (0.5/1.0/2.0%), the recycling credit capped at that month's purchases. Equivalence at base is untouched (36/36).
+3. **The spread is second-order and the pause is the damage.** At every run size and spread tested, sell-back costs $0.7k–6k cumulative; the run's −$375k Y7 hit is lost contributions and AUM. Even a late-horizon worst case — 25% of a 200k-gram book exiting against ~10k of monthly purchases, at 2% — is ~$160k, under 4% of Y7 revenue. **The buyback-spread question the brief marks CRITICAL is real for cash management and immaterial for the P&L; what matters is whether customers keep paying.**
 
 ## 4. Assumptions made on my own authority (all swept)
 

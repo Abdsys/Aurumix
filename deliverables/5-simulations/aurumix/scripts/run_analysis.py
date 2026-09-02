@@ -270,10 +270,17 @@ def run_stress(name, overrides=None, gold_shock=None, redemption_mult=1.0,
             "cum7": float(out["cum_profit"][-1]),
             "peak_funding": float(out["peak_funding"][-1])}
 
+# A redemption RUN is a jump, not a rate (see detmodel panic hook): a share of
+# custody leaves at M24 while existing customers pause contributions. Priced
+# at the sell-back spread on the excess above that month's purchases.
+PANIC = {"panic_period": 24, "panic_share": 0.25, "buyback_spread": 0.01,
+         "ticket_uae": 33.6 * 0.4, "ticket_gulf": 26 * 0.4, "ticket_india": 30 * 0.4,
+         "spot_attach_mult": 0.4, "holder_redemption_mult": 2.8}
+
 A["stress"] = {
     "base": run_stress("base"),
     "s1_gold_crash_30": run_stress("crash", gold_shock=(24, -0.30)),
-    "s2_redemption_run_x5": run_stress("run", redemption_mult=5.0),
+    "s2_redemption_run_25pct_M24": run_stress("run", PANIC),
     "s3_zero_b2b": run_stress("no_b2b", {"b2b_partners": [0] * 7}),
     "s4_adoption_failure": run_stress("adopt", {
         "persistency": 0.45, "monthly_churn": 1 - 0.45 ** (1 / 12),
@@ -283,8 +290,8 @@ A["stress"] = {
     "s6_ticket_compression": run_stress("ticket", {
         "ticket_uae": 26.5, "ticket_gulf": 21, "ticket_india": 24}),
     "s7_combined_tail": run_stress("tail", {
-        "b2b_partners": [0, 0, 1, 2, 3, 4, 5]},
-        gold_shock=(24, -0.30), redemption_mult=5.0),
+        **PANIC, "b2b_partners": [0, 0, 1, 2, 3, 4, 5]},
+        gold_shock=(24, -0.30)),
 }
 print("\nSTRESS SCENARIOS (Y7 net profit | cumulative at Y7 | peak funding):")
 for k, v in A["stress"].items():
