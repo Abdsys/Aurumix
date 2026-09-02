@@ -1,0 +1,827 @@
+{
+ "gold_price_m1": 141.46,
+ "aed_usd": 3.6725,
+ "entry_fee": 0.05,
+ "fab_premium": 0.015,
+ "bar_grams": 100,
+ "interchange": 0.018,
+ "processor_fee_txn": 0.1,
+ "decline_uplift": 0.06,
+ "fx_margin": 0.02,
+ "atm_allowance_aed": 1000,
+ "atm_fee": 0.02,
+ "card_issuance_aed": 75,
+ "card_replacement_aed": 100,
+ "family_price": 50,
+ "beneficiary_fee": 6,
+ "credit_orig_gross": 0.01,
+ "credit_orig_share": 0.5,
+ "credit_serv_gross": 0.005,
+ "credit_serv_share": 0.7,
+ "ltv": 0.5,
+ "spot_ticket_uae": 190,
+ "spot_ticket_gulf": 145,
+ "spot_ticket_india": 40,
+ "spot_attach_uae": 0.12,
+ "spot_attach_gulf": 0.1,
+ "spot_attach_india": 0.35,
+ "sip_floor": 20,
+ "gate_payments": 6,
+ "redemption_unit_cost": 1.85,
+ "act_1a": 1,
+ "act_1b": 1,
+ "act_0": 1,
+ "act_3": 7,
+ "act_2": 13,
+ "act_4": 13,
+ "act_5": 13,
+ "act_6": 13,
+ "act_referral": 13,
+ "act_gulf": 13,
+ "act_india": 1,
+ "ceiling_uae": 142636.8,
+ "ceiling_gulf": 35978.4,
+ "ceiling_india": 125000,
+ "gold_appreciation": 0.081,
+ "float_buffer_days": 10,
+ "persistency": 0.55,
+ "monthly_churn": 0.0485991010017477,
+ "agent_productivity": 6,
+ "cac_uae": 85,
+ "cac_gulf": 75,
+ "cac_india": 15,
+ "cac_uae_y7": 55,
+ "cac_gulf_y7": 45,
+ "cac_india_y7": 10,
+ "mkt_share_uae": 0.74,
+ "mkt_share_gulf": 0.18,
+ "mkt_share_india": 0.08,
+ "referral_rate": 0.6,
+ "referral_conversion": 0.62,
+ "organic_share": 0.25,
+ "seasonality_amplitude": 1,
+ "ics_ever_share": 0.55,
+ "ics_months_to_tier": 8,
+ "self_custody_rate": 0.06,
+ "redemption_rate": 0.06,
+ "holder_redemption_mult": 1.6,
+ "spot_attach_mult": 1,
+ "spot_ticket_mult": 1,
+ "spot_frequency": 1.7,
+ "pm_share": 0.6,
+ "facility_takeup": 0.18,
+ "txn_per_draw": 4,
+ "foreign_spend_mean": 0.34,
+ "reissue_rate": 0.06,
+ "replacement_rate": 0.11,
+ "atm_share_1": 0.6,
+ "atm_share_2": 0.25,
+ "atm_share_3": 0.12,
+ "atm_share_4": 0.03,
+ "atm_mid_1": 250,
+ "atm_mid_2": 1000,
+ "atm_mid_3": 2250,
+ "atm_mid_4": 4000,
+ "drawn_pct": 0.5,
+ "facility_turnover": 0.42,
+ "draws_per_year": 2.1,
+ "family_attach": 0.15,
+ "family_cancel": 0.25,
+ "beneficiaries": 2.5,
+ "family_churn_monthly": 0.0711362891029878,
+ "b2b_fee": 0.0075,
+ "partner_users": 900000,
+ "partner_adopt": 0.06,
+ "partner_aum_user": 350,
+ "partner_aum": 18900000,
+ "ticket_uae": 33.6,
+ "ticket_gulf": 26,
+ "ticket_india": 30,
+ "vault_fee": 0.0012,
+ "vault_min_daily": 25,
+ "vara_supervision_aed": 400000,
+ "vara_application_aed": 150000,
+ "dmcc_licence_aed": 20265,
+ "dmcc_incorporation_aed": 12035,
+ "kyc_per_check": 1.85,
+ "capital_issuance_aed": 1500000,
+ "capital_activities_aed": 600000,
+ "nla_months": 1.2,
+ "insurance": 45000,
+ "audit": 25000,
+ "tech_audit": 15000,
+ "launch_audit": 40000,
+ "ics_disc_entry": 0.25,
+ "ics_disc_card": 0.2,
+ "ics_disc_rebate": 0.05,
+ "ics_disc_family": 0.2,
+ "agent_commission": 0.1,
+ "referral_reward": 0.3,
+ "card_platform_fee": 30000,
+ "card_setup": 50000,
+ "card_per_card": 4,
+ "card_per_auth": 0.03,
+ "card_fraud": 0.0008,
+ "xborder_fee": 0.014,
+ "uae_spend_abroad": 0.1,
+ "prefund_days": 2,
+ "prefund_min": 100000,
+ "tech_build_y1": 350000,
+ "tech_build_y2": 150000,
+ "tech_maint": 120000,
+ "contingency": 0.15,
+ "kyc_monthly_min": 299,
+ "sw_prepaid": 0,
+ "sw_holders_keep_card": 1,
+ "sw_premium_aurumix": 1,
+ "sw_premium_gross": 0,
+ "marketing_spend": [
+  90000,
+  270000,
+  375000,
+  600000,
+  900000,
+  1275000,
+  1650000
+ ],
+ "agents_uae": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "agents_gulf": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "agents_india": [
+  40,
+  40,
+  60,
+  177,
+  298,
+  356,
+  420
+ ],
+ "agent_ramp": [
+  0.6,
+  0.85,
+  1,
+  1,
+  1,
+  1,
+  1
+ ],
+ "b2b_partners": [
+  0,
+  1,
+  3,
+  5,
+  7,
+  9,
+  11
+ ],
+ "season_acq": [
+  1.01,
+  0.96,
+  0.92,
+  1.15,
+  1.04,
+  0.88,
+  0.85,
+  0.85,
+  0.93,
+  1.25,
+  1.15,
+  1.01
+ ],
+ "season_card": [
+  1.1,
+  1,
+  0.98,
+  0.98,
+  1,
+  0.95,
+  0.88,
+  0.9,
+  1,
+  1.02,
+  1.05,
+  1.14
+ ],
+ "season_foreign": [
+  30,
+  30,
+  30,
+  32,
+  34,
+  55,
+  60,
+  56,
+  36,
+  42,
+  40,
+  32
+ ],
+ "grid": {
+  "period": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29
+  ],
+  "year": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "cal_month": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "months": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   12,
+   12,
+   12,
+   12,
+   12
+  ]
+ },
+ "scenario_triples": {
+  "Gold price appreciation": [
+   0.081,
+   0.12,
+   0
+  ],
+  "Float buffer - days of demand held": [
+   10,
+   6,
+   20
+  ],
+  "Persistency - customers still paying after 12 months": [
+   0.55,
+   0.65,
+   0.45
+  ],
+  "Agent productivity": [
+   6,
+   9,
+   3
+  ],
+  "Marketing CAC - UAE": [
+   85,
+   55,
+   140
+  ],
+  "Marketing CAC - Oman and Bahrain": [
+   75,
+   50,
+   125
+  ],
+  "Marketing CAC - India": [
+   15,
+   9,
+   26
+  ],
+  "Marketing CAC at Y7 - UAE": [
+   55,
+   36,
+   91
+  ],
+  "Marketing CAC at Y7 - Oman and Bahrain": [
+   45,
+   30,
+   75
+  ],
+  "Marketing CAC at Y7 - India": [
+   10,
+   6,
+   17
+  ],
+  "Marketing spend share - UAE": [
+   0.74,
+   0.74,
+   0.74
+  ],
+  "Marketing spend share - Oman and Bahrain": [
+   0.18,
+   0.18,
+   0.18
+  ],
+  "Marketing spend share - India": [
+   0.08,
+   0.08,
+   0.08
+  ],
+  "Referral rate": [
+   0.6,
+   1.1,
+   0.25
+  ],
+  "Referral conversion": [
+   0.62,
+   0.72,
+   0.48
+  ],
+  "Organic share of direct": [
+   0.25,
+   0.4,
+   0.1
+  ],
+  "Seasonality amplitude": [
+   1,
+   1.4,
+   0.6
+  ],
+  "Customers who EVER reach an ICS benefit tier": [
+   0.55,
+   0.65,
+   0.45
+  ],
+  "Average months to reach an ICS benefit tier": [
+   8,
+   6,
+   11
+  ],
+  "Gold moved out of Aurumix's control": [
+   0.06,
+   0.03,
+   0.18
+  ],
+  "Redemption rate": [
+   0.06,
+   0.035,
+   0.12
+  ],
+  "Holder redemption multiplier": [
+   1.6,
+   1.3,
+   2.8
+  ],
+  "Spot attach scenario multiplier": [
+   1,
+   1.7,
+   0.5
+  ],
+  "Spot ticket scenario multiplier": [
+   1,
+   1.35,
+   0.7
+  ],
+  "Spot frequency": [
+   1.7,
+   2.4,
+   1.2
+  ],
+  "Programme manager share of interchange": [
+   0.6,
+   0.36,
+   0.85
+  ],
+  "Facility take-up - customers who take AND use the card": [
+   0.18,
+   0.3,
+   0.08
+  ],
+  "Transactions per drawdown event": [
+   4,
+   6,
+   2
+  ],
+  "Foreign spend share (mean)": [
+   0.34,
+   0.45,
+   0.24
+  ],
+  "Card REISSUE rate (excludes first issue)": [
+   0.06,
+   0.04,
+   0.1
+  ],
+  "Card replacement events": [
+   0.11,
+   0.07,
+   0.18
+  ],
+  "ATM AED 0-500 - share of cardholders": [
+   0.6,
+   0.42,
+   0.74
+  ],
+  "ATM AED 500-1,500 - share of cardholders": [
+   0.25,
+   0.3,
+   0.18
+  ],
+  "ATM AED 1,500-3,000 - share of cardholders": [
+   0.12,
+   0.2,
+   0.06
+  ],
+  "ATM AED 3,000+ - share of cardholders": [
+   0.03,
+   0.08,
+   0.02
+  ],
+  "ATM AED 0-500 - midpoint draw": [
+   250,
+   300,
+   200
+  ],
+  "ATM AED 500-1,500 - midpoint draw": [
+   1000,
+   1100,
+   900
+  ],
+  "ATM AED 1,500-3,000 - midpoint draw": [
+   2250,
+   2400,
+   2100
+  ],
+  "ATM AED 3,000+ - midpoint draw": [
+   4000,
+   4500,
+   3600
+  ],
+  "Drawn as % of permitted limit": [
+   0.5,
+   0.7,
+   0.3
+  ],
+  "Facility turnover, peak -> average": [
+   0.42,
+   0.55,
+   0.3
+  ],
+  "Draw events per borrower per year": [
+   2.1,
+   3.2,
+   1.3
+  ],
+  "Family plan attach rate": [
+   0.15,
+   0.25,
+   0.08
+  ],
+  "Family plan cancellation rate (incremental)": [
+   0.25,
+   0.15,
+   0.4
+  ],
+  "Beneficiaries named per plan": [
+   2.5,
+   3.5,
+   1.6
+  ],
+  "B2B partners - Y1": [
+   0,
+   0,
+   0
+  ],
+  "B2B partners - Y2": [
+   1,
+   2,
+   1
+  ],
+  "B2B partners - Y3": [
+   3,
+   5,
+   1
+  ],
+  "B2B partners - Y4": [
+   5,
+   8,
+   2
+  ],
+  "B2B partners - Y5": [
+   7,
+   11,
+   3
+  ],
+  "B2B partners - Y6": [
+   9,
+   14,
+   4
+  ],
+  "B2B partners - Y7": [
+   11,
+   17,
+   5
+  ],
+  "B2B platform fee": [
+   0.0075,
+   0.009,
+   0.005
+  ],
+  "Average partner user base": [
+   900000,
+   1400000,
+   500000
+  ],
+  "Partner users adopting gold (mature)": [
+   0.06,
+   0.1,
+   0.03
+  ],
+  "AUM per adopting partner user": [
+   350,
+   500,
+   220
+  ],
+  "Average monthly ticket - UAE": [
+   33.6,
+   41,
+   26.5
+  ],
+  "Average monthly ticket - Oman and Bahrain": [
+   26,
+   32,
+   21
+  ],
+  "Average monthly ticket - India": [
+   30,
+   36,
+   24
+  ],
+  "Vault storage fee": [
+   0.0012,
+   0.00026,
+   0.004
+  ],
+  "Vault minimum charge": [
+   25,
+   5,
+   65
+  ],
+  "VARA annual supervision fee": [
+   400000,
+   200000,
+   600000
+  ],
+  "VARA licence application fee (one-off)": [
+   150000,
+   100000,
+   200000
+  ],
+  "DMCC company licence": [
+   20265,
+   20265,
+   20265
+  ],
+  "DMCC incorporation (one-off)": [
+   12035,
+   12035,
+   12035
+  ],
+  "KYC and AML - per verification": [
+   1.85,
+   1.35,
+   1.85
+  ],
+  "Paid-up capital - Category 1 VA Issuance": [
+   1500000,
+   1500000,
+   1500000
+  ],
+  "Paid-up capital - licensed activities": [
+   600000,
+   0,
+   1200000
+  ],
+  "Net liquid assets - months of opex": [
+   1.2,
+   1.2,
+   1.2
+  ],
+  "Insurance - PI, D&O and crime": [
+   45000,
+   20000,
+   90000
+  ],
+  "Audit and reserve attestation": [
+   25000,
+   12000,
+   60000
+  ],
+  "Technology audit and penetration testing": [
+   15000,
+   6000,
+   35000
+  ],
+  "Launch technology and smart contract audit (one-off)": [
+   40000,
+   20000,
+   75000
+  ],
+  "ICS discount - entry fee": [
+   0.25,
+   0.15,
+   0.4
+  ],
+  "ICS discount - card fees": [
+   0.2,
+   0.1,
+   0.35
+  ],
+  "ICS discount - gold rebate": [
+   0.05,
+   0.03,
+   0.1
+  ],
+  "ICS discount - family wallet and will": [
+   0.2,
+   0.1,
+   0.35
+  ],
+  "Agent commission - share of the entry fee": [
+   0.1,
+   0.05,
+   0.15
+  ],
+  "Referral reward - share of the referee's entry fee": [
+   0.3,
+   0.2,
+   0.4
+  ],
+  "Card programme - NymCard platform and scheme fees": [
+   30000,
+   18000,
+   72000
+  ],
+  "Card programme - setup (one-off)": [
+   50000,
+   25000,
+   100000
+  ],
+  "Card programme - per card issued": [
+   4,
+   2,
+   8
+  ],
+  "Card programme - per authorisation": [
+   0.03,
+   0.02,
+   0.06
+  ],
+  "Card programme - fraud and chargebacks": [
+   0.0008,
+   0.0004,
+   0.002
+  ],
+  "Cross-border scheme assessment": [
+   0.014,
+   0.01,
+   0.014
+  ],
+  "UAE cardholders - share of spend abroad or online-foreign": [
+   0.1,
+   0.05,
+   0.2
+  ],
+  "Card settlement prefunding - days of spend": [
+   2,
+   1,
+   3
+  ],
+  "Card settlement prefunding - minimum balance": [
+   100000,
+   50000,
+   250000
+  ],
+  "Technology - build, Year 1": [
+   350000,
+   200000,
+   600000
+  ],
+  "Technology - build, Year 2": [
+   150000,
+   80000,
+   300000
+  ],
+  "Technology - annual maintenance from Y3": [
+   120000,
+   70000,
+   220000
+  ],
+  "Contingency on total costs": [
+   0.15,
+   0.1,
+   0.3
+  ],
+  "KYC and AML - monthly minimum": [
+   299,
+   149,
+   299
+  ]
+ }
+}

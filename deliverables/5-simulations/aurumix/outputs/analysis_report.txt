@@ -1,0 +1,72 @@
+==============================================================================
+STAGE 3 ANALYSIS
+==============================================================================
+
+Q1a. PROFITABILITY THRESHOLD - steady state (acquisition replaces churn only)
+  revenue/payer $63 ($41 ex-B2B) | serve $13 | churn-replacement $17  (churn 45% x CAC $37)
+  contingency 15%: 17,401 paying with B2B | 76,035 without B2B
+  contingency 30%: 23,404 paying with B2B | 283,527 without B2B
+  contingency 50%: 36,150 paying with B2B | unreachable without B2B
+  (cross-check: O Gold runs 75,000 active users in the UAE alone)
+
+Q2. TIER MIX at M84 (the thing the workbook cannot compute):
+  silver      45.4%
+  gold        41.8%
+  platinum    11.6%
+  sovereign    1.1%
+  gated share of live book: 50.1%  (workbook input: 55%)
+
+Q2. LADDER ENVELOPE (cumulative 84-month ICS cost, % of agent revenue):
+  c1.0_convex    ICS      213,556  =  3.7% of revenue
+  c1.0_linear    ICS      364,834  =  6.5% of revenue
+  c1.0_concave   ICS      575,919  = 10.6% of revenue
+  c1.5_convex    ICS      284,309  =  5.0% of revenue
+  c1.5_linear    ICS      482,004  =  8.8% of revenue
+  c1.5_concave   ICS      755,296  = 14.4% of revenue
+  c2.0_convex    ICS      355,063  =  6.3% of revenue
+  c2.0_linear    ICS      599,173  = 11.1% of revenue
+  c2.0_concave   ICS      934,673  = 18.4% of revenue
+
+Q3. profit share by ticket decile (rho_quality=0.0):  top decile 21.7%, top three 44.9%, bottom five 38.2%
+
+Q3. profit share by ticket decile (rho_quality=0.2):  top decile 21.8%, top three 45.0%, bottom five 38.1%
+
+Q3. profit share by ticket decile (rho_quality=0.4):  top decile 22.0%, top three 45.3%, bottom five 37.9%
+
+Q3. profit share by ticket decile (rho_quality=0.6):  top decile 22.4%, top three 45.8%, bottom five 37.5%
+
+Q3/Q6. RAIL MIX (prefunded share -> gate share, book size):
+  prefunded_0    gated 47.4%  paying M84    85,060  entry rev    3,646,873
+  prefunded_25   gated 49.9%  paying M84    88,492  entry rev    3,782,294
+  prefunded_50   gated 52.5%  paying M84    91,088  entry rev    3,986,198
+  prefunded_75   gated 55.0%  paying M84    93,916  entry rev    4,042,950
+
+Q3b. SPOT-ONLY CUSTOMER (with the card now open to them):
+  UAE    value ~$44/yr vs CAC $85 -> payback 1.9 yrs on spot alone
+  India  value ~$31/yr vs CAC $15 -> payback 0.5 yrs on spot alone
+
+Q6. TORNADO - Y7 net profit swing, scenario-range width per parameter:
+  partner_adopt               1,819,125   [      66,953 ..    1,886,078]
+  partner_aum_user            1,247,400   [     267,428 ..    1,514,828]
+  facility_takeup               932,658   [     422,643 ..    1,355,301]
+  b2b_fee                       831,600   [     326,828 ..    1,158,428]
+  contingency                   634,384   [   1,005,174 ..      370,790]
+  family_attach                 443,819   [     663,829 ..    1,107,649]
+  vault_fee                     395,112   [     945,885 ..      550,773]
+  persistency                   384,008   [     676,588 ..    1,060,595]
+  cac_uae_y7                    363,998   [   1,028,006 ..      664,008]
+  referral_rate                 185,977   [     760,674 ..      946,651]
+  ics_ever_share                152,289   [     922,723 ..      770,434]
+  organic_share                 145,245   [     769,404 ..      914,649]
+
+STRESS SCENARIOS (Y7 net profit | cumulative at Y7 | peak funding):
+  base                          846,578 |    1,055,365 |    2,291,169
+  s1_gold_crash_30              846,118 |    1,053,005 |    2,286,703
+  s2_redemption_run_x5          976,001 |    1,301,297 |    2,295,315
+  s3_zero_b2b                  -712,672 |   -4,047,635 |    5,499,734
+  s4_adoption_failure           723,465 |      253,811 |    2,366,206
+  s5_regulatory_delay           846,578 |      316,281 |    3,030,253
+  s6_ticket_compression         732,307 |      662,485 |    2,301,188
+  s7_combined_tail              124,641 |   -1,686,915 |    3,183,398
+
+wrote C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\5-simulations\aurumix\outputs\analysis.json
