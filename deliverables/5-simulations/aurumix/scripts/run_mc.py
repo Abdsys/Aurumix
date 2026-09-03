@@ -39,32 +39,16 @@ def run_all(n_paths=N_PATHS):
 
     for k in range(n_paths):
         out, eng = run_path(BASE_SEED + k)
+        years = out["year"]
         yr_rev = {y: out["revenue"][years == y].sum() for y in range(1, 8)}
         yr_np = {y: out["net_profit"][years == y].sum() for y in range(1, 8)}
         cum = out["cum_profit"]
 
-        # margin calls on the monthly gold path; drawn originations spread from
-        # the grid onto months (annual columns / 12)
-        drawn_new = np.zeros(84)
-        # approximate monthly origination: new cards x limit x drawn share
-        cards_new_grid = np.zeros(29)
-        for name in ("UAE", "Gulf", "India"):
-            cards_new_grid += out["region"][name]["cards_new"]
-        lim = np.divide(out["aum"], np.maximum(out["cards"], 1e-9)) * out["_draw"].get("ltv", p0["ltv"]) \
-            if False else None
-        # per-grid origination USD: new cards x credit limit per card x drawn%
-        limit_per_card = np.divide(out["aum"], np.maximum(
-            out["paying"] + out["holders"] * p0["sw_holders_keep_card"], 1e-9)) * p0["ltv"]
-        orig_grid = cards_new_grid * limit_per_card * out["_draw"].get("drawn_pct", p0["drawn_pct"])
-        gm = out.get("_gold_monthly")
-        mi = 0
-        for i in range(29):
-            m = int(p0["grid"]["months"][i])
-            for _ in range(m):
-                if mi < 84:
-                    drawn_new[mi] = orig_grid[i] / m
-                    mi += 1
-        mc = margin_call_exceedance(gm, drawn_new, struck_ltv=p0["ltv"])
+        # Margin calls run on the twin's own monthly credit originations against
+        # its own monthly gold path. Both are real series now, so a bad quarter
+        # is visible instead of being averaged into its year.
+        mc = margin_call_exceedance(out.get("_gold_monthly"), out["orig_usd"],
+                                    struck_ltv=p0["ltv"])
         called_by_month[k] = mc["called_by_month"]
 
         rows.append({
@@ -74,14 +58,16 @@ def run_all(n_paths=N_PATHS):
             "net_profit_y7": yr_np[7],
             "cum_profit_y7": cum[-1],
             "peak_funding": out["peak_funding"][-1],
+            "peak_funding_month": int(np.argmax(out["funding"])) + 1,
+            "breakeven_month": next((int(i) + 1 for i in range(84) if cum[i] > 0), 999),
             "breakeven_year": next((y for y in range(1, 8)
                                     if cum[years == y][-1] > 0), 99),
             "paying_y7": out["paying"][-1],
             "holders_y7": out["holders"][-1],
             "ics_cost_y7": out["ics_cost"][years == 7].sum(),
+            "tiered_share_y7": out["qual_share"][-1],
             "gold_y7": out["gold_price"][-1],
-            "b2b_partners_y7": out["_draw"]["b2b_partners"][-1]
-                               if "b2b_partners" in out["_draw"] else p0["b2b_partners"][-1],
+            "b2b_partners_y7": out["partners"][-1],
             "any_margin_call": mc["any_call"],
             "total_called_share": mc["total_called_share"],
             **{f"draw_{k2}": v for k2, v in out["_draw"].items()

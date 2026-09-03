@@ -15,8 +15,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 
 from config import config as C
-from src.detmodel import DetModel, load_params
-from src.agentbook import run_book, make_ladder
+from src.detmodel import load_params
+from src.agentbook import make_ladder
+from src.twin import Twin
 from src.mcmodel import _match_triples
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "outputs")
@@ -47,11 +48,11 @@ class _Tee:
 sys.stdout = _Tee(os.path.join(OUT, "analysis_report.txt"))
 A = {}
 p0 = load_params()
-years = np.array(p0["grid"]["year"])
 
 
 def annual(out, key, y):
-    return float(np.asarray(out[key])[years == y].sum())
+    """Sum a monthly series over one year. The twin carries its own clock."""
+    return float(np.asarray(out[key])[np.asarray(out["year"]) == y].sum())
 
 
 print("=" * 78)
@@ -67,9 +68,9 @@ print("=" * 78)
 # inherits its exact unit economics. Contingency swept 15/30/50%.
 # ═════════════════════════════════════════════════════════════════════════════
 
-det = DetModel()
-det.run()
-o = det.out
+TWIN = Twin(scale=10.0, seed=20270101)
+o = TWIN.run()
+years = o["year"]
 
 # STEADY-STATE method. At the threshold the book is flat: acquisition only
 # replaces churn, so acquisition cost = N x annual churn x blended CAC - it is
@@ -90,7 +91,11 @@ serve_y7 = (annual(o, "cogs", 7) + annual(o, "ics_cost", 7)
             + float(o["opex_parts"]["redemption"][years == 7].sum()))
 serve_pc = serve_y7 / npay7
 
-churn_annual = 1 - (1 - p0["monthly_churn"]) ** 12
+# The workbook's churn rate is what a FRESH cohort does in its first year. A
+# mature book is mostly survivors and survivors are disciplined, so using the
+# cohort rate to price steady-state replacement overstates it. The twin reports
+# what its own book actually loses, so use that.
+churn_annual = float(o["lapsed"][years == 7].sum() / o["paying"][years == 7][0])
 blended_cac = annual(o, "acq_cost", 7) / annual(o, "new", 7)
 replace_pc = churn_annual * blended_cac        # per paying customer per year
 
@@ -115,7 +120,7 @@ for cont in (0.15, 0.30, 0.50):
     A["q1_threshold"][f"contingency_{int(cont*100)}"] = row
 
 print(f"\nQ1a. PROFITABILITY THRESHOLD - steady state (acquisition replaces churn only)")
-print(f"  retail revenue/payer ${rev_pc_ex:.0f} | serve ${serve_pc:.0f} | churn {churn_annual:.0%}/yr"
+print(f"  retail revenue/payer ${rev_pc_ex:.0f} | serve ${serve_pc:.0f} | churn {churn_annual:.0%}/yr (realised)"
       f" | CAC blended ${blended_cac:.0f} / UAE-only ${cac_uae_only:.0f}")
 print(f"  fixed cost base ${fixed:,.0f}/yr | one B2B partner = ${b2b_per_partner:,.0f}/yr")
 for cont in (15, 30, 50):
@@ -130,12 +135,12 @@ print(f"  (cross-check: O Gold runs 75,000 active users in the UAE alone)")
 # Q2. THE ICS LADDER - tier mix, cost matrix, envelope
 # ═════════════════════════════════════════════════════════════════════════════
 
-pool, panel, scale = run_book(seed=20270101, scale=2.0)
-tm = panel[-1]["tier_mix"]
+pool, scale = TWIN.pool, TWIN.scale
+tm = o["tier_mix"][-1]
 tiered = tm[1:].sum()
 A["q2_tier_mix_m84"] = {n: float(tm[i] / tiered) for i, n in
                         enumerate(C.TIER_ORDER) if i > 0}
-A["q2_gated_share_m84"] = panel[-1]["gated_share"]
+A["q2_gated_share_m84"] = float(o["gated_share"][-1])
 print(f"\nQ2. TIER MIX at M84 (the thing the workbook cannot compute):")
 for n, v in A["q2_tier_mix_m84"].items():
     print(f"  {n:10} {v:6.1%}")
@@ -148,10 +153,10 @@ base_np7 = annual(o, "net_profit", 7)
 for ceiling in (1.0, 1.5, 2.0):
     for steep in ("convex", "linear", "concave"):
         lad = make_ladder(ceiling, steep)
-        pl, pn, sc = run_book(seed=20270101, scale=4.0, ladder=lad)
-        ics = float(pl.econ["cost_ics"].sum() * sc)
-        rev = float((pl.econ["rev_entry"] + pl.econ["rev_card"]
-                     + pl.econ["rev_family"]).sum() * sc)
+        e = Twin(scale=10.0, seed=20270101, ladder=lad); e.run()
+        pl, sc = e.pool, e.scale
+        ics = float(pl.econ_give.sum() * sc)
+        rev = float(pl.econ_rev.sum() * sc)
         A["q2_envelope"][f"c{ceiling}_{steep}"] = {
             "ics_cost_cum": ics, "agent_rev_cum": rev,
             "giveback_share": ics / rev,
@@ -165,8 +170,7 @@ for k, v in A["q2_envelope"].items():
 # ═════════════════════════════════════════════════════════════════════════════
 
 def decile_shares(pool):
-    rev = (pool.econ["rev_entry"] + pool.econ["rev_card"]
-           + pool.econ["rev_family"] - pool.econ["cost_ics"])
+    rev = pool.econ_rev - pool.econ_give
     order = np.argsort(pool.ticket_base, kind="stable")
     csum = rev[order].cumsum()
     total = csum[-1]
@@ -176,8 +180,8 @@ def decile_shares(pool):
 
 A["q3_decile_share"] = {}
 for rho in (0.0, 0.2, 0.4, 0.6):
-    pl, _, sc = run_book(seed=20270101, scale=4.0, rho_quality=rho)
-    sh = decile_shares(pl)
+    e = Twin(scale=10.0, seed=20270101, rho_quality=rho); e.run()
+    sh = decile_shares(e.pool)
     A["q3_decile_share"][f"rho_{rho}"] = sh.tolist()
     print(f"\nQ3. profit share by ticket decile (rho_quality={rho}):"
           f"  top decile {sh[-1]:.1%}, top three {sh[-3:].sum():.1%}, "
@@ -185,11 +189,11 @@ for rho in (0.0, 0.2, 0.4, 0.6):
 
 A["q3_rail"] = {}
 for pf in (0.0, 0.25, 0.50, 0.75):
-    pl, pn, sc = run_book(seed=20270101, scale=4.0, prefunded_share=pf)
+    e = Twin(scale=10.0, seed=20270101, prefunded_share=pf); eo = e.run()
     A["q3_rail"][f"prefunded_{int(pf*100)}"] = {
-        "gated_share_m84": pn[-1]["gated_share"],
-        "paying_m84": float(pn[-1]["paying"]),
-        "entry_rev_cum": float(pl.econ["rev_entry"].sum() * sc),
+        "gated_share_m84": float(eo["gated_share"][-1]),
+        "paying_m84": float(eo["paying"][-1]),
+        "entry_rev_cum": float(eo["s1a"].sum() + eo["s1b"].sum()),
     }
 print("\nQ3/Q6. RAIL MIX (prefunded share -> gate share, book size):")
 for k, v in A["q3_rail"].items():
@@ -243,7 +247,7 @@ for key, (base, agg, con) in triples.items():
                                               else p0["partner_adopt"])
                                         * (p0["partner_aum_user"] if key == "partner_adopt"
                                            else val))
-        e = DetModel(overrides=overrides); e.run()
+        e = Twin(scale=10.0, seed=20270101, overrides=overrides); e.run()
         res[tag] = (annual(e.out, "net_profit", 7), float(e.out["peak_funding"][-1]))
     tornado.append({
         "param": key,
@@ -267,13 +271,14 @@ def run_stress(name, overrides=None, gold_shock=None, redemption_mult=1.0,
     ov = dict(overrides or {})
     if redemption_mult != 1.0:
         ov["redemption_rate"] = p0["redemption_rate"] * redemption_mult
-    e = DetModel(overrides=ov)
+    gm = None
     if gold_shock:
+        # a step change in the gold price, on the twin's monthly clock
         month0, size = gold_shock
-        g = p0["gold_price_m1"] * (1 + p0["gold_appreciation"]) ** (years - 1)
-        per = np.array(p0["grid"]["period"])
-        g = np.where(per >= month0, g * (1 + size), g)
-        e.p["_gold_grid"] = g.tolist()
+        m = np.arange(1, C.HORIZON_MONTHS + 1)
+        gm = p0["gold_price_m1"] * (1 + p0["gold_appreciation"]) ** ((m - 1) / 12.0)
+        gm = np.where(m >= month0, gm * (1 + size), gm)
+    e = Twin(scale=10.0, seed=20270101, overrides=ov, gold_monthly=gm)
     out = e.run()
     if revenue_delay:
         # 12 months unlicensed: revenue AND scale-driven spend shift right;

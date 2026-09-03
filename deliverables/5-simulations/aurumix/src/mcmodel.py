@@ -18,8 +18,8 @@ import os
 
 import numpy as np
 
-from src.detmodel import DetModel, load_params
-from src.tiermix import load_profile, lookup as tiermix_lookup
+from src.detmodel import load_params
+from src.twin import Twin
 
 GOLD_VOL_ANNUAL = 0.15          # sourced: long-run realised gold vol ~15%/yr
 GOLD_VOL_SWEEP = (0.10, 0.22)
@@ -47,14 +47,15 @@ NOT_DRAWN = {
     "monthly_churn": "derived from persistency",
     "partner_aum": "derived from partner_users x adopt x aum_user",
     "family_churn_monthly": "derived from the family cancellation rate",
-    # the four ICS rates are now COMPUTED from the agent book's tier mix
-    # (src/tiermix.py); drawing them as well would double-count
-    "ics_disc_entry": "computed from the tier mix",
-    "ics_disc_card": "computed from the tier mix",
-    "ics_disc_rebate": "computed from the tier mix",
-    "ics_disc_family": "computed from the tier mix",
-    "ics_ever_share": "computed from the tier mix",
-    "ics_months_to_tier": "computed from the tier mix",
+    # The twin gives every customer a tier and charges them at it, so the
+    # workbook's four blended discount rates and its "share who ever tier"
+    # shortcut have nothing left to describe.
+    "ics_disc_entry": "the twin prices each customer at their own tier",
+    "ics_disc_card": "the twin prices each customer at their own tier",
+    "ics_disc_rebate": "the twin prices each customer at their own tier",
+    "ics_disc_family": "the twin prices each customer at their own tier",
+    "ics_ever_share": "the twin counts who actually tiered",
+    "ics_months_to_tier": "the twin knows when each customer tiered",
 }
 
 _MAP_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -101,6 +102,8 @@ def draw_parameters(rng, params, triples):
     # Derived quantities, recomputed from whatever was drawn. Anything in
     # NOT_DRAWN because it is "derived" must be reconstructed here, or it
     # silently keeps its base value while its inputs move.
+    # persistency is drawn and the twin rescales its archetype hazards to hit
+    # it; monthly_churn survives only because reports still quote it
     over["monthly_churn"] = 1.0 - over["persistency"] ** (1.0 / 12.0)
     over["partner_aum"] = (over.get("partner_users", params["partner_users"])
                            * over["partner_adopt"] * over["partner_aum_user"])
@@ -145,13 +148,14 @@ def gold_path_29(rng, p, vol=GOLD_VOL_ANNUAL):
 
 
 def run_path(seed, params=None, vol=GOLD_VOL_ANNUAL, extra_overrides=None,
-             stochastic_gold=True, stochastic_partners_on=True, acq_cv=0.10):
+             stochastic_gold=True, stochastic_partners_on=True, acq_cv=0.10,
+             scale=10.0, **kw):
     """
-    One Monte Carlo path. Returns the engine output dict plus the draw record.
+    One Monte Carlo path: the whole system, 84 monthly steps, its own parameters.
 
-    acq_cv: coefficient of variation on per-period acquisition (demand noise),
-    applied as a lognormal multiplier on new customers via the seasonality
-    hook - it perturbs demand, not the saturation mechanics.
+    There is no second engine any more. The twin runs the business on individual
+    customers and this layer only decides which world it runs in: which
+    parameters, which gold path, which partners turn up, how noisy demand is.
     """
     rng = np.random.default_rng(seed)
     p = load_params() if params is None else dict(params)
@@ -160,24 +164,20 @@ def run_path(seed, params=None, vol=GOLD_VOL_ANNUAL, extra_overrides=None,
 
     if stochastic_partners_on:
         over["b2b_partners"] = stochastic_partners(rng, p["b2b_partners"])
-
     if extra_overrides:
         over.update(extra_overrides)
 
-    # DetModel attaches the computed tier mix itself, at this path's persistency
-    eng = DetModel(p=p, overrides=over)
-
-    # gold hook: DetModel reads "_gold_grid" from params when present
     monthly = None
     if stochastic_gold:
-        grid, monthly = gold_path_29(rng, {**p, **over}, vol=vol)
-        eng.p["_gold_grid"] = grid.tolist()
+        _, monthly = gold_path_29(rng, {**p, **over}, vol=vol)
 
-    # acquisition noise: multiplicative lognormal on the seasonality vector
+    # demand noise: a multiplicative wobble on the acquisition seasonality
     if acq_cv > 0:
         noise = rng.lognormal(-0.5 * acq_cv**2, acq_cv, size=12)
-        eng.p["season_acq"] = (np.array(eng.p["season_acq"]) * noise).tolist()
+        over["season_acq"] = (np.array(p["season_acq"]) * noise).tolist()
 
+    eng = Twin(p=p, overrides=over, seed=int(seed), scale=scale,
+               gold_monthly=monthly, **kw)
     out = eng.run()
     out["_draw"] = over
     if stochastic_gold:

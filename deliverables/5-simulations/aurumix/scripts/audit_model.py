@@ -1,17 +1,22 @@
 """
 Standing audit for loose ends. Run it after any change to the model.
 
-These are the classes of defect that do not announce themselves: a parameter
-the client priced that the Monte Carlo silently freezes, a value the agent
-engine computes that the aggregate engine ignores, a derived quantity left at
-base while its inputs move. Each one was found by hand at least once. This
-script means none of them has to be found by hand again.
-
     python scripts/audit_model.py
+
+These are the classes of defect that do not announce themselves: a parameter the
+client priced that the simulation silently freezes, a rule that stops binding, a
+derived quantity left at base while its inputs move, a business line that
+quietly goes back to being computed on an average. Each one was found by hand at
+least once. This script means none of them has to be found by hand again.
+
+The audit was rewritten when the two-engine architecture was removed. Half of
+what it used to check was whether one engine's answer reached the other engine,
+which is not a question any more.
 """
 
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -19,16 +24,19 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 
 from config import config as C
-from config.overrides import MODEL_OVERRIDES
-from src.detmodel import DetModel, load_params
+from config.overrides import MODEL_OVERRIDES, EXTRA_TRIPLES
+from src.agentbook import LADDER
+from src.detmodel import load_params
 from src.mcmodel import _match_triples, NOT_DRAWN, run_path
-from src.tiermix import load_profile, lookup
+from src.twin import Twin, scaled_archetypes
 
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 fails, warns = [], []
 
 
 def check(ok, msg, hard=True):
-    (fails if hard else warns).append(msg) if not ok else None
+    if not ok:
+        (fails if hard else warns).append(msg)
     print(f"  [{'PASS' if ok else ('FAIL' if hard else 'WARN')}] {msg}")
 
 
@@ -38,11 +46,11 @@ print("=" * 78)
 
 p = load_params()
 raw = load_params(raw=True)
+base = Twin(scale=25.0).run()
 
 # ── 1. every priced band is drawn, or excluded with a reason ─────────────────
 print("\n1. Priced uncertainty reaches the Monte Carlo")
-with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                       "config", "scenario_map.json")) as f:
+with open(os.path.join(HERE, "config", "scenario_map.json")) as f:
     name_to_key = json.load(f)
 drawn = set(_match_triples(p))
 banded, frozen = set(), []
@@ -53,78 +61,91 @@ for tbl, tri in p["scenario_triples"].items():
     banded.add(key)
     if key not in drawn and key not in NOT_DRAWN:
         frozen.append((tbl, key))
-check(not frozen, f"{len(drawn)} of {len(banded)} banded parameters drawn; "
+check(not frozen, f"{len(drawn)} parameters drawn of {len(banded)} banded; "
                   f"{len(NOT_DRAWN)} excluded with a stated reason")
 for tbl, key in frozen:
     print(f"        FROZEN WITHOUT REASON: {tbl}  ->  {key}")
+check(all(k in drawn for k in EXTRA_TRIPLES),
+      f"the Phase 5 bands are drawn ({', '.join(EXTRA_TRIPLES)})")
 
-# ── 2. the two engines agree on what they share ──────────────────────────────
-print("\n2. The agent engine's tier mix reaches the aggregate engine")
-prof = load_profile()
-tm = lookup(prof, p["persistency"], p["grid"]["months"], p["grid"]["period"])
-e_on = DetModel(); e_on.p["_tiermix"] = tm; e_on.run()
-e_off = DetModel(tiermix=False); e_off.run()
-yrs = np.array(p["grid"]["year"])
-g_on = float(e_on.out["ics_cost"][yrs == 7].sum())
-g_off = float(e_off.out["ics_cost"][yrs == 7].sum())
-check(abs(g_on - g_off) > 1.0,
-      f"tier mix changes the giveback (flat {g_off:,.0f} vs computed {g_on:,.0f})")
+# ── 2. one engine, on a monthly clock ────────────────────────────────────────
+print("\n2. There is one engine, and it runs monthly")
+check(len(base["net_profit"]) == C.HORIZON_MONTHS,
+      f"the twin produces {C.HORIZON_MONTHS} monthly steps, not a 29-column grid")
+trough = int(np.argmax(base["funding"])) + 1
+check(trough % 12 not in (0,) or trough <= 24,
+      f"peak funding is found at month {trough}, a month the old annual grid "
+      f"could not observe" if trough % 12 else
+      f"peak funding lands on month {trough}")
+check(abs(base["peak_funding"][-1] - np.max(base["funding"])) < 1.0,
+      "peak funding is the true maximum of the monthly cash line")
+src_mc = open(os.path.join(HERE, "src", "mcmodel.py")).read()
+check("DetModel" not in src_mc,
+      "the Monte Carlo runtime does not import the workbook port")
+src_twin = open(os.path.join(HERE, "src", "twin.py")).read()
+check("DetModel" not in src_twin,
+      "and neither does the twin: the port survives only in the reconciliation")
+
+# ── 3. the business runs on customers, not on averages ──────────────────────
+print("\n3. Customer-dependent lines are computed on customers")
+flat = {k: np.full(5, v[0]) for k, v in LADDER.items()}
+no_ladder = Twin(scale=25.0, ladder=flat).run()
+yrs = base["year"]
+check(no_ladder["ics_cost"][yrs == 7].sum() < 1.0,
+      "flattening the ladder removes the giveback entirely, so it is priced from "
+      "the tier each customer actually holds")
+check(no_ladder["s2"][yrs == 7].sum() != base["s2"][yrs == 7].sum(),
+      "and it changes card revenue, because the loan-to-value a customer borrows "
+      "at is their own tier's")
+check(base["qual_share"][-1] > 0.2,
+      f"the twin counts who actually tiered ({base['qual_share'][-1]:.1%}), rather "
+      f"than applying the workbook's flat share")
+check(base["orig_usd"].sum() > 0 and len(base["orig_usd"]) == C.HORIZON_MONTHS,
+      "credit originations are a real monthly series, so the margin-call model "
+      "no longer spreads a year's lending evenly across it")
+
+# ── 4. persistency drives behaviour, not a book-average rate ─────────────────
+print("\n4. Persistency moves the simulation")
+lo = Twin(scale=25.0, overrides={"persistency": 0.53}).run()
+hi = Twin(scale=25.0, overrides={"persistency": 0.73}).run()
+check(lo["paying"][-1] < base["paying"][-1] < hi["paying"][-1],
+      f"drawing persistency changes the book ({lo['paying'][-1]:,.0f} / "
+      f"{base['paying'][-1]:,.0f} / {hi['paying'][-1]:,.0f} at 53/63/73%)")
+a53 = scaled_archetypes(0.53)
+a73 = scaled_archetypes(0.73)
+check(all(x.own_hazard >= y.own_hazard for x, y in zip(a53, a73)),
+      "it does so by rescaling every archetype hazard by one factor, preserving "
+      "the mix and the ordering")
+
+# ── 5. derived quantities follow what they are derived from ─────────────────
+print("\n5. Derived quantities follow their inputs")
 o, _ = run_path(20270101)
-check(isinstance(o["ics_rates"]["entry"], np.ndarray),
-      "the Monte Carlo path uses the computed rates, not the flat ones")
-check(isinstance(DetModel().out.get("x", None), type(None))
-      and "_tiermix" in DetModel().p,
-      "a plain DetModel() carries the tier mix, so no call site can forget it")
-check("_tiermix" not in DetModel(p=load_params(raw=True), tiermix=False).p,
-      "the equivalence test's engine deliberately does not")
-
-# ── 3. derived quantities move with their inputs ─────────────────────────────
-print("\n3. Derived quantities follow what they are derived from")
 d = o["_draw"]
 check(abs(d["monthly_churn"] - (1 - d["persistency"] ** (1 / 12))) < 1e-9,
       "monthly churn follows the drawn persistency")
 check(abs(d["partner_aum"] - d.get("partner_users", p["partner_users"])
           * d["partner_adopt"] * d["partner_aum_user"]) < 1.0,
-      "partner AUM follows its drawn components, including a drawn user base")
-# asserted against the WORKBOOK's own definition, reproduced at its base values,
-# not against the reconstruction formula - otherwise the check only proves the
-# code agrees with itself. This is how a dropped term survived one audit pass.
-_fam_m = 1 - (1 - d["family_cancel"]) ** (1 / 12)
-check(abs(d["family_churn_monthly"] - (1 - (1 - _fam_m) * (1 - d["monthly_churn"]))) < 1e-6,
-      "family churn combines cancellation AND SIP lapse, as the workbook does")
-_rawp = load_params(raw=True)
-_rm = 1 - (1 - _rawp["family_cancel"]) ** (1 / 12)
-check(abs((1 - (1 - _rm) * (1 - _rawp["monthly_churn"])) - _rawp["family_churn_monthly"]) < 1e-4,
-      "that definition reproduces the workbook's own value at its base inputs")
+      "partner AUM follows its drawn components")
 
-# ── 4. deliberate departures are declared, and excluded from equivalence ─────
-print("\n4. Departures from the workbook are declared")
+# ── 6. deliberate departures are declared ───────────────────────────────────
+print("\n6. Departures from the workbook are declared")
 for k, v in MODEL_OVERRIDES.items():
     check(raw.get(k) != v, f"'{k}' departs from the workbook ({raw.get(k)} -> {v}) "
                            f"and is declared in config/overrides.py")
-check(raw["persistency"] == 0.55,
-      "the equivalence test still sees the untouched workbook value")
 
-# ── 5. no parameter is referenced by the engine but absent ───────────────────
-print("\n5. Every parameter the engine reads exists")
-import re
-src = open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                        "src", "detmodel.py")).read()
-hard = set(re.findall(r'p\["([a-z0-9_]+)"\]', src))
-optional = set(re.findall(r'p\.get\("([a-z0-9_]+)"', src))
-# a key read anywhere through .get() has a default and may be absent by design
-# (the stress hooks: buyback_spread, panic_period, panic_share)
-refs = hard | optional
+# ── 7. every parameter the engine reads exists ──────────────────────────────
+print("\n7. Every parameter the twin reads exists")
+hard = set(re.findall(r'(?<![A-Za-z_])p\["([a-z0-9_]+)"\]', src_twin))
+optional = set(re.findall(r'(?<![A-Za-z_])p\.get\("([a-z0-9_]+)"', src_twin))
 missing = sorted(r for r in hard - optional if r not in p and not r.startswith("_"))
-check(not missing, f"{len(hard)} required parameter references resolve; {len(optional)} optional hooks may be absent by design")
+check(not missing, f"{len(hard)} required references resolve; {len(optional)} "
+                   f"optional hooks may be absent by design")
 for m in missing:
     print(f"        MISSING: {m}")
 
-# ── 6. the ladder and the workbook rates describe the same thing ─────────────
-print("\n6. The benefit ladder is internally consistent")
-from src.agentbook import LADDER
-check(all(len(v) == 5 for v in LADDER.values()),
-      "every ladder row has five rungs (none + four tiers)")
+# ── 8. the ladder is internally consistent ──────────────────────────────────
+print("\n8. The benefit ladder is internally consistent")
+check(all(len(v) == 5 for v in LADDER.values()), "every row has five rungs")
 check(LADDER["entry_fee"][0] == C.ENTRY_FEE,
       f"the untiered entry fee equals the workbook's {C.ENTRY_FEE:.0%}")
 check(all(np.all(np.diff(LADDER[k]) <= 1e-12) for k in ("entry_fee", "fx_margin")),
@@ -132,43 +153,18 @@ check(all(np.all(np.diff(LADDER[k]) <= 1e-12) for k in ("entry_fee", "fx_margin"
 check(all(np.all(np.diff(LADDER[k]) >= -1e-12) for k in ("family_disc", "ltv", "rewards")),
       "benefits given rise monotonically up the ladder")
 
-# ── 7. the acquisition block is simulated, not inherited ────────────────────
-print("\n7. Acquisition responds to the model, not to a spreadsheet formula")
-from config.overrides import EXTRA_TRIPLES
-from src.tiermix import SERIES
-
-check(all(k in drawn for k in EXTRA_TRIPLES),
-      f"the Phase 5 acquisition bands are drawn ({', '.join(EXTRA_TRIPLES)})")
-
-# the ceiling must actually bind: doubling it must move cumulative acquisition
-base_cum = float(DetModel().run()["cum_ever"][-1])
-wide = DetModel(overrides={"ceiling_mult": 2.0}).run()["cum_ever"][-1]
-check(wide > base_cum * 1.02,
-      f"the addressable ceiling binds ({base_cum:,.0f} ever acquired, "
-      f"{wide:,.0f} if the market is twice as big)")
-
-# convexity must actually raise cost per customer at scale
-flat = DetModel(overrides={"cac_conv_coef": 0.0}).run()
-conv = DetModel().run()
-check(conv["cum_ever"][-1] < flat["cum_ever"][-1] * 0.99,
-      f"CAC convexity is live: same spend buys {conv['cum_ever'][-1]:,.0f} "
-      f"customers, not {flat['cum_ever'][-1]:,.0f} (workbook D27, was retired to Phase 5)")
-
-# referral capacity must reach the engine and must bite early
-check("ref_mult" in SERIES and "ref_mult" in tm,
-      "the agent book's referral capacity reaches the aggregate engine")
-rm = np.asarray(tm["ref_mult"], dtype=float)
-check(rm[:12].mean() < 0.85,
-      f"a young book refers less than a mature one (first year at {rm[:12].mean():.2f} "
-      f"of the workbook's flat assumption)")
-check(abs(rm[-1] - 1.0) < 0.25,
-      f"and the multiplier normalises to about 1.0 at maturity ({rm[-1]:.2f}), so "
-      f"referral_rate keeps its quoted meaning")
-det_ref = float(sum(DetModel().run()["region"][n]["ref_acq"].sum() for n in ("UAE", "Gulf", "India")))
-flat_ref = float(sum(DetModel(tiermix=False).run()["region"][n]["ref_acq"].sum()
-                     for n in ("UAE", "Gulf", "India")))
-check(det_ref < flat_ref * 0.99,
-      f"and it changes referral acquisition ({det_ref:,.0f} vs {flat_ref:,.0f} flat)")
+# ── 9. acquisition responds to the model ────────────────────────────────────
+print("\n9. Acquisition responds to the model, not to a fixed formula")
+wide = Twin(scale=25.0, overrides={"ceiling_mult": 2.0}).run()
+check(wide["cum_ever"][-1] > base["cum_ever"][-1] * 1.02,
+      f"the addressable ceiling binds ({base['cum_ever'][-1]:,.0f} acquired, "
+      f"{wide['cum_ever'][-1]:,.0f} if the market is twice as big)")
+noconv = Twin(scale=25.0, overrides={"cac_conv_coef": 0.0}).run()
+check(base["cum_ever"][-1] < noconv["cum_ever"][-1] * 0.99,
+      f"CAC convexity is live: the same budget buys {base['cum_ever'][-1]:,.0f} "
+      f"customers, not {noconv['cum_ever'][-1]:,.0f}")
+check(base["ref_acq"][:12].sum() == 0 and base["ref_acq"][-12:].sum() > 0,
+      "referrals start only when the programme does, then come from the book")
 
 print("\n" + "=" * 78)
 print(f"{'AUDIT PASSED' if not fails else 'AUDIT FAILED'}  "

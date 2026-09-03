@@ -13,7 +13,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import numpy as np
 
-from src.detmodel import DetModel, load_params
+from src.detmodel import load_params
+from src.twin import Twin
 from src.floatmodel import run_float, BAR
 from src.mcmodel import run_path
 
@@ -24,11 +25,15 @@ R = {}
 
 
 def to_monthly(v):
-    """Spread the 29-grid onto 84 months (annual columns / 12)."""
-    out = []
-    for i, m in enumerate(grid_m):
-        out.extend([v[i] / m] * m)
-    return np.array(out[:84])
+    """
+    The twin is already monthly, so this just trims to the horizon.
+
+    It used to spread annual columns across their twelve months, which handed
+    the float model a demand curve that was flat for five of the seven years.
+    A float policy sized against flat demand cannot see a seasonal peak, which
+    is exactly the thing a float exists to absorb.
+    """
+    return np.asarray(v, dtype=float)[:84]
 
 
 # ── A. verification ──────────────────────────────────────────────────────────
@@ -52,11 +57,11 @@ print(f"  [{'PASS' if ok3 else 'FAIL'}] higher service level holds more float "
       f"({f95['float_avg'].mean():,.0f} g at 95% vs {f999['float_avg'].mean():,.0f} g at 99.9%)")
 
 # ── B. base run on the engine's own flows, flat gold (no MTM) ────────────────
-det = DetModel(); det.run()
+det = type("W", (), {})(); det.out = Twin(scale=10.0, seed=20270101).run()
 bought = to_monthly(det.out["grams_bought"])
 prev = np.concatenate([[0.0], det.out["grams_cust"][:-1]])
-redeemed = to_monthly(np.maximum(0.0, prev + det.out["grams_bought"] - det.out["grams_cust"]))
-gold_flat = np.concatenate([to_monthly(det.out["gold_price"]) * 0 + np.repeat(det.out["gold_price"], grid_m)[:84], [det.out["gold_price"][-1]]])
+redeemed = np.asarray(det.out["grams_redeemed"])[:84]
+gold_flat = np.concatenate([np.asarray(det.out["gold_price"])[:84], [det.out["gold_price"][-1]]])
 
 print("\nB. Base run - engine flows, deterministic gold")
 f = run_float(np.random.default_rng(10), bought, redeemed, gold_flat, gold_vol=0.0)
@@ -89,18 +94,21 @@ for k in range(N):
     out, eng = run_path(20270101 + k)
     b = to_monthly(out["grams_bought"])
     pv = np.concatenate([[0.0], out["grams_cust"][:-1]])
-    r = to_monthly(np.maximum(0.0, pv + out["grams_bought"] - out["grams_cust"]))
+    r = np.asarray(out["grams_redeemed"])[:84]
     gm = np.concatenate([out["_gold_monthly"], [out["_gold_monthly"][-1]]])
     f = run_float(np.random.default_rng(500 + k), b, r, gm)
     yrs = np.repeat(np.arange(1, 8), 12)
     mtm_y = np.array([f["mtm_pnl"][yrs == y].sum() for y in range(1, 8)])
     mtm_cum.append(f["mtm_pnl"].sum()); mtm_worst_year.append(mtm_y.min()); carry.append(f["carry_cost"].sum())
     # raise: replace workbook float USD with inventory float, add carry + MTM to P&L
+    # Both series are monthly now, so the funding line is rebuilt month by month
+    # instead of being averaged onto annual columns first.
     float_usd_m = f["float_avg"] * out["_gold_monthly"] * (1 + p0["fab_premium"])
-    float_usd_grid = np.array([float_usd_m[:24][i] if i < 24 else float_usd_m[24 + (i - 24) * 12: 24 + (i - 23) * 12].mean() for i in range(29)])
-    extra_grid = np.array([(f["carry_cost"] - f["mtm_pnl"])[:24][i] if i < 24 else (f["carry_cost"] - f["mtm_pnl"])[24 + (i - 24) * 12: 24 + (i - 23) * 12].sum() for i in range(29)])
-    cum = np.cumsum(out["net_profit"] - extra_grid)
-    cap = float_usd_grid + (p0["capital_issuance_aed"] + p0["capital_activities_aed"]) / p0["aed_usd"] + out["prefund"]
+    extra = f["carry_cost"] - f["mtm_pnl"]
+    cum = np.cumsum(out["net_profit"] - extra[:84])
+    cap = (float_usd_m[:84]
+           + (p0["capital_issuance_aed"] + p0["capital_activities_aed"]) / p0["aed_usd"]
+           + out["prefund"])
     peak.append(np.maximum.accumulate(np.maximum(0, -cum) + cap)[-1]); peak_wb.append(out["peak_funding"][-1])
 mtm_cum = np.array(mtm_cum); mtm_worst_year = np.array(mtm_worst_year); peak = np.array(peak); peak_wb = np.array(peak_wb)
 R["mtm"] = dict(cum_p10=float(np.quantile(mtm_cum, .1)), cum_p50=float(np.quantile(mtm_cum, .5)), cum_p90=float(np.quantile(mtm_cum, .9)),
