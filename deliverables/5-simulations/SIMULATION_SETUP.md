@@ -22,7 +22,7 @@ The customer pays a 5% entry fee and nothing else. Behind the savings product si
 
 ### What the revenue model already says
 
-The Phase 4 revenue model is a spreadsheet. It says the business makes USD 847k in year seven and needs USD 2.29m of funding at its worst point.
+The Phase 4 revenue model is a spreadsheet. It says the business makes USD 939k in year seven and needs USD 2.27m of funding at its worst point.
 
 Those are single numbers. They rest on about ninety assumptions. The client has no customer data yet. No waitlist, no pilot, no partner in the pipeline.
 
@@ -40,53 +40,58 @@ A forecast built on unsourced inputs is a guess with decimal places. A threshold
 
 I think that is the only honest deliverable at this stage. The document is built around it.
 
-### What the simulation runs
+---
 
-Two thousand seven-year paths. Each path draws its own customer behaviour, gold price, marketing response and partner deals.
+## 2. One system, run whole
 
-Underneath each path, two hundred thousand simulated customers live their own seven years, month by month.
+### The principle
 
-The revenue model is the centre case. The simulation is the spread around it. It is also the source of two numbers the revenue model could not compute for itself.
+The revenue model is a description of the business. The simulation is the business running.
+
+So every rule in the revenue model lives inside the simulation, executing on simulated customers, month by month. The vault bill is charged on the grams they actually hold. Card fees are earned on what they actually spend. The loyalty discount is priced at the tier each of them actually reached. Nothing is computed as an average customer times a head count.
+
+We call this the twin. One system. There is no simplified copy of the business running beside it.
+
+### What the twin takes from the revenue model
+
+Parameters. Prices, fees, the licence costs, the vault contract, the card economics, the marketing budget, the salary lines. These are facts about the business. Keeping a second copy of them would only create two versions of the truth.
+
+### What the twin refuses to take
+
+The spreadsheet's shortcuts. One average customer multiplied by a count. A single flat churn rate. A blended discount applied to a flat share of the book. And the grid.
+
+The spreadsheet reports twenty-four monthly columns and then one column per year. That is a spreadsheet's shape, not a business's. Section 3 shows why it mattered.
+
+### An admission
+
+An earlier build of this simulation ran two engines: a line-for-line port of the spreadsheet doing the economics, with a population of individual customers running beside it. The stated reason was speed. The claim was that running the population inside every path would take hours.
+
+Measured, it takes a third of a second. The claim was wrong, and it was never checked before being written down. The two-engine build is gone, and this document describes what replaced it.
 
 ---
 
-## 2. Two engines, one company
+## 3. The clock
 
-### The first engine: the revenue model, ported
+| | |
+|:--|:--|
+| Horizon | 84 months, seven years |
+| Month 1 | January 2027 |
+| Step | one month, every month |
+| Paths | 2,000 |
 
-The first layer is a line-for-line port of the Phase 4 revenue model into Python. Every stream, every cost, the float and the regulatory capital.
+### Why monthly matters: the trough
 
-With every input pinned to its base value, the port reproduces the workbook's twenty-nine periods to within floating-point error. That test is why the rest of the results can be trusted. If the port drifted from the workbook, every result would be arguing with a number the client has already seen.
+The funding requirement is the deepest point of a cash line. You must raise enough to survive the worst month, not the worst year-end.
 
-### The second engine: individual customers
+On the old grid, the last sixty months were five annual observations. A trough that falls between two year-ends is invisible there, so the raise number could only be understated.
 
-The revenue model uses one average customer and multiplies. The simulation creates individual customers instead. Each has a ticket, a payment personality, a payment rail and a way in. It runs them month by month.
-
-This matters for one reason. Whether a customer earns a loyalty tier depends on six consecutive payments. Six in a row is a property of one person's history. It cannot be recovered from an average.
-
-### Where the two engines meet
-
-They pass information both ways.
-
-**Forward.** The population engine takes its new customers each month from the ported revenue model, so both layers grow the same book.
-
-**Back.** The population engine sends two things the other way.
-
-The first is the tier mix, month by month, which prices the loyalty giveback. The spreadsheet applies one flat discount rate to a flat share of the book, because it cannot see who is in which tier. That shortcut is wrong in a known direction: nobody has the tenure for Platinum in year two, so a flat rate is too generous early and too mean late.
-
-The computed rate runs at **10.7% of the entry fee at month 12, rising to 17.8% by month 84**, against the spreadsheet's flat 25%.
-
-The second is referral capacity. The spreadsheet counts referrals off the raw paying head count, so a customer in month two is as persuasive as one in year three. They are not. Nobody recommends a savings plan they have barely started, and advocacy rises with what the plan has actually given them.
-
-So propensity is zero for three months, ramps to full by month twelve, and scales up the tier ladder. The population engine knows every customer's tenure and tier, so it can compute what the whole book is worth as a referral source. That figure is **0.35 of the flat assumption in year one and 0.74 by year three**, reaching 1.0 on a matured book. Both corrections are judgement rather than measurement, and are marked as such.
-
-Running the population engine inside all 2,000 paths would take hours. Instead it runs once across a spread of persistency values, producing a lookup the ported engine reads on every path.
+Measured monthly, the cash trough falls in **month 39**. That month sits in the middle of an annual column the spreadsheet cannot see inside. Finding it moved the deterministic funding need from USD 2.27m to **USD 2.50m** before any uncertainty is priced at all.
 
 ---
 
-## 3. The customer
+## 4. The customer
 
-Each simulated customer carries five things at birth. A region, a monthly ticket, a payment archetype, a payment rail, and an entry door. This section takes them in turn.
+Each simulated customer carries five things at birth. A region, a monthly ticket, a payment personality, a payment rail, and an entry door.
 
 ### Region
 
@@ -96,7 +101,7 @@ One of the UAE, Oman and Bahrain together, or India. Region sets the average tic
 
 The ticket is the amount the customer means to save each month. The revenue model uses one number per region, USD 33.60 in the UAE.
 
-Savings books are not like that. About 30% of the book sits at the USD 20 floor. A thin tail saves far more. So the simulation draws each customer's ticket from a distribution fitted to two facts, the regional mean and the share at the floor:
+Savings books are not like that. About 30% of the book sits at the USD 20 floor. A thin tail saves far more. So each customer draws a ticket from a curve fitted to two facts, the regional mean and the share at the floor:
 
 $$\text{ticket} = \max\left(20,\; X\right), \qquad X \sim \text{Lognormal}(\mu, \sigma)$$
 
@@ -105,506 +110,252 @@ Where:
 - $\mu$ and $\sigma$ are solved so that $P(X \le 20) = 0.30$ and $E[\max(20, X)]$ equals the regional mean
 - $20$ is the USD floor, below which a payment is refused
 
-For the UAE that gives $\sigma = 0.576$. The top tenth of customers then contributes about 23% of all money saved.
+The two facts lock the curve between them. If 30 customers in 100 pay exactly USD 20, that is USD 600 of a USD 3,360 total, so the other 70 must average USD 39.43. The top tenth of customers ends up contributing about a quarter of all money saved.
 
-The two facts lock the answer between them. If 30 customers in 100 pay exactly USD 20, that is USD 600 of a USD 3,360 total, so the other 70 must average USD 39.43. The curve is whatever produces that.
+The floor share is not sourced. It is a defensible shape, set at 30% on client instruction, and it is swept.
 
-The floor share is not sourced. It is a defensible shape, set at 30% on client instruction, and it is swept. Assuming a flat book would be the less credible choice.
+### Payment personality
 
-The amount is variable month to month with no maximum. A customer at the floor pays exactly the floor. Whether they pay at all is the archetype's job.
+Five types, tuned to reproduce one curve:
 
-### Archetype
+| Archetype | Share | Pays in a given month | Own monthly lapse hazard |
+|:--|--:|--:|--:|
+| Perfect payer | 10% | 99.5% | 0.00% |
+| Occasional misser | 35% | 93% | 0.46% |
+| Alternating misser | 12% | 55% | 1.19% |
+| Reducer | 13% | 97% | 0.13% |
+| Early lapser | 30% | 60% | 13.25% |
 
-The archetype is the customer's payment discipline. Five types, taken from the Phase 4 research:
+A background hazard of 1.06% per month applies to everyone on top of their own.
 
-| Archetype | Share | Pays in a given month | Own monthly lapse hazard | Terminal tier |
-|:--|--:|--:|--:|:--|
-| Perfect payer | 10% | 99.5% | 0.00% | Only type that reaches Sovereign |
-| Occasional misser | 35% | 93% | 0.46% | Platinum, sometimes Sovereign |
-| Alternating misser | 12% | 55% | 1.19% | Gold for life |
-| Reducer | 13% | 97% | 0.13% | By record |
-| Early lapser | 30% | 60% | 13.25% | Rarely tiers, mostly gone within the year |
+The curve underneath is the **persistency curve**: how many customers are still paying as time passes. Ours runs 63% at month 13, then 49, 41, 34 and 29% at months 25, 37, 49 and 61. The level is anchored to Indian life insurance persistency, published by the regulator at the same checkpoints, industry average about 63% at month 13. We take the level and reject the shape, because an insurance saver who quits forfeits surrender value and a gold saver forfeits nothing, so our curve keeps falling where theirs flattens.
 
-A background hazard of **1.06% per month** applies to everyone on top of their own. Add the two for the real monthly chance of leaving: 1.06% for a perfect payer, 14.31% for an early lapser.
+### What the five types buy that a churn rate cannot
 
-### Where these numbers come from, honestly
+The spreadsheet loses customers at one constant rate forever, so a cohort decays to 4% by month 84. In the twin, the early lapsers leave in year one, and the survivors are disproportionately the disciplined types. A cohort settles near 23%.
 
-The five types are not observed customer segments. They are a story built to reproduce a curve.
+The other thing a churn rate cannot say: a live customer does not pay every month. The book pays in about **78% of the months it could**. A paying customer contributes about USD 313 a year against USD 403 if nobody ever missed. The spreadsheet's paying customers pay every month by construction, which quietly flatters every revenue line.
 
-The curve is the **persistency curve**, which is how many customers are still paying as time passes. Ours runs 63% at month 13, then 49, 41, 34 and 29% at months 25, 37, 49 and 61.
+### Rail and door
 
-The five types were then tuned until they reproduced that curve together. That is a standard technique, and it is only as good as the curve underneath it.
+The rail is how the money moves: a standing instruction, or a manual payment each month. Manual payers miss more. The rail mix is a lever the client controls, and section 12 prices it.
 
-### What the curve is anchored to
-
-The closest published comparable is **Indian life insurance persistency**, which regulators measure at exactly the same checkpoints.
-
-For FY2024-25, the IRDAI Handbook on Indian Insurance Statistics reports **13th month persistency ranging from 59.68% to 83.22%** across life insurers, with an **industry average of about 63%**.
-
-**We take that 63% as the month-13 anchor.**
-
-| Checkpoint | Indian life insurance | This model |
-|:--|:--|--:|
-| 13th month | industry average about **63%** | **63%** |
-| 61st month | LIC on a policy basis, **49.9%** | **29%** |
-
-### Why we take the level and reject the shape
-
-Indian life persistency barely falls after year one. LIC loses about 36% of policyholders in the first year and only another 14% across the next four.
-
-That flatness is bought by lock-in. Surrender penalties, a death benefit you forfeit, years of sunk premium. Quitting an Indian life policy in year three is expensive.
-
-**Aurumix has none of that.** Stop paying and you keep your gold. No penalty, nothing forfeited. There is no reason our curve should flatten the way theirs does, so ours keeps a steeper decline to 29% at month 61.
-
-### How the hazards were set
-
-Every archetype hazard was multiplied by a single factor, 0.6624, until month-13 persistency hit 63%.
-
-One factor, not five free parameters. Fitting the five weights or the five hazards independently reproduced the curve perfectly and produced a nonsense population, in one case 52% alternating missers and no occasional missers at all. A single scale factor keeps the mix and the ordering between archetypes exactly as they were.
-
-### Rail
-
-The rail is how the customer pays. Aurumix launches with two, and they demand different things every month.
-
-On Request to Pay the customer taps to approve each payment. On the prefunded balance they load once and the balance draws automatically.
-
-The rulebook makes the distinction itself. It only allows "set and forget" to be promised on the prefunded balance. So a prefunded customer draws from an archetype mix tilted toward discipline.
-
-Thirty percent of customers start prefunded. Of those, 35% are re-drawn into the disciplined archetypes. Both numbers are swept.
-
-### Door
-
-The door is whether the customer arrived through a monthly SIP or a one-off spot purchase. Spot buyers can now hold a card, so a spot-only customer is worth more than the entry fee alone.
+The door is how they arrived: marketing, an agent, or a referral.
 
 ---
 
-## 4. The gate and the score
+## 5. A month in the system
 
-The loyalty system is called ICS. It decides which benefit tier a customer sits in. Every tier discount reads it. This section explains how it is computed.
+The core loop. Every month, in this order.
+
+1. **Gold moves** to this month's price.
+2. **New customers arrive.** Marketing reach at this month's cost per customer, agents, and referrals from the customers already in the book, all against the addressable ceiling. Section 7 covers each.
+3. **Each new customer** is given a region, ticket, personality, rail and door.
+4. **Existing customers decide whether to pay.** Their personality sets the odds.
+5. **Payments become gold** at this month's price, minus the entry fee at that customer's tier.
+6. **Some customers redeem** part of their gold, or take physical delivery.
+7. **Streaks update.** Six consecutive payments opens the loyalty gate, once, permanently.
+8. **The loyalty score recalculates** from payment record, recent standing, and whether they sold gold.
+9. **Tiers reassign** from the score.
+10. **Cards, family plans and credit lines** run for whoever holds them, against their own gold.
+11. **Some customers leave.** Their own hazard plus the background rate.
+12. **Partners** sign or fail to sign.
+13. **The ledger closes.** Five revenue streams plus the partner fee, the fabrication premium, the vault bill on the metal actually held, licences, acquisition, the card programme, contingency, profit, and the cash line.
+
+---
+
+## 6. The loyalty ladder
 
 ### The gate
 
-Nothing happens until the gate. A customer earns Confirmed SIP status on their sixth consecutive counted month.
+Six consecutive monthly payments. One property of one person's history. This is the fact that forces a simulation of individuals: six-in-a-row cannot be recovered from an average.
 
-A counted month is one accepted payment at or above the floor. A miss resets the streak to zero.
+About **53% of the live book** has opened the gate by month 84. The workbook assumed 55% as a flat input. The twin computes it, and it takes years to get there.
 
-That single rule is why tier arrival is a distribution and not a date. A customer who misses month four cannot qualify before month nine.
+### What a tier buys
 
-### The three facts
-
-Once gated, the score is computed from three facts on the payment and token ledgers.
-
-**Months** is the count of counted periods since the qualifying run began. It starts at six on gate day. It never falls.
-
-**Recent** is the count of counted periods in the trailing twelve calendar months. It runs from zero to twelve.
-
-**Sold** is the share of gold the customer had a year ago that they no longer hold.
-
-### Record, from Months
-
-Record rewards how long the customer has been saving. Two linear segments with a kink at month twelve:
-
-$$\text{Record}(m) = \begin{cases} m \times \tfrac{50}{12} & m \le 12 \\[4pt] 50 + (m-12)\times\tfrac{50}{48} & 12 < m \le 60 \\[4pt] 100 & m > 60 \end{cases}$$
-
-Where:
-
-- $m$ is Months, the counted periods since the run began
-
-In one sentence. The first year takes you to 50. The next four years take you from 50 to 100.
-
-### Standing, from Recent
-
-Standing rewards whether the customer is saving now. One straight line:
-
-$$\text{Standing} = \text{Recent} \times \tfrac{100}{12}$$
-
-Twelve of the last twelve months scores 100. Six of twelve scores 50.
-
-### Retention, from Sold
-
-Retention is a multiplier, not a component. It has veto power:
-
-$$\text{Retention} = \begin{cases} 1 & \text{Sold} \le 0.30 \\[4pt] 1 - \dfrac{\text{Sold} - 0.30}{0.70} & \text{Sold} > 0.30 \end{cases}$$
-
-Where:
-
-- Sold runs from 0 to 1, recomputed monthly against the gold held twelve months earlier plus gold bought since
-
-Sell up to 30% of your gold in a year and nothing happens. Past that, the score falls in proportion, to zero if you empty the account.
-
-### The score
-
-The score is the smaller of Record and Standing, scaled by Retention:
-
-$$\text{ICS} = \min(\text{Record}, \text{Standing}) \times \text{Retention}, \quad \text{floored at } 25 \text{ once gated}$$
-
-The minimum is the arithmetic of "and". A long record cannot cover a dead year. A good year cannot cover a short record.
-
-That is why the alternating misser caps at Gold forever. Their Recent never climbs above six. So Standing never climbs above fifty. No amount of tenure lifts it.
-
-### The tiers
-
-Tiers threshold the score at 25, 50, 75 and 100. A perfect payer reaches Silver at month six, Gold at twelve, Platinum at thirty-six and Sovereign at sixty.
-
-The Phase 4 model could not carry this formula. It used a lookup instead, and the lookup put every rung six months late. The simulation computes the real thing.
-
----
-
-## 5. What a tier buys
-
-### The benefit ladder
-
-Five benefits, each priced by tier. The base case:
-
-| Benefit | None | Silver | Gold | Platinum | Sovereign |
+| | Untiered | Silver | Gold | Platinum | Sovereign |
 |:--|--:|--:|--:|--:|--:|
-| Entry fee paid | 5.00% | 4.50% | 4.00% | 3.50% | 3.00% |
-| Family plan discount | 0% | 10% | 20% | 35% | 50% |
-| Card FX margin charged | 2.0% | 2.0% | 1.5% | 1.25% | 1.0% |
-| Credit line, loan to value | 50% | 50% | 65% | 72.5% | 80% |
-| Gold rewards, share of card spend | 0 | 0.15% | 0.45% | 0.60% | 0.75% |
+| Entry fee | 5.0% | 4.5% | 4.0% | 3.5% | 3.0% |
+| Family discount | 0% | 10% | 20% | 35% | 50% |
+| FX margin | 2.0% | 2.0% | 1.5% | 1.25% | 1.0% |
+| Borrow against gold | 50% | 50% | 65% | 72.5% | 80% |
+| Card rewards | 0% | 0.15% | 0.45% | 0.60% | 0.75% |
 
-Three rows come straight from the mechanism design. The entry-fee row takes the full 2.0 point ceiling the design allows and steps it evenly. The middle rungs of the FX and loan-to-value rows are interpolated.
+The 5% entry fee is a hard cap. Nobody ever pays more. The ladder only gives back.
 
-### Three dials
+### Who actually gets there
 
-The whole ladder is generated from three dials so it can be swept.
+Of the customers holding a tier at month 84: 39% Silver, 45% Gold, 15% Platinum, 1.5% Sovereign. Sovereign requires years of near-perfect payment. Almost nobody clears it inside the horizon, which is what makes it cheap to offer and meaningful to hold.
 
-**Ceiling** is how much the top tier gets.
+### How the giveback is priced
 
-**Steepness** is how much of that the lower tiers get. Top-loaded, linear, or front-loaded.
+At each customer's own tier, on each customer's own activity, every month. Not as a blended rate on a flat share of the book. Priced this way, the giveback costs about 6 to 7% of revenue across the seven years.
 
-**Breadth** is which benefits are laddered at all.
-
-Three dials are something a client can argue about. Twenty independent rates are not.
-
-### The reward cap
-
-Gold rewards carry one rule that only an agent model can enforce. A customer's rewards never exceed the revenue that customer generated.
-
-The revenue model applies a rate to aggregate card revenue. It cannot see the cap.
-
-### Loan-to-value is different in kind
-
-The loan-to-value row is not a discount. It gives leverage. A Sovereign customer borrows against 80% of their gold. A Silver borrows against 50%.
-
-That raises revenue and raises risk at the same time. It is the row that drives the credit-book results in Section 10.
+One rule caps it per customer: rewards paid to a customer never exceed the revenue that customer has generated. That cap can only be enforced at customer level, which is one more reason the business runs on customers.
 
 ---
 
-## 6. Four independent clocks
+## 7. How customers arrive
 
-### One churn rate in the revenue model
+Three channels, then a brake.
 
-The revenue model has one churn rate. A customer stops paying and becomes a holder who keeps their gold.
+### Marketing
 
-That collapses several behaviours into one. It then needs a switch to say whether holders keep their card.
+The client's budget, divided by the cost of reaching one customer. That cost is not flat. The budget rises eighteen-fold over seven years, and cheap channels exhaust. So cost per customer rises with spend intensity in each region. This curve existed in the revenue model's own design notes and was switched off there; the simulation switches it on and sweeps its strength.
 
-### Four clocks in the simulation
+### Referrals, from the book itself
 
-The simulation separates them. A customer can do four things independently.
+The spreadsheet counts referrals off the raw paying head count, so a customer in month two is as persuasive as one in year three. They are not. In the twin, each customer's referral capacity is zero for three months, ramps to full by month twelve, and rises with tier. A young book refers at about a third of its mature rate. Referrals also cost money: the reward is a share of the referred customer's entry fees.
 
-- Stop paying the SIP.
-- Let the card go dormant.
-- Repay the credit line.
-- Redeem the gold.
+### Agents
 
-Each has its own clock. Stopping the SIP does not stop the card.
+Field agents, mostly in India. Headcount times productivity times a ramp.
 
-This is the client's own framing, that it may be churn of a feature rather than of the platform. It turns a coin-flip switch into a rate that can be argued about.
+### The brake
 
-### Card dormancy has no source
-
-Card dormancy has no published rate anywhere. I looked. Not for the UAE, not for the Gulf, not for fintech cards globally. Only definitions of inactivity exist.
-
-So it is carried as an assumption and swept from zero to 2% per month.
+Each region has an addressable ceiling built from population filters the client has confirmed are unsourced. India reaches 85% of its ceiling by year seven, so this number nearly binds the whole model. The twin treats it as uncertain and draws it, from 0.6 to 1.55 times the estimate. It turns out to be one of the four biggest drivers of profit in the entire simulation. A number that important does not get to be a point estimate.
 
 ---
 
-## 7. Gold, partners and the draws
+## 8. Partners
 
-Three things are random at the path level, on top of customer behaviour.
+B2B partners white-label the product and pay a platform fee on the assets their users hold. The plan says eleven by year seven.
 
-### Gold
+### What one partner is worth
 
-Gold follows geometric Brownian motion, sampled monthly:
+A partner brings a user base. Some share of those users adopt the product, each holding some average value in gold, and Aurumix earns the platform fee on the total. At base assumptions that is about USD 142k a year, every year, per partner. All three ingredients carry client-priced ranges and all three are drawn.
 
-$$P_{t+1} = P_t \cdot \exp\left[(\mu - \tfrac{1}{2}\sigma^2)\Delta t + \sigma\sqrt{\Delta t}\cdot Z_t\right]$$
+### How they arrive
+
+Partners are entities in the twin, not a straight line. In each path they arrive lumpily: a year can sign nobody, and when a year does sign, it can sign more than planned. The process is centred on the client's plan. The lumpiness widens the range of outcomes without quietly moving the middle, because doubting the plan itself is a position that must be declared, not smuggled inside a noise process.
+
+### Why this section is short and matters most
+
+Partner assumptions are the top three bars of the sensitivity tornado. In fixed-cost coverage, one partner does the work of roughly 40,000 retail customers, because a retail customer's margin survives serving cost and replacement while a partner's fee arrives nearly whole. There is nothing else to model, and that is the point: the business's biggest driver has the fewest moving parts and no evidence behind it yet. A signed letter of intent would do more for the raise than any refinement of this simulation.
+
+---
+
+## 9. Gold and the float
+
+### The price
+
+One gold price for the whole system, following geometric Brownian motion:
+
+$$S_{t+1} = S_t \exp\!\left[\left(\mu - \tfrac{1}{2}\sigma^2\right)\Delta t + \sigma\sqrt{\Delta t}\; \varepsilon_t\right], \qquad \varepsilon_t \sim \mathcal{N}(0,1)$$
 
 Where:
 
-- $P_t$ is the gold price in USD per gram at month $t$, starting at 141.50
-- $\mu = 8.1\%$ is the annual drift, the same appreciation the revenue model uses
-- $\sigma = 15\%$ is the annual volatility, the long-run realised figure for gold, swept from 10% to 22%
-- $\Delta t = 1/12$
-- $Z_t$ is a standard normal draw
+- $\mu$ is the drift, 8.1% a year, the revenue model's own appreciation assumption
+- $\sigma$ is volatility, 15% a year, the long-run realised figure for gold in USD, swept 10 to 22%
+- $\Delta t$ is one month
 
-There is one gold path per run. It hits every customer at once.
+Gold barely moves the business. Customers own the gold; Aurumix earns fees on flows. A 30% crash costs the base case almost nothing. This surprises people, and it is one of the most useful things the simulation shows.
 
-The client chose not to hedge. Aurumix owns the price variance on the gold it holds.
+### The float
 
-### Partners
-
-Partner arrivals replace the revenue model's straight line of one to eleven B2B partners.
-
-Each year's planned net adds become a Poisson draw, with a 25% chance of a dead year. Eleven enterprise deals cannot be a smooth curve, and the client has no pipeline yet.
-
-### Everything else
-
-Every other uncertain input is drawn once per path from a distribution anchored on the revenue model's own scenario table.
-
-The base value is the mode. The Aggressive and Conservative values are treated as the tenth and ninetieth percentiles of a PERT distribution.
-
-That grounds every draw in a range the client has already seen and signed. It also means the median path lands below base, because the client's own ranges are wider on the downside. That is not a modelling choice. It is what their scenario table says.
-
-### Which inputs are drawn
-
-**Seventy-four parameters.** Every input in the workbook that carries an Aggressive and Conservative value is drawn. Persistency, the three regional acquisition costs, referral behaviour, spot behaviour, the whole card programme, every fixed cost, the licence fees, the vault contract, and the contingency.
-
-The rule is opt-out rather than opt-in. If the client has priced a range for something, that range belongs in the raise number. Eleven parameters are excluded and each carries a written reason, mostly because they are computed elsewhere: the partner count is a discrete arrival process, the gold band is carried by the price process, and the four loyalty discount rates are computed from the tier mix.
+Aurumix keeps a working inventory of gold so that purchases settle instantly. A separate daily model sizes it with a standard inventory policy: order up to a level that covers expected demand over the delivery lead time plus a safety margin, in whole bars. It runs on the twin's own monthly purchases, which carry the seasonality the old annual columns averaged away.
 
 ---
 
-## 8. What happens each month
+## 10. Two thousand worlds
 
-This is the core loop. Every month, in this order.
+Each path is one version of the next seven years. Three things are drawn per path.
 
-### The twelve steps
+**Seventy-nine parameters.** Every input the client priced with an Aggressive and a Conservative value is drawn from a distribution peaked at Base with those two as the tails. The rule is opt-out, not opt-in: if the client priced a range, it belongs in the raise number. Eleven parameters are excluded, each with a written reason, mostly because the twin computes them from behaviour instead. The blended loyalty discount is the clearest example: the twin prices each customer at their own tier, so a blended rate has nothing left to describe.
 
-1. **The gold price advances** one step along the path.
-2. **New customers arrive** from the acquisition engine: marketing reach at that month's cost per customer, agents, and referrals scaled by the book's referral capacity, all against the addressable ceiling. Each is assigned a region, ticket, archetype, rail and door.
-3. **Each living customer decides whether to pay**, at their archetype's probability.
-4. **Each paying customer decides how much**, around their ticket, floored at USD 20.
-5. **The streak updates.** A payment adds one. A miss resets to zero. Anyone reaching six passes the gate.
-6. **The score and tier are recomputed** from Months, Recent and Sold.
-7. **Gold accumulates** at the current price, net of the entry fee at the customer's tier rate.
-8. **Cards are taken up** by a share of the eligible book. Spend runs against the credit limit at the tier's loan-to-value. Rewards are paid up to the cap.
-9. **Family plans attach** on new customers and cancel at the workbook's rate.
-10. **Redemptions and moves to self-custody** drain gold.
-11. **The four clocks tick.** SIP lapse, card dormancy, credit repayment, exit.
-12. **The aggregates flow through the ported revenue model.** Revenue by stream, the fabrication premium, the vault, the licences, acquisition cost, the card programme, contingency, net profit, capital tied up, and the funding line. The loyalty giveback is priced from that month's computed tier mix rather than a flat rate.
+**A gold path**, from section 9.
 
-### Two rules on redemption
+**A partner history**, from section 8.
 
-Money paid after the five-day grace is a spot purchase, not a late contribution. It earns the fee. It buys gold at that day's price. It does not restore the streak.
-
-Redeemed gold refills the float. Any excess above what new buyers absorb that month is sold back to the dealer at a two-way spread. The spread is swept at 0.5%, 1% and 2%.
+On top of these, demand gets a monthly wobble, and every path reruns the full population from scratch: who arrives, who pays, who gates, who leaves.
 
 ---
 
-## 9. The float as inventory
+## 11. What comes out
 
-### Why the float exists
+Stack 2,000 paths and read the spread.
 
-Aurumix has to own gold before customers do, so that a gram is allocated the moment a payment lands.
+| Output | Meaning |
+|:--|:--|
+| Safe raise | the funding trough deep enough to survive 9 paths in 10 |
+| Break-even odds | share of paths whose cumulative profit turns positive by year 7 |
+| Profit spread | year-seven net profit at the 10th, 50th and 90th percentile |
+| Book size | paying customers at month 84 |
+| Margin call odds | chance the credit book ever needs collateral topped up |
 
-The revenue model sizes that float as one bar plus ten days of average demand. The ten is a guess. The float earns no line in the profit and loss.
-
-### How the simulation sizes it
-
-The simulation treats the float as an inventory problem at daily resolution.
-
-Sixty percent of a month's SIP volume lands in the five days after payday. Spot purchases arrive as random lumps.
-
-Because SIP payments are scheduled, the float is positioned before the payday cluster. It reads the calendar rather than reacting to history:
-
-$$S_d = \sum_{k=1}^{L} D_{d+k} \;+\; z_{0.99}\,\sigma_{\text{spot}}\sqrt{L} \;+\; 100, \quad \text{rounded up to whole bars}$$
-
-Where:
-
-- $S_d$ is the order-up-to level in grams on day $d$
-- $D_{d+k}$ is the scheduled SIP demand $k$ days ahead
-- $L = 2$ is the dealer's delivery lead time in days, swept from 1 to 5
-- $z_{0.99}$ is the normal quantile for a 99% service level
-- $\sigma_{\text{spot}}$ is the standard deviation of the unscheduled spot demand
-- $100$ is one bar, held as a buffer
-
-### The rules around it
-
-Orders arrive after the lead time, in 100 gram bars. The float never falls below two bars.
-
-It is marked to market daily on the gold path. It carries a cost of 6% a year, swept from 4% to 8%. Unhedged.
-
-### What the first version got wrong
-
-A first version of this policy used a rolling history for safety stock. It ran out of gold on 7% of days, because it reacted to payday after payday hit.
-
-The calendar version runs out on 0.3% of days.
+The results document carries the numbers and what they mean for the raise. This document stops at how they are produced.
 
 ---
 
-## 10. The credit book under a moving price
+## 12. What it takes to be profitable
 
-### Vintages
-
-Margin calls are a property of when a loan was struck and at what loan-to-value.
-
-So drawn balances are tracked by vintage. Each vintage carries the gold price on the day it was drawn.
-
-### The call condition
-
-A vintage is called when the current price falls far enough that the loan exceeds 85% of the collateral's value:
-
-$$\frac{P_t}{P_0} < \frac{\text{LTV}_{\text{struck}}}{0.85}$$
-
-Where:
-
-- $P_0$ is the gold price when the vintage was drawn
-- $P_t$ is the price now
-- $\text{LTV}_{\text{struck}}$ is the tier's loan-to-value at origination
-- $0.85$ is the call line, taken from the client's own worked example and swept from 0.75 to 0.95
-
-### What it implies
-
-The arithmetic is simple and the consequence is not.
-
-At 50% loan-to-value a call needs gold to fall 41% from the strike. At 80%, the Sovereign rung, it needs 6%.
-
----
-
-## 11. The threshold
-
-### Steady state
-
-The question the client asked is what it takes to be profitable. The simulation answers it at steady state, where the book is flat and acquisition only replaces churn.
-
-### Retail and partners, kept apart
-
-The fixed cost base has to be covered by retail customers or by B2B partners. The two are computed separately:
+The client's question is a threshold, and it is computed at steady state, where the book is flat and acquisition only replaces the customers who leave.
 
 $$N^* = \frac{k \cdot F}{r - k\,(s + c \cdot \text{CAC})} \qquad\qquad K^* = \frac{k \cdot F}{A \cdot f}$$
 
 Where:
 
-- $N^*$ is the number of paying retail customers that covers fixed costs on their own
-- $K^*$ is the number of B2B partners that covers fixed costs on their own
-- $F$ is the annual fixed cost base, about USD 430k
-- $k$ is one plus the contingency, swept at 15%, 30% and 50%
-- $r$ is retail revenue per paying customer per year, about USD 38 excluding B2B
+- $N^*$ is paying customers needed for retail to stand alone, $K^*$ is B2B partners needed to cover the fixed base by themselves
+- $F$ is the fixed cost base, about USD 412k a year
+- $r$ is retail revenue per paying customer per year, about USD 32 excluding B2B
 - $s$ is the serving cost per customer, about USD 11
-- $c$ is annual churn, 37%
-- CAC is the cost to replace one customer, USD 40 blended or USD 55 in the UAE alone
-- $A$ is assets under management per partner and $f$ is the platform fee
+- $c$ is annual churn, 32%, measured from the twin's own mature book rather than assumed
+- CAC is the cost to replace one customer, USD 44 blended or USD 55 in the UAE alone
+- $A$ is assets under management per partner, $f$ is the platform fee
+- $k$ is the contingency multiplier
 
-### Why apart
+### The honest answer
 
-Blending B2B revenue into a per-customer figure hides whether the retail business stands on its own. It does not. Part 2 of the results document is about that.
+At 15% contingency, retail alone needs about **140,000 paying customers**. The base case builds 90,000 by month 84. At 30% contingency and above, no retail book clears the bar at all: the margin per customer goes negative before the count matters.
 
----
+**Or 3.3 partners cover the fixed base by themselves.**
 
-## 12. Stress scenarios
+Retail alone is thinner than the spreadsheet made it look, for one honest reason: real customers skip months. Revenue per paying customer is USD 32, not the USD 38 an always-pays book produces, and more than half of it is consumed by replacing churn. The business case runs through B2B, and the retail book's job is to be the product those partners white-label.
 
-Seven scenarios, each run against the base.
-
-**Gold crash.** A 30% fall from month 24 onward. Tests the credit book and the collateral base.
-
-**Redemption run.** A quarter of custody exits in month 24 while existing customers cut contributions to 40% of normal. A run is a jump, not a rate. A rate-based redemption model converges toward balance with inflows and never overshoots, so the run has to be built as a discrete event.
-
-**Zero B2B.** No partners, ever. Tests whether the retail business stands alone.
-
-**Adoption failure.** Persistency at 45%, acquisition costs at the conservative end, and fewer customers reaching a tier.
-
-**Regulatory delay.** Twelve months of licences, insurance, audit and technology build with no revenue. VARA publishes no approval timeline.
-
-**Ticket compression.** Every regional ticket at its conservative value.
-
-**Combined tail.** The crash, the run and a B2B slump together.
+The levers that move the retail margin, in order of effect: trim the ladder's generosity, push the standing-instruction rail, and reallocate marketing away from the dearest region. Together they roughly quadruple cumulative profit at year seven. The results document prices each.
 
 ---
 
-## 13. What was verified and how
+## 13. Stress tests
 
-Two gates had to pass before any result was reported.
+Seven deliberate bad days, run separately through the twin.
 
-### Gate one: the population engine reproduces the research
+| Scenario | Y7 profit | Cumulative at Y7 | Peak funding |
+|:--|--:|--:|--:|
+| Base | $797k | $518k | $2.50m |
+| Gold crashes 30% at M24 | $797k | $519k | $2.49m |
+| Redemption run, 25% at M24 | $740k | $336k | $2.53m |
+| No B2B at all | −$763k | −$4.59m | $6.17m |
+| Adoption failure | $564k | −$430k | $2.69m |
+| Regulatory delay, 12 months | $797k | −$221k | $3.24m |
+| Ticket compression | $700k | $207k | $2.51m |
+| Combined tail | −$111k | −$2.64m | $4.17m |
 
-The population engine reproduces the Phase 4 research figures when given the Phase 4 inputs. The alternating misser's 24% chance of ever reaching six in a row. The mean gate month of 8.1. The persistency curve at every anchor. Thirty-four checks.
+Two readings. Gold is not the risk: the crash scenario is indistinguishable from base. **B2B is the whole risk**: remove it and the business loses USD 4.6m over seven years and needs USD 6.2m of funding.
 
-That proves the code is right. It proves nothing about Aurumix, because those figures came from the same unsourced archetype mix.
+One stress had to be rebuilt for the twin. "Customers pause contributions" used to be modelled by cutting the average ticket to USD 13. The twin refused: a ticket below the USD 20 floor cannot exist. A pause is customers skipping months, so it is now a six-month cut to payment odds. The old trick also ran the cut for all seven years instead of during the run, which overstated the damage.
 
-### Gate two: the port reproduces the workbook
+---
 
-The ported revenue model reproduces the calculated workbook. Thirty-six series, all twenty-nine periods, zero error.
+## 14. How we know it is not lying
 
-That is what makes the simulation an extension of the model rather than a rival to it.
+### Reconciliation, not equivalence
+
+The old build proved its port reproduced the spreadsheet to within rounding. The twin is not a port, so that proof means nothing here.
+
+What replaces it is a reconciliation: every line of year seven, twin against spreadsheet, with the cause of every difference written down. A difference without a recorded cause fails the run. All twenty-one lines are currently accounted for. The largest: the twin carries 14% more paying customers, because survivors are disciplined; and it books 10% more funding need, because it can see the trough.
+
+### What the twin found in the spreadsheet
+
+Running the same rules on individuals exposed two defects in the revenue model itself. Card rewards are computed by multiplying a percentage-of-spend rate by card revenue rather than card spend, which understates that cost roughly twenty-fold. And the FX discount is applied to card fees that contain no FX margin. Both are logged for the Phase 4 fix list.
 
 ### The standing audit
 
-Two gates prove the model is right on the day it is built. They do not stop a later change from quietly breaking something.
+Twenty-seven checks run after every change. Every priced range reaches the Monte Carlo. The giveback vanishes if the ladder is flattened, proving it is priced from real tiers. Persistency moves the book. Peak funding is the true maximum of a monthly line. The Monte Carlo does not import the old port. Each check exists because its failure happened once.
 
-So a third check runs after every change. It asserts that every priced range reaches the Monte Carlo, that the tier mix reaches the pricing engine, that derived quantities move when their inputs move, that departures from the workbook are declared, that the benefit ladder is internally consistent, and that the acquisition block still responds to the model rather than to a fixed formula.
+### Verification is not validation
 
-It exists because each of those failed at least once during the build, and none of them announced itself.
-
-### One figure deliberately not chased
-
-The Phase 4 research put Sovereign at 1.2% of tiered accounts. That number came from the lookup that capped the occasional misser at Platinum by construction.
-
-Under the real formula a clean trailing year plus sixty counted months scores 100, and it should. In the simulated book Sovereign lands at 1.1% anyway.
+All of this proves the code does what this document says. None of it proves the assumptions are right. Nothing can, until there are customers. That is why the deliverable is a threshold and a spread, not a forecast.
 
 ---
-
-## 14. Assumptions and limits
-
-### The demand side is judgement
-
-The cost side is well sourced. VARA and DMCC fee schedules, the KYC provider's price list, the Visa interchange schedule, Zand's banking tariff.
-
-The demand side is weaker. The market funnel filters are made up. No client data exists.
-
-The persistency curve is anchored to the Indian life insurance industry average at month 13, measured at the same checkpoints. Its decline after year one is ours, and is steeper than a life curve because Aurumix has no surrender penalty. The split of that curve into five behavioural types remains unsourced and is swept.
-
-Every one of those is swept rather than assumed. The profitability threshold is built so that it does not depend on the funnel at all.
-
-### Contingency stands in for headcount
-
-Staff, legal, security and tax are not modelled. A 15% contingency on all costs is the placeholder. It is swept to 50% so the threshold can be read against the cost that is not yet built.
-
-### B2B is a straight line with noise
-
-Partner economics rest on one observed anchor, O Gold's 75,000 active users, and a lumpy arrival process. There is no pipeline to calibrate to.
-
-### The buyback spread is second order
-
-It is in the model and swept. At every run size tested it costs a few thousand dollars. What hurts in a run is customers pausing their contributions.
-
-### Gold volatility is from general knowledge
-
-Fifteen percent is the long-run realised figure. It is not a fetched citation. It is swept.
-
-### Not modelled
-
-No competitive response. No regulatory change. No intra-month price moves, so margin calls are tested monthly. No hedging, by client decision. The supply side is a separate phase.
-
----
-
-## 15. Running the simulation
-
-### The commands
-
-The simulation is a Python project using NumPy, SciPy and Pandas. From the `aurumix/` directory:
-
-```bash
-pip install -r requirements.txt
-python scripts/extract_params.py
-python scripts/verify_stage1.py
-python scripts/verify_stage2_equivalence.py
-python scripts/run_mc.py 2000
-python scripts/run_analysis.py
-python scripts/run_float.py
-python -m src.visualize
-```
-
-### What each does
-
-The first script reads every parameter from the calculated workbook into a JSON file, so the port cannot drift by transcription.
-
-The two verification scripts must pass before the rest means anything.
-
-The remaining scripts run the Monte Carlo, the analysis, the float model, and the charts.
-
-### Reproducibility
-
-Every script uses fixed seeds. Every figure in the results document can be regenerated.
-
-Outputs are written to `outputs/`, charts to `outputs/charts/`. Total runtime is under ten minutes.

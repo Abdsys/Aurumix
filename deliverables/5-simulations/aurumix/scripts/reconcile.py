@@ -67,15 +67,16 @@ EXPLANATIONS = {
     "opex": (-0.15, 0.10,
              "the vault bill is charged on the metal actually held, and "
              "redemption handling on events that actually happened."),
-    "ics_cost": (-0.15, 0.35,
-                 "the giveback is priced at the tier each customer reached, not at "
-                 "one blended rate applied to a flat share of the book. Two of the "
-                 "four components move a long way, and both are workbook errors "
-                 "rather than twin effects. CARD REWARDS: the workbook multiplies a "
-                 "percentage-of-SPEND rate by card REVENUE, which understates the "
-                 "cost by roughly twenty times. FX DISCOUNT: the workbook applies "
-                 "it to the whole of stream 4, including ATM fees and card "
-                 "issuance, which have no FX margin to discount."),
+    "ics_cost": (-0.35, 0.10,
+                 "the giveback is priced at the tier each customer reached, not as "
+                 "one blended 25% on a flat 55% of the book. Three effects, in "
+                 "opposite directions. The flat rate overstates: nobody has the "
+                 "tenure for the top tiers early, so the workbook overpays for "
+                 "years. Against that, two workbook errors understate: CARD "
+                 "REWARDS multiply a percentage-of-SPEND rate by card REVENUE, "
+                 "about twenty times too small, and the FX DISCOUNT is applied to "
+                 "card fees that contain no FX margin. Net, the twin's giveback "
+                 "runs about a fifth below the workbook's."),
     "redeem_ev": (-0.35, 0.10,
                   "redemptions are drawn per customer, and self-custody "
                   "withdrawals are counted separately rather than folded in."),
@@ -104,7 +105,11 @@ ROWS = [("paying", True), ("cards", True), ("cum_ever", True), ("grams_held", Tr
 def main():
     p = load_params()
     tw = Twin(scale=10.0, seed=20270101).run()
-    dm = DetModel()
+    # The baseline is the workbook's OWN logic: flat rates, one average customer,
+    # its grid. tiermix=False is explicit because DetModel used to attach the
+    # computed tier mix through a module that no longer exists, and its silent
+    # fallback quietly changed this baseline once already.
+    dm = DetModel(tiermix=False)
     dm.run()
     dyr = np.array(p["grid"]["year"])
     tyr = tw["year"]

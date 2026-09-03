@@ -302,8 +302,11 @@ def run_stress(name, overrides=None, gold_shock=None, redemption_mult=1.0,
 # A redemption RUN is a jump, not a rate (see detmodel panic hook): a share of
 # custody leaves at M24 while existing customers pause contributions. Priced
 # at the sell-back spread on the excess above that month's purchases.
+# "Customers pause contributions" is a pay-probability shock in the twin, not a
+# ticket cut: a ticket below the $20 floor cannot exist, which the twin enforced
+# by refusing to fit one. Six months at 40% of normal payment odds.
 PANIC = {"panic_period": 24, "panic_share": 0.25, "buyback_spread": 0.01,
-         "ticket_uae": 33.6 * 0.4, "ticket_gulf": 26 * 0.4, "ticket_india": 30 * 0.4,
+         "panic_pay_mult": 0.4, "panic_months": 6,
          "spot_attach_mult": 0.4, "holder_redemption_mult": 2.8}
 
 A["stress"] = {

@@ -265,6 +265,14 @@ class Twin:
             live = pool.alive & pool.sip_active
             age = np.maximum(t - pool.born_month, 0)
             pay_p = np.maximum(pool.pay_prob0 * pool.pay_decay ** age, pool.pay_floor)
+            # A run pauses CONTRIBUTIONS as well as pulling gold out. The old
+            # engine faked the pause by cutting the average ticket to $13, which
+            # the twin cannot do because a ticket below the $20 floor cannot
+            # exist. A customer who pauses does not pay less, they skip months,
+            # and skipping is a pay-probability event.
+            if (p.get("panic_period") is not None
+                    and 0 <= t - int(p["panic_period"]) < int(p.get("panic_months", 6))):
+                pay_p = pay_p * p.get("panic_pay_mult", 1.0)
             if self.rho > 0:
                 pay_p = np.clip(pay_p + self.rho * 0.05 * pool.quality, 0.01, 0.999)
             counted = live & (rng.random(pool.n) < pay_p)

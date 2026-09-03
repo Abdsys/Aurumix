@@ -121,13 +121,24 @@ def stochastic_partners(rng, base_partners, p_zero_year=0.25):
     B2B partner arrivals as a lumpy discrete process, replacing the straight
     line. Each year's planned net adds become a Poisson draw, with an explicit
     chance of a dead year. Cumulative, never decreasing.
+
+    MEAN-PRESERVING. The first version gave each year a 25% chance of signing
+    nobody and did not compensate, so the expected partner count was 75% of the
+    client's plan. That is not uncertainty, it is a hidden haircut: it moved the
+    MEDIAN of every headline number and cost about half a million dollars of
+    median year-seven profit. Lumpiness should widen the distribution around
+    the plan, not quietly move its centre. When a year does sign, it now signs
+    from a Poisson whose mean is grossed up by the dead-year odds, so the
+    expectation equals the plan and the dead years survive as dispersion.
+    Doubting the PLAN itself is a real position, but it belongs in
+    config/overrides.py as a declared departure, not inside a noise process.
     """
     planned = np.diff(np.array(base_partners, dtype=float), prepend=0.0)
     got = np.zeros(len(base_partners))
     total = 0.0
     for y, add in enumerate(planned):
         if add > 0 and rng.random() > p_zero_year:
-            total += rng.poisson(add)
+            total += rng.poisson(add / (1.0 - p_zero_year))
         got[y] = total
     return got.tolist()
 

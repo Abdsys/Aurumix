@@ -59,3 +59,15 @@ Q6. TORNADO - Y7 net profit swing, scenario-range width per parameter:
   atm_share_3                   307,247   [     665,056 ..      972,303]
   referral_rate                 257,127   [     711,262 ..      968,389]
   cac_conv_coef                 245,824   [     925,651 ..      679,827]
+
+STRESS SCENARIOS (Y7 net profit | cumulative at Y7 | peak funding):
+  base                          796,733 |      517,899 |    2,499,668
+  s1_gold_crash_30              797,299 |      519,488 |    2,494,785
+  s2_redemption_run_25pct_M24      739,502 |      335,766 |    2,533,604
+  s3_zero_b2b                  -762,517 |   -4,585,101 |    6,168,687
+  s4_adoption_failure           563,954 |     -429,909 |    2,690,397
+  s5_regulatory_delay           796,733 |     -221,185 |    3,238,752
+  s6_ticket_compression         700,010 |      206,728 |    2,505,279
+  s7_combined_tail             -110,515 |   -2,639,686 |    4,169,811
+
+wrote C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\5-simulations\aurumix\outputs\analysis.json
