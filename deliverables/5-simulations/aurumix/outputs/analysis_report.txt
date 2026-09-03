@@ -4,35 +4,35 @@ STAGE 3 ANALYSIS
 
 Q1a. PROFITABILITY THRESHOLD - steady state (acquisition replaces churn only)
   retail revenue/payer $32 | serve $11 | churn 32%/yr (realised) | CAC blended $44 / UAE-only $55
-  fixed cost base $411,552/yr | one B2B partner = $141,750/yr
-  contingency 15%: RETAIL ALONE needs 139,515 paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.3 B2B partners cover fixed costs by themselves
+  fixed cost base $409,249/yr | one B2B partner = $141,750/yr
+  contingency 15%: RETAIL ALONE needs 147,768 paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.3 B2B partners cover fixed costs by themselves
   contingency 30%: RETAIL ALONE needs unreachable paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.8 B2B partners cover fixed costs by themselves
-  contingency 50%: RETAIL ALONE needs unreachable paying (blended CAC) / unreachable (UAE CAC)  |  OR 4.4 B2B partners cover fixed costs by themselves
+  contingency 50%: RETAIL ALONE needs unreachable paying (blended CAC) / unreachable (UAE CAC)  |  OR 4.3 B2B partners cover fixed costs by themselves
   (cross-check: O Gold runs 75,000 active users in the UAE alone)
 
 Q2. TIER MIX at M84 (the thing the workbook cannot compute):
   silver      38.3%
   gold        45.8%
-  platinum    14.2%
+  platinum    14.1%
   sovereign    1.7%
   gated share of live book: 53.4%  (workbook input: 55%)
 
 Q2. LADDER ENVELOPE (cumulative 84-month ICS cost, % of agent revenue):
-  c1.0_convex    ICS       13,386  =  5.1% of revenue
-  c1.0_linear    ICS       20,780  =  7.9% of revenue
-  c1.0_concave   ICS       30,721  = 11.6% of revenue
-  c1.5_convex    ICS       16,440  =  6.3% of revenue
-  c1.5_linear    ICS       25,461  =  9.7% of revenue
-  c1.5_concave   ICS       37,497  = 14.2% of revenue
-  c2.0_convex    ICS       19,493  =  7.5% of revenue
-  c2.0_linear    ICS       30,143  = 11.5% of revenue
-  c2.0_concave   ICS       44,273  = 16.7% of revenue
+  c1.0_convex    ICS       13,240  =  5.1% of revenue
+  c1.0_linear    ICS       20,588  =  7.8% of revenue
+  c1.0_concave   ICS       30,464  = 11.5% of revenue
+  c1.5_convex    ICS       16,290  =  6.2% of revenue
+  c1.5_linear    ICS       25,266  =  9.6% of revenue
+  c1.5_concave   ICS       37,237  = 14.1% of revenue
+  c2.0_convex    ICS       19,340  =  7.4% of revenue
+  c2.0_linear    ICS       29,945  = 11.4% of revenue
+  c2.0_concave   ICS       44,010  = 16.7% of revenue
 
 Q3. profit share by ticket decile (rho_quality=0.0):  top decile 15.5%, top three 37.5%, bottom five 43.7%
 
 Q3. profit share by ticket decile (rho_quality=0.2):  top decile 15.8%, top three 38.5%, bottom five 42.4%
 
-Q3. profit share by ticket decile (rho_quality=0.4):  top decile 15.1%, top three 37.0%, bottom five 43.7%
+Q3. profit share by ticket decile (rho_quality=0.4):  top decile 15.1%, top three 37.0%, bottom five 43.8%
 
 Q3. profit share by ticket decile (rho_quality=0.6):  top decile 15.3%, top three 38.6%, bottom five 42.0%
 
@@ -47,27 +47,27 @@ Q3b. SPOT-ONLY CUSTOMER (with the card now open to them):
   India  value ~$31/yr vs CAC $15 -> payback 0.5 yrs on spot alone
 
 Q6. TORNADO - Y7 net profit swing, scenario-range width per parameter:
-  partner_adopt               1,819,125   [      17,108 ..    1,836,233]
-  partner_aum_user            1,247,400   [     217,583 ..    1,464,983]
-  b2b_fee                       831,600   [     276,983 ..    1,108,583]
-  facility_takeup               787,518   [     441,363 ..    1,228,881]
-  ceiling_mult                  741,513   [     361,660 ..    1,103,173]
-  contingency                   631,786   [     954,680 ..      322,894]
-  family_attach                 509,946   [     577,160 ..    1,087,105]
-  vault_fee                     330,162   [     879,715 ..      549,553]
-  atm_share_4                   316,026   [     744,062 ..    1,060,088]
-  atm_share_3                   307,247   [     665,056 ..      972,303]
-  referral_rate                 257,127   [     711,262 ..      968,389]
-  cac_conv_coef                 245,824   [     925,651 ..      679,827]
+  partner_adopt               1,819,125   [       1,137 ..    1,820,262]
+  partner_aum_user            1,247,400   [     201,612 ..    1,449,012]
+  b2b_fee                       831,600   [     261,012 ..    1,092,612]
+  facility_takeup               787,232   [     425,492 ..    1,212,725]
+  ceiling_mult                  736,019   [     346,751 ..    1,082,770]
+  contingency                   633,732   [     939,195 ..      305,463]
+  family_attach                 509,957   [     561,188 ..    1,071,145]
+  vault_fee                     321,907   [     861,669 ..      539,762]
+  atm_share_4                   316,026   [     728,091 ..    1,044,117]
+  atm_share_3                   307,247   [     649,085 ..      956,332]
+  referral_rate                 252,583   [     695,239 ..      947,823]
+  cac_conv_coef                 244,686   [     907,096 ..      662,410]
 
 STRESS SCENARIOS (Y7 net profit | cumulative at Y7 | peak funding):
-  base                          796,733 |      517,899 |    2,499,668
-  s1_gold_crash_30              797,299 |      519,488 |    2,494,785
-  s2_redemption_run_25pct_M24      739,502 |      335,766 |    2,533,604
-  s3_zero_b2b                  -762,517 |   -4,585,101 |    6,168,687
-  s4_adoption_failure           563,954 |     -429,909 |    2,690,397
-  s5_regulatory_delay           796,733 |     -221,185 |    3,238,752
-  s6_ticket_compression         700,010 |      206,728 |    2,505,279
-  s7_combined_tail             -110,515 |   -2,639,686 |    4,169,811
+  base                          780,762 |      480,384 |    2,502,378
+  s1_gold_crash_30              781,463 |      482,832 |    2,497,156
+  s2_redemption_run_25pct_M24      713,232 |      275,463 |    2,537,525
+  s3_zero_b2b                  -778,488 |   -4,622,616 |    6,206,198
+  s4_adoption_failure           551,327 |     -459,185 |    2,693,704
+  s5_regulatory_delay           780,762 |     -258,700 |    3,241,462
+  s6_ticket_compression         686,501 |      175,491 |    2,508,481
+  s7_combined_tail             -136,656 |   -2,699,302 |    4,219,817
 
 wrote C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\5-simulations\aurumix\outputs\analysis.json

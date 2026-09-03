@@ -62,18 +62,25 @@ RESULT_FIGURES = {
     "median Y7 net profit": money(M["net_profit_y7"]["p50"]),
 }
 
+# The setup document explains HOW the simulation works and quotes structural
+# figures only; result figures live in the results document (client feedback,
+# 2026-09-03). So the setup checks pin structure, and every threshold-style
+# figure sits in RESULT_FIGURES against the results document.
+import sys as _sys
+_sys.path.insert(0, HERE)
+from src.mcmodel import _match_triples as _mt
+from src.detmodel import load_params as _lp
+from src.mechanics import fit_ticket_lognormal as _fit
+_n_drawn = len(_mt(_lp()))
+_mu, _sigma = _fit(33.60, 0.30)
 CHECKS = {
-    "partners to cover fixed costs alone":
-        ({f"{t15['partners_to_cover_fixed_alone']:.1f}"}, ["SIMULATION_SETUP.md"]),
-    "blended CAC":
-        ({f"USD {num(r'CAC blended \$(\d+)'):.0f}"}, ["SIMULATION_SETUP.md"]),
-    "serving cost per customer":
-        ({f"USD {num(r'serve \$(\d+)'):.0f}"}, ["SIMULATION_SETUP.md"]),
-    "retail revenue per payer":
-        ({f"USD {num(r'revenue/payer \$(\d+)'):.0f}"}, ["SIMULATION_SETUP.md"]),
-    "annual churn":
-        ({f"{num(r'churn (\d+)%/yr'):.0f}%"}, ["SIMULATION_SETUP.md"]),
+    "drawn parameter count":
+        ({f"{_n_drawn} parameters"}, ["SIMULATION_SETUP.md"]),
+    "UAE ticket sigma":
+        ({f"{_sigma:.3f}"}, ["SIMULATION_SETUP.md"]),
 }
+RESULT_FIGURES["partners to cover fixed base"] = {f"{t15['partners_to_cover_fixed_alone']:.1f}"}
+RESULT_FIGURES["blended replacement CAC"] = {f"USD {num(r'CAC blended \$(\d+)'):.0f}"}
 
 print("=" * 78)
 print("DOCUMENT / MODEL AGREEMENT")

@@ -328,16 +328,25 @@ class Twin:
             # a redemption takes a slice of the holding, not all of it
             red_g = np.where(redeemed, pool.grams * p.get("redemption_frac", 0.25), 0.0)
             pool.grams -= red_g
+            # SELF-CUSTODY IS A TOKEN WITHDRAWAL, NOT A DELIVERY. Aurumix offers
+            # no physical delivery (client instruction, 2026-09-03). A customer
+            # moving AURX to their own wallet still owns vaulted metal: the
+            # vault bill keeps running on it, and no handling event happens.
+            # What changes is visibility: off-platform tokens leave the
+            # collateral base, so the credit line and the AUM figure shrink.
             self_cust = pool.alive & (rng.random(pool.n) < p["self_custody_rate"] / 12.0)
             selfc_g = np.where(self_cust, pool.grams * p.get("redemption_frac", 0.25), 0.0)
+            pool.grams -= selfc_g
+            pool.grams_self += selfc_g
 
             # ── 6. score and tier ────────────────────────────────────────────
+            total_g = pool.grams + pool.grams_self
             denom = pool.grams_year_open + pool.grams_acquired_ytd
-            sold = np.where(denom > 0, 1 - pool.grams / np.maximum(denom, 1e-12), 0.0)
+            sold = np.where(denom > 0, 1 - total_g / np.maximum(denom, 1e-12), 0.0)
             pool.ics = M.ics_score(pool.months_counted, pool.recent.recent(), sold, pool.gated)
             pool.tier = M.tier_index(pool.ics)
             if t % 12 == 0:
-                pool.grams_year_open = pool.grams.copy()
+                pool.grams_year_open = (pool.grams + pool.grams_self).copy()
                 pool.grams_acquired_ytd[:] = 0.0
 
             # ── 7. lapse ─────────────────────────────────────────────────────
@@ -462,8 +471,11 @@ class Twin:
             n_hold = holders.sum() * S
             n_card = has_card.sum() * S
             grams_total = (pool.grams[alive].sum()) * S
+            grams_cust_t = ((pool.grams + pool.grams_self)[alive].sum()) * S
             grams_bought_t = bought_g.sum() * S
-            returned_g = (red_g + selfc_g).sum() * S
+            # only REDEEMED metal comes back to Aurumix for recycling; a token
+            # withdrawal moves nothing physical anywhere
+            returned_g = red_g.sum() * S
             o["grams_redeemed"][t - 1] = returned_g
 
             o["paying"][t - 1] = n_pay
@@ -471,7 +483,7 @@ class Twin:
             o["cards"][t - 1] = n_card
             o["cards_new"][t - 1] = new_cards.sum() * S
             o["grams_held"][t - 1] = grams_total
-            o["grams_cust"][t - 1] = grams_total
+            o["grams_cust"][t - 1] = grams_cust_t
             o["grams_bought"][t - 1] = grams_bought_t
             o["aum"][t - 1] = grams_total * gold
             o["tiered"][t - 1] = (alive & (pool.tier > 0)).sum() * S
@@ -528,7 +540,7 @@ class Twin:
             o["cogs"][t - 1] = fab + o["sellback_cost"][t - 1]
 
             # ── 16. operating costs: real where they scale, schedule where not
-            metal = grams_total + float_req
+            metal = grams_cust_t + float_req
             vault = max(p["vault_min_daily"] * 365 / 12,
                         p["vault_fee"] * metal * gold / 12)
             jan = 1 if cm == 1 else 0
@@ -609,7 +621,7 @@ class Twin:
         """Keep the optional per-agent arrays the same length as the pool."""
         for name, dtype in (("quality", float), ("card_drawn_flag", bool),
                             ("family_flag", bool), ("econ_rev", float),
-                            ("econ_give", float)):
+                            ("econ_give", float), ("grams_self", float)):
             cur = getattr(pool, name, None)
             if cur is None:
                 setattr(pool, name, np.zeros(pool.n, dtype=dtype))
