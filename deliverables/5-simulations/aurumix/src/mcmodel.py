@@ -19,54 +19,61 @@ import os
 import numpy as np
 
 from src.detmodel import DetModel, load_params
+from src.tiermix import load_profile, lookup as tiermix_lookup
 
 GOLD_VOL_ANNUAL = 0.15          # sourced: long-run realised gold vol ~15%/yr
 GOLD_VOL_SWEEP = (0.10, 0.22)
 
-# Scenario-table name -> params.json key. Parameters the MC draws per path.
-DRAWN = {
-    "Persistency - customers still paying after 12 months": "persistency",
-    "Agent productivity": "agent_productivity",
-    "Marketing CAC - UAE": "cac_uae",
-    "Marketing CAC - Oman and Bahrain": "cac_gulf",
-    "Marketing CAC - India": "cac_india",
-    "Marketing CAC at Y7 - UAE": "cac_uae_y7",
-    "Marketing CAC at Y7 - Oman and Bahrain": "cac_gulf_y7",
-    "Marketing CAC at Y7 - India": "cac_india_y7",
-    "Referral rate": "referral_rate",
-    "Referral conversion": "referral_conversion",
-    "Organic share of direct": "organic_share",
-    "Customers who EVER reach an ICS benefit tier": "ics_ever_share",
-    "Gold moved out of Aurumix's control": "self_custody_rate",
-    "Redemption rate": "redemption_rate",
-    "Holder redemption multiplier": "holder_redemption_mult",
-    "Spot attach scenario multiplier": "spot_attach_mult",
-    "Spot ticket scenario multiplier": "spot_ticket_mult",
-    "Spot frequency": "spot_frequency",
-    "Programme manager share of interchange": "pm_share",
-    "Facility take-up - customers who take AND use a facility": "facility_takeup",
-    "Drawn as % of permitted limit": "drawn_pct",
-    "Facility turnover, peak -> average": "facility_turnover",
-    "Draw events per borrower per year": "draws_per_year",
-    "Family plan attach rate": "family_attach",
-    "Average monthly ticket - UAE": "ticket_uae",
-    "Average monthly ticket - Oman and Bahrain": "ticket_gulf",
-    "Average monthly ticket - India": "ticket_india",
-    "B2B platform fee": "b2b_fee",
-    "Partner users adopting gold (mature)": "partner_adopt",
-    "AUM per adopting partner user": "partner_aum_user",
-    "Vault storage fee": "vault_fee",
-    "Contingency on total costs": "contingency",
+# ─────────────────────────────────────────────────────────────────────────────
+# WHICH PARAMETERS THE MONTE CARLO DRAWS
+#
+# EVERY workbook parameter that carries a real Aggressive/Conservative band is
+# drawn. The list is OPT-OUT, not opt-in: a hand-picked draw list silently
+# freezes uncertainty the client has already priced, and an earlier version of
+# this file drew only 32 of 85 such parameters. If the workbook prices a band,
+# it belongs in the raise number.
+#
+# config/scenario_map.json maps all 93 scenario rows onto parameter keys and is
+# generated from the workbook itself, so a new row cannot be missed by hand.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Excluded, each for a stated reason. Nothing else may be excluded silently.
+NOT_DRAWN = {
+    # replaced by a lumpy Poisson arrival process in stochastic_partners()
+    "b2b_partners": "modelled as discrete arrivals, not a smooth band",
+    # the gold band is expressed through the GBM drift + swept volatility
+    "gold_appreciation": "carried by the gold price process",
+    # derived quantities: recomputed from their drawn components
+    "monthly_churn": "derived from persistency",
+    "partner_aum": "derived from partner_users x adopt x aum_user",
+    "family_churn_monthly": "derived from the family cancellation rate",
+    # the four ICS rates are now COMPUTED from the agent book's tier mix
+    # (src/tiermix.py); drawing them as well would double-count
+    "ics_disc_entry": "computed from the tier mix",
+    "ics_disc_card": "computed from the tier mix",
+    "ics_disc_rebate": "computed from the tier mix",
+    "ics_disc_family": "computed from the tier mix",
+    "ics_ever_share": "computed from the tier mix",
+    "ics_months_to_tier": "computed from the tier mix",
 }
+
+_MAP_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "config", "scenario_map.json")
 
 
 def _match_triples(params):
-    """Map scenario-table rows onto param keys, tolerant of truncated names."""
+    """Every scenario row with a real band, minus the stated exclusions."""
+    with open(_MAP_PATH) as f:
+        name_to_key = json.load(f)
     out = {}
-    for tbl_name, triple in params["scenario_triples"].items():
-        for want, key in DRAWN.items():
-            if tbl_name.startswith(want[:40]):
-                out[key] = triple
+    for tbl_name, triple in params.get("scenario_triples", {}).items():
+        key = name_to_key.get(tbl_name)
+        if key is None or key in NOT_DRAWN:
+            continue
+        base, agg, con = triple
+        if max(agg, con) - min(agg, con) <= 0:
+            continue                      # no real band
+        out[key] = triple
     return out
 
 
@@ -87,12 +94,18 @@ def draw_parameters(rng, params, triples):
         beta = 1 + 4 * (hi - mode) / (hi - lo)
         over[key] = lo + rng.beta(alpha, beta) * (hi - lo)
 
-    # Derived: monthly churn follows persistency (workbook derives it too)
+    # Derived quantities, recomputed from whatever was drawn. Anything in
+    # NOT_DRAWN because it is "derived" must be reconstructed here, or it
+    # silently keeps its base value while its inputs move.
     over["monthly_churn"] = 1.0 - over["persistency"] ** (1.0 / 12.0)
-
-    # Partner AUM follows its drawn components
-    over["partner_aum"] = (params["partner_users"] * over["partner_adopt"]
-                           * over["partner_aum_user"])
+    over["partner_aum"] = (over.get("partner_users", params["partner_users"])
+                           * over["partner_adopt"] * over["partner_aum_user"])
+    # Family churn is TWO ways to lose a subscriber, combined multiplicatively:
+    # they cancel the plan, or they lapse the SIP. Reconstructing it from the
+    # cancellation rate alone drops half of it and inflates stream 3 by ~40%.
+    fam_annual = over.get("family_cancel", params["family_cancel"])
+    fam_monthly = 1.0 - (1.0 - fam_annual) ** (1.0 / 12.0)
+    over["family_churn_monthly"] = 1.0 - (1.0 - fam_monthly) * (1.0 - over["monthly_churn"])
     return over
 
 
@@ -147,6 +160,7 @@ def run_path(seed, params=None, vol=GOLD_VOL_ANNUAL, extra_overrides=None,
     if extra_overrides:
         over.update(extra_overrides)
 
+    # DetModel attaches the computed tier mix itself, at this path's persistency
     eng = DetModel(p=p, overrides=over)
 
     # gold hook: DetModel reads "_gold_grid" from params when present

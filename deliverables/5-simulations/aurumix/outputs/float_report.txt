@@ -20,9 +20,9 @@ C. Sweeps (Y7 average float grams | stock-out rate | cumulative carry)
   carry 8%            492 g |  0.24% | $   33,990
 
 D. Unhedged float across 400 Monte Carlo gold paths (mark-to-market P&L)
-  MTM P&L over 7 yrs: p10 $727 | p50 $27,647 | p90 $72,726
-  worst single year (p10 across paths): $-16,392
-  carry cost cumulative, median: $25,878
-  safe raise p90: workbook float $4,234,914 -> inventory float $3,437,379
+  MTM P&L over 7 yrs: p10 $-3,919 | p50 $30,150 | p90 $79,561
+  worst single year (p10 across paths): $-19,486
+  carry cost cumulative, median: $25,899
+  safe raise p90: workbook float $3,768,755 -> inventory float $3,078,147
 
 wrote outputs/float_results.json

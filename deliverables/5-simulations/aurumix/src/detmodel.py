@@ -36,10 +36,21 @@ class DetModel:
 
     N = 29  # 24 monthly + 5 annual
 
-    def __init__(self, p=None, overrides=None):
+    def __init__(self, p=None, overrides=None, tiermix=True):
         self.p = dict(load_params() if p is None else p)
         if overrides:
             self.p.update(overrides)
+        # The computed tier mix is attached HERE, not by the caller. Three
+        # separate call sites forgot it when it was the caller's job, so it is
+        # now on by default and switched off only by the equivalence test.
+        if tiermix and "_tiermix" not in self.p:
+            try:
+                from src.tiermix import load_profile, lookup
+                g = self.p["grid"]
+                self.p["_tiermix"] = lookup(load_profile(), self.p["persistency"],
+                                            g["months"], g["period"])
+            except Exception:
+                pass          # profile not built yet; falls back to the flat rates
         g = self.p["grid"]
         self.period = np.array(g["period"], dtype=float)       # R2
         self.year = np.array(g["year"], dtype=float)           # R5
@@ -169,8 +180,8 @@ class DetModel:
                 # model converges toward inflow/outflow balance and never
                 # overshoots, so it cannot represent a run on its own.
                 if p.get("panic_period") is not None and per[i] == p["panic_period"]:
-                    decay_elig = min(1.0, decay_elig + p["panic_share"])
-                    decay_cust = min(1.0, decay_cust + p["panic_share"])
+                    decay_elig = min(1.0, decay_elig + p.get("panic_share", 0.0))
+                    decay_cust = min(1.0, decay_cust + p.get("panic_share", 0.0))
                 grams_elig[i] = (grams_elig[i - 1] if i else 0.0) * (1 - decay_elig) + bought[i]
                 grams_cust[i] = (grams_cust[i - 1] if i else 0.0) * (1 - decay_cust) + bought[i]
                 aum[i] = grams_elig[i] * gold[i]
@@ -238,7 +249,7 @@ class DetModel:
                     redeem_ev[i] = ((paying[i] + holders[i] * p["holder_redemption_mult"])
                                     * p["redemption_rate"] * m / 12)
                     if p.get("panic_period") is not None and per[i] == p["panic_period"]:
-                        redeem_ev[i] += p["panic_share"] * (paying[i] + holders[i])
+                        redeem_ev[i] += p.get("panic_share", 0.0) * (paying[i] + holders[i])
 
             R[name] = dict(paying=paying, holders=holders, cum=cum, new=new,
                            grams_elig=grams_elig, grams_cust=grams_cust,
@@ -327,13 +338,32 @@ class DetModel:
                                tech_build=tech_build, tech_maint=tech_maint)
 
         # ── ICS giveback (R259-R267) ─────────────────────────────────────────
+        # The workbook applies ONE flat rate to a flat share of the book. The
+        # agent engine knows the actual tier mix month by month, and a flat
+        # rate is wrong in a known direction: nobody has the tenure for
+        # Platinum in year two, so it is too generous early and too mean late.
+        #
+        # p["_tiermix"] carries the computed profile (src/tiermix.py). When it
+        # is absent the workbook's shortcut is used, which is what the
+        # equivalence test needs.
         book = o["paying"] + o["holders"]
-        qual = np.where(book > 0, o["tiered"] / np.maximum(book, 1e-12), 0.0)
+        tmx = p.get("_tiermix")
+        if tmx is not None:
+            qual = np.array(tmx["tier_share"], dtype=float)
+            r_entry = np.array(tmx["entry"], dtype=float)
+            r_card = np.array(tmx["card"], dtype=float)
+            r_rebate = np.array(tmx["rebate"], dtype=float)
+            r_family = np.array(tmx["family"], dtype=float)
+        else:
+            qual = np.where(book > 0, o["tiered"] / np.maximum(book, 1e-12), 0.0)
+            r_entry = p["ics_disc_entry"]; r_card = p["ics_disc_card"]
+            r_rebate = p["ics_disc_rebate"]; r_family = p["ics_disc_family"]
         o["qual_share"] = qual
-        ics_entry = o["s1a"] * qual * p["ics_disc_entry"]
-        ics_card = o["s4"] * qual * p["ics_disc_card"]
-        ics_rebate = (o["s2"] + o["s4"]) * qual * p["ics_disc_rebate"]
-        ics_family = o["s3"] * qual * p["ics_disc_family"]
+        o["ics_rates"] = dict(entry=r_entry, card=r_card, rebate=r_rebate, family=r_family)
+        ics_entry = o["s1a"] * qual * r_entry
+        ics_card = o["s4"] * qual * r_card
+        ics_rebate = (o["s2"] + o["s4"]) * qual * r_rebate
+        ics_family = o["s3"] * qual * r_family
         o["ics_cost"] = ics_entry + ics_card + ics_rebate + ics_family
         o["ics_parts"] = dict(entry=ics_entry, card=ics_card,
                               rebate=ics_rebate, family=ics_family)

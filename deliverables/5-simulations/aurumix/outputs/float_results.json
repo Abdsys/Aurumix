@@ -56,13 +56,13 @@
   }
  },
  "mtm": {
-  "cum_p10": 727.2833302613681,
-  "cum_p50": 27647.07676617617,
-  "cum_p90": 72725.6100859168,
-  "worst_year_p10": -16392.00894667109,
-  "carry_p50": 25877.935850034726,
-  "safe_raise_90_inventory_float": 3437378.915073908,
-  "safe_raise_90_workbook_float": 4234913.59867645,
-  "safe_raise_50_inventory_float": 2377157.2609656854
+  "cum_p10": -3918.858847259796,
+  "cum_p50": 30149.50936142808,
+  "cum_p90": 79561.26374053644,
+  "worst_year_p10": -19486.084120263666,
+  "carry_p50": 25899.400469700748,
+  "safe_raise_90_inventory_float": 3078147.3042695466,
+  "safe_raise_90_workbook_float": 3768755.4748342074,
+  "safe_raise_50_inventory_float": 2368075.0518229594
  }
 }

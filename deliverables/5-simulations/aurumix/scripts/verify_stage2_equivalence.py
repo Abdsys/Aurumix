@@ -73,7 +73,7 @@ def main():
 
     # RAW workbook parameters: this test proves the PORT is faithful, so the
     # deliberate departures in config/overrides.py are excluded on purpose.
-    eng = DetModel(p=load_params(raw=True))
+    eng = DetModel(p=load_params(raw=True), tiermix=False)
     eng.run()
 
     print("=" * 88)
