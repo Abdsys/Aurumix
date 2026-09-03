@@ -147,9 +147,9 @@ How they arrived: marketing, an agent, or a referral. The door carries the acqui
 Two exits exist for gold, and neither involves physical delivery, because Aurumix does not offer physical delivery.
 
 - **Redemption**: the customer sells gold back for cash. Each month each customer has a 0.5% chance of redeeming (a 6% annual rate spread across twelve months), and a redemption sells a quarter of their holding. Lapsed customers who still hold gold redeem at 1.6 times that rate, 0.8% a month. Redeemed metal returns to Aurumix and is recycled into the float.
-- **Self-custody**: the customer moves AURX tokens to their own wallet. Also a 0.5% monthly chance, also a quarter of the holding. The gold stays in the vault, so the vault bill keeps running on it, but off-platform tokens leave the collateral base: they no longer back the customer's credit line and they leave the platform's AUM figure.
+- **Self-custody**: the customer moves AURX tokens to their own wallet. Also a 0.5% monthly chance, also a quarter of the holding. Nothing is redeemed: the gold stays in the vault, the vault bill keeps running on it, and it still counts in AUM. What changes is the account. The ICS score and the credit line are tied to the account, so tokens moved out stop counting toward the score and stop backing the credit line.
 
-Both exits count against the loyalty score's retention measure, because it watches gold kept on the platform: selling back reduces it, and so does moving tokens to your own wallet. Section 6 shows how.
+Both exits count against the loyalty score, because the score is tied to the account: gold sold back is gone, and tokens moved to your own wallet no longer count toward it. Section 6 shows how.
 
 ---
 
@@ -189,7 +189,7 @@ Where:
 
 - **Record** rewards accumulated history: it climbs by $\tfrac{50}{12}$ per counted month to 50 at one year, then by $\tfrac{50}{48}$ per month to 100 at five years. Five years of saving is a complete record.
 - **Standing** rewards the recent twelve months: the count of paid months in the last twelve, times $\tfrac{100}{12}$.
-- **Retention** penalises letting gold leave the platform, whether by selling it back or by moving tokens to your own wallet. Up to 30% in a year and nothing happens; beyond that, $\text{Retention} = 1 - \frac{\text{sold} - 0.30}{0.70}$.
+- **Retention** penalises gold leaving the account, whether sold back or moved to the customer's own wallet. Up to 30% in a year and nothing happens; beyond that, $\text{Retention} = 1 - \frac{\text{sold} - 0.30}{0.70}$.
 - Once gated, the score never falls below 25.
 
 The $\min$ means neither a long history nor a good recent year can substitute for the other. Tiers follow fixed cutoffs: Silver at 25, Gold at 50, Platinum at 75, Sovereign at 100. Sovereign therefore requires a five-year record and a perfect recent year at once, which makes it nearly unreachable inside the horizon by construction: expensive to earn, cheap to offer.

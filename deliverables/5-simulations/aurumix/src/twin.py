@@ -494,7 +494,11 @@ class Twin:
             o["grams_held"][t - 1] = grams_total
             o["grams_cust"][t - 1] = grams_cust_t
             o["grams_bought"][t - 1] = grams_bought_t
-            o["aum"][t - 1] = grams_total * gold
+            # AUM counts ALL customer gold under custody, self-custodied tokens
+            # included: the metal is vaulted and unredeemed (client rule,
+            # 2026-09-03). What is account-tied is the ICS score and the credit
+            # collateral, which read platform-held grams only.
+            o["aum"][t - 1] = grams_cust_t * gold
             o["tiered"][t - 1] = (alive & (pool.tier > 0)).sum() * S
             o["qual_share"][t - 1] = (float((pool.tier[alive] > 0).mean())
                                       if alive.any() else 0.0)
