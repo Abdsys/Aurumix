@@ -74,6 +74,10 @@ def _match_triples(params):
         if max(agg, con) - min(agg, con) <= 0:
             continue                      # no real band
         out[key] = triple
+    # Phase 5 parameters the workbook does not have a scenario row for. Kept out
+    # of params.json so the equivalence test still sees an untouched workbook.
+    from config.overrides import EXTRA_TRIPLES
+    out.update(EXTRA_TRIPLES)
     return out
 
 

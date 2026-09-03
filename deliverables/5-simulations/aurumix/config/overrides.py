@@ -23,6 +23,49 @@ MODEL_OVERRIDES = {
     # after year one because surrender penalties punish quitting; a gold saver
     # forfeits nothing, so ours keeps its steeper decline to ~27% at M61.
     "persistency": 0.63,
+
+    # CAC convexity, switched ON. The workbook's D27 left cost per customer
+    # LINEAR and retired the convexity curve to "a scenario switch defaulting
+    # OFF, calibration deferred to Phase 5". This is Phase 5.
+    #
+    # Left off, the model spends 90k in year one and 1.65m in year seven while
+    # cost per acquired customer FALLS by a third. That is only true while the
+    # cheap channels last. Past them, reach costs more per head: the marginal
+    # customer is further from the message and slower to convert.
+    #
+    #   cac_effective = cac_ramp x [1 + coef x (monthly regional spend / ref)^exp]
+    #
+    # Form and constants carried over from the workbook's own retired curve
+    # (coef 0.35, ref 60,000, exponent 0.7), applied to each region's own spend
+    # because you exhaust UAE channels by spending in the UAE. The coefficient
+    # is banded and drawn, so the raise number prices the uncertainty rather
+    # than the point estimate. This is judgement, not measurement.
+    "cac_conv_coef": 0.35,
+    "cac_conv_ref": 60000.0,
+    "cac_conv_exp": 0.7,
+
+    # Addressable-market ceiling. The workbook's three ceilings are a funnel of
+    # population x banked x interested x reachable, and the client has confirmed
+    # the filter percentages are unsourced. India already runs to 85% of its
+    # ceiling by year seven, so this number is close to binding on the whole
+    # model and cannot stay a point estimate. Multiplier, drawn per path.
+    "ceiling_mult": 1.0,
+}
+
+# Three compounding unsourced filters. A 0.60x to 1.55x band on their product
+# is the honest spread, not a tight one. Aggressive is the wider market.
+CEILING_TRIPLE = [1.0, 1.55, 0.60]
+
+# Convexity strength. Aggressive means the cheap channels last longer.
+CAC_CONV_TRIPLE = [0.35, 0.15, 0.60]
+
+# Bands that exist only because Phase 5 added the parameter. They are NOT in
+# the workbook's scenario table and must not be written into it, because that
+# table is what the equivalence test reads. The Monte Carlo picks them up from
+# here instead, so they are drawn like any other banded parameter.
+EXTRA_TRIPLES = {
+    "ceiling_mult": CEILING_TRIPLE,
+    "cac_conv_coef": CAC_CONV_TRIPLE,
 }
 
 # Scenario band for persistency, same +/-0.10 width as the workbook's own.

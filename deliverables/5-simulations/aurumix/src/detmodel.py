@@ -112,6 +112,12 @@ class DetModel:
                           spot_attach="spot_attach_india", opens=p["act_india"]),
         }
 
+        # the agent book's monthly profile, when attached (see src/tiermix.py)
+        tm = p.get("_tiermix")
+        # the addressable ceiling is a funnel of unsourced filters, so it is
+        # multiplied by a drawn factor rather than trusted as a point estimate
+        ceil_mult = p.get("ceiling_mult", 1.0)
+
         R = {}
         for name, rg in regions.items():
             paying = np.zeros(N); holders = np.zeros(N); cum = np.zeros(N)
@@ -133,12 +139,29 @@ class DetModel:
 
                 # R25 CAC ramp
                 cac = p[rg["cac0"]] + (p[rg["cac7"]] - p[rg["cac0"]]) * (self.year[i] - 1) / 6
+                # CAC CONVEXITY (workbook D27, retired to Phase 5 - this is it).
+                # The ramp alone says cost per customer FALLS as spend rises 18x.
+                # That is true only while cheap channels last. Beyond them each
+                # extra customer costs more to reach, so cost rises with spend
+                # intensity in the region you are spending it in. Absent from
+                # params -> term is exactly 1.0, so equivalence is untouched.
+                spend_m = p["marketing_spend"][y] * p[rg["mkt"]] / 12.0
+                if p.get("cac_conv_coef"):
+                    cac *= (1.0 + p["cac_conv_coef"]
+                            * (spend_m / p.get("cac_conv_ref", 60000.0))
+                            ** p.get("cac_conv_exp", 0.7))
                 # R26 direct (organic uplift); UAE has no opens gate (always 1)
-                direct = (p["marketing_spend"][y] * p[rg["mkt"]] / 12 * m / cac
+                direct = (spend_m * m / cac
                           * (1 + p["organic_share"]) * (open_gate if name != "UAE" else 1.0))
-                # R27 referral off own paying base, from act_referral
+                # R27 referral off own paying base, from act_referral.
+                # Scaled by the agent book's referral capacity for this month:
+                # a book of new joiners refers less than a matured one. Normalised
+                # to 1.0 at maturity, so referral_rate keeps its quoted meaning.
                 prev_pay = paying[i - 1] if i else 0.0
-                ref = (prev_pay * p["referral_rate"] / 12 * p["referral_conversion"] * m
+                rmult = 1.0
+                if tm is not None and "ref_mult" in tm:
+                    rmult = float(tm["ref_mult"][i])
+                ref = (prev_pay * p["referral_rate"] / 12 * p["referral_conversion"] * m * rmult
                        if per[i] >= p["act_referral"] else 0.0)
                 # R28 agents
                 agents = (p[rg["agents"]][y] * p["agent_productivity"]
@@ -146,7 +169,7 @@ class DetModel:
                 raw = direct + ref + agents
                 # R30 saturation on prior cumulative-ever
                 prev_cum = cum[i - 1] if i else 0.0
-                sat = max(0.0, 1.0 - prev_cum / p[rg["ceiling"]])
+                sat = max(0.0, 1.0 - prev_cum / (p[rg["ceiling"]] * ceil_mult))
                 # R31 new
                 new[i] = raw * sat * season_acq[i]
                 agent_acq[i] = agents; ref_acq[i] = ref

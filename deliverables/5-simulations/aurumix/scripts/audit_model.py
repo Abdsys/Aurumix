@@ -132,6 +132,44 @@ check(all(np.all(np.diff(LADDER[k]) <= 1e-12) for k in ("entry_fee", "fx_margin"
 check(all(np.all(np.diff(LADDER[k]) >= -1e-12) for k in ("family_disc", "ltv", "rewards")),
       "benefits given rise monotonically up the ladder")
 
+# ── 7. the acquisition block is simulated, not inherited ────────────────────
+print("\n7. Acquisition responds to the model, not to a spreadsheet formula")
+from config.overrides import EXTRA_TRIPLES
+from src.tiermix import SERIES
+
+check(all(k in drawn for k in EXTRA_TRIPLES),
+      f"the Phase 5 acquisition bands are drawn ({', '.join(EXTRA_TRIPLES)})")
+
+# the ceiling must actually bind: doubling it must move cumulative acquisition
+base_cum = float(DetModel().run()["cum_ever"][-1])
+wide = DetModel(overrides={"ceiling_mult": 2.0}).run()["cum_ever"][-1]
+check(wide > base_cum * 1.02,
+      f"the addressable ceiling binds ({base_cum:,.0f} ever acquired, "
+      f"{wide:,.0f} if the market is twice as big)")
+
+# convexity must actually raise cost per customer at scale
+flat = DetModel(overrides={"cac_conv_coef": 0.0}).run()
+conv = DetModel().run()
+check(conv["cum_ever"][-1] < flat["cum_ever"][-1] * 0.99,
+      f"CAC convexity is live: same spend buys {conv['cum_ever'][-1]:,.0f} "
+      f"customers, not {flat['cum_ever'][-1]:,.0f} (workbook D27, was retired to Phase 5)")
+
+# referral capacity must reach the engine and must bite early
+check("ref_mult" in SERIES and "ref_mult" in tm,
+      "the agent book's referral capacity reaches the aggregate engine")
+rm = np.asarray(tm["ref_mult"], dtype=float)
+check(rm[:12].mean() < 0.85,
+      f"a young book refers less than a mature one (first year at {rm[:12].mean():.2f} "
+      f"of the workbook's flat assumption)")
+check(abs(rm[-1] - 1.0) < 0.25,
+      f"and the multiplier normalises to about 1.0 at maturity ({rm[-1]:.2f}), so "
+      f"referral_rate keeps its quoted meaning")
+det_ref = float(sum(DetModel().run()["region"][n]["ref_acq"].sum() for n in ("UAE", "Gulf", "India")))
+flat_ref = float(sum(DetModel(tiermix=False).run()["region"][n]["ref_acq"].sum()
+                     for n in ("UAE", "Gulf", "India")))
+check(det_ref < flat_ref * 0.99,
+      f"and it changes referral acquisition ({det_ref:,.0f} vs {flat_ref:,.0f} flat)")
+
 print("\n" + "=" * 78)
 print(f"{'AUDIT PASSED' if not fails else 'AUDIT FAILED'}  "
       f"({len(fails)} failures, {len(warns)} warnings)")

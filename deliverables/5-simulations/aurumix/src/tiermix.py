@@ -57,12 +57,16 @@ def _scaled_archetypes(persistency):
 def build_profile(scale=8.0, seed=20270101, verbose=True):
     """Run the agent book at each persistency on the grid; return the lookup."""
     from src.agentbook import run_book, LADDER
-    prof = {"grid": GRID, "months": C.HORIZON_MONTHS, "entries": {}}
+    prof = {"schema": SCHEMA, "grid": GRID, "months": C.HORIZON_MONTHS, "entries": {}}
     for pers in GRID:
         arche, bg = _scaled_archetypes(pers)
         pool, panel, sc = run_book(seed=seed, scale=scale, archetypes=arche)
-        series = {k: [] for k in ("tier_share", "entry", "card", "family", "rebate")}
+        series = {k: [] for k in ("tier_share", "entry", "card", "family",
+                                  "rebate", "ref_mult")}
         for row in panel:
+            # referral capacity per paying head, before normalisation
+            series["ref_mult"].append(
+                float(row["ref_weight"] / row["paying"]) if row["paying"] else 0.0)
             tm = np.array(row["tier_mix"], dtype=float)
             live, tiered = tm.sum(), tm[1:].sum()
             series["tier_share"].append(float(tiered / live) if live else 0.0)
@@ -77,18 +81,38 @@ def build_profile(scale=8.0, seed=20270101, verbose=True):
             else:
                 for k in ("entry", "card", "family", "rebate"):
                     series[k].append(0.0)
+        # Normalise the referral multiplier so a MATURED book returns 1.0. The
+        # workbook's referral_rate was quoted against an established base, not
+        # against a book that is mostly new joiners, so this preserves its
+        # meaning at the point it applies and only reshapes the ramp-up.
+        rm = np.array(series["ref_mult"], dtype=float)
+        mature = float(rm[-12:].mean())
+        series["ref_mult"] = (rm / mature).tolist() if mature > 0 else rm.tolist()
         prof["entries"][f"{pers:.2f}"] = series
         if verbose:
+            r = series["ref_mult"]
             print(f"  persistency {pers:.2f}: tiered {series['tier_share'][-1]:.1%} | "
                   f"entry disc M12 {series['entry'][11]:.1%} -> M84 {series['entry'][-1]:.1%} | "
-                  f"card {series['card'][-1]:.1%} | family {series['family'][-1]:.1%}")
+                  f"card {series['card'][-1]:.1%} | family {series['family'][-1]:.1%} | "
+                  f"refmult M12 {r[11]:.2f} M36 {r[35]:.2f}")
     return prof
+
+
+# Bumped whenever the profile gains or changes a series. A cache written by an
+# older build is silently wrong rather than loudly missing, so it is discarded
+# on sight instead of being trusted.
+SCHEMA = 2
+SERIES = ("tier_share", "entry", "card", "family", "rebate", "ref_mult")
 
 
 def load_profile(rebuild=False, **kw):
     if not rebuild and os.path.exists(CACHE):
         with open(CACHE) as f:
-            return json.load(f)
+            prof = json.load(f)
+        first = next(iter(prof.get("entries", {}).values()), {})
+        if prof.get("schema") == SCHEMA and all(k in first for k in SERIES):
+            return prof
+        print("  [tiermix] cached profile is stale; rebuilding")
     prof = build_profile(**kw)
     os.makedirs(os.path.dirname(CACHE), exist_ok=True)
     with open(CACHE, "w") as f:
@@ -116,7 +140,7 @@ def lookup(prof, persistency, grid_months, grid_periods):
         b = np.array(prof["entries"][f"{g[lo + 1]:.2f}"][key], dtype=float)
         return a + frac * (b - a)
 
-    keys = ("tier_share", "entry", "card", "family", "rebate")
+    keys = ("tier_share", "entry", "card", "family", "rebate", "ref_mult")
     monthly = {k: blend(k) for k in keys}
     out = {k: np.zeros(29) for k in keys}
     mi = 0

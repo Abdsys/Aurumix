@@ -24,6 +24,28 @@ from src.entities import build_cohort, AgentPool
 from src.detmodel import DetModel
 
 # tier index: 0 none, 1 silver, 2 gold, 3 platinum, 4 sovereign
+# ─────────────────────────────────────────────────────────────────────────────
+# WHO REFERS
+#
+# The workbook's referral term is  paying_base x rate/12 x conversion. It gives
+# a month-two customer the same voice as a three-year Platinum holder. Two
+# corrections, both in the same direction and both structural rather than fitted:
+#
+#   1. Tenure. Nobody recommends a savings plan in the first quarter. Propensity
+#      is zero for three months, then ramps to full by month twelve - roughly the
+#      point at which the first year's discipline is visible to the customer.
+#   2. Tier. Advocacy tracks what the plan has actually delivered. The ladder
+#      already says who got the most; these are the relative referral rates.
+#
+# Both are judgement, not measurement, and are declared as such. The net effect
+# is a multiplier on the workbook's referral term, NORMALISED so that a matured
+# book returns 1.0 - see tiermix.py. That keeps `referral_rate` meaning what it
+# most likely meant when it was quoted: the rate on an established book, not on
+# a book that is 80% new joiners.
+REF_TENURE_DEAD = 3        # months before anyone refers
+REF_TENURE_FULL = 12       # months to full propensity
+REFERRAL_TIER_MULT = np.array([1.00, 1.15, 1.30, 1.50, 1.75])
+
 LADDER = {
     "entry_fee":  np.array([0.050, 0.045, 0.040, 0.035, 0.030]),
     "family_disc": np.array([0.00, 0.10, 0.20, 0.35, 0.50]),
@@ -257,12 +279,21 @@ def run_book(seed=20270101, scale=2.0, months=C.HORIZON_MONTHS,
 
         # ── monthly aggregates ───────────────────────────────────────────────
         alive = pool.alive
+        # Referral capacity. The workbook refers off the raw paying head count,
+        # so a customer in month two counts as much as one in year three. They
+        # do not: you cannot recommend a savings plan you have barely started,
+        # and advocacy rises with what the plan has actually given you.
+        payers = alive & pool.sip_active
+        ramp = np.clip((t - pool.born_month - REF_TENURE_DEAD)
+                       / float(REF_TENURE_FULL - REF_TENURE_DEAD), 0.0, 1.0)
+        w = ramp * REFERRAL_TIER_MULT[pool.tier]
         panel.append({
             "month": t,
-            "paying": int((alive & pool.sip_active).sum()) * scale,
+            "paying": int(payers.sum()) * scale,
             "holders": int((alive & ~pool.sip_active).sum()) * scale,
             "tier_mix": np.bincount(pool.tier[alive], minlength=5) * scale,
             "gated_share": float(pool.gated[alive].mean()) if alive.any() else 0.0,
+            "ref_weight": float(w[payers].sum()) * scale,
         })
 
     return pool, panel, scale
