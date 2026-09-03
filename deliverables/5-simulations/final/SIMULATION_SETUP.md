@@ -259,11 +259,32 @@ Finally the calendar: a twelve-month seasonality shape from the revenue model, f
 
 ### What a partner is worth
 
-A B2B partner white-labels the product. Its value chain is four numbers multiplied: the partner's user base, the share of those users who adopt, the average gold value each adopter holds, and the platform fee on the total. At base that is USD 141,750 per partner per year. All four numbers carry Aggressive and Conservative ranges in the revenue model and all four are drawn per path.
+A B2B partner white-labels the product. Its yearly value is four numbers multiplied:
+
+$$V = U \times a \times h \times f$$
+
+Where:
+
+- $U$ is the partner's user base, 900,000 at base
+- $a$ is the share of those users who adopt the product, 6%
+- $h$ is the average gold value an adopter holds, USD 350
+- $f$ is the platform fee on the total, 0.75% a year
+
+At base: $900{,}000 \times 0.06 \times 350 \times 0.0075 =$ **USD 141,750 per partner per year**. All four numbers carry Aggressive and Conservative ranges in the revenue model and all four are drawn per path, so a world can hold small partners or giant ones.
+
+The monthly revenue stream is then the signed partners' combined gold under management times the fee:
+
+$$s_{6,t} = K_t \times (U \cdot a \cdot h) \times \frac{f}{12}$$
+
+where $K_t$ is how many partners have signed by month $t$.
 
 ### How partners arrive
 
-The plan says eleven partners by year seven. In the twin they arrive as discrete signings, not a straight line. Each year's planned additions face a 25% chance of a dead year in which nobody signs. When signing does happen, the count is a Poisson draw whose mean is grossed up, so the process stays centred on the plan. Dead years and clusters widen the range of outcomes without quietly moving the middle: doubting the plan itself would be an assumption, and assumptions get declared, not hidden inside noise.
+The plan says eleven partners by year seven: cumulative targets of 0, 1, 3, 5, 7, 9, 11 by year end. In the twin they arrive as discrete signings, not a straight line. For each year $y$ with $\Delta_y$ planned additions:
+
+$$\text{signed}_y = \begin{cases} 0 & \text{with probability } 0.25 \quad \text{(a dead year)} \\ \text{Poisson}\!\left(\Delta_y / 0.75\right) & \text{with probability } 0.75 \end{cases}$$
+
+The Poisson mean is grossed up by the dead-year odds, so the expected signings equal the plan: $\mathbb{E}[\text{signed}_y] = \Delta_y$. Dead years and clusters widen the range of outcomes without quietly moving the middle. Doubting the plan itself would be an assumption, and assumptions get declared, not hidden inside noise.
 
 Once signed, a partner's fee runs every month from its signing month.
 
