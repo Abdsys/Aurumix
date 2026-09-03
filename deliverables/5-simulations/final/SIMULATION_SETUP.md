@@ -119,7 +119,7 @@ Five types. Each type carries a monthly probability of paying and its own monthl
 
 Each month, every active customer:
 
-- **pays** with probability $p_t = \max(p_0 \cdot d^{\,\text{age}},\; p_{\min})$, where $p_0$ is the type's rate, $d$ a slow decay, and age their months on the platform
+- **pays** with probability $p_t = \max(p_0 \cdot d^{\,\text{age}},\; p_{\min})$, where $p_0$ is the type's rate from the table and age their months on the platform. $d$ is a fade dial and $p_{\min}$ its floor. Both are off at base ($d = 1$, $p_{\min} = 0$), so the base case pays at the flat rate; the dials exist for sweeps that test whether enthusiasm wears off
 - **leaves** with probability equal to their own hazard plus a background hazard of 1.06% per month that applies to everyone
 
 Together the five types imply the book pays in roughly 78% of the months it could. That single property separates this model from the spreadsheet, whose paying customers pay every month by construction.
