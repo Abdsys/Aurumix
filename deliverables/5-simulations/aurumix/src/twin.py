@@ -265,6 +265,12 @@ class Twin:
             live = pool.alive & pool.sip_active
             age = np.maximum(t - pool.born_month, 0)
             pay_p = np.maximum(pool.pay_prob0 * pool.pay_decay ** age, pool.pay_floor)
+            # Payment discipline is the number the retail margin lives on: the
+            # book pays in ~78% of the months it could, and no source pins that
+            # figure. The persistency anchor pins who LEAVES, not how often the
+            # stayers pay. So discipline is swept like any other unsourced
+            # driver, as one multiplier on every archetype's pay probability.
+            pay_p = np.clip(pay_p * p.get("pay_prob_mult", 1.0), 0.005, 0.999)
             # A run pauses CONTRIBUTIONS as well as pulling gold out. The old
             # engine faked the pause by cutting the average ticket to $13, which
             # the twin cannot do because a ticket below the $20 floor cannot

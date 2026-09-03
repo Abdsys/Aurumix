@@ -1,12 +1,12 @@
 """
-The Monte Carlo layer over the deterministic engine.
+The Monte Carlo layer over the twin.
 
-Each path draws its own parameter set, gold path, acquisition noise and partner
-arrivals, then runs the ported engine. The parameter distributions are anchored
-on the workbook's own scenario table: Base is the mode, Aggressive and
-Conservative are treated as the 10th/90th percentiles of a PERT-like
-distribution per parameter. That grounds every draw in numbers the client has
-already seen, rather than in invented spreads.
+Each path draws its own parameter set, gold path, demand noise and partner
+history, then runs the full twin: every customer, every month, from scratch.
+The parameter distributions are anchored on the workbook's own scenario table:
+Base is the mode, Aggressive and Conservative are treated as the 10th/90th
+percentiles of a PERT-like distribution per parameter. That grounds every draw
+in numbers the client has already seen, rather than in invented spreads.
 
 Gold: GBM, drift = the workbook's own 8.1%/yr appreciation, volatility 15%/yr.
 Vol source: long-run realised volatility of gold in USD runs 14-16%/yr

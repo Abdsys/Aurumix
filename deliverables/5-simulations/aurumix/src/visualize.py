@@ -2,8 +2,16 @@
 Charts for SIMULATION_RESULTS.md. Tokenomics.net brand palette, same style as
 the Stockpile deliverable. One axis per chart, thin marks, recessive grid.
 
-    python -m src.visualize        (from the aurumix/ directory)
+RETIRED PENDING REBUILD. Every chart here reads the two-engine build and its
+29-column grid, both of which are gone. Running it would produce charts that
+contradict the model, so it refuses instead. It gets rebuilt against the twin's
+monthly output together with the results document, because the chart choices
+follow that document's story.
 """
+
+raise SystemExit(
+    "visualize.py targets the retired two-engine build. It is rebuilt with the "
+    "results document. See the module docstring.")
 
 import json
 import os
