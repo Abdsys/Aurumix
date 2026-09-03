@@ -71,7 +71,7 @@ Everything behavioural. Who arrives, who pays, who reaches a tier, who leaves, w
 | Paths | 2,000, each a full rerun of the population |
 | Customers per path | about 170,000 ever acquired |
 | Resolution | one simulated agent stands for 10 customers |
-| Drawn inputs per path | 74 parameters, plus a gold path and a partner history |
+| Drawn inputs per path | 75 parameters, plus a gold path and a partner history |
 | Randomness | fixed seeds, so every run is exactly reproducible |
 
 Agent-based means the unit of computation is one customer, carried through their whole history. Monte Carlo means the entire seven years is rerun 2,000 times, each time under different assumptions drawn from stated ranges. Section 10 covers the drawing. Everything before it covers what happens inside one path.
@@ -322,7 +322,7 @@ rounded up to whole bars, where $z$ sets the service level and $L$ is the lead t
 
 Each path is one version of the next seven years. What varies between paths, and how.
 
-### Seventy-four drawn parameters
+### Seventy-five drawn parameters
 
 Every input the revenue model prices with an Aggressive and a Conservative value is drawn. The distribution is Beta-PERT: Base is the most likely value, and Aggressive and Conservative bracket the range,
 
@@ -334,7 +334,7 @@ This grounds every draw in the revenue model's own scenario table rather than in
 - **derived**: quantities recomputed from their drawn components each path, so they move with their inputs
 - **superseded by behaviour**: the workbook's blended loyalty rates and "share who ever tier". The twin prices each customer at their own tier, so a blended rate has nothing left to describe.
 
-Two Phase 5 parameters have no workbook row and carry their own declared bands: the market ceiling multiplier (0.6 to 1.55) and the channel-exhaustion strength (0.15 to 0.60).
+Three Phase 5 parameters have no workbook row and carry their own declared bands: the market ceiling multiplier (0.6 to 1.55), the channel-exhaustion strength (0.15 to 0.60), and the partner adoption ramp (12 to 24 months).
 
 ### And per path
 
