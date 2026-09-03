@@ -340,13 +340,16 @@ class Twin:
             pool.grams_self += selfc_g
 
             # ── 6. score and tier ────────────────────────────────────────────
-            total_g = pool.grams + pool.grams_self
+            # Retention watches gold kept ON THE PLATFORM (client rule,
+            # 2026-09-03): selling back AND moving tokens to your own wallet
+            # both reduce it. The score rewards keeping your savings where the
+            # relationship is, not merely owning gold somewhere.
             denom = pool.grams_year_open + pool.grams_acquired_ytd
-            sold = np.where(denom > 0, 1 - total_g / np.maximum(denom, 1e-12), 0.0)
+            sold = np.where(denom > 0, 1 - pool.grams / np.maximum(denom, 1e-12), 0.0)
             pool.ics = M.ics_score(pool.months_counted, pool.recent.recent(), sold, pool.gated)
             pool.tier = M.tier_index(pool.ics)
             if t % 12 == 0:
-                pool.grams_year_open = (pool.grams + pool.grams_self).copy()
+                pool.grams_year_open = pool.grams.copy()
                 pool.grams_acquired_ytd[:] = 0.0
 
             # ── 7. lapse ─────────────────────────────────────────────────────
