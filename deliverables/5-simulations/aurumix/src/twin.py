@@ -311,7 +311,11 @@ class Twin:
                 if self.rho > 0:
                     prob = np.clip(prob * (1 + 0.3 * self.rho * pool.quality), 0.0, 1.0)
                 hit = (pool.alive & pool.sip_active & (rng.random(pool.n) < prob))
-                spot_val = np.where(hit, sticket * p["spot_ticket_mult"], 0.0)
+                # Amounts vary per purchase the way SIP tickets vary per month:
+                # a mean-preserving lognormal wobble, so the regional average
+                # holds while individual purchases spread around it.
+                noise = np.exp(0.25 * rng.normal(size=pool.n) - 0.5 * 0.25 ** 2)
+                spot_val = np.where(hit, sticket * p["spot_ticket_mult"] * noise, 0.0)
 
             # ── 4. money becomes gold, at that customer's tier ───────────────
             entry_rate = lad["entry_fee"][pool.tier]

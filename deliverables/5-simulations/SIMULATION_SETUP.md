@@ -142,6 +142,22 @@ The rail changes who the customer is, not just how they pay. A customer on the s
 
 How they arrived: marketing, an agent, or a referral. The door carries the acquisition cost attached to that customer and drives the referral economics in section 7.
 
+### Spot purchases: buying outside the plan
+
+On top of the monthly plan, an active saver can make one-off purchases. Each month, each saver has a chance of one:
+
+$$P(\text{spot this month}) = \text{attach}_r \times m_a \times \frac{\text{freq}}{12}, \qquad \text{amount} = \text{ticket}_r \times m_t \times \text{noise}$$
+
+Where:
+
+- $\text{attach}_r$ is the regional share of savers who spot-buy at all: 12% UAE, 10% Oman and Bahrain, 35% India
+- $\text{freq}$ is how often a spot buyer buys, 1.7 times a year at base
+- $\text{ticket}_r$ is the regional spot amount: USD 190, 145 and 40
+- $m_a$ and $m_t$ are drawn multipliers on attach and amount, and freq is drawn too, so spot behaviour varies per world
+- noise spreads individual purchases around the regional average, the same way monthly tickets wobble
+
+A spot purchase pays the entry fee at the customer's tier and becomes gold like any other money in. One simplification to know: spot rides on the existing saver book, per the revenue model's attach structure. A spot-only customer who never opens a plan is not modelled, because no number exists yet for how many there would be.
+
 ### What a customer does with their gold
 
 Two exits exist for gold, and neither involves physical delivery, because Aurumix does not offer physical delivery.
@@ -161,7 +177,7 @@ The core loop. Every month, in this order.
 2. **New customers arrive**, channel by channel, against the market ceiling (section 7).
 3. **Each new customer** is created with region, ticket, personality, rail and door.
 4. **Existing customers decide whether to pay**, at their personality's odds.
-5. **Payments become gold** at this month's price, minus the entry fee at that customer's tier.
+5. **Monthly payments and any spot purchases become gold** at this month's price, minus the entry fee at that customer's tier.
 6. **Some customers redeem for cash, some move tokens to their own wallet**, per the rates above.
 7. **Streaks update.** Six consecutive payments opens the loyalty gate, once, permanently.
 8. **The loyalty score recalculates** for everyone (section 6).
