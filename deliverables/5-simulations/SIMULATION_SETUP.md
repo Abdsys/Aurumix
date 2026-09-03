@@ -82,18 +82,20 @@ One of the UAE, Oman and Bahrain together, or India. Region sets the average tic
 
 The ticket is the amount the customer means to save each month. The revenue model uses one number per region, USD 33.60 in the UAE.
 
-Savings books are not like that. Half the book sits at the USD 20 floor. A thin tail saves far more. So the simulation draws each customer's ticket from a distribution fitted to two facts, the regional mean and the share at the floor:
+Savings books are not like that. About 30% of the book sits at the USD 20 floor. A thin tail saves far more. So the simulation draws each customer's ticket from a distribution fitted to two facts, the regional mean and the share at the floor:
 
 $$\text{ticket} = \max\left(20,\; X\right), \qquad X \sim \text{Lognormal}(\mu, \sigma)$$
 
 Where:
 
-- $\mu$ and $\sigma$ are solved so that $P(X \le 20) = 0.50$ and $E[\max(20, X)]$ equals the regional mean
+- $\mu$ and $\sigma$ are solved so that $P(X \le 20) = 0.30$ and $E[\max(20, X)]$ equals the regional mean
 - $20$ is the USD floor, below which a payment is refused
 
-For the UAE that gives $\sigma = 0.87$. The top tenth of customers then contributes about 30% of all money saved.
+For the UAE that gives $\sigma = 0.576$. The top tenth of customers then contributes about 23% of all money saved.
 
-The floor share is not sourced. It is a defensible shape. Assuming a flat book would be the less credible choice.
+The two facts lock the answer between them. If 30 customers in 100 pay exactly USD 20, that is USD 600 of a USD 3,360 total, so the other 70 must average USD 39.43. The curve is whatever produces that.
+
+The floor share is not sourced. It is a defensible shape, set at 30% on client instruction, and it is swept. Assuming a flat book would be the less credible choice.
 
 The amount is variable month to month with no maximum. A customer at the floor pays exactly the floor. Whether they pay at all is the archetype's job.
 
@@ -103,19 +105,19 @@ The archetype is the customer's payment discipline. Five types, taken from the P
 
 | Archetype | Share | Pays in a given month | Own monthly lapse hazard | Terminal tier |
 |:--|--:|--:|--:|:--|
-| Perfect payer | 10% | 99.5% | 0.0% | Only type that reaches Sovereign |
-| Occasional misser | 35% | 93% | 0.7% | Platinum, sometimes Sovereign |
-| Alternating misser | 12% | 55% | 1.8% | Gold for life |
-| Reducer | 13% | 97% | 0.2% | By record |
-| Early lapser | 30% | 60% | 20.0% | Rarely tiers, mostly gone by month 13 |
+| Perfect payer | 10% | 99.5% | 0.00% | Only type that reaches Sovereign |
+| Occasional misser | 35% | 93% | 0.46% | Platinum, sometimes Sovereign |
+| Alternating misser | 12% | 55% | 1.19% | Gold for life |
+| Reducer | 13% | 97% | 0.13% | By record |
+| Early lapser | 30% | 60% | 13.25% | Rarely tiers, mostly gone within the year |
 
-A background hazard of 1.6% per month applies to everyone on top of their own.
+A background hazard of **1.06% per month** applies to everyone on top of their own. Add the two for the real monthly chance of leaving: 1.06% for a perfect payer, 14.31% for an early lapser.
 
 ### Where these numbers come from, honestly
 
 The five types are not observed customer segments. They are a story built to reproduce a curve.
 
-The curve is the **persistency curve**, which is how many customers are still paying as time passes. Ours runs 55% at month 13, then 40, 30, 24 and 19% at months 25, 37, 49 and 61.
+The curve is the **persistency curve**, which is how many customers are still paying as time passes. Ours runs 63% at month 13, then 49, 41, 34 and 29% at months 25, 37, 49 and 61.
 
 The five types were then tuned until they reproduced that curve together. That is a standard technique, and it is only as good as the curve underneath it.
 
@@ -123,14 +125,28 @@ The five types were then tuned until they reproduced that curve together. That i
 
 The closest published comparable is **Indian life insurance persistency**, which regulators measure at exactly the same checkpoints.
 
-For FY2024-25, the IRDAI Handbook on Indian Insurance Statistics reports **13th month persistency ranging from 59.68% to 83.22%** across life insurers, and **61st month persistency from 22.20% to 58.80%**. The industry average at the 13th month is about 63%.
+For FY2024-25, the IRDAI Handbook on Indian Insurance Statistics reports **13th month persistency ranging from 59.68% to 83.22%** across life insurers, with an **industry average of about 63%**.
 
-| Checkpoint | Indian life insurance, FY2024-25 | This model |
+**We take that 63% as the month-13 anchor.**
+
+| Checkpoint | Indian life insurance | This model |
 |:--|:--|--:|
-| 13th month | 59.68% to 83.22% | **55%** |
-| 61st month | 22.20% to 58.80% | **19%** |
+| 13th month | industry average about **63%** | **63%** |
+| 61st month | LIC on a policy basis, **49.9%** | **29%** |
 
-**Our curve sits below the entire published range at both ends.** That is deliberate and I think it is right. A USD 20 gold savings plan has no tax benefit, no death benefit, and no agent chasing the renewal. The customer is poorer than the average life policyholder. Assuming Aurumix retains better than the worst Indian life insurer would be optimistic.
+### Why we take the level and reject the shape
+
+Indian life persistency barely falls after year one. LIC loses about 36% of policyholders in the first year and only another 14% across the next four.
+
+That flatness is bought by lock-in. Surrender penalties, a death benefit you forfeit, years of sunk premium. Quitting an Indian life policy in year three is expensive.
+
+**Aurumix has none of that.** Stop paying and you keep your gold. No penalty, nothing forfeited. There is no reason our curve should flatten the way theirs does, so ours keeps a steeper decline to 29% at month 61.
+
+### How the hazards were set
+
+Every archetype hazard was multiplied by a single factor, 0.6624, until month-13 persistency hit 63%.
+
+One factor, not five free parameters. Fitting the five weights or the five hazards independently reproduced the curve perfectly and produced a nonsense population, in one case 52% alternating missers and no occasional missers at all. A single scale factor keeps the mix and the ordering between archetypes exactly as they were.
 
 ### Rail
 
@@ -141,18 +157,6 @@ On Request to Pay the customer taps to approve each payment. On the prefunded ba
 The rulebook makes the distinction itself. It only allows "set and forget" to be promised on the prefunded balance. So a prefunded customer draws from an archetype mix tilted toward discipline.
 
 Thirty percent of customers start prefunded. Of those, 35% are re-drawn into the disciplined archetypes. Both numbers are swept.
-
-### Is the rail effect measured anywhere
-
-Partly, and the evidence is stronger than I first thought.
-
-The Consumer Financial Protection Bureau studied autopay on US credit cards in 2023. Enrolling in autopay **raised the likelihood of making a payment by 20 to 29 percentage points**, more than doubling the baseline.
-
-That is a different product in a different market. But it is a measured effect of the same mechanism, removing a monthly manual step, on the same behaviour, making the payment.
-
-So the direction is evidenced. The size for a Gulf gold savings plan is not. That is why the rail share is swept from 0 to 75% rather than set.
-
-This is the one lever over payment behaviour that Aurumix controls.
 
 ### Door
 
@@ -524,7 +528,7 @@ The cost side is well sourced. VARA and DMCC fee schedules, the KYC provider's p
 
 The demand side is weaker. The market funnel filters are made up. No client data exists.
 
-The persistency curve now has a published comparable, Indian life insurance at the same checkpoints, and our curve sits below its full range at both ends. The split of that curve into five behavioural types remains unsourced.
+The persistency curve is anchored to the Indian life insurance industry average at month 13, measured at the same checkpoints. Its decline after year one is ours, and is steeper than a life curve because Aurumix has no surrender penalty. The split of that curve into five behavioural types remains unsourced and is swept.
 
 Every one of those is swept rather than assumed. The profitability threshold is built so that it does not depend on the funnel at all.
 
