@@ -24,6 +24,10 @@ OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
 os.makedirs(OUT, exist_ok=True)
 
 N_PATHS = int(sys.argv[1]) if len(sys.argv) > 1 else 2000
+# Resolution: how many real customers one simulated agent stands for. 10 for
+# working runs, 1 for the final full-resolution run where every customer is
+# simulated individually.
+SCALE = float(sys.argv[2]) if len(sys.argv) > 2 else 10.0
 BASE_SEED = 20270101
 
 
@@ -36,9 +40,14 @@ def run_all(n_paths=N_PATHS):
     years = np.array(p0["grid"]["year"])
     rows = []
     called_by_month = np.zeros((n_paths, 84))
+    # Monthly series kept per path so the charts can be drawn from THIS run
+    # rather than from a separate one. A figure that disagrees with the number
+    # printed beside it is worse than no figure.
+    panels = {k: np.zeros((n_paths, 84)) for k in
+              ("revenue", "s6", "cum_profit", "paying", "funding", "gold_price")}
 
     for k in range(n_paths):
-        out, eng = run_path(BASE_SEED + k)
+        out, eng = run_path(BASE_SEED + k, scale=SCALE)
         years = out["year"]
         yr_rev = {y: out["revenue"][years == y].sum() for y in range(1, 8)}
         yr_np = {y: out["net_profit"][years == y].sum() for y in range(1, 8)}
@@ -51,6 +60,8 @@ def run_all(n_paths=N_PATHS):
                                     struck_ltv=p0["ltv"])
         called_by_month[k] = mc["called_by_month"]
 
+        for pk in panels:
+            panels[pk][k] = out[pk]
         rows.append({
             "path": k,
             "revenue_y7": yr_rev[7],
@@ -78,10 +89,15 @@ def run_all(n_paths=N_PATHS):
 
     df = pd.DataFrame(rows)
     df.to_csv(os.path.join(OUT, "mc_results.csv"), index=False)
+    np.savez_compressed(
+        os.path.join(OUT, "mc_bands.npz"),
+        **{f"{k}_{q}": np.percentile(v, int(q[1:]), axis=0)
+           for k, v in panels.items() for q in ("p10", "p25", "p50", "p75", "p90")})
 
     q = lambda s, x: float(np.quantile(df[s], x))
     summary = {
         "n_paths": n_paths,
+        "scale": SCALE,
         "seed": BASE_SEED,
         "safe_raise": {f"p{int(x*100)}": q("peak_funding", x)
                        for x in (0.50, 0.80, 0.90, 0.95)},
