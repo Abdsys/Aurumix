@@ -1,0 +1,120 @@
+"""
+Do the client documents still agree with the model?
+
+A document quotes a number once and then the model moves. Nothing errors. The
+figure just sits there being wrong until someone reads it carefully, and the
+someone has so far been the client. Four figures in the threshold section of
+SIMULATION_SETUP.md had been wrong since persistency changed from 55% to 63%,
+which is two weeks of the document quietly contradicting the code.
+
+This script pulls the live figures out of outputs/ and checks each one appears
+in the documents where it is supposed to appear.
+
+    python scripts/check_docs.py
+
+It is deliberately narrow. It checks the load-bearing numbers, not every digit,
+because a check that cries wolf gets switched off.
+"""
+
+import json
+import os
+import re
+import sys
+
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DOCS = os.path.dirname(HERE)
+OUT = os.path.join(HERE, "outputs")
+
+with open(os.path.join(OUT, "analysis.json")) as f:
+    A = json.load(f)
+with open(os.path.join(OUT, "mc_summary.json")) as f:
+    M = json.load(f)
+rep = open(os.path.join(OUT, "analysis_report.txt"), encoding="utf-8").read()
+
+
+def num(pattern, text=rep, cast=float):
+    m = re.search(pattern, text)
+    return cast(m.group(1).replace(",", "")) if m else None
+
+
+def money(v):
+    """The forms a document might reasonably use for a dollar figure."""
+    return {f"{v:,.0f}", f"{v/1e6:.2f}m", f"{v/1e6:.1f}m", f"{v/1e3:.0f}k"}
+
+
+def pct(v):
+    return {f"{v:.0%}", f"{v*100:.0f}%", f"{v:.1%}", f"{v*100:.1f}%"}
+
+
+# The results document is deliberately not rewritten yet (client instruction,
+# 2026-09-03: more model changes expected first). Its figures are known stale,
+# so they are reported separately rather than as failures - a check that always
+# fails is a check nobody reads. Flip this to False when it is rewritten.
+RESULTS_ON_HOLD = True
+
+# figure -> (set of acceptable renderings, which documents must carry it)
+t15 = A["q1_threshold"]["contingency_15"]
+RESULT_FIGURES = {
+    "retail customers needed, 15% contingency":
+        money(t15["blended_cac"]["paying_needed_ex_b2b"]),
+    "safe raise p90": money(M["safe_raise"]["p90"]),
+    "P(cumulative break-even by Y7)": pct(M["P_cum_breakeven_by"]["Y7"]),
+    "median Y7 net profit": money(M["net_profit_y7"]["p50"]),
+}
+
+CHECKS = {
+    "partners to cover fixed costs alone":
+        ({f"{t15['partners_to_cover_fixed_alone']:.1f}"}, ["SIMULATION_SETUP.md"]),
+    "blended CAC":
+        ({f"USD {num(r'CAC blended \$(\d+)'):.0f}"}, ["SIMULATION_SETUP.md"]),
+    "serving cost per customer":
+        ({f"USD {num(r'serve \$(\d+)'):.0f}"}, ["SIMULATION_SETUP.md"]),
+    "retail revenue per payer":
+        ({f"USD {num(r'revenue/payer \$(\d+)'):.0f}"}, ["SIMULATION_SETUP.md"]),
+    "annual churn":
+        ({f"{num(r'churn (\d+)%/yr'):.0f}%"}, ["SIMULATION_SETUP.md"]),
+}
+
+print("=" * 78)
+print("DOCUMENT / MODEL AGREEMENT")
+print("=" * 78)
+
+text = {}
+for d in {d for _, docs in CHECKS.values() for d in docs}:
+    path = os.path.join(DOCS, d)
+    text[d] = open(path, encoding="utf-8").read() if os.path.exists(path) else ""
+
+fails = []
+for label, (forms, docs) in CHECKS.items():
+    for d in docs:
+        hit = any(f in text[d] for f in forms)
+        if not hit:
+            fails.append(f"{d}: {label} -> model says {' or '.join(sorted(forms))}")
+        print(f"  [{'PASS' if hit else 'FAIL'}] {d:24} {label}"
+              f"  ({sorted(forms)[0]})")
+
+res = os.path.join(DOCS, "SIMULATION_RESULTS.md")
+if os.path.exists(res):
+    rt = open(res, encoding="utf-8").read()
+    stale = [k for k, forms in RESULT_FIGURES.items() if not any(f in rt for f in forms)]
+    print()
+    if RESULTS_ON_HOLD:
+        print(f"  SIMULATION_RESULTS.md is ON HOLD by client instruction. "
+              f"{len(stale)} of {len(RESULT_FIGURES)} headline figures are stale:")
+        for k in stale:
+            print(f"    - {k}: model now says {' or '.join(sorted(RESULT_FIGURES[k]))}")
+        print("  Set RESULTS_ON_HOLD = False once it is rewritten.")
+    else:
+        for k in stale:
+            fails.append(f"SIMULATION_RESULTS.md: {k} -> model says "
+                         f"{' or '.join(sorted(RESULT_FIGURES[k]))}")
+
+print("=" * 78)
+if fails:
+    print(f"{len(fails)} figure(s) in the documents no longer match the model:")
+    for f in fails:
+        print("   ", f)
+else:
+    print("every checked figure matches")
+print("=" * 78)
+sys.exit(1 if fails else 0)

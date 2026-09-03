@@ -70,13 +70,17 @@ They pass information both ways.
 
 **Forward.** The population engine takes its new customers each month from the ported revenue model, so both layers grow the same book.
 
-**Back.** The population engine computes the tier mix month by month, and the ported engine uses it to price the loyalty giveback.
+**Back.** The population engine sends two things the other way.
 
-That second direction matters. The spreadsheet applies one flat discount rate to a flat share of the book, because it cannot see who is in which tier. That shortcut is wrong in a known direction: nobody has the tenure for Platinum in year two, so a flat rate is too generous early and too mean late.
+The first is the tier mix, month by month, which prices the loyalty giveback. The spreadsheet applies one flat discount rate to a flat share of the book, because it cannot see who is in which tier. That shortcut is wrong in a known direction: nobody has the tenure for Platinum in year two, so a flat rate is too generous early and too mean late.
 
 The computed rate runs at **10.7% of the entry fee at month 12, rising to 17.8% by month 84**, against the spreadsheet's flat 25%.
 
-Running the population engine inside every one of the 2,000 paths would take hours. Instead it runs once across a spread of persistency values, producing a lookup the ported engine reads on every path.
+The second is referral capacity. The spreadsheet counts referrals off the raw paying head count, so a customer in month two is as persuasive as one in year three. They are not. Nobody recommends a savings plan they have barely started, and advocacy rises with what the plan has actually given them.
+
+So propensity is zero for three months, ramps to full by month twelve, and scales up the tier ladder. The population engine knows every customer's tenure and tier, so it can compute what the whole book is worth as a referral source. That figure is **0.35 of the flat assumption in year one and 0.74 by year three**, reaching 1.0 on a matured book. Both corrections are judgement rather than measurement, and are marked as such.
+
+Running the population engine inside all 2,000 paths would take hours. Instead it runs once across a spread of persistency values, producing a lookup the ported engine reads on every path.
 
 ---
 
@@ -355,7 +359,7 @@ That grounds every draw in a range the client has already seen and signed. It al
 
 ### Which inputs are drawn
 
-**Seventy-two parameters.** Every input in the workbook that carries an Aggressive and Conservative value is drawn. Persistency, the three regional acquisition costs, referral behaviour, spot behaviour, the whole card programme, every fixed cost, the licence fees, the vault contract, and the contingency.
+**Seventy-four parameters.** Every input in the workbook that carries an Aggressive and Conservative value is drawn. Persistency, the three regional acquisition costs, referral behaviour, spot behaviour, the whole card programme, every fixed cost, the licence fees, the vault contract, and the contingency.
 
 The rule is opt-out rather than opt-in. If the client has priced a range for something, that range belongs in the raise number. Eleven parameters are excluded and each carries a written reason, mostly because they are computed elsewhere: the partner count is a discrete arrival process, the gold band is carried by the price process, and the four loyalty discount rates are computed from the tier mix.
 
@@ -368,7 +372,7 @@ This is the core loop. Every month, in this order.
 ### The twelve steps
 
 1. **The gold price advances** one step along the path.
-2. **New customers arrive** from the ported acquisition engine. Each is assigned a region, ticket, archetype, rail and door.
+2. **New customers arrive** from the acquisition engine: marketing reach at that month's cost per customer, agents, and referrals scaled by the book's referral capacity, all against the addressable ceiling. Each is assigned a region, ticket, archetype, rail and door.
 3. **Each living customer decides whether to pay**, at their archetype's probability.
 4. **Each paying customer decides how much**, around their ticket, floored at USD 20.
 5. **The streak updates.** A payment adds one. A miss resets to zero. Anyone reaching six passes the gate.
@@ -476,10 +480,10 @@ Where:
 - $K^*$ is the number of B2B partners that covers fixed costs on their own
 - $F$ is the annual fixed cost base, about USD 430k
 - $k$ is one plus the contingency, swept at 15%, 30% and 50%
-- $r$ is retail revenue per paying customer per year, about USD 41 excluding B2B
-- $s$ is the serving cost per customer, about USD 13
-- $c$ is annual churn, 45%
-- CAC is the cost to replace one customer, USD 37 blended or USD 55 in the UAE alone
+- $r$ is retail revenue per paying customer per year, about USD 38 excluding B2B
+- $s$ is the serving cost per customer, about USD 11
+- $c$ is annual churn, 37%
+- CAC is the cost to replace one customer, USD 40 blended or USD 55 in the UAE alone
 - $A$ is assets under management per partner and $f$ is the platform fee
 
 ### Why apart
@@ -528,7 +532,7 @@ That is what makes the simulation an extension of the model rather than a rival 
 
 Two gates prove the model is right on the day it is built. They do not stop a later change from quietly breaking something.
 
-So a third check runs after every change. It asserts that every priced range reaches the Monte Carlo, that the tier mix reaches the pricing engine, that derived quantities move when their inputs move, that departures from the workbook are declared, and that the benefit ladder is internally consistent.
+So a third check runs after every change. It asserts that every priced range reaches the Monte Carlo, that the tier mix reaches the pricing engine, that derived quantities move when their inputs move, that departures from the workbook are declared, that the benefit ladder is internally consistent, and that the acquisition block still responds to the model rather than to a fixed formula.
 
 It exists because each of those failed at least once during the build, and none of them announced itself.
 

@@ -21,6 +21,30 @@ from src.mcmodel import _match_triples
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "outputs")
 os.makedirs(OUT, exist_ok=True)
+
+
+class _Tee:
+    """
+    The report file used to be produced by piping this script's output by hand.
+    It then sat in outputs/ going stale while analysis.json moved on, which is
+    the same class of defect as a frozen parameter: quietly wrong, no error.
+    The run that writes the JSON now writes the report too.
+    """
+
+    def __init__(self, path):
+        self.f = open(path, "w", encoding="utf-8", newline="\n")
+        self.stdout = sys.stdout
+
+    def write(self, s):
+        self.stdout.write(s)
+        self.f.write(s)
+
+    def flush(self):
+        self.stdout.flush()
+        self.f.flush()
+
+
+sys.stdout = _Tee(os.path.join(OUT, "analysis_report.txt"))
 A = {}
 p0 = load_params()
 years = np.array(p0["grid"]["year"])
