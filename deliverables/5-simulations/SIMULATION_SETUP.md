@@ -146,8 +146,8 @@ How they arrived: marketing, an agent, or a referral. The door carries the acqui
 
 Two exits exist for gold, and neither involves physical delivery, because Aurumix does not offer physical delivery.
 
-- **Redemption**: the customer sells gold back for cash. Each month each customer has a $6\%/12$ chance of redeeming, and a redemption sells a quarter of their holding. Lapsed customers who still hold gold redeem at 1.6 times that rate. Redeemed metal returns to Aurumix and is recycled into the float.
-- **Self-custody**: the customer moves AURX tokens to their own wallet. Also a $6\%/12$ monthly chance, also a quarter of the holding. The gold stays in the vault, so the vault bill keeps running on it, but off-platform tokens leave the collateral base: they no longer back the customer's credit line and they leave the platform's AUM figure.
+- **Redemption**: the customer sells gold back for cash. Each month each customer has a 0.5% chance of redeeming (a 6% annual rate spread across twelve months), and a redemption sells a quarter of their holding. Lapsed customers who still hold gold redeem at 1.6 times that rate, 0.8% a month. Redeemed metal returns to Aurumix and is recycled into the float.
+- **Self-custody**: the customer moves AURX tokens to their own wallet. Also a 0.5% monthly chance, also a quarter of the holding. The gold stays in the vault, so the vault bill keeps running on it, but off-platform tokens leave the collateral base: they no longer back the customer's credit line and they leave the platform's AUM figure.
 
 Neither exit counts against the customer's loyalty score, because in both cases the customer still owns the gold. Only selling does, as section 6 shows.
 
