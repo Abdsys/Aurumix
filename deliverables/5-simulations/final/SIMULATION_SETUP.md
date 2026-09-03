@@ -66,7 +66,17 @@ This matters for one reason. Whether a customer earns a loyalty tier depends on 
 
 ### Where the two engines meet
 
-The population engine takes its new customers each month from the ported revenue model. Both layers grow the same book. The population layer then computes what the spreadsheet cannot: who is in which tier, and where the profit sits.
+They pass information both ways.
+
+**Forward.** The population engine takes its new customers each month from the ported revenue model, so both layers grow the same book.
+
+**Back.** The population engine computes the tier mix month by month, and the ported engine uses it to price the loyalty giveback.
+
+That second direction matters. The spreadsheet applies one flat discount rate to a flat share of the book, because it cannot see who is in which tier. That shortcut is wrong in a known direction: nobody has the tenure for Platinum in year two, so a flat rate is too generous early and too mean late.
+
+The computed rate runs at **10.7% of the entry fee at month 12, rising to 17.8% by month 84**, against the spreadsheet's flat 25%.
+
+Running the population engine inside every one of the 2,000 paths would take hours. Instead it runs once across a spread of persistency values, producing a lookup the ported engine reads on every path.
 
 ---
 
@@ -345,7 +355,9 @@ That grounds every draw in a range the client has already seen and signed. It al
 
 ### Which inputs are drawn
 
-Thirty-two parameters. Persistency. The three regional acquisition costs. Referral rate and conversion. Spot behaviour. The programme manager's share of interchange. Facility take-up. Family attach. Partner economics. The contingency on the cost base.
+**Seventy-two parameters.** Every input in the workbook that carries an Aggressive and Conservative value is drawn. Persistency, the three regional acquisition costs, referral behaviour, spot behaviour, the whole card programme, every fixed cost, the licence fees, the vault contract, and the contingency.
+
+The rule is opt-out rather than opt-in. If the client has priced a range for something, that range belongs in the raise number. Eleven parameters are excluded and each carries a written reason, mostly because they are computed elsewhere: the partner count is a discrete arrival process, the gold band is carried by the price process, and the four loyalty discount rates are computed from the tier mix.
 
 ---
 
@@ -366,7 +378,7 @@ This is the core loop. Every month, in this order.
 9. **Family plans attach** on new customers and cancel at the workbook's rate.
 10. **Redemptions and moves to self-custody** drain gold.
 11. **The four clocks tick.** SIP lapse, card dormancy, credit repayment, exit.
-12. **The aggregates flow through the ported revenue model.** Revenue by stream, the fabrication premium, the vault, the licences, the loyalty giveback, acquisition cost, the card programme, contingency, net profit, capital tied up, and the funding line.
+12. **The aggregates flow through the ported revenue model.** Revenue by stream, the fabrication premium, the vault, the licences, acquisition cost, the card programme, contingency, net profit, capital tied up, and the funding line. The loyalty giveback is priced from that month's computed tier mix rather than a flat rate.
 
 ### Two rules on redemption
 
@@ -511,6 +523,14 @@ That proves the code is right. It proves nothing about Aurumix, because those fi
 The ported revenue model reproduces the calculated workbook. Thirty-six series, all twenty-nine periods, zero error.
 
 That is what makes the simulation an extension of the model rather than a rival to it.
+
+### The standing audit
+
+Two gates prove the model is right on the day it is built. They do not stop a later change from quietly breaking something.
+
+So a third check runs after every change. It asserts that every priced range reaches the Monte Carlo, that the tier mix reaches the pricing engine, that derived quantities move when their inputs move, that departures from the workbook are declared, and that the benefit ladder is internally consistent.
+
+It exists because each of those failed at least once during the build, and none of them announced itself.
 
 ### One figure deliberately not chased
 
