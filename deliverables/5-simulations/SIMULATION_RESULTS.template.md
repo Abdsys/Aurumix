@@ -16,26 +16,26 @@ created: 2026-09-03
 
 ### Executive summary
 
-**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about 1.08m off the raise.**
+**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about {{RAISE_SAVED}} off the raise.**
 
-The simulation ran 2,000 versions of the next seven years, each one a full rerun of every customer, month by month, at one agent per 10 customers.
+The simulation ran {{PATHS}} versions of the next seven years, each one a full rerun of every customer, month by month, at {{AGENTS}}.
 
 | Metric | Plan as modelled | With the three changes |
 |:--|--:|--:|
-| Raise needed, 9 paths in 10 | **5.42m** | **4.34m** |
-| Raise needed, median path | 3.51m | 2.97m |
-| Odds of clearing the hole by year 7 | **35%** | **54%** |
-| Year-seven profit, median | 0.49m | 0.67m |
-| Year-seven profit, worst tenth | -0.39m | -0.23m |
-| Paying customers at month 84, median | 88,445 | 91,905 |
+| Raise needed, 9 paths in 10 | **{{RAISE90}}** | **{{R_RAISE90}}** |
+| Raise needed, median path | {{RAISE50}} | {{R_RAISE50}} |
+| Odds of clearing the hole by year 7 | **{{BE7}}** | **{{R_BE7}}** |
+| Year-seven profit, median | {{NP50}} | {{R_NP50}} |
+| Year-seven profit, worst tenth | {{NP10}} | {{R_NP10}} |
+| Paying customers at month 84, median | {{PAY50}} | {{R_PAY50}} |
 
 Three findings drive everything else.
 
-**Partners are the business.** They are 31% of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose -4.62m and need 6.21m of funding.
+**Partners are the business.** They are {{B2B_SHARE}} of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose {{ST_NOB2B_CUM}} and need {{ST_NOB2B_PK}} of funding.
 
-**Retail does not stand alone.** At a 15% contingency the retail book would need 147,768 paying customers to cover the fixed base by itself, against the 88,445 the plan builds. At 30% and above, the margin per customer goes negative and no book size fixes it.
+**Retail does not stand alone.** At a 15% contingency the retail book would need {{NEED15}} paying customers to cover the fixed base by itself, against the {{PAY50}} the plan builds. At 30% and above, the margin per customer goes negative and no book size fixes it.
 
-**Gold is not the risk.** A 30% crash leaves cumulative profit at 0.48m against a base of 0.48m. Customers own the gold; Aurumix earns fees on flows.
+**Gold is not the risk.** A 30% crash leaves cumulative profit at {{ST_GOLD_CUM}} against a base of {{ST_BASE_CUM}}. Customers own the gold; Aurumix earns fees on flows.
 
 ### The three questions
 
@@ -55,11 +55,11 @@ Strip out partners and ask a simple question: at a mature, standing-still book, 
 
 ![Retail alone](aurumix/outputs/charts/threshold_retail_alone.png)
 
-At a 15% contingency, one customer contributes about **$3.18 a year** after serving them and after replacing the customers who leave. The fixed base is roughly $410,000 a year, so covering it needs **147,768 paying customers**. The plan builds 88,445.
+At a 15% contingency, one customer contributes about **${{MARGIN15}} a year** after serving them and after replacing the customers who leave. The fixed base is roughly $410,000 a year, so covering it needs **{{NEED15}} paying customers**. The plan builds {{PAY50}}.
 
-Raise the contingency and the answer stops existing. At 30% the margin per customer turns negative, which means no number of customers covers the fixed base: unreachable. At 50%, the same.
+Raise the contingency and the answer stops existing. At 30% the margin per customer turns negative, which means no number of customers covers the fixed base: {{NEED30}}. At 50%, the same.
 
-**Or 3.3 partners cover the fixed base by themselves.**
+**Or {{PARTNERS15}} partners cover the fixed base by themselves.**
 
 That contrast is the finding. A partner's fee arrives almost whole; a retail customer's revenue survives serving cost and replacement cost first, and what remains is small. The two thresholds are never blended, because blending them hides whether the retail leg stands.
 
@@ -67,7 +67,7 @@ That contrast is the finding. A partner's fee arrives almost whole; a retail cus
 
 The revenue model's paying customers pay every month by construction. The simulation's do not: three of the five payment behaviours miss months on purpose, and the book ends up paying in about **78% of the months it could**.
 
-The effect is direct. Revenue per paying customer falls from roughly $38 a year to **$32**, while serving and replacement costs do not fall at all. That single correction is most of the distance between "retail needs 65,000 customers" and "retail needs 147,768".
+The effect is direct. Revenue per paying customer falls from roughly $38 a year to **$32**, while serving and replacement costs do not fall at all. That single correction is most of the distance between "retail needs 65,000 customers" and "retail needs {{NEED15}}".
 
 ### Finding 3: partners arrive slowly, and the raise is set while they are still ramping
 
@@ -87,12 +87,12 @@ The consequence is a materially larger raise than an instant-adoption model woul
 
 | Confidence | Raise needed |
 |:--|--:|
-| Median path | 3.51m |
-| 8 paths in 10 | 4.77m |
-| **9 paths in 10** | **5.42m** |
-| 19 paths in 20 | 5.96m |
+| Median path | {{RAISE50}} |
+| 8 paths in 10 | {{RAISE80}} |
+| **9 paths in 10** | **{{RAISE90}}** |
+| 19 paths in 20 | {{RAISE95}} |
 
-70% of paths need more than $3m. The number is the deepest point of a monthly cash line, not a year-end figure: cumulative losses plus the capital locked in the gold float, card prefunding and regulatory capital.
+{{P_GT3M}} of paths need more than $3m. The number is the deepest point of a monthly cash line, not a year-end figure: cumulative losses plus the capital locked in the gold float, card prefunding and regulatory capital.
 
 ### Getting to profit
 
@@ -100,10 +100,10 @@ The consequence is a materially larger raise than an instant-adoption model woul
 
 | Milestone | Share of paths in cumulative profit |
 |:--|--:|
-| By year 4 | 2% |
-| By year 5 | 9% |
-| By year 6 | 22% |
-| By year 7 | **35%** |
+| By year 4 | {{BE4}} |
+| By year 5 | {{BE5}} |
+| By year 6 | {{BE6}} |
+| By year 7 | **{{BE7}}** |
 
 ![Cumulative profit](aurumix/outputs/charts/cum_profit_fan.png)
 
@@ -113,7 +113,7 @@ The shape matters as much as the odds. The median path digs a hole for roughly f
 
 ![Revenue with and without partners](aurumix/outputs/charts/revenue_fan_with_without_b2b.png)
 
-Year-seven revenue runs 4.25m at the median, of which 2.93m is retail. Partners are **31%** of the total from a handful of contracts.
+Year-seven revenue runs {{REV50}} at the median, of which {{REV_EX_B2B}} is retail. Partners are **{{B2B_SHARE}}** of the total from a handful of contracts.
 
 ![Partner dependence](aurumix/outputs/charts/partner_dependence.png)
 
@@ -121,26 +121,26 @@ Profit tracks the partner count almost linearly. This is the single most importa
 
 ### The loyalty ladder
 
-By month 84, **53.4%** of the live book has cleared six consecutive payments and holds a tier. Within that group:
+By month 84, **{{GATED}}** of the live book has cleared six consecutive payments and holds a tier. Within that group:
 
 | Tier | Share of tiered customers |
 |:--|--:|
-| Silver | 38.3% |
-| Gold | 45.8% |
-| Platinum | 14.1% |
-| Sovereign | 1.7% |
+| Silver | {{T_SILVER}} |
+| Gold | {{T_GOLD}} |
+| Platinum | {{T_PLAT}} |
+| Sovereign | {{T_SOV}} |
 
 ![Tier mix](aurumix/outputs/charts/tier_mix_over_time.png)
 
 Sovereign requires a five-year payment record and a near-perfect recent year at the same time. Almost nobody clears it inside seven years, which is what makes it cheap to offer and meaningful to hold.
 
-Priced at each customer's own tier, the giveback costs between **5.1%** and **16.7%** of revenue depending on how generous the ladder is. That answers the second question. The ladder is affordable across its whole design range, and its cost is not what decides whether the business works.
+Priced at each customer's own tier, the giveback costs between **{{GIVE_LO}}** and **{{GIVE_HI}}** of revenue depending on how generous the ladder is. That answers the second question. The ladder is affordable across its whole design range, and its cost is not what decides whether the business works.
 
 ### Who the profit comes from
 
 ![Profit by ticket decile](aurumix/outputs/charts/profit_by_ticket_decile.png)
 
-The top tenth of customers by monthly saving contributes **15.1%** of lifetime profit; the top three deciles contribute 37.0%; the bottom half contributes 43.8%. A minority of the book carries the economics, which is normal for a savings product and matters for how acquisition is targeted.
+The top tenth of customers by monthly saving contributes **{{DEC_TOP}}** of lifetime profit; the top three deciles contribute {{DEC_TOP3}}; the bottom half contributes {{DEC_BOT5}}. A minority of the book carries the economics, which is normal for a savings product and matters for how acquisition is targeted.
 
 ### What the answer depends on
 
@@ -148,11 +148,11 @@ The top tenth of customers by monthly saving contributes **15.1%** of lifetime p
 
 | Rank | Assumption | Swing in year-seven profit |
 |:--|:--|--:|
-| 1 | partner adopt | 1.82m |
-| 2 | partner aum user | 1.25m |
-| 3 | b2b fee | 0.83m |
-| 4 | facility takeup | 0.79m |
-| 5 | ceiling mult | 0.74m |
+| 1 | {{TOR1}} | {{TOR1_SW}} |
+| 2 | {{TOR2}} | {{TOR2_SW}} |
+| 3 | {{TOR3}} | {{TOR3_SW}} |
+| 4 | {{TOR4}} | {{TOR4_SW}} |
+| 5 | {{TOR5}} | {{TOR5_SW}} |
 
 Partner assumptions occupy the top of this list. None of them is measured. One signed letter of intent, with a real user count and a real adoption rate, would narrow this model more than any further modelling work.
 
@@ -162,22 +162,22 @@ Partner assumptions occupy the top of this list. None of them is measured. One s
 
 | Scenario | Cumulative profit at year 7 | Peak funding |
 |:--|--:|--:|
-| Base | 0.48m | 2.50m |
-| Gold crashes 30% | 0.48m | 2.50m |
-| Redemption run, 25% at month 24 | 0.28m | 2.54m |
-| **No partners at all** | **-4.62m** | **6.21m** |
-| Adoption failure | -0.46m | 2.69m |
-| Regulatory delay, 12 months | -0.26m | 3.24m |
-| Ticket compression | 0.18m | 2.51m |
-| Combined tail | -2.70m | 4.22m |
+| Base | {{ST_BASE_CUM}} | {{ST_BASE_PK}} |
+| Gold crashes 30% | {{ST_GOLD_CUM}} | {{ST_GOLD_PK}} |
+| Redemption run, 25% at month 24 | {{ST_RUN_CUM}} | {{ST_RUN_PK}} |
+| **No partners at all** | **{{ST_NOB2B_CUM}}** | **{{ST_NOB2B_PK}}** |
+| Adoption failure | {{ST_ADOPT_CUM}} | {{ST_ADOPT_PK}} |
+| Regulatory delay, 12 months | {{ST_DELAY_CUM}} | {{ST_DELAY_PK}} |
+| Ticket compression | {{ST_TICKET_CUM}} | {{ST_TICKET_PK}} |
+| Combined tail | {{ST_TAIL_CUM}} | {{ST_TAIL_PK}} |
 
 Three readings.
 
 **Gold is not the risk.** The crash scenario is almost indistinguishable from base. Customers hold the price exposure; Aurumix earns fees.
 
-**Partners are the whole risk.** Their absence costs -4.62m over seven years and pushes the funding need to 6.21m. No other single scenario comes close.
+**Partners are the whole risk.** Their absence costs {{ST_NOB2B_CUM}} over seven years and pushes the funding need to {{ST_NOB2B_PK}}. No other single scenario comes close.
 
-**A redemption run is survivable.** Cumulative profit falls to 0.28m and funding rises only to 2.54m. The gold is allocated and already owned, so a run is an operational and cash-timing event, not a solvency one. The credit book stays quiet through all of this: the chance of ever needing a collateral top-up is **4.1%**, because loans are secured against gold that rises with the same price the loan is measured in.
+**A redemption run is survivable.** Cumulative profit falls to {{ST_RUN_CUM}} and funding rises only to {{ST_RUN_PK}}. The gold is allocated and already owned, so a run is an operational and cash-timing event, not a solvency one. The credit book stays quiet through all of this: the chance of ever needing a collateral top-up is **{{PMC}}**, because loans are secured against gold that rises with the same price the loan is measured in.
 
 ---
 
@@ -191,11 +191,11 @@ Same 2,000 worlds, same dice, only the configuration moved.
 
 | | Plan | Recommended |
 |:--|--:|--:|
-| Raise, 9 in 10 | 5.42m | **4.34m** |
-| Break-even by year 7 | 35% | **54%** |
-| Year-seven profit, median | 0.49m | 0.67m |
-| Year-seven profit, worst tenth | -0.39m | -0.23m |
-| Cumulative profit at year 7, median | | 0.23m |
+| Raise, 9 in 10 | {{RAISE90}} | **{{R_RAISE90}}** |
+| Break-even by year 7 | {{BE7}} | **{{R_BE7}}** |
+| Year-seven profit, median | {{NP50}} | {{R_NP50}} |
+| Year-seven profit, worst tenth | {{NP10}} | {{R_NP10}} |
+| Cumulative profit at year 7, median | | {{R_CUM50}} |
 
 ### Recommendations
 
@@ -205,7 +205,7 @@ The top tier pays 3.5% entry rather than 3.0%, and the benefits concentrate near
 
 #### 2. Push the standing-instruction rail toward 75% of joiners
 
-Customers on autopay miss fewer months and reach tiers faster. The gated share rises from 50.0% to 58.3%, and the paying book from 85,000 to 95,640. One caveat: the model prices the benefit and carries no cost for winning that adoption, because none is known.
+Customers on autopay miss fewer months and reach tiers faster. The gated share rises from {{RAIL0_GATE}} to {{RAIL75_GATE}}, and the paying book from {{RAIL0_PAY}} to {{RAIL75_PAY}}. One caveat: the model prices the benefit and carries no cost for winning that adoption, because none is known.
 
 #### 3. Move marketing from 74/18/8 to 50/15/35 across the regions
 
@@ -237,8 +237,8 @@ The current split concentrates spend in the smallest and dearest market. The rea
 
 | | |
 |:--|:--|
-| Paths | 2,000 |
-| Resolution | one agent per 10 customers |
+| Paths | {{PATHS}} |
+| Resolution | {{AGENTS}} |
 | Horizon | 84 months, monthly steps, starting January 2027 |
 | Drawn inputs per path | 75 parameters, plus a gold path and a partner history |
 | Randomness | fixed seeds; every result reproduces exactly |

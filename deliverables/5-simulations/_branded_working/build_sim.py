@@ -769,7 +769,7 @@ def build_results(meta, md, ctx):
                     c["body"] = "".join(md_blocks(c["lines"], ctx))
                 toc.append({"level": 2, "text": "Recommendations", "ref": "sec-recs"})
                 pages.append(("recs", ("Recommendations",
-                                       "Six actions, ranked by what they cost. Each is tied to a finding in this document.",
+                                       "Each change is tied to a finding in this document, and each was run through the full simulation.",
                                        cards, "sec-recs")))
                 continue
             if num == "5":
