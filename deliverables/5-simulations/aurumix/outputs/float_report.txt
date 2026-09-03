@@ -1,0 +1,28 @@
+A. Float model verification
+  [PASS] zero demand -> float sits at 2 bars, no stock-outs
+  [PASS] flat demand at 99% service -> stock-out rate 0.00% (<2%)
+  [PASS] higher service level holds more float (229 g at 95% vs 256 g at 99.9%)
+
+B. Base run - engine flows, deterministic gold
+  workbook float at Y7         4,181 g  (rule: 1 bar + 10 days avg demand)
+  inventory model, Y7 avg        492 g  order-up-to 3,358 g  stock-out days 0.24%
+  carry cost cumulative     $    25,493   sell-back cum $27
+
+C. Sweeps (Y7 average float grams | stock-out rate | cumulative carry)
+  lead 1d             376 g |  0.12% | $   21,531
+  lead 3d             603 g |  0.44% | $   28,724
+  lead 5d             803 g |  0.67% | $   35,174
+  service 95%         450 g |  0.28% | $   23,897
+  service 99.9%       530 g |  0.24% | $   26,767
+  payday 40%          443 g |  0.24% | $   23,294
+  payday 80%          541 g |  0.28% | $   27,294
+  carry 4%            492 g |  0.24% | $   16,995
+  carry 8%            492 g |  0.24% | $   33,990
+
+D. Unhedged float across 400 Monte Carlo gold paths (mark-to-market P&L)
+  MTM P&L over 7 yrs: p10 $727 | p50 $27,647 | p90 $72,726
+  worst single year (p10 across paths): $-16,392
+  carry cost cumulative, median: $25,878
+  safe raise p90: workbook float $4,234,914 -> inventory float $3,437,379
+
+wrote outputs/float_results.json

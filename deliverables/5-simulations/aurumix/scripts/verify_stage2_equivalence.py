@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 import openpyxl
 
-from src.detmodel import DetModel
+from src.detmodel import DetModel, load_params
 
 WB = os.path.normpath(os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -71,7 +71,9 @@ def main():
     wb = openpyxl.load_workbook(WB, data_only=True)
     m = wb["Model"]
 
-    eng = DetModel()
+    # RAW workbook parameters: this test proves the PORT is faithful, so the
+    # deliberate departures in config/overrides.py are excluded on purpose.
+    eng = DetModel(p=load_params(raw=True))
     eng.run()
 
     print("=" * 88)

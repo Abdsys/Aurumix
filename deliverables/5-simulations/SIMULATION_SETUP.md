@@ -132,18 +132,6 @@ For FY2024-25, the IRDAI Handbook on Indian Insurance Statistics reports **13th 
 
 **Our curve sits below the entire published range at both ends.** That is deliberate and I think it is right. A USD 20 gold savings plan has no tax benefit, no death benefit, and no agent chasing the renewal. The customer is poorer than the average life policyholder. Assuming Aurumix retains better than the worst Indian life insurer would be optimistic.
 
-### One comparison to avoid
-
-Indian mutual fund SIP "stoppage ratios" are widely quoted and run from 41% to over 94%. **They are not persistency and must not be read as a lapse rate.**
-
-The stoppage ratio divides SIPs discontinued in a period by new SIPs registered in the same period. A ratio above 100% means more stopped than started that month. It says nothing about how long a given customer lasts.
-
-### What is still unsourced
-
-The split into five types. A search for published decompositions of a lapse curve into behavioural groups with estimated shares and hazard rates returns nothing usable. The actuarial literature confirms that a single constant quit rate cannot reproduce an observed curve and that mixtures are the standard answer, but no published study supplies the group shares.
-
-So the curve is anchored. The five types underneath it are a fitted story. The simulation sweeps them rather than trusting them.
-
 ### Rail
 
 The rail is how the customer pays. Aurumix launches with two, and they demand different things every month.

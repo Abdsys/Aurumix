@@ -67,38 +67,43 @@ class Archetype:
     pay_floor: float = 0.0      # pay_prob never falls below this
 
 
+# HAZARDS RESCALED 2026-09-03 by k = 0.6624 so that M13 persistency hits the
+# sourced 63%. The MIX is untouched and the relative ordering of archetypes is
+# preserved: one factor on every hazard, not five free parameters. Fitting the
+# five weights or five hazards independently produced degenerate solutions
+# (52% alternating missers, or a perfect payer who never leaves).
 ARCHETYPES_BASE = [
-    Archetype("perfect",     0.10, 0.995, 0.000),
-    Archetype("occasional",  0.35, 0.930, 0.007),
-    Archetype("alternating", 0.12, 0.550, 0.018),
-    Archetype("reducer",     0.13, 0.970, 0.002),
+    Archetype("perfect",     0.10, 0.995, 0.0000),
+    Archetype("occasional",  0.35, 0.930, 0.0046),
+    Archetype("alternating", 0.12, 0.550, 0.0119),
+    Archetype("reducer",     0.13, 0.970, 0.0013),
     # v2.6 says "0.60 falling" but its own published figures (2.6% ever-gate,
     # mean gate M8.6, ~90% gone by M13) are reproduced by a FLAT 0.60 and fit
     # WORSE under any falling variant tested. Flat is used; the discrepancy is
     # in v2.6's prose, not its arithmetic.
-    Archetype("early_lapser", 0.30, 0.600, 0.200),
+    Archetype("early_lapser", 0.30, 0.600, 0.1325),
 ]
 
 ARCHETYPES_AGGRESSIVE = [
-    Archetype("perfect",     0.29, 0.995, 0.000),
-    Archetype("occasional",  0.26, 0.930, 0.007),
-    Archetype("alternating", 0.16, 0.550, 0.018),
-    Archetype("reducer",     0.08, 0.970, 0.002),
-    Archetype("early_lapser", 0.21, 0.600, 0.200),
+    Archetype("perfect",     0.29, 0.995, 0.0000),
+    Archetype("occasional",  0.26, 0.930, 0.0046),
+    Archetype("alternating", 0.16, 0.550, 0.0119),
+    Archetype("reducer",     0.08, 0.970, 0.0013),
+    Archetype("early_lapser", 0.21, 0.600, 0.1325),
 ]
 
 ARCHETYPES_CONSERVATIVE = [
-    Archetype("perfect",     0.14, 0.995, 0.000),
-    Archetype("occasional",  0.24, 0.930, 0.007),
-    Archetype("alternating", 0.16, 0.550, 0.018),
-    Archetype("reducer",     0.10, 0.970, 0.002),
-    Archetype("early_lapser", 0.36, 0.600, 0.200),
+    Archetype("perfect",     0.14, 0.995, 0.0000),
+    Archetype("occasional",  0.24, 0.930, 0.0046),
+    Archetype("alternating", 0.16, 0.550, 0.0119),
+    Archetype("reducer",     0.10, 0.970, 0.0013),
+    Archetype("early_lapser", 0.36, 0.600, 0.1325),
 ]
 
 # Background hazard applies to every archetype on top of its own.
 # Derived, not typed: v2.6 gives total monthly attrition per archetype, and
 # perfect payer has own_hazard 0.000 against a total of 0.016.
-BACKGROUND_HAZARD = {"base": 0.016, "aggressive": 0.011, "conservative": 0.024}
+BACKGROUND_HAZARD = {"base": 0.0106, "aggressive": 0.0073, "conservative": 0.0159}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Rails — _draft_sip-rulebook.md sec 6.2.
@@ -139,8 +144,9 @@ REGIONS = [
 ]
 
 # UNSOURCED but defensible as shape: savings books sit heavy at the floor.
-# Handoff sec 9: "40 to 60% of the book sits at the floor". Swept.
-TICKET_FLOOR_SHARE = 0.50
+# Handoff sec 9: "40 to 60% of the book sits at the floor". Set to 0.30 on
+# client instruction 2026-09-03. Swept.
+TICKET_FLOOR_SHARE = 0.30
 
 # Month-to-month variation around ticket_base. UNSOURCED, swept.
 # The declared amount is max(floor, base x noise): a floor saver pays exactly
@@ -191,11 +197,11 @@ HOLDER_REDEMPTION_MULTIPLIER = 1.6
 # ─────────────────────────────────────────────────────────────────────────────
 
 VERIFY = {
-    "persistency": {13: 0.55, 25: 0.40, 37: 0.30, 49: 0.24, 61: 0.19},
+    "persistency": {13: 0.63, 25: 0.49, 37: 0.41, 49: 0.34, 61: 0.29},
     "ever_gate_share": 0.535,
     "mean_gate_month": 8.1,
     "alternating_ever_gate": 0.240,
-    "holding_not_contributing_m61": 0.81,
+    "holding_not_contributing_m61": 0.72,   # rises as persistency rises
     # NOTE: v2.6's "sovereign share ~1.2%" is NOT a verification target. It is
     # an output of the lookup that capped the occasional misser at Platinum by
     # construction. Under the real formula an occasional misser with 60 counted

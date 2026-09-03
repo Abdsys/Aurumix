@@ -20,9 +20,15 @@ import numpy as np
 _HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def load_params(path=None):
+def load_params(path=None, raw=False):
+    """Workbook parameters. raw=True skips the deliberate departures in
+    config/overrides.py and is used ONLY by the equivalence test."""
     with open(path or os.path.join(_HERE, "config", "params.json")) as f:
-        return json.load(f)
+        p = json.load(f)
+    if raw:
+        return p
+    from config.overrides import apply
+    return apply(p)
 
 
 class DetModel:
