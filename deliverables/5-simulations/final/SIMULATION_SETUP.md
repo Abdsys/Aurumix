@@ -111,7 +111,38 @@ The archetype is the customer's payment discipline. Five types, taken from the P
 
 A background hazard of 1.6% per month applies to everyone on top of their own.
 
-The shares are the weakest input in the whole model. No published source anywhere decomposes a savings-lapse curve into behavioural types. The simulation does not assume them. It sweeps them and reports the answer across the plausible range.
+### Where these numbers come from, honestly
+
+The five types are not observed customer segments. They are a story built to reproduce a curve.
+
+The curve is the **persistency curve**, which is how many customers are still paying as time passes. Ours runs 55% at month 13, then 40, 30, 24 and 19% at months 25, 37, 49 and 61.
+
+The five types were then tuned until they reproduced that curve together. That is a standard technique, and it is only as good as the curve underneath it.
+
+### What the curve is anchored to
+
+The closest published comparable is **Indian life insurance persistency**, which regulators measure at exactly the same checkpoints.
+
+For FY2024-25, the IRDAI Handbook on Indian Insurance Statistics reports **13th month persistency ranging from 59.68% to 83.22%** across life insurers, and **61st month persistency from 22.20% to 58.80%**. The industry average at the 13th month is about 63%.
+
+| Checkpoint | Indian life insurance, FY2024-25 | This model |
+|:--|:--|--:|
+| 13th month | 59.68% to 83.22% | **55%** |
+| 61st month | 22.20% to 58.80% | **19%** |
+
+**Our curve sits below the entire published range at both ends.** That is deliberate and I think it is right. A USD 20 gold savings plan has no tax benefit, no death benefit, and no agent chasing the renewal. The customer is poorer than the average life policyholder. Assuming Aurumix retains better than the worst Indian life insurer would be optimistic.
+
+### One comparison to avoid
+
+Indian mutual fund SIP "stoppage ratios" are widely quoted and run from 41% to over 94%. **They are not persistency and must not be read as a lapse rate.**
+
+The stoppage ratio divides SIPs discontinued in a period by new SIPs registered in the same period. A ratio above 100% means more stopped than started that month. It says nothing about how long a given customer lasts.
+
+### What is still unsourced
+
+The split into five types. A search for published decompositions of a lapse curve into behavioural groups with estimated shares and hazard rates returns nothing usable. The actuarial literature confirms that a single constant quit rate cannot reproduce an observed curve and that mixtures are the standard answer, but no published study supplies the group shares.
+
+So the curve is anchored. The five types underneath it are a fitted story. The simulation sweeps them rather than trusting them.
 
 ### Rail
 
@@ -121,7 +152,19 @@ On Request to Pay the customer taps to approve each payment. On the prefunded ba
 
 The rulebook makes the distinction itself. It only allows "set and forget" to be promised on the prefunded balance. So a prefunded customer draws from an archetype mix tilted toward discipline.
 
-Thirty percent of customers start prefunded. Of those, 35% are re-drawn into the disciplined archetypes. Both numbers are unsourced and both are swept. This is the one lever over payment behaviour that Aurumix controls.
+Thirty percent of customers start prefunded. Of those, 35% are re-drawn into the disciplined archetypes. Both numbers are swept.
+
+### Is the rail effect measured anywhere
+
+Partly, and the evidence is stronger than I first thought.
+
+The Consumer Financial Protection Bureau studied autopay on US credit cards in 2023. Enrolling in autopay **raised the likelihood of making a payment by 20 to 29 percentage points**, more than doubling the baseline.
+
+That is a different product in a different market. But it is a measured effect of the same mechanism, removing a monthly manual step, on the same behaviour, making the payment.
+
+So the direction is evidenced. The size for a Gulf gold savings plan is not. That is why the rail share is swept from 0 to 75% rather than set.
+
+This is the one lever over payment behaviour that Aurumix controls.
 
 ### Door
 
@@ -491,7 +534,9 @@ Under the real formula a clean trailing year plus sixty counted months scores 10
 
 The cost side is well sourced. VARA and DMCC fee schedules, the KYC provider's price list, the Visa interchange schedule, Zand's banking tariff.
 
-The demand side is not. The market funnel filters are made up. The archetype mix has no source. Persistency's validation file is missing from the repository. No client data exists.
+The demand side is weaker. The market funnel filters are made up. No client data exists.
+
+The persistency curve now has a published comparable, Indian life insurance at the same checkpoints, and our curve sits below its full range at both ends. The split of that curve into five behavioural types remains unsourced.
 
 Every one of those is swept rather than assumed. The profitability threshold is built so that it does not depend on the funnel at all.
 

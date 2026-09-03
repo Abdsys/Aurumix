@@ -164,6 +164,30 @@ HOLDER_REDEMPTION_MULTIPLIER = 1.6
 # CODE-CORRECTNESS TESTS ONLY. These are outputs of a Markov solve over an
 # unsourced archetype mix. Reproducing them proves the first-passage logic is
 # right; it is NOT evidence about Aurumix. See blueprint sec 4.1.
+#
+# EXTERNAL ANCHOR, added 2026-09-03. The persistency curve below was previously
+# unsourceable: its validation file was deleted from the repo before Phase 5.
+# It now has a published comparable measured at the SAME checkpoints.
+#
+#   IRDAI Handbook on Indian Insurance Statistics 2024-25, quoted in the
+#   Ministry of Finance answer to Rajya Sabha Unstarred Question No. 1040(E):
+#     13th month persistency across life insurers: 59.68% to 83.22%
+#     61st month persistency across life insurers: 22.20% to 58.80%
+#     industry average 13th month: ~63%
+#   https://sansad.in/getFile/annex/271/AU1040_i8YUDq.pdf?source=pqars
+#
+# Our 55% / 19% sits BELOW that range at both ends, deliberately: a USD 20 gold
+# plan carries no tax relief, no death benefit and no agent chasing renewal.
+#
+# ⛔ DO NOT anchor to Indian mutual fund "SIP stoppage ratios" (41% to 94%).
+# That measure is SIPs discontinued in a period over SIPs opened in the same
+# period. It exceeds 100% in some months. It is not a survival rate.
+#
+# STILL UNSOURCED: the split of the curve into five behavioural types. A search
+# for published lapse-curve decompositions with group shares and hazard rates
+# returns nothing usable. The actuarial literature confirms a single constant
+# hazard cannot reproduce an observed curve and that mixtures are standard, but
+# supplies no shares. The mix is swept, never trusted.
 # ─────────────────────────────────────────────────────────────────────────────
 
 VERIFY = {

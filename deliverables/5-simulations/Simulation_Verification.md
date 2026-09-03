@@ -154,6 +154,25 @@ The ladder envelope (cumulative 84-mo cost, % of agent revenue) confirms the sha
 | Rail discipline gap | 35% re-draw to disciplined mix, swept | Unsourced by construction; the lever result reads directionally |
 | Acquisition noise | 10% CV lognormal | Demand-noise convention |
 
+## 4a. The persistency anchor, restored 2026-09-03
+
+**The problem.** The 55% persistency figure was validated in `reference_model/VALIDATION.md`, which was deleted from the repo before Phase 5 began. The single most load-bearing input in the model could not be evidenced on request, and the five archetypes were fitted to it. Reverse-engineering off an unsourceable anchor is doubly weak, and the client challenged it directly.
+
+**What was found.** Indian life insurance regulators measure persistency at exactly the checkpoints this model uses. From the IRDAI Handbook on Indian Insurance Statistics 2024-25, quoted in the Ministry of Finance answer to Rajya Sabha Unstarred Question No. 1040(E) and verified at primary source:
+
+| Checkpoint | Indian life insurers, FY2024-25 | This model |
+|:--|:--|--:|
+| 13th month | **59.68% to 83.22%** (industry avg ~63%) | 55% |
+| 61st month | **22.20% to 58.80%** | 19% |
+
+**Our curve sits below the published range at both ends.** That is defensible and conservative. A USD 20 gold savings plan carries no tax relief, no death benefit and no agent chasing the renewal, against a poorer customer base than the average life policyholder.
+
+⛔ **One comparison rejected.** Indian mutual fund "SIP stoppage ratios" (41% to 94%, and above 100% in some months) are widely quoted and are **not** persistency. The measure is SIPs discontinued in a period over SIPs opened in the same period. It is a maturity indicator, not a survival rate, and reading it as a lapse rate would be a serious error.
+
+**Still unsourced: the five archetypes.** A search for published decompositions of a lapse curve into behavioural groups with estimated shares and hazard rates returns nothing usable. The actuarial literature (mover-stayer models, frailty mixtures, Weibull mixtures) confirms that a single constant hazard cannot reproduce an observed curve and that mixtures are the standard answer, but no study supplies the group shares. The mix stays a fitted story and stays swept.
+
+**Bonus finding: the rail effect is partly measured.** I previously recorded the autopay-versus-manual effect as unmeasured. The CFPB's 2023 study of US credit-card autopay found enrolment **raised the likelihood of making a payment by 20 to 29 percentage points**, more than doubling the baseline. Different product, different market, same mechanism and same behaviour. The direction is now evidenced; the magnitude for a Gulf gold plan is not, so the rail share stays swept.
+
 ## 4b. The two researches, closed 2026-09-02 (Perplexity sonar-pro, then primary-source verification)
 
 **Card dormancy — confirmed sourcing negative.** No published dormancy or attrition *rate* exists for consumer cards in the UAE, GCC, globally, or for fintech-issued cards; only inactivity *definitions* (90 days to 12 months). My blueprint claim that it was "genuinely sourceable" is retracted. Carried as a swept assumption (0 / 1 / 2 % per month) on an independent clock from SIP lapse. **Swept through the agent book:** 2%/month dormancy cuts active cards at M84 by 40% (36,104 → 21,748) and cumulative card revenue by 40%, but total agent revenue by only **0.9%** — the card is a small stream next to the entry fee, so the missing source is harmless to the profitability answer. What it does change is the *credit book*: fewer active cards means fewer margin-callable positions.

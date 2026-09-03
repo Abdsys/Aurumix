@@ -587,8 +587,9 @@ EXTRA_CSS = """
 /* body type stays at the template's document scale (10.5pt), as in the
    Stockpile deliverable; only spacing is set here */
 .page--content-single-column .content-area p,
-.page--content-single-column .content-area li { font-family: var(--font-sans); font-size: 10pt; line-height: 1.55; }
-.page--content-single-column .content-area p { margin: 0 0 9px; }
+.page--content-single-column .content-area li { font-family: var(--font-sans); font-size: 11pt; line-height: 1.6; }
+.page--content-single-column .content-area p { margin: 0 0 10px; }
+.page--content-single-column .content-area h3 { font-size: 15pt; margin: 20px 0 8px; }
 .page--content-single-column .content-area ul,
 .page--content-single-column .content-area ol { margin: 0 0 10px; padding-left: 18px; }
 .page--content-single-column .content-area li { margin-bottom: 4px; }
@@ -803,6 +804,8 @@ def build_setup(meta, md, ctx):
         toc.append({"level": 1, "text": "%s. %s" % (num, title), "ref": toc_id})
         pages.append(("divider", (num.zfill(2), title, info.get("subtitle", ""), toc_id)))
         lead, groups = split_h3(sec["lines"])
+        # contents lists sections only, as in the Stockpile setup document;
+        # fifteen sections with fifty-five sub-headings would run to three pages
         pages.append(("content", (lead, groups, None)))
     pages.append(("back", None))
     return pages, toc
