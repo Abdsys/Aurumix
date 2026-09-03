@@ -63,9 +63,15 @@ CAC_CONV_TRIPLE = [0.35, 0.15, 0.60]
 # the workbook's scenario table and must not be written into it, because that
 # table is what the equivalence test reads. The Monte Carlo picks them up from
 # here instead, so they are drawn like any other banded parameter.
+
+# How long a signed partner takes to reach full adoption. Judgement: nobody's
+# 900,000 users adopt overnight; 12 to 24 months brackets a plausible rollout.
+PARTNER_RAMP_TRIPLE = [18.0, 12.0, 24.0]
+
 EXTRA_TRIPLES = {
     "ceiling_mult": CEILING_TRIPLE,
     "cac_conv_coef": CAC_CONV_TRIPLE,
+    "partner_ramp_months": PARTNER_RAMP_TRIPLE,
 }
 
 # Scenario band for persistency, same +/-0.10 width as the workbook's own.

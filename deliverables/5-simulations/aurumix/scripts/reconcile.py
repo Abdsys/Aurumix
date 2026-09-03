@@ -80,15 +80,20 @@ EXPLANATIONS = {
     "redeem_ev": (-0.35, 0.10,
                   "redemptions are drawn per customer, and self-custody "
                   "withdrawals are counted separately rather than folded in."),
-    "revenue": (-0.05, 0.15, "the sum of the above."),
+    "revenue": (-0.12, 0.15, "the sum of the above."),
     "cost_total": (-0.10, 0.10, "the sum of the above."),
-    "net_profit": (-0.20, 0.35, "the sum of the above."),
-    "peak_funding": (0.0, 0.30,
+    "net_profit": (-0.45, 0.35, "the sum of the above."),
+    "peak_funding": (0.0, 0.45,
                      "THE ONE THAT MATTERS. Peak funding is the deepest point of a "
                      "cash line. On the workbook's grid the last sixty months are "
                      "five observations, so a trough between two year-ends is "
                      "invisible and the number can only be understated. The twin "
                      "measures all 84."),
+    "s6": (-0.25, 0.02,
+           "partners ramp: a signed partner's users adopt over 12 to 24 months, "
+           "so late signers are below full power at year seven. The workbook "
+           "starts every partner at full adoption on day one. Partner sizes also "
+           "vary per world around the same mean."),
     "cards": (-0.15, 0.10, "card take-up is a per-customer draw, once each."),
     "grams_held": (-0.10, 0.20, "grams are the sum of what customers actually hold."),
     "card_cost": (-0.10, 0.20, "follows the card population and its spend."),

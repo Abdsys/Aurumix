@@ -109,6 +109,7 @@ class Twin:
         self.p = dict(p if p is not None else load_params())
         if overrides:
             self.p.update(overrides)
+        self.seed = int(seed)
         self.rng = np.random.default_rng(seed)
         self.scale = float(scale)
         self.months = int(months)
@@ -221,8 +222,11 @@ class Twin:
 
         cum_ever_r = np.zeros(3)
         pool = None
-        partner_aum = 0.0          # sum of the AUM of partners that have signed
-        n_partners = 0
+        # Partners are individual entities: each carries its own signing month
+        # and its own size. Sizes draw from a dedicated RNG stream so adding a
+        # partner never perturbs the customer dice.
+        partner_book = []          # list of (sign_month, aum_of_this_partner)
+        rng_partner = np.random.default_rng(self.seed + 777)
         prev_cards = 0.0
         prev_grams_cust = 0.0
         agent_acquired_cum = 0.0
@@ -465,14 +469,25 @@ class Twin:
             pool.econ_rev += (s1a + s1b + s2 + s3 + s4 + s5)
             pool.econ_give += (g_entry + g_card + g_family + g_rebate)
 
-            # ── 12. partners, as entities that arrive ────────────────────────
+            # ── 12. partners: individual sizes, adoption that ramps ──────────
+            # Each partner is its own entity. Size = the world's systematic draw
+            # times a personal lognormal factor with mean one, so a book can
+            # hold a whale and three minnows around the same average. Revenue
+            # climbs linearly to full power over partner_ramp_months, because
+            # a signed partner's users do not adopt overnight - and the ramp is
+            # the expensive kind of honesty: it moves B2B money later while the
+            # raise is set by the early years.
             if t >= int(p["act_6"]):
                 target = int(p["b2b_partners"][y])
-                while n_partners < target:
-                    n_partners += 1
-                    partner_aum += p["partner_aum"]
-            s6 = partner_aum * p["b2b_fee"] / 12.0
-            o["partners"][t - 1] = n_partners
+                sg = p.get("partner_size_sigma", 0.5)
+                while len(partner_book) < target:
+                    size = (p["partner_aum"]
+                            * rng_partner.lognormal(-0.5 * sg * sg, sg))
+                    partner_book.append((t, size))
+            ramp_m = float(p.get("partner_ramp_months", 18.0))
+            s6 = sum(aum * min(1.0, (t - m0 + 1) / ramp_m)
+                     for m0, aum in partner_book) * p["b2b_fee"] / 12.0
+            o["partners"][t - 1] = len(partner_book)
 
             # ── 13. book aggregates, summed from real customers ──────────────
             S = scale

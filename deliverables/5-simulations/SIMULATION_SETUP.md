@@ -270,13 +270,13 @@ Where:
 - $h$ is the average gold value an adopter holds, USD 350
 - $f$ is the platform fee on the total, 0.75% a year
 
-At base: $900{,}000 \times 0.06 \times 350 \times 0.0075 =$ **USD 141,750 per partner per year**. All four numbers carry Aggressive and Conservative ranges in the revenue model and all four are drawn per path, so a world can hold small partners or giant ones.
+At base: $900{,}000 \times 0.06 \times 350 \times 0.0075 =$ **USD 141,750 per partner per year**. All four numbers carry Aggressive and Conservative ranges in the revenue model and all four are drawn per path. On top of the world's draw, each partner that signs gets a personal size factor with mean one, applied to its combined gold under management, so a book can hold one whale and three minnows around the same average. Whether a big partner is big through more users or keener ones is not separated: the fee only ever sees the product.
 
-The monthly revenue stream is then the signed partners' combined gold under management times the fee:
+A signed partner does not arrive at full power: its users adopt over time. Revenue climbs linearly to full over a ramp of about 18 months, drawn between 12 and 24 per path. The monthly stream is then each signed partner's gold under management, scaled by how far through its ramp it is:
 
-$$s_{6,t} = K_t \times (U \cdot a \cdot h) \times \frac{f}{12}$$
+$$s_{6,t} = \sum_{i\,\text{signed}} \text{AUM}_i \times \min\!\left(1,\ \tfrac{t - t_i + 1}{\text{ramp}}\right) \times \frac{f}{12}$$
 
-where $K_t$ is how many partners have signed by month $t$.
+where $t_i$ is partner $i$'s signing month. The ramp matters more than it looks: the funding trough falls exactly when the first partners are mid-ramp, so assuming instant adoption would understate the raise.
 
 ### How partners arrive
 
