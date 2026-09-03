@@ -447,14 +447,20 @@ class Twin:
             g_rebate = card_spend * lad["rewards"][pool.tier]
             g_family = np.where(pool.family_flag & alive & pool.sip_active,
                                 fam_price * lad["family_disc"][pool.tier], 0.0)
-            # Decision 6: rewards paid to a customer never exceed what that
-            # customer has generated. Enforceable only at customer level, which
-            # is the point of running the business on customers.
+            # THE CASHBACK CAP (client rule, corrected 2026-09-03): the gold
+            # cashback is capped against the customer's OWN card transactions,
+            # not against their whole relationship. The net take on a dollar of
+            # spend (interchange net of the scheme's share, plus the FX margin)
+            # runs about twice the top cashback rate, so at quoted rates the
+            # structure satisfies the cap by itself and it never binds at base.
+            # It stays enforced anyway: a generous ladder sweep or a low
+            # interchange draw can push rewards past the per-transaction take,
+            # and this is the rail that stops a path from paying customers to
+            # spend.
+            card_take = s2 + card_spend * p["foreign_spend_mean"] * lad["fx_margin"][pool.tier]
+            g_rebate = np.minimum(g_rebate, card_take)
             pool.econ_rev += (s1a + s1b + s2 + s3 + s4 + s5)
-            pool.econ_give += (g_entry + g_card + g_family)
-            headroom = np.maximum(pool.econ_rev - pool.econ_give, 0.0)
-            g_rebate = np.minimum(g_rebate, headroom)
-            pool.econ_give += g_rebate
+            pool.econ_give += (g_entry + g_card + g_family + g_rebate)
 
             # ── 12. partners, as entities that arrive ────────────────────────
             if t >= int(p["act_6"]):

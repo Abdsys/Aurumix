@@ -215,11 +215,11 @@ Every component is priced per customer per month, as activity times the gap betw
 - rewards: card spend $\times$ tier rewards rate
 - family discount: family fee $\times$ tier discount
 
-### The per-customer cap
+### The cashback cap
 
-One rule limits the whole ladder: rewards paid to a customer never exceed the revenue that customer has generated.
+One rule applies to the gold cashback, and to the cashback only: it is capped against the customer's own card transactions. Cashback on a transaction never exceeds what that transaction earns Aurumix, which is the interchange net of the scheme's share plus the FX margin.
 
-Concretely: a floor saver contributes USD 240 a year, which earns Aurumix USD 12 of entry fees. If that customer's card rewards would come to USD 20, they are cut to what the customer's own fees have covered. No customer can ever be a net cost through the rewards channel. The rule needs each customer's personal running revenue and giveback, which is why it can only exist in a model that runs on customers.
+At quoted rates the structure satisfies this by itself. A dollar of spend earns Aurumix 1.1 to 1.4 cents and the top cashback tier pays 0.75 cents, so the cap never binds in the base case. It sits in the simulation as a safety rail: when a sweep makes the ladder more generous or a path draws interchange low, this is what stops the model from paying customers to spend.
 
 ---
 
