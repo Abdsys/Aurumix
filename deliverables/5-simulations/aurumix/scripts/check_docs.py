@@ -46,11 +46,12 @@ def pct(v):
     return {f"{v:.0%}", f"{v*100:.0f}%", f"{v:.1%}", f"{v*100:.1f}%"}
 
 
-# The results document is deliberately not rewritten yet (client instruction,
-# 2026-09-03: more model changes expected first). Its figures are known stale,
-# so they are reported separately rather than as failures - a check that always
-# fails is a check nobody reads. Flip this to False when it is rewritten.
-RESULTS_ON_HOLD = True
+# The results document is now GENERATED from the same JSON these checks read
+# (scripts/fill_results.py), so drift is structurally impossible for any figure
+# that goes through a placeholder. These checks still earn their place: they
+# catch a placeholder quietly removed from the template, and they catch the
+# document being stale against a newer run.
+RESULTS_ON_HOLD = False
 
 # figure -> (set of acceptable renderings, which documents must carry it)
 t15 = A["q1_threshold"]["contingency_15"]
@@ -80,7 +81,8 @@ CHECKS = {
         ({f"{_sigma:.3f}"}, ["SIMULATION_SETUP.md"]),
 }
 RESULT_FIGURES["partners to cover fixed base"] = {f"{t15['partners_to_cover_fixed_alone']:.1f}"}
-RESULT_FIGURES["blended replacement CAC"] = {f"USD {num(r'CAC blended \$(\d+)'):.0f}"}
+RESULT_FIGURES["partners to cover fixed base"] = {f"{t15['partners_to_cover_fixed_alone']:.1f}"}
+RESULT_FIGURES["gated share at month 84"] = {f"{A['q2_gated_share_m84']*100:.1f}%"}
 
 print("=" * 78)
 print("DOCUMENT / MODEL AGREEMENT")
@@ -112,9 +114,13 @@ if os.path.exists(res):
             print(f"    - {k}: model now says {' or '.join(sorted(RESULT_FIGURES[k]))}")
         print("  Set RESULTS_ON_HOLD = False once it is rewritten.")
     else:
-        for k in stale:
-            fails.append(f"SIMULATION_RESULTS.md: {k} -> model says "
-                         f"{' or '.join(sorted(RESULT_FIGURES[k]))}")
+        for k, forms in RESULT_FIGURES.items():
+            ok = k not in stale
+            print(f"  [{'PASS' if ok else 'FAIL'}] SIMULATION_RESULTS.md   {k}"
+                  f"  ({sorted(forms)[0]})")
+            if not ok:
+                fails.append(f"SIMULATION_RESULTS.md: {k} -> model says "
+                             f"{' or '.join(sorted(forms))}")
 
 print("=" * 78)
 if fails:
