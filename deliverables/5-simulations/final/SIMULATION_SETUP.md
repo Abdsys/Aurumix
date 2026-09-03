@@ -97,7 +97,7 @@ Where:
 - $\mu$ and $\sigma$ are solved numerically so that $P(X \le 20) = 0.30$ and $E[\max(20, X)]$ equals the regional mean
 - $20$ is the USD floor, below which a payment is refused
 
-The two facts lock the curve. If 30 customers in 100 pay exactly USD 20, that is USD 600 of a USD 3,360 total, so the other 70 must average USD 39.43. For the UAE this solves to $\sigma = 0.576$, and the top tenth of customers ends up contributing about a quarter of all money saved. The floor share is unsourced, set at 30% on client instruction, and swept.
+Each region fits its own curve to its own mean; the USD 20 floor and the 30% floor share are common to all three. The two facts lock the curve. If 30 customers in 100 pay exactly USD 20, that is USD 600 of a USD 3,360 total, so the other 70 must average USD 39.43. For the UAE this solves to $\sigma = 0.576$, and the top tenth of customers ends up contributing about a quarter of all money saved.
 
 The amount actually declared in a given month wobbles around the personal ticket:
 
