@@ -22,7 +22,7 @@ The customer pays a 5% entry fee and nothing else. Behind the savings product si
 
 ### What the revenue model already says
 
-The Phase 4 revenue model is a spreadsheet. It produces one seven-year projection from about ninety assumptions. The client has no customer data yet. No waitlist, no pilot, no partner in the pipeline.
+The Phase 4 revenue model is a spreadsheet. It produces one seven-year projection from about ninety assumptions. There is no customer data yet. No waitlist, no pilot, no partner in the pipeline.
 
 ### The three questions
 
@@ -134,7 +134,7 @@ The 63% level is anchored to Indian life insurance persistency, published by the
 
 ### Rail: how the money moves
 
-Each customer is assigned a rail at birth: a standing instruction ("set and forget"), or a manual payment each month. At base, 30% of joiners take the standing instruction; the share is unsourced and swept, and it is a lever the client controls.
+Each customer is assigned a rail at birth: a standing instruction ("set and forget"), or a manual payment each month. At base, 30% of joiners take the standing instruction; the share is swept, and it is a lever Aurumix controls.
 
 The rail changes who the customer is, not just how they pay. A customer on the standing instruction has a 35% chance of being re-drawn from the disciplined types (perfect payer, occasional misser, reducer). That is the modelled link between removing friction and clearing six consecutive payments. Both numbers are unsourced and swept.
 
@@ -235,7 +235,7 @@ $B_t$ is the region's slice of the monthly marketing budget and $o$ an organic u
 
 $$\text{CAC}_t = \underbrace{\left[c_1 + (c_7 - c_1)\tfrac{y-1}{6}\right]}_{\text{planned ramp}} \times \underbrace{\left[1 + \kappa \left(\tfrac{B_t}{60{,}000}\right)^{0.7}\right]}_{\text{channel exhaustion}}$$
 
-The ramp is the client's plan: UAE cost falls from USD 85 to USD 55 by year seven as the brand matures. The second term pushes back: spend rises eighteen-fold over the horizon, cheap channels exhaust, and each further customer costs more to reach. $\kappa$ is 0.35 at base and is drawn between 0.15 and 0.60, so the raise prices not knowing how strong the exhaustion is.
+The ramp is the plan: UAE cost falls from USD 85 to USD 55 by year seven as the brand matures. The second term pushes back: spend rises eighteen-fold over the horizon, cheap channels exhaust, and each further customer costs more to reach. $\kappa$ is 0.35 at base and is drawn between 0.15 and 0.60, so the raise prices not knowing how strong the exhaustion is.
 
 ### Referrals
 
@@ -249,9 +249,9 @@ $a_t$ field agents (the plan runs them mostly in India), each converting $g = 6$
 
 ### Saturation and the calendar
 
-Each region has an addressable ceiling built from population filters the client has confirmed are unsourced. Acquisition scales down linearly as the region fills. A number that binding does not get to be a point estimate. The multiplier $m$ is drawn between 0.6 and 1.55 per path, so every result already prices the market being two-thirds or one-and-a-half times the estimate.
+Each region has an addressable ceiling, an estimate of how many people can ever be reached, built from population filter assumptions. Acquisition scales down linearly as the region fills. A number that binding does not get to be a point estimate. The multiplier $m$ is drawn between 0.6 and 1.55 per path, so every result already prices the market being two-thirds or one-and-a-half times the estimate.
 
-Finally the calendar: a twelve-month seasonality shape from the revenue model (Ramadan, Diwali, year-end), normalised so a year sums to twelve, with a further 10% random monthly wobble per path.
+Finally the calendar: a twelve-month seasonality shape from the revenue model, following the year's savings and spending events, normalised so a year sums to twelve, with a further 10% random monthly wobble per path.
 
 ---
 
@@ -259,7 +259,7 @@ Finally the calendar: a twelve-month seasonality shape from the revenue model (R
 
 ### What a partner is worth
 
-A B2B partner white-labels the product. Its value chain is four numbers multiplied: the partner's user base, the share of those users who adopt, the average gold value each adopter holds, and the platform fee on the total. At base that is USD 141,750 per partner per year. All four numbers carry client-priced ranges and all four are drawn per path.
+A B2B partner white-labels the product. Its value chain is four numbers multiplied: the partner's user base, the share of those users who adopt, the average gold value each adopter holds, and the platform fee on the total. At base that is USD 141,750 per partner per year. All four numbers carry Aggressive and Conservative ranges in the revenue model and all four are drawn per path.
 
 ### How partners arrive
 
@@ -303,11 +303,11 @@ Each path is one version of the next seven years. What varies between paths, and
 
 ### Seventy-four drawn parameters
 
-Every input the client priced with an Aggressive and a Conservative value is drawn. The distribution is Beta-PERT: Base is the most likely value, and the client's Aggressive and Conservative bracket the range,
+Every input the revenue model prices with an Aggressive and a Conservative value is drawn. The distribution is Beta-PERT: Base is the most likely value, and Aggressive and Conservative bracket the range,
 
 $$x \sim \text{lo} + \text{Beta}(\alpha, \beta) \times (\text{hi} - \text{lo}), \qquad \alpha = 1 + 4\tfrac{\text{mode} - \text{lo}}{\text{hi} - \text{lo}}, \quad \beta = 1 + 4\tfrac{\text{hi} - \text{mode}}{\text{hi} - \text{lo}}$$
 
-This grounds every draw in numbers the client has already seen rather than in invented spreads. The rule is opt-out, not opt-in: if the client priced a range, it is drawn, so the raise number carries it. Eleven parameters are excluded, each with a written reason in the code, in three groups:
+This grounds every draw in the revenue model's own scenario table rather than in invented spreads. The rule is opt-out, not opt-in: any input with a priced range is drawn, so the raise number carries it. Eleven parameters are excluded, each with a written reason in the code, in three groups:
 
 - **replaced by structure**: the partner count (a discrete arrival process now), the gold band (the price process carries it)
 - **derived**: quantities recomputed from their drawn components each path, so they move with their inputs
@@ -339,7 +339,7 @@ The funding line itself is monthly: cumulative losses plus the capital tied up i
 
 ## 12. What it takes to be profitable
 
-The client's question is a threshold, and it is computed at steady state, where the book is flat and acquisition only replaces the customers who leave.
+The profitability question is a threshold, and it is computed at steady state, where the book is flat and acquisition only replaces the customers who leave.
 
 $$N^* = \frac{k \cdot F}{r - k\,(s + c \cdot \text{CAC})} \qquad\qquad K^* = \frac{k \cdot F}{A \cdot f}$$
 
@@ -384,7 +384,7 @@ The twin is deliberately not a copy of the spreadsheet, so it is not tested by m
 
 ### The standing audit
 
-Twenty-seven checks run after every change to the model. Among them: every client-priced range reaches the Monte Carlo; the giveback vanishes if the ladder is flattened, proving it is priced from real tiers; drawing persistency moves the book; peak funding is the true maximum of the monthly cash line; every parameter the engine reads exists. Each check exists because the defect it catches is the kind that never announces itself.
+Twenty-seven checks run after every change to the model. Among them: every priced range reaches the Monte Carlo; the giveback vanishes if the ladder is flattened, proving it is priced from real tiers; drawing persistency moves the book; peak funding is the true maximum of the monthly cash line; every parameter the engine reads exists. Each check exists because the defect it catches is the kind that never announces itself.
 
 ### Verification is not validation
 
