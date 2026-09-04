@@ -71,7 +71,7 @@ python scripts/fill_results.py
 cd ../_branded_working && python build_sim.py results && node render_sim.js ...
 ```
 
-**Then copy to `final/`.** The client reads `final/`, not `_branded_working/`. Every rebuild ends with copying the .md, .html and .pdf for both documents into `final/`. This step was missed once (2026-09-04): the client opened a stale PDF a day after the fix was built.
+**Then MOVE to `final/`.** The client reads `final/` only. Every rebuild ends with moving the built .html and .pdf out of `_branded_working/` into `final/` (plus a copy of the current .md), leaving no document copies in the build folder. Copies were left behind once (2026-09-04) and the client opened a stale PDF a day after the fix was built; the build folder is now kept clean by client request.
 
 **Rendering the PDF needs `NODE_PATH` pointed at a folder with puppeteer-core**, e.g. `C:/Users/BlockApex/Desktop/BCCP/node_modules`. There is no local install.
 
