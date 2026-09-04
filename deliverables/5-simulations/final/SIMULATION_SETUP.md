@@ -165,7 +165,7 @@ Two exits exist for gold, and neither involves physical delivery, because Aurumi
 - **Redemption**: the customer sells gold back for cash. Each month each customer has a 0.5% chance of redeeming (a 6% annual rate spread across twelve months), and a redemption sells a quarter of their holding. Lapsed customers who still hold gold redeem at 1.6 times that rate, 0.8% a month. Redeemed metal returns to Aurumix and is recycled into the float.
 - **Self-custody**: the customer moves AURX tokens to their own wallet. Also a 0.5% monthly chance, also a quarter of the holding. Nothing is redeemed: the gold stays in the vault, the vault bill keeps running on it, and it still counts in AUM. What changes is the account. The ICS score and the credit line are tied to the account, so tokens moved out stop counting toward the score and stop backing the credit line.
 
-Both exits count against the loyalty score, because the score is tied to the account: gold sold back is gone, and tokens moved to your own wallet no longer count toward it. Section 6 shows how.
+Both exits count against the loyalty score, because the score is tied to the account. Gold sold back is gone. Tokens moved to your own wallet no longer count toward it. Section 6 shows how.
 
 ---
 
@@ -185,7 +185,7 @@ The core loop. Every month, in this order.
 10. **Cards, family plans and credit lines** run for whoever holds them, each against that customer's own gold.
 11. **Some customers leave**, at their own hazard plus the background rate.
 12. **Partners sign**, or fail to (section 8).
-13. **The ledger closes**: five revenue streams plus the partner fee, the fabrication premium on net new metal, the vault bill on all metal held, licences, acquisition costs, the card programme, contingency on the uncertain costs, profit, and the cash line.
+13. **The ledger closes.** Five revenue streams plus the partner fee. Against them: the fabrication premium on net new metal, the vault bill on all metal held, licences, acquisition, the card programme, and contingency on the uncertain costs. What remains is profit, and the cash line follows it.
 
 ---
 
@@ -235,7 +235,7 @@ Every component is priced per customer per month, as activity times the gap betw
 
 One rule applies to the gold cashback, and to the cashback only: it is capped against the customer's own card transactions. Cashback on a transaction never exceeds what that transaction earns Aurumix, which is the interchange net of the scheme's share plus the FX margin.
 
-At quoted rates the structure satisfies this by itself. A dollar of spend earns Aurumix 1.1 to 1.4 cents and the top cashback tier pays 0.75 cents, so the cap never binds in the base case. It sits in the simulation as a safety rail: when a sweep makes the ladder more generous or a path draws interchange low, this is what stops the model from paying customers to spend.
+At quoted rates the structure satisfies this by itself. A dollar of spend earns Aurumix 1.1 to 1.4 cents and the top cashback tier pays 0.75 cents, so the cap never binds in the base case. It sits in the simulation as a safety rail. When a sweep makes the ladder more generous, or a path draws interchange low, this is what stops the model paying customers to spend.
 
 ---
 
@@ -255,7 +255,7 @@ The ramp is the plan: UAE cost falls from USD 85 to USD 55 by year seven as the 
 
 ### Referrals
 
-$W_t$ is the book's referral capacity: every paying customer's individual propensity, summed. A customer's propensity is zero for their first three months, ramps linearly to full by month twelve, and is multiplied up the tier ladder (1.0 untiered rising to 1.75 at the top). $\rho$ is the referral rate, 0.6 per fully established customer per year, and $v$ the 62% conversion of referrals into customers.
+$W_t$ is the book's referral capacity: every paying customer's individual propensity, summed. Propensity is zero for the first three months, then ramps to full by month twelve. It rises up the tier ladder too, from 1.0 untiered to 1.75 at the top. $\rho$ is the referral rate, 0.6 per fully established customer per year, and $v$ the 62% conversion of referrals into customers.
 
 So a young book refers at about a third of the rate its head count suggests; a matured book at the full rate. Referrals also cost money: the reward is 30% of the referee's first six months of entry fees.
 
@@ -265,7 +265,7 @@ $a_t$ field agents (the plan runs them mostly in India), each converting $g = 6$
 
 ### Saturation and the calendar
 
-Each region has an addressable ceiling, an estimate of how many people can ever be reached, built from population filter assumptions. Acquisition scales down linearly as the region fills. A number that binding does not get to be a point estimate. The multiplier $m$ is drawn between 0.6 and 1.55 per path, so every result already prices the market being two-thirds or one-and-a-half times the estimate. Finally the calendar: a twelve-month seasonality shape from the revenue model, following the year's savings and spending events, normalised so a year sums to twelve, with a further 10% random monthly wobble per path.
+Each region has an addressable ceiling, an estimate of how many people can ever be reached, built from population filter assumptions. Acquisition scales down linearly as the region fills. A number that binding does not get to be a point estimate. The multiplier $m$ is drawn between 0.6 and 1.55 per path, so every result already prices the market being two-thirds or one-and-a-half times the estimate. Finally the calendar. A twelve-month seasonality shape follows the year's savings and spending events, normalised so a year sums to twelve, with a 10% random wobble on each month.
 
 ---
 
@@ -284,7 +284,9 @@ Where:
 - $h$ is the average gold value an adopter holds, USD 350
 - $f$ is the platform fee on the total, 0.75% a year
 
-At base: $900{,}000 \times 0.06 \times 350 \times 0.0075 =$ **USD 141,750 per partner per year**. All four numbers carry Aggressive and Conservative ranges in the revenue model and all four are drawn per path. On top of the world's draw, each partner that signs gets a personal size factor with mean one, applied to its combined gold under management, so a book can hold one whale and three minnows around the same average. Whether a big partner is big through more users or keener ones is not separated: the fee only ever sees the product.
+At base: $900{,}000 \times 0.06 \times 350 \times 0.0075 =$ **USD 141,750 per partner per year**. All four numbers carry Aggressive and Conservative ranges in the revenue model and all four are drawn per path. On top of the world's draw, each partner that signs gets a personal size factor averaging one, applied to its gold under management. So a book can hold one whale and three minnows around the same average.
+
+Whether a big partner is big through more users or keener ones is not separated. The fee only ever sees the product of the two.
 
 A signed partner does not arrive at full power: its users adopt over time. Revenue climbs linearly to full over a ramp of about 18 months, drawn between 12 and 24 per path. The monthly stream is then each signed partner's gold under management, scaled by how far through its ramp it is:
 
@@ -324,7 +326,7 @@ Every part of the system reads this same path: purchases, the vault bill, collat
 
 Aurumix keeps a working inventory of gold so purchases settle instantly while replacement bars are in transit. Inside each path the requirement is one bar plus enough to cover a buffer of days at that month's actual purchase rate, with a two-bar minimum.
 
-A separate daily study prices the policy properly, as a standard inventory problem: order up to a level $S$ covering expected demand over the delivery lead time plus a safety margin,
+A separate daily study prices the policy as a standard inventory problem. Order up to a level $S$ that covers expected demand over the delivery lead time, plus a safety margin:
 
 $$S = \mathbb{E}[\text{demand over lead time}] + z \cdot \sigma_d \sqrt{L} + \text{bar},$$
 
@@ -342,13 +344,13 @@ Every input carrying an Aggressive and a Conservative value in the Phase 4 reven
 
 $$x \sim \text{lo} + \text{Beta}(\alpha, \beta) \times (\text{hi} - \text{lo}), \qquad \alpha = 1 + 4\tfrac{\text{mode} - \text{lo}}{\text{hi} - \text{lo}}, \quad \beta = 1 + 4\tfrac{\text{hi} - \text{mode}}{\text{hi} - \text{lo}}$$
 
-Those bands come from the Phase 4 revenue modelling: researched where a source existed, and set by judgement where none did. They are our own estimates, not figures supplied by anyone, and the document says so wherever one is load-bearing. Reusing them here keeps the simulation and the revenue model arguing from the same evidence rather than from two sets of numbers. The rule is opt-out, not opt-in: any input with a range is drawn, so the raise number carries it. Eleven parameters are excluded, each with a written reason in the code, in three groups:
+Those bands come from the Phase 4 revenue modelling. Researched where a source existed, set by judgement where none did. They are our own estimates, not figures supplied by anyone, and the document says so wherever one is load-bearing. Reusing them here keeps the simulation and the revenue model arguing from the same evidence rather than from two sets of numbers. The rule is opt-out, not opt-in: any input with a range is drawn, so the raise number carries it. Eleven parameters are excluded, each with a written reason in the code, in three groups:
 
 - **replaced by structure**: the partner count (a discrete arrival process now), the gold band (the price process carries it)
 - **derived**: quantities recomputed from their drawn components each path, so they move with their inputs
 - **superseded by behaviour**: the workbook's blended loyalty rates and "share who ever tier". The twin prices each customer at their own tier, so a blended rate has nothing left to describe.
 
-Three Phase 5 parameters have no workbook row and carry their own declared bands: the market ceiling multiplier (0.6 to 1.55), the channel-exhaustion strength (0.15 to 0.60), and the partner adoption ramp (12 to 24 months).
+Three Phase 5 parameters have no workbook row, so they carry their own declared bands. The market ceiling multiplier, 0.6 to 1.55. The channel-exhaustion strength, 0.15 to 0.60. The partner adoption ramp, 12 to 24 months.
 
 ### And per path
 
@@ -391,7 +393,7 @@ Per-customer costs include each customer's share of replacing the ones who leave
 
 ### Why contingency lands on only half the costs
 
-Contingency is a buffer against costs nobody has thought of. Applying it to every line, as a flat percentage of the whole cost base, prices doubt about things nobody doubts. So each cost is classified once:
+Contingency buffers costs nobody has thought of. Apply it to every line and you are pricing doubt about things nobody doubts. So each cost is classified once:
 
 | | Certain, no buffer | Uncertain, buffered |
 |:--|:--|:--|
@@ -402,11 +404,11 @@ The logic is simple. A contracted premium, a published licence fee, a vendor's p
 
 This matters more than it sounds: buffering the certain half as well was moving the retail threshold by roughly a hundred thousand customers on nothing.
 
-It also concentrates the uncertainty where it belongs. Marketing is about 92% of the cost of winning a customer, so once the certain lines are excluded, sweeping contingency is very nearly a sensitivity test on cost per acquired customer alone.
+It also concentrates the uncertainty where it belongs. Marketing is 92% of what it costs to win a customer, so once the certain lines are excluded, sweeping contingency is really a test of acquisition cost alone.
 
-One reclassification came out of this. The vault contract has a daily minimum, but at this book size the minimum does not bind: the bill is the percentage fee on metal held, which rises with the book. The vault is a per-customer cost, not a fixed one.
+One reclassification came out of this. The vault contract has a daily minimum, but at this book size it does not bind. The bill is the percentage fee on metal held, and that rises with the book. So the vault is a per-customer cost, not a fixed one.
 
-The two thresholds are reported separately and never blended, because blending them would hide whether the retail business stands alone. A threshold larger than every reachable customer in all three regions is reported as beyond the market rather than as a number, because such a number invites someone to treat it as a target. The values, and the levers that move them, are the results document's job.
+The two thresholds are reported separately and never blended, because blending them would hide whether the retail business stands alone. A threshold larger than every reachable customer in all three regions is reported as beyond the market. Printing the number instead invites someone to treat it as a target. The values, and the levers that move them, are the results document's job.
 
 ### The conditions map
 
@@ -414,7 +416,7 @@ A single threshold answers what must be true at one set of assumptions. It does 
 
 So the same calculation is run across a grid of two variables, and only two. They are the only ones that are both decision-relevant and genuinely unknown: what a customer costs to acquire, and how many partners sign. Everything else is either a decision Aurumix makes, which is priced as a lever instead, or a figure already anchored.
 
-Each cell is a full simulation run, not an interpolation. The axes are bounded by the Phase 4 band rather than by invented extremes, and the plan's own position is marked on the map, so it reads as a specification with a current location rather than as a menu of scenarios.
+Each cell is a full simulation run, not an interpolation. The axes are bounded by the Phase 4 band, not by invented extremes, and the plan's own position is marked. So it reads as a specification with a current location, not a menu of scenarios.
 
 ### Per-region economics
 
@@ -458,7 +460,7 @@ The twin is deliberately not a copy of the spreadsheet, so it is not tested by m
 
 ### The standing audit
 
-Twenty-seven checks run after every change to the model. Among them: every priced range reaches the Monte Carlo; the giveback vanishes if the ladder is flattened, proving it is priced from real tiers; drawing persistency moves the book; peak funding is the true maximum of the monthly cash line; every parameter the engine reads exists. Each check exists because the defect it catches is the kind that never announces itself.
+Twenty-seven checks run after every change to the model. Among them: every priced range reaches the Monte Carlo. The giveback vanishes if the ladder is flattened, proving it is priced from real tiers. Drawing persistency moves the book. Peak funding is the true maximum of the monthly cash line. Every parameter the engine reads exists. Each check exists because the defect it catches is the kind that never announces itself.
 
 ### Verification is not validation
 

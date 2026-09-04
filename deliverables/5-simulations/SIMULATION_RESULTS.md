@@ -39,7 +39,7 @@ Three findings drive everything else.
 
 ### The question
 
-There is really one question, asked twice.
+There is one question, asked twice.
 
 **What has to be true for this business to work?** Once under everything we can put a number on, and once under a specific named failure we cannot.
 
@@ -63,7 +63,7 @@ Two things decide whether this works, and only two are both decision-relevant an
 
 Read it as a specification, not a menu. Cumulative profit at year seven, with the plan's own position marked.
 
-**The plan sits exactly on the frontier.** At today's assumed acquisition cost it needs 11 partners, and it plans for 11. That lands at USD 0.17m — positive by a rounding error, with no margin for anything going wrong.
+**The plan sits exactly on the frontier.** At today's assumed acquisition cost it needs 11 partners, and it plans for 11. That lands at USD 0.17m: positive by a rounding error, with no margin for anything going wrong.
 
 Move either axis and the requirement moves hard:
 
@@ -88,13 +88,17 @@ The blended acquisition cost of about USD 44 is an average of roughly USD 74 in 
 | Oman and Bahrain | 28.75 | **-9.20** | 57 | never clears | 9,800 |
 | **India** | 32.39 | **+14.92** | 13 | **23,475** | **48,240** |
 
-**India alone covers the whole company's fixed base with 23,475 customers, and the plan already builds 48,240 there.** The UAE and the Gulf lose money on every customer they acquire: in the UAE, replacing leavers alone eats USD 27 of USD 32.80 in revenue.
+**India alone covers the whole company's fixed base with 23,475 customers.** The plan already builds 48,240 there.
 
-Revenue per customer is nearly identical across all three. The entire difference is acquisition, and it is two things at once: cheaper paid reach, and the fact that the whole 420-strong agent network sits in India, where a customer costs a commission rather than a marketing budget.
+The UAE and the Gulf lose money on every customer they acquire. In the UAE, replacing leavers eats USD 27 of USD 32.80 in revenue before anything else is paid for.
+
+Revenue per customer is nearly identical across all three. The entire difference is acquisition, and it is two things at once.
+
+Paid reach is cheaper in India. And the whole 420-strong agent network sits there, where a customer costs a commission instead of a marketing budget.
 
 That is the finding that should change the plan, and Part 4 acts on it.
 
-### Why the retail book still cannot carry the fixed costs on its own
+### Why retail cannot carry the fixed costs
 
 Strip out partners and ask a simple question: at a mature, standing-still book, does one paying customer make money?
 
@@ -113,7 +117,7 @@ Contracted rates, published licence fees, a vendor's price per identity check an
 
 Raise the contingency on that uncertain half and the answer stops existing. At 30% the margin per customer is nearly gone and the requirement passes every reachable customer in all three regions: **beyond the addressable market**. At 50% the margin turns negative, so no number of customers works at all.
 
-Marketing is about 92% of the cost of winning a customer, so this sweep is very nearly a sensitivity on one number: what it costs to acquire.
+Marketing is 92% of what it costs to win a customer. So this sweep is really a test of one number: acquisition cost.
 
 **Or 2.5 partners cover the fixed base by themselves.**
 
@@ -148,7 +152,7 @@ The consequence is a materially larger raise than an instant-adoption model woul
 
 61% of paths need more than $3m. The number is the deepest point of a monthly cash line, not a year-end figure: cumulative losses plus the capital locked in the gold float, card prefunding and regulatory capital.
 
-**One caveat, and it matters.** In 11.5% of paths the funding line is still rising at month 84. Those paths have not reached their peak inside the seven years, so for them the figure above is a floor, not a ceiling. They are the paths short of partners, and their median raise is already USD 5.03m against USD 3.11m for paths that turn the corner in time. Read the raise as the money needed to reach the point where the business funds itself, and note that a fifth of futures do not reach that point within the horizon.
+**One caveat, and it matters.** In 11.5% of paths the funding line is still rising at month 84. Those paths have not reached their peak inside the seven years, so for them the figure above is a floor, not a ceiling. They are the paths short of partners, and their median raise is already USD 5.03m against USD 3.11m for paths that turn the corner in time. Read the raise as the money needed to reach the point where the business funds itself. A fifth of futures do not reach that point inside seven years.
 
 ### Getting to profit
 
@@ -163,7 +167,7 @@ The consequence is a materially larger raise than an instant-adoption model woul
 
 ![Cumulative profit](aurumix/outputs/charts/cum_profit_fan.png)
 
-The shape matters as much as the odds, and the shape is sobering. The median path digs a hole until about month 52, then climbs, but it does not finish the climb: cumulative profit at month 84 sits at **-USD 0.45m** on the median path. Among the paths that do clear, the crossing happens around month 68, deep into year six.
+The shape matters as much as the odds, and the shape is sobering. The median path digs a hole until about month 52, then climbs. It does not finish the climb. Cumulative profit at month 84 sits at **-USD 0.45m**. Among the paths that do clear, the crossing happens around month 68, deep into year six.
 
 So the honest reading of the plan as modelled is not "profitable in year seven". It is "roughly a third of futures have repaid the hole by year seven, and the rest are still climbing out". That is what the three changes in Part 4 are for.
 
@@ -232,9 +236,11 @@ Three readings follow.
 
 **Gold is not the risk.** The crash scenario is almost indistinguishable from base.
 
-**Partners are the whole risk, and it is the one risk money cannot solve.** Their absence costs -USD 4.17m over seven years and pushes funding to USD 5.74m, but the deeper point is that no amount of funding converts a partnerless business into a viable one. Every other scenario on this list is a cash problem. This one is a business-model problem.
+**Partners are the whole risk, and the only one money cannot solve.** Their absence costs -USD 4.17m over seven years and pushes funding to USD 5.74m.
 
-**A run is survivable.** Cumulative profit falls to -USD 0.12m and funding rises only to USD 2.89m. The gold is allocated and already owned, so a run is an operational and cash-timing event rather than a solvency one. The credit book stays quiet throughout: the chance of ever needing a collateral top-up is **4.1%**, because loans are secured against gold that moves with the same price the loan is measured in.
+But the number is not the point. No amount of funding turns a partnerless business into a viable one. Every other scenario here is a cash problem. This one is a business-model problem.
+
+**A run is survivable.** Cumulative profit falls to -USD 0.12m and funding rises only to USD 2.89m. The gold is allocated and already owned, so a run is an operational and cash-timing event rather than a solvency one. The credit book stays quiet throughout. The chance of ever needing a collateral top-up is **4.1%**, because loans are secured against gold that moves with the price the loan is measured in.
 
 ---
 
@@ -258,7 +264,7 @@ Same 2,000 worlds, same dice, only the configuration moved.
 
 #### 1. Trim the loyalty ladder to a 1.5-point ceiling, back-loaded
 
-The top tier pays 3.5% entry rather than 3.0%, and the benefits concentrate near the top instead of stepping evenly. This is the largest single lever. A harsher 1.0-point ceiling was tested and buys very little more, at a real cost to the mid-ladder proposition.
+The top tier pays 3.5% entry rather than 3.0%, and the benefits concentrate near the top instead of stepping evenly. This is the largest single lever. A harsher 1.0-point ceiling was tested. It buys almost nothing more, and costs real ground in the middle of the ladder.
 
 #### 2. Push the standing-instruction rail toward 75% of joiners
 
@@ -270,7 +276,7 @@ The current split concentrates spend in the smallest and dearest market. The rea
 
 ### What to learn first
 
-Nothing here is measured. So the most valuable thing the model can do right now is rank what is worth finding out, by how much it moves the answer against what it costs to buy the answer.
+Nothing here is measured. So the most valuable thing the model can do is rank what is worth finding out: how much each answer moves the result, against what it costs to buy.
 
 | Learn it | Moves year-seven profit | What it takes |
 |:--|--:|:--|
@@ -295,7 +301,7 @@ A threshold is only useful if you know the level at which it fires.
 | India | agent-led | not a marketing number | margin moves USD 1.03 across a fourfold change in the marketing rate. Watch agent productivity instead |
 | Partners signed by year 7 | plan says 11 | 11 | below it, the plan does not clear at today's acquisition cost |
 
-The India line is the one to internalise. **Two of these are marketing businesses and one is a distribution business.** They need different dashboards, and reporting a single blended cost per customer across all three hides which is which.
+The India line is the one to internalise. **Two of these are marketing businesses. One is a distribution business.** They need different dashboards, and a single blended cost per customer hides which is which.
 
 One metric was tested as a trigger and rejected. Payment discipline moves the margin by only USD 1.02 across its whole plausible range, because costs are per customer rather than per payment. It is worth watching as a health signal, but it will not flip a decision.
 
@@ -305,7 +311,7 @@ One metric was tested as a trigger and rejected. Payment discipline moves the ma
 
 **Shorten the adoption ramp.** The raise is set while early partners are still warming up. Launching inside a partner's existing app, or pre-committing distribution at signing, attacks the funding need directly.
 
-**Watch payment discipline from month one.** The share of months actually paid is the number the retail economics live on, and it is currently a modelled assumption rather than an observation. It will be measurable within two months of launch.
+**Watch payment discipline from month one.** The share of months actually paid is what the retail economics live on, and today it is a modelled assumption. Two months of launch will make it an observation.
 
 ### What to monitor
 
