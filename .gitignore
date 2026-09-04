@@ -13,3 +13,6 @@ node_modules/
 # Outputs
 *.png
 *.pdf
+
+# Client deliverables ship with the repo, generated outputs do not
+!deliverables/5-simulations/final/*.pdf
