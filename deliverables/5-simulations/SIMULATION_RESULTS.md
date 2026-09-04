@@ -233,20 +233,20 @@ One signed letter of intent would tell you more than any further modelling. It w
 
 Part 2 tested everything we could put a range on. This part tests single disasters that no range covers, and asks the same question of each: **can more money fix it?**
 
-Each disaster runs 20 times, the same way the rest of this document runs. Every scenario uses the same set of runs as the others, so the same customers, the same gold prices and the same assumptions appear in each. Any difference between two rows is the disaster, not luck.
+Each disaster runs 2,000 times, the same way the rest of this document runs. Every scenario uses the same set of runs as the others, so the same customers, the same gold prices and the same assumptions appear in each. Any difference between two rows is the disaster, not luck.
 
 ![Stress scenarios](aurumix/outputs/charts/stress_scenarios.png)
 
 | What goes wrong | Profit after 7 years | Money needed | Runs that earn it back |
 |:--|--:|--:|--:|
-| Nothing, for comparison | USD 0.04m | USD 4.77m | 50% |
-| Gold falls 30% | USD 0.04m | USD 4.76m | 50% |
-| A quarter of customers cash out at once | -USD 0.07m | USD 4.82m | 50% |
-| **No partner ever signs** | **-USD 4.35m** | **USD 7.21m** | **0%** |
-| Customers save less and leave faster | -USD 1.18m | USD 5.58m | 25% |
-| The licence takes a year longer | -USD 0.69m | USD 5.47m | 25% |
-| Customers save smaller amounts | -USD 0.35m | USD 4.99m | 45% |
-| Several of these at once | -USD 2.60m | USD 6.04m | 0% |
+| Nothing, for comparison | -USD 0.45m | USD 4.82m | 44% |
+| Gold falls 30% | -USD 0.45m | USD 4.82m | 44% |
+| A quarter of customers cash out at once | -USD 0.61m | USD 4.92m | 41% |
+| **No partner ever signs** | **-USD 4.29m** | **USD 7.09m** | **0%** |
+| Customers save less and leave faster | -USD 1.49m | USD 5.57m | 30% |
+| The licence takes a year longer | -USD 1.25m | USD 5.63m | 32% |
+| Customers save smaller amounts | -USD 0.81m | USD 4.97m | 38% |
+| Several of these at once | -USD 2.77m | USD 5.75m | 1% |
 
 Profit is the typical run. Money needed is what covers 9 runs in 10, the same measure used everywhere else in this document.
 
@@ -266,11 +266,11 @@ Three things to take from this.
 
 **Gold is not the risk.** A 30% crash looks almost the same as a normal year.
 
-**Partners are the whole risk.** Losing them costs -USD 4.35m over seven years and pushes the money you need to USD 7.21m.
+**Partners are the whole risk.** Losing them costs -USD 4.29m over seven years and pushes the money you need to USD 7.09m.
 
 But the number is not the point. **No amount of money turns a business with no partners into a working one.** Every other problem on this list is a cash problem. This one is not.
 
-**A rush to cash out is survivable.** Profit falls to -USD 0.07m and the money you need rises only to USD 4.82m. The gold already belongs to customers, so this is an operations and timing problem, not a solvency one.
+**A rush to cash out is survivable.** Profit falls to -USD 0.61m and the money you need rises only to USD 4.92m. The gold already belongs to customers, so this is an operations and timing problem, not a solvency one.
 
 Loans stay safe too. The chance of ever having to ask a borrower for more collateral is **4.1%**. The gold backing a loan rises in value with the same price the loan is measured in.
 

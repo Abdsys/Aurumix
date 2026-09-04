@@ -8,3 +8,6 @@ STRESS SCENARIOS, 2000 paths each, paired on identical seeds
   s4_adoption_failure            cum  -1,487,571  raise p90   5,568,878  break-even 29.8%
   s5_regulatory_delay            cum  -1,247,940  raise p90   5,626,220  break-even 32.1%
   s6_ticket_compression          cum    -810,682  raise p90   4,972,379  break-even 38.0%
+  s7_combined_tail               cum  -2,769,361  raise p90   5,747,980  break-even  1.5%
+
+wrote outputs/stress_mc.json
