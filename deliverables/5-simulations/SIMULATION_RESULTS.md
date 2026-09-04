@@ -16,18 +16,18 @@ created: 2026-09-03
 
 ### Executive summary
 
-**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about 1.06m off the raise.**
+**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about 1.08m off the raise.**
 
 The simulation ran 2,000 versions of the next seven years, each one a full rerun of every customer, month by month, at one agent per customer.
 
 | Metric | Plan as modelled | With the three changes |
 |:--|--:|--:|
-| Raise needed, 9 paths in 10 | **5.40m** | **4.34m** |
+| Raise needed, 9 paths in 10 | **5.40m** | **4.32m** |
 | Raise needed, median path | 3.51m | 2.97m |
-| Odds of clearing the hole by year 7 | **34%** | **54%** |
+| Odds of clearing the hole by year 7 | **34%** | **53%** |
 | Year-seven profit, median | 0.49m | 0.67m |
-| Year-seven profit, worst tenth | -0.39m | -0.23m |
-| Paying customers at month 84, median | 88,594 | 91,905 |
+| Year-seven profit, worst tenth | -0.39m | -0.22m |
+| Paying customers at month 84, median | 88,594 | 91,891 |
 
 Three findings drive everything else.
 
@@ -195,11 +195,11 @@ Same 2,000 worlds, same dice, only the configuration moved.
 
 | | Plan | Recommended |
 |:--|--:|--:|
-| Raise, 9 in 10 | 5.40m | **4.34m** |
-| Break-even by year 7 | 34% | **54%** |
+| Raise, 9 in 10 | 5.40m | **4.32m** |
+| Break-even by year 7 | 34% | **53%** |
 | Year-seven profit, median | 0.49m | 0.67m |
-| Year-seven profit, worst tenth | -0.39m | -0.23m |
-| Cumulative profit at year 7, median | | 0.23m |
+| Year-seven profit, worst tenth | -0.39m | -0.22m |
+| Cumulative profit at year 7, median | | 0.24m |
 
 ### Recommendations
 
