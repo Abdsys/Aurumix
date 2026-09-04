@@ -240,7 +240,7 @@ Each disaster runs 2,000 times, the same way the rest of this document runs. Eve
 | What goes wrong | Profit after 7 years | Money needed | Runs that earn it back |
 |:--|--:|--:|--:|
 | Nothing, for comparison | -USD 0.45m | USD 4.82m | 44% |
-| Gold falls 30% | -USD 0.45m | USD 4.82m | 44% |
+| Gold falls 30% and savers panic | -USD 0.61m | USD 4.91m | 41% |
 | A quarter of customers cash out at once | -USD 0.61m | USD 4.92m | 41% |
 | **No partner ever signs** | **-USD 4.29m** | **USD 7.09m** | **0%** |
 | Customers save less and leave faster | -USD 1.49m | USD 5.57m | 30% |
@@ -254,7 +254,7 @@ Profit is the typical run. Money needed is what covers 9 runs in 10, the same me
 
 | What goes wrong | Verdict | What you would do |
 |:--|:--|:--|
-| Gold falls 30% | **Not a problem** | nothing. Customers own the gold, so they carry the price |
+| Gold falls 30% and savers panic | **Money fixes it** | already covered by the planned raise. The damage is the panic, not the price |
 | A quarter cash out at once | **Money fixes it** | already covered by the planned raise. You need to be operationally ready, not richer |
 | Customers save smaller amounts | **Money fixes it** | already covered by the planned raise |
 | Licence delayed a year | **Money fixes it** | roughly USD 0.4m more, to pay the bills while you wait |
@@ -264,7 +264,7 @@ Profit is the typical run. Money needed is what covers 9 runs in 10, the same me
 
 Three things to take from this.
 
-**Gold is not the risk.** A 30% crash looks almost the same as a normal year.
+**The gold price is not the risk. Frightened savers are.** We measured the price fall on its own first: it moved the typical run by about USD 5,000, which is indistinguishable from nothing. Customers own the gold, so they carry the price, and Aurumix earns fees on money moving. So the crash scenario above includes what a crash could actually do: frighten savers into the cash-out behaviour of the row below it. Run that way, the crash costs about the same as the cash-out run, and the price fall itself adds roughly USD 3,000 on top.
 
 **Partners are the whole risk.** Losing them costs -USD 4.29m over seven years and pushes the money you need to USD 7.09m.
 
@@ -327,17 +327,17 @@ The two decisions and the two pieces of work were then run as one combined confi
 
 | | Plan as written | With the four changes |
 |:--|--:|--:|
-| Money to raise, safe in 9 runs of 10 | USD 4.82m | USD 3.45m |
-| Runs that earn it all back by year seven | 43% | 75% |
+| Money to raise, safe in 9 runs of 10 | USD 4.82m | USD 3.44m |
+| Runs that earn it all back by year seven | 43% | 74% |
 | Profit in year seven, typical run | USD 0.69m | USD 1.10m |
-| Cumulative profit at month 84, typical run | -USD 0.45m | USD 1.89m |
-| Paying customers at month 84 | 88,594 | 80,455 |
+| Cumulative profit at month 84, typical run | -USD 0.45m | USD 1.88m |
+| Paying customers at month 84 | 88,594 | 80,354 |
 
 ![Plan against recommended](aurumix/outputs/charts/plan_vs_recommended.png)
 
 The customer count falls, and that is intended. The marketing shift buys fewer customers, but profitable ones: it stops paying USD 74 for UAE customers who lose money and buys Indian customers who earn it.
 
-The raise falls by USD 1.37m. That saving is real money that does not need to be found, and it comes almost entirely from the partner work: earlier partner revenue fills the loss-making years faster, so the hole never gets as deep.
+The raise falls by USD 1.39m. That saving is real money that does not need to be found, and it comes almost entirely from the partner work: earlier partner revenue fills the loss-making years faster, so the hole never gets as deep.
 
 ---
 

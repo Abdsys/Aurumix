@@ -14,7 +14,9 @@ The simulation is **built, verified and running**. Both client documents exist a
 |---|---|
 | The engine (`aurumix/src/twin.py`) | ✅ Complete, verified |
 | Base Monte Carlo, 2,000 paths, full resolution | ✅ Done |
-| Stress Monte Carlo, 2,000 paths per scenario | ⚠ Complete for base + s1 to s7 (2026-09-04 21:12). s8 added since; full paired rerun pending, client has more changes coming |
+| Stress Monte Carlo, 2,000 paths per scenario | ✅ Rerun complete 2026-09-05 with the redefined s1 (crash + panic): cum -608k, right beside s2's -611k. The price fall adds ~USD 3k given the panic |
+| Recommended configuration (`mc_recommended.json`) | ✅ Full resolution, 2,000 paths, 2026-09-05: raise p90 3.44m, break-even 74.5%, NP7 p50 1.10m, cum p50 +1.88m. Config: alloc 40/10/50, ladder 1.5x convex, partners plan [0,1,3,5,8,11,14], ramp 9 months, rail base |
+| Part 4 | ✅ Written: eight levers in three groups plus the combined configuration. Client-approved shape |
 | `SIMULATION_SETUP.md` | ✅ Current, 38 branded pages |
 | `SIMULATION_RESULTS.md` | 🔄 Restructured today; Part 4 is a placeholder pending new recommendations |
 | Recommendations | ⛔ **Being rebuilt.** The published three are weak (see §5) |

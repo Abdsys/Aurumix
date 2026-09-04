@@ -187,7 +187,7 @@ def main():
     # 6. stress scenarios -----------------------------------------------------
     if STM is not None:
         s = {k: v for k, v in STM.items() if not k.startswith("_")}
-        labs = {"base": "Base", "s1_gold_crash_30": "Gold crashes 30%",
+        labs = {"base": "Base", "s1_gold_crash_30": "Gold crashes 30%, savers panic",
                 "s2_redemption_run_25pct_M24": "Redemption run",
                 "s3_zero_b2b": "No partners at all",
                 "s4_adoption_failure": "Adoption failure",

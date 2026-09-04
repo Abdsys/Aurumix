@@ -240,7 +240,7 @@ Each disaster runs {{ST_PATHS}} times, the same way the rest of this document ru
 | What goes wrong | Profit after 7 years | Money needed | Runs that earn it back |
 |:--|--:|--:|--:|
 | Nothing, for comparison | {{ST_BASE_CUM}} | {{ST_BASE_PK}} | {{ST_BASE_BE}} |
-| Gold falls 30% | {{ST_GOLD_CUM}} | {{ST_GOLD_PK}} | {{ST_S1_GOLD_CRASH_30_BE}} |
+| Gold falls 30% and savers panic | {{ST_GOLD_CUM}} | {{ST_GOLD_PK}} | {{ST_S1_GOLD_CRASH_30_BE}} |
 | A quarter of customers cash out at once | {{ST_RUN_CUM}} | {{ST_RUN_PK}} | {{ST_S2_REDEMPTION_RUN_25PCT_M24_BE}} |
 | **No partner ever signs** | **{{ST_NOB2B_CUM}}** | **{{ST_NOB2B_PK}}** | **{{ST_S3_ZERO_B2B_BE}}** |
 | Customers save less and leave faster | {{ST_ADOPT_CUM}} | {{ST_ADOPT_PK}} | {{ST_S4_ADOPTION_FAILURE_BE}} |
@@ -254,7 +254,7 @@ Profit is the typical run. Money needed is what covers 9 runs in 10, the same me
 
 | What goes wrong | Verdict | What you would do |
 |:--|:--|:--|
-| Gold falls 30% | **Not a problem** | nothing. Customers own the gold, so they carry the price |
+| Gold falls 30% and savers panic | **Money fixes it** | already covered by the planned raise. The damage is the panic, not the price |
 | A quarter cash out at once | **Money fixes it** | already covered by the planned raise. You need to be operationally ready, not richer |
 | Customers save smaller amounts | **Money fixes it** | already covered by the planned raise |
 | Licence delayed a year | **Money fixes it** | roughly USD 0.4m more, to pay the bills while you wait |
@@ -264,7 +264,7 @@ Profit is the typical run. Money needed is what covers 9 runs in 10, the same me
 
 Three things to take from this.
 
-**Gold is not the risk.** A 30% crash looks almost the same as a normal year.
+**The gold price is not the risk. Frightened savers are.** We measured the price fall on its own first: it moved the typical run by about USD 5,000, which is indistinguishable from nothing. Customers own the gold, so they carry the price, and Aurumix earns fees on money moving. So the crash scenario above includes what a crash could actually do: frighten savers into the cash-out behaviour of the row below it. Run that way, the crash costs about the same as the cash-out run, and the price fall itself adds roughly USD 3,000 on top.
 
 **Partners are the whole risk.** Losing them costs {{ST_NOB2B_CUM}} over seven years and pushes the money you need to {{ST_NOB2B_PK}}.
 
