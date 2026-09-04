@@ -28,18 +28,47 @@ DOCS = os.path.dirname(HERE)
 OUT = os.path.join(HERE, "outputs")
 
 
+# Modules that change the NUMBERS. charts.py and visualize.py are presentation
+# and deliberately excluded: editing a chart's colour must not invalidate a run.
+MODEL_FILES = ("src/twin.py", "src/mcmodel.py", "src/entities.py",
+               "src/mechanics.py", "src/agentbook.py", "src/floatmodel.py",
+               "src/creditrisk.py", "src/detmodel.py",
+               "config/config.py", "config/overrides.py", "config/params.json")
+
+
+def _newest_model_mtime():
+    """Most recent change to anything that moves a number."""
+    return max((os.path.getmtime(os.path.join(HERE, p))
+                for p in MODEL_FILES if os.path.exists(os.path.join(HERE, p))),
+               default=0.0)
+
+
 def j(name):
-    with open(os.path.join(OUT, name)) as f:
+    """
+    Load a result file, refusing one produced before the model last changed.
+
+    This guard exists because it failed once. analysis.json was generated at
+    20:10 and the twin changed at 22:24, so the results document quoted a retail
+    threshold of 148,000 when the model said 252,000. The document check could
+    not catch it: it compares the document against the JSON, and both agreed.
+    Nothing compared the JSON against the code that produced it.
+    """
+    p = os.path.join(OUT, name)
+    if os.path.getmtime(p) < _newest_model_mtime():
+        raise SystemExit(
+            "STALE: %s predates the current model.\n"
+            "  Re-run the script that produces it before rendering the document.\n"
+            "    analysis.json                             <- scripts/run_analysis.py\n"
+            "    mc_summary.json / mc_results.csv / bands  <- scripts/run_mc.py\n"
+            "    mc_cfg15.json                             <- scripts/mc_config.py" % name)
+    with open(p) as f:
         return json.load(f)
 
 
 S = j("mc_summary.json")
 C = j("mc_cfg15.json")
 A = j("analysis.json")
-try:
-    F = j("float_results.json")
-except FileNotFoundError:
-    F = {}
+F = j("float_results.json")
 
 t15 = A["q1_threshold"]["contingency_15"]
 t30 = A["q1_threshold"]["contingency_30"]

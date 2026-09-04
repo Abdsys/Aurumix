@@ -3,71 +3,71 @@ STAGE 3 ANALYSIS
 ==============================================================================
 
 Q1a. PROFITABILITY THRESHOLD - steady state (acquisition replaces churn only)
-  retail revenue/payer $32 | serve $11 | churn 32%/yr (realised) | CAC blended $44 / UAE-only $55
-  fixed cost base $409,249/yr | one B2B partner = $141,750/yr
-  contingency 15%: RETAIL ALONE needs 147,768 paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.3 B2B partners cover fixed costs by themselves
+  retail revenue/payer $32 | serve $11 | churn 35%/yr (realised) | CAC blended $44 / UAE-only $55
+  fixed cost base $409,423/yr | one B2B partner = $141,750/yr
+  contingency 15%: RETAIL ALONE needs 252,243 paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.3 B2B partners cover fixed costs by themselves
   contingency 30%: RETAIL ALONE needs unreachable paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.8 B2B partners cover fixed costs by themselves
   contingency 50%: RETAIL ALONE needs unreachable paying (blended CAC) / unreachable (UAE CAC)  |  OR 4.3 B2B partners cover fixed costs by themselves
   (cross-check: O Gold runs 75,000 active users in the UAE alone)
 
 Q2. TIER MIX at M84 (the thing the workbook cannot compute):
-  silver      38.3%
-  gold        45.8%
-  platinum    14.1%
-  sovereign    1.7%
+  silver      40.4%
+  gold        43.9%
+  platinum    14.3%
+  sovereign    1.4%
   gated share of live book: 53.4%  (workbook input: 55%)
 
 Q2. LADDER ENVELOPE (cumulative 84-month ICS cost, % of agent revenue):
-  c1.0_convex    ICS       13,240  =  5.1% of revenue
-  c1.0_linear    ICS       20,588  =  7.8% of revenue
-  c1.0_concave   ICS       30,464  = 11.5% of revenue
-  c1.5_convex    ICS       16,290  =  6.2% of revenue
-  c1.5_linear    ICS       25,266  =  9.6% of revenue
-  c1.5_concave   ICS       37,237  = 14.1% of revenue
-  c2.0_convex    ICS       19,340  =  7.4% of revenue
-  c2.0_linear    ICS       29,945  = 11.4% of revenue
-  c2.0_concave   ICS       44,010  = 16.7% of revenue
+  c1.0_convex    ICS       12,912  =  5.1% of revenue
+  c1.0_linear    ICS       20,143  =  7.9% of revenue
+  c1.0_concave   ICS       29,798  = 11.6% of revenue
+  c1.5_convex    ICS       15,920  =  6.3% of revenue
+  c1.5_linear    ICS       24,760  =  9.7% of revenue
+  c1.5_concave   ICS       36,482  = 14.2% of revenue
+  c2.0_convex    ICS       18,929  =  7.5% of revenue
+  c2.0_linear    ICS       29,378  = 11.5% of revenue
+  c2.0_concave   ICS       43,166  = 16.8% of revenue
 
-Q3. profit share by ticket decile (rho_quality=0.0):  top decile 15.5%, top three 37.5%, bottom five 43.7%
+Q3. profit share by ticket decile (rho_quality=0.0):  top decile 15.4%, top three 37.9%, bottom five 43.2%
 
-Q3. profit share by ticket decile (rho_quality=0.2):  top decile 15.8%, top three 38.5%, bottom five 42.4%
+Q3. profit share by ticket decile (rho_quality=0.2):  top decile 16.2%, top three 38.7%, bottom five 42.4%
 
-Q3. profit share by ticket decile (rho_quality=0.4):  top decile 15.1%, top three 37.0%, bottom five 43.8%
+Q3. profit share by ticket decile (rho_quality=0.4):  top decile 16.3%, top three 38.6%, bottom five 41.3%
 
-Q3. profit share by ticket decile (rho_quality=0.6):  top decile 15.3%, top three 38.6%, bottom five 42.0%
+Q3. profit share by ticket decile (rho_quality=0.6):  top decile 15.3%, top three 38.5%, bottom five 42.0%
 
 Q3/Q6. RAIL MIX (prefunded share -> gate share, book size):
-  prefunded_0    gated 50.0%  paying M84    85,000  entry rev    4,097,274
-  prefunded_25   gated 52.8%  paying M84    89,210  entry rev    4,351,485
-  prefunded_50   gated 56.1%  paying M84    92,080  entry rev    4,527,354
-  prefunded_75   gated 58.3%  paying M84    95,640  entry rev    4,674,505
+  prefunded_0    gated 50.6%  paying M84    85,110  entry rev    4,180,434
+  prefunded_25   gated 53.1%  paying M84    87,390  entry rev    4,323,242
+  prefunded_50   gated 56.5%  paying M84    92,870  entry rev    4,595,870
+  prefunded_75   gated 59.1%  paying M84    96,190  entry rev    4,838,901
 
 Q3b. SPOT-ONLY CUSTOMER (with the card now open to them):
   UAE    value ~$44/yr vs CAC $85 -> payback 1.9 yrs on spot alone
   India  value ~$31/yr vs CAC $15 -> payback 0.5 yrs on spot alone
 
 Q6. TORNADO - Y7 net profit swing, scenario-range width per parameter:
-  partner_adopt               1,819,125   [       1,137 ..    1,820,262]
-  partner_aum_user            1,247,400   [     201,612 ..    1,449,012]
-  b2b_fee                       831,600   [     261,012 ..    1,092,612]
-  facility_takeup               787,232   [     425,492 ..    1,212,725]
-  ceiling_mult                  736,019   [     346,751 ..    1,082,770]
-  contingency                   633,732   [     939,195 ..      305,463]
-  family_attach                 509,957   [     561,188 ..    1,071,145]
-  vault_fee                     321,907   [     861,669 ..      539,762]
-  atm_share_4                   316,026   [     728,091 ..    1,044,117]
-  atm_share_3                   307,247   [     649,085 ..      956,332]
-  referral_rate                 252,583   [     695,239 ..      947,823]
-  cac_conv_coef                 244,686   [     907,096 ..      662,410]
+  partner_adopt               1,565,692   [    -151,191 ..    1,414,501]
+  partner_aum_user            1,073,618   [      21,354 ..    1,094,972]
+  facility_takeup               814,219   [     159,865 ..      974,085]
+  ceiling_mult                  731,916   [     135,611 ..      867,527]
+  b2b_fee                       715,745   [      72,479 ..      788,224]
+  contingency                   631,341   [     677,655 ..       46,313]
+  family_attach                 461,972   [     338,970 ..      800,943]
+  vault_fee                     322,528   [     600,883 ..      278,354]
+  atm_share_4                   310,134   [     468,130 ..      778,265]
+  atm_share_3                   301,519   [     390,597 ..      692,116]
+  referral_rate                 244,214   [     427,709 ..      671,923]
+  cac_uae_y7                    231,390   [     683,385 ..      451,994]
 
 STRESS SCENARIOS (Y7 net profit | cumulative at Y7 | peak funding):
-  base                          780,762 |      480,384 |    2,502,378
-  s1_gold_crash_30              781,463 |      482,832 |    2,497,156
-  s2_redemption_run_25pct_M24      713,232 |      275,463 |    2,537,525
-  s3_zero_b2b                  -778,488 |   -4,622,616 |    6,206,198
-  s4_adoption_failure           551,327 |     -459,185 |    2,693,704
-  s5_regulatory_delay           780,762 |     -258,700 |    3,241,462
-  s6_ticket_compression         686,501 |      175,491 |    2,508,481
-  s7_combined_tail             -136,656 |   -2,699,302 |    4,219,817
+  base                          519,820 |     -597,158 |    3,040,754
+  s1_gold_crash_30              520,424 |     -595,562 |    3,034,891
+  s2_redemption_run_25pct_M24      504,990 |     -653,213 |    3,060,536
+  s3_zero_b2b                  -822,202 |   -4,718,265 |    6,286,976
+  s4_adoption_failure           350,343 |   -1,366,577 |    3,224,421
+  s5_regulatory_delay           519,820 |   -1,336,242 |    3,779,838
+  s6_ticket_compression         425,778 |     -908,234 |    3,060,962
+  s7_combined_tail             -162,099 |   -3,032,576 |    4,557,368
 
 wrote C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\5-simulations\aurumix\outputs\analysis.json

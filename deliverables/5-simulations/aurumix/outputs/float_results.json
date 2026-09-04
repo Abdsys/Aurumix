@@ -1,68 +1,68 @@
 {
  "base": {
-  "float_avg_y7": 360.9766431757794,
-  "float_end_m84": 460.14155963455056,
-  "workbook_float_y7": 3705.3047926127715,
+  "float_avg_y7": 328.0275048278393,
+  "float_end_m84": 432.59396215026163,
+  "workbook_float_y7": 3644.853290454362,
   "stockout_rate": 0.0,
-  "carry_cost_cum": 21670.9485009195,
-  "sellback_cum": 112.33615462314377,
-  "S_level_y7": 2866.6666666666665
+  "carry_cost_cum": 20832.781480842168,
+  "sellback_cum": 117.21635651422449,
+  "S_level_y7": 2841.6666666666665
  },
  "sweeps": {
   "lead 1d": {
-   "float_avg_y7": 311.73320326037043,
+   "float_avg_y7": 297.03523262493735,
    "stockout": 0.0,
-   "carry_cum": 19850.553821752375
+   "carry_cum": 19421.25032974396
   },
   "lead 3d": {
-   "float_avg_y7": 416.1778737993573,
+   "float_avg_y7": 373.2030068334477,
    "stockout": 0.0,
-   "carry_cum": 23278.40431327669
+   "carry_cum": 22015.1916367151
   },
   "lead 5d": {
-   "float_avg_y7": 503.15663680543884,
-   "stockout": 0.0,
-   "carry_cum": 25864.72360746795
+   "float_avg_y7": 429.18708852956564,
+   "stockout": 0.0015873015873015873,
+   "carry_cum": 23790.864275240838
   },
   "service 95%": {
-   "float_avg_y7": 338.47664317577807,
+   "float_avg_y7": 306.1491559949068,
    "stockout": 0.0,
-   "carry_cum": 20482.297663777765
+   "carry_cum": 19576.57444645865
   },
   "service 99.9%": {
-   "float_avg_y7": 402.82082261728584,
+   "float_avg_y7": 365.08226667929694,
    "stockout": 0.0,
-   "carry_cum": 23003.589074406376
+   "carry_cum": 22047.11278869313
   },
   "payday 40%": {
-   "float_avg_y7": 324.32972903820297,
+   "float_avg_y7": 291.35534331402374,
    "stockout": 0.0,
-   "carry_cum": 20057.76546564833
+   "carry_cum": 19269.349024859406
   },
   "payday 80%": {
-   "float_avg_y7": 394.23412685119257,
+   "float_avg_y7": 361.7773571392242,
    "stockout": 0.0,
-   "carry_cum": 23056.254814657845
+   "carry_cum": 22283.975698671566
   },
   "carry 4%": {
-   "float_avg_y7": 360.9766431757794,
+   "float_avg_y7": 328.0275048278393,
    "stockout": 0.0,
-   "carry_cum": 14447.299000613
+   "carry_cum": 13888.520987228116
   },
   "carry 8%": {
-   "float_avg_y7": 360.9766431757794,
+   "float_avg_y7": 328.0275048278393,
    "stockout": 0.0,
-   "carry_cum": 28894.598001226
+   "carry_cum": 27777.04197445623
   }
  },
  "mtm": {
-  "cum_p10": -3342.225839130181,
-  "cum_p50": 24416.42759054519,
-  "cum_p90": 65777.88032012004,
-  "worst_year_p10": -13497.492208036385,
-  "carry_p50": 22193.029805438608,
-  "safe_raise_90_inventory_float": 4299684.93795696,
-  "safe_raise_90_workbook_float": 5162665.316033889,
-  "safe_raise_50_inventory_float": 2808139.678619028
+  "cum_p10": -1937.6568258930458,
+  "cum_p50": 23912.21181019863,
+  "cum_p90": 63493.02305841571,
+  "worst_year_p10": -13080.839714807755,
+  "carry_p50": 20913.43641680067,
+  "safe_raise_90_inventory_float": 4392830.702952569,
+  "safe_raise_90_workbook_float": 5317439.476204895,
+  "safe_raise_50_inventory_float": 2957794.1088852687
  }
 }

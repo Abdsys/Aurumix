@@ -31,11 +31,11 @@ The simulation ran 2,000 versions of the next seven years, each one a full rerun
 
 Three findings drive everything else.
 
-**Partners are the business.** They are 31% of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose -USD 4.62m and need USD 6.21m of funding.
+**Partners are the business.** They are 31% of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose -USD 4.72m and need USD 6.29m of funding.
 
-**Retail does not stand alone.** At a 15% contingency the retail book would need 147,768 paying customers to cover the fixed base by itself, against the 88,594 the plan builds. At 30% and above, the margin per customer goes negative and no book size fixes it.
+**Retail does not stand alone.** At a 15% contingency the retail book would need 252,243 paying customers to cover the fixed base by itself, against the 88,594 the plan builds. At 30% and above, the margin per customer goes negative and no book size fixes it.
 
-**Gold is not the risk.** A 30% crash leaves cumulative profit at USD 0.48m against a base of USD 0.48m. Customers own the gold; Aurumix earns fees on flows.
+**Gold is not the risk.** A 30% crash leaves cumulative profit at -USD 0.60m against a base of -USD 0.60m. Customers own the gold; Aurumix earns fees on flows.
 
 ### The three questions
 
@@ -55,7 +55,7 @@ Strip out partners and ask a simple question: at a mature, standing-still book, 
 
 ![Retail alone](aurumix/outputs/charts/threshold_retail_alone.png)
 
-At a 15% contingency, one customer contributes about **$3.18 a year** after serving them and after replacing the customers who leave. The fixed base is roughly $410,000 a year, so covering it needs **147,768 paying customers**. The plan builds 88,594.
+At a 15% contingency, one customer contributes about **$1.87 a year** after serving them and after replacing the customers who leave. The fixed base is roughly $410,000 a year, so covering it needs **252,243 paying customers**. The plan builds 88,594.
 
 Raise the contingency and the answer stops existing. At 30% the margin per customer turns negative, which means no number of customers covers the fixed base: unreachable. At 50%, the same.
 
@@ -67,7 +67,7 @@ That contrast is the finding. A partner's fee arrives almost whole; a retail cus
 
 The revenue model's paying customers pay every month by construction. The simulation's do not: three of the five payment behaviours miss months on purpose, and the book ends up paying in about **78% of the months it could**.
 
-The effect is direct. Revenue per paying customer falls from roughly $38 a year to **$32**, while serving and replacement costs do not fall at all. That single correction is most of the distance between "retail needs 65,000 customers" and "retail needs 147,768".
+The effect is direct. Revenue per paying customer falls from roughly $38 a year to **$32**, while serving and replacement costs do not fall at all. That single correction is most of the distance between "retail needs 65,000 customers" and "retail needs 252,243".
 
 ### Finding 3: partners arrive slowly, and the raise is set while they are still ramping
 
@@ -129,22 +129,22 @@ By month 84, **53.4%** of the live book has cleared six consecutive payments and
 
 | Tier | Share of tiered customers |
 |:--|--:|
-| Silver | 38.3% |
-| Gold | 45.8% |
-| Platinum | 14.1% |
-| Sovereign | 1.7% |
+| Silver | 40.4% |
+| Gold | 43.9% |
+| Platinum | 14.3% |
+| Sovereign | 1.4% |
 
 ![Tier mix](aurumix/outputs/charts/tier_mix_over_time.png)
 
 Sovereign requires a five-year payment record and a near-perfect recent year at the same time. Almost nobody clears it inside seven years, which is what makes it cheap to offer and meaningful to hold.
 
-Priced at each customer's own tier, the giveback costs between **5.1%** and **16.7%** of revenue depending on how generous the ladder is. That answers the second question. The ladder is affordable across its whole design range, and its cost is not what decides whether the business works.
+Priced at each customer's own tier, the giveback costs between **5.1%** and **16.8%** of revenue depending on how generous the ladder is. That answers the second question. The ladder is affordable across its whole design range, and its cost is not what decides whether the business works.
 
 ### Who the profit comes from
 
 ![Profit by ticket decile](aurumix/outputs/charts/profit_by_ticket_decile.png)
 
-The top tenth of customers by monthly saving contributes **15.1%** of lifetime profit; the top three deciles contribute 37.0%; the bottom half contributes 43.8%. A minority of the book carries the economics, which is normal for a savings product and matters for how acquisition is targeted.
+The top tenth of customers by monthly saving contributes **16.3%** of lifetime profit; the top three deciles contribute 38.6%; the bottom half contributes 41.3%. A minority of the book carries the economics, which is normal for a savings product and matters for how acquisition is targeted.
 
 ### What the answer depends on
 
@@ -152,11 +152,11 @@ The top tenth of customers by monthly saving contributes **15.1%** of lifetime p
 
 | Rank | Assumption | Swing in year-seven profit |
 |:--|:--|--:|
-| 1 | partner adopt | USD 1.82m |
-| 2 | partner aum user | USD 1.25m |
-| 3 | b2b fee | USD 0.83m |
-| 4 | facility takeup | USD 0.79m |
-| 5 | ceiling mult | USD 0.74m |
+| 1 | partner adopt | USD 1.57m |
+| 2 | partner aum user | USD 1.07m |
+| 3 | facility takeup | USD 0.81m |
+| 4 | ceiling mult | USD 0.73m |
+| 5 | b2b fee | USD 0.72m |
 
 Partner assumptions occupy the top of this list. None of them is measured. One signed letter of intent, with a real user count and a real adoption rate, would narrow this model more than any further modelling work.
 
@@ -166,22 +166,22 @@ Partner assumptions occupy the top of this list. None of them is measured. One s
 
 | Scenario | Cumulative profit at year 7 | Peak funding |
 |:--|--:|--:|
-| Base | USD 0.48m | USD 2.50m |
-| Gold crashes 30% | USD 0.48m | USD 2.50m |
-| Redemption run, 25% at month 24 | USD 0.28m | USD 2.54m |
-| **No partners at all** | **-USD 4.62m** | **USD 6.21m** |
-| Adoption failure | -USD 0.46m | USD 2.69m |
-| Regulatory delay, 12 months | -USD 0.26m | USD 3.24m |
-| Ticket compression | USD 0.18m | USD 2.51m |
-| Combined tail | -USD 2.70m | USD 4.22m |
+| Base | -USD 0.60m | USD 3.04m |
+| Gold crashes 30% | -USD 0.60m | USD 3.03m |
+| Redemption run, 25% at month 24 | -USD 0.65m | USD 3.06m |
+| **No partners at all** | **-USD 4.72m** | **USD 6.29m** |
+| Adoption failure | -USD 1.37m | USD 3.22m |
+| Regulatory delay, 12 months | -USD 1.34m | USD 3.78m |
+| Ticket compression | -USD 0.91m | USD 3.06m |
+| Combined tail | -USD 3.03m | USD 4.56m |
 
 Three readings.
 
 **Gold is not the risk.** The crash scenario is almost indistinguishable from base. Customers hold the price exposure; Aurumix earns fees.
 
-**Partners are the whole risk.** Their absence costs -USD 4.62m over seven years and pushes the funding need to USD 6.21m. No other single scenario comes close.
+**Partners are the whole risk.** Their absence costs -USD 4.72m over seven years and pushes the funding need to USD 6.29m. No other single scenario comes close.
 
-**A redemption run is survivable.** Cumulative profit falls to USD 0.28m and funding rises only to USD 2.54m. The gold is allocated and already owned, so a run is an operational and cash-timing event, not a solvency one. The credit book stays quiet through all of this: the chance of ever needing a collateral top-up is **4.1%**, because loans are secured against gold that rises with the same price the loan is measured in.
+**A redemption run is survivable.** Cumulative profit falls to -USD 0.65m and funding rises only to USD 3.06m. The gold is allocated and already owned, so a run is an operational and cash-timing event, not a solvency one. The credit book stays quiet through all of this: the chance of ever needing a collateral top-up is **4.1%**, because loans are secured against gold that rises with the same price the loan is measured in.
 
 ---
 
@@ -209,7 +209,7 @@ The top tier pays 3.5% entry rather than 3.0%, and the benefits concentrate near
 
 #### 2. Push the standing-instruction rail toward 75% of joiners
 
-Customers on autopay miss fewer months and reach tiers faster. The gated share rises from 50.0% to 58.3%, and the paying book from 85,000 to 95,640. One caveat: the model prices the benefit and carries no cost for winning that adoption, because none is known.
+Customers on autopay miss fewer months and reach tiers faster. The gated share rises from 50.6% to 59.1%, and the paying book from 85,110 to 96,190. One caveat: the model prices the benefit and carries no cost for winning that adoption, because none is known.
 
 #### 3. Move marketing from 74/18/8 to 50/15/35 across the regions
 
