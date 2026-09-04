@@ -436,7 +436,7 @@ Two further layers turn the sensitivity table into something a team can act on.
 
 ## 13. Stress tests
 
-Seven deliberate bad days. Each is a named scenario run through the full twin with everything else held at base, so the damage is attributable. What each one is, and how the twin models it:
+Eight deliberate bad days. Each is a named scenario run through the full twin with everything else held at base, so the damage is attributable. What each one is, and how the twin models it:
 
 | Scenario | What happens | How it is modelled |
 |:--|:--|:--|
@@ -446,9 +446,12 @@ Seven deliberate bad days. Each is a named scenario run through the full twin wi
 | Adoption failure | the product lands badly everywhere | persistency at 45%, every acquisition cost at its Conservative value, tier take-up compressed |
 | Regulatory delay | the licence takes a year longer | revenue and growth spend shift right twelve months; the standing costs of existing (licences, insurance, audits, the technology build) keep running |
 | Ticket compression | customers save less than planned | regional average tickets cut to USD 26.50 / 21 / 24, refitting each ticket curve against the USD 20 floor |
+| Crash with reaction | the crash and the panic it triggers, together | the 30% gold step at month 24 plus the full redemption-run block, so the two single-cause rows above show what each part adds |
 | Combined tail | run + crash + weak B2B together | the redemption run and gold crash at month 24, on a partner schedule cut roughly in half |
 
 Two modelling notes. A redemption run is a jump, not a rate: a rate-based outflow converges toward balance with inflows and can never overshoot, so it cannot represent a run. And a customer pause is a payment-odds event, not a ticket cut: tickets cannot fall below the USD 20 floor, so "saving less for a while" means skipping months.
+
+One calibration note. The crash-with-reaction scenario reuses the redemption-run numbers unchanged. Nobody has measured how these savers react to a falling gold price, so a crash-specific calibration would be an invented number. Reusing the block keeps the scenarios comparable: the difference between this row and the plain crash is the reaction, and the difference against the plain run is the price fall.
 
 ---
 

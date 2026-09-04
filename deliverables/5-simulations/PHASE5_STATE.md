@@ -14,7 +14,7 @@ The simulation is **built, verified and running**. Both client documents exist a
 |---|---|
 | The engine (`aurumix/src/twin.py`) | ✅ Complete, verified |
 | Base Monte Carlo, 2,000 paths, full resolution | ✅ Done |
-| Stress Monte Carlo, 2,000 paths per scenario | 🔄 7 of 8 done, last one running |
+| Stress Monte Carlo, 2,000 paths per scenario | ⚠ Complete for base + s1 to s7 (2026-09-04 21:12). s8 added since; full paired rerun pending, client has more changes coming |
 | `SIMULATION_SETUP.md` | ✅ Current, 38 branded pages |
 | `SIMULATION_RESULTS.md` | 🔄 Restructured today; Part 4 is a placeholder pending new recommendations |
 | Recommendations | ⛔ **Being rebuilt.** The published three are weak (see §5) |
@@ -114,6 +114,10 @@ Run all of these after any change. Each was written because its failure happened
 **Client instruction, 2026-09-04:** cap the agent recommendation somewhere conservative rather than tripling. The model prices agent commission but not recruitment, training or management.
 
 **Next step:** agree the recommendation set, then run `mc_config.py` for it at 2,000 paths and full resolution, then write Part 4.
+
+**Recommendations are on hold (client, 2026-09-04).** The agent-network lever is parked entirely; do not bring it back without being asked. The client is reading the base and stress results first.
+
+**New stress scenario s8, gold crash with reaction (client-agreed, 2026-09-04).** `run_stress_mc.py` now has `s8_gold_crash_with_reaction`: the 30% shock plus s2's panic block verbatim, so paired differences isolate each cause. The setup doc section 13 is updated. **Not yet run**: `stress_mc.json` still holds only base + s1 to s7, and the client expects more model changes before the rerun. When the changes settle, rerun the full paired set, then update the results template stress section, then fill, check_docs, rebuild both PDFs.
 
 ---
 
