@@ -70,6 +70,7 @@ C = j("mc_cfg15.json")
 A = j("analysis.json")
 F = j("float_results.json")
 CD = j("conditions.json")
+DEC = j("decisions.json")
 
 t15 = A["q1_threshold"]["contingency_15"]
 t30 = A["q1_threshold"]["contingency_30"]
@@ -223,6 +224,26 @@ _g = CD["cum_profit"]
 _ci = CD["cac_mult"].index(min(CD["cac_mult"], key=lambda x: abs(x - 1.0)))
 _pi = CD["partners"].index(CD["plan_position"]["partners"])
 V["PLAN_CELL"] = m(_g[_ci][_pi])
+
+# ── what to learn first, and the triggers ────────────────────────────────────
+_voi = DEC["value_of_information"]
+_free = [r for r in _voi if r["cost"] == "none"]
+_by = {r["param"]: r for r in _voi}
+for _i, _k in enumerate(("facility_takeup", "b2b_fee", "family_attach"), start=1):
+    V[f"VOI{_i}_SW"] = m(_by[_k]["swing"]) if _k in _by else "n/a"
+V["VOI_PARTNER_SW"] = m(max(_by[k]["swing"] for k in ("partner_adopt", "partner_aum_user")
+                            if k in _by))
+V["VOI_CAC_SW"] = m(max([_by[k]["swing"] for k in _by if k.startswith("cac_")] or [0]))
+V["VOI_FREE_SW"] = m(sum(_by[k]["swing"] for k in
+                         ("vault_fee", "atm_share_3", "atm_share_4", "interchange")
+                         if k in _by))
+_t = DEC["triggers"]
+V["TRIG_UAE"] = f"{_t['cac_uae']['cac']:.2f}" if _t.get("cac_uae", {}).get("cac") else "n/a"
+V["TRIG_UAE_TODAY"] = f"{_t['cac_uae']['base_cac']:.2f}"
+V["TRIG_GULF_TODAY"] = f"{_t['cac_gulf']['base_cac']:.2f}"
+V["TRIG_INDIA_SWING"] = f"{_t['cac_india'].get('swing', 0):.2f}"
+_pt = _t["pay_through"]
+V["TRIG_PAY_SPAN"] = f"{max(r['margin'] for r in _pt) - min(r['margin'] for r in _pt):.2f}"
 
 # horizon caveat and median outcome, straight from the path table
 import pandas as _pd

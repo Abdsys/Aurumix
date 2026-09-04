@@ -268,6 +268,37 @@ Customers on autopay miss fewer months and reach tiers faster. The gated share r
 
 The current split concentrates spend in the smallest and dearest market. The reallocation holds up across the full range of market-size assumptions, so it does not depend on the funnel being right.
 
+### What to learn first
+
+Nothing here is measured. So the most valuable thing the model can do right now is rank what is worth finding out, by how much it moves the answer against what it costs to buy the answer.
+
+| Learn it | Moves year-seven profit | What it takes |
+|:--|--:|:--|
+| Card take-up | {{VOI1_SW}} | offer the card to the first cohort |
+| The B2B fee | {{VOI2_SW}} | a term sheet |
+| Family attach | {{VOI3_SW}} | offer it to the first cohort |
+| Partner adoption and size | {{VOI_PARTNER_SW}} | one signed partner, or a serious pilot |
+| Cost per customer | {{VOI_CAC_SW}} | a paid test campaign in one region, 6 to 8 weeks |
+
+**Four of the top assumptions are knowable today, not through research but by reading documents you already have.** The vault fee is in the contract. Interchange and ATM rates are in the card scheme's own schedule. Those alone account for {{VOI_FREE_SW}} of profit swing that the model currently carries as uncertainty because nobody has looked them up.
+
+The most valuable single thing remains one signed partner, which resolves the largest uncertainty in the model and costs one conversation rather than a budget.
+
+### When to change your mind
+
+A threshold is only useful if you know the level at which it fires.
+
+| Watch | Today | The line | What crossing it means |
+|:--|--:|--:|:--|
+| UAE cost per customer | USD {{TRIG_UAE_TODAY}} | USD {{TRIG_UAE}} | below it, the UAE pays for itself; above, every UAE customer is a loss |
+| Gulf cost per customer | USD {{TRIG_GULF_TODAY}} | none in range | the Gulf loses money at any reach price tested. Its problem is not the price of reach |
+| India | agent-led | not a marketing number | margin moves USD {{TRIG_INDIA_SWING}} across a fourfold change in the marketing rate. Watch agent productivity instead |
+| Partners signed by year 7 | plan says {{PLAN_PARTNERS}} | {{FRONT_PLAN}} | below it, the plan does not clear at today's acquisition cost |
+
+The India line is the one to internalise. **Two of these are marketing businesses and one is a distribution business.** They need different dashboards, and reporting a single blended cost per customer across all three hides which is which.
+
+One metric was tested as a trigger and rejected. Payment discipline moves the margin by only USD {{TRIG_PAY_SPAN}} across its whole plausible range, because costs are per customer rather than per payment. It is worth watching as a health signal, but it will not flip a decision.
+
 ### What would change the answer most
 
 **Sign one partner.** Not for the revenue: for the information. Partner assumptions are the top of the sensitivity table and none of them is measured. A real user base, a real adoption rate and a real ramp would collapse most of the uncertainty in this document.
