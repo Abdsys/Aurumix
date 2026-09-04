@@ -41,23 +41,31 @@ Three things drive everything else.
 
 ### What we set out to answer
 
-One question, asked twice.
+Two questions.
 
-**What has to be true for this business to work?**
+#### 1. What has to be true for this business to make money?
 
-First, across everything we can put a number on: how many customers sign up, what they cost, how long they stay, what partners are worth. We gave each of those a range and tested them together.
+Nobody knows yet what a customer costs to win, how long they stay, how much they save, or what a partner is worth. Every one of those is a guess with a range around it.
 
-Second, when one specific thing goes wrong that no range covers. No partner ever signs. The licence takes a year longer than planned.
+So we did not ask what will happen. We asked what has to be true. We gave each unknown a range, ran all of them together {{PATHS}} times, and measured which combinations end up making money and which do not.
 
-Two other questions turn out to be answers to that one, not separate questions.
+The answer comes back as conditions to hit, not as a forecast. Part 2 sets them out.
 
-**How much to raise** depends on the conditions. Get costs down or partners signed and the number falls. Part 2 shows by how much.
+#### 2. What happens when something goes badly wrong?
 
-**How much to give loyal customers back** is not really a question for this document. The loyalty ladder costs 6 to 7% of revenue however you design it. It is affordable in every version we tested, so it never decides whether the business works. The appendix has the numbers.
+The first question covers things we can put a range on. It does not cover a single disaster that sits outside every range.
+
+No partner ever signs. The licence takes a year longer. A quarter of customers cash out in one month.
+
+Each of those runs on its own, and each gets the same blunt test: **can more money fix it?** For most of them the answer is yes, and we say how much. For one it is no, and that is the most important sentence in this document. Part 3 sets them out.
+
+#### Everything else follows from these
+
+How much to raise, and how much to give loyal customers back, are not separate questions. They are answers to the first one. Change the conditions and both numbers move. We report them where they belong rather than treating them as findings of their own.
 
 ---
 
-## Part 2: What has to be true, normally
+## Part 2: What has to be true for this business to make money
 
 ### Two numbers decide everything
 
@@ -225,9 +233,9 @@ One signed letter of intent would tell you more than any further modelling. It w
 
 ---
 
-## Part 3: What has to be true when something goes wrong
+## Part 3: What happens when something goes badly wrong
 
-Part 2 tested everything we could put a range on. This part tests specific disasters that no range covers, and asks a blunt question about each: **can money fix it?**
+Part 2 tested everything we could put a range on. This part tests single disasters that no range covers, and asks the same question of each: **can more money fix it?**
 
 Each one runs on its own, with everything else normal, so we can see what it costs by itself.
 
