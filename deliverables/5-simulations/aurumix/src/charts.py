@@ -5,7 +5,7 @@ Charts for SIMULATION_RESULTS.md. Tokenomics.net palette, Stockpile styling.
 
 Every figure is drawn from the SAVED OUTPUT of the run that produced the
 numbers in the document: mc_results.csv, mc_bands.npz, mc_summary.json,
-mc_cfg15.json, analysis.json, float_results.json. The old chart module re-ran
+mc_recommended.json, analysis.json, float_results.json. The old chart module re-ran
 its own paths, which meant a figure could quietly disagree with the sentence
 printed beside it. Nothing here runs the model.
 """
@@ -82,7 +82,11 @@ def _fan(ax, x, b, key, color, label):
 def main():
     df = _load("mc_results.csv")
     S = _load("mc_summary.json")
-    C = _load("mc_cfg15.json")
+    # The recommended configuration exists only once a set is agreed with the
+    # client and run through mc_config.py, then promoted to this name. Absent
+    # file means every chart draws the plan alone (client, 2026-09-04: no
+    # recommended bars until a set is agreed).
+    C = _load("mc_recommended.json")
     A = _load("analysis.json")
     B = _load("mc_bands.npz")
     F = _load("float_results.json")

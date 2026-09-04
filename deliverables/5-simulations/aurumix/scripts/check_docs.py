@@ -29,8 +29,6 @@ with open(os.path.join(OUT, "analysis.json")) as f:
     A = json.load(f)
 with open(os.path.join(OUT, "mc_summary.json")) as f:
     M = json.load(f)
-with open(os.path.join(OUT, "mc_cfg15.json")) as f:
-    C_ = json.load(f)
 rep = open(os.path.join(OUT, "analysis_report.txt"), encoding="utf-8").read()
 
 

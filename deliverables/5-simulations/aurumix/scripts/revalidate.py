@@ -32,7 +32,7 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(HERE, "outputs")
 N_CHECK = 5
 SEED0 = 20270101
-TOUCH = ("mc_summary.json", "mc_results.csv", "mc_bands.npz", "mc_cfg15.json",
+TOUCH = ("mc_summary.json", "mc_results.csv", "mc_bands.npz", "mc_recommended.json",
          "analysis.json", "analysis_report.txt", "conditions.json",
          "decisions.json", "float_results.json", "stress_mc.json")
 

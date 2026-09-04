@@ -60,13 +60,18 @@ def j(name):
             "  Re-run the script that produces it before rendering the document.\n"
             "    analysis.json                             <- scripts/run_analysis.py\n"
             "    mc_summary.json / mc_results.csv / bands  <- scripts/run_mc.py\n"
-            "    mc_cfg15.json                             <- scripts/mc_config.py" % name)
+            "    mc_recommended.json                       <- scripts/mc_config.py" % name)
     with open(p) as f:
         return json.load(f)
 
 
 S = j("mc_summary.json")
-C = j("mc_cfg15.json")
+# Recommended-configuration figures exist only once a set is agreed and run
+# (mc_config.py output promoted to mc_recommended.json). Until then C is None
+# and the R_* placeholders are simply not defined, so a template that still
+# references one fails loudly instead of rendering a stale figure.
+C = j("mc_recommended.json") if os.path.exists(
+    os.path.join(OUT, "mc_recommended.json")) else None
 A = j("analysis.json")
 F = j("float_results.json")
 CD = j("conditions.json")
@@ -119,33 +124,21 @@ V = {
     "RAISE90": m(S["safe_raise"]["p90"]),
     "RAISE95": m(S["safe_raise"]["p95"]),
 
-    # the raise, recommended
-    "R_RAISE50": m(C["safe_raise"]["p50"]),
-    "R_RAISE90": m(C["safe_raise"]["p90"]),
-    "R_RAISE95": m(C["safe_raise"]["p95"]),
-    "RAISE_SAVED": m(S["safe_raise"]["p90"] - C["safe_raise"]["p90"]),
-
     # break-even
     "BE4": pc(S["P_cum_breakeven_by"]["Y4"]),
     "BE5": pc(S["P_cum_breakeven_by"]["Y5"]),
     "BE6": pc(S["P_cum_breakeven_by"]["Y6"]),
     "BE7": pc(S["P_cum_breakeven_by"]["Y7"]),
-    "R_BE7": pc(C["P_cum_breakeven_by_Y7"]),
 
     # profit
     "NP10": m(S["net_profit_y7"]["p10"]),
     "NP50": m(S["net_profit_y7"]["p50"]),
     "NP90": m(S["net_profit_y7"]["p90"]),
-    "R_NP10": m(C["net_profit_y7"]["p10"]),
-    "R_NP50": m(C["net_profit_y7"]["p50"]),
-    "R_NP90": m(C["net_profit_y7"]["p90"]),
-    "R_CUM50": m(C["cum_profit_y7_p50"]),
 
     # book
     "PAY10": n(S["paying_y7"]["p10"]),
     "PAY50": n(S["paying_y7"]["p50"]),
     "PAY90": n(S["paying_y7"]["p90"]),
-    "R_PAY50": n(C["paying_y7_p50"]),
 
     # revenue
     "REV50": m(S["revenue_y7"]["p50"]),
@@ -206,6 +199,21 @@ V = {
        for k, v in st.items()},
     "P_GT3M": pc(S["P_peak_funding_gt_3m"], 0),
 }
+
+# ── the recommended configuration, only once one is agreed and run ───────────
+if C is not None:
+    V.update({
+        "R_RAISE50": m(C["safe_raise"]["p50"]),
+        "R_RAISE90": m(C["safe_raise"]["p90"]),
+        "R_RAISE95": m(C["safe_raise"]["p95"]),
+        "RAISE_SAVED": m(S["safe_raise"]["p90"] - C["safe_raise"]["p90"]),
+        "R_BE7": pc(C["P_cum_breakeven_by_Y7"]),
+        "R_NP10": m(C["net_profit_y7"]["p10"]),
+        "R_NP50": m(C["net_profit_y7"]["p50"]),
+        "R_NP90": m(C["net_profit_y7"]["p90"]),
+        "R_CUM50": m(C["cum_profit_y7_p50"]),
+        "R_PAY50": n(C["paying_y7_p50"]),
+    })
 
 # ── the conditions ───────────────────────────────────────────────────────────
 _R = CD["regions"]
