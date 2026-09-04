@@ -82,22 +82,50 @@ npay7 = o["paying"][-1]
 rev_pc = annual(o, "revenue", 7) / npay7
 rev_pc_ex = (annual(o, "revenue", 7) - annual(o, "s6", 7)) / npay7
 
-fixed = float(sum(o["opex_parts"][k][years == 7].sum()
-                  for k in ("vault", "vara", "dmcc", "insurance", "audit",
-                            "tech_audit", "tech_maint")))
-serve_y7 = (annual(o, "cogs", 7) + annual(o, "ics_cost", 7)
-            + annual(o, "card_cost", 7)
-            + float(o["opex_parts"]["kyc"][years == 7].sum())
-            + float(o["opex_parts"]["redemption"][years == 7].sum()))
-serve_pc = serve_y7 / npay7
+# ── COSTS SPLIT BY WHETHER THEY CAN SURPRISE US ──────────────────────────────
+# Contingency buffers the unknown. Applying it to contracted rates and published
+# fee schedules prices doubt nobody has, and it moved the retail threshold by
+# about 100,000 customers on nothing. So each line is classified once, here, and
+# the buffer lands only on the uncertain half.
+#
+# VAULT MOVED TO VARIABLE. Its contract has a daily minimum, but at this book
+# size the minimum does not bind: the bill is the percentage fee on metal held,
+# which scales with customers. Treating it as fixed overstated the fixed base by
+# about USD 91k and understated the per-customer cost.
+Y = years == 7
+P_ = o["opex_parts"]
+AQ = o["acq_parts"]
+
+var_certain = (annual(o, "cogs", 7)                 # contracted fabrication premium
+               + annual(o, "ics_cost", 7)           # a ladder we choose
+               + float(P_["kyc"][Y].sum())          # vendor price per check
+               + float(P_["redemption"][Y].sum())   # per-event handling
+               + float(P_["vault"][Y].sum())        # contract rate on metal held
+               ) / npay7
+var_uncertain = annual(o, "card_cost", 7) / npay7   # scheme fees, fraud, production
+
+fixed_certain = float(P_["vara"][Y].sum() + P_["dmcc"][Y].sum())
+fixed_uncertain = float(sum(P_[k][Y].sum() for k in
+                            ("insurance", "audit", "tech_audit", "tech_maint")))
 
 # The workbook's churn rate is what a FRESH cohort does in its first year. A
 # mature book is mostly survivors and survivors are disciplined, so using the
 # cohort rate to price steady-state replacement overstates it. The twin reports
 # what its own book actually loses, so use that.
-churn_annual = float(o["lapsed"][years == 7].sum() / o["paying"][years == 7][0])
-blended_cac = annual(o, "acq_cost", 7) / annual(o, "new", 7)
-replace_pc = churn_annual * blended_cac        # per paying customer per year
+churn_annual = float(o["lapsed"][Y].sum() / o["paying"][Y][0])
+new_y7 = annual(o, "new", 7)
+blended_cac = annual(o, "acq_cost", 7) / new_y7
+# Replacement splits too: the commission and reward rates are ours to set, the
+# marketing yield is not. Marketing is ~92% of the cost of winning a customer,
+# so this is very nearly a sensitivity on cost per acquired customer alone.
+cac_certain = float(AQ["agent_comm"][Y].sum() + AQ["referral"][Y].sum()) / new_y7
+cac_uncertain = float(AQ["marketing"][Y].sum()) / new_y7
+var_certain += churn_annual * cac_certain
+var_uncertain += churn_annual * cac_uncertain
+
+serve_pc = var_certain + var_uncertain          # reported, for continuity
+replace_pc = churn_annual * blended_cac
+fixed = fixed_certain + fixed_uncertain
 
 # B2B is NOT per-customer revenue: it is a fixed block that scales with
 # partners. So the fixed cost base is covered EITHER by N retail customers at
@@ -105,28 +133,44 @@ replace_pc = churn_annual * blended_cac        # per paying customer per year
 # a blend - blending hides that the retail business may not stand alone.
 b2b_per_partner = p0["partner_aum"] * p0["b2b_fee"]
 
-# replacement CAC: blended (Y7 mix, India-agent heavy) vs UAE-marketing-only
 cac_uae_only = p0["cac_uae_y7"]
+
+# A threshold larger than the market itself is not a target, it is a refusal.
+# Reporting "310 million customers" invites someone to treat it as a number.
+ADDRESSABLE = float(p0["ceiling_uae"] + p0["ceiling_gulf"] + p0["ceiling_india"])
+
 A["q1_threshold"] = {}
 for cont in (0.15, 0.30, 0.50):
     k = 1 + cont
     row = {}
-    for tag, cac in (("blended_cac", blended_cac), ("uae_cac", cac_uae_only)):
-        margin_ex = rev_pc_ex - k * (serve_pc + churn_annual * cac)
+    F_k = fixed_certain + fixed_uncertain * k
+    for tag, extra in (("blended_cac", 0.0), ("uae_cac", cac_uae_only - blended_cac)):
+        # the UAE-only variant swaps in a dearer replacement cost, which is
+        # entirely marketing and so entirely uncertain
+        margin_ex = rev_pc_ex - (var_certain + (var_uncertain + churn_annual * extra) * k)
+        n_need = F_k / margin_ex if margin_ex > 0 else None
+        if n_need is not None and n_need > ADDRESSABLE:
+            n_need = None          # beyond every reachable customer in all three regions
         row[tag] = {"margin_per_customer": float(margin_ex),
-                    "paying_needed_ex_b2b": float(k * fixed / margin_ex)
-                    if margin_ex > 0 else None}
-    row["partners_to_cover_fixed_alone"] = float(k * fixed / b2b_per_partner)
+                    "paying_needed_ex_b2b": float(n_need) if n_need else None}
+    row["partners_to_cover_fixed_alone"] = float(F_k / b2b_per_partner)
+    row["var_certain"] = float(var_certain)
+    row["var_uncertain"] = float(var_uncertain)
+    row["fixed_certain"] = float(fixed_certain)
+    row["fixed_uncertain"] = float(fixed_uncertain)
     A["q1_threshold"][f"contingency_{int(cont*100)}"] = row
 
 print(f"\nQ1a. PROFITABILITY THRESHOLD - steady state (acquisition replaces churn only)")
 print(f"  retail revenue/payer ${rev_pc_ex:.0f} | serve ${serve_pc:.0f} | churn {churn_annual:.0%}/yr (realised)"
       f" | CAC blended ${blended_cac:.0f} / UAE-only ${cac_uae_only:.0f}")
-print(f"  fixed cost base ${fixed:,.0f}/yr | one B2B partner = ${b2b_per_partner:,.0f}/yr")
+print(f"  per customer: certain ${var_certain:.2f} + uncertain ${var_uncertain:.2f}")
+print(f"  fixed: certain ${fixed_certain:,.0f} + uncertain ${fixed_uncertain:,.0f} = ${fixed:,.0f}/yr"
+      f" | one B2B partner = ${b2b_per_partner:,.0f}/yr")
+print(f"  contingency applies to the uncertain half only")
 for cont in (15, 30, 50):
     t = A["q1_threshold"][f"contingency_{cont}"]
     b = t["blended_cac"]["paying_needed_ex_b2b"]; u = t["uae_cac"]["paying_needed_ex_b2b"]
-    bs = f"{b:,.0f}" if b else "unreachable"; us = f"{u:,.0f}" if u else "unreachable"
+    bs = f"{b:,.0f}" if b else "beyond the market"; us = f"{u:,.0f}" if u else "beyond the market"
     print(f"  contingency {cont}%: RETAIL ALONE needs {bs} paying (blended CAC) / {us} (UAE CAC)"
           f"  |  OR {t['partners_to_cover_fixed_alone']:.1f} B2B partners cover fixed costs by themselves")
 print(f"  (cross-check: O Gold runs 75,000 active users in the UAE alone)")

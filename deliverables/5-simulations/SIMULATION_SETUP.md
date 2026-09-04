@@ -185,7 +185,7 @@ The core loop. Every month, in this order.
 10. **Cards, family plans and credit lines** run for whoever holds them, each against that customer's own gold.
 11. **Some customers leave**, at their own hazard plus the background rate.
 12. **Partners sign**, or fail to (section 8).
-13. **The ledger closes**: five revenue streams plus the partner fee, the fabrication premium on net new metal, the vault bill on all metal held, licences, acquisition costs, the card programme, contingency, profit, and the cash line.
+13. **The ledger closes**: five revenue streams plus the partner fee, the fabrication premium on net new metal, the vault bill on all metal held, licences, acquisition costs, the card programme, contingency on the uncertain costs, profit, and the cash line.
 
 ---
 
@@ -378,20 +378,37 @@ The funding line itself is monthly: cumulative losses plus the capital tied up i
 
 The profitability question is a threshold, and it is computed at steady state, where the book is flat and acquisition only replaces the customers who leave.
 
-$$N^* = \frac{k \cdot F}{r - k\,(s + c \cdot \text{CAC})} \qquad\qquad K^* = \frac{k \cdot F}{A \cdot f}$$
+$$N^* = \frac{F_c + k F_u}{r - \left(v_c + k\,v_u\right)} \qquad\qquad K^* = \frac{F_c + k F_u}{A \cdot f}$$
 
 Where:
 
 - $N^*$ is paying customers needed for retail to stand alone, $K^*$ is B2B partners needed to cover the fixed base by themselves
-- $F$ is the yearly fixed cost base: licences, vault minimum, insurance, audits, technology
 - $r$ is retail revenue per paying customer per year, taken from the twin's own mature book, so it already reflects missed months
-- $s$ is the serving cost per customer: fabrication, giveback, card programme, KYC, redemption handling
-- $c$ is annual churn, measured from the twin's mature book rather than assumed from a fresh cohort
-- CAC is the cost to replace one leaver, at mature-year conditions
+- $v_c$ and $v_u$ are the per-customer costs, split by whether they can surprise us
+- $F_c$ and $F_u$ are the yearly fixed costs, split the same way
 - $A$ is assets under management per partner, $f$ the platform fee
 - $k$ is the contingency multiplier, reported at 1.15, 1.30 and 1.50
 
-The two thresholds are reported separately and never blended, because blending them would hide whether the retail business stands alone. The values, and the levers that move them, are the results document's job.
+Per-customer costs include each customer's share of replacing the ones who leave: annual churn, measured from the twin's own mature book, times the cost of winning a replacement.
+
+### Why contingency lands on only half the costs
+
+Contingency is a buffer against costs nobody has thought of. Applying it to every line, as a flat percentage of the whole cost base, prices doubt about things nobody doubts. So each cost is classified once:
+
+| | Certain, no buffer | Uncertain, buffered |
+|:--|:--|:--|
+| **Per customer** | fabrication premium, vault fee, KYC checks, redemption handling, loyalty giveback, agent commission, referral rewards | marketing to replace leavers, card programme |
+| **Fixed** | VARA and DMCC licences | technology build and maintenance, insurance, audits |
+
+The logic is simple. A contracted premium, a published licence fee, a vendor's price per identity check and a ladder Aurumix sets itself are known. A marketing yield, a card scheme's fees, and what technology and insurance really cost are not.
+
+This matters more than it sounds: buffering the certain half as well was moving the retail threshold by roughly a hundred thousand customers on nothing.
+
+It also concentrates the uncertainty where it belongs. Marketing is about 92% of the cost of winning a customer, so once the certain lines are excluded, sweeping contingency is very nearly a sensitivity test on cost per acquired customer alone.
+
+One reclassification came out of this. The vault contract has a daily minimum, but at this book size the minimum does not bind: the bill is the percentage fee on metal held, which rises with the book. The vault is a per-customer cost, not a fixed one.
+
+The two thresholds are reported separately and never blended, because blending them would hide whether the retail business stands alone. A threshold larger than every reachable customer in all three regions is reported as beyond the market rather than as a number, because such a number invites someone to treat it as a target. The values, and the levers that move them, are the results document's job.
 
 ---
 

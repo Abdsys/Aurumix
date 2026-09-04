@@ -55,9 +55,20 @@ Strip out partners and ask a simple question: at a mature, standing-still book, 
 
 ![Retail alone](aurumix/outputs/charts/threshold_retail_alone.png)
 
-At a 15% contingency, one customer contributes about **${{MARGIN15}} a year** after serving them and after replacing the customers who leave. The fixed base is roughly $410,000 a year, so covering it needs **{{NEED15}} paying customers**. The plan builds {{PAY50}}.
+At a 15% contingency, one customer contributes about **USD {{MARGIN15}} a year** after serving them and after replacing the customers who leave. Covering the fixed base needs **{{NEED15}} paying customers**. The plan builds {{PAY50}}.
 
-Raise the contingency and the answer stops existing. At 30% the margin per customer turns negative, which means no number of customers covers the fixed base: {{NEED30}}. At 50%, the same.
+The costs behind that number are split by whether they can surprise us, and the contingency buffer lands only on the uncertain half:
+
+| | Certain | Uncertain, buffered |
+|:--|--:|--:|
+| Per customer per year | USD {{VAR_CERT}} | USD {{VAR_UNC}} |
+| Fixed per year | {{FIX_CERT}} | {{FIX_UNC}} |
+
+Contracted rates, published licence fees, a vendor's price per identity check and a loyalty ladder Aurumix sets itself are known, so they carry no buffer. Marketing yield, card scheme fees, technology and insurance are not, so they do.
+
+Raise the contingency on that uncertain half and the answer stops existing. At 30% the margin per customer is nearly gone and the requirement passes every reachable customer in all three regions: **{{NEED30}}**. At 50% the margin turns negative, so no number of customers works at all.
+
+Marketing is about 92% of the cost of winning a customer, so this sweep is very nearly a sensitivity on one number: what it costs to acquire.
 
 **Or {{PARTNERS15}} partners cover the fixed base by themselves.**
 

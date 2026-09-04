@@ -44,6 +44,21 @@ MODEL_OVERRIDES = {
     "cac_conv_ref": 60000.0,
     "cac_conv_exp": 0.7,
 
+    # SELECTIVE CONTINGENCY (client instruction, 2026-09-04). The workbook
+    # multiplies the entire modelled cost base by the contingency percentage.
+    # That buffers contracted rates, published licence schedules, a vendor's
+    # price per identity check and a loyalty ladder Aurumix sets itself - none
+    # of which can surprise anyone. It was moving the retail threshold by about
+    # a hundred thousand customers on nothing.
+    #
+    # The twin buffers only what can surprise: marketing yield, card programme,
+    # technology build and maintenance, insurance, audits and the launch audit.
+    # The classification lives in src/twin.py where the ledger closes, because
+    # that is the only place it can be applied consistently. Sweeping it is now
+    # very nearly a sensitivity on cost per acquired customer, since marketing
+    # is ~92% of the uncertain per-customer cost.
+    "selective_contingency": True,
+
     # Addressable-market ceiling. The workbook's three ceilings are a funnel of
     # population x banked x interested x reachable, and the client has confirmed
     # the filter percentages are unsourced. India already runs to 85% of its

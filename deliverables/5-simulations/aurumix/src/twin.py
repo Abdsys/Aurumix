@@ -205,7 +205,8 @@ class Twin:
             "card_spend", "auths", "redeem_ev", "selfcustody_ev", "family_subs",
             "s1a", "s1b", "s2", "s3", "s4", "s5", "s6", "revenue",
             "cogs", "opex", "ics_cost", "acq_cost", "card_cost", "contingency",
-            "cost_modelled", "cost_total", "net_profit", "cum_profit",
+            "cost_modelled", "cost_certain", "cost_uncertain", "cost_total",
+            "net_profit", "cum_profit",
             "float_grams", "float_usd", "prefund", "capital_tied", "funding",
             "peak_funding", "net_new_grams", "sellback_cost", "excess_redeemed_grams",
             "qual_share", "partners", "ref_acq", "agent_acq", "direct_acq",
@@ -214,7 +215,7 @@ class Twin:
         o["tier_mix"] = np.zeros((T, 5))          # live book by tier, each month
         o["gated_share"] = z()                    # share who have opened the gate
         o["opex_parts"] = {k: z() for k in (
-            "vault", "vara", "dmcc", "kyc", "oneoff", "insurance", "audit",
+            "vault", "vara", "dmcc", "kyc", "oneoff", "launch_audit", "insurance", "audit",
             "tech_audit", "redemption", "tech_build", "tech_maint")}
         o["acq_parts"] = {k: z() for k in ("marketing", "agent_comm", "referral")}
         o["region"] = {n: {k: z() for k in ("new", "paying", "cum", "card_spend")}
@@ -582,8 +583,11 @@ class Twin:
             parts["dmcc"][t - 1] = jan * p["dmcc_licence_aed"] / p["aed_usd"]
             parts["kyc"][t - 1] = max(p["kyc_monthly_min"],
                                       p["kyc_per_check"] * o["new"][t - 1])
+            # split so the launch audit, which is a quote rather than a fee
+            # schedule, can carry contingency while the statutory fees do not
             parts["oneoff"][t - 1] = ((p["vara_application_aed"] + p["dmcc_incorporation_aed"])
-                                      / p["aed_usd"] + p["launch_audit"]) if t == 1 else 0.0
+                                      / p["aed_usd"]) if t == 1 else 0.0
+            parts["launch_audit"][t - 1] = p["launch_audit"] if t == 1 else 0.0
             parts["insurance"][t - 1] = p["insurance"] / 12
             parts["audit"][t - 1] = p["audit"] / 12
             parts["tech_audit"][t - 1] = p["tech_audit"] / 12
@@ -625,10 +629,33 @@ class Twin:
                                          + xb_spend * p["xborder_fee"])
 
             # ── 19. the ledger ───────────────────────────────────────────────
-            o["cost_modelled"][t - 1] = (o["cogs"][t - 1] + o["opex"][t - 1]
-                                         + o["ics_cost"][t - 1] + o["acq_cost"][t - 1]
-                                         + o["card_cost"][t - 1])
-            o["contingency"][t - 1] = o["cost_modelled"][t - 1] * p["contingency"]
+            # ── CONTINGENCY, APPLIED ONLY WHERE THERE IS UNCERTAINTY ─────────
+            # The revenue model buffers the entire cost base by a flat
+            # percentage. That prices doubt about costs nobody doubts: the
+            # fabrication premium and the vault rate are contracted, the
+            # licences are published fee schedules, the KYC cost is a vendor
+            # price, and the loyalty giveback is a ladder we choose. Buffering
+            # those inflates the retail threshold by roughly 100,000 customers
+            # on nothing.
+            #
+            # So contingency now lands only on lines that can genuinely surprise
+            # us: marketing yield, the card programme, technology, insurance and
+            # audits. It concentrates the uncertainty where it belongs, which is
+            # mostly on cost per acquired customer.
+            certain = (o["cogs"][t - 1]              # contracted premium and spread
+                       + o["ics_cost"][t - 1]        # a ladder we set
+                       + ap["agent_comm"][t - 1] + ap["referral"][t - 1]
+                       + sum(parts[k][t - 1] for k in
+                             ("vault", "vara", "dmcc", "kyc", "oneoff", "redemption")))
+            uncertain = (o["card_cost"][t - 1]
+                         + ap["marketing"][t - 1]
+                         + sum(parts[k][t - 1] for k in
+                               ("insurance", "audit", "tech_audit", "launch_audit",
+                                "tech_build", "tech_maint")))
+            o["cost_certain"][t - 1] = certain
+            o["cost_uncertain"][t - 1] = uncertain
+            o["cost_modelled"][t - 1] = certain + uncertain
+            o["contingency"][t - 1] = uncertain * p["contingency"]
             o["cost_total"][t - 1] = o["cost_modelled"][t - 1] + o["contingency"][t - 1]
             o["net_profit"][t - 1] = o["revenue"][t - 1] - o["cost_total"][t - 1]
 

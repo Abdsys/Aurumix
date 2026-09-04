@@ -81,7 +81,14 @@ EXPLANATIONS = {
                   "redemptions are drawn per customer, and self-custody "
                   "withdrawals are counted separately rather than folded in."),
     "revenue": (-0.12, 0.15, "the sum of the above."),
-    "cost_total": (-0.10, 0.10, "the sum of the above."),
+    "cost_total": (-0.15, 0.10,
+                   "the sum of the above, plus a change in how contingency is "
+                   "applied. The workbook buffers the whole cost base by a flat "
+                   "percentage. The twin buffers only the lines that can "
+                   "surprise us - marketing yield, card programme, technology, "
+                   "insurance, audits - and leaves contracted rates, published "
+                   "licence fees and the loyalty ladder unbuffered, because "
+                   "pricing doubt about a number nobody doubts is not prudence."),
     "net_profit": (-0.45, 0.35, "the sum of the above."),
     "peak_funding": (0.0, 0.45,
                      "THE ONE THAT MATTERS. Peak funding is the deepest point of a "

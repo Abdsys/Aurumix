@@ -3,11 +3,13 @@ STAGE 3 ANALYSIS
 ==============================================================================
 
 Q1a. PROFITABILITY THRESHOLD - steady state (acquisition replaces churn only)
-  retail revenue/payer $32 | serve $11 | churn 35%/yr (realised) | CAC blended $44 / UAE-only $55
-  fixed cost base $409,423/yr | one B2B partner = $141,750/yr
-  contingency 15%: RETAIL ALONE needs 252,243 paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.3 B2B partners cover fixed costs by themselves
-  contingency 30%: RETAIL ALONE needs unreachable paying (blended CAC) / unreachable (UAE CAC)  |  OR 3.8 B2B partners cover fixed costs by themselves
-  contingency 50%: RETAIL ALONE needs unreachable paying (blended CAC) / unreachable (UAE CAC)  |  OR 4.3 B2B partners cover fixed costs by themselves
+  retail revenue/payer $32 | serve $27 | churn 35%/yr (realised) | CAC blended $44 / UAE-only $55
+  per customer: certain $11.41 + uncertain $15.95
+  fixed: certain $114,436 + uncertain $205,000 = $319,436/yr | one B2B partner = $141,750/yr
+  contingency applies to the uncertain half only
+  contingency 15%: RETAIL ALONE needs 146,289 paying (blended CAC) / beyond the market (UAE CAC)  |  OR 2.5 B2B partners cover fixed costs by themselves
+  contingency 30%: RETAIL ALONE needs beyond the market paying (blended CAC) / beyond the market (UAE CAC)  |  OR 2.7 B2B partners cover fixed costs by themselves
+  contingency 50%: RETAIL ALONE needs beyond the market paying (blended CAC) / beyond the market (UAE CAC)  |  OR 3.0 B2B partners cover fixed costs by themselves
   (cross-check: O Gold runs 75,000 active users in the UAE alone)
 
 Q2. TIER MIX at M84 (the thing the workbook cannot compute):
@@ -47,27 +49,27 @@ Q3b. SPOT-ONLY CUSTOMER (with the card now open to them):
   India  value ~$31/yr vs CAC $15 -> payback 0.5 yrs on spot alone
 
 Q6. TORNADO - Y7 net profit swing, scenario-range width per parameter:
-  partner_adopt               1,565,692   [    -151,191 ..    1,414,501]
-  partner_aum_user            1,073,618   [      21,354 ..    1,094,972]
-  facility_takeup               814,219   [     159,865 ..      974,085]
-  ceiling_mult                  731,916   [     135,611 ..      867,527]
-  b2b_fee                       715,745   [      72,479 ..      788,224]
-  contingency                   631,341   [     677,655 ..       46,313]
-  family_attach                 461,972   [     338,970 ..      800,943]
-  vault_fee                     322,528   [     600,883 ..      278,354]
-  atm_share_4                   310,134   [     468,130 ..      778,265]
-  atm_share_3                   301,519   [     390,597 ..      692,116]
-  referral_rate                 244,214   [     427,709 ..      671,923]
-  cac_uae_y7                    231,390   [     683,385 ..      451,994]
+  partner_adopt               1,565,692   [      20,775 ..    1,586,467]
+  partner_aum_user            1,073,618   [     193,320 ..    1,266,938]
+  facility_takeup               823,072   [     328,008 ..    1,151,079]
+  ceiling_mult                  789,442   [     278,335 ..    1,067,777]
+  b2b_fee                       715,745   [     244,445 ..      960,190]
+  family_attach                 470,771   [     507,610 ..      978,381]
+  contingency                   402,053   [     792,299 ..      390,246]
+  atm_share_4                   310,134   [     640,097 ..      950,231]
+  atm_share_3                   301,519   [     562,563 ..      864,082]
+  referral_rate                 283,799   [     585,365 ..      869,164]
+  vault_fee                     280,459   [     762,275 ..      481,816]
+  cac_uae_y7                    251,994   [     868,760 ..      616,766]
 
 STRESS SCENARIOS (Y7 net profit | cumulative at Y7 | peak funding):
-  base                          519,820 |     -597,158 |    3,040,754
-  s1_gold_crash_30              520,424 |     -595,562 |    3,034,891
-  s2_redemption_run_25pct_M24      504,990 |     -653,213 |    3,060,536
-  s3_zero_b2b                  -822,202 |   -4,718,265 |    6,286,976
-  s4_adoption_failure           350,343 |   -1,366,577 |    3,224,421
-  s5_regulatory_delay           519,820 |   -1,336,242 |    3,779,838
-  s6_ticket_compression         425,778 |     -908,234 |    3,060,962
-  s7_combined_tail             -162,099 |   -3,032,576 |    4,557,368
+  base                          691,786 |      -50,500 |    2,867,163
+  s1_gold_crash_30              692,208 |      -49,604 |    2,861,497
+  s2_redemption_run_25pct_M24      673,452 |     -119,767 |    2,890,954
+  s3_zero_b2b                  -650,236 |   -4,171,607 |    5,740,318
+  s4_adoption_failure           497,275 |     -899,218 |    3,056,845
+  s5_regulatory_delay           691,786 |     -743,584 |    3,560,247
+  s6_ticket_compression         573,915 |     -422,549 |    2,897,551
+  s7_combined_tail                6,206 |   -2,499,777 |    4,077,442
 
 wrote C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\5-simulations\aurumix\outputs\analysis.json

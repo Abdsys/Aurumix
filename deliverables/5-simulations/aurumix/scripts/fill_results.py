@@ -100,7 +100,7 @@ def pc(v, d=0):
 
 def need(row):
     v = row["blended_cac"]["paying_needed_ex_b2b"]
-    return n(v) if v and v > 0 else "unreachable"
+    return n(v) if v and v > 0 else "beyond the addressable market"
 
 
 V = {
@@ -159,6 +159,10 @@ V = {
     "PARTNERS15": f"{t15['partners_to_cover_fixed_alone']:.1f}",
     "PARTNERS30": f"{t30['partners_to_cover_fixed_alone']:.1f}",
     "PARTNERS50": f"{t50['partners_to_cover_fixed_alone']:.1f}",
+    "VAR_CERT": f"{t15['var_certain']:.2f}",
+    "VAR_UNC": f"{t15['var_uncertain']:.2f}",
+    "FIX_CERT": f"USD {t15['fixed_certain']:,.0f}",
+    "FIX_UNC": f"USD {t15['fixed_uncertain']:,.0f}",
 
     # tiers
     "GATED": pc(A["q2_gated_share_m84"], 1),
