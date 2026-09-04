@@ -16,176 +16,202 @@ created: 2026-09-03
 
 ### Executive summary
 
-**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about {{RAISE_SAVED}} off the raise.**
+**Aurumix works as a partner business. It does not work as a retail business.**
 
-The simulation ran {{PATHS}} versions of the next seven years, each one a full rerun of every customer, month by month, at {{AGENTS}}.
+Customers who sign up directly do not, on their own, earn enough to pay the company's bills. Partners do. Three changes to the plan cut the money you need to raise by {{RAISE_SAVED}}.
 
-| Metric | Plan as modelled | With the three changes |
+We ran the next seven years {{PATHS}} times. Each run simulated every customer, one by one, month by month, under different assumptions about how the world turns out.
+
+| | The plan today | With the three changes |
 |:--|--:|--:|
-| Raise needed, 9 paths in 10 | **{{RAISE90}}** | **{{R_RAISE90}}** |
-| Raise needed, median path | {{RAISE50}} | {{R_RAISE50}} |
-| Odds of clearing the hole by year 7 | **{{BE7}}** | **{{R_BE7}}** |
-| Year-seven profit, median | {{NP50}} | {{R_NP50}} |
-| Year-seven profit, worst tenth | {{NP10}} | {{R_NP10}} |
-| Paying customers at month 84, median | {{PAY50}} | {{R_PAY50}} |
+| Money to raise, safe in 9 runs out of 10 | **{{RAISE90}}** | **{{R_RAISE90}}** |
+| Money to raise, typical run | {{RAISE50}} | {{R_RAISE50}} |
+| Chance of earning it all back by year 7 | **{{BE7}}** | **{{R_BE7}}** |
+| Profit in year 7, typical run | {{NP50}} | {{R_NP50}} |
+| Profit in year 7, a bad run | {{NP10}} | {{R_NP10}} |
+| Paying customers at month 84 | {{PAY50}} | {{R_PAY50}} |
 
-Three findings drive everything else.
+Three things drive everything else.
 
-**Partners are the business.** They are {{B2B_SHARE}} of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose {{ST_NOB2B_CUM}} and need {{ST_NOB2B_PK}} of funding.
+**Partners are the business.** They bring {{B2B_SHARE}} of year-seven revenue from a handful of contracts. Take them away and the seven years lose {{ST_NOB2B_CUM}}, and you need {{ST_NOB2B_PK}} to survive.
 
-**Retail does not stand alone.** At a 15% contingency the retail book would need {{NEED15}} paying customers to cover the fixed base by itself, against the {{PAY50}} the plan builds. At 30% and above, the margin per customer goes negative and no book size fixes it.
+**Direct customers do not pay for themselves.** To cover fixed costs without partners you would need {{NEED15}} paying customers. The plan reaches {{PAY50}}.
 
-**Gold is not the risk.** A 30% crash leaves cumulative profit at {{ST_GOLD_CUM}} against a base of {{ST_BASE_CUM}}. Customers own the gold; Aurumix earns fees on flows.
+**Gold is not the risk.** If gold falls 30% the business barely notices. Customers own the gold. Aurumix earns fees on money moving, not on the price.
 
-### The question
+### What we set out to answer
 
-There is one question, asked twice.
+One question, asked twice.
 
-**What has to be true for this business to work?** Once under everything we can put a number on, and once under a specific named failure we cannot.
+**What has to be true for this business to work?**
 
-Two things people expect to be separate questions are consequences of that one.
+First, across everything we can put a number on: how many customers sign up, what they cost, how long they stay, what partners are worth. We gave each of those a range and tested them together.
 
-**The money** follows from the conditions: the raise is the depth of the hole you dig on the way to meeting them, so it moves when they move. Part 2 gives the number and shows what it does as the conditions shift.
+Second, when one specific thing goes wrong that no range covers. No partner ever signs. The licence takes a year longer than planned.
 
-**The giveback** is not a client-facing question at all. The loyalty ladder costs 6 to 7% of revenue across its entire design range, so it is affordable everywhere and never decides viability. It is an internal pricing decision against a profit target, and the appendix carries the numbers.
+Two other questions turn out to be answers to that one, not separate questions.
 
-The setup document describes how the simulation answers all of this. This document is the answers.
+**How much to raise** depends on the conditions. Get costs down or partners signed and the number falls. Part 2 shows by how much.
+
+**How much to give loyal customers back** is not really a question for this document. The loyalty ladder costs 6 to 7% of revenue however you design it. It is affordable in every version we tested, so it never decides whether the business works. The appendix has the numbers.
 
 ---
 
-## Part 2: What has to be true, under priced uncertainty
+## Part 2: What has to be true, normally
 
-### The map
+### Two numbers decide everything
 
-Two things decide whether this works, and only two are both decision-relevant and genuinely unknown: what a customer costs to acquire, and how many partners sign. Everything else is either a decision Aurumix makes, and so priced as a lever in Part 4, or a figure already anchored.
+Only two things really move the answer, and nobody knows either of them yet: **what it costs to win one customer**, and **how many partners sign**.
+
+Everything else is either a choice Aurumix makes, which we test as a change in Part 4, or a number we have already pinned down.
+
+So we ran the simulation across a grid of both.
 
 ![The conditions map](aurumix/outputs/charts/conditions_map.png)
 
-Read it as a specification, not a menu. Cumulative profit at year seven, with the plan's own position marked.
+Each square is a full seven-year run. Green means the business earns back everything it lost by year seven. Red means it does not.
 
-**The plan sits exactly on the frontier.** At today's assumed acquisition cost it needs {{FRONT_PLAN}} partners, and it plans for {{PLAN_PARTNERS}}. That lands at {{PLAN_CELL}}: positive by a rounding error, with no margin for anything going wrong.
+**The plan sits right on the edge.** At the cost per customer we assume today, it needs {{FRONT_PLAN}} partners. It plans for exactly {{PLAN_PARTNERS}}. That lands at {{PLAN_CELL}} of profit after seven years, which is barely above zero.
 
-Move either axis and the requirement moves hard:
+There is no room in that. Watch what happens when costs move:
 
-| Cost per customer | Partners needed to clear |
+| If one customer costs | You need |
 |:--|:--|
-| {{CAC_LO_UAE}} in the UAE, the good end of our band | {{FRONT_GOOD}} |
-| 54, as assumed | {{FRONT_PLAN}} |
-| 64, a 17% overrun | {{FRONT_BAD}} |
-| {{CAC_HI_UAE}}, the bad end of our band | does not clear at any partner count tested |
+| USD {{CAC_LO_UAE}} in the UAE, the cheap end | {{FRONT_GOOD}} partners |
+| USD 54, as assumed today | {{FRONT_PLAN}} partners |
+| USD 64, only 17% more | {{FRONT_BAD}} partners |
+| USD {{CAC_HI_UAE}}, the expensive end | no number of partners we tested makes it work |
 
-A 17% overrun on acquisition costs three more partners. That is the sensitivity the business actually lives on.
+**Costs rising 17% means finding three more partners.** That is how tight this is.
 
-### Only one region pays for itself
+### Only India makes money
 
-The blended acquisition cost of about USD 44 is an average of roughly USD {{UAE_CAC}} in the UAE and USD {{INDIA_CAC}} in India. It describes no actual customer, and averaging the two hid the most useful fact in the engagement.
+Aurumix plans to launch in three places. We measured each one separately.
+
+The headline cost of USD 44 to win a customer is an average. The real numbers are USD {{UAE_CAC}} in the UAE and USD {{INDIA_CAC}} in India. No actual customer costs USD 44, and the average was hiding the most useful thing we found.
 
 ![Regional economics](aurumix/outputs/charts/regional_economics.png)
 
-| | Revenue per customer | Margin | CAC | Customers needed | Plan builds |
+| | Earns per year | Costs to win | Left over per year | Customers needed | Plan reaches |
 |:--|--:|--:|--:|:--|--:|
-| UAE | {{UAE_REV}} | **{{UAE_MARGIN}}** | {{UAE_CAC}} | {{UAE_NEED}} | {{UAE_BUILDS}} |
-| Oman and Bahrain | {{GULF_REV}} | **{{GULF_MARGIN}}** | {{GULF_CAC}} | {{GULF_NEED}} | {{GULF_BUILDS}} |
-| **India** | {{INDIA_REV}} | **{{INDIA_MARGIN}}** | {{INDIA_CAC}} | **{{INDIA_NEED}}** | **{{INDIA_BUILDS}}** |
+| UAE | {{UAE_REV}} | {{UAE_CAC}} | **{{UAE_MARGIN}}** | {{UAE_NEED}} | {{UAE_BUILDS}} |
+| Oman and Bahrain | {{GULF_REV}} | {{GULF_CAC}} | **{{GULF_MARGIN}}** | {{GULF_NEED}} | {{GULF_BUILDS}} |
+| **India** | {{INDIA_REV}} | {{INDIA_CAC}} | **{{INDIA_MARGIN}}** | **{{INDIA_NEED}}** | **{{INDIA_BUILDS}}** |
 
-**India alone covers the whole company's fixed base with {{INDIA_NEED}} customers.** The plan already builds {{INDIA_BUILDS}} there.
+Read the "left over" column. In the UAE and the Gulf it is negative. **Every customer you win there loses money.**
 
-The UAE and the Gulf lose money on every customer they acquire. In the UAE, replacing leavers eats USD 27 of USD {{UAE_REV}} in revenue before anything else is paid for.
+India is different. Each Indian customer leaves USD {{INDIA_MARGIN}} a year after everything. India alone would cover the company's entire fixed costs with {{INDIA_NEED}} customers, and the plan already reaches {{INDIA_BUILDS}} there.
 
-Revenue per customer is nearly identical across all three. The entire difference is acquisition, and it is two things at once.
+Why the gap? Customers earn Aurumix almost the same amount everywhere. The difference is entirely in what they cost to find, and that happens for two reasons.
 
-Paid reach is cheaper in India. And the whole 420-strong agent network sits there, where a customer costs a commission instead of a marketing budget.
+Advertising is cheaper in India. And all 420 sales agents are based there. An agent costs a commission on what they sell. Advertising costs money whether it works or not.
 
-That is the finding that should change the plan, and Part 4 acts on it.
+**Part 4 acts on this.**
 
-### Why retail cannot carry the fixed costs
+### Why direct customers do not cover the bills
 
-Strip out partners and ask a simple question: at a mature, standing-still book, does one paying customer make money?
+Forget partners for a moment. Picture the business standing still: no growth, customers leaving and being replaced, nothing else changing.
+
+Does one customer make money?
 
 ![Retail alone](aurumix/outputs/charts/threshold_retail_alone.png)
 
-At a 15% contingency, one customer contributes about **USD {{MARGIN15}} a year** after serving them and after replacing the customers who leave. Covering the fixed base needs **{{NEED15}} paying customers**. The plan builds {{PAY50}}.
+Barely. One customer leaves **USD {{MARGIN15}} a year** once you have served them and paid to replace them when they leave.
 
-The costs behind that number are split by whether they can surprise us, and the contingency buffer lands only on the uncertain half:
+Fixed costs are the bills that do not change no matter how many customers you have: licences, insurance, audits, the technology. Covering them at USD {{MARGIN15}} each needs **{{NEED15}} customers**. The plan reaches {{PAY50}}.
 
-| | Certain | Uncertain, buffered |
+**Or {{PARTNERS15}} partners cover the same bills on their own.**
+
+That is the whole finding. A partner pays a fee and costs almost nothing to serve. A customer pays a fee, then you deduct what it costs to serve them, then what it costs to replace them, and little is left.
+
+We never add the two together. Adding them would hide whether the customer side works, and it does not.
+
+#### About the safety margin
+
+Budgets overrun, so we add a safety margin to costs. But we only add it where costs can actually surprise us.
+
+| | We know these | These could surprise us |
 |:--|--:|--:|
-| Per customer per year | USD {{VAR_CERT}} | USD {{VAR_UNC}} |
-| Fixed per year | {{FIX_CERT}} | {{FIX_UNC}} |
+| Per customer, per year | USD {{VAR_CERT}} | USD {{VAR_UNC}} |
+| Fixed, per year | {{FIX_CERT}} | {{FIX_UNC}} |
 
-Contracted rates, published licence fees, a vendor's price per identity check and a loyalty ladder Aurumix sets itself are known, so they carry no buffer. Marketing yield, card scheme fees, technology and insurance are not, so they do.
+Contracted rates, published licence fees, the price a vendor charges per identity check, and the loyalty discounts Aurumix chooses are all known. They get no margin. Advertising costs, card scheme fees, technology and insurance are not known. They get one.
 
-Raise the contingency on that uncertain half and the answer stops existing. At 30% the margin per customer is nearly gone and the requirement passes every reachable customer in all three regions: **{{NEED30}}**. At 50% the margin turns negative, so no number of customers works at all.
+Push that margin from 15% to 30% and the answer disappears: you would need more customers than exist in all three countries combined. At 50%, no number of customers works.
 
-Marketing is 92% of what it costs to win a customer. So this sweep is really a test of one number: acquisition cost.
+Advertising is 92% of what it costs to win a customer. So really this is one test: **can you keep the cost of winning a customer down?**
 
-**Or {{PARTNERS15}} partners cover the fixed base by themselves.**
+### Why so little is left per customer
 
-That contrast is the finding. A partner's fee arrives almost whole; a retail customer's revenue survives serving cost and replacement cost first, and what remains is small. The two thresholds are never blended, because blending them hides whether the retail leg stands.
+The revenue model assumes every paying customer pays every month. Real ones do not.
 
-### Why the margin is so thin: real customers skip months
+Three of the five customer types in our simulation skip months on purpose. Across the whole book, customers pay in about **78% of the months they could**.
 
-The revenue model's paying customers pay every month by construction. The simulation's do not: three of the five payment behaviours miss months on purpose, and the book ends up paying in about **78% of the months it could**.
+That one correction drops what a customer earns from USD 38 a year to **USD 32**. The cost of serving and replacing them does not drop at all.
 
-The effect is direct. Revenue per paying customer falls from roughly $38 a year to **$32**, while serving and replacement costs do not fall at all. That single correction is most of the distance between "retail needs 65,000 customers" and "retail needs {{NEED15}}".
+### Why the raise is so large
 
-### Why the raise is so large: partners arrive slowly
+A partner does not switch on overnight. Their users take a year or two to start using the product.
 
-A signed partner does not deliver its users overnight. Modelling adoption as a 12-to-24-month ramp rather than an instant switch moved the deepest cash moment later, into the window where the first partners are signed but not yet contributing.
+We built that in: a partner reaches full contribution over 12 to 24 months. It pushes the company's worst cash moment later, into exactly the period when the first partners have signed but are barely contributing.
 
 ![The funding line](aurumix/outputs/charts/funding_line.png)
 
-The consequence is a materially larger raise than an instant-adoption model would show. It is also the most actionable finding in the document: anything that shortens the ramp is worth more than most product levers.
+This is worth acting on. **Anything that gets a partner's users on board faster is worth more than most product work.**
 
----
-
-### The raise
+### How much money you need
 
 ![Peak funding](aurumix/outputs/charts/peak_funding_hist.png)
 
-| Confidence | Raise needed |
+| Safe in | You need |
 |:--|--:|
-| Median path | {{RAISE50}} |
-| 8 paths in 10 | {{RAISE80}} |
-| **9 paths in 10** | **{{RAISE90}}** |
-| 19 paths in 20 | {{RAISE95}} |
+| Half of runs | {{RAISE50}} |
+| 8 runs out of 10 | {{RAISE80}} |
+| **9 runs out of 10** | **{{RAISE90}}** |
+| 19 runs out of 20 | {{RAISE95}} |
 
-{{P_GT3M}} of paths need more than $3m. The number is the deepest point of a monthly cash line, not a year-end figure: cumulative losses plus the capital locked in the gold float, card prefunding and regulatory capital.
+This is not money you spend on day one. The need builds up over four to five years, and it is two things added together.
 
-**One caveat, and it matters.** In {{PEAK_AT_HORIZON}} of paths the funding line is still rising at month 84. Those paths have not reached their peak inside the seven years, so for them the figure above is a floor, not a ceiling. They are the paths short of partners, and their median raise is already {{RAISE_IF_LATE}} against {{RAISE_IF_EARLY}} for paths that turn the corner in time. Read the raise as the money needed to reach the point where the business funds itself. A fifth of futures do not reach that point inside seven years.
+First, everything the business loses before it turns a profit. Second, money it holds but cannot spend: gold bars on the shelf, cash held with the card scheme, and capital the licence requires it to keep untouched.
 
-### Getting to profit
+**One warning.** In {{PEAK_AT_HORIZON}} of runs the business still needs more money at month 84. Those runs have not stopped losing money within seven years, so for them this figure is a floor, not a ceiling. They are almost always the runs where partners did not sign.
+
+### When the business earns it back
 
 ![Break-even by year](aurumix/outputs/charts/breakeven_by_year.png)
 
-| Milestone | Share of paths in cumulative profit |
+| By the end of | Share of runs that have earned it all back |
 |:--|--:|
-| By year 4 | {{BE4}} |
-| By year 5 | {{BE5}} |
-| By year 6 | {{BE6}} |
-| By year 7 | **{{BE7}}** |
+| Year 4 | {{BE4}} |
+| Year 5 | {{BE5}} |
+| Year 6 | {{BE6}} |
+| Year 7 | **{{BE7}}** |
 
 ![Cumulative profit](aurumix/outputs/charts/cum_profit_fan.png)
 
-The shape matters as much as the odds, and the shape is sobering. The median path digs a hole until about month {{PEAK_MONTH_MED}}, then climbs. It does not finish the climb. Cumulative profit at month 84 sits at **{{CUM_M84_MED}}**. Among the paths that do clear, the crossing happens around month {{BE_MONTH_MED}}, deep into year six.
+Read this carefully, because it is easy to mistake.
 
-So the honest reading of the plan as modelled is not "profitable in year seven". It is "roughly a third of futures have repaid the hole by year seven, and the rest are still climbing out". That is what the three changes in Part 4 are for.
+The typical run loses money for about four years, then starts earning. But it does not finish. At month 84 the typical run is still **{{CUM_M84_MED}}** behind where it started. The runs that do get back to zero mostly do it around month {{BE_MONTH_MED}}.
 
-### Where revenue comes from
+So the honest summary of the plan today is not "profitable in year seven". It is: **about four runs in ten have paid back what they lost by year seven. The rest are still working on it.**
+
+That is what the three changes in Part 4 are for.
+
+### Where the money comes from
 
 ![Revenue with and without partners](aurumix/outputs/charts/revenue_fan_with_without_b2b.png)
 
-Year-seven revenue runs {{REV50}} at the median, of which {{REV_EX_B2B}} is retail. Partners are **{{B2B_SHARE}}** of the total from a handful of contracts.
+Year-seven revenue is {{REV50}} in the typical run. {{REV_EX_B2B}} of that comes from direct customers. The rest, **{{B2B_SHARE}}**, comes from a handful of partner contracts.
 
 ![Partner dependence](aurumix/outputs/charts/partner_dependence.png)
 
-Profit tracks the partner count almost linearly. This is the single most important relationship in the model, and it rests on the fewest verified facts.
+Profit rises almost in a straight line with the number of partners. It is the strongest relationship in the whole model, and the one with the least evidence behind it.
 
-### What the answer depends on
+### What the answer depends on most
 
 ![Tornado](aurumix/outputs/charts/tornado.png)
 
-| Rank | Assumption | Swing in year-seven profit |
+| | Assumption | How much it swings year-seven profit |
 |:--|:--|--:|
 | 1 | {{TOR1}} | {{TOR1_SW}} |
 | 2 | {{TOR2}} | {{TOR2_SW}} |
@@ -193,54 +219,54 @@ Profit tracks the partner count almost linearly. This is the single most importa
 | 4 | {{TOR4}} | {{TOR4_SW}} |
 | 5 | {{TOR5}} | {{TOR5_SW}} |
 
-Partner assumptions occupy the top of this list. None of them is measured. One signed letter of intent, with a real user count and a real adoption rate, would narrow this model more than any further modelling work.
+Partner assumptions take the top places. **Not one of them has been measured.**
+
+One signed letter of intent would tell you more than any further modelling. It would give you a real user count and a real take-up rate.
 
 ---
 
-## Part 3: What has to be true, under a named failure
+## Part 3: What has to be true when something goes wrong
 
-Part 2 asked what must hold across everything we can put a number on. This part asks the other half: what happens when a specific thing goes wrong that sits outside every band, and whether money can fix it.
+Part 2 tested everything we could put a range on. This part tests specific disasters that no range covers, and asks a blunt question about each: **can money fix it?**
 
-Each scenario runs through the full simulation on its own, with everything else at base, so the damage is attributable.
-
-### Stress tests
+Each one runs on its own, with everything else normal, so we can see what it costs by itself.
 
 ![Stress scenarios](aurumix/outputs/charts/stress_scenarios.png)
 
-| Scenario | Cumulative profit at year 7 | Peak funding |
+| What goes wrong | Profit after 7 years | Money needed |
 |:--|--:|--:|
-| Base | {{ST_BASE_CUM}} | {{ST_BASE_PK}} |
-| Gold crashes 30% | {{ST_GOLD_CUM}} | {{ST_GOLD_PK}} |
-| Redemption run, 25% at month 24 | {{ST_RUN_CUM}} | {{ST_RUN_PK}} |
-| **No partners at all** | **{{ST_NOB2B_CUM}}** | **{{ST_NOB2B_PK}}** |
-| Adoption failure | {{ST_ADOPT_CUM}} | {{ST_ADOPT_PK}} |
-| Regulatory delay, 12 months | {{ST_DELAY_CUM}} | {{ST_DELAY_PK}} |
-| Ticket compression | {{ST_TICKET_CUM}} | {{ST_TICKET_PK}} |
-| Combined tail | {{ST_TAIL_CUM}} | {{ST_TAIL_PK}} |
+| Nothing, for comparison | {{ST_BASE_CUM}} | {{ST_BASE_PK}} |
+| Gold falls 30% | {{ST_GOLD_CUM}} | {{ST_GOLD_PK}} |
+| A quarter of customers cash out at once | {{ST_RUN_CUM}} | {{ST_RUN_PK}} |
+| **No partner ever signs** | **{{ST_NOB2B_CUM}}** | **{{ST_NOB2B_PK}}** |
+| Customers save less and leave faster | {{ST_ADOPT_CUM}} | {{ST_ADOPT_PK}} |
+| The licence takes a year longer | {{ST_DELAY_CUM}} | {{ST_DELAY_PK}} |
+| Customers save smaller amounts | {{ST_TICKET_CUM}} | {{ST_TICKET_PK}} |
+| Several of these at once | {{ST_TAIL_CUM}} | {{ST_TAIL_PK}} |
 
-### What each failure would take to survive
+### Can money fix it?
 
-A table of damage is not an answer. The useful question is the same one Part 2 asked: what would have to be true to still work, and can money buy it?
-
-| Scenario | Verdict | What it would take |
+| What goes wrong | Verdict | What you would do |
 |:--|:--|:--|
-| Gold crashes 30% | **Not a risk** | nothing. Customers hold the price exposure; Aurumix earns fees on flows |
-| Redemption run | **Fundable** | already inside the planned raise. Needs operational readiness, not capital |
-| Ticket compression | **Fundable** | already inside the planned raise |
-| Regulatory delay | **Fundable** | about USD 0.4m more, to cover twelve months of standing costs while unlicensed |
-| Adoption failure | **Fundable, barely** | survives on the planned raise but never repays. Needs the Part 4 levers to recover |
-| **No partners at all** | **Not fundable** | retail alone would need more customers than exist in all three markets. No raise fixes this |
-| Combined tail | **Not fundable** | the no-partner case with worse timing |
+| Gold falls 30% | **Not a problem** | nothing. Customers own the gold, so they carry the price |
+| A quarter cash out at once | **Money fixes it** | already covered by the planned raise. You need to be operationally ready, not richer |
+| Customers save smaller amounts | **Money fixes it** | already covered by the planned raise |
+| Licence delayed a year | **Money fixes it** | roughly USD 0.4m more, to pay the bills while you wait |
+| Customers save less and leave faster | **Money just about fixes it** | survives, but never earns it back. Needs the Part 4 changes |
+| **No partner ever signs** | **Money does not fix it** | you would need more customers than exist in all three countries |
+| Several at once | **Money does not fix it** | the no-partner case, arriving at a worse time |
 
-Three readings follow.
+Three things to take from this.
 
-**Gold is not the risk.** The crash scenario is almost indistinguishable from base.
+**Gold is not the risk.** A 30% crash looks almost the same as a normal year.
 
-**Partners are the whole risk, and the only one money cannot solve.** Their absence costs {{ST_NOB2B_CUM}} over seven years and pushes funding to {{ST_NOB2B_PK}}.
+**Partners are the whole risk.** Losing them costs {{ST_NOB2B_CUM}} over seven years and pushes the money you need to {{ST_NOB2B_PK}}.
 
-But the number is not the point. No amount of funding turns a partnerless business into a viable one. Every other scenario here is a cash problem. This one is a business-model problem.
+But the number is not the point. **No amount of money turns a business with no partners into a working one.** Every other problem on this list is a cash problem. This one is not.
 
-**A run is survivable.** Cumulative profit falls to {{ST_RUN_CUM}} and funding rises only to {{ST_RUN_PK}}. The gold is allocated and already owned, so a run is an operational and cash-timing event rather than a solvency one. The credit book stays quiet throughout. The chance of ever needing a collateral top-up is **{{PMC}}**, because loans are secured against gold that moves with the price the loan is measured in.
+**A rush to cash out is survivable.** Profit falls to {{ST_RUN_CUM}} and the money you need rises only to {{ST_RUN_PK}}. The gold already belongs to customers, so this is an operations and timing problem, not a solvency one.
+
+Loans stay safe too. The chance of ever having to ask a borrower for more collateral is **{{PMC}}**. The gold backing a loan rises in value with the same price the loan is measured in.
 
 ---
 
@@ -248,110 +274,114 @@ But the number is not the point. No amount of funding turns a partnerless busine
 
 ### What the three changes are worth
 
-Same 2,000 worlds, same dice, only the configuration moved.
+Same {{PATHS}} runs, same assumptions, same luck. Only the plan changes.
 
 ![Plan versus recommended](aurumix/outputs/charts/plan_vs_recommended.png)
 
-| | Plan | Recommended |
+| | The plan today | With the changes |
 |:--|--:|--:|
-| Raise, 9 in 10 | {{RAISE90}} | **{{R_RAISE90}}** |
-| Break-even by year 7 | {{BE7}} | **{{R_BE7}}** |
-| Year-seven profit, median | {{NP50}} | {{R_NP50}} |
-| Year-seven profit, worst tenth | {{NP10}} | {{R_NP10}} |
-| Cumulative profit at year 7, median | | {{R_CUM50}} |
+| Money to raise, 9 runs in 10 | {{RAISE90}} | **{{R_RAISE90}}** |
+| Chance of earning it back by year 7 | {{BE7}} | **{{R_BE7}}** |
+| Profit in year 7, typical run | {{NP50}} | {{R_NP50}} |
+| Profit in year 7, a bad run | {{NP10}} | {{R_NP10}} |
+| Money earned back by year 7, typical run | | {{R_CUM50}} |
 
 ### Recommendations
 
-#### 1. Trim the loyalty ladder to a 1.5-point ceiling, back-loaded
+#### 1. Make the loyalty ladder less generous at the bottom
 
-The top tier pays 3.5% entry rather than 3.0%, and the benefits concentrate near the top instead of stepping evenly. This is the largest single lever. A harsher 1.0-point ceiling was tested. It buys almost nothing more, and costs real ground in the middle of the ladder.
+Give the top tier a 3.5% entry fee instead of 3.0%, and load the benefits toward the top rather than spreading them evenly. This is the single biggest change.
 
-#### 2. Push the standing-instruction rail toward 75% of joiners
+We also tested a harsher version. It buys almost nothing more and costs real ground in the middle of the ladder, so we do not recommend it.
 
-Customers on autopay miss fewer months and reach tiers faster. The gated share rises from {{RAIL0_GATE}} to {{RAIL75_GATE}}, and the paying book from {{RAIL0_PAY}} to {{RAIL75_PAY}}. One caveat: the model prices the benefit and carries no cost for winning that adoption, because none is known.
+#### 2. Get more customers onto automatic payments
 
-#### 3. Move marketing from 74/18/8 to 50/15/35 across the regions
+Customers who set up a standing instruction miss fewer months and reach loyalty tiers faster. Moving from 30% to 75% of joiners raises the share who reach a tier from {{RAIL0_GATE}} to {{RAIL75_GATE}}, and the number of paying customers from {{RAIL0_PAY}} to {{RAIL75_PAY}}.
 
-The current split concentrates spend in the smallest and dearest market. The reallocation holds up across the full range of market-size assumptions, so it does not depend on the funnel being right.
+One caveat: we have priced the benefit, but not the cost of persuading people to do it, because nobody knows what that costs.
 
-### What to learn first
+#### 3. Move advertising money from the UAE to India
 
-Nothing here is measured. So the most valuable thing the model can do is rank what is worth finding out: how much each answer moves the result, against what it costs to buy.
+Today the split is 74% UAE, 18% Gulf, 8% India. We recommend 40 / 10 / 50.
 
-| Learn it | Moves year-seven profit | What it takes |
+The current split puts most of the money into the most expensive market. Moving it works across every version of the market size we tested, so it does not depend on our market estimates being right.
+
+We stopped at 50% rather than going further on purpose. Pushing everything into India is worse, because India runs out of people to reach. And the UAE is where the licence, the brand and most likely the partner conversations are, which the model cannot see.
+
+### What to find out first
+
+Nothing in this model has been measured. So the most useful thing we can give you is a list of what to go and learn, in order.
+
+We ranked each one by how much the answer would move the result, against what it costs to find out.
+
+| Find out | Moves year-seven profit by | How |
 |:--|--:|:--|
-| Card take-up | {{VOI1_SW}} | offer the card to the first cohort |
-| The B2B fee | {{VOI2_SW}} | a term sheet |
-| Family attach | {{VOI3_SW}} | offer it to the first cohort |
-| Partner adoption and size | {{VOI_PARTNER_SW}} | one signed partner, or a serious pilot |
-| Cost per customer | {{VOI_CAC_SW}} | a paid test campaign in one region, 6 to 8 weeks |
+| How many customers take the card | {{VOI1_SW}} | offer it to your first customers |
+| What a partner pays | {{VOI2_SW}} | one term sheet |
+| How many take the family plan | {{VOI3_SW}} | offer it to your first customers |
+| What a partner is really worth | {{VOI_PARTNER_SW}} | one signed partner, or a serious pilot |
+| What a customer costs to win | {{VOI_CAC_SW}} | one paid test campaign, 6 to 8 weeks |
 
-**Four of the top assumptions are knowable today, not through research but by reading documents you already have.** The vault fee is in the contract. Interchange and ATM rates are in the card scheme's own schedule. Those alone account for {{VOI_FREE_SW}} of profit swing that the model currently carries as uncertainty because nobody has looked them up.
+**Four of the biggest unknowns can be settled this week, by reading documents you already have.** The vault fee is in your contract. The card rates are in the card scheme's published schedule. Together they account for {{VOI_FREE_SW}} of swing that this model still treats as uncertain.
 
-The most valuable single thing remains one signed partner, which resolves the largest uncertainty in the model and costs one conversation rather than a budget.
+The single most valuable thing remains one signed partner. It settles the biggest unknown in the model and costs a conversation, not a budget.
 
 ### When to change your mind
 
-A threshold is only useful if you know the level at which it fires.
+A target is only useful if you know when you have missed it.
 
 | Watch | Today | The line | What crossing it means |
 |:--|--:|--:|:--|
-| UAE cost per customer | USD {{TRIG_UAE_TODAY}} | USD {{TRIG_UAE}} | below it, the UAE pays for itself; above, every UAE customer is a loss |
-| Gulf cost per customer | USD {{TRIG_GULF_TODAY}} | none in range | the Gulf loses money at any reach price tested. Its problem is not the price of reach |
-| India | agent-led | not a marketing number | margin moves USD {{TRIG_INDIA_SWING}} across a fourfold change in the marketing rate. Watch agent productivity instead |
-| Partners signed by year 7 | plan says {{PLAN_PARTNERS}} | {{FRONT_PLAN}} | below it, the plan does not clear at today's acquisition cost |
+| Cost to win a UAE customer | USD {{TRIG_UAE_TODAY}} | USD {{TRIG_UAE}} | below it the UAE pays for itself; above it every UAE customer loses money |
+| Cost to win a Gulf customer | USD {{TRIG_GULF_TODAY}} | no line | the Gulf loses money at every advertising price we tested |
+| India | agents, not advertising | not an advertising number | advertising cost barely matters there. Watch how many customers each agent brings |
+| Partners signed by year 7 | plan says {{PLAN_PARTNERS}} | {{FRONT_PLAN}} | below it the plan does not work at today's costs |
 
-The India line is the one to internalise. **Two of these are marketing businesses. One is a distribution business.** They need different dashboards, and a single blended cost per customer hides which is which.
+The India line is the one to remember. **Two of your three markets are advertising businesses. One is a sales-agent business.** They need different dashboards, and one blended cost per customer hides which is which.
 
-One metric was tested as a trigger and rejected. Payment discipline moves the margin by only USD {{TRIG_PAY_SPAN}} across its whole plausible range, because costs are per customer rather than per payment. It is worth watching as a health signal, but it will not flip a decision.
+We also tested whether missed payments should be a warning sign. They should not. Payment discipline moves what is left per customer by only USD {{TRIG_PAY_SPAN}} across its whole realistic range, because costs follow customers, not payments. Worth watching as a health check. It will not change a decision.
 
-### What would change the answer most
+### What to watch in year one
 
-**Sign one partner.** Not for the revenue: for the information. Partner assumptions are the top of the sensitivity table and none of them is measured. A real user base, a real adoption rate and a real ramp would collapse most of the uncertainty in this document.
-
-**Shorten the adoption ramp.** The raise is set while early partners are still warming up. Launching inside a partner's existing app, or pre-committing distribution at signing, attacks the funding need directly.
-
-**Watch payment discipline from month one.** The share of months actually paid is what the retail economics live on, and today it is a modelled assumption. Two months of launch will make it an observation.
-
-### What to monitor
-
-| Metric | Why it matters | Warning level |
+| Measure | Why | Warning level |
 |:--|:--|:--|
-| Partners signed against plan | the business case | behind plan at month 24 |
-| Months paid as a share of months due | retail unit economics | below 70% |
-| Share reaching a tier | the giveback's cost and the loyalty promise | below 40% by month 36 |
-| Cost per acquired customer | rises as channels exhaust | above $60 blended |
-| Cumulative cash against the funding line | the raise | tracking below the median path |
+| Partners signed against plan | the business case rests on it | behind plan at month 24 |
+| Months paid out of months due | what customer economics rest on | below 70% |
+| Share reaching a loyalty tier | the cost of the ladder, and the promise | below 40% by month 36 |
+| Cost to win one customer | rises as easy channels run out | above USD 60 blended |
+| Cash against the plan | the raise | tracking below the typical run |
 
 ---
 
 ## Part 5: Appendix
 
-### A. What was simulated
+### A. What we simulated
 
 | | |
 |:--|:--|
-| Paths | {{PATHS}} |
-| Resolution | {{AGENTS}} |
-| Horizon | 84 months, monthly steps, starting January 2027 |
-| Drawn inputs per path | 75 parameters, plus a gold path and a partner history |
-| Randomness | fixed seeds; every result reproduces exactly |
+| Runs | {{PATHS}} |
+| Detail | {{AGENTS}} |
+| Length | 84 months, one month at a time, starting January 2027 |
+| Assumptions varied per run | 75, plus a gold price path and a partner history |
+| Repeatability | fixed seeds, so any run can be reproduced exactly |
 
 ### B. How to read the numbers
 
-**Raise at 9 in 10** is the deepest point of the monthly funding line, at the 90th percentile across paths. It covers cumulative losses plus capital locked in the float, card prefunding and regulatory capital.
+**Money to raise, 9 runs in 10** is the deepest point of the monthly cash line, at the ninth run out of ten. It covers everything lost so far plus money held but unspendable: gold on the shelf, card float, regulatory capital.
 
-**Break-even by year 7** is the share of paths whose cumulative profit is positive at month 84. It is not a statement about a single year's profit.
+**Earned it back by year 7** means the run's total profit turned positive by month 84. It is not the same as making a profit in year seven, which happens earlier.
 
-**Retail customers needed** is a steady-state threshold: the book is flat, and acquisition only replaces the customers who leave. It answers what the business must reach, not what it will reach.
+**Customers needed** assumes a business standing still: no growth, and just enough new customers to replace the ones who leave. It says what you must reach, not what you will reach.
 
-**Percentiles** describe the spread across paths, not confidence in the model. A p90 raise means nine of ten simulated futures survived on that money, given the assumptions.
+**Runs out of ten** describes the spread of outcomes, not confidence in the model. Nine runs in ten surviving on a given sum assumes our assumptions are broadly right.
 
 ### C. The loyalty ladder, and what it costs
 
-By month 84, **{{GATED}}** of the live book has cleared six consecutive payments and holds a tier. Within that group:
+Priced at the tier each customer actually reaches, the ladder costs between **{{GIVE_LO}}** and **{{GIVE_HI}}** of revenue depending on how generous it is.
 
-| Tier | Share of tiered customers |
+By month 84, **{{GATED}}** of live customers have made six payments in a row and hold a tier. Of those:
+
+| Tier | Share of those with a tier |
 |:--|--:|
 | Silver | {{T_SILVER}} |
 | Gold | {{T_GOLD}} |
@@ -360,23 +390,25 @@ By month 84, **{{GATED}}** of the live book has cleared six consecutive payments
 
 ![Tier mix](aurumix/outputs/charts/tier_mix_over_time.png)
 
-Sovereign requires a five-year payment record and a near-perfect recent year at the same time. Almost nobody clears it inside seven years, which is what makes it cheap to offer and meaningful to hold.
+Sovereign needs five years of near-perfect payments. Almost nobody reaches it within seven years, which is what makes it cheap to offer and worth holding.
 
-Priced at each customer's own tier, the giveback costs between **{{GIVE_LO}}** and **{{GIVE_HI}}** of revenue depending on how generous the ladder is. That answers the second question. The ladder is affordable across its whole design range, and its cost is not what decides whether the business works.
+The ladder is affordable in every version we tested. It is a pricing decision against your own profit target, not something that decides whether the business works.
 
 ### D. Where the profit sits
 
 ![Profit by ticket decile](aurumix/outputs/charts/profit_by_ticket_decile.png)
 
-The top tenth of customers by monthly saving contributes **{{DEC_TOP}}** of lifetime profit; the top three deciles contribute {{DEC_TOP3}}; the bottom half contributes {{DEC_BOT5}}. A minority of the book carries the economics, which is normal for a savings product and matters for how acquisition is targeted.
+Rank customers by how much they save each month. The top tenth produce **{{DEC_TOP}}** of lifetime profit. The top three tenths produce {{DEC_TOP3}}. The bottom half produce {{DEC_BOT5}}.
 
-### E. What the model cannot tell you
+A minority of customers carry the economics. That is normal for savings products, and it matters for who you target.
 
-The simulation prices uncertainty that has been written down. It cannot price what has not.
+### E. What this model cannot tell you
 
-- **No customer data exists.** Payment behaviour, ticket sizes and the market funnel are structured assumptions, swept across ranges rather than measured.
-- **No partner is signed.** The entire partner block rests on four unverified numbers.
-- **The marketing budget never flexes.** A real company cuts spend when cash runs short; the model spends the plan on every path, which overstates the burn on bad paths. That is the conservative direction for a raise.
-- **Verification is not validation.** Standing checks prove the code does what the setup document says. Nothing proves the assumptions are right until there are customers.
+It prices uncertainty that has been written down. It cannot price what has not.
+
+- **No customer data exists.** How customers pay, how much they save and how many can be reached are all structured guesses, tested across ranges rather than measured.
+- **No partner has signed.** The entire partner case rests on four unverified numbers.
+- **Advertising spend never flexes.** A real company cuts spending when cash runs short. This model keeps spending the plan in every run, which makes bad runs look worse than they would be. For a fundraising number, that is the safe direction.
+- **Checking is not proving.** Standing tests confirm the code does what the setup document says. Nothing confirms the assumptions are right until you have customers.
 
 ---
