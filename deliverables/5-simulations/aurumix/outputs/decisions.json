@@ -1,0 +1,311 @@
+{
+ "value_of_information": [
+  {
+   "param": "facility_takeup",
+   "swing": 823071.8316556327,
+   "how": "card take-up among the first cohort",
+   "cost": "none",
+   "when": "3 months after card launch",
+   "cost_rank": 0
+  },
+  {
+   "param": "b2b_fee",
+   "swing": 715745.0075545771,
+   "how": "a term sheet",
+   "cost": "none",
+   "when": "on signing",
+   "cost_rank": 0
+  },
+  {
+   "param": "family_attach",
+   "swing": 470770.8333333333,
+   "how": "offer it to the first cohort",
+   "cost": "none",
+   "when": "3 months",
+   "cost_rank": 0
+  },
+  {
+   "param": "contingency",
+   "swing": 402053.3551212453,
+   "how": "actual costs against budget",
+   "cost": "none",
+   "when": "6 months",
+   "cost_rank": 0
+  },
+  {
+   "param": "atm_share_4",
+   "swing": 310134.2409802587,
+   "how": "card scheme data",
+   "cost": "none",
+   "when": "now",
+   "cost_rank": 0
+  },
+  {
+   "param": "atm_share_3",
+   "swing": 301519.40095302917,
+   "how": "card scheme data",
+   "cost": "none",
+   "when": "now",
+   "cost_rank": 0
+  },
+  {
+   "param": "referral_rate",
+   "swing": 283798.9429632928,
+   "how": "first cohort's referral behaviour",
+   "cost": "none",
+   "when": "6 months",
+   "cost_rank": 0
+  },
+  {
+   "param": "vault_fee",
+   "swing": 280459.4839935952,
+   "how": "the vault contract itself",
+   "cost": "none",
+   "when": "now",
+   "cost_rank": 0
+  },
+  {
+   "param": "persistency",
+   "swing": 182014.035869912,
+   "how": "month-6 and month-13 payment records",
+   "cost": "none",
+   "when": "6-13 months",
+   "cost_rank": 0
+  },
+  {
+   "param": "partner_adopt",
+   "swing": 1565692.204025637,
+   "how": "one signed partner, or a serious pilot with one",
+   "cost": "low",
+   "when": "on signing",
+   "cost_rank": 1
+  },
+  {
+   "param": "partner_aum_user",
+   "swing": 1073617.5113318658,
+   "how": "same conversation as adoption",
+   "cost": "low",
+   "when": "on signing",
+   "cost_rank": 1
+  },
+  {
+   "param": "ceiling_mult",
+   "swing": 789442.3231668018,
+   "how": "a paid test campaign measuring reach, not installs",
+   "cost": "medium",
+   "when": "2-3 months",
+   "cost_rank": 2
+  },
+  {
+   "param": "cac_uae_y7",
+   "swing": 251993.8065024441,
+   "how": "only observable at scale; infer from the early curve",
+   "cost": "high",
+   "when": "year 2+",
+   "cost_rank": 3
+  },
+  {
+   "param": "cac_conv_coef",
+   "swing": 181070.78518624837,
+   "how": "only observable at scale; infer from the early curve",
+   "cost": "high",
+   "when": "year 2+",
+   "cost_rank": 3
+  },
+  {
+   "param": "tech_maint",
+   "swing": 172500.0,
+   "how": "not identified",
+   "cost": "unknown",
+   "when": "unknown",
+   "cost_rank": 9
+  }
+ ],
+ "triggers": {
+  "cac_uae": {
+   "kind": "threshold",
+   "cac": 58.57858162775409,
+   "base_cac": 74.19281318231121,
+   "base_margin": -10.479672529106402,
+   "points": [
+    [
+     0.25,
+     1.3028315339239782,
+     66.97582177603834
+    ],
+    [
+     0.4,
+     2.1657136705738935,
+     57.693094512033156
+    ],
+    [
+     0.55,
+     -0.8930047367844978,
+     58.943701079805614
+    ],
+    [
+     0.7,
+     -4.412344586545615,
+     63.371020747495415
+    ],
+    [
+     0.85,
+     -7.687033562346315,
+     68.5945395915928
+    ],
+    [
+     1.0,
+     -10.479672529106402,
+     74.19281318231121
+    ],
+    [
+     1.3,
+     -16.578968084991054,
+     86.69701364992963
+    ],
+    [
+     1.6,
+     -25.21986609761077,
+     100.26105611797172
+    ],
+    [
+     2.0,
+     -33.23593441339821,
+     117.78718530757577
+    ]
+   ]
+  },
+  "cac_gulf": {
+   "kind": "never",
+   "base_margin": -9.204895225519824,
+   "base_cac": 56.99497155930451,
+   "points": [
+    [
+     0.25,
+     -5.028818310187496,
+     72.05417813359307
+    ],
+    [
+     0.4,
+     -1.4280078781072376,
+     52.64295730457312
+    ],
+    [
+     0.55,
+     -3.5034462515457463,
+     50.190522743529
+    ],
+    [
+     0.7,
+     -5.987546548766048,
+     50.966041535966305
+    ],
+    [
+     0.85,
+     -9.021011541507654,
+     53.578320977153375
+    ],
+    [
+     1.0,
+     -9.204895225519824,
+     56.99497155930451
+    ],
+    [
+     1.3,
+     -17.969744925041205,
+     64.36730953193187
+    ],
+    [
+     1.6,
+     -19.64725108060714,
+     72.73450321107772
+    ],
+    [
+     2.0,
+     -25.79777323133721,
+     84.83137232773882
+    ]
+   ]
+  },
+  "cac_india": {
+   "kind": "insensitive",
+   "base_margin": 14.917434215982595,
+   "base_cac": 13.113159070234385,
+   "swing": 1.0251426904964376,
+   "points": [
+    [
+     0.25,
+     13.930846277796356,
+     18.86713749147066
+    ],
+    [
+     0.4,
+     14.807526547696131,
+     15.126272885152613
+    ],
+    [
+     0.55,
+     14.955988968292793,
+     14.105239954879304
+    ],
+    [
+     0.7,
+     14.936531325636853,
+     13.522250008665255
+    ],
+    [
+     0.85,
+     14.846340985790448,
+     13.356415468951873
+    ],
+    [
+     1.0,
+     14.917434215982595,
+     13.113159070234385
+    ],
+    [
+     1.3,
+     14.73474643907349,
+     12.946112598580767
+    ],
+    [
+     1.6,
+     14.845830568370882,
+     13.053280840994292
+    ],
+    [
+     2.0,
+     14.62833052713383,
+     12.77775771133499
+    ]
+   ]
+  },
+  "pay_through": [
+   {
+    "mult": 1.0,
+    "pay_through": 0.7888426252678531,
+    "margin": 2.3937872195560708
+   },
+   {
+    "mult": 0.9,
+    "pay_through": 0.7114069475792668,
+    "margin": 3.1666984554313053
+   },
+   {
+    "mult": 0.8,
+    "pay_through": 0.6337779336389096,
+    "margin": 2.5377438426178074
+   },
+   {
+    "mult": 0.7,
+    "pay_through": 0.5481834009666626,
+    "margin": 2.487212921416784
+   },
+   {
+    "mult": 0.6,
+    "pay_through": 0.47076623544889734,
+    "margin": 2.143889731514996
+   }
+  ]
+ }
+}
