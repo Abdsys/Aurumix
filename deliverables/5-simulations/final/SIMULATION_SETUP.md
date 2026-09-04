@@ -440,7 +440,7 @@ Seven deliberate bad days. Each is a named scenario run through the full twin wi
 
 | Scenario | What happens | How it is modelled |
 |:--|:--|:--|
-| Gold crash | the gold price falls 30% and stays there | the GBM path is replaced by a step: down 30% at month 24 |
+| Gold crash | the gold price falls 30% and savers react | the GBM path steps down 30% at month 24, and the full redemption-run block below fires with it |
 | Redemption run | a quarter of custody leaves at once | a one-month jump redeems 25% of holdings at month 24; for six months payment odds drop to 40% of normal; excess metal beyond what new purchases absorb is sold back at a 1% spread |
 | No B2B | no partner ever signs | the partner schedule is zeroed for all seven years |
 | Adoption failure | the product lands badly everywhere | persistency at 45%, every acquisition cost at its Conservative value, tier take-up compressed |
@@ -449,6 +449,8 @@ Seven deliberate bad days. Each is a named scenario run through the full twin wi
 | Combined tail | run + crash + weak B2B together | the redemption run and gold crash at month 24, on a partner schedule cut roughly in half |
 
 Two modelling notes. A redemption run is a jump, not a rate: a rate-based outflow converges toward balance with inflows and can never overshoot, so it cannot represent a run. And a customer pause is a payment-odds event, not a ticket cut: tickets cannot fall below the USD 20 floor, so "saving less for a while" means skipping months.
+
+One calibration note. The gold crash scenario includes the reaction because the price fall alone does almost nothing: customers own the gold, and revenue rides on money moving. The reaction reuses the redemption-run numbers unchanged. Nobody has measured how these savers react to a falling price, so a crash-specific calibration would be an invented number. Reuse also keeps the rows comparable: the difference between the crash and the plain run is the price fall itself.
 
 ---
 
