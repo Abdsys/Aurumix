@@ -160,7 +160,7 @@ def gold_path_29(rng, p, vol=GOLD_VOL_ANNUAL):
 
 def run_path(seed, params=None, vol=GOLD_VOL_ANNUAL, extra_overrides=None,
              stochastic_gold=True, stochastic_partners_on=True, acq_cv=0.10,
-             scale=10.0, **kw):
+             scale=10.0, gold_shock=None, **kw):
     """
     One Monte Carlo path: the whole system, 84 monthly steps, its own parameters.
 
@@ -181,6 +181,14 @@ def run_path(seed, params=None, vol=GOLD_VOL_ANNUAL, extra_overrides=None,
     monthly = None
     if stochastic_gold:
         _, monthly = gold_path_29(rng, {**p, **over}, vol=vol)
+    if gold_shock is not None:
+        # a step change on top of this path's own gold curve, for stress runs
+        month0, size = gold_shock
+        if monthly is None:
+            mm = np.arange(1, 85)
+            monthly = p["gold_price_m1"] * (1 + p["gold_appreciation"]) ** ((mm - 1) / 12.0)
+        idx = np.arange(1, len(monthly) + 1)
+        monthly = np.where(idx >= month0, monthly * (1 + size), monthly)
 
     # demand noise: a multiplicative wobble on the acquisition seasonality
     if acq_cv > 0:

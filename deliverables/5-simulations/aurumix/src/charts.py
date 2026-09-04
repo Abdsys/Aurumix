@@ -87,6 +87,7 @@ def main():
     B = _load("mc_bands.npz")
     F = _load("float_results.json")
     CD = _load("conditions.json")
+    STM = _load("stress_mc.json")
     m = np.arange(1, 85)
     print("charts ->", CH)
 
@@ -180,8 +181,8 @@ def main():
         save(fig, "tornado.png")
 
     # 6. stress scenarios -----------------------------------------------------
-    if A and "stress" in A:
-        s = A["stress"]
+    if STM is not None:
+        s = {k: v for k, v in STM.items() if not k.startswith("_")}
         labs = {"base": "Base", "s1_gold_crash_30": "Gold crashes 30%",
                 "s2_redemption_run_25pct_M24": "Redemption run",
                 "s3_zero_b2b": "No partners at all",
@@ -193,13 +194,19 @@ def main():
         fig, ax = plt.subplots(figsize=(10, 5.6))
         style(ax, fig)
         vals = [s[k]["cum7"] for k in keys]
+        lo = [s[k]["cum7"] - s[k]["cum7_p10"] for k in keys]
+        hi = [s[k]["cum7_p90"] - s[k]["cum7"] for k in keys]
         cols = [GREEN if v > 0 else RED for v in vals]
         cols[0] = DARK
-        ax.barh([labs[k] for k in keys][::-1], vals[::-1], color=cols[::-1], height=0.66)
+        y = np.arange(len(keys))[::-1]
+        ax.barh(y, vals, color=cols, height=0.62,
+                xerr=[lo, hi], error_kw=dict(ecolor=MED, elinewidth=1.1, capsize=3))
+        ax.set_yticks(y); ax.set_yticklabels([labs[k] for k in keys])
         ax.axvline(0, color=DARK, lw=1)
         ax.xaxis.set_major_formatter(FuncFormatter(usd))
-        ax.set_xlabel("Cumulative profit at year seven")
-        ax.set_title("Seven bad days, each run on its own", fontsize=12, pad=12)
+        ax.set_xlabel("Profit after seven years. Bar is the typical run, whiskers the middle 80%")
+        n_p = STM["_meta"]["n_paths"]
+        ax.set_title(f"Seven things going wrong, each across {n_p} runs", fontsize=12, pad=12)
         save(fig, "stress_scenarios.png")
 
     # 7. the retail threshold -------------------------------------------------

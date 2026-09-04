@@ -237,20 +237,22 @@ One signed letter of intent would tell you more than any further modelling. It w
 
 Part 2 tested everything we could put a range on. This part tests single disasters that no range covers, and asks the same question of each: **can more money fix it?**
 
-Each one runs on its own, with everything else normal, so we can see what it costs by itself.
+Each disaster runs {{ST_PATHS}} times, the same way the rest of this document runs. Every scenario uses the same set of runs as the others, so the same customers, the same gold prices and the same assumptions appear in each. Any difference between two rows is the disaster, not luck.
 
 ![Stress scenarios](aurumix/outputs/charts/stress_scenarios.png)
 
-| What goes wrong | Profit after 7 years | Money needed |
-|:--|--:|--:|
-| Nothing, for comparison | {{ST_BASE_CUM}} | {{ST_BASE_PK}} |
-| Gold falls 30% | {{ST_GOLD_CUM}} | {{ST_GOLD_PK}} |
-| A quarter of customers cash out at once | {{ST_RUN_CUM}} | {{ST_RUN_PK}} |
-| **No partner ever signs** | **{{ST_NOB2B_CUM}}** | **{{ST_NOB2B_PK}}** |
-| Customers save less and leave faster | {{ST_ADOPT_CUM}} | {{ST_ADOPT_PK}} |
-| The licence takes a year longer | {{ST_DELAY_CUM}} | {{ST_DELAY_PK}} |
-| Customers save smaller amounts | {{ST_TICKET_CUM}} | {{ST_TICKET_PK}} |
-| Several of these at once | {{ST_TAIL_CUM}} | {{ST_TAIL_PK}} |
+| What goes wrong | Profit after 7 years | Money needed | Runs that earn it back |
+|:--|--:|--:|--:|
+| Nothing, for comparison | {{ST_BASE_CUM}} | {{ST_BASE_PK}} | {{ST_BASE_BE}} |
+| Gold falls 30% | {{ST_GOLD_CUM}} | {{ST_GOLD_PK}} | {{ST_S1_GOLD_CRASH_30_BE}} |
+| A quarter of customers cash out at once | {{ST_RUN_CUM}} | {{ST_RUN_PK}} | {{ST_S2_REDEMPTION_RUN_25PCT_M24_BE}} |
+| **No partner ever signs** | **{{ST_NOB2B_CUM}}** | **{{ST_NOB2B_PK}}** | **{{ST_S3_ZERO_B2B_BE}}** |
+| Customers save less and leave faster | {{ST_ADOPT_CUM}} | {{ST_ADOPT_PK}} | {{ST_S4_ADOPTION_FAILURE_BE}} |
+| The licence takes a year longer | {{ST_DELAY_CUM}} | {{ST_DELAY_PK}} | {{ST_S5_REGULATORY_DELAY_BE}} |
+| Customers save smaller amounts | {{ST_TICKET_CUM}} | {{ST_TICKET_PK}} | {{ST_S6_TICKET_COMPRESSION_BE}} |
+| Several of these at once | {{ST_TAIL_CUM}} | {{ST_TAIL_PK}} | {{ST_S7_COMBINED_TAIL_BE}} |
+
+Profit is the typical run. Money needed is what covers 9 runs in 10, the same measure used everywhere else in this document.
 
 ### Can money fix it?
 

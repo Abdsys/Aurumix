@@ -71,11 +71,12 @@ A = j("analysis.json")
 F = j("float_results.json")
 CD = j("conditions.json")
 DEC = j("decisions.json")
+STM = j("stress_mc.json")
 
 t15 = A["q1_threshold"]["contingency_15"]
 t30 = A["q1_threshold"]["contingency_30"]
 t50 = A["q1_threshold"]["contingency_50"]
-st = A["stress"]
+st = {k: v for k, v in STM.items() if not k.startswith("_")}
 tor = sorted(A["q6_tornado"], key=lambda d: -abs(d["np7_swing"]))
 
 
@@ -200,6 +201,9 @@ V = {
 
     # margin calls
     "PMC": pc(S["P_any_margin_call"], 1),
+    "ST_PATHS": n(STM["_meta"]["n_paths"]),
+    **{f"ST_{k.upper()}_BE": pc(v["p_breakeven"])
+       for k, v in st.items()},
     "P_GT3M": pc(S["P_peak_funding_gt_3m"], 0),
 }
 
