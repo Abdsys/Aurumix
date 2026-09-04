@@ -53,6 +53,12 @@ CAC_HI = p0["scenario_triples"]["Marketing CAC at Y7 - UAE"][2] / CAC_BASE["uae"
 CAC_MULT = np.round(np.linspace(CAC_LO, CAC_HI, 7), 3)
 PARTNERS = [0, 2, 4, 6, 8, 11, 14]
 
+# company-wide fixed base, split the way the threshold splits it
+FIXED_C = 108918.0 + 5518.0                      # VARA + DMCC, published schedules
+FIXED_U = 120000.0 + 45000.0 + 25000.0 + 15000.0  # tech, insurance, audits
+ADDRESSABLE_R = {"uae": p0["ceiling_uae"], "gulf": p0["ceiling_gulf"],
+                 "india": p0["ceiling_india"]}
+
 
 def at(cac_mult, partners):
     """Run the twin with a CAC multiplier and a flat partner plan."""
@@ -105,7 +111,35 @@ def main():
         print(f"  CAC {cm:.2f}x ({cacs:>24}): "
               + (f"needs {min(ok)} partners" if ok else "does not clear at any partner count tested"))
 
-    R = {"cac_mult": CAC_MULT.tolist(), "partners": PARTNERS,
+    # ── per-region unit economics ────────────────────────────────────────────
+    print()
+    print("=" * 78)
+    print("DOES ANY REGION CARRY ITSELF?")
+    print("=" * 78)
+    print(f"{'':8} {'rev/cust':>9} {'certain':>9} {'uncertain':>10} {'margin':>8} "
+          f"{'CAC':>7} {'churn':>7} {'needed':>12} {'builds':>9}")
+    regions = {}
+    for r in REGIONS:
+        u = unit_economics(region_only(r))
+        if u is None:
+            continue
+        marg = u["rev"] - (u["v_cert"] + u["v_unc"] * 1.15)
+        need = (FIXED_C + FIXED_U * 1.15) / marg if marg > 0 else None
+        if need is not None and need > ADDRESSABLE_R[r]:
+            need = None
+        u["margin"] = marg
+        u["needed"] = need
+        u["own_ceiling"] = ADDRESSABLE_R[r]
+        regions[r] = u
+        ns = f"{need:,.0f}" if need else "beyond region"
+        print(f"  {r.upper():6} {u['rev']:9.2f} {u['v_cert']:9.2f} {u['v_unc']:10.2f} "
+              f"{marg:8.2f} {u['cac']:7.2f} {u['churn']:7.1%} {ns:>12} {u['paying']:9,.0f}")
+    print()
+    print("  'needed' is customers in that region alone to cover the WHOLE company's")
+    print("  fixed base; 'builds' is what the plan's budget share actually reaches there.")
+
+    R = {"regions": regions,
+         "cac_mult": CAC_MULT.tolist(), "partners": PARTNERS,
          "cum_profit": grid.tolist(), "peak_funding": peak.tolist(),
          "frontier_partners_needed": front,
          "cac_band": {"lo_mult": float(CAC_LO), "hi_mult": float(CAC_HI),
@@ -114,6 +148,60 @@ def main():
     with open(os.path.join(OUT, "conditions.json"), "w") as f:
         json.dump(R, f, indent=1)
     print(f"\nwrote outputs/conditions.json")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# PER-REGION UNIT ECONOMICS
+#
+# The blended CAC of about USD 44 is a weighted average of roughly USD 85 in the
+# UAE and USD 15 in India. It describes no actual customer, and it hides the
+# most useful fact available: whether any region carries itself on its own.
+#
+# Method: run the twin once per region with the other two switched off, and with
+# that region's marketing budget cut to its own share. Cutting the budget keeps
+# SPEND INTENSITY identical to the blended run, so the channel-exhaustion curve
+# bites exactly as it does in the full model. Without that, a single-region run
+# would concentrate the whole budget in one market and invent a CAC penalty that
+# the plan never incurs.
+#
+# The fixed base is company-wide, so "customers needed" here means: how many
+# customers IN THIS REGION ALONE would cover the whole company's fixed costs.
+# ═════════════════════════════════════════════════════════════════════════════
+
+REGIONS = ("uae", "gulf", "india")
+
+
+def region_only(r):
+    ov = {}
+    share = p0[f"mkt_share_{r}"]
+    ov["marketing_spend"] = [x * share for x in p0["marketing_spend"]]
+    for q in REGIONS:
+        ov[f"mkt_share_{q}"] = 1.0 if q == r else 0.0
+        if q != r:
+            ov[f"agents_{q}"] = [0] * 7
+    return Twin(scale=SCALE, seed=SEED, overrides=ov).run()
+
+
+def unit_economics(o):
+    """Same split as the threshold: certain and uncertain, per customer."""
+    yr = o["year"]; Y = yr == 7
+    npay = o["paying"][-1]
+    if npay <= 0:
+        return None
+    P_, AQ = o["opex_parts"], o["acq_parts"]
+    rev = float((o["revenue"][Y].sum() - o["s6"][Y].sum()) / npay)
+    v_cert = float((o["cogs"][Y].sum() + o["ics_cost"][Y].sum()
+                    + P_["kyc"][Y].sum() + P_["redemption"][Y].sum()
+                    + P_["vault"][Y].sum()) / npay)
+    v_unc = float(o["card_cost"][Y].sum() / npay)
+    new = float(o["new"][Y].sum())
+    churn = float(o["lapsed"][Y].sum() / o["paying"][Y][0])
+    if new > 0:
+        v_cert += churn * float(AQ["agent_comm"][Y].sum() + AQ["referral"][Y].sum()) / new
+        v_unc += churn * float(AQ["marketing"][Y].sum()) / new
+    cac = float(o["acq_cost"][Y].sum() / new) if new else float("nan")
+    return dict(rev=rev, v_cert=v_cert, v_unc=v_unc, churn=churn, cac=cac,
+                paying=float(npay), built=float(o["cum_ever"][-1]))
 
 
 if __name__ == "__main__":
