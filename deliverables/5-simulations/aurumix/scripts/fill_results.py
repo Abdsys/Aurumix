@@ -164,6 +164,17 @@ V = {
     "P_GT3M": pc(S["P_peak_funding_gt_3m"], 0),
 }
 
+# horizon caveat and median outcome, straight from the path table
+import pandas as _pd
+_df = _pd.read_csv(os.path.join(OUT, "mc_results.csv"))
+V["PEAK_AT_HORIZON"] = pc((_df.peak_funding_month >= 84).mean(), 1)
+V["PEAK_MONTH_MED"] = f"{_df.peak_funding_month.median():.0f}"
+V["RAISE_IF_LATE"] = m(_df[_df.peak_funding_month >= 84].peak_funding.median())
+V["RAISE_IF_EARLY"] = m(_df[_df.peak_funding_month < 84].peak_funding.median())
+_cleared = _df[_df.breakeven_month < 999]
+V["BE_MONTH_MED"] = f"{_cleared.breakeven_month.median():.0f}" if len(_cleared) else "never"
+V["CUM_M84_MED"] = m(_df.cum_profit_y7.median())
+
 # concentration
 dec = A["q3_decile_share"].get("rho_0.4") or list(A["q3_decile_share"].values())[0]
 V["DEC_TOP"] = pc(dec[-1], 1)

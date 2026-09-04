@@ -275,9 +275,11 @@ def main():
         style(ax, fig)
         _fan(ax, m, B, "funding", GOLD, "Median path")
         i = int(np.argmax(B["funding_p90"]))
-        ax.plot(m, B["funding_p90"], color=RED, lw=1.4, ls="--", label="9-in-10 path")
+        ax.plot(m, B["funding_p90"], color=RED, lw=1.4, ls="--", label="90th percentile")
         ax.axvline(i + 1, color=MED, lw=1, ls=":")
-        ax.text(i + 2, B["funding_p90"][i] * 0.72, f"worst month: {i+1}", color=DARK, fontsize=9)
+        ax.text(i - 30, B["funding_p90"][i] * 0.97,
+                "the 90th percentile is still rising at the horizon",
+                color=DARK, fontsize=9)
         ax.yaxis.set_major_formatter(FuncFormatter(usd))
         ax.set_xlabel("Month")
         ax.set_ylabel("Money that must have been raised by this month")

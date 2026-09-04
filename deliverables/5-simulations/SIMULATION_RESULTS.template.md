@@ -94,6 +94,8 @@ The consequence is a materially larger raise than an instant-adoption model woul
 
 {{P_GT3M}} of paths need more than $3m. The number is the deepest point of a monthly cash line, not a year-end figure: cumulative losses plus the capital locked in the gold float, card prefunding and regulatory capital.
 
+**One caveat, and it matters.** In {{PEAK_AT_HORIZON}} of paths the funding line is still rising at month 84. Those paths have not reached their peak inside the seven years, so for them the figure above is a floor, not a ceiling. They are the paths short of partners, and their median raise is already {{RAISE_IF_LATE}} against {{RAISE_IF_EARLY}} for paths that turn the corner in time. Read the raise as the money needed to reach the point where the business funds itself, and note that a fifth of futures do not reach that point within the horizon.
+
 ### Getting to profit
 
 ![Break-even by year](aurumix/outputs/charts/breakeven_by_year.png)
@@ -107,7 +109,9 @@ The consequence is a materially larger raise than an instant-adoption model woul
 
 ![Cumulative profit](aurumix/outputs/charts/cum_profit_fan.png)
 
-The shape matters as much as the odds. The median path digs a hole for roughly four years, then climbs. Paths that recover, recover strongly; paths that do not are usually short of partners rather than short of customers.
+The shape matters as much as the odds, and the shape is sobering. The median path digs a hole until about month {{PEAK_MONTH_MED}}, then climbs, but it does not finish the climb: cumulative profit at month 84 sits at **{{CUM_M84_MED}}** on the median path. Among the paths that do clear, the crossing happens around month {{BE_MONTH_MED}}, deep into year six.
+
+So the honest reading of the plan as modelled is not "profitable in year seven". It is "roughly a third of futures have repaid the hole by year seven, and the rest are still climbing out". That is what the three changes in Part 4 are for.
 
 ### Where revenue comes from
 

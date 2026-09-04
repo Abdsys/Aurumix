@@ -16,24 +16,24 @@ created: 2026-09-03
 
 ### Executive summary
 
-**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about 1.08m off the raise.**
+**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about 1.06m off the raise.**
 
-The simulation ran 2,000 versions of the next seven years, each one a full rerun of every customer, month by month, at one agent per 10 customers.
+The simulation ran 2,000 versions of the next seven years, each one a full rerun of every customer, month by month, at one agent per customer.
 
 | Metric | Plan as modelled | With the three changes |
 |:--|--:|--:|
-| Raise needed, 9 paths in 10 | **5.42m** | **4.34m** |
+| Raise needed, 9 paths in 10 | **5.40m** | **4.34m** |
 | Raise needed, median path | 3.51m | 2.97m |
-| Odds of clearing the hole by year 7 | **35%** | **54%** |
+| Odds of clearing the hole by year 7 | **34%** | **54%** |
 | Year-seven profit, median | 0.49m | 0.67m |
 | Year-seven profit, worst tenth | -0.39m | -0.23m |
-| Paying customers at month 84, median | 88,445 | 91,905 |
+| Paying customers at month 84, median | 88,594 | 91,905 |
 
 Three findings drive everything else.
 
 **Partners are the business.** They are 31% of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose -4.62m and need 6.21m of funding.
 
-**Retail does not stand alone.** At a 15% contingency the retail book would need 147,768 paying customers to cover the fixed base by itself, against the 88,445 the plan builds. At 30% and above, the margin per customer goes negative and no book size fixes it.
+**Retail does not stand alone.** At a 15% contingency the retail book would need 147,768 paying customers to cover the fixed base by itself, against the 88,594 the plan builds. At 30% and above, the margin per customer goes negative and no book size fixes it.
 
 **Gold is not the risk.** A 30% crash leaves cumulative profit at 0.48m against a base of 0.48m. Customers own the gold; Aurumix earns fees on flows.
 
@@ -55,7 +55,7 @@ Strip out partners and ask a simple question: at a mature, standing-still book, 
 
 ![Retail alone](aurumix/outputs/charts/threshold_retail_alone.png)
 
-At a 15% contingency, one customer contributes about **$3.18 a year** after serving them and after replacing the customers who leave. The fixed base is roughly $410,000 a year, so covering it needs **147,768 paying customers**. The plan builds 88,445.
+At a 15% contingency, one customer contributes about **$3.18 a year** after serving them and after replacing the customers who leave. The fixed base is roughly $410,000 a year, so covering it needs **147,768 paying customers**. The plan builds 88,594.
 
 Raise the contingency and the answer stops existing. At 30% the margin per customer turns negative, which means no number of customers covers the fixed base: unreachable. At 50%, the same.
 
@@ -89,10 +89,12 @@ The consequence is a materially larger raise than an instant-adoption model woul
 |:--|--:|
 | Median path | 3.51m |
 | 8 paths in 10 | 4.77m |
-| **9 paths in 10** | **5.42m** |
-| 19 paths in 20 | 5.96m |
+| **9 paths in 10** | **5.40m** |
+| 19 paths in 20 | 5.98m |
 
 70% of paths need more than $3m. The number is the deepest point of a monthly cash line, not a year-end figure: cumulative losses plus the capital locked in the gold float, card prefunding and regulatory capital.
+
+**One caveat, and it matters.** In 19.4% of paths the funding line is still rising at month 84. Those paths have not reached their peak inside the seven years, so for them the figure above is a floor, not a ceiling. They are the paths short of partners, and their median raise is already 5.32m against 3.25m for paths that turn the corner in time. Read the raise as the money needed to reach the point where the business funds itself, and note that a fifth of futures do not reach that point within the horizon.
 
 ### Getting to profit
 
@@ -103,17 +105,19 @@ The consequence is a materially larger raise than an instant-adoption model woul
 | By year 4 | 2% |
 | By year 5 | 9% |
 | By year 6 | 22% |
-| By year 7 | **35%** |
+| By year 7 | **34%** |
 
 ![Cumulative profit](aurumix/outputs/charts/cum_profit_fan.png)
 
-The shape matters as much as the odds. The median path digs a hole for roughly four years, then climbs. Paths that recover, recover strongly; paths that do not are usually short of partners rather than short of customers.
+The shape matters as much as the odds, and the shape is sobering. The median path digs a hole until about month 61, then climbs, but it does not finish the climb: cumulative profit at month 84 sits at **-1.06m** on the median path. Among the paths that do clear, the crossing happens around month 69, deep into year six.
+
+So the honest reading of the plan as modelled is not "profitable in year seven". It is "roughly a third of futures have repaid the hole by year seven, and the rest are still climbing out". That is what the three changes in Part 4 are for.
 
 ### Where revenue comes from
 
 ![Revenue with and without partners](aurumix/outputs/charts/revenue_fan_with_without_b2b.png)
 
-Year-seven revenue runs 4.25m at the median, of which 2.93m is retail. Partners are **31%** of the total from a handful of contracts.
+Year-seven revenue runs 4.26m at the median, of which 2.93m is retail. Partners are **31%** of the total from a handful of contracts.
 
 ![Partner dependence](aurumix/outputs/charts/partner_dependence.png)
 
@@ -191,8 +195,8 @@ Same 2,000 worlds, same dice, only the configuration moved.
 
 | | Plan | Recommended |
 |:--|--:|--:|
-| Raise, 9 in 10 | 5.42m | **4.34m** |
-| Break-even by year 7 | 35% | **54%** |
+| Raise, 9 in 10 | 5.40m | **4.34m** |
+| Break-even by year 7 | 34% | **54%** |
 | Year-seven profit, median | 0.49m | 0.67m |
 | Year-seven profit, worst tenth | -0.39m | -0.23m |
 | Cumulative profit at year 7, median | | 0.23m |
@@ -238,7 +242,7 @@ The current split concentrates spend in the smallest and dearest market. The rea
 | | |
 |:--|:--|
 | Paths | 2,000 |
-| Resolution | one agent per 10 customers |
+| Resolution | one agent per customer |
 | Horizon | 84 months, monthly steps, starting January 2027 |
 | Drawn inputs per path | 75 parameters, plus a gold path and a partner history |
 | Randomness | fixed seeds; every result reproduces exactly |
