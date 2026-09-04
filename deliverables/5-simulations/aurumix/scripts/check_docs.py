@@ -112,8 +112,11 @@ _meta = os.path.join(DOCS, "_branded_working", "meta_results.json")
 if os.path.exists(_meta):
     _mt = open(_meta, encoding="utf-8").read()
     print()
-    for _lbl, _forms in (("raise, recommended", money(C_["safe_raise"]["p90"])),
-                         ("break-even, recommended", pct(C_["P_cum_breakeven_by_Y7"])),
+    # the summary page reports the PLAN, not the recommendation. The
+    # recommendation lives in Part 4 where the reader can see what it costs.
+    for _lbl, _forms in (("raise, plan", money(M["safe_raise"]["p90"])),
+                         ("break-even, plan", pct(M["P_cum_breakeven_by"]["Y7"])),
+                         ("year-7 profit, plan", money(M["net_profit_y7"]["p50"])),
                          ("partners to cover fixed base",
                           {f"{t15['partners_to_cover_fixed_alone']:.1f}"})):
         _ok = any(f in _mt for f in _forms)

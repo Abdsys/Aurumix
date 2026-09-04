@@ -18,22 +18,24 @@ created: 2026-09-03
 
 **Aurumix works as a partner business. It does not work as a retail business.**
 
-Customers who sign up directly do not, on their own, earn enough to pay the company's bills. Partners do. Three changes to the plan cut the money you need to raise by USD 1.18m.
+Customers who sign up directly do not, on their own, earn enough to pay the company's bills. Partners do.
 
 We ran the next seven years 2,000 times. Each run simulated every customer, one by one, month by month, under different assumptions about how the world turns out.
 
-| | The plan today | With the three changes |
-|:--|--:|--:|
-| Money to raise, safe in 9 runs out of 10 | **USD 4.82m** | **USD 3.64m** |
-| Money to raise, typical run | USD 3.23m | USD 2.67m |
-| Chance of earning it all back by year 7 | **43%** | **65%** |
-| Profit in year 7, typical run | USD 0.69m | USD 0.73m |
-| Profit in year 7, a bad run | -USD 0.19m | -USD 0.16m |
-| Paying customers at month 84 | 88,594 | 85,783 |
+These are the plan exactly as written. Part 4 sets out three changes and what they are worth.
+
+| | The plan today |
+|:--|--:|
+| Money to raise, safe in 9 runs out of 10 | **USD 4.82m** |
+| Money to raise, typical run | USD 3.23m |
+| Chance of earning it all back by year 7 | **43%** |
+| Profit in year 7, typical run | USD 0.69m |
+| Profit in year 7, a bad run | -USD 0.19m |
+| Paying customers at month 84 | 88,594 |
 
 Three things drive everything else.
 
-**Partners are the business.** They bring 31% of year-seven revenue from a handful of contracts. Take them away and the seven years lose -USD 4.17m, and you need USD 5.74m to survive.
+**Partners are the business.** They bring 31% of year-seven revenue from a handful of contracts. Take them away and the seven years lose -USD 4.35m, and you need USD 7.21m to survive.
 
 **Direct customers do not pay for themselves.** To cover fixed costs without partners you would need 146,289 paying customers. The plan reaches 88,594.
 
@@ -237,20 +239,22 @@ One signed letter of intent would tell you more than any further modelling. It w
 
 Part 2 tested everything we could put a range on. This part tests single disasters that no range covers, and asks the same question of each: **can more money fix it?**
 
-Each one runs on its own, with everything else normal, so we can see what it costs by itself.
+Each disaster runs 20 times, the same way the rest of this document runs. Every scenario uses the same set of runs as the others, so the same customers, the same gold prices and the same assumptions appear in each. Any difference between two rows is the disaster, not luck.
 
 ![Stress scenarios](aurumix/outputs/charts/stress_scenarios.png)
 
-| What goes wrong | Profit after 7 years | Money needed |
-|:--|--:|--:|
-| Nothing, for comparison | -USD 0.05m | USD 2.87m |
-| Gold falls 30% | -USD 0.05m | USD 2.86m |
-| A quarter of customers cash out at once | -USD 0.12m | USD 2.89m |
-| **No partner ever signs** | **-USD 4.17m** | **USD 5.74m** |
-| Customers save less and leave faster | -USD 0.90m | USD 3.06m |
-| The licence takes a year longer | -USD 0.74m | USD 3.56m |
-| Customers save smaller amounts | -USD 0.42m | USD 2.90m |
-| Several of these at once | -USD 2.50m | USD 4.08m |
+| What goes wrong | Profit after 7 years | Money needed | Runs that earn it back |
+|:--|--:|--:|--:|
+| Nothing, for comparison | USD 0.04m | USD 4.77m | 50% |
+| Gold falls 30% | USD 0.04m | USD 4.76m | 50% |
+| A quarter of customers cash out at once | -USD 0.07m | USD 4.82m | 50% |
+| **No partner ever signs** | **-USD 4.35m** | **USD 7.21m** | **0%** |
+| Customers save less and leave faster | -USD 1.18m | USD 5.58m | 25% |
+| The licence takes a year longer | -USD 0.69m | USD 5.47m | 25% |
+| Customers save smaller amounts | -USD 0.35m | USD 4.99m | 45% |
+| Several of these at once | -USD 2.60m | USD 6.04m | 0% |
+
+Profit is the typical run. Money needed is what covers 9 runs in 10, the same measure used everywhere else in this document.
 
 ### Can money fix it?
 
@@ -268,11 +272,11 @@ Three things to take from this.
 
 **Gold is not the risk.** A 30% crash looks almost the same as a normal year.
 
-**Partners are the whole risk.** Losing them costs -USD 4.17m over seven years and pushes the money you need to USD 5.74m.
+**Partners are the whole risk.** Losing them costs -USD 4.35m over seven years and pushes the money you need to USD 7.21m.
 
 But the number is not the point. **No amount of money turns a business with no partners into a working one.** Every other problem on this list is a cash problem. This one is not.
 
-**A rush to cash out is survivable.** Profit falls to -USD 0.12m and the money you need rises only to USD 2.89m. The gold already belongs to customers, so this is an operations and timing problem, not a solvency one.
+**A rush to cash out is survivable.** Profit falls to -USD 0.07m and the money you need rises only to USD 4.82m. The gold already belongs to customers, so this is an operations and timing problem, not a solvency one.
 
 Loans stay safe too. The chance of ever having to ask a borrower for more collateral is **4.1%**. The gold backing a loan rises in value with the same price the loan is measured in.
 

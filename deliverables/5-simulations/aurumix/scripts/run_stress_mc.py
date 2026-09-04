@@ -9,10 +9,18 @@ does not hold: a single run of this model carries about USD 0.7m of noise in
 cumulative profit, which is larger than several of the scenario effects it was
 being used to measure.
 
-So every scenario now runs the full Monte Carlo, and every scenario shares the
-SAME SEEDS. That pairing matters more than the path count: scenario and base see
-identical parameter draws, identical gold, identical customers. Any difference
-between them is the scenario, not luck.
+So every scenario now runs the full Monte Carlo, at the same 2,000 paths as the
+rest of the document, and every scenario shares the SAME SEEDS. That pairing
+matters as much as the path count: scenario and base see identical parameter
+draws, identical gold, identical customers, so any difference between them is
+the scenario rather than luck.
+
+ON RESOLUTION. These run at one agent per ten customers, while the headline runs
+use one agent per customer. That is deliberate and it is nearly free: comparing
+the two base runs on file, the p90 raise differs by 0.4% once 2,000 paths are
+averaged. Sampling noise inside a path washes out; what does not wash out is
+having too few paths. At full resolution this grid would take thirteen hours
+instead of ninety minutes, and would buy a fourth decimal place nobody can use.
 """
 
 import json
@@ -27,7 +35,7 @@ from src.detmodel import load_params
 from src.mcmodel import run_path
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "outputs")
-N = int(sys.argv[1]) if len(sys.argv) > 1 else 400
+N = int(sys.argv[1]) if len(sys.argv) > 1 else 2000
 SEED0 = 20270101
 p0 = load_params()
 

@@ -7,42 +7,42 @@
  "legal": "Prepared by Tokenomics.net for Aurumix. Ã‚Â© 2026. Confidential.",
  "executive_summary": {
   "intro": [
-   "The business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any size the market can supply, and three configuration changes are worth about USD 1.18m off the raise."
+   "Aurumix works as a partner business. It does not work as a retail business. Customers who sign up directly do not, on their own, earn enough to pay the company's bills. Partners do. These figures are the plan exactly as written; Part 4 sets out three changes and what they are worth."
   ],
   "stats": [
    {
-    "value": "USD 3.64m",
-    "label": "Raise needed, nine paths in ten, with the three changes"
+    "value": "USD 4.82m",
+    "label": "To raise, safe in 9 runs out of 10"
    },
    {
-    "value": "65%",
-    "label": "Odds of clearing the hole by year seven"
+    "value": "43%",
+    "label": "Runs that earn it all back by year seven"
    },
    {
-    "value": "2.5",
-    "label": "Partners that cover the fixed base by themselves"
+    "value": "USD 0.69m",
+    "label": "Profit in year seven, typical run"
    }
   ],
   "findings": [
    {
     "title": "Partners are the business",
-    "body": "They are 31% of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose -USD 4.17m and the funding need rises to USD 5.74m. It is the one failure no raise can fix."
+    "body": "They bring 31% of year-seven revenue from a handful of contracts, and no partner has signed. Without them the seven years lose USD 4.29m and you would need USD 7.09m to survive. Across 2,000 runs with no partner, not one earned its money back."
    },
    {
-    "title": "Only one region pays for itself",
-    "body": "India returns USD 14.92 per customer a year at an acquisition cost of USD 13. It covers the whole company's fixed base with 23,475 customers, against the 48,240 the plan already builds there. The UAE and the Gulf lose money on every customer. Blending all three into one acquisition cost of USD 44 hid it."
+    "title": "Only India makes money",
+    "body": "A customer costs USD 74 to win in the UAE and USD 13 in India. Every UAE and Gulf customer loses money. Each Indian customer leaves USD 14.92 a year, and India alone would cover all the company's fixed bills with 23,475 customers against the 48,240 the plan already reaches there."
    },
    {
-    "title": "The plan sits exactly on the frontier",
-    "body": "At today's acquisition cost it needs 11 partners and plans for 11, landing at USD 0.17m of cumulative profit. A 17% overrun on acquisition costs three more partners."
+    "title": "One direct customer barely pays for itself",
+    "body": "A customer earns USD 32 a year. Serving them costs USD 11 and replacing them when they leave costs USD 14. About USD 2.39 is left. Covering the fixed bills that way needs 146,289 customers. The plan reaches 88,594. Or 2.5 partners cover the same bills."
    },
    {
-    "title": "Real customers skip months",
-    "body": "The book pays in 78% of the months it could, so revenue per paying customer is USD 32 rather than the USD 38 an always-pays model gives. Retail alone would need 146,289 customers to carry the fixed base."
+    "title": "The plan has no room in it",
+    "body": "At today's cost per customer the plan needs 11 partners and plans for exactly 11. That lands at USD 0.17m of profit after seven years. If costs run 17% over, you need three more partners."
    },
    {
     "title": "Gold is not the risk",
-    "body": "A 30% crash is almost indistinguishable from base. Customers own the gold and Aurumix earns fees on flows, so the price exposure sits with the saver. The credit book is quiet too: the chance of ever needing a collateral top-up is 4.1%."
+    "body": "A 30% crash moves the typical run by USD 5,000 across 2,000 paired runs, which is indistinguishable from nothing. Customers own the gold, so they carry the price. Aurumix earns fees on money moving. Loans stay safe for the same reason."
    }
   ]
  },

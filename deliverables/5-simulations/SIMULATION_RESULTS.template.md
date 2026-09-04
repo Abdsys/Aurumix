@@ -18,18 +18,20 @@ created: 2026-09-03
 
 **Aurumix works as a partner business. It does not work as a retail business.**
 
-Customers who sign up directly do not, on their own, earn enough to pay the company's bills. Partners do. Three changes to the plan cut the money you need to raise by {{RAISE_SAVED}}.
+Customers who sign up directly do not, on their own, earn enough to pay the company's bills. Partners do.
 
 We ran the next seven years {{PATHS}} times. Each run simulated every customer, one by one, month by month, under different assumptions about how the world turns out.
 
-| | The plan today | With the three changes |
-|:--|--:|--:|
-| Money to raise, safe in 9 runs out of 10 | **{{RAISE90}}** | **{{R_RAISE90}}** |
-| Money to raise, typical run | {{RAISE50}} | {{R_RAISE50}} |
-| Chance of earning it all back by year 7 | **{{BE7}}** | **{{R_BE7}}** |
-| Profit in year 7, typical run | {{NP50}} | {{R_NP50}} |
-| Profit in year 7, a bad run | {{NP10}} | {{R_NP10}} |
-| Paying customers at month 84 | {{PAY50}} | {{R_PAY50}} |
+These are the plan exactly as written. Part 4 sets out three changes and what they are worth.
+
+| | The plan today |
+|:--|--:|
+| Money to raise, safe in 9 runs out of 10 | **{{RAISE90}}** |
+| Money to raise, typical run | {{RAISE50}} |
+| Chance of earning it all back by year 7 | **{{BE7}}** |
+| Profit in year 7, typical run | {{NP50}} |
+| Profit in year 7, a bad run | {{NP10}} |
+| Paying customers at month 84 | {{PAY50}} |
 
 Three things drive everything else.
 
