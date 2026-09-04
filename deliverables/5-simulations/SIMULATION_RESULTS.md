@@ -12,34 +12,7 @@ created: 2026-09-03
 
 ---
 
-## Part 1: The question
-
-### Executive summary
-
-**Aurumix works as a partner business. It does not work as a retail business.**
-
-Customers who sign up directly do not, on their own, earn enough to pay the company's bills. Partners do.
-
-We ran the next seven years 2,000 times. Each run simulated every customer, one by one, month by month, under different assumptions about how the world turns out.
-
-These are the plan exactly as written. Part 4 sets out three changes and what they are worth.
-
-| | The plan today |
-|:--|--:|
-| Money to raise, safe in 9 runs out of 10 | **USD 4.82m** |
-| Money to raise, typical run | USD 3.23m |
-| Chance of earning it all back by year 7 | **43%** |
-| Profit in year 7, typical run | USD 0.69m |
-| Profit in year 7, a bad run | -USD 0.19m |
-| Paying customers at month 84 | 88,594 |
-
-Three things drive everything else.
-
-**Partners are the business.** They bring 31% of year-seven revenue from a handful of contracts. Take them away and the seven years lose -USD 4.35m, and you need USD 7.21m to survive.
-
-**Direct customers do not pay for themselves.** To cover fixed costs without partners you would need 146,289 paying customers. The plan reaches 88,594.
-
-**Gold is not the risk.** If gold falls 30% the business barely notices. Customers own the gold. Aurumix earns fees on money moving, not on the price.
+## Part 1: What the simulation says
 
 ### What we set out to answer
 
@@ -65,109 +38,24 @@ Each of those runs on its own, and each gets the same blunt test: **can more mon
 
 How much to raise, and how much to give loyal customers back, are not separate questions. They are answers to the first one. Change the conditions and both numbers move. We report them where they belong rather than treating them as findings of their own.
 
----
+### The base case
 
-## Part 2: What has to be true for this business to make money
+These are the plan exactly as written, run 2,000 times over seven years. Every figure is the middle of 2,000 runs unless it says otherwise.
 
-### Two numbers decide everything
+| | |
+|:--|--:|
+| **Money to raise, safe in 9 runs out of 10** | **USD 4.82m** |
+| Money to raise, typical run | USD 3.23m |
+| **Runs that earn it all back by year 7** | **43%** |
+| Profit in year 7, typical run | USD 0.69m |
+| Profit in year 7, a bad run | -USD 0.19m |
+| Profit in year 7, a good run | USD 1.92m |
+| Revenue in year 7, typical run | USD 4.26m |
+| Paying customers at month 84 | 88,594 |
 
-Only two things really move the answer, and nobody knows either of them yet: **what it costs to win one customer**, and **how many partners sign**.
+Read the two bold rows together. **USD 4.82m keeps the business alive in nine runs out of ten. It does not make it profitable: only 43% of runs have earned that money back by year seven.**
 
-Everything else is either a choice Aurumix makes, which we test as a change in Part 4, or a number we have already pinned down.
-
-So we ran the simulation across a grid of both.
-
-![The conditions map](aurumix/outputs/charts/conditions_map.png)
-
-Each square is a full seven-year run. Green means the business earns back everything it lost by year seven. Red means it does not.
-
-**The plan sits right on the edge.** At the cost per customer we assume today, it needs 11 partners. It plans for exactly 11. That lands at USD 0.17m of profit after seven years, which is barely above zero.
-
-There is no room in that. Watch what happens when costs move:
-
-| If one customer costs | You need |
-|:--|:--|
-| USD 36 in the UAE, the cheap end | 8 partners |
-| USD 54, as assumed today | 11 partners |
-| USD 64, only 17% more | 14 partners |
-| USD 91, the expensive end | no number of partners we tested makes it work |
-
-**Costs rising 17% means finding three more partners.** That is how tight this is.
-
-### Only India makes money
-
-Aurumix plans to launch in three places. We measured each one separately.
-
-The headline cost of USD 44 to win a customer is an average. The real numbers are USD 74 in the UAE and USD 13 in India. No actual customer costs USD 44, and the average was hiding the most useful thing we found.
-
-![Regional economics](aurumix/outputs/charts/regional_economics.png)
-
-| | Earns per year | Costs to win | Left over per year | Customers needed | Plan reaches |
-|:--|--:|--:|--:|:--|--:|
-| UAE | 32.80 | 74 | **-10.48** | never clears | 31,050 |
-| Oman and Bahrain | 28.75 | 57 | **-9.20** | never clears | 9,800 |
-| **India** | 32.39 | 13 | **+14.92** | **23,475** | **48,240** |
-
-Read the "left over" column. In the UAE and the Gulf it is negative. **Every customer you win there loses money.**
-
-India is different. Each Indian customer leaves USD +14.92 a year after everything. India alone would cover the company's entire fixed costs with 23,475 customers, and the plan already reaches 48,240 there.
-
-Why the gap? Customers earn Aurumix almost the same amount everywhere. The difference is entirely in what they cost to find, and that happens for two reasons.
-
-Advertising is cheaper in India. And all 420 sales agents are based there. An agent costs a commission on what they sell. Advertising costs money whether it works or not.
-
-**Part 4 acts on this.**
-
-### Why direct customers do not cover the bills
-
-Forget partners for a moment. Picture the business standing still: no growth, customers leaving and being replaced, nothing else changing.
-
-Does one customer make money?
-
-![Retail alone](aurumix/outputs/charts/threshold_retail_alone.png)
-
-Barely. One customer leaves **USD 2.39 a year** once you have served them and paid to replace them when they leave.
-
-Fixed costs are the bills that do not change no matter how many customers you have: licences, insurance, audits, the technology. Covering them at USD 2.39 each needs **146,289 customers**. The plan reaches 88,594.
-
-**Or 2.5 partners cover the same bills on their own.**
-
-That is the whole finding. A partner pays a fee and costs almost nothing to serve. A customer pays a fee, then you deduct what it costs to serve them, then what it costs to replace them, and little is left.
-
-We never add the two together. Adding them would hide whether the customer side works, and it does not.
-
-#### About the safety margin
-
-Budgets overrun, so we add a safety margin to costs. But we only add it where costs can actually surprise us.
-
-| | We know these | These could surprise us |
-|:--|--:|--:|
-| Per customer, per year | USD 11.41 | USD 15.95 |
-| Fixed, per year | USD 114,436 | USD 205,000 |
-
-Contracted rates, published licence fees, the price a vendor charges per identity check, and the loyalty discounts Aurumix chooses are all known. They get no margin. Advertising costs, card scheme fees, technology and insurance are not known. They get one.
-
-Push that margin from 15% to 30% and the answer disappears: you would need more customers than exist in all three countries combined. At 50%, no number of customers works.
-
-Advertising is 92% of what it costs to win a customer. So really this is one test: **can you keep the cost of winning a customer down?**
-
-### Why so little is left per customer
-
-The revenue model assumes every paying customer pays every month. Real ones do not.
-
-Three of the five customer types in our simulation skip months on purpose. Across the whole book, customers pay in about **78% of the months they could**.
-
-That one correction drops what a customer earns from USD 38 a year to **USD 32**. The cost of serving and replacing them does not drop at all.
-
-### Why the raise is so large
-
-A partner does not switch on overnight. Their users take a year or two to start using the product.
-
-We built that in: a partner reaches full contribution over 12 to 24 months. It pushes the company's worst cash moment later, into exactly the period when the first partners have signed but are barely contributing.
-
-![The funding line](aurumix/outputs/charts/funding_line.png)
-
-This is worth acting on. **Anything that gets a partner's users on board faster is worth more than most product work.**
+Surviving and earning it back are different things, and the gap between them is the honest story of this plan.
 
 ### How much money you need
 
@@ -217,6 +105,112 @@ Year-seven revenue is USD 4.26m in the typical run. USD 2.93m of that comes from
 
 Profit rises almost in a straight line with the number of partners. It is the strongest relationship in the whole model, and the one with the least evidence behind it.
 
+---
+
+## Part 2: Why the numbers come out that way
+
+Four things explain the base case. Each one is a fact about the business rather than a modelling choice.
+
+### Why so little is left per customer
+
+The revenue model assumes every paying customer pays every month. Real ones do not.
+
+Three of the five customer types in our simulation skip months on purpose. Across the whole book, customers pay in about **78% of the months they could**.
+
+That one correction drops what a customer earns from USD 38 a year to **USD 32**. The cost of serving and replacing them does not drop at all.
+
+### Why direct customers do not cover the bills
+
+Forget partners for a moment. Picture the business standing still: no growth, customers leaving and being replaced, nothing else changing.
+
+Does one customer make money?
+
+![Retail alone](aurumix/outputs/charts/threshold_retail_alone.png)
+
+Barely. One customer leaves **USD 2.39 a year** once you have served them and paid to replace them when they leave.
+
+Fixed costs are the bills that do not change no matter how many customers you have: licences, insurance, audits, the technology. Covering them at USD 2.39 each needs **146,289 customers**. The plan reaches 88,594.
+
+**Or 2.5 partners cover the same bills on their own.**
+
+That is the whole finding. A partner pays a fee and costs almost nothing to serve. A customer pays a fee, then you deduct what it costs to serve them, then what it costs to replace them, and little is left.
+
+We never add the two together. Adding them would hide whether the customer side works, and it does not.
+
+#### About the safety margin
+
+Budgets overrun, so we add a safety margin to costs. But we only add it where costs can actually surprise us.
+
+| | We know these | These could surprise us |
+|:--|--:|--:|
+| Per customer, per year | USD 11.41 | USD 15.95 |
+| Fixed, per year | USD 114,436 | USD 205,000 |
+
+Contracted rates, published licence fees, the price a vendor charges per identity check, and the loyalty discounts Aurumix chooses are all known. They get no margin. Advertising costs, card scheme fees, technology and insurance are not known. They get one.
+
+Push that margin from 15% to 30% and the answer disappears: you would need more customers than exist in all three countries combined. At 50%, no number of customers works.
+
+Advertising is 92% of what it costs to win a customer. So really this is one test: **can you keep the cost of winning a customer down?**
+
+### Only India makes money
+
+Aurumix plans to launch in three places. We measured each one separately.
+
+The headline cost of USD 44 to win a customer is an average. The real numbers are USD 74 in the UAE and USD 13 in India. No actual customer costs USD 44, and the average was hiding the most useful thing we found.
+
+![Regional economics](aurumix/outputs/charts/regional_economics.png)
+
+| | Earns per year | Costs to win | Left over per year | Customers needed | Plan reaches |
+|:--|--:|--:|--:|:--|--:|
+| UAE | 32.80 | 74 | **-10.48** | never clears | 31,050 |
+| Oman and Bahrain | 28.75 | 57 | **-9.20** | never clears | 9,800 |
+| **India** | 32.39 | 13 | **+14.92** | **23,475** | **48,240** |
+
+Read the "left over" column. In the UAE and the Gulf it is negative. **Every customer you win there loses money.**
+
+India is different. Each Indian customer leaves USD +14.92 a year after everything. India alone would cover the company's entire fixed costs with 23,475 customers, and the plan already reaches 48,240 there.
+
+Why the gap? Customers earn Aurumix almost the same amount everywhere. The difference is entirely in what they cost to find, and that happens for two reasons.
+
+Advertising is cheaper in India. And all 420 sales agents are based there. An agent costs a commission on what they sell. Advertising costs money whether it works or not.
+
+**Part 4 acts on this.**
+
+### Why the raise is so large
+
+A partner does not switch on overnight. Their users take a year or two to start using the product.
+
+We built that in: a partner reaches full contribution over 12 to 24 months. It pushes the company's worst cash moment later, into exactly the period when the first partners have signed but are barely contributing.
+
+![The funding line](aurumix/outputs/charts/funding_line.png)
+
+This is worth acting on. **Anything that gets a partner's users on board faster is worth more than most product work.**
+
+### Two numbers decide everything
+
+Only two things really move the answer, and nobody knows either of them yet: **what it costs to win one customer**, and **how many partners sign**.
+
+Everything else is either a choice Aurumix makes, which we test as a change in Part 4, or a number we have already pinned down.
+
+So we ran the simulation across a grid of both.
+
+![The conditions map](aurumix/outputs/charts/conditions_map.png)
+
+Each square is a full seven-year run. Green means the business earns back everything it lost by year seven. Red means it does not.
+
+**The plan sits right on the edge.** At the cost per customer we assume today, it needs 11 partners. It plans for exactly 11. That lands at USD 0.17m of profit after seven years, which is barely above zero.
+
+There is no room in that. Watch what happens when costs move:
+
+| If one customer costs | You need |
+|:--|:--|
+| USD 36 in the UAE, the cheap end | 8 partners |
+| USD 54, as assumed today | 11 partners |
+| USD 64, only 17% more | 14 partners |
+| USD 91, the expensive end | no number of partners we tested makes it work |
+
+**Costs rising 17% means finding three more partners.** That is how tight this is.
+
 ### What the answer depends on most
 
 ![Tornado](aurumix/outputs/charts/tornado.png)
@@ -235,7 +229,7 @@ One signed letter of intent would tell you more than any further modelling. It w
 
 ---
 
-## Part 3: What happens when something goes badly wrong
+## Part 3: What breaks it
 
 Part 2 tested everything we could put a range on. This part tests single disasters that no range covers, and asks the same question of each: **can more money fix it?**
 
@@ -282,43 +276,15 @@ Loans stay safe too. The chance of ever having to ask a borrower for more collat
 
 ---
 
-## Part 4: What to do
+---
 
-### What the three changes are worth
+## Part 4: What to do about it
 
-Same 2,000 runs, same assumptions, same luck. Only the plan changes.
+*This part is being rebuilt around the levers that create the most profit, and will be reissued with its own Monte Carlo. The base case and stress results above are final.*
 
-![Plan versus recommended](aurumix/outputs/charts/plan_vs_recommended.png)
+---
 
-| | The plan today | With the changes |
-|:--|--:|--:|
-| Money to raise, 9 runs in 10 | USD 4.82m | **USD 3.64m** |
-| Chance of earning it back by year 7 | 43% | **65%** |
-| Profit in year 7, typical run | USD 0.69m | USD 0.73m |
-| Profit in year 7, a bad run | -USD 0.19m | -USD 0.16m |
-| Money earned back by year 7, typical run | | USD 0.95m |
-
-### Recommendations
-
-#### 1. Make the loyalty ladder less generous at the bottom
-
-Give the top tier a 3.5% entry fee instead of 3.0%, and load the benefits toward the top rather than spreading them evenly. This is the single biggest change.
-
-We also tested a harsher version. It buys almost nothing more and costs real ground in the middle of the ladder, so we do not recommend it.
-
-#### 2. Get more customers onto automatic payments
-
-Customers who set up a standing instruction miss fewer months and reach loyalty tiers faster. Moving from 30% to 75% of joiners raises the share who reach a tier from 50.6% to 59.1%, and the number of paying customers from 85,110 to 96,190.
-
-One caveat: we have priced the benefit, but not the cost of persuading people to do it, because nobody knows what that costs.
-
-#### 3. Move advertising money from the UAE to India
-
-Today the split is 74% UAE, 18% Gulf, 8% India. We recommend 40 / 10 / 50.
-
-The current split puts most of the money into the most expensive market. Moving it works across every version of the market size we tested, so it does not depend on our market estimates being right.
-
-We stopped at 50% rather than going further on purpose. Pushing everything into India is worse, because India runs out of people to reach. And the UAE is where the licence, the brand and most likely the partner conversations are, which the model cannot see.
+## Part 5: What to learn next
 
 ### What to find out first
 
@@ -365,7 +331,7 @@ We also tested whether missed payments should be a warning sign. They should not
 
 ---
 
-## Part 5: Appendix
+## Part 6: Appendix
 
 ### A. What we simulated
 

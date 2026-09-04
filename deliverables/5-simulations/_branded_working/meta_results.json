@@ -48,18 +48,21 @@
  },
  "parts": {
   "1": {
-   "subtitle": "Two questions, the headline numbers, and what the simulation was built to settle."
+   "subtitle": "What the plan produces across 2,000 runs: the money needed, the odds of earning it back, and where the revenue comes from."
   },
   "2": {
-   "subtitle": "The conditions that decide whether this business makes money, and the one region that already does."
+   "subtitle": "Four facts about the business that explain those numbers, from missed payments to the one region that makes money."
   },
   "3": {
-   "subtitle": "Seven single disasters, and which of them more money can fix."
+   "subtitle": "Seven things going wrong, each across 2,000 runs, and which of them more money can fix."
   },
   "4": {
-   "subtitle": "Three changes worth about a million off the raise, what would change the answer most, and the numbers to watch."
+   "subtitle": "The changes that create the most profit, and what they are worth."
   },
   "5": {
+   "subtitle": "What to find out first, when to change your mind, and what to watch in year one."
+  },
+  "6": {
    "subtitle": "What was simulated, how to read it, the loyalty ladder's cost, and what the model cannot tell you."
   }
  }

@@ -4,7 +4,7 @@
 >
 > ⚠ **Read §0 and §9 first, then grep for what your task needs.** Loading this file whole cost ~35k tokens on 2026-08-19, which is most of a context window spent before any work starts. It was trimmed that day from 408 lines. **Keep it that way: add a pointer, not a paragraph.**
 >
-> **Last updated:** 2026-08-19. **Phase 4 is at brief v2.4 and is where the next session starts** (§9). Two things happened that day. The segment layer was rebuilt from primary sources: six occupational segments became four regional ones, the population was re-cut **from Indian to South Asian**, and **Bahrain left the model** on the CBB rulebook. Then a second pass **measured the fabrication premium instead of guessing it**, which moved §0.3 and three other things — D26 to D30, and `supporting/_working_dealer-premium-and-comparables-research.md`.
+> **Last updated:** 2026-09-04. **Phase 5 is where the next session starts. Read `deliverables/5-simulations/PHASE5_STATE.md` first** and come back here only for Phase 2 or 4 context. Two things happened that day. The segment layer was rebuilt from primary sources: six occupational segments became four regional ones, the population was re-cut **from Indian to South Asian**, and **Bahrain left the model** on the CBB rulebook. Then a second pass **measured the fabrication premium instead of guessing it**, which moved §0.3 and three other things — D26 to D30, and `supporting/_working_dealer-premium-and-comparables-research.md`.
 
 ---
 
@@ -17,11 +17,12 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | 0 Discovery | ✅ Complete, client-reviewed |
 | 1 Market Research | ✅ Complete, 52-page summary delivered |
 | 2 Mechanism Design | 🔄 Design complete across eleven drafts and sixteen map sets. **What remains is propagation debt, not design** (§9 item 1) |
-| 4 Revenue Modeling | 🔄 Brief at **v2.4, awaiting Abdur's sign-off on the engine.** `reference_model/` is the oracle |
+| 4 Revenue Modeling | ✅ Complete. `reference_model/` is the oracle. **Two defects found by Phase 5 are logged, not fixed** (§9) |
+| 5 Simulations | 🔄 **Engine built and verified. Documents current. Recommendations being rebuilt.** See `deliverables/5-simulations/PHASE5_STATE.md` |
 
 **The product in one line:** 100% of every dollar buys allocated physical gold, 1 AURX = 1 gram, monthly SIP from USD 20, behaviour-scored benefits (ICS), a credit facility and a gold-backed card.
 
-**Where the money actually is:** the **card is 83.4% of Year 10 gross profit**. The savings product is the funnel. **No profitable year in ten**, peak funding **USD 15.1m**. 🆕 **The entry-fee cut to 3% is still not funded, but the framing changed at v2.4: it now breaks even and leaves nothing over, rather than being short by 0.79pp** (D28/D29). **The binding cost is no longer the dealer's premium; it is the float carry.**
+**Where the money actually is:** Phase 5 measured it. **Partners are 31% of year-seven revenue from a handful of contracts, and retail does not cover its own fixed costs at any reachable size.** Only India makes money per customer; the UAE and the Gulf lose money on every one. Old note, from Phase 4's ten-year frame: the **card is 83.4% of Year 10 gross profit**. The savings product is the funnel. **No profitable year in ten**, peak funding **USD 15.1m**. 🆕 **The entry-fee cut to 3% is still not funded, but the framing changed at v2.4: it now breaks even and leaves nothing over, rather than being short by 0.79pp** (D28/D29). **The binding cost is no longer the dealer's premium; it is the float carry.**
 
 **Three gates govern the critical path and the client controls two:** the **bullion dealer** (still unnamed), the **title opinion**, and the **persona**.
 
@@ -278,7 +279,15 @@ Markers: ✅ settled · 🔄 revised or superseded · ⚠ carries a caveat · �
 
 ## 9. Current status and next actions
 
-**Phases 0 and 1 complete. Phase 2 design complete, propagation outstanding. Phase 4 architecture at v2.2, awaiting sign-off.**
+**Phases 0, 1 and 4 complete. Phase 2 design complete, propagation outstanding. Phase 5 is live and is where work resumes.**
+
+### PHASE 5 — read `deliverables/5-simulations/PHASE5_STATE.md`
+
+That file carries the state, the file map, the regeneration order, the verification gates and the open items. Three things belong here because they change how earlier phases read:
+
+1. **The Phase 4 workbook has two defects, logged not fixed.** Card rewards multiply a percentage-of-SPEND rate by card REVENUE, understating that cost roughly twentyfold. The FX discount is applied to card fees containing no FX margin. Both are recorded in `scripts/reconcile.py`.
+2. **D21's 29-column grid is gone from the simulation.** Peak funding is the deepest point of a cash line, and on an annual grid a mid-year trough is invisible. The twin runs 84 monthly steps. D21 still stands for the Phase 4 workbook.
+3. **The Aggressive/Conservative bands are ours, not the client's.** Phase 5 documents say so explicitly wherever a band is load-bearing. Do not describe them as client-supplied.
 
 > ⚠ **The honest read on the engagement:** we were hired to design the economics, and the economics turned out to be downstream of structural questions the client has not asked. **The deliverable will look different from the proposal, and the client should hear that from us before he notices it.**
 
