@@ -335,6 +335,8 @@ The two decisions and the two pieces of work were then run as one combined confi
 
 ![Plan against recommended](aurumix/outputs/charts/plan_vs_recommended.png)
 
+The customer count falls, and that is intended. The marketing shift buys fewer customers, but profitable ones: it stops paying USD 74 for UAE customers who lose money and buys Indian customers who earn it.
+
 The raise falls by {{RAISE_SAVED}}. That saving is real money that does not need to be found, and it comes almost entirely from the partner work: earlier partner revenue fills the loss-making years faster, so the hole never gets as deep.
 
 ---
