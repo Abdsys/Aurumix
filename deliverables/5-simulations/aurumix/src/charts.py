@@ -314,7 +314,7 @@ def main():
             ax.text(xi + w / 2, b, f" {usd(b)}", ha="center", va="bottom", color=DARK, fontsize=9)
         ax.set_xticks(x); ax.set_xticklabels(labels)
         ax.yaxis.set_major_formatter(FuncFormatter(usd))
-        ax.set_title("What the three levers are worth", fontsize=12, pad=12)
+        ax.set_title("What the recommended changes are worth", fontsize=12, pad=12)
         ax.legend(frameon=False, fontsize=9)
         save(fig, "plan_vs_recommended.png")
 

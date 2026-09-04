@@ -93,7 +93,7 @@ The typical run loses money for about four years, then starts earning. But it do
 
 So the honest summary of the plan today is not "profitable in year seven". It is: **about four runs in ten have paid back what they lost by year seven. The rest are still working on it.**
 
-That is what the three changes in Part 4 are for.
+That is what the changes in Part 4 are for.
 
 ### Where the money comes from
 
@@ -280,7 +280,62 @@ Loans stay safe too. The chance of ever having to ask a borrower for more collat
 
 ## Part 4: What to do about it
 
-*This part is being rebuilt around the levers that create the most profit, and will be reissued with its own Monte Carlo. The base case and stress results above are final.*
+Every change below was measured the same way. We ran the full simulation twice on identical random draws: once with the plan as written, once with the change applied. The difference between the two runs is the profit the change creates over the seven years. Nothing in this part is ranked by judgement.
+
+The changes fall into three groups, by how much control Aurumix has over each.
+
+### Decisions Aurumix can take now
+
+Two changes need nobody's permission and no new spending.
+
+| Change | What it means | Profit created over seven years |
+|:--|:--|--:|
+| Move marketing to India | spend 40% of the budget in the UAE, 10% in the Gulf and 50% in India, instead of today's 74 / 18 / 8 | +USD 833k |
+| Trim the loyalty ladder | cap the top loyalty discount at 1.5 percentage points and load the benefits toward the highest tiers | +USD 315k |
+
+The marketing case is the regional arithmetic from Part 2. Winning a customer costs about USD 13 in India and USD 74 in the UAE, and only the Indian customer earns more than they cost. The ladder is the discount schedule that rewards long-standing customers. Today it gives away more than the loyalty it buys back, so a flatter, top-loaded version keeps most of the reward and returns the rest as profit.
+
+### Work worth doing
+
+Two changes are effort, not settings. The model prices what the effort earns, not what the effort costs.
+
+| Change | What it means | Profit created over seven years |
+|:--|:--|--:|
+| Sign three more partners | 14 partners by year seven instead of the planned 11 | +USD 990k |
+| Halve partner onboarding | a signed partner is fully live in 9 months instead of 18 | +USD 542k |
+
+Partners are the strongest lever in the whole model: each one adds roughly USD 100k of year-seven profit. Faster onboarding earns the same fees sooner on the same contracts. Finding, signing and integrating partners costs money the model does not include, so read these two numbers as what the effort is worth, and budget the effort against them.
+
+### Programs worth funding up to a ceiling
+
+Four levers sit in customer behaviour. Aurumix can influence them with programs, but cannot set them directly. The model prices what success is worth, not what a program costs. So each figure below is a spending ceiling: the most a seven-year program is worth if it fully works.
+
+| Behaviour to improve | What was measured | Worth up to |
+|:--|:--|--:|
+| Card activation | more customers activate the gold-backed card | USD 401k |
+| Savings amount | customers save more each month | USD 376k |
+| Automatic payments | more customers set up a standing instruction, an automatic monthly bank transfer | USD 361k |
+| Retention | fewer customers leave each year | USD 344k |
+
+### What we did not rank
+
+Raising fees would show up as profit in any model that ignores how customers react to prices, including this one. We do not recommend pricing changes on that basis.
+
+### The four changes together
+
+The two decisions and the two pieces of work were then run as one combined configuration, through the same 2,000 paths as the base case. Together they are worth less than the sum of the parts, because they overlap. More partners and faster onboarding act on the same contracts, and the marketing shift pushes a market that eventually saturates.
+
+| | Plan as written | With the four changes |
+|:--|--:|--:|
+| Money to raise, safe in 9 runs of 10 | USD 4.82m | USD 3.45m |
+| Runs that earn it all back by year seven | 43% | 75% |
+| Profit in year seven, typical run | USD 0.69m | USD 1.10m |
+| Cumulative profit at month 84, typical run | -USD 0.45m | USD 1.89m |
+| Paying customers at month 84 | 88,594 | 80,455 |
+
+![Plan against recommended](aurumix/outputs/charts/plan_vs_recommended.png)
+
+The raise falls by USD 1.37m. That saving is real money that does not need to be found, and it comes almost entirely from the partner work: earlier partner revenue fills the loss-making years faster, so the hole never gets as deep.
 
 ---
 
