@@ -314,7 +314,7 @@ $$S_{t+1} = S_t \exp\!\left[\left(\mu - \tfrac{1}{2}\sigma^2\right)\Delta t + \s
 
 Where:
 
-- $\mu$ is the drift, 8.1% a year, the revenue model's own appreciation assumption
+- $\mu$ is the drift, 8.1% a year, the appreciation assumption carried through from the revenue model
 - $\sigma$ is volatility, 15% a year, the long-run realised figure for gold in USD, swept 10 to 22%
 - $\Delta t$ is one month
 
@@ -338,11 +338,11 @@ Each path is one version of the next seven years. What varies between paths, and
 
 ### Seventy-five drawn parameters
 
-Every input the revenue model prices with an Aggressive and a Conservative value is drawn. The distribution is Beta-PERT: Base is the most likely value, and Aggressive and Conservative bracket the range,
+Every input carrying an Aggressive and a Conservative value in the Phase 4 revenue model is drawn. The distribution is Beta-PERT: Base is the most likely value, and Aggressive and Conservative bracket the range,
 
 $$x \sim \text{lo} + \text{Beta}(\alpha, \beta) \times (\text{hi} - \text{lo}), \qquad \alpha = 1 + 4\tfrac{\text{mode} - \text{lo}}{\text{hi} - \text{lo}}, \quad \beta = 1 + 4\tfrac{\text{hi} - \text{mode}}{\text{hi} - \text{lo}}$$
 
-This grounds every draw in the revenue model's own scenario table rather than in invented spreads. The rule is opt-out, not opt-in: any input with a priced range is drawn, so the raise number carries it. Eleven parameters are excluded, each with a written reason in the code, in three groups:
+Those bands come from the Phase 4 revenue modelling: researched where a source existed, and set by judgement where none did. They are our own estimates, not figures supplied by anyone, and the document says so wherever one is load-bearing. Reusing them here keeps the simulation and the revenue model arguing from the same evidence rather than from two sets of numbers. The rule is opt-out, not opt-in: any input with a range is drawn, so the raise number carries it. Eleven parameters are excluded, each with a written reason in the code, in three groups:
 
 - **replaced by structure**: the partner count (a discrete arrival process now), the gold band (the price process carries it)
 - **derived**: quantities recomputed from their drawn components each path, so they move with their inputs
