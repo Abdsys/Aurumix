@@ -24,19 +24,20 @@ The customer pays a 5% entry fee and nothing else. Behind the savings product si
 
 The Phase 4 revenue model is a spreadsheet. It produces one seven-year projection from about ninety assumptions. There is no customer data yet. No waitlist, no pilot, no partner in the pipeline.
 
-### The three questions
+### The two questions
 
-The simulation does not ask what will happen. It asks three harder questions.
+The simulation does not ask what will happen. It asks two harder questions, and the results document is structured around them.
 
-- What has to be true for this business to be profitable?
-- How much can Aurumix afford to give back to loyal customers?
-- How much money does it need to raise to still be standing in nine paths out of ten?
+- What has to be true for this business to make money?
+- What happens when something goes badly wrong, and can more money fix it?
+
+Everything else follows from these. How much to raise, how much can be given back to loyal customers, and which changes to the plan create the most profit are all answers to the first question, not questions of their own.
 
 ### Why a threshold and not a forecast
 
 A forecast built on unsourced inputs is a guess with decimal places. A threshold is different. It says "you need this many paying customers," and that number does not depend on whether the market funnel is right.
 
-I think that is the only honest deliverable at this stage. The document is built around it.
+That is the only honest deliverable at this stage. The document is built around it.
 
 ---
 
