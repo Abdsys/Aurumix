@@ -69,6 +69,7 @@ S = j("mc_summary.json")
 C = j("mc_cfg15.json")
 A = j("analysis.json")
 F = j("float_results.json")
+CD = j("conditions.json")
 
 t15 = A["q1_threshold"]["contingency_15"]
 t30 = A["q1_threshold"]["contingency_30"]
@@ -200,6 +201,28 @@ V = {
     "PMC": pc(S["P_any_margin_call"], 1),
     "P_GT3M": pc(S["P_peak_funding_gt_3m"], 0),
 }
+
+# ── the conditions ───────────────────────────────────────────────────────────
+_R = CD["regions"]
+for _r in ("uae", "gulf", "india"):
+    u = _R[_r]
+    V[f"{_r.upper()}_MARGIN"] = f"{u['margin']:+.2f}"
+    V[f"{_r.upper()}_CAC"] = f"{u['cac']:.0f}"
+    V[f"{_r.upper()}_REV"] = f"{u['rev']:.2f}"
+    V[f"{_r.upper()}_CHURN"] = pc(u["churn"], 1)
+    V[f"{_r.upper()}_BUILDS"] = n(u["paying"])
+    V[f"{_r.upper()}_NEED"] = n(u["needed"]) if u["needed"] else "never clears"
+_fr = CD["frontier_partners_needed"]
+V["FRONT_PLAN"] = str(_fr.get("0.99") or "none")
+V["FRONT_GOOD"] = str(_fr.get("0.66") or "none")
+V["FRONT_BAD"] = str(_fr.get("1.16") or "none")
+V["CAC_LO_UAE"] = f"{CD['cac_band']['base']['uae'] * CD['cac_band']['lo_mult']:.0f}"
+V["CAC_HI_UAE"] = f"{CD['cac_band']['base']['uae'] * CD['cac_band']['hi_mult']:.0f}"
+V["PLAN_PARTNERS"] = str(CD["plan_position"]["partners"])
+_g = CD["cum_profit"]
+_ci = CD["cac_mult"].index(min(CD["cac_mult"], key=lambda x: abs(x - 1.0)))
+_pi = CD["partners"].index(CD["plan_position"]["partners"])
+V["PLAN_CELL"] = m(_g[_ci][_pi])
 
 # horizon caveat and median outcome, straight from the path table
 import pandas as _pd

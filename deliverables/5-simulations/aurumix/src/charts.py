@@ -86,6 +86,7 @@ def main():
     A = _load("analysis.json")
     B = _load("mc_bands.npz")
     F = _load("float_results.json")
+    CD = _load("conditions.json")
     m = np.arange(1, 85)
     print("charts ->", CH)
 
@@ -305,6 +306,57 @@ def main():
         ax.set_title("What the three levers are worth", fontsize=12, pad=12)
         ax.legend(frameon=False, fontsize=9)
         save(fig, "plan_vs_recommended.png")
+
+    # 13. the conditions map ---------------------------------------------------
+    if CD is not None:
+        g = np.array(CD["cum_profit"]) / 1e6
+        cm = np.array(CD["cac_mult"])
+        pr = CD["partners"]
+        fig, ax = plt.subplots(figsize=(10, 5.8))
+        style(ax, fig)
+        lim = np.abs(g).max()
+        im = ax.imshow(g, cmap="RdYlGn", vmin=-lim, vmax=lim, aspect="auto", origin="lower")
+        ax.set_xticks(range(len(pr))); ax.set_xticklabels(pr)
+        base = CD["cac_band"]["base"]
+        ax.set_yticks(range(len(cm)))
+        ax.set_yticklabels([f"{m:.2f}x  (UAE {base['uae']*m:.0f})" for m in cm])
+        for i in range(len(cm)):
+            for j in range(len(pr)):
+                ax.text(j, i, f"{g[i, j]:.1f}", ha="center", va="center",
+                        color=DARK, fontsize=8.5)
+        # the plan's own position
+        pi = int(np.argmin(np.abs(cm - 1.0)))
+        pj = pr.index(CD["plan_position"]["partners"]) if CD["plan_position"]["partners"] in pr else None
+        if pj is not None:
+            ax.add_patch(plt.Rectangle((pj - .5, pi - .5), 1, 1, fill=False,
+                                       edgecolor=DARK, lw=2.2))
+            ax.annotate("the plan sits here", xy=(pj + .5, pi), xytext=(pj + 1.15, pi + 1.15),
+                        color=DARK, fontsize=9, ha="center",
+                        arrowprops=dict(arrowstyle="->", color=DARK, lw=1.2))
+        ax.set_xlabel("Partners signed by year seven")
+        ax.set_ylabel("Cost per acquired customer")
+        ax.set_title("What has to be true. Cumulative profit at year seven, USD millions",
+                     fontsize=12, pad=12)
+        ax.grid(False)
+        save(fig, "conditions_map.png")
+
+    # 14. per-region unit economics -------------------------------------------
+    if CD is not None and CD.get("regions"):
+        R = CD["regions"]
+        names = [r.upper() for r in R]
+        marg = [R[r]["margin"] for r in R]
+        fig, ax = plt.subplots(figsize=(9.5, 5.2))
+        style(ax, fig)
+        cols = [GREEN if v > 0 else RED for v in marg]
+        ax.bar(names, marg, 0.5, color=cols)
+        ax.axhline(0, color=DARK, lw=1.2)
+        for i, (r, v) in enumerate(zip(R, marg)):
+            ax.text(i, v + (0.6 if v > 0 else -1.4),
+                    "%+.2f\nCAC %.0f" % (v, R[r]["cac"]), ha="center",
+                    color=DARK, fontsize=9)
+        ax.set_ylabel("Margin per customer per year, USD")
+        ax.set_title("Only one region pays for itself", fontsize=12, pad=12)
+        save(fig, "regional_economics.png")
 
     print("done")
 

@@ -4,7 +4,7 @@
  "subtitle": "What it takes for the business to be profitable, how much to raise, and what can be given back. Two thousand seven-year paths over two hundred thousand simulated customers.",
  "date": "September 2026",
  "tagline": "Built by founders. Designed for founders.",
- "legal": "Prepared by Tokenomics.net for Aurumix. Â© 2026. Confidential.",
+ "legal": "Prepared by Tokenomics.net for Aurumix. Ã‚Â© 2026. Confidential.",
  "executive_summary": {
   "intro": [
    "The retail savings business does not stand on its own at the current design. It needs B2B partners to be profitable, and there are none yet. The revenue model's year-seven profit of USD 847k is real, but a third of its revenue comes from eleven partnerships nobody has started. That is the finding. Everything else in this document is about what to do with it."
@@ -52,19 +52,19 @@
  },
  "parts": {
   "1": {
-   "subtitle": "The bottom line, the three questions the simulation was built to answer, and what the headline numbers are."
+   "subtitle": "One question, asked twice, and the headline numbers that answer it."
   },
   "2": {
-   "subtitle": "Three findings that change the shape of the business case: the retail margin, missed payments, and how slowly partners ramp."
+   "subtitle": "What must hold across everything we can put a number on: the conditions map, the one region that pays for itself, the raise and the odds."
   },
   "3": {
-   "subtitle": "The raise, the odds of clearing the hole, where revenue comes from, the loyalty ladder, profit concentration, sensitivities and seven stress scenarios."
+   "subtitle": "What must hold when a specific named thing goes wrong, and which failures money can fix."
   },
   "4": {
-   "subtitle": "Three configuration changes worth about a million off the raise, what would change the answer most, and the numbers to watch."
+   "subtitle": "Three changes worth about a million off the raise, what would change the answer most, and the numbers to watch."
   },
   "5": {
-   "subtitle": "What was simulated, how to read the numbers, and what the model cannot tell you."
+   "subtitle": "What was simulated, how to read it, the loyalty ladder's cost, and what the model cannot tell you."
   }
  }
 }
