@@ -198,7 +198,7 @@ So we ran the simulation across a grid of both.
 
 Each square is a full seven-year run. Green means the business earns back everything it lost by year seven. Red means it does not.
 
-**The plan sits right on the edge.** At the cost per customer we assume today, it needs {{FRONT_PLAN}} partners. It plans for exactly {{PLAN_PARTNERS}}. That lands at {{PLAN_CELL}} of profit after seven years, which is barely above zero.
+**The plan sits right on the edge.** At the cost per customer we assume today, it needs {{FRONT_PLAN}} partners. It plans for exactly {{PLAN_PARTNERS}}. That is roughly break-even on cumulative profit at month 84, within the noise of a single map cell. The dependable cumulative figure is the one in Part 1: the typical run is still {{CUM_M84_MED}} behind where it started.
 
 There is no room in that. Watch what happens when costs move:
 
