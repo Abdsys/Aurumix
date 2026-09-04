@@ -48,7 +48,15 @@ PANIC = {"panic_period": 24, "panic_share": 0.25, "buyback_spread": 0.01,
 
 SCENARIOS = {
     "base": dict(),
-    "s1_gold_crash_30": dict(gold_shock=(24, -0.30)),
+    # A crash people react to, not the price channel alone. The pure shock was
+    # measured (2026-09-04): it moves cumulative profit by ~USD 5k across 2,000
+    # paired paths, indistinguishable from nothing, because customers own the
+    # gold and revenue rides on money moving. What a crash can actually do is
+    # frighten savers, so the scenario fires s2's panic block with the shock,
+    # reused verbatim: no one has measured how these savers react to a crash,
+    # so a crash-specific calibration would be an invented number. s1-s2 then
+    # prices the fall given the reaction; s7-s1 what partner failure adds.
+    "s1_gold_crash_30": dict(ov=PANIC, gold_shock=(24, -0.30)),
     "s2_redemption_run_25pct_M24": dict(ov=PANIC),
     "s3_zero_b2b": dict(ov={"b2b_partners": [0] * 7}, no_partner_draw=True),
     "s4_adoption_failure": dict(ov={"persistency": 0.45,
@@ -56,13 +64,6 @@ SCENARIOS = {
     "s5_regulatory_delay": dict(delay=True),
     "s6_ticket_compression": dict(ov={"ticket_uae": 26.5, "ticket_gulf": 21,
                                       "ticket_india": 24}),
-    # A crash people react to. s1 is the price channel alone and shows it is
-    # worth ~USD 5k; s2 is the behaviour alone. This is both at once, with the
-    # panic block reused verbatim: no one has measured how these savers react
-    # to a crash, so a crash-specific calibration would be an invented number.
-    # Paired seeds make s8-s1 the reaction given the crash, s8-s2 the crash
-    # given the reaction, and s7-s8 what partner failure adds on top.
-    "s8_gold_crash_with_reaction": dict(ov=PANIC, gold_shock=(24, -0.30)),
     "s7_combined_tail": dict(ov={**PANIC, "b2b_partners": [0, 0, 1, 2, 3, 4, 5]},
                              gold_shock=(24, -0.30), no_partner_draw=True),
 }

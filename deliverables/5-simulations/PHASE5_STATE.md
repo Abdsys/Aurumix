@@ -117,7 +117,9 @@ Run all of these after any change. Each was written because its failure happened
 
 **Recommendations are on hold (client, 2026-09-04).** The agent-network lever is parked entirely; do not bring it back without being asked. The client is reading the base and stress results first.
 
-**New stress scenario s8, gold crash with reaction (client-agreed, 2026-09-04).** `run_stress_mc.py` now has `s8_gold_crash_with_reaction`: the 30% shock plus s2's panic block verbatim, so paired differences isolate each cause. The setup doc section 13 is updated. **Not yet run**: `stress_mc.json` still holds only base + s1 to s7, and the client expects more model changes before the rerun. When the changes settle, rerun the full paired set, then update the results template stress section, then fill, check_docs, rebuild both PDFs.
+**Gold crash scenario redefined (client, 2026-09-04).** `s1_gold_crash_30` is now the shock PLUS s2's panic block verbatim; the client rejected a separate eighth scenario. The pure price channel is no longer a scenario; its measured result (~USD 5k across 2,000 paired paths, indistinguishable from nothing) lives in the code comment and should survive in the results prose as the reason the reaction is included. **Not yet run**: `stress_mc.json`'s s1 row still holds the old pure-shock definition, so the results document's crash row and its "gold does nothing" prose are stale the moment the rerun lands; expect s1 to land near s2. The client expects more model changes before the rerun. When they settle: rerun the full paired set, rewrite the results template crash prose, fill, check_docs, rebuild both PDFs.
+
+**Figure 2 carries a stale "Recommended configuration" bar.** `charts.py` plots `mc_cfg15.json` (the old set: ladder 1.5x convex, rail 0.75, alloc 40/10/50, run 2026-09-04 at full resolution) as "Recommended configuration" in two charts. Recommendations are on hold and that set is not agreed. Fix proposed to client (drop the bar unless the config file is current), not yet approved.
 
 ---
 
