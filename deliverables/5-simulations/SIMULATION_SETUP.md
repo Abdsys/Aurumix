@@ -265,9 +265,7 @@ $a_t$ field agents (the plan runs them mostly in India), each converting $g = 6$
 
 ### Saturation and the calendar
 
-Each region has an addressable ceiling, an estimate of how many people can ever be reached, built from population filter assumptions. Acquisition scales down linearly as the region fills. A number that binding does not get to be a point estimate. The multiplier $m$ is drawn between 0.6 and 1.55 per path, so every result already prices the market being two-thirds or one-and-a-half times the estimate.
-
-Finally the calendar: a twelve-month seasonality shape from the revenue model, following the year's savings and spending events, normalised so a year sums to twelve, with a further 10% random monthly wobble per path.
+Each region has an addressable ceiling, an estimate of how many people can ever be reached, built from population filter assumptions. Acquisition scales down linearly as the region fills. A number that binding does not get to be a point estimate. The multiplier $m$ is drawn between 0.6 and 1.55 per path, so every result already prices the market being two-thirds or one-and-a-half times the estimate. Finally the calendar: a twelve-month seasonality shape from the revenue model, following the year's savings and spending events, normalised so a year sums to twelve, with a further 10% random monthly wobble per path.
 
 ---
 
