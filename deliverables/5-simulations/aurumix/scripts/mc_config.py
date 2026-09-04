@@ -6,7 +6,19 @@ answers "what does a RECOMMENDED configuration look like under the same
 uncertainty", so the two are comparable path for path: same seeds, same draws,
 only the levers moved.
 
-    python scripts/mc_config.py <tag> <ladder_ceiling> <steepness> <rail> <uae> <gulf> <india> [n]
+    python scripts/mc_config.py <tag> <ladder_ceiling> <steepness> <rail> <uae> <gulf> <india> [n] [scale] [key=value ...]
+
+Optional key=value levers (client-approved extension, 2026-09-04):
+    partners_extra=3   three additional signings beyond the plan, one landing
+                       in each of the last three years. The PLAN schedule is
+                       raised, so partner arrivals stay a stochastic draw
+                       centred on the new plan, exactly as in the base MC.
+                       Passing a fixed schedule instead would silently delete
+                       partner uncertainty from the raise number.
+    ramp=9             months from signing to full adoption, fixed. This one
+                       IS deliberately frozen: as a managed target it stops
+                       being an unknown, so the drawn 12-24 band no longer
+                       applies to it.
 
 Writes outputs/mc_<tag>.json.
 """
@@ -28,15 +40,39 @@ tag = sys.argv[1]
 ceiling, steep = float(sys.argv[2]), sys.argv[3]
 rail = float(sys.argv[4])
 uae, gulf, india = float(sys.argv[5]), float(sys.argv[6]), float(sys.argv[7])
-n = int(sys.argv[8]) if len(sys.argv) > 8 else 2000
-scale = float(sys.argv[9]) if len(sys.argv) > 9 else 10.0
+
+pos, kv = [], {}
+for a in sys.argv[8:]:
+    (kv.update([a.split("=", 1)]) if "=" in a else pos.append(a))
+n = int(pos[0]) if pos else 2000
+scale = float(pos[1]) if len(pos) > 1 else 10.0
+partners_extra = int(kv.pop("partners_extra", 0))
+ramp = float(kv.pop("ramp", 0)) or None
+if kv:
+    raise SystemExit(f"unknown lever(s): {sorted(kv)}")
 
 lad = make_ladder(ceiling, steep)
 alloc = {"mkt_share_uae": uae, "mkt_share_gulf": gulf, "mkt_share_india": india}
+if ramp is not None:
+    alloc["partner_ramp_months"] = ramp
+
+# Raise the PLAN, not the realised schedule: one extra signing in each of the
+# last partners_extra years, cumulative from its year on. run_path draws the
+# lumpy arrivals around whatever plan it is given.
+from src.detmodel import load_params
+p0 = load_params()
+if partners_extra:
+    sched = list(p0["b2b_partners"])
+    for i in range(partners_extra):
+        yr = len(sched) - 1 - (i % min(partners_extra, len(sched) - 1))
+        for y in range(yr, len(sched)):
+            sched[y] += 1
+    p0 = {**p0, "b2b_partners": sched}
+    print(f"partner plan {list(load_params()['b2b_partners'])} -> {sched}")
 
 peak, cum, np7, be, pay = [], [], [], [], []
 for k in range(n):
-    o, _ = run_path(20270101 + k, extra_overrides=alloc,
+    o, _ = run_path(20270101 + k, params=p0, extra_overrides=alloc,
                     ladder=lad, prefunded_share=rail, scale=scale)
     peak.append(o["peak_funding"][-1])
     cum.append(o["cum_profit"][-1])
@@ -50,7 +86,8 @@ q = lambda v, x: float(np.quantile(v, x))
 S = {
     "tag": tag, "n_paths": n, "scale": scale,
     "config": {"ladder_ceiling": ceiling, "steepness": steep, "rail": rail,
-               "alloc": [uae, gulf, india]},
+               "alloc": [uae, gulf, india], "partners_extra": partners_extra,
+               "partner_plan": p0["b2b_partners"], "ramp_months": ramp},
     "safe_raise": {f"p{int(x*100)}": q(peak, x) for x in (.5, .8, .9, .95)},
     "P_cum_breakeven_by_Y7": float(np.mean(be)),
     "net_profit_y7": {f"p{int(x*100)}": q(np7, x) for x in (.1, .5, .9)},
