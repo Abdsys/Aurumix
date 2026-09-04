@@ -29,6 +29,8 @@ with open(os.path.join(OUT, "analysis.json")) as f:
     A = json.load(f)
 with open(os.path.join(OUT, "mc_summary.json")) as f:
     M = json.load(f)
+with open(os.path.join(OUT, "mc_cfg15.json")) as f:
+    C_ = json.load(f)
 rep = open(os.path.join(OUT, "analysis_report.txt"), encoding="utf-8").read()
 
 
@@ -101,6 +103,25 @@ for label, (forms, docs) in CHECKS.items():
             fails.append(f"{d}: {label} -> model says {' or '.join(sorted(forms))}")
         print(f"  [{'PASS' if hit else 'FAIL'}] {d:24} {label}"
               f"  ({sorted(forms)[0]})")
+
+# The branded executive-summary PAGE is built from meta_results.json, not from
+# the markdown, so it drifted through every rewrite today while the body moved
+# on. It is the first page a reader sees. These checks pin it to the same live
+# outputs as everything else.
+_meta = os.path.join(DOCS, "_branded_working", "meta_results.json")
+if os.path.exists(_meta):
+    _mt = open(_meta, encoding="utf-8").read()
+    print()
+    for _lbl, _forms in (("raise, recommended", money(C_["safe_raise"]["p90"])),
+                         ("break-even, recommended", pct(C_["P_cum_breakeven_by_Y7"])),
+                         ("partners to cover fixed base",
+                          {f"{t15['partners_to_cover_fixed_alone']:.1f}"})):
+        _ok = any(f in _mt for f in _forms)
+        print(f"  [{'PASS' if _ok else 'FAIL'}] exec summary page      {_lbl}"
+              f"  ({sorted(_forms)[0]})")
+        if not _ok:
+            fails.append(f"meta_results.json exec summary: {_lbl} -> model says "
+                         f"{' or '.join(sorted(_forms))}")
 
 res = os.path.join(DOCS, "SIMULATION_RESULTS.md")
 if os.path.exists(res):
