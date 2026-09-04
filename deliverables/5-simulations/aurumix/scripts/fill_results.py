@@ -49,12 +49,16 @@ tor = sorted(A["q6_tornado"], key=lambda d: -abs(d["np7_swing"]))
 
 
 def m(v):
-    """USD, millions with two decimals."""
-    return f"{v/1e6:.2f}m"
+    """
+    USD, millions, two decimals, carrying its unit. A table cell reading "5.40m"
+    says nothing about currency, and a bare dollar sign can collide with the
+    document's inline maths.
+    """
+    return f"{'-' if v < 0 else ''}USD {abs(v)/1e6:.2f}m"
 
 
 def k(v):
-    return f"{v/1e3:,.0f}k"
+    return f"{'-' if v < 0 else ''}USD {abs(v)/1e3:,.0f}k"
 
 
 def n(v):

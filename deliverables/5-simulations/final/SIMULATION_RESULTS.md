@@ -16,26 +16,26 @@ created: 2026-09-03
 
 ### Executive summary
 
-**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about 1.08m off the raise.**
+**Bottom line: the business works, but not the way the plan describes it. It is a B2B platform whose retail book is the product partners sell. Retail alone does not cover its own fixed costs at any plausible size, and three configuration changes are worth about USD 1.08m off the raise.**
 
 The simulation ran 2,000 versions of the next seven years, each one a full rerun of every customer, month by month, at one agent per customer.
 
 | Metric | Plan as modelled | With the three changes |
 |:--|--:|--:|
-| Raise needed, 9 paths in 10 | **5.40m** | **4.32m** |
-| Raise needed, median path | 3.51m | 2.97m |
+| Raise needed, 9 paths in 10 | **USD 5.40m** | **USD 4.32m** |
+| Raise needed, median path | USD 3.51m | USD 2.97m |
 | Odds of clearing the hole by year 7 | **34%** | **53%** |
-| Year-seven profit, median | 0.49m | 0.67m |
-| Year-seven profit, worst tenth | -0.39m | -0.22m |
+| Year-seven profit, median | USD 0.49m | USD 0.67m |
+| Year-seven profit, worst tenth | -USD 0.39m | -USD 0.22m |
 | Paying customers at month 84, median | 88,594 | 91,891 |
 
 Three findings drive everything else.
 
-**Partners are the business.** They are 31% of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose -4.62m and need 6.21m of funding.
+**Partners are the business.** They are 31% of year-seven revenue and the top of every sensitivity ranking. Remove them and the seven years lose -USD 4.62m and need USD 6.21m of funding.
 
 **Retail does not stand alone.** At a 15% contingency the retail book would need 147,768 paying customers to cover the fixed base by itself, against the 88,594 the plan builds. At 30% and above, the margin per customer goes negative and no book size fixes it.
 
-**Gold is not the risk.** A 30% crash leaves cumulative profit at 0.48m against a base of 0.48m. Customers own the gold; Aurumix earns fees on flows.
+**Gold is not the risk.** A 30% crash leaves cumulative profit at USD 0.48m against a base of USD 0.48m. Customers own the gold; Aurumix earns fees on flows.
 
 ### The three questions
 
@@ -87,14 +87,14 @@ The consequence is a materially larger raise than an instant-adoption model woul
 
 | Confidence | Raise needed |
 |:--|--:|
-| Median path | 3.51m |
-| 8 paths in 10 | 4.77m |
-| **9 paths in 10** | **5.40m** |
-| 19 paths in 20 | 5.98m |
+| Median path | USD 3.51m |
+| 8 paths in 10 | USD 4.77m |
+| **9 paths in 10** | **USD 5.40m** |
+| 19 paths in 20 | USD 5.98m |
 
 70% of paths need more than $3m. The number is the deepest point of a monthly cash line, not a year-end figure: cumulative losses plus the capital locked in the gold float, card prefunding and regulatory capital.
 
-**One caveat, and it matters.** In 19.4% of paths the funding line is still rising at month 84. Those paths have not reached their peak inside the seven years, so for them the figure above is a floor, not a ceiling. They are the paths short of partners, and their median raise is already 5.32m against 3.25m for paths that turn the corner in time. Read the raise as the money needed to reach the point where the business funds itself, and note that a fifth of futures do not reach that point within the horizon.
+**One caveat, and it matters.** In 19.4% of paths the funding line is still rising at month 84. Those paths have not reached their peak inside the seven years, so for them the figure above is a floor, not a ceiling. They are the paths short of partners, and their median raise is already USD 5.32m against USD 3.25m for paths that turn the corner in time. Read the raise as the money needed to reach the point where the business funds itself, and note that a fifth of futures do not reach that point within the horizon.
 
 ### Getting to profit
 
@@ -109,7 +109,7 @@ The consequence is a materially larger raise than an instant-adoption model woul
 
 ![Cumulative profit](aurumix/outputs/charts/cum_profit_fan.png)
 
-The shape matters as much as the odds, and the shape is sobering. The median path digs a hole until about month 61, then climbs, but it does not finish the climb: cumulative profit at month 84 sits at **-1.06m** on the median path. Among the paths that do clear, the crossing happens around month 69, deep into year six.
+The shape matters as much as the odds, and the shape is sobering. The median path digs a hole until about month 61, then climbs, but it does not finish the climb: cumulative profit at month 84 sits at **-USD 1.06m** on the median path. Among the paths that do clear, the crossing happens around month 69, deep into year six.
 
 So the honest reading of the plan as modelled is not "profitable in year seven". It is "roughly a third of futures have repaid the hole by year seven, and the rest are still climbing out". That is what the three changes in Part 4 are for.
 
@@ -117,7 +117,7 @@ So the honest reading of the plan as modelled is not "profitable in year seven".
 
 ![Revenue with and without partners](aurumix/outputs/charts/revenue_fan_with_without_b2b.png)
 
-Year-seven revenue runs 4.26m at the median, of which 2.93m is retail. Partners are **31%** of the total from a handful of contracts.
+Year-seven revenue runs USD 4.26m at the median, of which USD 2.93m is retail. Partners are **31%** of the total from a handful of contracts.
 
 ![Partner dependence](aurumix/outputs/charts/partner_dependence.png)
 
@@ -152,11 +152,11 @@ The top tenth of customers by monthly saving contributes **15.1%** of lifetime p
 
 | Rank | Assumption | Swing in year-seven profit |
 |:--|:--|--:|
-| 1 | partner adopt | 1.82m |
-| 2 | partner aum user | 1.25m |
-| 3 | b2b fee | 0.83m |
-| 4 | facility takeup | 0.79m |
-| 5 | ceiling mult | 0.74m |
+| 1 | partner adopt | USD 1.82m |
+| 2 | partner aum user | USD 1.25m |
+| 3 | b2b fee | USD 0.83m |
+| 4 | facility takeup | USD 0.79m |
+| 5 | ceiling mult | USD 0.74m |
 
 Partner assumptions occupy the top of this list. None of them is measured. One signed letter of intent, with a real user count and a real adoption rate, would narrow this model more than any further modelling work.
 
@@ -166,22 +166,22 @@ Partner assumptions occupy the top of this list. None of them is measured. One s
 
 | Scenario | Cumulative profit at year 7 | Peak funding |
 |:--|--:|--:|
-| Base | 0.48m | 2.50m |
-| Gold crashes 30% | 0.48m | 2.50m |
-| Redemption run, 25% at month 24 | 0.28m | 2.54m |
-| **No partners at all** | **-4.62m** | **6.21m** |
-| Adoption failure | -0.46m | 2.69m |
-| Regulatory delay, 12 months | -0.26m | 3.24m |
-| Ticket compression | 0.18m | 2.51m |
-| Combined tail | -2.70m | 4.22m |
+| Base | USD 0.48m | USD 2.50m |
+| Gold crashes 30% | USD 0.48m | USD 2.50m |
+| Redemption run, 25% at month 24 | USD 0.28m | USD 2.54m |
+| **No partners at all** | **-USD 4.62m** | **USD 6.21m** |
+| Adoption failure | -USD 0.46m | USD 2.69m |
+| Regulatory delay, 12 months | -USD 0.26m | USD 3.24m |
+| Ticket compression | USD 0.18m | USD 2.51m |
+| Combined tail | -USD 2.70m | USD 4.22m |
 
 Three readings.
 
 **Gold is not the risk.** The crash scenario is almost indistinguishable from base. Customers hold the price exposure; Aurumix earns fees.
 
-**Partners are the whole risk.** Their absence costs -4.62m over seven years and pushes the funding need to 6.21m. No other single scenario comes close.
+**Partners are the whole risk.** Their absence costs -USD 4.62m over seven years and pushes the funding need to USD 6.21m. No other single scenario comes close.
 
-**A redemption run is survivable.** Cumulative profit falls to 0.28m and funding rises only to 2.54m. The gold is allocated and already owned, so a run is an operational and cash-timing event, not a solvency one. The credit book stays quiet through all of this: the chance of ever needing a collateral top-up is **4.1%**, because loans are secured against gold that rises with the same price the loan is measured in.
+**A redemption run is survivable.** Cumulative profit falls to USD 0.28m and funding rises only to USD 2.54m. The gold is allocated and already owned, so a run is an operational and cash-timing event, not a solvency one. The credit book stays quiet through all of this: the chance of ever needing a collateral top-up is **4.1%**, because loans are secured against gold that rises with the same price the loan is measured in.
 
 ---
 
@@ -195,11 +195,11 @@ Same 2,000 worlds, same dice, only the configuration moved.
 
 | | Plan | Recommended |
 |:--|--:|--:|
-| Raise, 9 in 10 | 5.40m | **4.32m** |
+| Raise, 9 in 10 | USD 5.40m | **USD 4.32m** |
 | Break-even by year 7 | 34% | **53%** |
-| Year-seven profit, median | 0.49m | 0.67m |
-| Year-seven profit, worst tenth | -0.39m | -0.22m |
-| Cumulative profit at year 7, median | | 0.24m |
+| Year-seven profit, median | USD 0.49m | USD 0.67m |
+| Year-seven profit, worst tenth | -USD 0.39m | -USD 0.22m |
+| Cumulative profit at year 7, median | | USD 0.24m |
 
 ### Recommendations
 

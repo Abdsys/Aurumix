@@ -56,8 +56,12 @@ def inline(text):
         ph[k] = s
         return k
 
-    # inline math first so its backslashes and underscores survive
-    text = re.sub(r"\$([^$\n]+?)\$", lambda m: stash("\\(" + m.group(1) + "\\)"), text)
+    # inline math first so its backslashes and underscores survive.
+    # Maths never opens with a digit or a space in these documents; money always
+    # opens with a digit. Without that guard "$3.18 ... $410,000" is read as one
+    # inline formula and eats the prose between the two figures.
+    text = re.sub(r"\$(?![\d\s])([^$\n]+?)\$",
+                  lambda m: stash("\\(" + m.group(1) + "\\)"), text)
     text = re.sub(r"`([^`]+)`", lambda m: stash("<code>%s</code>" % esc(m.group(1))), text)
     text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)",
                   lambda m: stash('<a href="%s">%s</a>' % (esc(m.group(2)), esc(m.group(1)))), text)
@@ -598,11 +602,11 @@ EXTRA_CSS = """
 .page--special-appendix .content-area table {
   width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 8pt; table-layout: auto;
 }
-.page--special-appendix .content-area table { margin: 3px 0 8px; font-size: 7.5pt; }
-.page--special-appendix .content-area td { padding: 2px 6px; }
-.page--special-appendix .content-area th { padding: 3px 6px; }
+.page--special-appendix .content-area table { margin: 8px 0 14px; font-size: 8pt; }
+.page--special-appendix .content-area td { padding: 4px 8px; }
+.page--special-appendix .content-area th { padding: 5px 8px; }
 .page--special-appendix .content-area h4 { margin: 8px 0 3px; }
-.page--special-appendix .content-area p { margin: 0 0 6px; }
+.page--special-appendix .content-area p { margin: 0 0 10px; }
 .page--content-single-column .content-area th,
 .page--special-appendix .content-area th {
   text-align: left; padding: 6px 8px; background: var(--warm-charcoal); color: var(--warm-white);
@@ -636,9 +640,9 @@ EXTRA_CSS = """
 .content-area code { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; }
 
 /* appendix */
-.page--special-appendix .content-area { font-family: var(--font-sans); font-size: 8.5pt; }
+.page--special-appendix .content-area { font-family: var(--font-sans); font-size: 11pt; }
 .page--special-appendix .content-area > *:first-child { margin-top: 0; }
-.page--special-appendix .content-area p { font-size: 8.5pt; line-height: 1.5; margin: 0 0 9px; }
+.page--special-appendix .content-area p { font-size: 11pt; line-height: 1.6; margin: 0 0 10px; }
 .page--special-appendix .content-area ul { margin: 0 0 8px; padding-left: 16px; list-style: disc; }
 .page--special-appendix .content-area li { font-size: 8pt; line-height: 1.45; margin-bottom: 2px; }
 

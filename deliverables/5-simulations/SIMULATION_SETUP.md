@@ -69,8 +69,8 @@ Everything behavioural. Who arrives, who pays, who reaches a tier, who leaves, w
 | Month 1 | January 2027 |
 | Step | one month, every month, for everything |
 | Paths | 2,000, each a full rerun of the population |
-| Customers per path | about 170,000 ever acquired |
-| Resolution | one simulated agent stands for 10 customers |
+| Customers per path | not fixed: an outcome of each path, around 170,000 at the median |
+| Resolution | one simulated agent per customer in the final run; 1 agent per 10 while iterating |
 | Drawn inputs per path | 75 parameters, plus a gold path and a partner history |
 | Randomness | fixed seeds, so every run is exactly reproducible |
 
