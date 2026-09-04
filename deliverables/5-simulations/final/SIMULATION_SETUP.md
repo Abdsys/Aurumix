@@ -314,7 +314,7 @@ $$S_{t+1} = S_t \exp\!\left[\left(\mu - \tfrac{1}{2}\sigma^2\right)\Delta t + \s
 
 Where:
 
-- $\mu$ is the drift, 8.1% a year, the revenue model's own appreciation assumption
+- $\mu$ is the drift, 8.1% a year, the appreciation assumption carried through from the revenue model
 - $\sigma$ is volatility, 15% a year, the long-run realised figure for gold in USD, swept 10 to 22%
 - $\Delta t$ is one month
 
@@ -338,11 +338,11 @@ Each path is one version of the next seven years. What varies between paths, and
 
 ### Seventy-five drawn parameters
 
-Every input the revenue model prices with an Aggressive and a Conservative value is drawn. The distribution is Beta-PERT: Base is the most likely value, and Aggressive and Conservative bracket the range,
+Every input carrying an Aggressive and a Conservative value in the Phase 4 revenue model is drawn. The distribution is Beta-PERT: Base is the most likely value, and Aggressive and Conservative bracket the range,
 
 $$x \sim \text{lo} + \text{Beta}(\alpha, \beta) \times (\text{hi} - \text{lo}), \qquad \alpha = 1 + 4\tfrac{\text{mode} - \text{lo}}{\text{hi} - \text{lo}}, \quad \beta = 1 + 4\tfrac{\text{hi} - \text{mode}}{\text{hi} - \text{lo}}$$
 
-This grounds every draw in the revenue model's own scenario table rather than in invented spreads. The rule is opt-out, not opt-in: any input with a priced range is drawn, so the raise number carries it. Eleven parameters are excluded, each with a written reason in the code, in three groups:
+Those bands come from the Phase 4 revenue modelling: researched where a source existed, and set by judgement where none did. They are our own estimates, not figures supplied by anyone, and the document says so wherever one is load-bearing. Reusing them here keeps the simulation and the revenue model arguing from the same evidence rather than from two sets of numbers. The rule is opt-out, not opt-in: any input with a range is drawn, so the raise number carries it. Eleven parameters are excluded, each with a written reason in the code, in three groups:
 
 - **replaced by structure**: the partner count (a discrete arrival process now), the gold band (the price process carries it)
 - **derived**: quantities recomputed from their drawn components each path, so they move with their inputs
@@ -407,6 +407,28 @@ It also concentrates the uncertainty where it belongs. Marketing is about 92% of
 One reclassification came out of this. The vault contract has a daily minimum, but at this book size the minimum does not bind: the bill is the percentage fee on metal held, which rises with the book. The vault is a per-customer cost, not a fixed one.
 
 The two thresholds are reported separately and never blended, because blending them would hide whether the retail business stands alone. A threshold larger than every reachable customer in all three regions is reported as beyond the market rather than as a number, because such a number invites someone to treat it as a target. The values, and the levers that move them, are the results document's job.
+
+### The conditions map
+
+A single threshold answers what must be true at one set of assumptions. It does not show how the requirement moves when the assumptions do, which is the more useful question when nothing is measured.
+
+So the same calculation is run across a grid of two variables, and only two. They are the only ones that are both decision-relevant and genuinely unknown: what a customer costs to acquire, and how many partners sign. Everything else is either a decision Aurumix makes, which is priced as a lever instead, or a figure already anchored.
+
+Each cell is a full simulation run, not an interpolation. The axes are bounded by the Phase 4 band rather than by invented extremes, and the plan's own position is marked on the map, so it reads as a specification with a current location rather than as a menu of scenarios.
+
+### Per-region economics
+
+Each region is also run on its own, with the other two switched off and its marketing budget cut to its own share. Cutting the budget matters: it keeps spend intensity identical to the blended run, so the channel-exhaustion curve bites exactly as it does in the full model. Without that, a single-region run would concentrate the whole budget in one market and invent a cost penalty the plan never incurs.
+
+The fixed cost base is company-wide, so a region's threshold means: how many customers in that region alone would cover the whole company's fixed costs.
+
+### What to learn first, and when to change your mind
+
+Two further layers turn the sensitivity table into something a team can act on.
+
+**What to learn first** ranks each assumption by how much it moves the answer against what it costs to find out. The impact comes from the model; the cost and timing of learning are judgement, and are labelled as such in the output.
+
+**When to change your mind** inverts the thresholds. For each metric observable early, the simulation is swept until the margin crosses zero, giving the level at which a decision flips rather than a description of a scenario. The sweep stays inside a range where the region still functions: pushed to extremes, marketing buys almost nobody and cost per customer divides by a vanishing denominator. Where a crossing lies outside that range, the output says so instead of extrapolating to a number. Where a metric turns out not to move the answer at all, it is reported as a non-trigger rather than given a threshold that does not bind.
 
 ---
 

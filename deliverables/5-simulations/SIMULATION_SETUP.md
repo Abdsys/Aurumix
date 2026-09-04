@@ -408,6 +408,28 @@ One reclassification came out of this. The vault contract has a daily minimum, b
 
 The two thresholds are reported separately and never blended, because blending them would hide whether the retail business stands alone. A threshold larger than every reachable customer in all three regions is reported as beyond the market rather than as a number, because such a number invites someone to treat it as a target. The values, and the levers that move them, are the results document's job.
 
+### The conditions map
+
+A single threshold answers what must be true at one set of assumptions. It does not show how the requirement moves when the assumptions do, which is the more useful question when nothing is measured.
+
+So the same calculation is run across a grid of two variables, and only two. They are the only ones that are both decision-relevant and genuinely unknown: what a customer costs to acquire, and how many partners sign. Everything else is either a decision Aurumix makes, which is priced as a lever instead, or a figure already anchored.
+
+Each cell is a full simulation run, not an interpolation. The axes are bounded by the Phase 4 band rather than by invented extremes, and the plan's own position is marked on the map, so it reads as a specification with a current location rather than as a menu of scenarios.
+
+### Per-region economics
+
+Each region is also run on its own, with the other two switched off and its marketing budget cut to its own share. Cutting the budget matters: it keeps spend intensity identical to the blended run, so the channel-exhaustion curve bites exactly as it does in the full model. Without that, a single-region run would concentrate the whole budget in one market and invent a cost penalty the plan never incurs.
+
+The fixed cost base is company-wide, so a region's threshold means: how many customers in that region alone would cover the whole company's fixed costs.
+
+### What to learn first, and when to change your mind
+
+Two further layers turn the sensitivity table into something a team can act on.
+
+**What to learn first** ranks each assumption by how much it moves the answer against what it costs to find out. The impact comes from the model; the cost and timing of learning are judgement, and are labelled as such in the output.
+
+**When to change your mind** inverts the thresholds. For each metric observable early, the simulation is swept until the margin crosses zero, giving the level at which a decision flips rather than a description of a scenario. The sweep stays inside a range where the region still functions: pushed to extremes, marketing buys almost nobody and cost per customer divides by a vanishing denominator. Where a crossing lies outside that range, the output says so instead of extrapolating to a number. Where a metric turns out not to move the answer at all, it is reported as a non-trigger rather than given a threshold that does not bind.
+
 ---
 
 ## 13. Stress tests
