@@ -626,6 +626,7 @@ EXTRA_CSS = """
 .content-area figure.chart img { width: 100%; height: auto; display: block; border: 1px solid var(--border-light); }
 .content-area figure.chart figcaption {
   font-family: var(--font-sans); font-size: 8pt; color: var(--text-secondary); margin-top: 5px; font-style: italic;
+  text-align: center;
 }
 
 /* formulas */
