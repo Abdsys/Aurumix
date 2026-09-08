@@ -370,7 +370,7 @@ def main():
                         color=DARK, fontsize=9, ha="center",
                         arrowprops=dict(arrowstyle="->", color=DARK, lw=1.2))
         ax.set_xlabel("Partners signed by year seven")
-        ax.set_ylabel("Cost per acquired customer")
+        ax.set_ylabel("Cost per acquired customer, all regions scaled together")
         ax.set_title("What has to be true. Cumulative profit at year seven, USD millions",
                      fontsize=12, pad=12)
         ax.grid(False)

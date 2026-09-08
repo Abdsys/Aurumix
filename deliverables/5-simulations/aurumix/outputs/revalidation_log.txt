@@ -5,3 +5,4 @@
 2026-09-08 13:45  5 paths re-run at scale 1, all figures identical; timestamps refreshed
 2026-09-08 13:48  5 paths re-run at scale 1, all figures identical; timestamps refreshed
 2026-09-08 14:10  5 paths re-run at scale 1, all figures identical; timestamps refreshed
+2026-09-08 14:36  5 paths re-run at scale 1, all figures identical; timestamps refreshed
