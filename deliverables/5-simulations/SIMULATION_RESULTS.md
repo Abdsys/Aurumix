@@ -206,12 +206,12 @@ Each square is a full seven-year run. Green means the business earns back everyt
 
 There is no room in that. Watch what happens when costs move:
 
-| If one customer costs | You need |
-|:--|:--|
-| USD 36 in the UAE, the cheap end | 8 partners |
-| USD 54, as assumed today | 11 partners |
-| USD 64, only 17% more | 14 partners |
-| USD 91, the expensive end | no number of partners we tested makes it work |
+| Cost level, as on the map | A UAE customer then costs | You need |
+|:--|:--|:--|
+| 0.66x, the cheap end | USD 36 | 8 partners |
+| 0.99x, as assumed today | USD 54 | 11 partners |
+| 1.16x, only 17% more | USD 64 | 14 partners |
+| 1.66x, the expensive end | USD 91 | no number of partners we tested makes it work |
 
 **Costs rising 17% means finding three more partners.** That is how tight this is.
 
