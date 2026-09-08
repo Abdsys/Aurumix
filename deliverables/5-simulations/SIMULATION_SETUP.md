@@ -369,7 +369,6 @@ Stack 2,000 paths and read the spread.
 | Break-even odds | share of paths whose cumulative profit turns positive by year 7 |
 | Profit spread | year-seven net profit at the 10th, 50th and 90th percentile |
 | Book size | paying customers at month 84 |
-| Margin call odds | chance the credit book ever needs collateral topped up |
 
 The funding line itself is monthly: cumulative losses plus the capital tied up in the float, card prefunding and regulatory capital, with the raise sized off its deepest point. The results document carries the numbers. This document stops at how they are produced.
 
