@@ -1,0 +1,8 @@
+   2 partners [0, 0, 1, 1, 1, 2, 2]  NP7 p50     -355,377
+   5 partners [0, 0, 1, 2, 3, 4, 5]  NP7 p50      -16,041
+   8 partners [0, 1, 2, 4, 5, 7, 8]  NP7 p50      398,642
+  11 partners [0, 1, 3, 5, 7, 9, 11]  NP7 p50      721,610
+  15 partners [0, 1, 4, 7, 10, 12, 15]  NP7 p50    1,185,537
+  20 partners [0, 2, 5, 9, 13, 16, 20]  NP7 p50    1,801,318
+
+wrote outputs/partner_sweep.json
