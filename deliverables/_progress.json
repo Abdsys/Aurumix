@@ -38,12 +38,12 @@
         "_verify_ics_calculator.py",
         "build_mdd.py",
         "extract_maps.py",
-        "render_mdd.js",
-        "shots_mdd.js",
+        "final/Aurumix_Mechanism_Design.pdf",
+        "final/Aurumix_Mechanism_Design_Branded.html",
         "final/Aurumix_Mechanism_Design_Document.md",
         "final/Aurumix_Process_Maps.md",
-        "final/Aurumix_Mechanism_Design.pdf",
-        "final/Aurumix_Mechanism_Design_Branded.html"
+        "render_mdd.js",
+        "shots_mdd.js"
       ],
       "updated_at": "2026-09-08",
       "notes": "2026-09-08: consolidated Mechanism Design Document written for counsel and client (final/), with 42-diagram process map set and branded 112-page PDF. Written on the post-decision-50 positions with the filing-grade citation corrections applied."

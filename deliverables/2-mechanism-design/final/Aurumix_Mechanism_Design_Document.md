@@ -16,7 +16,7 @@ This document describes the complete Aurumix mechanism design: what the product 
 
 Three conventions are used throughout.
 
-- **Decisions are shown with their reasoning.** Where the design departs from the client's original specification (the 100 G Business Model), the departure is stated openly and the reason given. Appendix B collects every departure in one table.
+- **Decisions are shown with their reasoning.** Where the design departs from the client's original specification (the 100 G Business Model), the departure is stated openly and the reason given.
 - **Assumptions are labelled.** Where a mechanism rests on a reading of law that counsel has not yet confirmed, the assumption is stated as a proposition that is either true or false, with a confidence level where research supports one. Section 14 is the consolidated register. The companion document `Aurumix: Design Summary and Open Legal Questions` (19 August 2026) puts the seven highest-value questions to counsel directly; this document carries the design behind them.
 - **Legal references are to primary sources.** The load-bearing rules were verified verbatim against the VARA rulebooks, the DIFC statutes and the CBUAE rulebook, and are cited precisely. Verified source texts are held in the project record. We are consultants, not lawyers: a citation here records what we read and where, and never substitutes for advice.
 
@@ -38,9 +38,7 @@ Three conventions are used throughout.
 14. Assumptions register and open legal questions
 15. Risk and adversarial analysis
 
-Appendix A: Stakeholder journeys
-Appendix B: Departures from the 100 G Business Model
-Appendix C: Glossary
+Appendix A: Glossary
 References and document control
 
 ---
@@ -107,7 +105,7 @@ The design in one view:
 - **Family layer.** A Family Portfolio and a standing Beneficiary Transfer Instruction, operating on custodied gold (section 11).
 - **Distribution layer.** A single-level member referral programme and a contracted three-tier agent network (section 12).
 
-Every mechanism in this stack was designed against two fixed constraints: the entry ticket is USD 20, and the benefit rate may never scale with capital. Where those constraints forced a departure from the client's original specification, the departure is recorded in Appendix B.
+Every mechanism in this stack was designed against two fixed constraints: the entry ticket is USD 20, and the benefit rate may never scale with capital. Where those constraints forced a departure from the client's original specification, each departure is stated where it occurs, with its reason.
 
 ---
 
@@ -662,7 +660,7 @@ The Investor Conviction Score (ICS) is the loyalty engine: a 0 to 100 score that
 
 **The one rule: ICS measures behaviour, never amount.** No input reads dollars or grams held. A customer saving USD 20 a month and one saving USD 2,000 a month reach the top tier on the same day. This is not generosity; it is the classification defence. If the score rose with amount, then the entry-fee discount, the credit ratio and the rewards rate would all improve with capital, which is a return proportional to investment: the securities shape the whole design avoids. **Amount sizes the base; behaviour sets the rate.**
 
-Three inputs the client's specification included were removed from scoring: Investment Value (the capital-scaling problem above), and referrals, family activity and Masterclass attendance (they corrupt the one clean number, they are each already paid through their own channel, and a status bonus for recruiting is the multi-level-marketing shape the distribution design is built to avoid). All three programmes survive; none of them scores. This is the largest set of departures from the client's specification and is tabled in Appendix B.
+Three inputs the client's specification included were removed from scoring: Investment Value (the capital-scaling problem above), and referrals, family activity and Masterclass attendance (they corrupt the one clean number, they are each already paid through their own channel, and a status bonus for recruiting is the multi-level-marketing shape the distribution design is built to avoid). All three programmes survive; none of them scores. This is the largest set of departures from the client's specification.
 
 ### 8.2 The gate: Confirmed SIP
 
@@ -1234,64 +1232,7 @@ Push-only collection removes bounce fees and mandate risk but leaves two depende
 The invariant set halts minting before any unbacked state can arise (6.5); attestation currency is a mint precondition, not a reporting nicety; the register and mint are multi-tenant from day one so partner books do not share a single point of failure with the direct channel; and the wind-down plan is drafted against the real mechanics (claim window, burn-on-redemption, freeze role, the monthly cash touchpoint as the contact rail). The known hard constraint on the September build: the three-second authorisation budget (10.3).
 ---
 
-## Appendix A: Stakeholder journeys
-
-### A.1 Priya: the USD 20 saver (Dubai)
-
-Priya is a retail worker remitting money home monthly. She opens an account with her Emirates ID, name-matches her bank account, and declares a USD 20 SIP on the 25th. Each month one tap in her banking app approves the payment request; grams are struck at the next fix and land the same day. Her app shows a countdown, "4 of 6", then at month six her gate opens: Silver, score 25, a 0.4 point discount on every future purchase. She misses month nine (a hospital bill); nothing happens to her gold, her gate stays open, and her Standing heals over the following year. At month 12 she reaches Gold: her card issues and credit unlocks at 50%. At month 60, never having missed again, she is Sovereign, on exactly the same day a USD 2,000 saver with the same record would be. Her exit, if she ever takes it, pays the full fix value of her grams to her own bank account, with no fee, in about a day.
-
-### A.2 Arun: the spot buyer with a SIP habit (Sharjah)
-
-Arun runs a trading business. He keeps a USD 75 SIP for the discipline and adds spot purchases when cash allows. His spot purchases price at his earned tier discount but earn no score: his tier reflects his saving habit, not his wallet. When he places an order larger than the float band, the app quotes a two-step: price indication, then execution against a same-day dealer purchase, disclosed and slightly slower. His grams are identical whichever door they came through, and all of them count toward his credit headroom once seasoned 90 days.
-
-### A.3 Fatima: the borrower (Abu Dhabi)
-
-Fatima has saved for three years and is Platinum. School fees arrive; instead of selling, she opens a facility: her seasoned grams at the fix at 65%, struck once. She draws cash for the fees and uses the card for daily spend against the same limit. Her pledged gold keeps earning her score. When gold dips 8% she receives a notice; nothing else happens, because her buffer is wide at 65%. Her card spend generates interchange, which funds the reward grams that land monthly at her Platinum rate, capped at what she herself generated. When she repays, the pledge releases. If she had defaulted, the ladder would have run notice, 14-day cure, then a partial sale at the fix restoring 88%, never a wipe-out.
-
-### A.4 The Kumars: the family (Dubai and Kochi)
-
-Mr Kumar names his wife (Dubai) and his mother (Kochi) as beneficiaries: the fee is charged at registration, discounted by his tier. For his daughter's education he sets a lifetime trigger on her 21st birthday: a completed gift when it fires, no court involved. For his mother, resident in India, the death trigger settles to cash through banking channels, free by construction, so she never holds a token. When he dies years later, the account freezes on credible notice, the family provides the grant of probate, verification and screening re-run, his loan is settled first from the pledged grams, and the remainder transfers in specie to his wife's verified account in days. Her own score starts at zero: she passes her own gate like everyone else.
-
-### A.5 Rajesh and Meera: the referral (Dubai)
-
-Rajesh passed his own gate in June. He sends Meera his code in August; she opens her own account, funds it from her own bank, and contributes at her own pace, varying the amount. Rajesh sees "in progress", never her payments. In February her sixth consecutive month clears: her score opens at Silver, and 30% of the entry fee she actually paid over the run splits between them, credited as gold to both accounts the same day. Nobody earns a badge, a status or a score point, and if Meera had introduced a friend of her own, Rajesh would earn nothing from it: one level, always.
-
----
-
-## Appendix B: Departures from the 100 G Business Model
-
-Every material departure from the client's specification, each recorded with its reason. The specification's ideas survive in stronger form more often than they are deleted.
-
-| # | The specification says | This design does | Why |
-|---|---|---|---|
-| 1 | AURX = 0.01 g "at launch" | 1 AURX = 1 g, permanently | One number, trivial invariant, category norm (2.2) |
-| 2 | A 3 to 8% market premium, supported by scarcity | Premium modelled at zero; scarcity layer deleted | Arbitrage or no market; discount cases; securities shape (2.4) |
-| 3 | Mining Events with caps, queues and priority | Continuous allocation; internal procurement cycle; monthly Allocation Report | The batching function was real; the scarcity theatre was offering-shaped (2.4, 6.4) |
-| 4 | Contractual lock-in periods | Deleted. A declared goal that scores nothing | A commitment with no penalty is free and carries no information; credit activated at month 6 in every row of the spec's own table anyway (5.5) |
-| 5 | ICS Dividend: 15 to 20% of profit, weighted by Investment Value, 80% to top 10% | Gold Rewards: a capped fee rebate in grams, funded by interchange and credit revenue | The dividend is a profit share, a security; the concentration is a preference class (9.5) |
-| 6 | Investment Value as an ICS component and multiplier | Removed entirely. Behaviour, never amount | Rate scaling with capital is a return on investment (8.1) |
-| 7 | Referrals, family and Masterclass score ICS points | All removed from scoring; all survive as programmes | They corrupt the one clean number; each is paid through its own channel; status-for-recruiting is the MLM shape (8.1, 12) |
-| 8 | Seven tiers | Five tiers, four named; Green becomes "No tier" | The benefit ladders cannot differentiate seven ways; steps became too small to feel (8.4) |
-| 9 | Credit ratio "up to 110%", corrected orally to 90 to 95% | 50 / 65 / 80, fixed | The spec's own example computes to 85%; every world comparable sits at 50 to 85; a fixed ladder is advertisable (9.3) |
-| 10 | Sub-portfolios carry their own credit facility and ICS sub-score | Neither, during the primary's life | You cannot lend against gold someone does not own yet; ICS is one number about one person (11.1) |
-| 11 | The Digital Will avoids probate | Probate accelerator, not substitute; grant required on death | A beneficiary's interest is transmissible property; avoidance requires destroying ownership (11.3) |
-| 12 | "Income-only transfer" option | Deleted | There is no income; Gold Rewards is capped at what the account generated, so it would transfer zero (11.1) |
-| 13 | Business partners cross-designating on payment behaviour (Scenario 3) | Not supported | Not succession; collides with the regulatory pause; puts Aurumix inside a commercial dispute (11.4) |
-| 14 | Family Portfolio and Digital Will as free, tier-gated perks | Paid product, open to everyone, tier discounts the price | The tier-gate was circular; free ignores a real recurring cost (9.6, 11.8) |
-| 15 | Two on-chain contracts (Family Portfolio, Digital Will) with USD 75k audit | Off-chain instruction ledger plus one token movement | A contract holding the tokens would own the gold itself; releases the audit budget (11.9) |
-| 16 | USDT funding, including "P2P or OTC" for Indian residents | Bank money only; signposted self-conversion; India route deleted | Unregistered token, merchant-side breach, no regulated counterparty (13.4, 14.5) |
-| 17 | Custody fee 0.8 to 1%, deducted in grams | No storage fee for savers, ever; recovery via the rewards netting line and the partner platform fee | Researched cost is far lower; gram deduction breaks the peg and sells the customer's property (13.3) |
-| 18 | Decaying redemption fee on spot | Deleted | Annex 2 III.E.4 prohibits any fee on redemption (7.1) |
-| 19 | Travel Rule threshold USD 1,000 | AED 3,500 | The rule as published (3.9) |
-| 20 | "6 events at the same monthly commitment" | Six consecutive months at or above the floor; amount variable | The spec elsewhere confirms the amount is variable; the two clauses cancel (5.5) |
-| 21 | Buyback funded by "the custodian liquidating exactly those grams" | The float absorbs exits; a two-way dealer handles net outflow | Custodians do not liquidate; the counterparty was missing (6.6) |
-| 22 | Agent gradient: Level 1 largest share | The earlier numeric table's gradient: front line earns most | The anti-MLM shape; the spec's two versions contradict each other (12.5) |
-| 23 | "100% LBMA gold", "not a pooled allocation" | "99.99% gold from LBMA-accredited refiners"; "individually recorded pro-rata undivided interest in identified bars" | Good Delivery conflation; per-customer bars are impossible at USD 20 tickets (2.1, 2.5) |
-| 24 | Persona: the Indian (NRI) saver; UAE then Bahrain and Oman | The South Asian Gulf saver; UAE then Oman then Bahrain | Population evidence; Bahrain's regime is the harder one (1.3) |
-
----
-
-## Appendix C: Glossary
+## Appendix A: Glossary
 
 | Term | Meaning |
 |---|---|

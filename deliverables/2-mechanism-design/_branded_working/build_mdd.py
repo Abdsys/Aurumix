@@ -479,9 +479,7 @@ def main():
     # appendices
     pages.append(page_divider("A", "Appendices"))
     subtitles = {
-        "Appendix A": "Five representative journeys through the product",
-        "Appendix B": "Every material departure from the client's specification, with its reason",
-        "Appendix C": "Terms used in this document",
+        "Appendix A": "Terms used in this document",
     }
     for s in appendices:
         key = s["title"].split(":")[0]

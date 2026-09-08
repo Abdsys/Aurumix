@@ -2814,9 +2814,7 @@ td.fill-cell--highlight {
           <div class="toc-entry toc-entry--sub" data-toc-ref="toc-156-behavioural-and-gaming-risk"><span class="toc-entry-text">15.6 Behavioural and gaming risk</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
           <div class="toc-entry toc-entry--sub" data-toc-ref="toc-157-payment-rail-risk"><span class="toc-entry-text">15.7 Payment rail risk</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
           <div class="toc-entry toc-entry--sub" data-toc-ref="toc-158-operational-and-continuity-risk"><span class="toc-entry-text">15.8 Operational and continuity risk</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
-          <div class="toc-entry toc-entry--section" data-toc-ref="toc-appendix-a-stakeholder-journeys"><span class="toc-entry-text">Appendix A: Stakeholder journeys</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
-          <div class="toc-entry toc-entry--section" data-toc-ref="toc-appendix-b-departures-from-the-100-g-business-model"><span class="toc-entry-text">Appendix B: Departures from the 100 G Business Model</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
-          <div class="toc-entry toc-entry--section" data-toc-ref="toc-appendix-c-glossary"><span class="toc-entry-text">Appendix C: Glossary</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-appendix-a-glossary"><span class="toc-entry-text">Appendix A: Glossary</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
           <div class="toc-entry toc-entry--section" data-toc-ref="toc-references"><span class="toc-entry-text">References</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
           <div class="toc-entry toc-entry--section" data-toc-ref="toc-document-control"><span class="toc-entry-text">Document control</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
         </div>
@@ -2829,7 +2827,7 @@ td.fill-cell--highlight {
         <hr class="heading-rule">
         <p><strong>Prepared by:</strong> Tokenomics.net</p><p><strong>For:</strong> Aurumix project team and counsel</p><p><strong>Date:</strong> 8 September 2026</p><p><strong>Version:</strong> 1.0</p><p><strong>Status:</strong> Consolidated design record. Supersedes the individual Phase 2 decision drafts as the single reading copy; the drafts remain the detailed audit trail.</p><p>This document describes the complete Aurumix mechanism design: what the product is, how every mechanism works, the legal structure it sits on, the assumptions each part rests on, and the questions that remain open for counsel. It is written so that a reader with no prior exposure to the project, including a lawyer instructed for the first time, can understand the entire product from this document alone.</p>
 <p>Three conventions are used throughout.</p>
-<ul><li><strong>Decisions are shown with their reasoning.</strong> Where the design departs from the client's original specification (the 100 G Business Model), the departure is stated openly and the reason given. Appendix B collects every departure in one table.</li><li><strong>Assumptions are labelled.</strong> Where a mechanism rests on a reading of law that counsel has not yet confirmed, the assumption is stated as a proposition that is either true or false, with a confidence level where research supports one. Section 14 is the consolidated register. The companion document <code>Aurumix: Design Summary and Open Legal Questions</code> (19 August 2026) puts the seven highest-value questions to counsel directly; this document carries the design behind them.</li><li><strong>Legal references are to primary sources.</strong> The load-bearing rules were verified verbatim against the VARA rulebooks, the DIFC statutes and the CBUAE rulebook, and are cited precisely. Verified source texts are held in the project record. We are consultants, not lawyers: a citation here records what we read and where, and never substitutes for advice.</li></ul>
+<ul><li><strong>Decisions are shown with their reasoning.</strong> Where the design departs from the client's original specification (the 100 G Business Model), the departure is stated openly and the reason given.</li><li><strong>Assumptions are labelled.</strong> Where a mechanism rests on a reading of law that counsel has not yet confirmed, the assumption is stated as a proposition that is either true or false, with a confidence level where research supports one. Section 14 is the consolidated register. The companion document <code>Aurumix: Design Summary and Open Legal Questions</code> (19 August 2026) puts the seven highest-value questions to counsel directly; this document carries the design behind them.</li><li><strong>Legal references are to primary sources.</strong> The load-bearing rules were verified verbatim against the VARA rulebooks, the DIFC statutes and the CBUAE rulebook, and are cited precisely. Verified source texts are held in the project record. We are consultants, not lawyers: a citation here records what we read and where, and never substitutes for advice.</li></ul>
       </div>
       <div class="page-number" data-text-role="page-number"></div>
     </div>
@@ -2889,7 +2887,7 @@ td.fill-cell--highlight {
 <h3 id="toc-15-protocol-overview">1.5 Protocol overview</h3>
 <p>The design in one view:</p>
 <ul><li><strong>Asset layer.</strong> Allocated, serial-numbered gold bars from LBMA-accredited refiners, vaulted in Dubai, recorded bar by bar, owned through a DIFC trust structure for the benefit of token holders (section 3).</li><li><strong>Token layer.</strong> AURX, an open ERC-20 with a blocklist, 1 token = 1 gram, identity verified at mint and at redemption, freely transferable in between (section 4).</li><li><strong>Purchase layer.</strong> Two transaction types on one account: a monthly SIP from USD 20 and on-demand spot purchases. Money, then title, then token, on every purchase (section 5).</li><li><strong>Treasury layer.</strong> A gold float bridges retail ticket sizes to wholesale bar sizes and absorbs exit flow (section 6).</li><li><strong>Exit.</strong> Cash buyback at the next LBMA fix, no fee of any kind, by rule and by design (section 7).</li><li><strong>Scoring layer.</strong> The Investor Conviction Score measures saving behaviour, never amount, and prices five benefits (sections 8 and 9).</li><li><strong>Credit layer.</strong> One gold-secured revolving facility with a cash channel and a card channel, delivered through licensed partners (section 10).</li><li><strong>Family layer.</strong> A Family Portfolio and a standing Beneficiary Transfer Instruction, operating on custodied gold (section 11).</li><li><strong>Distribution layer.</strong> A single-level member referral programme and a contracted three-tier agent network (section 12).</li></ul>
-<p>Every mechanism in this stack was designed against two fixed constraints: the entry ticket is USD 20, and the benefit rate may never scale with capital. Where those constraints forced a departure from the client's original specification, the departure is recorded in Appendix B.</p>
+<p>Every mechanism in this stack was designed against two fixed constraints: the entry ticket is USD 20, and the benefit rate may never scale with capital. Where those constraints forced a departure from the client's original specification, each departure is stated where it occurs, with its reason.</p>
 </div>
       </div>
       <div class="page-number" data-text-role="page-number"></div>
@@ -3872,7 +3870,7 @@ graph LR
         <h3 id="toc-81-what-ics-is-and-the-one-rule-that-shapes-it">8.1 What ICS is, and the one rule that shapes it</h3>
 <p>The Investor Conviction Score (ICS) is the loyalty engine: a 0 to 100 score that prices every benefit in the product. It exists because the economics demand it. The persistency benchmark for the persona (Indian life insurance) retains roughly 79% of savers at month 13 and 38% at month 61, and a customer is barely profitable in year one; churn kills this model, not fee levels. The score is the retention machinery.</p>
 <p><strong>The one rule: ICS measures behaviour, never amount.</strong> No input reads dollars or grams held. A customer saving USD 20 a month and one saving USD 2,000 a month reach the top tier on the same day. This is not generosity; it is the classification defence. If the score rose with amount, then the entry-fee discount, the credit ratio and the rewards rate would all improve with capital, which is a return proportional to investment: the securities shape the whole design avoids. <strong>Amount sizes the base; behaviour sets the rate.</strong></p>
-<p>Three inputs the client's specification included were removed from scoring: Investment Value (the capital-scaling problem above), and referrals, family activity and Masterclass attendance (they corrupt the one clean number, they are each already paid through their own channel, and a status bonus for recruiting is the multi-level-marketing shape the distribution design is built to avoid). All three programmes survive; none of them scores. This is the largest set of departures from the client's specification and is tabled in Appendix B.</p>
+<p>Three inputs the client's specification included were removed from scoring: Investment Value (the capital-scaling problem above), and referrals, family activity and Masterclass attendance (they corrupt the one clean number, they are each already paid through their own channel, and a status bonus for recruiting is the multi-level-marketing shape the distribution design is built to avoid). All three programmes survive; none of them scores. This is the largest set of departures from the client's specification.</p>
 <h3 id="toc-82-the-gate-confirmed-sip">8.2 The gate: Confirmed SIP</h3>
 <blockquote><p><strong>Confirmed SIP is six consecutive counted periods, and it gates the score itself, not only the benefits. Before the door: no score, no tier, no benefits. After it: the score runs, and never falls below 25.</strong></p></blockquote>
 <p>Two objects, kept separate:</p>
@@ -5004,81 +5002,7 @@ graph LR
 
     <div class="page page--special-appendix" data-template="special-appendix" data-auto-continue>
       <div class="appendix-header">
-        <h2 id="toc-appendix-a-stakeholder-journeys" class="appendix-title" data-text-role="title">Appendix A: Stakeholder journeys</h2>
-        <p class="appendix-subtitle" data-text-role="subtitle">Five representative journeys through the product</p>
-      </div>
-      <div class="content-area">
-        <div class="appendix-body" data-text-role="body">
-          <h3 id="toc-a1-priya-the-usd-20-saver-dubai">A.1 Priya: the USD 20 saver (Dubai)</h3>
-<p>Priya is a retail worker remitting money home monthly. She opens an account with her Emirates ID, name-matches her bank account, and declares a USD 20 SIP on the 25th. Each month one tap in her banking app approves the payment request; grams are struck at the next fix and land the same day. Her app shows a countdown, "4 of 6", then at month six her gate opens: Silver, score 25, a 0.4 point discount on every future purchase. She misses month nine (a hospital bill); nothing happens to her gold, her gate stays open, and her Standing heals over the following year. At month 12 she reaches Gold: her card issues and credit unlocks at 50%. At month 60, never having missed again, she is Sovereign, on exactly the same day a USD 2,000 saver with the same record would be. Her exit, if she ever takes it, pays the full fix value of her grams to her own bank account, with no fee, in about a day.</p>
-<h3 id="toc-a2-arun-the-spot-buyer-with-a-sip-habit-sharjah">A.2 Arun: the spot buyer with a SIP habit (Sharjah)</h3>
-<p>Arun runs a trading business. He keeps a USD 75 SIP for the discipline and adds spot purchases when cash allows. His spot purchases price at his earned tier discount but earn no score: his tier reflects his saving habit, not his wallet. When he places an order larger than the float band, the app quotes a two-step: price indication, then execution against a same-day dealer purchase, disclosed and slightly slower. His grams are identical whichever door they came through, and all of them count toward his credit headroom once seasoned 90 days.</p>
-<h3 id="toc-a3-fatima-the-borrower-abu-dhabi">A.3 Fatima: the borrower (Abu Dhabi)</h3>
-<p>Fatima has saved for three years and is Platinum. School fees arrive; instead of selling, she opens a facility: her seasoned grams at the fix at 65%, struck once. She draws cash for the fees and uses the card for daily spend against the same limit. Her pledged gold keeps earning her score. When gold dips 8% she receives a notice; nothing else happens, because her buffer is wide at 65%. Her card spend generates interchange, which funds the reward grams that land monthly at her Platinum rate, capped at what she herself generated. When she repays, the pledge releases. If she had defaulted, the ladder would have run notice, 14-day cure, then a partial sale at the fix restoring 88%, never a wipe-out.</p>
-<h3 id="toc-a4-the-kumars-the-family-dubai-and-kochi">A.4 The Kumars: the family (Dubai and Kochi)</h3>
-<p>Mr Kumar names his wife (Dubai) and his mother (Kochi) as beneficiaries: the fee is charged at registration, discounted by his tier. For his daughter's education he sets a lifetime trigger on her 21st birthday: a completed gift when it fires, no court involved. For his mother, resident in India, the death trigger settles to cash through banking channels, free by construction, so she never holds a token. When he dies years later, the account freezes on credible notice, the family provides the grant of probate, verification and screening re-run, his loan is settled first from the pledged grams, and the remainder transfers in specie to his wife's verified account in days. Her own score starts at zero: she passes her own gate like everyone else.</p>
-<h3 id="toc-a5-rajesh-and-meera-the-referral-dubai">A.5 Rajesh and Meera: the referral (Dubai)</h3>
-<p>Rajesh passed his own gate in June. He sends Meera his code in August; she opens her own account, funds it from her own bank, and contributes at her own pace, varying the amount. Rajesh sees "in progress", never her payments. In February her sixth consecutive month clears: her score opens at Silver, and 30% of the entry fee she actually paid over the run splits between them, credited as gold to both accounts the same day. Nobody earns a badge, a status or a score point, and if Meera had introduced a friend of her own, Rajesh would earn nothing from it: one level, always.</p>
-        </div>
-      </div>
-      <div class="page-number" data-text-role="page-number"></div>
-    </div>
-
-    <div class="page page--special-appendix" data-template="special-appendix" data-auto-continue>
-      <div class="appendix-header">
-        <h2 id="toc-appendix-b-departures-from-the-100-g-business-model" class="appendix-title" data-text-role="title">Appendix B: Departures from the 100 G Business Model</h2>
-        <p class="appendix-subtitle" data-text-role="subtitle">Every material departure from the client's specification, with its reason</p>
-      </div>
-      <div class="content-area">
-        <div class="appendix-body" data-text-role="body">
-          <p>Every material departure from the client's specification, each recorded with its reason. The specification's ideas survive in stronger form more often than they are deleted.</p>
-<table>
-<thead><tr><th>#</th><th>The specification says</th><th>This design does</th><th>Why</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>AURX = 0.01 g "at launch"</td><td>1 AURX = 1 g, permanently</td><td>One number, trivial invariant, category norm (2.2)</td></tr>
-<tr><td>2</td><td>A 3 to 8% market premium, supported by scarcity</td><td>Premium modelled at zero; scarcity layer deleted</td><td>Arbitrage or no market; discount cases; securities shape (2.4)</td></tr>
-<tr><td>3</td><td>Mining Events with caps, queues and priority</td><td>Continuous allocation; internal procurement cycle; monthly Allocation Report</td><td>The batching function was real; the scarcity theatre was offering-shaped (2.4, 6.4)</td></tr>
-<tr><td>4</td><td>Contractual lock-in periods</td><td>Deleted. A declared goal that scores nothing</td><td>A commitment with no penalty is free and carries no information; credit activated at month 6 in every row of the spec's own table anyway (5.5)</td></tr>
-<tr><td>5</td><td>ICS Dividend: 15 to 20% of profit, weighted by Investment Value, 80% to top 10%</td><td>Gold Rewards: a capped fee rebate in grams, funded by interchange and credit revenue</td><td>The dividend is a profit share, a security; the concentration is a preference class (9.5)</td></tr>
-<tr><td>6</td><td>Investment Value as an ICS component and multiplier</td><td>Removed entirely. Behaviour, never amount</td><td>Rate scaling with capital is a return on investment (8.1)</td></tr>
-<tr><td>7</td><td>Referrals, family and Masterclass score ICS points</td><td>All removed from scoring; all survive as programmes</td><td>They corrupt the one clean number; each is paid through its own channel; status-for-recruiting is the MLM shape (8.1, 12)</td></tr>
-<tr><td>8</td><td>Seven tiers</td><td>Five tiers, four named; Green becomes "No tier"</td><td>The benefit ladders cannot differentiate seven ways; steps became too small to feel (8.4)</td></tr>
-</tbody>
-</table>
-<table>
-<thead><tr><th>#</th><th>The specification says</th><th>This design does</th><th>Why</th></tr></thead>
-<tbody>
-<tr><td>9</td><td>Credit ratio "up to 110%", corrected orally to 90 to 95%</td><td>50 / 65 / 80, fixed</td><td>The spec's own example computes to 85%; every world comparable sits at 50 to 85; a fixed ladder is advertisable (9.3)</td></tr>
-<tr><td>10</td><td>Sub-portfolios carry their own credit facility and ICS sub-score</td><td>Neither, during the primary's life</td><td>You cannot lend against gold someone does not own yet; ICS is one number about one person (11.1)</td></tr>
-<tr><td>11</td><td>The Digital Will avoids probate</td><td>Probate accelerator, not substitute; grant required on death</td><td>A beneficiary's interest is transmissible property; avoidance requires destroying ownership (11.3)</td></tr>
-<tr><td>12</td><td>"Income-only transfer" option</td><td>Deleted</td><td>There is no income; Gold Rewards is capped at what the account generated, so it would transfer zero (11.1)</td></tr>
-<tr><td>13</td><td>Business partners cross-designating on payment behaviour (Scenario 3)</td><td>Not supported</td><td>Not succession; collides with the regulatory pause; puts Aurumix inside a commercial dispute (11.4)</td></tr>
-<tr><td>14</td><td>Family Portfolio and Digital Will as free, tier-gated perks</td><td>Paid product, open to everyone, tier discounts the price</td><td>The tier-gate was circular; free ignores a real recurring cost (9.6, 11.8)</td></tr>
-<tr><td>15</td><td>Two on-chain contracts (Family Portfolio, Digital Will) with USD 75k audit</td><td>Off-chain instruction ledger plus one token movement</td><td>A contract holding the tokens would own the gold itself; releases the audit budget (11.9)</td></tr>
-<tr><td>16</td><td>USDT funding, including "P2P or OTC" for Indian residents</td><td>Bank money only; signposted self-conversion; India route deleted</td><td>Unregistered token, merchant-side breach, no regulated counterparty (13.4, 14.5)</td></tr>
-</tbody>
-</table>
-<table>
-<thead><tr><th>#</th><th>The specification says</th><th>This design does</th><th>Why</th></tr></thead>
-<tbody>
-<tr><td>17</td><td>Custody fee 0.8 to 1%, deducted in grams</td><td>No storage fee for savers, ever; recovery via the rewards netting line and the partner platform fee</td><td>Researched cost is far lower; gram deduction breaks the peg and sells the customer's property (13.3)</td></tr>
-<tr><td>18</td><td>Decaying redemption fee on spot</td><td>Deleted</td><td>Annex 2 III.E.4 prohibits any fee on redemption (7.1)</td></tr>
-<tr><td>19</td><td>Travel Rule threshold USD 1,000</td><td>AED 3,500</td><td>The rule as published (3.9)</td></tr>
-<tr><td>20</td><td>"6 events at the same monthly commitment"</td><td>Six consecutive months at or above the floor; amount variable</td><td>The spec elsewhere confirms the amount is variable; the two clauses cancel (5.5)</td></tr>
-<tr><td>21</td><td>Buyback funded by "the custodian liquidating exactly those grams"</td><td>The float absorbs exits; a two-way dealer handles net outflow</td><td>Custodians do not liquidate; the counterparty was missing (6.6)</td></tr>
-<tr><td>22</td><td>Agent gradient: Level 1 largest share</td><td>The earlier numeric table's gradient: front line earns most</td><td>The anti-MLM shape; the spec's two versions contradict each other (12.5)</td></tr>
-<tr><td>23</td><td>"100% LBMA gold", "not a pooled allocation"</td><td>"99.99% gold from LBMA-accredited refiners"; "individually recorded pro-rata undivided interest in identified bars"</td><td>Good Delivery conflation; per-customer bars are impossible at USD 20 tickets (2.1, 2.5)</td></tr>
-<tr><td>24</td><td>Persona: the Indian (NRI) saver; UAE then Bahrain and Oman</td><td>The South Asian Gulf saver; UAE then Oman then Bahrain</td><td>Population evidence; Bahrain's regime is the harder one (1.3)</td></tr>
-</tbody>
-</table>
-        </div>
-      </div>
-      <div class="page-number" data-text-role="page-number"></div>
-    </div>
-
-    <div class="page page--special-appendix" data-template="special-appendix" data-auto-continue>
-      <div class="appendix-header">
-        <h2 id="toc-appendix-c-glossary" class="appendix-title" data-text-role="title">Appendix C: Glossary</h2>
+        <h2 id="toc-appendix-a-glossary" class="appendix-title" data-text-role="title">Appendix A: Glossary</h2>
         <p class="appendix-subtitle" data-text-role="subtitle">Terms used in this document</p>
       </div>
       <div class="content-area">
