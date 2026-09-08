@@ -316,12 +316,16 @@ Partners are the strongest lever in the whole model: each one adds roughly USD 1
 
 Four levers sit in customer behaviour. Aurumix can influence them with programs, but cannot set them directly. The model prices what success is worth. It does not price what a program would cost to run. So each figure below is a spending ceiling: the most a seven-year program is worth if it fully works.
 
-| Behaviour to improve | What was measured | Worth up to |
+Each target below is the optimistic end of that behaviour's own researched range, so the figure reads: if the program fully closes the gap, this is what it creates over the seven years.
+
+| Behaviour to improve | The change measured | Worth up to |
 |:--|:--|--:|
-| Card activation | more customers activate the gold-backed card | USD 401k |
-| Savings amount | customers save more each month | USD 376k |
-| Automatic payments | more customers set up a standing instruction, an automatic monthly bank transfer | USD 361k |
-| Retention | fewer customers leave each year | USD 344k |
+| Card activation | take-up of the gold-backed card rises from 18% to 30% of eligible customers | USD 1.32m |
+| Savings amount | average monthly savings rise about 20% in every region | USD 374k |
+| Retention | customers still paying at month 13 rise from 63% to 73% | USD 270k |
+| Automatic payments | the share of joiners on automatic monthly transfers rises from 30% to 75% | USD 217k |
+
+Card activation stands apart from the other three. At USD 1.32m it is worth more than any single change above except the partners, so a credible activation program deserves a real budget, not a marketing afterthought.
 
 ### What we did not rank
 
@@ -375,10 +379,8 @@ A target is only useful if you know when you have missed it.
 |:--|--:|--:|:--|
 | Cost to win a UAE customer | USD 74.19 | USD 58.58 | below it the UAE pays for itself; above it every UAE customer loses money |
 | Cost to win a Gulf customer | USD 56.99 | no line | the Gulf loses money at every advertising price we tested |
-| India | agents, not advertising | not an advertising number | advertising cost barely matters there. Watch how many customers each agent brings |
+| Cost to win an Indian customer | USD 13.11 | no line up to USD 51.60 | an Indian customer stays profitable at every cost we tested, up to four times today's. The cost is commissions to sales agents, and the lower it stays the more each customer earns |
 | Partners signed by year 7 | plan says 11 | 11 | below it the plan does not work at today's costs |
-
-The India line is the one to remember. **Two of your three markets are advertising businesses. One is a sales-agent business.** They need different dashboards, and one blended cost per customer hides which is which.
 
 We also tested whether missed payments should be a warning sign. They should not. Payment discipline moves what is left per customer by only USD 1.02 across its whole realistic range, because costs follow customers, not payments. Worth watching as a health check. It will not change a decision.
 

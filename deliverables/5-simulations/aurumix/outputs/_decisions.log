@@ -1,0 +1,40 @@
+==============================================================================
+WHAT TO LEARN FIRST
+==============================================================================
+assumption              moves Y7 profit  cost to learn  when / how
+  facility_takeup               823,072           none  3 months after card launch - card take-up among the first cohort
+  b2b_fee                       715,745           none  on signing - a term sheet
+  family_attach                 470,771           none  3 months - offer it to the first cohort
+  contingency                   402,053           none  6 months - actual costs against budget
+  atm_share_4                   310,134           none  now - card scheme data
+  atm_share_3                   301,519           none  now - card scheme data
+  referral_rate                 283,799           none  6 months - first cohort's referral behaviour
+  vault_fee                     280,459           none  now - the vault contract itself
+  persistency                   182,014           none  6-13 months - month-6 and month-13 payment records
+  partner_adopt               1,565,692            low  on signing - one signed partner, or a serious pilot with one
+  partner_aum_user            1,073,618            low  on signing - same conversation as adoption
+  ceiling_mult                  789,442         medium  2-3 months - a paid test campaign measuring reach, not installs
+  cac_uae_y7                    251,994           high  year 2+ - only observable at scale; infer from the early curve
+  cac_conv_coef                 181,071           high  year 2+ - only observable at scale; infer from the early curve
+
+==============================================================================
+WHEN TO CHANGE YOUR MIND
+==============================================================================
+
+Cost per acquired customer, per region:
+  UAE    break-even at USD 58.58, today USD 74.19  ->  needs a 21% reduction
+  GULF   loses money across the whole range tested. Margin USD -9.20 today.
+  INDIA  marketing cost is NOT the lever. Margin USD +14.92, moving only USD 1.03
+         across a 4x change in the marketing rate: acquisition here is agent-led.
+  INDIA  profitable across the whole commission range tested.
+
+Payment discipline: tested as a trigger, and it is not one.
+  book pays in 78.9% of months  ->  margin USD   2.39
+  book pays in 71.1% of months  ->  margin USD   3.17
+  book pays in 63.4% of months  ->  margin USD   2.54
+  book pays in 54.8% of months  ->  margin USD   2.49
+  book pays in 47.1% of months  ->  margin USD   2.14
+  Margin moves USD 1.02 across that whole range. Costs are per customer,
+  not per payment, so skipping months barely changes them.
+
+wrote outputs/decisions.json

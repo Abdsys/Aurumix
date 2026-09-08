@@ -1,0 +1,27 @@
+{
+ "_meta": {
+  "n_paths": 2000,
+  "seed": 20270101,
+  "method": "median paired difference vs common base side"
+ },
+ "card_activation": {
+  "change": "card take-up 18% to 30%",
+  "cum7_delta_p50": 1316477.3109794888,
+  "np7_delta_p50": 460667.75086753146
+ },
+ "savings_amount": {
+  "change": "average monthly saving up about 20%: UAE 33.60 to 41, Gulf 26 to 32, India 30 to 36",
+  "cum7_delta_p50": 374494.6848047904,
+  "np7_delta_p50": 117743.75681915774
+ },
+ "automatic_payments": {
+  "change": "standing instruction share 30% to 75%",
+  "cum7_delta_p50": 216664.3088704446,
+  "np7_delta_p50": 73536.80459960917
+ },
+ "retention": {
+  "change": "thirteen-month persistency 63% to 73%",
+  "cum7_delta_p50": 269771.11330018216,
+  "np7_delta_p50": 95620.93318258732
+ }
+}

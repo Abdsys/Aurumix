@@ -79,10 +79,12 @@ def value_of_information():
     return rows
 
 
-def margin_at(region, mult):
+def margin_at(region, mult, commission_mult=1.0):
     """Region-only margin per customer at a marketing-CAC multiplier."""
     ov = {f"cac_{region}": p0[f"cac_{region}"] * mult,
           f"cac_{region}_y7": p0[f"cac_{region}_y7"] * mult}
+    if commission_mult != 1.0:
+        ov["agent_commission"] = p0["agent_commission"] * commission_mult
     share = p0[f"mkt_share_{region}"]
     ov["marketing_spend"] = [x * share for x in p0["marketing_spend"]]
     for q in REGIONS:
@@ -141,6 +143,36 @@ def cac_trigger(region):
         return dict(kind=kind, base_margin=base[1], base_cac=base[2], points=pts)
     return dict(kind="threshold", cac=cross, base_cac=base[2],
                 base_margin=base[1], points=pts)
+
+
+def india_cost_trigger():
+    """
+    India's line, in India's currency (client, 2026-09-08). The marketing-rate
+    sweep is insensitive there because acquisition is agent-led, so the cost
+    that can actually move is the agent commission. Same sweep and crossing
+    rule as cac_trigger, applied to the commission, and reported in realised
+    cost per customer so the row reads in the same units as the other regions.
+    """
+    MULTS = (1.0, 1.5, 2.0, 3.0, 4.0, 5.0, 6.0, 8.0, 10.0)
+    pts = []
+    for mu in MULTS:
+        u = margin_at("india", 1.0, commission_mult=mu)
+        if u is None or u["new_y7"] < 500:
+            continue
+        pts.append((mu, u["margin"], u["cac"]))
+    if not pts:
+        return None
+    cross = None
+    for (m0, g0, c0), (m1, g1, c1) in zip(pts, pts[1:]):
+        if g0 > 0 >= g1:
+            w = g0 / (g0 - g1)
+            cross = c0 + w * (c1 - c0)
+            break
+    if cross is None:
+        return dict(kind="always", base_cac=pts[0][2], base_margin=pts[0][1],
+                    swept="agent commission", points=pts)
+    return dict(kind="threshold", cac=cross, base_cac=pts[0][2],
+                base_margin=pts[0][1], swept="agent commission", points=pts)
 
 
 def pay_through_probe():
@@ -205,6 +237,15 @@ def main():
         else:
             print(f"  {r.upper():6} break-even at USD {t['cac']:.2f}, today USD {t['base_cac']:.2f}"
                   f"  ->  needs a {1 - t['cac']/t['base_cac']:.0%} reduction")
+
+    ic = india_cost_trigger()
+    if ic is not None:
+        trig["cost_india"] = ic
+        if ic["kind"] == "threshold":
+            print(f"  INDIA  cost line at USD {ic['cac']:.2f} via the commission, "
+                  f"today USD {ic['base_cac']:.2f}")
+        else:
+            print(f"  INDIA  profitable across the whole commission range tested.")
 
     print("\nPayment discipline: tested as a trigger, and it is not one.")
     pt = pay_through_probe()

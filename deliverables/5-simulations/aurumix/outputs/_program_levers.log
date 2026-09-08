@@ -1,0 +1,11 @@
+base side done, 2000 paths
+  card_activation      card take-up 18% to 30%
+                       cum7 +1,316,477  np7 +460,668
+  savings_amount       average monthly saving up about 20%: UAE 33.60 to 41, Gulf 26 to 32, India 30 to 36
+                       cum7 +374,495  np7 +117,744
+  automatic_payments   standing instruction share 30% to 75%
+                       cum7 +216,664  np7 +73,537
+  retention            thirteen-month persistency 63% to 73%
+                       cum7 +269,771  np7 +95,621
+
+wrote outputs/program_levers.json

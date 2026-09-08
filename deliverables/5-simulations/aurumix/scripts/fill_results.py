@@ -254,6 +254,10 @@ V["TRIG_UAE"] = f"{_t['cac_uae']['cac']:.2f}" if _t.get("cac_uae", {}).get("cac"
 V["TRIG_UAE_TODAY"] = f"{_t['cac_uae']['base_cac']:.2f}"
 V["TRIG_GULF_TODAY"] = f"{_t['cac_gulf']['base_cac']:.2f}"
 V["TRIG_INDIA_SWING"] = f"{_t['cac_india'].get('swing', 0):.2f}"
+_ci = _t["cost_india"]
+V["TRIG_INDIA_TODAY"] = f"{_ci['base_cac']:.2f}"
+V["TRIG_INDIA_LINE"] = (f"USD {_ci['cac']:.2f}" if _ci["kind"] == "threshold"
+                        else f"no line up to USD {_ci['points'][-1][2]:.2f}")
 _pt = _t["pay_through"]
 V["TRIG_PAY_SPAN"] = f"{max(r['margin'] for r in _pt) - min(r['margin'] for r in _pt):.2f}"
 
