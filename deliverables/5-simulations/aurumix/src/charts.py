@@ -353,9 +353,8 @@ def main():
         lim = np.abs(g).max()
         im = ax.imshow(g, cmap="RdYlGn", vmin=-lim, vmax=lim, aspect="auto", origin="lower")
         ax.set_xticks(range(len(pr))); ax.set_xticklabels(pr)
-        base = CD["cac_band"]["base"]
         ax.set_yticks(range(len(cm)))
-        ax.set_yticklabels([f"{m:.2f}x  (UAE {base['uae']*m:.0f})" for m in cm])
+        ax.set_yticklabels([f"{m:.2f}x" for m in cm])
         for i in range(len(cm)):
             for j in range(len(pr)):
                 ax.text(j, i, f"{g[i, j]:.1f}", ha="center", va="center",
