@@ -129,6 +129,10 @@ Run all of these after any change. Each was written because its failure happened
 
 ---
 
+## 5b. Deferred, client-agreed, MUST land before the engagement finalizes
+
+**Conditions map cells are still single runs (client, 2026-09-08: "leave it as is for now, fix later before finalizing").** The client has repeatedly tripped over the plan cell (+0.2) disagreeing with the MC median (-0.45); the agreed fix is per-cell Monte Carlos: 49 cells, ~500 paths each on shared seeds (~3h), partner schedules fixed per column the way `run_partner_sweep.py` does. Rewire `run_conditions.py`'s grid, recompute the frontier from medians, delete the "within the noise of a single map cell" caveat in the template, and requote the plan cell. Client told their client it will be fixed; do not finalize Phase 5 without it.
+
 ## 6. Standing constraints from the client
 
 - **Push directly to main.** No feature branches, no PRs.
