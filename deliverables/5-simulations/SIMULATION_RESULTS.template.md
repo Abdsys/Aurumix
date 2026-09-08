@@ -103,7 +103,7 @@ Year-seven revenue is {{REV50}} in the typical run. {{REV_EX_B2B}} of that comes
 
 ![Partner dependence](aurumix/outputs/charts/partner_dependence.png)
 
-Profit rises almost in a straight line with the number of partners. It is the strongest relationship in the whole model, and the one with the least evidence behind it.
+Each point is its own experiment: the partner schedule is fixed at that count and the full simulation runs 2,000 times, with everything else identical between points. Profit rises almost in a straight line with the number of partners. It is the strongest relationship in the whole model, and the one with the least evidence behind it.
 
 ---
 
@@ -128,6 +128,8 @@ Does one customer make money?
 ![Retail alone](aurumix/outputs/charts/threshold_retail_alone.png)
 
 Barely. One customer leaves **USD {{MARGIN15}} a year** once you have served them and paid to replace them when they leave.
+
+The full ledger, per customer per year at steady state: about USD 29.76 of revenue, minus USD 11.41 of serving costs, minus USD 15.95 of replacement marketing and card costs.
 
 Fixed costs are the bills that do not change no matter how many customers you have: licences, insurance, audits, the technology. Covering them at USD {{MARGIN15}} each needs **{{NEED15}} customers**. The plan reaches {{PAY50}}.
 

@@ -267,7 +267,33 @@ def main():
         save(fig, "profit_by_ticket_decile.png")
 
     # 10. partner dependence --------------------------------------------------
-    if df is not None and "b2b_partners_y7" in df:
+    # Preferred source: the designed sweep (run_partner_sweep.py), where each
+    # point is a full MC with the partner schedule FIXED at that count on
+    # shared seeds. The old version binned the base MC by realised partner
+    # count; its thin end buckets (15 runs at 20 partners) produced a fake
+    # dip the client spotted (2026-09-08). The binned form survives only as
+    # a fallback so a fresh checkout still renders a chart.
+    PSW = _load("partner_sweep.json")
+    if PSW is not None:
+        fig, ax = plt.subplots(figsize=(9.5, 5.2))
+        style(ax, fig)
+        ks = [int(k) for k in PSW["counts"]]
+        med = [PSW["np7_p50"][str(k)] for k in ks]
+        lo = [PSW["np7_p10"][str(k)] for k in ks]
+        hi = [PSW["np7_p90"][str(k)] for k in ks]
+        ax.fill_between(ks, lo, hi, color=GOLD, alpha=0.15, lw=0,
+                        label="Middle 80% of runs (10th to 90th percentile)")
+        ax.plot(ks, med, color=GOLD, lw=2, marker="o", ms=5,
+                label="Median of 2,000 runs at each partner count")
+        ax.axhline(0, color=DARK, lw=1)
+        ax.yaxis.set_major_formatter(FuncFormatter(usd))
+        ax.set_xticks(ks)
+        ax.set_xlabel("Partners by year seven, schedule fixed at each count")
+        ax.set_ylabel("Year-seven net profit")
+        ax.set_title("Profit tracks the partner count almost linearly", fontsize=12, pad=12)
+        ax.legend(frameon=False, fontsize=9)
+        save(fig, "partner_dependence.png")
+    elif df is not None and "b2b_partners_y7" in df:
         fig, ax = plt.subplots(figsize=(9.5, 5.2))
         style(ax, fig)
         g = df.groupby("b2b_partners_y7").net_profit_y7.median()
