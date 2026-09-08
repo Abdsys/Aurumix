@@ -18,7 +18,9 @@ Three conventions are used throughout.
 
 - **Decisions are shown with their reasoning.** Where the design departs from the client's original specification (the 100 G Business Model), the departure is stated openly and the reason given.
 - **Assumptions are labelled.** Where a mechanism rests on a reading of law that counsel has not yet confirmed, the assumption is stated as a proposition that is either true or false, with a confidence level where research supports one. Section 14 is the consolidated register. The companion document `Aurumix: Design Summary and Open Legal Questions` (19 August 2026) puts the seven highest-value questions to counsel directly; this document carries the design behind them.
-- **Legal references are to primary sources.** The load-bearing rules were verified verbatim against the VARA rulebooks, the DIFC statutes and the CBUAE rulebook, and are cited precisely. Verified source texts are held in the project record. We are consultants, not lawyers: a citation here records what we read and where, and never substitutes for advice.
+- **Every legal statement in this document is a reading, not a ruling.** We are consultants, not lawyers. Where we quote a regulator's rulebook or a statute, the quote itself is accurate: we fetched the published text and copied it word for word, and the source texts are held in the project record. But what a rule means, and whether this design satisfies it, is a legal judgment that only qualified counsel can give, and on several points only the regulator, in writing, can settle. Nothing here is legal advice, and no legal position in this document should be treated as certain until counsel has confirmed it. We say this from experience: two of our own earlier readings failed when the statute was re-read word for word, and the design was rebuilt because of it (section 3.5.3 tells that story). The document is written so counsel's answers can change it cheaply.
+
+**If you are the lawyer reading this: section 14 is yours.** It collects every open legal question, states the assumption each part of the design rests on as a plain true-or-false proposition, and says what changes if the assumption is wrong. The rest of the document is the design behind those questions.
 
 ## Table of contents
 
@@ -96,7 +98,7 @@ The market research phase examined nineteen tokenised-gold protocols plus the le
 The design in one view:
 
 - **Asset layer.** Allocated, serial-numbered gold bars from LBMA-accredited refiners, vaulted in Dubai, recorded bar by bar, owned through a DIFC trust structure for the benefit of token holders (section 3).
-- **Token layer.** AURX, an open ERC-20 with a blocklist, 1 token = 1 gram, identity verified at mint and at redemption, freely transferable in between (section 4).
+- **Token layer.** AURX, an open ERC-20 token (the standard, universally supported token format) with a blocklist, 1 token = 1 gram, identity verified at mint (the moment new tokens are created against new gold) and at redemption, freely transferable in between (section 4).
 - **Purchase layer.** Two transaction types on one account: a monthly SIP from USD 20 and on-demand spot purchases. Money, then title, then token, on every purchase (section 5).
 - **Treasury layer.** A gold float bridges retail ticket sizes to wholesale bar sizes and absorbs exit flow (section 6).
 - **Exit.** Cash buyback at the next LBMA fix, no fee of any kind, by rule and by design (section 7).
@@ -182,6 +184,8 @@ Physical custody and legal ownership are two different problems, and the design 
 
 This section is the load-bearing wall. Every mechanism in sections 4 to 13 either inherits a rule stated here or is shaped by one.
 
+One caution before the detail, repeated from the front of the document because it matters most here: the quotes below are word-for-word from the published rules, but the conclusions drawn from them are ours, and none has yet been confirmed by counsel or by the regulator. Where a conclusion is load-bearing, it reappears in section 14 as an open question.
+
 ### 3.1 The regulatory map
 
 Four regulators are in frame, and the boundaries between them decide what is built versus partnered.
@@ -197,12 +201,12 @@ Perimeter regulators for expansion (CBB for Bahrain, the Oman FSA, RBI / SEBI / 
 
 ### 3.2 The classification choice: direct-ownership ARVA
 
-VARA's issuance guidance uses gold as its worked example and splits gold-referenced tokens into two regimes. The choice between them determines the licence file, the capital requirement, the marketing story and most of the legal work.
+An ARVA (Asset-Referenced Virtual Asset) is VARA's category for a token backed by or linked to a real asset such as gold. VARA's issuance guidance uses gold as its worked example and splits gold-referenced tokens into two regimes. The choice between them determines the licence file, the capital requirement, the marketing story and most of the legal work.
 
 | | **Option A: direct-ownership ARVA (chosen)** | Option B: stable-value ARVA |
 |---|---|---|
 | What the customer owns | The gold itself | A claim whose value tracks gold |
-| Reserve Asset regime | **Does not apply.** Verified against the rule text: Annex 2 III.C opens "VASPs Licensed to issue ARVAs **which purport to maintain a stable value**...", so the regime attaches to the stable-value branch only | Applies in full: licensed custodians, segregation, no rehypothecation, regular attestation, a supporting legal opinion |
+| Reserve Asset regime | **Does not apply.** Verified against the rule text: Annex 2 III.C opens "VASPs Licensed to issue ARVAs **which purport to maintain a stable value**...", so the regime attaches to the stable-value branch only | Applies in full: licensed custodians, segregation, no rehypothecation (the reserves may never be lent out or re-pledged), regular attestation, a supporting legal opinion |
 | Capital | AED 1,500,000 minimum | AED 1,500,000 **or 2% of average Reserve Asset value over 24 months, whichever is higher**. At the Year 10 target that could approach USD 4M of locked capital |
 | The binding burden | **Annex 2 III.B.1: prove the right of ownership is legally and validly established and that it transfers with the token** | Hold, segregate and attest the reserves |
 | Fit with the product | The Individual Gold Receipt is this option | Silently deletes the Gold Receipt: a claim holder is a creditor |
@@ -253,8 +257,8 @@ This is the design's answer to Annex 2 III.B.1, and it is the part of the struct
 Four independent layers each assert that the customer owns the gold, so no single failure collapses the claim:
 
 1. **Allocated, never unallocated.** Serial-numbered bars with a weight list. An unallocated holder is an unsecured creditor; an allocated holder owns property. This is the decisive layer.
-2. **Trust and bailment language in the customer terms.** Title sits with the trustee for the benefit of holders; the customer holds a beneficial interest; the terms say so in words a court can apply.
-3. **The DIFC trust vehicle.** DIFC Trust Law 2018 Art 14(2): a transfer into a trust is not void or voidable by reason of the settlor's later bankruptcy. This statutory protection is why the metal is held through DIFC rather than onshore: onshore UAE law could not give a verifiable answer to whether allocated but fungible gold can be reclaimed from a bankruptcy estate (the pivotal open item in section 14).
+2. **Trust language in the customer terms.** Legal title sits with the trustee for the benefit of holders, and the customer holds a beneficial interest: the trustee is the owner on paper, the customer is the person the gold is actually held for. The terms say so in words a court can apply.
+3. **The DIFC trust vehicle.** DIFC Trust Law 2018 Art 14(2): in plain terms, once assets are properly transferred into a trust, the transfer cannot be unwound just because the person who made it later goes bankrupt. This statutory protection is why the metal is held through DIFC rather than onshore: onshore UAE law could not give a verifiable answer to whether allocated but fungible gold can be reclaimed from a bankruptcy estate (the single most important open item in section 14).
 4. **An independent title register** (the Tradeflow warrant, held by the vehicle), as evidence beyond Aurumix's own systems.
 
 #### 3.5.2 The class-defined trust: how ownership moves with the token
@@ -270,7 +274,9 @@ The construction rests on four legs of the DIFC Trust Law 2018, each verified ve
 | The writing formality is displaceable | Art 47(2): "**Subject to the terms of a trust**, a beneficiary may, by instrument in writing... deal with his interest" | The deed can displace the writing default. The English analogue (LPA 1925 s.53(1)(c)) is mandatory; DIFC's is not, and that difference is why DIFC is the right jurisdiction |
 | Disclosure is pull, not push | Art 66(1) (trustee discloses on written application by a beneficiary) | The trustee is never required to hold a proactive list of every holder |
 
-Under this construction, VARA's III.B.1 is satisfied structurally rather than operationally: because the class follows the ledger, **divergence between the token ledger and the ownership position is impossible by construction**, which is a stronger answer to III.B.1.c ("implement mitigating measures to ensure all transactions in the ARVA result in a corresponding transaction in the Reference Asset") than any monitoring regime. III.B.1.b is conditional ("**where** transactions in the Reference Assets are subject to legal or regulatory requirements relating to... transfer of title"): the underlying transaction is a shift in beneficial interest governed entirely by the deed, so there is no external formality to satisfy. The bar itself never changes owner; the vehicle holds it on day one and on day ten thousand.
+Under this construction, our position (ours, not yet anyone else's) is that VARA's III.B.1 is satisfied structurally rather than operationally: because the class follows the ledger, **divergence between the token ledger and the ownership position is impossible by construction**, which is a stronger answer to III.B.1.c ("implement mitigating measures to ensure all transactions in the ARVA result in a corresponding transaction in the Reference Asset") than any monitoring regime. III.B.1.b is conditional ("**where** transactions in the Reference Assets are subject to legal or regulatory requirements relating to... transfer of title"): the underlying transaction is a shift in beneficial interest governed entirely by the deed, so there is no external formality to satisfy. The bar itself never changes owner; the vehicle holds it on day one and on day ten thousand.
+
+All of this is a construction we are asking counsel to confirm, not one any court has tested. It is Question 1 of the legal brief, and it is the single most important open point in the project: if either statutory leg fails, the token falls back to the permissioned design in section 4.4.
 
 **The one-sentence version:** the DIFC vehicle was chosen to protect the customer's gold from Aurumix's creditors, and it turns out also to be what lets the token move freely, because gold that never changes owner never has to be re-registered when the token changes hands.
 
@@ -294,7 +300,7 @@ The permissioned design survives as the engineered fallback (section 4.4) if cou
 
 ### 3.6 Client money and client assets
 
-**The money question is simpler than the client's original plan assumed.** VARA's Client Money Rules (Company Rulebook Part IV) permit Aurumix to receive and hold customer fiat directly, with no separate CBUAE licence, under conditions the design adopts wholesale:
+**The money question is simpler than the client's original plan assumed.** Our reading of VARA's Client Money Rules (Company Rulebook Part IV) is that Aurumix may receive and hold customer money directly, with no separate central bank licence, under conditions the design adopts wholesale:
 
 - Client money is not Aurumix's and sits outside its estate on insolvency.
 - Received funds reach a designated Client Account within one calendar day.
@@ -332,6 +338,8 @@ Direct ownership is what makes Rule 1.k satisfiable rather than aspirational: th
 - **Travel Rule threshold: AED 3,500** (not the USD 1,000 in the client's specification). Originator and beneficiary information obtained and held before initiating transfers above it; information accompanies all transfers regardless of size; aggregation applies per day.
 - **Marketing Regulation I.C.2:** no urgency or fear-of-missing-out framing; incentives must run for an adequate period and **must receive a compliance confirmation from VARA** (I.C.2.l(iii)), which puts the referral programme on the licensing critical path (section 12.6); Aurumix is liable for the claims of persons marketing for it.
 - **No return language anywhere.** Gold Rewards is a capped fee rebate and is never described as yield, interest, return or dividend (section 9.5). The premium is never marketed (section 2.4).
+
+> **Open for counsel in this section:** whether title really moves with the token (Question 1), whether the gold survives an onshore insolvency (Question 2), what "redemption" and "equal value" mean (Question 3), and whether the vehicle is a fund and its trustee needs a licence (Question 4). Section 14 carries all of them in full.
 ---
 
 ## 4. Token architecture
@@ -340,10 +348,10 @@ Direct ownership is what makes Rule 1.k satisfiable rather than aspirational: th
 
 | Attribute | Specification |
 |---|---|
-| Standard | **Open ERC-20** behind an upgradeable proxy with a transfer-hook stub |
+| Standard | **Open ERC-20**, the standard token format every wallet and exchange already understands, behind an upgradeable proxy with a transfer-hook stub (an engineering choice that lets transfer rules be changed later without rebuilding the token) |
 | Transfer control | **Blocklist**, denying by exception (sanctions, court order, fraud). Not an allowlist |
 | Control roles | Freeze, seize and reissue, held by the issuer. The price of the licence, and the precedent (PAXG) pays it too |
-| Identity | KYC is a hard precondition of the mint and of redemption. No identity requirement between the two |
+| Identity | KYC (know-your-customer identity verification) is a hard precondition of the mint and of redemption. No identity requirement between the two |
 | Peg | 1 AURX = 1 gram, permanently (section 2.2) |
 | Supply | Uncapped. Supply is a consequence of purchases; tokens exist only against allocated grams |
 
@@ -398,6 +406,8 @@ Two standing prohibitions: **do not seed a thin liquidity pool at launch** (a th
 - Pledged grams sit in platform custody under a registered security interest and cannot be withdrawn or transferred until the charge is released (section 10.5).
 - Blocked addresses cannot send or receive; frozen balances can be seized and reissued under the disclosed control framework. These powers exist for sanctions, court orders and fraud, and their scope is disclosed in the whitepaper.
 
+> **Open for counsel in this section:** the whole token architecture rides on Question 1. Until counsel confirms the trust construction, the token is built capable of both answers and committed to neither.
+
 ---
 
 ## 5. Buying gold: the SIP and the spot lane
@@ -430,7 +440,7 @@ Nothing in the product happens before verification completes. If funds clear whi
 | # | Step | Output |
 |---|---|---|
 | 0.1 | Account opened; **country of residence** captured | Residence, not passport, decides eligibility |
-| 0.2 | KYC, sanctions and PEP screening | Pass, refer or reject |
+| 0.2 | KYC, sanctions and PEP (politically exposed person) screening | Pass, refer or reject |
 | 0.3 | Eligibility against the country perimeter | Accept, or decline with reason |
 | 0.4 | Wallet provisioned | The address is mint-eligible |
 | 0.5 | Bank account registered and **name-matched to the holder** | The funding account of record |
@@ -649,7 +659,9 @@ Row four is real and gets a disclosed mechanism, not a hidden one. III.E.3's "re
 
 ### 7.5 Transfers are not exits
 
-A peer transfer moves ownership with the token (section 4.6) and is not a redemption: no fee rule applies to it, the gram count moves between accounts rather than shrinking, and a secondary market gives holders an exit that never touches the buyback at all, which relieves rather than adds redemption pressure. For scoring purposes an outbound transfer is an outflow (otherwise transferring to a spouse would dodge Retention), and inbound grams enter both sides of the receiver's ratio, so nothing is created.
+A peer transfer moves ownership with the token (section 4.6) and, on our reading, is not a redemption: no fee rule applies to it, the gram count moves between accounts rather than shrinking, and a secondary market gives holders an exit that never touches the buyback at all, which relieves rather than adds redemption pressure. For scoring purposes an outbound transfer is an outflow (otherwise transferring to a spouse would dodge Retention), and inbound grams enter both sides of the receiver's ratio, so nothing is created.
+
+> **Open for counsel in this section:** all three limbs of Question 3. Whether the buyback is legally a redemption, whether "equal value" means full value or value net of the dealer's bid, and whether a forced sale on a defaulted loan is caught by the no-fee rule. The rulebook never defines "redemption", so every one of these is inference from structure, and we want the first confirmed by VARA in writing.
 ---
 
 ## 8. The Investor Conviction Score
@@ -734,7 +746,7 @@ Five tiers, four of them named. The bottom rung is literally the absence of a ti
 
 The ladder in one sentence: **Silver at six months, Gold at one year, Platinum at three, Sovereign at five.**
 
-Why five and not the client's seven: tier count does not change the size of the benefit ladder, only how it is sliced, and the ceilings are set by economics outside Aurumix's control (the fee uplift, the partner's maximum loan ratio, contracted interchange, the card sponsor's programme levels). Seven tiers cut the fixed ranges into steps too small to feel (a 0.25 point fee step is USD 0.19 a month at the target ticket); at five, each step roughly doubles, and the card maps one-to-one onto three sponsor programme levels. Titanium and Elite are dropped; Green is renamed "No tier".
+Why five and not the client's seven: tier count does not change the size of the benefit ladder, only how it is sliced, and the ceilings are set by economics outside Aurumix's control (the fee uplift, the partner's maximum loan ratio, the contracted interchange share, the card sponsor's programme levels). Interchange, used throughout this document, is the small percentage of every card purchase that the merchant's side pays to the card issuer's side: it is how card programmes are funded, and the merchant, not the saver, is the one paying it. Seven tiers cut the fixed ranges into steps too small to feel (a 0.25 point fee step is USD 0.19 a month at the target ticket); at five, each step roughly doubles, and the card maps one-to-one onto three sponsor programme levels. Titanium and Elite are dropped; Green is renamed "No tier".
 
 Tiers are **absolute thresholds, never relative position**. Percentile tiers would make a flawless saver demotable by a better cohort, would make every benefit unquotable as a price or a contract term, and would build a tournament, which is a compliance surface (the client's 80/20 dividend concentration was exactly that pathology). Absolute thresholds are also what make the score computable by the customer, which is the design's central trust property.
 
@@ -938,10 +950,12 @@ The wordings that must never blur: **a tier fall can never margin-call; a price 
 
 Five links: a valid security interest, immobilisation, valuation and trigger, cure, and the sale. The middle three are designed above; the first and the custody half of the second are legal work:
 
-- **Security is taken under DIFC law** (Law of Security 2024, UNCITRAL-model, registrar filing, grantor-agnostic). ADGM's regime appears to catch only charges created by ADGM companies, and the grantor here is a retail customer, so DIFC wins on a second independent ground beyond section 3.5.
-- Whether AURX qualifies as a "digital asset" under DIFC's digital-assets statute is open; the conservative design perfects over the beneficial interest as an ordinary intangible and treats the transfer-block as operational.
+- **The plan is to take security under DIFC law** (the Law of Security 2024, a modern registration-based regime): the lender's claim over the customer's pledged interest is filed with the DIFC registrar so it holds good against third parties. ADGM's equivalent appears to catch only charges created by ADGM companies, and the grantor here is a retail customer, so DIFC wins on a second independent ground beyond section 3.5.
+- Whether AURX qualifies as a "digital asset" under DIFC's digital-assets statute is open; the conservative design registers the security over the customer's beneficial interest as an ordinary intangible right and treats the transfer-block as an operational control rather than a legal one.
 - Repossession consent from the party in possession (the custody vehicle) is pre-wired into the custody documentation; whether pre-wiring is effective is an opinion question.
-- The Sharia overlay: the recognised Islamic standard blesses pledging via the ownership certificate and treats holding it as constructive possession, forbids rehypothecation (already the design's position), and requires sale at market value with surplus returned (matches the ladder). It also caps safekeeping fees on pledged gold at actual cost, which touches custody recovery under an Islamic structure. Conventional or Islamic is an open client decision that sets the lender shortlist; the recommended structure if Islamic is tawarruq plus rahn.
+- The Sharia overlay: the recognised Islamic finance standard blesses pledging gold via its ownership certificate, forbids the lender re-using the pledged gold, and requires sale at market value with any surplus returned to the customer (all of which match this design). It also caps safekeeping fees on pledged gold at actual cost, which touches custody recovery under an Islamic structure. Conventional or Islamic is an open client decision that sets the lender shortlist; the recommended Islamic structure is a standard commodity-financing arrangement with the gold held purely as pledge (tawarruq plus rahn).
+
+> **Open for counsel in this section:** Question 5 in full. Whether a valid security interest can be taken and registered over a retail customer's beneficial interest, which legal route applies, and whether Aurumix acting as valuer, collateral agent and buyer at once is a conflict that disclosure can manage. If the security is not clean, the credit and card block does not work as designed.
 
 ### 10.6 The interchange economics
 
@@ -977,7 +991,7 @@ Under an open token a customer can withdraw AURX to their own wallet, and at tha
 
 ### 11.3 The probate correction
 
-**The product cannot avoid probate on death, and the client's promise that it does ("without requiring probate, family agreement, or legal proceedings") is withdrawn.** Under DIFC trust law a beneficiary's interest is movable property: a transmissible asset that falls into the estate and needs a grant. The only architecture that genuinely avoids probate is a foundation in which the customer never owns the gold, which would destroy the direct-ownership claim, the Gold Receipt and the Reserve-Asset exemption in one move. Allocated ownership and probate avoidance are mutually exclusive; the design keeps ownership.
+Probate is the court process that confirms who is entitled to a dead person's property; the grant is the court document that proves it. **The product cannot avoid probate on death, and the client's promise that it does ("without requiring probate, family agreement, or legal proceedings") is withdrawn.** Under DIFC trust law a beneficiary's interest is movable property: a transmissible asset that falls into the estate and needs a grant. The only architecture that genuinely avoids probate is a foundation in which the customer never owns the gold, which would destroy the direct-ownership claim, the Gold Receipt and the Reserve-Asset exemption in one move. Allocated ownership and probate avoidance are mutually exclusive; the design keeps ownership.
 
 The reframe is honest and stronger than it sounds: the market has not solved this either. The largest regulated crypto custodian offers no beneficiary designation at all and requires probate documents before releasing anything. Aurumix is not conceding a feature competitors deliver; nobody delivers it. The product is a **probate accelerator, not a probate substitute**: pre-named, pre-verified, pre-screened, pre-split, executed in days once the paperwork arrives.
 
@@ -1031,6 +1045,8 @@ The cost floor is roughly USD 2 to 3 one-off plus cents per year per name (ident
 | Refer to a licensed will-writer (the DIFC Courts' digital-assets will service is both the nearest comparable and a possible partner) | Take a referral fee for it |
 
 Two characterisation traps are designed around: marketing the feature as planning edges toward advising, and framing it as a benefit paid on death edges toward insurance. Neither permission is held, so neither framing is used.
+
+> **Open for counsel in this section:** Question 7, deliberately open-ended: how can the succession product be offered lawfully at all, to whom, and under what name? Plus the in-specie / cash-settlement split (Question 3), the Muslim-customer position, and the India inheritance route, none of which we have pre-judged.
 
 **Build note:** none of this goes on-chain. The specification's two smart contracts (a Family Portfolio contract and a Digital Will contract holding sub-portfolio gold) must not be built: a contract holding the tokens would itself become the beneficiary of the trust, so the family member would own nothing: the wrapper trap of section 4.4 rebuilt deliberately. The design is an off-chain instruction ledger plus one token movement at execution, which also releases the USD 75,000 the specification budgeted to audit the two contracts.
 ---
@@ -1129,7 +1145,9 @@ This makes "no storage fee" a marketing claim against comparables that dilute or
 
 The design accepts **bank money only**, into a segregated Client Account: never a token, never from an exchange's own account. The single test, applied at onboarding and at every payment: **whose bank account sends the money.**
 
-Stablecoins are handled by signposting, not acceptance. UAE payment-token rules confine foreign payment tokens to registered issuers and to virtual-asset purchases; the widely held coins are not registered, the fee legs must settle in fiat regardless, and both tested workarounds fail (self-off-ramping is itself a licensable service; an embedded exchange widget makes the exchange Aurumix's agent). What works: **the customer converts on their own account at a licensed exchange and pays by bank transfer.** Aurumix publishes a list of licensed venues, takes no fee, passes no data, never touches a token. Whether publishing that list is "arranging" a payment-token service is the one load-bearing assumption in the payment design, and it is with counsel (legal brief, Question 6).
+Stablecoins are handled by signposting, not acceptance. UAE payment-token rules confine foreign payment tokens to registered issuers and to virtual-asset purchases; the widely held coins are not registered, the fee legs must settle in fiat regardless, and both tested workarounds fail (self-off-ramping is itself a licensable service; an embedded exchange widget makes the exchange Aurumix's agent). What works, on our reading: **the customer converts on their own account at a licensed exchange and pays by bank transfer.** Aurumix publishes a list of licensed venues, takes no fee, passes no data, never touches a token.
+
+> **Open for counsel in this section:** both halves of Question 6. Whether publishing that exchange list counts as "arranging" a payment-token service (the one load-bearing assumption in the payment design), and whether e-money collection providers satisfy the client-money rules' requirement for "banks". The second decides whether small cross-border contributions are economically possible at all.
 
 ### 13.5 The partner channel
 
@@ -1241,16 +1259,23 @@ The invariant set halts minting before any unbacked state can arise (6.5); attes
 | ARVA | Asset-Referenced Virtual Asset, VARA's category for tokens referencing an asset such as gold |
 | AURX | The Aurumix token; 1 AURX = 1 gram of gold |
 | Beneficiary Transfer Instruction (BTI) | The standing, pre-authorised instruction implementing the succession feature |
+| Beneficial interest | Real economic ownership held through a trustee: the trustee is the owner on paper, the beneficiary is the person the asset is held for |
 | Blocklist | A transfer control that denies listed addresses by exception; the opposite of an allowlist |
+| Burn | Destroying tokens, done on every exit so supply always matches the metal |
 | Confirmed SIP | The gate: six consecutive counted contributions; permanent once earned |
 | Counted period | A calendar month in which one accepted contribution at or above the floor cleared |
 | DIFC | Dubai International Financial Centre, a common-law jurisdiction outside VARA's remit |
 | Entry fee | The one-time percentage fee on each purchase; the product's primary revenue line |
+| ERC-20 | The standard token format on Ethereum; the form every wallet, exchange and application already supports |
+| Grant of probate | The court document confirming who is entitled to administer and receive a dead person's property |
+| Interchange | The percentage of every card purchase paid by the merchant's side to the card issuer's side; funds the card benefits and Gold Rewards |
 | The fix | The LBMA gold price, the pricing benchmark for every event |
 | The float | Aurumix-owned working gold inventory bridging retail tickets to wholesale bars |
 | Gold Rewards | The monthly fee rebate credited in grams, capped at customer-generated revenue |
 | ICS | Investor Conviction Score: min(Record, Standing) x Retention, 0 to 100 |
 | JIT funding | Just-in-time authorisation: each card tap is approved live against collateral headroom |
+| KYC | Know-your-customer identity verification, required at onboarding and at redemption |
+| Mint | Creating new tokens, done only against newly allocated gold |
 | LTV | Loan-to-value: drawn balance against pledged collateral value |
 | Option A | The direct-ownership ARVA branch: the customer owns the gold itself |
 | Record / Standing / Retention | The score's three inputs: contribution history, trailing-12 discipline, and the kept-gold multiplier |
