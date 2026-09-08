@@ -382,16 +382,6 @@ The India line is the one to remember. **Two of your three markets are advertisi
 
 We also tested whether missed payments should be a warning sign. They should not. Payment discipline moves what is left per customer by only USD {{TRIG_PAY_SPAN}} across its whole realistic range, because costs follow customers, not payments. Worth watching as a health check. It will not change a decision.
 
-### What to watch in year one
-
-| Measure | Why | Warning level |
-|:--|:--|:--|
-| Partners signed against plan | the business case rests on it | behind plan at month 24 |
-| Months paid out of months due | what customer economics rest on | below 70% |
-| Share reaching a loyalty tier | the cost of the ladder, and the promise | below 40% by month 36 |
-| Cost to win one customer | rises as easy channels run out | above USD 60 blended |
-| Cash against the plan | the raise | tracking below the typical run |
-
 ---
 
 ## Part 6: Appendix
