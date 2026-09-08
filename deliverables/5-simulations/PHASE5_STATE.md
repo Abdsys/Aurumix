@@ -133,6 +133,8 @@ Run all of these after any change. Each was written because its failure happened
 
 **Conditions map cells are still single runs (client, 2026-09-08: "leave it as is for now, fix later before finalizing").** The client has repeatedly tripped over the plan cell (+0.2) disagreeing with the MC median (-0.45); the agreed fix is per-cell Monte Carlos: 49 cells, ~500 paths each on shared seeds (~3h), partner schedules fixed per column the way `run_partner_sweep.py` does. Rewire `run_conditions.py`'s grid, recompute the frontier from medians, delete the "within the noise of a single map cell" caveat in the template, and requote the plan cell. Client told their client it will be fixed; do not finalize Phase 5 without it.
 
+**Tornado bars are single paired paths (client, 2026-09-08: keep for now, upgrade at finalization).** Each bar is two runs on one shared seed, lo and hi of the band. The pairing cancels most noise, but at finalization each end becomes a paired Monte Carlo (2,000 paths per end, ~75 assumptions) so the small-bar ordering stops being approximate. Fold into the same finalization pass as the conditions map upgrade above.
+
 ## 6. Standing constraints from the client
 
 - **Push directly to main.** No feature branches, no PRs.

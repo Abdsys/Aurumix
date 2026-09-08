@@ -219,6 +219,8 @@ There is no room in that. Watch what happens when costs move:
 
 ![Tornado](aurumix/outputs/charts/tornado.png)
 
+Every one of the 75 drawn assumptions was swept the same way: its conservative end against its aggressive end, everything else held at base, on identical runs. The chart shows only the assumptions that swing year-seven profit by USD 0.5m or more. Everything omitted falls below that line.
+
 | | Assumption | How much it swings year-seven profit |
 |:--|:--|--:|
 | 1 | {{TOR1}} | {{TOR1_SW}} |

@@ -172,7 +172,11 @@ def main():
     # 5. what moves profit ----------------------------------------------------
     if A and "q6_tornado" in A:
         t = A["q6_tornado"]
-        items = sorted(t, key=lambda d: -abs(d["np7_swing"]))[:12][::-1]
+        # Only assumptions that move year-seven profit by >= USD 0.5m are
+        # charted (client, 2026-09-08). All 75 drawn assumptions are swept by
+        # run_analysis.py; everything omitted falls below the line.
+        items = sorted((d for d in t if abs(d["np7_swing"]) >= 500_000),
+                       key=lambda d: -abs(d["np7_swing"]))[::-1]
         fig, ax = plt.subplots(figsize=(10, 6))
         style(ax, fig)
         names = [d["param"].replace("_", " ") for d in items]
