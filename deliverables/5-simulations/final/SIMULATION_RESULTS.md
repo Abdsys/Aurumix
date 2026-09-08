@@ -239,7 +239,7 @@ One signed letter of intent would tell you more than any further modelling. It w
 
 Part 2 tested everything we could put a range on. This part tests single disasters that no range covers, and asks the same question of each: **can more money fix it?**
 
-Each disaster runs 2,000 times, the same way the rest of this document runs. Every scenario uses the same set of runs as the others, so the same customers, the same gold prices and the same assumptions appear in each. Any difference between two rows is the disaster, not luck.
+Each disaster runs 2,000 times, the same way the rest of this document runs. Every scenario uses the same set of runs as the others, so the same customers, the same gold prices and the same assumptions appear in each. Because the runs are identical apart from the disaster, comparing a scenario's row against the base row measures the effect of the disaster itself.
 
 ![Stress scenarios](aurumix/outputs/charts/stress_scenarios.png)
 
@@ -260,8 +260,8 @@ Profit is the typical run. Money needed is what covers 9 runs in 10, the same me
 
 | What goes wrong | Verdict | What you would do |
 |:--|:--|:--|
-| Gold falls 30% and savers panic | **Money fixes it** | already covered by the planned raise. The damage is the panic, not the price |
-| A quarter cash out at once | **Money fixes it** | already covered by the planned raise. You need to be operationally ready, not richer |
+| Gold falls 30% and savers panic | **Money fixes it** | already covered by the planned raise. Nearly all of the cost comes from savers cashing out; the price fall itself adds almost nothing |
+| A quarter cash out at once | **Money fixes it** | already covered by the planned raise. The real work is processing a surge of redemptions smoothly |
 | Customers save smaller amounts | **Money fixes it** | already covered by the planned raise |
 | Licence delayed a year | **Money fixes it** | roughly USD 0.4m more, to pay the bills while you wait |
 | Customers save less and leave faster | **Money just about fixes it** | survives, but never earns it back. Needs the Part 4 changes |
@@ -276,7 +276,7 @@ Three things to take from this.
 
 But the number is not the point. **No amount of money turns a business with no partners into a working one.** Every other problem on this list is a cash problem. This one is not.
 
-**A rush to cash out is survivable.** Profit falls to -USD 0.61m and the money you need rises only to USD 4.92m. The gold already belongs to customers, so this is an operations and timing problem, not a solvency one.
+**A rush to cash out is survivable.** Profit falls to -USD 0.61m and the money you need rises only to USD 4.92m. The gold already belongs to customers, so the company must process the redemptions quickly, but its own solvency is never at stake.
 
 Loans stay safe too. The chance of ever having to ask a borrower for more collateral is **4.1%**. The gold backing a loan rises in value with the same price the loan is measured in.
 
@@ -303,7 +303,7 @@ The marketing case is the regional arithmetic from Part 2. Winning a customer co
 
 ### Work worth doing
 
-Two changes are effort, not settings. The model prices what the effort earns, not what the effort costs.
+Two changes require sustained work rather than a one-time decision. The model prices what the work earns. It does not price the work itself.
 
 | Change | What it means | Profit created over seven years |
 |:--|:--|--:|
@@ -314,7 +314,7 @@ Partners are the strongest lever in the whole model: each one adds roughly USD 1
 
 ### Programs worth funding up to a ceiling
 
-Four levers sit in customer behaviour. Aurumix can influence them with programs, but cannot set them directly. The model prices what success is worth, not what a program costs. So each figure below is a spending ceiling: the most a seven-year program is worth if it fully works.
+Four levers sit in customer behaviour. Aurumix can influence them with programs, but cannot set them directly. The model prices what success is worth. It does not price what a program would cost to run. So each figure below is a spending ceiling: the most a seven-year program is worth if it fully works.
 
 | Behaviour to improve | What was measured | Worth up to |
 |:--|:--|--:|
@@ -365,7 +365,7 @@ We ranked each one by how much the answer would move the result, against what it
 
 **Four of the biggest unknowns can be settled this week, by reading documents you already have.** The vault fee is in your contract. The card rates are in the card scheme's published schedule. Together they account for USD 0.89m of swing that this model still treats as uncertain.
 
-The single most valuable thing remains one signed partner. It settles the biggest unknown in the model and costs a conversation, not a budget.
+The single most valuable thing remains one signed partner. It settles the biggest unknown in the model, and pursuing one costs far less than anything else on this list.
 
 ### When to change your mind
 
