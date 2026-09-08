@@ -145,24 +145,20 @@ def main():
         ax.legend(frameon=False, fontsize=9)
         save(fig, "revenue_fan_with_without_b2b.png")
 
-    # 4. break-even odds, plan vs recommended --------------------------------
+    # 4. break-even odds, plan only ------------------------------------------
+    # Deliberately plan-only (client, 2026-09-08): this chart sits in Part 1,
+    # before the recommended configuration is defined. The comparison lives in
+    # Part 4's table and figure, after the changes are explained.
     if S is not None:
         fig, ax = plt.subplots(figsize=(9, 5.2))
         style(ax, fig)
         yrs = ["Y4", "Y5", "Y6", "Y7"]
         plan = [S["P_cum_breakeven_by"][y] for y in yrs]
         x = np.arange(len(yrs))
-        w = 0.38 if C else 0.55
-        ax.bar(x - (w / 2 if C else 0), plan, w, color=GOLD, label="Plan as modelled")
-        if C:
-            rec = [np.nan, np.nan, np.nan, C["P_cum_breakeven_by_Y7"]]
-            ax.bar(x + w / 2, rec, w, color=DARK, label="Recommended configuration")
+        w = 0.55
+        ax.bar(x, plan, w, color=GOLD, label="Plan as modelled")
         for xi, v in zip(x, plan):
-            ax.text(xi - (w / 2 if C else 0), v + 0.012, f"{v:.0%}", ha="center",
-                    color=DARK, fontsize=9)
-        if C:
-            ax.text(x[-1] + w / 2, C["P_cum_breakeven_by_Y7"] + 0.012,
-                    f"{C['P_cum_breakeven_by_Y7']:.0%}", ha="center", color=DARK, fontsize=9)
+            ax.text(xi, v + 0.012, f"{v:.0%}", ha="center", color=DARK, fontsize=9)
         ax.set_xticks(x); ax.set_xticklabels(["Year 4", "Year 5", "Year 6", "Year 7"])
         ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:.0%}"))
         ax.set_ylabel("Share of paths in cumulative profit")
