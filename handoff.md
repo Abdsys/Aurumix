@@ -68,6 +68,7 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | `Aurumix_Market_Research_Summary.md` / `.html` | ✅ **DELIVERED.** 52 pages. Generated: edit `_summary_working/`, never the `.md` |
 | **2-mechanism-design/** | |
 | `_decisions-log.md` | 🔴 **THE DECISION LOG. All 51 in full.** Append here, index in §6, same commit |
+| 🆕 `final/Aurumix_Mechanism_Design_Document.md` | **THE CONSOLIDATED MD DOCUMENT (2026-09-08), written for the client's counsel.** 15 sections + 3 appendices; post-decision-50 positions; filing-grade citations corrected. `final/` also holds the 42-diagram `Aurumix_Process_Maps.md`, the branded HTML and the 112-page PDF. Rebuild: `_branded_working/build_mdd.py` then `render_mdd.js` (layout audit must return zero overflow). The drafts below remain the audit trail |
 | `Aurumix_Legal_Brief_and_Open_Questions.md` | 🔴 **361 lines, "for review". Client-facing, for onward instruction of counsel.** Part 1 describes the build for a lawyer with no prior exposure; Part 2 is the open legal questions. ⚠ **Check against decision 50 and the enforcement-sale-as-redemption question before it is sent** |
 | `_draft_sip-rulebook.md` | **THE CANONICAL SIP DOC.** Where it conflicts with the two older drafts, it wins. §12 is its corrections list |
 | `_draft_ics-scoring.md` | **B4 DONE.** `ICS = min(Record, Standing) × Retention`, five tiers. §1.2 is the load-bearing argument. §12 is a long corrections list |
