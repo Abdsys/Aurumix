@@ -16,3 +16,4 @@ node_modules/
 
 # Client deliverables ship with the repo, generated outputs do not
 !deliverables/5-simulations/final/*.pdf
+!deliverables/2-mechanism-design/final/*.pdf
