@@ -73,9 +73,13 @@ def usd(x, _=None):
     return f"${x:.0f}"
 
 
-def _fan(ax, x, b, key, color, label):
-    ax.fill_between(x, b[f"{key}_p10"], b[f"{key}_p90"], color=color, alpha=0.15, lw=0)
-    ax.fill_between(x, b[f"{key}_p25"], b[f"{key}_p75"], color=color, alpha=0.28, lw=0)
+def _fan(ax, x, b, key, color, label, band_labels=True):
+    # band_labels=False on a second fan in the same axes, or the legend
+    # repeats the percentile entries once per series
+    ax.fill_between(x, b[f"{key}_p10"], b[f"{key}_p90"], color=color, alpha=0.15, lw=0,
+                    label="Middle 80% of runs (10th to 90th percentile)" if band_labels else None)
+    ax.fill_between(x, b[f"{key}_p25"], b[f"{key}_p75"], color=color, alpha=0.28, lw=0,
+                    label="Middle 50% of runs (25th to 75th percentile)" if band_labels else None)
     ax.plot(x, b[f"{key}_p50"], color=color, lw=2.0, label=label)
 
 
@@ -125,8 +129,7 @@ def main():
         ax.yaxis.set_major_formatter(FuncFormatter(usd))
         ax.set_xlabel("Month")
         ax.set_ylabel("Cumulative net profit")
-        ax.set_title("The hole, and how it fills. Shaded: middle 50% and middle 80% of paths",
-                     fontsize=12, pad=12)
+        ax.set_title("The hole, and how it fills", fontsize=12, pad=12)
         ax.legend(frameon=False, fontsize=9)
         save(fig, "cum_profit_fan.png")
 
@@ -137,7 +140,7 @@ def main():
         _fan(ax, m, B, "revenue", GOLD, "Total revenue")
         retail = {f"revenue_{q}": B[f"revenue_{q}"] - B[f"s6_{q}"]
                   for q in ("p10", "p25", "p50", "p75", "p90")}
-        _fan(ax, m, retail, "revenue", DARK, "Retail only, no partners")
+        _fan(ax, m, retail, "revenue", DARK, "Retail only, no partners", band_labels=False)
         ax.yaxis.set_major_formatter(FuncFormatter(usd))
         ax.set_xlabel("Month")
         ax.set_ylabel("Monthly revenue")
