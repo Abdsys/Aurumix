@@ -186,6 +186,8 @@ We built that in: a partner reaches full contribution over 12 to 24 months. It p
 
 ![The funding line](aurumix/outputs/charts/funding_line.png)
 
+Read the two lines separately. The typical run is finished needing money by year 5 and is repaying from there. The rising dashed line is the unlucky tenth of runs, where partners came late or slowly and the burn never turned. The simulation ends at month 84; it does not promise that line flattens. That is why the raise is sized to the unlucky tenth, not to the typical run.
+
 This is worth acting on. **Anything that gets a partner's users on board faster is worth more than most product work.**
 
 ### Two numbers decide everything
