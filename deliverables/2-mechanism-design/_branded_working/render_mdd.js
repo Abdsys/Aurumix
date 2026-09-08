@@ -62,6 +62,7 @@ const PDF = path.resolve(process.argv[3] || HTML.replace(/\.html$/, '.pdf'));
   await page.pdf({
     path: PDF, width: '8.5in', height: '11in', printBackground: true,
     margin: { top: 0, bottom: 0, left: 0, right: 0 },
+    pageRanges: '1-' + report.total, // clamp: no trailing blank sheet
   });
   console.log('PDF written:', PDF);
   await browser.close();
