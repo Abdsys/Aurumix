@@ -482,7 +482,7 @@ Dropping the pull rail deleted three problems at once: the mandate machinery, th
 
 The rails carry four SIP rules:
 
-- **The floor is a hard gate.** A payment below USD 20 is rejected and returned, never partially credited. This deletes the partial-payment state entirely.
+- **The floor is a hard gate.** A payment below USD 20 is rejected and returned, never partially credited. This deletes the partial-payment state entirely. The floor is confirmed at USD 20 on one stated condition: a per-collection rail cost near USD 0.25 or less, which the Request to Pay contract must confirm (section 14.4). At that cost a contribution breaks even from about USD 11. At the researched conservative rail prices break-even is about USD 66, and the floor would need revisiting.
 - **Grace is 5 calendar days** from the contribution date, and never expires on a weekend or public holiday. A deliberate departure from the insurance-industry 15 days: a push rail needs no bounce-recovery window, so grace only covers being busy or away.
 - **A failure and a decision are different events.** Delivery and open events are logged on every payment request, so "never saw it" and "chose not to pay" stay separable in the data. Involuntary churn runs 20 to 40% of subscription churn in published benchmarks; the design does not let it masquerade as a decision.
 - **Reducing the amount is free, instant and never scored.** The alternative to reducing is quitting.
@@ -509,7 +509,7 @@ A deliberately deleted field is worth recording: a customer-set "declared minimu
 
 | State | Trigger | Treatment |
 |---|---|---|
-| **Regulatory block** | Compliance blocks the account (for example, the customer becomes India-resident) | A system event, not a request. **Months in which Aurumix refuses the investor's money do not count against them**: the score clock freezes, gold is retained, Confirmed SIP is retained, existing credit runs to term with no new draws. Applies identically before the gate: a saver at 4-of-6 resumes at 4-of-6 |
+| **Regulatory block** | Compliance blocks the account (for example, the customer becomes India-resident) | A system event, not a request. **Months in which Aurumix refuses the investor's money do not count against them**: the score clock freezes, gold is retained, Confirmed SIP is retained, existing credit runs to term with no new draws. Applies identically before the gate: a saver at 4-of-6 resumes at 4-of-6. A compliance-forced redemption gets the same protection: the grams leave, and the score does not move (section 8.3) |
 | **Stop** | The investor cancels | Nothing is forfeited. Gold retained, score decays on its own clock, restart resumes from wherever decay left it |
 | **Dormant** | 12 consecutive silent periods | Housekeeping, not protection: requests stop, the SIP closes as an instruction, the account is hold-only. No score meaning; decay has already done its work. A spot purchase by a dormant account is permitted and is the natural way back in |
 
@@ -728,7 +728,7 @@ Three inputs, every one readable off the payment ledger and the token ledger. No
 | Transfers to a family sub-account or under a Beneficiary Transfer Instruction | **Not a sale.** The gold stays inside the product; only the name changes |
 | Lender liquidation on a margin call | **Counts as a sale.** The customer chose to borrow; the alternative makes borrowing a route around Retention |
 | Withdrawal to self-custody | **Counts as a sale** (section 4.2). The account can no longer see or service those grams |
-| Compliance-forced exit (the returning NRI) | **Deliberately open.** The proposal is to extend the regulatory pause so a forced redemption does not move the score; it interacts with the margin-call rule and the two will be closed together |
+| Compliance-forced exit (the returning NRI) | **Not a sale.** The regulatory pause extends to forced redemptions: the grams leave, and the score does not move (section 5.5). The dividing line between this row and the margin-call row is choice: a margin call follows a loan the customer chose to take; a compliance exit follows nothing they chose |
 
 Retention is drafted as a reward for holding, not a penalty for redeeming, and the direction matters in front of a regulator: gold-months earn score, grams that leave simply stop earning, and no event fires on the redemption itself. A rule shaped as "redeem and lose your status" would invite the argument that it impairs the redemption right in substance.
 
@@ -824,7 +824,7 @@ Rules that bind all five:
 
 - **The tier of record.** Every benefit reads the tier computed at the account's last period resolution, never the live score. Price levers strike at the event; the leverage lever strikes at the facility and runs to term; card parameters change at statement cycle; Gold Rewards computes at period close. One number, one update rule, no benefit can disagree with another.
 - **All ladders are stepped, never smooth.** Every benefit is a quotable price, a loan term, a card programme level or an advertised rate.
-- **A tier fall reprices future events only.** No retroactive repricing, no clawback of delivered benefits, and **a tier fall never triggers a margin call** (a missed USD 20 payment that forced a liquidation would convert "no financial penalty for a miss" into a lie).
+- **A tier fall reprices future events only.** No retroactive repricing, no clawback of delivered benefits, and **a tier fall never triggers a margin call** (a missed USD 20 payment that forced a liquidation would convert "no financial penalty for a miss" into a lie). An issued card and an open credit facility are never closed by a tier fall (section 10.1).
 - **No payout may exceed what that customer generated** (the Gold Rewards cap), and no benefit's rate may scale with capital.
 - **Where a partner holds the licence, the structure is Aurumix's and the pricing is the partner's.**
 
@@ -890,6 +890,8 @@ The purpose is the product's quiet centrepiece: it lets a saver reach the value 
 
 One rule this structure forces: **the facility is struck once, at facility opening, and every draw inherits the facility's struck ratio.** A card is thousands of tiny draws; striking per draw would reprice the facility on every coffee. An annual facility review re-strikes the limit to the current tier of record, while existing drawn balances run to term at their original ratio, which keeps the tier ladder binding without ever repricing anyone retroactively.
 
+A second rule, decided rather than inherited: **opening is tier-gated; survival is not.** The Gold tier is needed to open the facility and issue the card. Once open, neither is closed by a later tier fall. The plastic never downgrades. Card parameters flex with the tier of record down to the L1 rung and stop there. The annual review re-strikes the limit at the current tier of record, floored at the Gold ratio for a facility already open. Only the collateral ladder (section 10.4), the customer or the lender of record can close them. So a saver who stops contributing keeps the card and the credit line for as long as the collateral supports them. This follows from two positions already taken: no delivered benefit is ever clawed back, and the loan is secured on gold the customer owns, not on their payment behaviour.
+
 ### 10.2 The stack: four roles, and who carries which risk
 
 | Role | Does | Carries |
@@ -909,7 +911,7 @@ borrowing headroom = seasoned, unpledged grams x fix x LTV(tier)
 
 | Gate | Rule |
 |---|---|
-| Eligibility | Gold tier. Credit does not unlock at the Confirmed SIP gate |
+| Eligibility | Gold tier, to open. Credit does not unlock at the Confirmed SIP gate. An open facility survives a later tier fall (section 10.1) |
 | Seasoning | Grams enter the borrowing base only after **90 days held**. Redeemed-then-rebought grams restart the clock; inbound transfers start fresh |
 | Ratio | 50 / 65 / 80% by tier, struck at facility opening |
 | Stacking | Seasoned **and unpledged** grams only. One gram supports one facility |
@@ -1189,7 +1191,7 @@ Questions 1, 2 and 3 gate the product; the client's application build is due ear
 | The premium is zero (section 2.4) | Nine-protocol evidence, two discount cases | Only upside exists; nothing in the design depends on a premium |
 | True allocated custody cost is 0.15 to 0.40%/yr | Research-derived; the vault quote decides it | If materially higher, custody recovery (13.3) re-opens as a pricing decision |
 | The measured fabrication ladder (1.50% / 0.95%) | Same-page quote methodology, evidence pass | The fee build-up and minimum ticket move with it |
-| A USD 20 floor is commercially necessary even where the rail makes it thin | Client's market positioning against AED 10 to 15 competitors | The collection minimum may split from the marketing minimum (an open client decision) |
+| The USD 20 floor clears its own collection cost at the assumed rail price, near USD 0.25 per collection (section 5.4) | The measured fee build-up, and the client's market positioning against AED 10 to 15 competitors. Confirmed as the design position, September 2026 | If the contracted rail price lands materially higher, the collection minimum splits from the marketing minimum and contributions batch through the prefunded balance |
 
 ### 14.4 The commercial unknowns
 
@@ -1316,10 +1318,10 @@ The full Phase 2 record (eleven decision drafts, the 51-entry decision log, sixt
 
 | Field | Value |
 |---|---|
-| Version | 1.0 |
-| Date | 8 September 2026 |
+| Version | 1.1. Closes four open design questions: forced sales and the score, redeemed gold's routing, card and credit through a lapse, the USD 20 floor's rail condition |
+| Date | 22 September 2026 |
 | Prepared by | Tokenomics.net |
 | Status | Consolidated design record, for the project team and counsel |
 | Companion documents | Aurumix: Design Summary and Open Legal Questions (19 Aug 2026); Aurumix Process Maps (this deliverable's diagram set); the Phase 2 decision drafts (audit trail) |
-| Basis | The client's 100 G Business Model (current specification), 51 logged design decisions, and primary-source regulatory research through September 2026 |
+| Basis | The client's 100 G Business Model (current specification), 55 logged design decisions, and primary-source regulatory research through September 2026 |
 | Contact | Tokenomics.net |

@@ -17,8 +17,20 @@ DOC = os.path.join(FINAL, "Aurumix_Mechanism_Design_Document.md")
 MAPS = os.path.join(FINAL, "Aurumix_Process_Maps.md")
 OUT = os.path.join(HERE, "Aurumix_Mechanism_Design_Branded.html")
 
-SHELL = r"C:\Users\pc\OneDrive - Institute of Business Administration\Desktop\Stockpile\deliverables\2-mechanism-design\final\Stockpile_Mechanism_Design_Branded_v5.html"
-BRAND = r"C:\Users\pc\.claude\plugins\marketplaces\tokenomics-net\tokenomics-plugin\standards\branded-docs-main"
+# The shell and brand assets live outside this repo and at different paths per
+# machine; first existing candidate wins.
+def _first_existing(*candidates):
+    for c in candidates:
+        if os.path.exists(c):
+            return c
+    raise SystemExit("none of these paths exist on this machine:\n  " + "\n  ".join(candidates))
+
+SHELL = _first_existing(
+    r"C:\Users\pc\OneDrive - Institute of Business Administration\Desktop\Stockpile\deliverables\2-mechanism-design\final\Stockpile_Mechanism_Design_Branded_v5.html",
+    r"C:\Users\BlockApex\Desktop\Stockpile\deliverables\2-mechanism-design\final\Stockpile_Mechanism_Design_Branded_v5.html")
+BRAND = _first_existing(
+    r"C:\Users\pc\.claude\plugins\marketplaces\tokenomics-net\tokenomics-plugin\standards\branded-docs-main",
+    r"C:\Users\BlockApex\.claude\plugins\marketplaces\tokenomics-net\tokenomics-plugin\standards\branded-docs-main")
 
 TABLE_CHUNK = 8   # atomic for the splitter; dense rows wrap 3-4 lines, so keep chunks well under a page
 

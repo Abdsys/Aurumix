@@ -573,7 +573,7 @@ Run via recency-swept web research (2026-08-11); secondary-source confidence unl
 
 **Sub-decisions, resolved 2026-08-13 (Abdur) except where marked:**
 1. [x] ✅ **Lender liquidation on a margin call counts as a sale** (§1.5). The alternative makes borrowing a route around Retention.
-2. [ ] ⚠ **STILL OPEN, deliberately: a compliance-forced exit (the returning NRI, decision 31) drives Retention to zero for something the customer did not choose.** Decision 36's regulatory pause covers refused *payments*, not forced *sales*. Proposed: **extend the pause to cover forced redemptions** — the grams leave, the score does not move. **Left open at Abdur's instruction 2026-08-13**, not rejected. ⚠ It interacts with item 1: a forced sale and a margin call are both sales the customer did not pick the day of, and the design currently answers them differently. Close them together.
+2. [x] ✅ **RESOLVED 2026-09-22 (Abdur, decision 52): the pause extends to forced redemptions — the grams leave, the score does not move.** The interaction with item 1 is answered deliberately, not accidentally: the dividing line is choice. A margin call follows a loan the customer chose to take; a compliance-forced exit follows nothing they chose. So the two sales the customer "did not pick the day of" score differently because only one of them was ever the customer's risk to carry. Written into the MD document §8.3 and §5.5.
 3. [x] ✅ **A frozen month is skipped entirely, as though it never existed, and the window extends to reach 12 countable months** (§1.9). Applies on both clocks and on both sides of the gate.
 4. [x] ✅ **Every account passes its own gate**, sub-accounts included (§1.9).
 5. [x] ✅ **A pause freezes the qualifying run rather than breaking it** (§1.9).
