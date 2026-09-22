@@ -18,9 +18,7 @@ Three conventions are used throughout.
 
 - **Decisions are shown with their reasoning.** Where the design departs from the client's original specification (the 100 G Business Model), the departure is stated openly and the reason given.
 - **Assumptions are labelled.** Where a mechanism rests on a reading of law that counsel has not yet confirmed, the assumption is stated as a proposition that is either true or false, with a confidence level where research supports one. Section 14 is the consolidated register. The companion document `Aurumix: Design Summary and Open Legal Questions` (19 August 2026) puts the seven highest-value questions to counsel directly; this document carries the design behind them.
-- **Every legal statement in this document is a reading, not a ruling.** We are consultants, not lawyers. Where we quote a regulator's rulebook or a statute, the quote itself is accurate: we fetched the published text and copied it word for word, and the source texts are held in the project record. But what a rule means, and whether this design satisfies it, is a legal judgment that only qualified counsel can give, and on several points only the regulator, in writing, can settle. Nothing here is legal advice, and no legal position in this document should be treated as certain until counsel has confirmed it. We say this from experience: two of our own earlier readings failed when the statute was re-read word for word, and the design was rebuilt because of it (section 3.5.3 tells that story). The document is written so counsel's answers can change it cheaply.
-
-**If you are the lawyer reading this: section 14 is yours.** It collects every open legal question, states the assumption each part of the design rests on as a plain true-or-false proposition, and says what changes if the assumption is wrong. The rest of the document is the design behind those questions.
+- **Every legal statement in this document is a reading, not a ruling.** We are consultants, not lawyers. Where we quote a regulator's rulebook or a statute, the quote itself is accurate: we fetched the published text and copied it word for word, and the source texts are held in the project record. But what a rule means, and whether this design satisfies it, is a legal judgment that only qualified counsel can give, and on several points only the regulator, in writing, can settle. Nothing here is legal advice, and no legal position in this document should be treated as certain until counsel has confirmed it. The document is written so counsel's answers can change it cheaply.
 
 ## Table of contents
 
@@ -47,9 +45,9 @@ References and document control
 
 ## 1. Introduction and market context
 
-### 1.1 The product in one sentence
+### 1.1 The product
 
-Aurumix is a gold-backed savings product, issued from Dubai under a VARA licence, in which 100% of every dollar received buys allocated physical gold, one token equals one gram, a monthly savings plan starts at USD 20, and disciplined saving, never the amount saved, earns a rising ladder of benefits: cheaper entry, a credit facility against the gold, a payment card, rewards paid in grams, and family succession services.
+Aurumix is a gold-backed savings product, issued from Dubai under a VARA licence. 100% of every dollar received buys allocated physical gold, and one token equals one gram. A monthly savings plan starts at USD 20. Disciplined saving, never the amount saved, earns a rising ladder of benefits: cheaper entry, a credit facility against the gold, a payment card, rewards paid in grams, and family succession services.
 
 ### 1.2 The problem it solves
 
@@ -87,7 +85,7 @@ Two consequences are worth stating early. First, the primary customer is the UAE
 
 The market research phase examined nineteen tokenised-gold protocols plus the leading digital-gold and vaulting services. Three findings shape this design.
 
-**Not one of nineteen protocols has a savings plan, a recurring purchase, or a retail referral programme.** The category is built for traders and treasuries. Distribution to savers is unoccupied ground, and the one documented gold-token failure post-mortem (PMGT) names zero distribution as the cause of death.
+**The category is built for traders and treasuries.** Distribution to savers is unoccupied ground, and the one documented gold-token failure post-mortem (PMGT) names zero distribution as the cause of death.
 
 **The category offers no behaviour-based benefits at all.** PAXG and XAUT carry no holder-level state by design. The only tiering anywhere in the set is by order size, which is capital: precisely the shape this design refuses.
 
@@ -106,8 +104,6 @@ The design in one view:
 - **Credit layer.** One gold-secured revolving facility with a cash channel and a card channel, delivered through licensed partners (section 10).
 - **Family layer.** A Family Portfolio and a standing Beneficiary Transfer Instruction, operating on custodied gold (section 11).
 - **Distribution layer.** A single-level member referral programme and a contracted three-tier agent network (section 12).
-
-Every mechanism in this stack was designed against two fixed constraints: the entry ticket is USD 20, and the benefit rate may never scale with capital. Where those constraints forced a departure from the client's original specification, each departure is stated where it occurs, with its reason.
 
 ---
 
@@ -1318,7 +1314,7 @@ The full Phase 2 record (eleven decision drafts, the 51-entry decision log, sixt
 
 | Field | Value |
 |---|---|
-| Version | 1.1. Closes four open design questions: forced sales and the score, redeemed gold's routing, card and credit through a lapse, the USD 20 floor's rail condition |
+| Version | 1.2. v1.1 closed four open design questions (forced sales and the score, redeemed gold's routing, card and credit through a lapse, the USD 20 floor's rail condition); v1.2 is a front-matter and readability pass from review |
 | Date | 22 September 2026 |
 | Prepared by | Tokenomics.net |
 | Status | Consolidated design record, for the project team and counsel |

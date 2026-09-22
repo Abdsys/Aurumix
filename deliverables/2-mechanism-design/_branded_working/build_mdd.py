@@ -414,19 +414,10 @@ def main():
         blocks = md_blocks(s["lines"])
         blocks = insert_figures(blocks, num, diagrams)
 
-        if num == 1:
-            # pull-quote page
-            quote = ("Not one of nineteen protocols has a savings plan, a recurring "
-                     "purchase, or a retail referral programme.")
-            # split at heading 1.4
-            k = next(i for i, b in enumerate(blocks) if b[0] == "h3" and b[2].startswith("1.4"))
-            before, after = blocks[:k], blocks[k:]
-            inner = ('<div data-text-role="body-before">\n%s\n</div>\n'
-                     '<div class="pull-quote"><div class="pull-quote-text" data-text-role="pull-quote">%s</div></div>\n'
-                     '<div data-text-role="body-after">\n%s\n</div>'
-                     % (blocks_html(before), esc(quote), blocks_html(after)))
-            pages.append(content_page("content-pull-quote", s["id"], s["title"], inner))
-        elif num == 8:
+        # section 1's pull-quote page was removed on review feedback (2026-09-22):
+        # the quote about the nineteen protocols landed against the jurisdiction
+        # table and read as a non sequitur. Section 1 renders as a normal page.
+        if num == 8:
             # split: 8.1-8.2 single | 8.3 formula | 8.4+ single
             k3 = next(i for i, b in enumerate(blocks) if b[0] == "h3" and b[2].startswith("8.3"))
             k4 = next(i for i, b in enumerate(blocks) if b[0] == "h3" and b[2].startswith("8.4"))
