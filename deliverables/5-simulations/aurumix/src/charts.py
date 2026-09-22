@@ -173,8 +173,10 @@ def main():
     if A and "q6_tornado" in A:
         t = A["q6_tornado"]
         # Only assumptions that move year-seven profit by >= USD 0.5m are
-        # charted (client, 2026-09-08). All 75 drawn assumptions are swept by
-        # run_analysis.py; everything omitted falls below the line.
+        # charted (client, 2026-09-08). All 75 drawn assumptions are measured
+        # (run_tornado_mc.py: a paired Monte Carlo per end; run_analysis.py
+        # falls back to the single-seed sweep only if that output is absent);
+        # everything omitted falls below the line.
         items = sorted((d for d in t if abs(d["np7_swing"]) >= 500_000),
                        key=lambda d: -abs(d["np7_swing"]))[::-1]
         fig, ax = plt.subplots(figsize=(10, 6))
@@ -374,7 +376,9 @@ def main():
                         arrowprops=dict(arrowstyle="->", color=DARK, lw=1.2))
         ax.set_xlabel("Partners signed by year seven")
         ax.set_ylabel("Cost per acquired customer, all regions scaled together")
-        ax.set_title("What has to be true. Cumulative profit at year seven, USD millions",
+        _n = (CD.get("_meta") or {}).get("n_paths_per_cell")
+        ax.set_title("What has to be true. Median cumulative profit at year seven, USD millions"
+                     + (f" ({_n} runs per square)" if _n else ""),
                      fontsize=12, pad=12)
         ax.grid(False)
         save(fig, "conditions_map.png")

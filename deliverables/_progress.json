@@ -45,8 +45,8 @@
         "render_mdd.js",
         "shots_mdd.js"
       ],
-      "updated_at": "2026-09-08",
-      "notes": "2026-09-08: consolidated Mechanism Design Document written for counsel and client (final/), with 42-diagram process map set and branded 112-page PDF. Written on the post-decision-50 positions with the filing-grade citation corrections applied."
+      "updated_at": "2026-09-22",
+      "notes": "2026-09-08: consolidated Mechanism Design Document written for counsel and client (final/), with 42-diagram process map set and branded PDF, on the post-decision-50 positions with the filing-grade citation corrections applied. 2026-09-22: decisions 52-56 closed the four open design questions (forced sales vs the score, redeemed gold to the float, card and credit through a lapse, the USD 20 floor's rail condition) plus buyback/redemption terminology; document at v1.2 after a review pass on the front matter."
     },
     "4a": {
       "status": "in_progress",
@@ -57,6 +57,20 @@
         "verify_model.py"
       ],
       "updated_at": "2026-08-26"
+    },
+    "5": {
+      "status": "complete",
+      "files": [
+        "PHASE5_STATE.md",
+        "SIMULATION_SETUP.md",
+        "SIMULATION_RESULTS.md",
+        "SIMULATION_RESULTS.template.md",
+        "final/SIMULATION_SETUP.pdf",
+        "final/SIMULATION_RESULTS.pdf",
+        "aurumix/"
+      ],
+      "updated_at": "2026-09-22",
+      "notes": "Closed 2026-09-22. The three client-agreed finalization items landed: conditions map rebuilt as per-cell Monte Carlos (plan cell -0.02m, frontier at base CAC now 14 partners), all eight Part 4 lever attributions re-measured on one recorded run (partners lever +990k -> +415k with arrival risk priced in), tornado upgraded to paired Monte Carlos per end. All verification gates pass; both branded documents rebuilt in final/. Handed onward: decision 54's lapsed-cardholder check against the twin and workbook."
     }
   }
 }

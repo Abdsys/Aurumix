@@ -25,22 +25,36 @@ Two axes survive the test of being both decision-relevant and genuinely unknown:
 Everything else is either a decision (the ladder, the marketing split, the entry
 fee, the rail) or already anchored (persistency). Decisions are priced as levers
 elsewhere; they do not belong on an axis.
+
+Each cell is a Monte Carlo, not a single run (client, 2026-09-08). A single
+deterministic run carries about USD 0.7m of noise in cumulative profit, so the
+plan cell kept disagreeing with the base Monte Carlo's median by more than the
+number being quoted. Every cell now pins its two axes - CAC at the row's
+multiplier, partner arrivals FIXED to the column's schedule the way
+run_partner_sweep.py fixes them - and draws everything else across N_PATHS
+shared seeds. The map shows the median; the frontier is read off medians.
+
+    python scripts/run_conditions.py [n_paths]
 """
 
 import json
 import os
 import sys
+from multiprocessing import Pool
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import numpy as np
 
 from src.detmodel import load_params
+from src.mcmodel import run_path
 from src.twin import Twin
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "outputs")
 SCALE = 10.0
 SEED = 20270101
+N_PATHS = int(sys.argv[1]) if len(sys.argv) > 1 else 500
+WORKERS = 10
 
 p0 = load_params()
 
@@ -60,20 +74,33 @@ ADDRESSABLE_R = {"uae": p0["ceiling_uae"], "gulf": p0["ceiling_gulf"],
                  "india": p0["ceiling_india"]}
 
 
-def at(cac_mult, partners):
-    """Run the twin with a CAC multiplier and a flat partner plan."""
+def cell_overrides(cac_mult, partners):
+    """Pin the two axes: CAC at the multiplier, partners on a fixed schedule."""
     ov = {}
     for r in ("uae", "gulf", "india"):
         ov[f"cac_{r}"] = p0[f"cac_{r}"] * cac_mult
         ov[f"cac_{r}_y7"] = p0[f"cac_{r}_y7"] * cac_mult
-    # partners arrive on the plan's shape, scaled to the target count
+    # the plan's ramp shape, scaled to reach the column's count. Monotone.
     shape = np.array(p0["b2b_partners"], dtype=float)
-    ov["b2b_partners"] = (shape / shape[-1] * partners).round().tolist() if shape[-1] else [0] * 7
-    o = Twin(scale=SCALE, seed=SEED, overrides=ov).run()
-    return dict(cum=float(o["cum_profit"][-1]),
-                peak=float(o["peak_funding"][-1]),
-                np7=float(o["net_profit"][o["year"] == 7].sum()),
-                paying=float(o["paying"][-1]))
+    if shape[-1]:
+        s = np.round(shape * partners / shape[-1]).astype(int)
+        ov["b2b_partners"] = np.maximum.accumulate(s).tolist()
+    else:
+        ov["b2b_partners"] = [0] * 7
+    return ov
+
+
+def run_cell(task):
+    """One map cell: N_PATHS paths on shared seeds, axes pinned, rest drawn."""
+    i, j, cac_mult, partners, n = task
+    ov = cell_overrides(cac_mult, partners)
+    cum, peak = [], []
+    for k in range(n):
+        o, _ = run_path(SEED + k, extra_overrides=ov,
+                        stochastic_partners_on=False, scale=SCALE)
+        cum.append(float(o["cum_profit"][-1]))
+        peak.append(float(o["peak_funding"][-1]))
+    return i, j, float(np.median(cum)), float(np.median(peak))
 
 
 def main():
@@ -84,18 +111,22 @@ def main():
           f"Aggressive-to-Conservative band (our estimate, unmeasured)")
     print(f"  UAE {CAC_BASE['uae']*CAC_LO:.0f} to {CAC_BASE['uae']*CAC_HI:.0f}, "
           f"India {CAC_BASE['india']*CAC_LO:.0f} to {CAC_BASE['india']*CAC_HI:.0f} at year 7")
-    print(f"Partner axis: {PARTNERS[0]} to {PARTNERS[-1]} by year 7 (the plan says 11)\n")
+    print(f"Partner axis: {PARTNERS[0]} to {PARTNERS[-1]} by year 7 (the plan says 11)")
+    print(f"Each cell: median of {N_PATHS} paths on shared seeds, axes pinned\n")
 
+    tasks = [(i, j, float(cm), k, N_PATHS)
+             for i, cm in enumerate(CAC_MULT) for j, k in enumerate(PARTNERS)]
     grid = np.zeros((len(CAC_MULT), len(PARTNERS)))
     peak = np.zeros_like(grid)
-    for i, cm in enumerate(CAC_MULT):
-        for j, k in enumerate(PARTNERS):
-            r = at(float(cm), k)
-            grid[i, j] = r["cum"]
-            peak[i, j] = r["peak"]
-        print(f"  CAC {cm:.2f}x done")
+    with Pool(WORKERS) as pool:
+        for done, (i, j, med_cum, med_peak) in enumerate(
+                pool.imap_unordered(run_cell, tasks), 1):
+            grid[i, j] = med_cum
+            peak[i, j] = med_peak
+            print(f"  cell {done}/{len(tasks)} done  "
+                  f"(CAC {CAC_MULT[i]:.2f}x, {PARTNERS[j]}p: {med_cum/1e6:+.2f}m)")
 
-    print(f"\nCUMULATIVE PROFIT AT YEAR 7, USD millions")
+    print(f"\nCUMULATIVE PROFIT AT YEAR 7, MEDIAN OF {N_PATHS} PATHS, USD millions")
     print(f"{'CAC':>6} " + "".join(f"{k:>9}p" for k in PARTNERS))
     for i, cm in enumerate(CAC_MULT):
         row = "".join(f"{grid[i, j]/1e6:>10.2f}" for j in range(len(PARTNERS)))
@@ -144,7 +175,11 @@ def main():
          "frontier_partners_needed": front,
          "cac_band": {"lo_mult": float(CAC_LO), "hi_mult": float(CAC_HI),
                       "base": CAC_BASE},
-         "plan_position": {"cac_mult": 1.0, "partners": int(p0["b2b_partners"][-1])}}
+         "plan_position": {"cac_mult": 1.0, "partners": int(p0["b2b_partners"][-1])},
+         "_meta": {"n_paths_per_cell": N_PATHS, "seed": SEED,
+                   "method": "per-cell Monte Carlo on shared seeds; axes pinned "
+                             "(CAC at the row multiplier, partner arrivals fixed "
+                             "to the column schedule); cell value is the median"}}
     with open(os.path.join(OUT, "conditions.json"), "w") as f:
         json.dump(R, f, indent=1)
     print(f"\nwrote outputs/conditions.json")

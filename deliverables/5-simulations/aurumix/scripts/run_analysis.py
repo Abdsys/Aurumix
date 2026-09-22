@@ -274,31 +274,48 @@ for regn, d in A["q3_spot_breakeven"].items():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # Q6. TORNADO - one-at-a-time p10/p90 through the ported engine
+#
+# When outputs/tornado_mc.json exists (run_tornado_mc.py, the finalization
+# upgrade: a paired Monte Carlo per end), its bars are used instead of the
+# single-seed sweep below, so rerunning this script never regresses the
+# tornado to single runs.
 # ═════════════════════════════════════════════════════════════════════════════
 
-triples = _match_triples(p0)
-tornado = []
-for key, (base, agg, con) in triples.items():
-    lo, hi = (agg, con) if agg < con else (con, agg)
-    res = {}
-    for tag, val in (("lo", lo), ("hi", hi)):
-        overrides = {key: val}
-        if key == "persistency":
-            overrides["monthly_churn"] = 1 - val ** (1 / 12)
-        if key in ("partner_adopt", "partner_aum_user"):
-            pu = p0["partner_users"]
-            overrides["partner_aum"] = (pu * (val if key == "partner_adopt"
-                                              else p0["partner_adopt"])
-                                        * (p0["partner_aum_user"] if key == "partner_adopt"
-                                           else val))
-        e = Twin(scale=10.0, seed=20270101, overrides=overrides); e.run()
-        res[tag] = (annual(e.out, "net_profit", 7), float(e.out["peak_funding"][-1]))
-    tornado.append({
-        "param": key,
-        "np7_swing": abs(res["hi"][0] - res["lo"][0]),
-        "np7_lo": res["lo"][0], "np7_hi": res["hi"][0],
-        "funding_swing": abs(res["hi"][1] - res["lo"][1]),
-    })
+_tmc_path = os.path.join(OUT, "tornado_mc.json")
+if os.path.exists(_tmc_path):
+    with open(_tmc_path) as f:
+        _tmc = json.load(f)
+    tornado = _tmc["tornado"]
+    A["q6_tornado_method"] = (_tmc["_meta"]["method"]
+                              + f", {_tmc['_meta']['n_paths_per_end']} paths per end")
+    print("\nQ6. TORNADO taken from tornado_mc.json (paired Monte Carlo per end)")
+else:
+    tornado = None
+
+if tornado is None:
+    triples = _match_triples(p0)
+    tornado = []
+    for key, (base, agg, con) in triples.items():
+        lo, hi = (agg, con) if agg < con else (con, agg)
+        res = {}
+        for tag, val in (("lo", lo), ("hi", hi)):
+            overrides = {key: val}
+            if key == "persistency":
+                overrides["monthly_churn"] = 1 - val ** (1 / 12)
+            if key in ("partner_adopt", "partner_aum_user"):
+                pu = p0["partner_users"]
+                overrides["partner_aum"] = (pu * (val if key == "partner_adopt"
+                                                  else p0["partner_adopt"])
+                                            * (p0["partner_aum_user"] if key == "partner_adopt"
+                                               else val))
+            e = Twin(scale=10.0, seed=20270101, overrides=overrides); e.run()
+            res[tag] = (annual(e.out, "net_profit", 7), float(e.out["peak_funding"][-1]))
+        tornado.append({
+            "param": key,
+            "np7_swing": abs(res["hi"][0] - res["lo"][0]),
+            "np7_lo": res["lo"][0], "np7_hi": res["hi"][0],
+            "funding_swing": abs(res["hi"][1] - res["lo"][1]),
+        })
 tornado.sort(key=lambda d: -d["np7_swing"])
 A["q6_tornado"] = tornado[:15]
 print("\nQ6. TORNADO - Y7 net profit swing, scenario-range width per parameter:")

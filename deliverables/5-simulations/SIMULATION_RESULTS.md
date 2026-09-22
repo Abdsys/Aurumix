@@ -200,34 +200,34 @@ So we ran the simulation across a grid of both.
 
 ![The conditions map](aurumix/outputs/charts/conditions_map.png)
 
-Each square is a full seven-year run. Green means the business earns back everything it lost by year seven. Red means it does not.
+Each square is the median of 500 full seven-year runs, with that square's cost level and partner count held fixed and everything else drawn as usual. Green means the typical run earns back everything it lost by year seven. Red means it does not.
 
-**The plan sits right on the edge.** At the cost per customer we assume today, it needs 11 partners. It plans for exactly 11. That is roughly break-even on cumulative profit at month 84, within the noise of a single map cell. The dependable cumulative figure is the one in Part 1: the typical run is still -USD 0.45m behind where it started.
+**The plan sits exactly on the line.** Its own square, today's cost with 11 partners, comes out at -USD 0.02m over the seven years: break-even, measured. The first clearly profitable column at today's cost is 14 partners. The square is kinder than the Part 1 median because it pins partner arrivals to the plan. The full simulation lets partners arrive late or not at all, and that risk is worth about half a million dollars. So the dependable cumulative figure is the one in Part 1: the typical run is still -USD 0.45m behind where it started.
 
 There is no room in that. Watch what happens when costs move:
 
 | Cost level, as on the map | A UAE customer then costs | You need |
 |:--|:--|:--|
 | 0.66x, the cheap end | USD 36 | 8 partners |
-| 0.99x, as assumed today | USD 54 | 11 partners |
+| 0.99x, as assumed today | USD 54 | 14 partners |
 | 1.16x, only 17% more | USD 64 | 14 partners |
 | 1.66x, the expensive end | USD 91 | no number of partners we tested makes it work |
 
-**Costs rising 17% means finding three more partners.** That is how tight this is.
+**At today's cost the plan needs three more partners than it plans for, and only if costs come in 17% cheaper does the planned 11 clear.** That is how tight this is.
 
 ### What the answer depends on most
 
 ![Tornado](aurumix/outputs/charts/tornado.png)
 
-Every one of the 75 drawn assumptions was swept the same way: its conservative end against its aggressive end, everything else held at base, on identical runs. The chart shows only the assumptions that swing year-seven profit by USD 0.5m or more. Everything omitted falls below that line.
+Every one of the 75 drawn assumptions was tested the same way. We ran 2,000 paired simulations per assumption: one side with it pinned at its conservative end, one side at its aggressive end. Everything else is drawn as usual, and both sides share the same random draws. The bar is the median gap between the two sides. The chart shows only the assumptions that swing year-seven profit by USD 0.5m or more. Everything omitted falls below that line.
 
 | | Assumption | How much it swings year-seven profit |
 |:--|:--|--:|
-| 1 | partner adopt | USD 1.57m |
-| 2 | partner aum user | USD 1.07m |
-| 3 | facility takeup | USD 0.82m |
-| 4 | ceiling mult | USD 0.79m |
-| 5 | b2b fee | USD 0.72m |
+| 1 | partner adopt | USD 1.50m |
+| 2 | partner aum user | USD 1.03m |
+| 3 | facility takeup | USD 0.86m |
+| 4 | ceiling mult | USD 0.80m |
+| 5 | b2b fee | USD 0.71m |
 
 Partner assumptions take the top places. **Not one of them has been measured.**
 
@@ -286,7 +286,7 @@ Loans stay safe too. The chance of ever having to ask a borrower for more collat
 
 ## Part 4: What to do about it
 
-Every change below was measured the same way. We ran the full simulation twice on identical random draws: once with the plan as written, once with the change applied. The difference between the two runs is the profit the change creates over the seven years. Nothing in this part is ranked by judgement.
+Every change below was measured the same way. We ran 2,000 paired simulations on identical random draws: one side with the plan as written, one side with the change applied. The figure quoted is the median difference between the pairs, which is the profit the change typically creates over the seven years. Nothing in this part is ranked by judgement.
 
 The changes fall into three groups, by how much control Aurumix has over each.
 
@@ -296,8 +296,8 @@ Two changes need nobody's permission and no new spending.
 
 | Change | What it means | Profit created over seven years |
 |:--|:--|--:|
-| Move marketing to India | spend 40% of the budget in the UAE, 10% in the Gulf and 50% in India, instead of today's 74 / 18 / 8 | +USD 833k |
-| Trim the loyalty ladder | cap the top loyalty discount at 1.5 percentage points and load the benefits toward the highest tiers | +USD 315k |
+| Move marketing to India | spend 40% of the budget in the UAE, 10% in the Gulf and 50% in India, instead of today's 74 / 18 / 8 | +USD 688k |
+| Trim the loyalty ladder | cap the top loyalty discount at 1.5 percentage points and load the benefits toward the highest tiers | +USD 322k |
 
 The marketing case is the regional arithmetic from Part 2. Winning a customer costs about USD 13 in India and USD 74 in the UAE, and only the Indian customer earns more than they cost. The ladder is the discount schedule that rewards long-standing customers. Today it gives away more than the loyalty it buys back, so a flatter, top-loaded version keeps most of the reward and returns the rest as profit.
 
@@ -307,10 +307,10 @@ Two changes require sustained work rather than a one-time decision. The model pr
 
 | Change | What it means | Profit created over seven years |
 |:--|:--|--:|
-| Sign three more partners | 14 partners by year seven instead of the planned 11 | +USD 990k |
-| Halve partner onboarding | a signed partner is fully live in 9 months instead of 18 | +USD 542k |
+| Sign three more partners | plan for 14 partners by year seven instead of 11, with arrivals as uncertain as ever | +USD 415k |
+| Halve partner onboarding | a signed partner is fully live in 9 months instead of 18 | +USD 517k |
 
-Partners are the strongest lever in the whole model: each one adds roughly USD 100k of year-seven profit. Faster onboarding earns the same fees sooner on the same contracts. Finding, signing and integrating partners costs money the model does not include, so read these two numbers as what the effort is worth, and budget the effort against them.
+A partner that actually signs and ramps adds roughly USD 100k of year-seven profit (the partner chart in Part 1). Planning for three more is worth less than three certain arrivals, because partners arrive unevenly and sometimes not at all, and the +USD 415k prices that risk in. Faster onboarding earns the same fees sooner on the same contracts, and it is currently worth more than the extra signings themselves. Finding, signing and integrating partners costs money the model does not include, so read these two numbers as what the effort is worth, and budget the effort against them.
 
 ### Programs worth funding up to a ceiling
 
@@ -380,7 +380,7 @@ A target is only useful if you know when you have missed it.
 | Cost to win a UAE customer | USD 74.19 | USD 58.58 | below it the UAE pays for itself; above it every UAE customer loses money |
 | Cost to win a Gulf customer | USD 56.99 | no line | the Gulf loses money at every advertising price we tested |
 | Cost to win an Indian customer | USD 13.11 | no line up to USD 51.60 | an Indian customer stays profitable at every cost we tested, up to four times today's. The cost is commissions to sales agents, and the lower it stays the more each customer earns |
-| Partners signed by year 7 | plan says 11 | 11 | below it the plan does not work at today's costs |
+| Partners signed by year 7 | plan says 11 | 14 | below it the plan does not work at today's costs |
 
 We also tested whether missed payments should be a warning sign. They should not. Payment discipline moves what is left per customer by only USD 1.02 across its whole realistic range, because costs follow customers, not payments. Worth watching as a health check. It will not change a decision.
 

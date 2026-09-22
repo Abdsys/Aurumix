@@ -4,7 +4,7 @@
 >
 > ⚠ **Read §0 and §9 first, then grep for what your task needs.** Loading this file whole cost ~35k tokens on 2026-08-19, which is most of a context window spent before any work starts. It was trimmed that day from 408 lines. **Keep it that way: add a pointer, not a paragraph.**
 >
-> **Last updated:** 2026-09-04. **Phase 5 is where the next session starts. Read `deliverables/5-simulations/PHASE5_STATE.md` first** and come back here only for Phase 2 or 4 context. Two things happened that day. The segment layer was rebuilt from primary sources: six occupational segments became four regional ones, the population was re-cut **from Indian to South Asian**, and **Bahrain left the model** on the CBB rulebook. Then a second pass **measured the fabrication premium instead of guessing it**, which moved §0.3 and three other things — D26 to D30, and `supporting/_working_dealer-premium-and-comparables-research.md`.
+> **Last updated:** 2026-09-22. **Phase 5 is CLOSED** — `deliverables/5-simulations/PHASE5_STATE.md` §0 and §5b carry what landed (per-cell conditions map, one recorded run behind every Part 4 number, paired-MC tornado; all gates pass; both branded PDFs rebuilt in `final/`). **The MD document is at v1.2**: decisions 52 to 56 closed the four open design questions plus the buyback/redemption terminology, and a review pass trimmed the front matter. 🔴 **New debt from decision 54:** nobody has checked what the twin and the Phase 4 workbook assume about **lapsed cardholders**; check before quoting card or credit stream figures. **The next session starts on §9 item 1, the decision-50 propagation.**
 
 ---
 
@@ -16,9 +16,9 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 |---|---|
 | 0 Discovery | ✅ Complete, client-reviewed |
 | 1 Market Research | ✅ Complete, 52-page summary delivered |
-| 2 Mechanism Design | 🔄 Design complete across eleven drafts and sixteen map sets. **What remains is propagation debt, not design** (§9 item 1) |
-| 4 Revenue Modeling | ✅ Complete. `reference_model/` is the oracle. **Two defects found by Phase 5 are logged, not fixed** (§9) |
-| 5 Simulations | 🔄 **Engine built and verified. Documents current. Recommendations being rebuilt.** See `deliverables/5-simulations/PHASE5_STATE.md` |
+| 2 Mechanism Design | 🔄 Design complete; consolidated MD document at v1.2, decisions 52-56 closed the last open design questions. **What remains is propagation debt, not design** (§9 item 1) |
+| 4 Revenue Modeling | ✅ Complete. `reference_model/` is the oracle. **Two defects found by Phase 5 are logged, not fixed** (§9). 🆕 Plus decision 54's lapsed-cardholder check |
+| 5 Simulations | ✅ **CLOSED 2026-09-22.** All three finalization items landed, gates pass, PDFs in `final/`. See `deliverables/5-simulations/PHASE5_STATE.md` |
 
 **The product in one line:** 100% of every dollar buys allocated physical gold, 1 AURX = 1 gram, monthly SIP from USD 20, behaviour-scored benefits (ICS), a credit facility and a gold-backed card.
 
@@ -68,7 +68,8 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | `Aurumix_Market_Research_Summary.md` / `.html` | ✅ **DELIVERED.** 52 pages. Generated: edit `_summary_working/`, never the `.md` |
 | **2-mechanism-design/** | |
 | `_decisions-log.md` | 🔴 **THE DECISION LOG. All 51 in full.** Append here, index in §6, same commit |
-| 🆕 `final/Aurumix_Mechanism_Design_Document.md` | **THE CONSOLIDATED MD DOCUMENT (2026-09-08), written for the client's counsel.** 15 sections + 3 appendices; post-decision-50 positions; filing-grade citations corrected. `final/` also holds the 42-diagram `Aurumix_Process_Maps.md`, the branded HTML and the 112-page PDF. Rebuild: `_branded_working/build_mdd.py` then `render_mdd.js` (layout audit must return zero overflow). The drafts below remain the audit trail |
+| 🆕 `final/Aurumix_Mechanism_Design_Document.md` | **THE CONSOLIDATED MD DOCUMENT, v1.2 (2026-09-22), written for the client's counsel.** 15 sections + 3 appendices; post-decision-50 positions; filing-grade citations corrected; decisions 52-56 written in; front matter trimmed on review.
+| The per-topic map sets | **Superseded audit trail; the live diagram set is `final/Aurumix_Process_Maps.md`.** `Aurumix_Process_Maps_Minting.md`, `Aurumix_Process_Maps_Redemption.md`, `Aurumix_Process_Maps_Redemption_Fee.md`, `Aurumix_Process_Maps_Payments.md`, `Aurumix_Process_Maps_Custody_Fee.md`, `Aurumix_Process_Maps_Composability.md`, `Aurumix_Process_Maps_Credit_And_Card.md`, `Aurumix_Process_Maps_Referrals.md`, `Aurumix_Process_Maps_Revenue_Streams.md`, `Aurumix_Process_Maps_Family_And_Succession.md`, `Aurumix_Process_Maps_ICS_Scoring.md`, `Aurumix_Process_Maps_SIP_Structure.md`, `Aurumix_Process_Maps_SIP_Spot_ICS.md`, `_reserve_sip-spot-ics-diagrams.md` `final/` also holds the 42-diagram `Aurumix_Process_Maps.md`, the branded HTML and the 112-page PDF. Rebuild: `_branded_working/build_mdd.py` then `render_mdd.js` (layout audit must return zero overflow). The drafts below remain the audit trail |
 | `Aurumix_Legal_Brief_and_Open_Questions.md` | 🔴 **361 lines, "for review". Client-facing, for onward instruction of counsel.** Part 1 describes the build for a lawyer with no prior exposure; Part 2 is the open legal questions. ⚠ **Check against decision 50 and the enforcement-sale-as-redemption question before it is sent** |
 | `_draft_sip-rulebook.md` | **THE CANONICAL SIP DOC.** Where it conflicts with the two older drafts, it wins. §12 is its corrections list |
 | `_draft_ics-scoring.md` | **B4 DONE.** `ICS = min(Record, Standing) × Retention`, five tiers. §1.2 is the load-bearing argument. §12 is a long corrections list |
@@ -285,15 +286,16 @@ Markers: ✅ settled · 🔄 revised or superseded · ⚠ carries a caveat · �
 
 ## 9. Current status and next actions
 
-**Phases 0, 1 and 4 complete. Phase 2 design complete, propagation outstanding. Phase 5 is live and is where work resumes.**
+**Phases 0, 1, 4 and 5 complete. Phase 2 design complete, propagation outstanding and now the critical path. Work resumes at item 1 below.**
 
-### PHASE 5 — read `deliverables/5-simulations/PHASE5_STATE.md`
+### PHASE 5 — CLOSED. Read `deliverables/5-simulations/PHASE5_STATE.md`
 
-That file carries the state, the file map, the regeneration order, the verification gates and the open items. Three things belong here because they change how earlier phases read:
+That file carries the state, the file map, the regeneration order, the verification gates and the open items. Four things belong here because they change how earlier phases read:
 
 1. **The Phase 4 workbook has two defects, logged not fixed.** Card rewards multiply a percentage-of-SPEND rate by card REVENUE, understating that cost roughly twentyfold. The FX discount is applied to card fees containing no FX margin. Both are recorded in `scripts/reconcile.py`.
 2. **D21's 29-column grid is gone from the simulation.** Peak funding is the deepest point of a cash line, and on an annual grid a mid-year trough is invisible. The twin runs 84 monthly steps. D21 still stands for the Phase 4 workbook.
 3. **The Aggressive/Conservative bands are ours, not the client's.** Phase 5 documents say so explicitly wherever a band is load-bearing. Do not describe them as client-supplied.
+4. 🆕 **Decision 54 (2026-09-22, a lapsed customer keeps the card and the credit facility) has never been checked against the models.** Nobody knows what the twin or the Phase 4 workbook assumes about lapsed cardholders, and the stream is USD 3.39m/yr at Y10. Check before quoting card or credit figures.
 
 > ⚠ **The honest read on the engagement:** we were hired to design the economics, and the economics turned out to be downstream of structural questions the client has not asked. **The deliverable will look different from the proposal, and the client should hear that from us before he notices it.**
 

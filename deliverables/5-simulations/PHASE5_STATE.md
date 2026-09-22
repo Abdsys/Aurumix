@@ -2,13 +2,13 @@
 
 > **Read this before touching anything in `deliverables/5-simulations/`.** It is the Phase 5 equivalent of `handoff.md` §9. Detail lives in the code comments, which are written to be read.
 >
-> **Last updated:** 2026-09-04.
+> **Last updated:** 2026-09-22.
 
 ---
 
 ## 0. Where things stand
 
-The simulation is **built, verified and running**. Both client documents exist and are current. The work in flight is a restructure of the results document and a rebuild of its recommendations.
+**Phase 5 is CLOSED as of 2026-09-22.** The three client-agreed finalization items (§5b) all landed that day: per-cell Monte Carlos on the conditions map, the four decision-and-work levers re-measured on a recorded run, and the tornado upgraded to paired Monte Carlos per end. All verification gates pass and both branded documents are rebuilt in `final/`.
 
 | Thing | State |
 |---|---|
@@ -16,10 +16,13 @@ The simulation is **built, verified and running**. Both client documents exist a
 | Base Monte Carlo, 2,000 paths, full resolution | ✅ Done |
 | Stress Monte Carlo, 2,000 paths per scenario | ✅ Rerun complete 2026-09-05 with the redefined s1 (crash + panic): cum -608k, right beside s2's -611k. The price fall adds ~USD 3k given the panic |
 | Recommended configuration (`mc_recommended.json`) | ✅ Full resolution, 2,000 paths, 2026-09-05: raise p90 3.44m, break-even 74.5%, NP7 p50 1.10m, cum p50 +1.88m. Config: alloc 40/10/50, ladder 1.5x convex, partners plan [0,1,3,5,8,11,14], ramp 9 months, rail base |
-| Part 4 | ✅ Written: eight levers in three groups plus the combined configuration. Client-approved shape |
+| Part 4 | ✅ Written: eight levers in three groups plus the combined configuration, all values from the recorded 2026-09-22 run |
+| Conditions map | ✅ Per-cell Monte Carlo, 500 paths per cell (2026-09-22). Plan cell -0.02m; first profitable column at base CAC is 14 partners |
+| Tornado | ✅ Paired Monte Carlo per end, 2,000 paths (2026-09-22, `run_tornado_mc.py`). Top bars: partner_adopt 1.50m, partner_aum_user 1.03m, facility_takeup 0.86m |
 | `SIMULATION_SETUP.md` | ✅ Current, 38 branded pages |
-| `SIMULATION_RESULTS.md` | 🔄 Restructured today; Part 4 is a placeholder pending new recommendations |
-| Recommendations | ⛔ **Being rebuilt.** The published three are weak (see §5) |
+| `SIMULATION_RESULTS.md` | ✅ Current, regenerated 2026-09-22, all gates pass |
+
+**The one item this phase hands onward (decision 54, 2026-09-22): a lapsed customer keeps the card and the credit facility.** Nobody has checked what the twin and the Phase 4 workbook actually assume about lapsed cardholders. Check before quoting card or credit stream figures again.
 
 ---
 
@@ -47,8 +50,11 @@ An earlier build had two engines: a port of the workbook doing the economics on 
 | `aurumix/scripts/run_mc.py` | base Monte Carlo. Takes `n_paths` and `scale` |
 | `aurumix/scripts/mc_config.py` | Monte Carlo for a candidate configuration |
 | `aurumix/scripts/run_stress_mc.py` | stress scenarios, paired on identical seeds |
-| `aurumix/scripts/run_analysis.py` | thresholds, tornado, ladder, concentration |
-| `aurumix/scripts/run_conditions.py` | the conditions map and per-region economics |
+| `aurumix/scripts/run_analysis.py` | thresholds, tornado, ladder, concentration. Prefers `tornado_mc.json` for the tornado when it exists |
+| `aurumix/scripts/run_tornado_mc.py` | the finalization tornado: a paired Monte Carlo per assumption end |
+| `aurumix/scripts/run_conditions.py` | the conditions map (per-cell Monte Carlos) and per-region economics |
+| `aurumix/scripts/run_partner_sweep.py` | partner dose-response on fixed schedules |
+| `aurumix/scripts/run_program_levers.py` | all eight Part 4 lever attributions, paired |
 | `aurumix/scripts/run_decisions.py` | what to learn first, and the trigger levels |
 | `SIMULATION_RESULTS.template.md` | the prose. **Edit this, never the `.md`** |
 | `aurumix/scripts/fill_results.py` | injects ~110 figures into the template |
@@ -66,7 +72,10 @@ python scripts/mc_config.py <tag> ...    # a candidate configuration
 python scripts/run_stress_mc.py 2000     # stress, ~2.3h
 python scripts/run_float.py
 python scripts/run_analysis.py
-python scripts/run_conditions.py
+python scripts/run_tornado_mc.py 2000   # ~4.4h; run_analysis then reuses its bars
+python scripts/run_conditions.py 500    # ~25 min, per-cell Monte Carlos
+python scripts/run_partner_sweep.py
+python scripts/run_program_levers.py
 python scripts/run_decisions.py
 python -m src.charts
 python scripts/fill_results.py
@@ -95,47 +104,40 @@ Run all of these after any change. Each was written because its failure happened
 
 ---
 
-## 5. What is in flight
+## 5. How Part 4 got its numbers, and the decisions that shaped it
 
-**The results document was restructured on 2026-09-04** to the client's requested flow: base case results first, then why, then stress, then recommendations, then what to learn. Parts 1 to 3 and 5 to 6 are done.
+**The results document was restructured on 2026-09-04** to the client's requested flow: base case results first, then why, then stress, then recommendations, then what to learn.
 
-**Part 4 is a placeholder.** The published recommendations (trim the ladder, push standing instructions, reallocate marketing) were ranked by an earlier version of the model and are weak. Measured against the current model, by cumulative profit created over seven years:
+**All eight lever values now come from one recorded run** (`run_program_levers.py`, 2,000 paired paths, 2026-09-22), closing the client's 2026-09-08 catch that the published values traced to an unrecorded run. The four program levers reproduced exactly (card take-up +1,316k, tickets +374k, retention +270k, standing instructions +217k), which validates the method. The four decision-and-work levers moved:
 
-| Lever | Profit created |
-|---|--:|
-| Three more partners | +990k |
-| **Double or triple the India agent network** | +986k to +1.41m |
-| Move marketing to India 40/10/50 | +833k |
-| Halve partner onboarding time | +542k |
-| Raise card take-up | +401k |
-| Bigger monthly savings | +376k |
-| Standing instructions | +361k |
-| Better retention | +344k |
-| **Trim the loyalty ladder** | **+315k, second from last** |
+| Lever | Old published | Recorded 2026-09-22 |
+|---|--:|--:|
+| Move marketing to India 40/10/50 | +833k | **+688k** |
+| Trim the loyalty ladder 1.5x convex | +315k | **+322k** |
+| Three more partners | +990k | **+415k** |
+| Halve partner onboarding | +542k | **+517k** |
 
-**Agents and the marketing shift overlap**: both push India, and India saturates. Doing both at full strength is worse than doing one properly.
+**The partners lever more than halved, and the reason is the method, on purpose:** the recorded run raises the PLAN by three with arrivals still stochastic, so dead years and late arrivals are priced in. A partner that actually arrives is still worth ~USD 100k of NP7 (the designed sweep, `run_partner_sweep.py`). **Faster onboarding now beats the extra signings**, and the results prose says so.
 
-**Client instruction, 2026-09-04:** cap the agent recommendation somewhere conservative rather than tripling. The model prices agent commission but not recruitment, training or management.
-
-**Next step:** agree the recommendation set, then run `mc_config.py` for it at 2,000 paths and full resolution, then write Part 4.
+**The agent-network lever stays parked; do not bring it back without being asked** (client, 2026-09-04: agents and the marketing shift overlap, both push India, India saturates, and the model prices commission but not recruitment or management).
 
 **Part 4 shape agreed (client, 2026-09-04, second pass).** Not a chosen set of three. Part 4 shows ALL eight measured levers, ranked and grouped: pure decisions (marketing 40/10/50 +833k; ladder trim 1.5x convex +315k), business development (three more partners +990k; halve onboarding +542k), customer programs framed as budget ceilings, not promises (card take-up +401k; ticket size +376k; standing instructions +361k; retention +344k). The combined "recommended configuration" for the charts = both decisions plus both BD levers, rail and everything else at base. Fee increases are excluded from ranking because the model has no demand response. The agent-network lever stays parked; do not bring it back without being asked.
 
 **mc_config.py extended (client-approved, 2026-09-04):** trailing `key=value` levers `partners_extra=` (raises the PLAN schedule so arrivals stay stochastic around it) and `ramp=` (freezes partner_ramp_months as a managed target). Smoke-tested. The recommended run: `python scripts/mc_config.py rec 1.5 convex 0.30 0.40 0.10 0.50 2000 1.0 partners_extra=3 ramp=9`, then promote `mc_rec.json` to `mc_recommended.json`.
 
-**Gold crash scenario redefined (client, 2026-09-04).** `s1_gold_crash_30` is now the shock PLUS s2's panic block verbatim; the client rejected a separate eighth scenario. The pure price channel is no longer a scenario; its measured result (~USD 5k across 2,000 paired paths, indistinguishable from nothing) lives in the code comment and should survive in the results prose as the reason the reaction is included. **Not yet run**: `stress_mc.json`'s s1 row still holds the old pure-shock definition, so the results document's crash row and its "gold does nothing" prose are stale the moment the rerun lands; expect s1 to land near s2. The client expects more model changes before the rerun. When they settle: rerun the full paired set, rewrite the results template crash prose, fill, check_docs, rebuild both PDFs.
+**Gold crash scenario redefined (client, 2026-09-04) and RERUN COMPLETE (2026-09-05).** `s1_gold_crash_30` is the shock PLUS s2's panic block verbatim; the client rejected a separate eighth scenario. The rerun landed as expected: s1 cum -608k right beside s2's -611k, the price fall adding ~USD 3k given the panic. The pure price channel is no longer a scenario; its measured result (~USD 5k across 2,000 paired paths, indistinguishable from nothing) lives in the code comment and in the results prose as the reason the reaction is included. The template's crash row and prose were rewritten to match.
 
 **Recommended-configuration figures are now gated on `mc_recommended.json` (client-approved, 2026-09-04).** `charts.py`, `fill_results.py` and `revalidate.py` read that canonical name; `mc_config.py` still writes `mc_<tag>.json`, and promotion to `mc_recommended.json` is a deliberate copy once a set is agreed. The file does not exist today, so charts draw the plan alone and the `R_*` placeholders are undefined (a template referencing one fails loudly). The old cfg15 artifact (ladder 1.5x convex, rail 0.75, alloc 40/10/50) is archived as `_mc_cfg15.json`; do not promote it, the client rejected that set. Both branded PDFs are rebuilt without the recommended bars.
 
 ---
 
-## 5b. Deferred, client-agreed, MUST land before the engagement finalizes
+## 5b. The three client-agreed finalization items. ALL LANDED 2026-09-22
 
-**Conditions map cells are still single runs (client, 2026-09-08: "leave it as is for now, fix later before finalizing").** The client has repeatedly tripped over the plan cell (+0.2) disagreeing with the MC median (-0.45); the agreed fix is per-cell Monte Carlos: 49 cells, ~500 paths each on shared seeds (~3h), partner schedules fixed per column the way `run_partner_sweep.py` does. Rewire `run_conditions.py`'s grid, recompute the frontier from medians, delete the "within the noise of a single map cell" caveat in the template, and requote the plan cell. Client told their client it will be fixed; do not finalize Phase 5 without it.
+**1. Conditions map: per-cell Monte Carlos. ✅ DONE.** `run_conditions.py` rewired: 49 cells x 500 paths on shared seeds, CAC pinned per row, partner schedules fixed per column the way `run_partner_sweep.py` fixes them, cell value the median. The complaint this fixes is resolved: the plan cell now reads **-0.02m** (was +0.2 on a single run, against the base MC median of -0.45), so the map and Part 1 tell one story with the difference explained in the prose (the cell pins partner arrivals; the full simulation does not). **The frontier hardened: at base CAC the first profitable column is now 14 partners, not 11**, and 11 clears only at 0.82x CAC. The 1.66x row clears at nothing. Template, exec summary page and chart all requoted.
 
-**The four program levers were re-measured with explicit magnitudes (2026-09-08, `run_program_levers.py`, 2,000 paired paths):** card take-up 18-30% +1,316k, tickets to aggressive +374k, persistency 63-73% +270k, standing instructions 30-75% +217k, all cumulative seven-year. The old published values (401/376/361/344k) came from an unrecorded run; card's +401k matched the year-7-only delta, so the old set was mislabeled or differently defined. **The four decision-and-work lever values (833/315/990/542k) trace to the same unrecorded run and must be re-measured the same way before finalization.** The recommended-configuration run itself is clean; only the standalone per-lever attributions are suspect.
+**2. All eight lever attributions re-measured on a recorded run. ✅ DONE.** See §5 for the values and the partner-lever halving.
 
-**Tornado bars are single paired paths (client, 2026-09-08: keep for now, upgrade at finalization).** Each bar is two runs on one shared seed, lo and hi of the band. The pairing cancels most noise, but at finalization each end becomes a paired Monte Carlo (2,000 paths per end, ~75 assumptions) so the small-bar ordering stops being approximate. Fold into the same finalization pass as the conditions map upgrade above.
+**3. Tornado upgraded to paired Monte Carlos. ✅ DONE.** `run_tornado_mc.py`: 75 assumptions x 2 ends x 2,000 shared-seed paths, bar = median paired difference in NP7. Writes `tornado_mc.json` and replaces `q6_tornado` in `analysis.json`; `run_analysis.py` prefers `tornado_mc.json` when present so a rerun cannot regress the bars to single runs. New top bars: partner_adopt 1.50m, partner_aum_user 1.03m, facility_takeup 0.86m, ceiling_mult 0.80m, b2b_fee 0.71m. Run cost ~4.4h on 10 workers; the run itself lives in `outputs/_tornado_mc.log`.
 
 ## 6. Standing constraints from the client
 
@@ -165,7 +167,7 @@ Run all of these after any change. Each was written because its failure happened
 
 ---
 
-## 8. Headline numbers, as at 2026-09-04
+## 8. Headline numbers, as at 2026-09-04. Still current: the 2026-09-22 finalization pass did not move the base Monte Carlo
 
 Plan as written, 2,000 paths, one agent per customer:
 

@@ -4,22 +4,50 @@
   "seed": 20270101,
   "method": "median paired difference vs common base side"
  },
+ "marketing_split": {
+  "group": "decision",
+  "change": "marketing budget UAE/Gulf/India 74/18/8 to 40/10/50",
+  "cum7_delta_p50": 687622.9616979605,
+  "np7_delta_p50": -182077.0825530334
+ },
+ "ladder_trim": {
+  "group": "decision",
+  "change": "loyalty ladder capped at 1.5pp, convex (top-loaded)",
+  "cum7_delta_p50": 321648.08168645937,
+  "np7_delta_p50": 131664.7052251672
+ },
+ "three_more_partners": {
+  "group": "work",
+  "change": "partner plan raised 11 to 14 by year seven, arrivals still stochastic",
+  "cum7_delta_p50": 414730.3458753498,
+  "np7_delta_p50": 242500.6211750364
+ },
+ "halve_onboarding": {
+  "group": "work",
+  "change": "partner onboarding fixed at 9 months instead of 18",
+  "cum7_delta_p50": 516592.84808635106,
+  "np7_delta_p50": 87009.0106889339
+ },
  "card_activation": {
+  "group": "program",
   "change": "card take-up 18% to 30%",
   "cum7_delta_p50": 1316477.3109794888,
   "np7_delta_p50": 460667.75086753146
  },
  "savings_amount": {
+  "group": "program",
   "change": "average monthly saving up about 20%: UAE 33.60 to 41, Gulf 26 to 32, India 30 to 36",
   "cum7_delta_p50": 374494.6848047904,
   "np7_delta_p50": 117743.75681915774
  },
  "automatic_payments": {
+  "group": "program",
   "change": "standing instruction share 30% to 75%",
   "cum7_delta_p50": 216664.3088704446,
   "np7_delta_p50": 73536.80459960917
  },
  "retention": {
+  "group": "program",
   "change": "thirteen-month persistency 63% to 73%",
   "cum7_delta_p50": 269771.11330018216,
   "np7_delta_p50": 95620.93318258732

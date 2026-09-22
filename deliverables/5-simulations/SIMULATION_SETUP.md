@@ -416,7 +416,9 @@ A single threshold answers what must be true at one set of assumptions. It does 
 
 So the same calculation is run across a grid of two variables, and only two. They are the only ones that are both decision-relevant and genuinely unknown: what a customer costs to acquire, and how many partners sign. Everything else is either a decision Aurumix makes, which is priced as a lever instead, or a figure already anchored.
 
-Each cell is a full simulation run, not an interpolation. The axes are bounded by the Phase 4 band, not by invented extremes, and the plan's own position is marked. So it reads as a specification with a current location, not a menu of scenarios.
+Each cell is its own Monte Carlo: 500 full seven-year runs, with the cell's cost level and partner count pinned and everything else drawn as usual. The cell reports the median of those runs. A single run carries about USD 0.7m of noise in cumulative profit, so a single-run cell could disagree with the headline results by more than the number in the cell. Medians remove that.
+
+The axes are bounded by the Phase 4 band, not by invented extremes, and the plan's own position is marked. So it reads as a specification with a current location, not a menu of scenarios.
 
 ### Per-region economics
 

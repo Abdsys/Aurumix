@@ -1,0 +1,48 @@
+75 assumptions x 2 ends x 2000 paths = 300,000 runs
+  chunk 20/600
+  chunk 40/600
+  chunk 60/600
+  chunk 80/600
+  chunk 100/600
+  chunk 120/600
+  chunk 140/600
+  chunk 160/600
+  chunk 180/600
+  chunk 200/600
+  chunk 220/600
+  chunk 240/600
+  chunk 260/600
+  chunk 280/600
+  chunk 300/600
+  chunk 320/600
+  chunk 340/600
+  chunk 360/600
+  chunk 380/600
+  chunk 400/600
+  chunk 420/600
+  chunk 440/600
+  chunk 460/600
+  chunk 480/600
+  chunk 500/600
+  chunk 520/600
+  chunk 540/600
+  chunk 560/600
+  chunk 580/600
+  chunk 600/600
+
+wrote outputs/tornado_mc.json
+updated q6_tornado in outputs/analysis.json
+
+TOP 12, Y7 net profit swing:
+  partner_adopt               1,501,682   [      15,358 ..    1,511,303]
+  partner_aum_user            1,029,725   [     180,721 ..    1,202,105]
+  facility_takeup               863,354   [     267,838 ..    1,141,532]
+  ceiling_mult                  796,551   [     220,804 ..    1,043,363]
+  b2b_fee                       712,324   [     279,744 ..      992,653]
+  family_attach                 468,368   [     477,405 ..      959,424]
+  contingency                   407,194   [     823,417 ..      413,016]
+  atm_share_4                   313,201   [     598,633 ..      918,507]
+  atm_share_3                   303,864   [     543,450 ..      858,979]
+  cac_uae_y7                    302,662   [     852,056 ..      549,603]
+  referral_rate                 285,044   [     554,718 ..      849,215]
+  vault_fee                     277,655   [     775,403 ..      491,190]
