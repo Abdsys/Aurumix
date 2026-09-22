@@ -192,6 +192,7 @@ Markers: ✅ settled · 🔄 revised or superseded · ⚠ carries a caveat · �
 | 53 | ✅ | Redeemed gold returns to the float. Confirmed as designed; correction 30's gate dead |
 | 54 | 🔴 | A LAPSED CUSTOMER KEEPS THE CARD AND CREDIT. **Phase 4/5 propagation owed** |
 | 55 | ✅ | The USD 20 floor is confirmed, conditional on the rail price |
+| 56 | ✅ | "Buyback" is the product term for the exit; "redemption" is the legal category |
 
 **Phase 4 architecture decisions D1–D25 are recorded separately** in `deliverables/4-revenue-modeling/supporting/_working_architecture-decisions-v2.md`.
 
