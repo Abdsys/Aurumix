@@ -1,0 +1,7086 @@
+{
+ "params": {
+  "gold_price": 141.5,
+  "fee": 0.003,
+  "v3_tight_share": 0.6666666666666666,
+  "v3_ranges": [
+   0.05,
+   0.1
+  ],
+  "slippage_levels": [
+   0.005,
+   0.01,
+   0.02,
+   0.05
+  ],
+  "budgets": [
+   100000,
+   250000,
+   500000,
+   1000000,
+   2500000
+  ],
+  "trades": [
+   75,
+   1000,
+   2000,
+   5000,
+   10000,
+   14150,
+   20000,
+   50000,
+   141500
+  ],
+  "aurumix_trades": {
+   "75": "Target monthly SIP (USD 75)",
+   "2000": "Top SIP ticket (USD 2,000)",
+   "14150": "100 g holder exiting",
+   "141500": "1 kg holder exiting"
+  },
+  "entry_fee_launch": 0.05
+ },
+ "V2": {
+  "composition": [
+   {
+    "tvl": 100000,
+    "usdc": 50000.0,
+    "aurx": 353.3569,
+    "aurx_usd": 50000.0,
+    "gold_kg": 0.353
+   },
+   {
+    "tvl": 250000,
+    "usdc": 125000.0,
+    "aurx": 883.3922,
+    "aurx_usd": 125000.0,
+    "gold_kg": 0.883
+   },
+   {
+    "tvl": 500000,
+    "usdc": 250000.0,
+    "aurx": 1766.7845,
+    "aurx_usd": 250000.0,
+    "gold_kg": 1.767
+   },
+   {
+    "tvl": 1000000,
+    "usdc": 500000.0,
+    "aurx": 3533.5689,
+    "aurx_usd": 500000.0,
+    "gold_kg": 3.534
+   },
+   {
+    "tvl": 2500000,
+    "usdc": 1250000.0,
+    "aurx": 8833.9223,
+    "aurx_usd": 1250000.0,
+    "gold_kg": 8.834
+   }
+  ],
+  "curves": {
+   "100000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.3,
+     "sell_allin_pct": 0.45,
+     "buy_impact_pct": 0.3,
+     "buy_allin_pct": 0.45
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.99,
+     "sell_allin_pct": 0.79,
+     "buy_impact_pct": 1.0,
+     "buy_allin_pct": 0.8
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 1.96,
+     "sell_allin_pct": 1.28,
+     "buy_impact_pct": 2.0,
+     "buy_allin_pct": 1.3
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 3.87,
+     "sell_allin_pct": 2.25,
+     "buy_impact_pct": 4.03,
+     "buy_allin_pct": 2.3
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 7.52,
+     "sell_allin_pct": 4.12,
+     "buy_impact_pct": 8.14,
+     "buy_allin_pct": 4.3
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 9.27,
+     "sell_allin_pct": 5.03,
+     "buy_impact_pct": 10.22,
+     "buy_allin_pct": 5.3
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 17.31,
+     "sell_allin_pct": 9.34,
+     "buy_impact_pct": 20.93,
+     "buy_allin_pct": 10.3
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 24.33,
+     "sell_allin_pct": 13.27,
+     "buy_impact_pct": 32.15,
+     "buy_allin_pct": 15.3
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 30.49,
+     "sell_allin_pct": 16.88,
+     "buy_impact_pct": 43.86,
+     "buy_allin_pct": 20.3
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 39.17,
+     "sell_allin_pct": 22.24,
+     "buy_impact_pct": 64.39,
+     "buy_allin_pct": 28.6
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 48.89,
+     "sell_allin_pct": 28.72,
+     "buy_impact_pct": 95.66,
+     "buy_allin_pct": 40.3
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 60.85,
+     "sell_allin_pct": 37.62,
+     "buy_impact_pct": 155.42,
+     "buy_allin_pct": 60.3
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 74.92,
+     "sell_allin_pct": 50.08,
+     "buy_impact_pct": 298.8,
+     "buy_allin_pct": 100.3
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 83.94,
+     "sell_allin_pct": 60.05,
+     "buy_impact_pct": 522.75,
+     "buy_allin_pct": 150.3
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 88.84,
+     "sell_allin_pct": 66.7,
+     "buy_impact_pct": 796.4,
+     "buy_allin_pct": 200.3
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 93.15,
+     "sell_allin_pct": 73.91,
+     "buy_impact_pct": 1360.39,
+     "buy_allin_pct": 283.3
+    }
+   ],
+   "250000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.12,
+     "sell_allin_pct": 0.36,
+     "buy_impact_pct": 0.12,
+     "buy_allin_pct": 0.36
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.4,
+     "sell_allin_pct": 0.5,
+     "buy_impact_pct": 0.4,
+     "buy_allin_pct": 0.5
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.79,
+     "sell_allin_pct": 0.7,
+     "buy_impact_pct": 0.8,
+     "buy_allin_pct": 0.7
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 1.58,
+     "sell_allin_pct": 1.09,
+     "buy_impact_pct": 1.6,
+     "buy_allin_pct": 1.1
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 3.12,
+     "sell_allin_pct": 1.87,
+     "buy_impact_pct": 3.22,
+     "buy_allin_pct": 1.9
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 3.87,
+     "sell_allin_pct": 2.25,
+     "buy_impact_pct": 4.03,
+     "buy_allin_pct": 2.3
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 7.52,
+     "sell_allin_pct": 4.12,
+     "buy_impact_pct": 8.14,
+     "buy_allin_pct": 4.3
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 10.97,
+     "sell_allin_pct": 5.93,
+     "buy_impact_pct": 12.32,
+     "buy_allin_pct": 6.3
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 14.23,
+     "sell_allin_pct": 7.66,
+     "buy_impact_pct": 16.59,
+     "buy_allin_pct": 8.3
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 19.25,
+     "sell_allin_pct": 10.41,
+     "buy_impact_pct": 23.85,
+     "buy_allin_pct": 11.62
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 25.62,
+     "sell_allin_pct": 14.02,
+     "buy_impact_pct": 34.45,
+     "buy_allin_pct": 16.3
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 34.89,
+     "sell_allin_pct": 19.55,
+     "buy_impact_pct": 53.58,
+     "buy_allin_pct": 24.3
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 48.89,
+     "sell_allin_pct": 28.72,
+     "buy_impact_pct": 95.66,
+     "buy_allin_pct": 40.3
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 60.85,
+     "sell_allin_pct": 37.62,
+     "buy_impact_pct": 155.42,
+     "buy_allin_pct": 60.3
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 69.05,
+     "sell_allin_pct": 44.54,
+     "buy_impact_pct": 223.14,
+     "buy_allin_pct": 80.3
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 77.93,
+     "sell_allin_pct": 53.16,
+     "buy_impact_pct": 353.1,
+     "buy_allin_pct": 113.5
+    }
+   ],
+   "500000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.06,
+     "sell_allin_pct": 0.33,
+     "buy_impact_pct": 0.06,
+     "buy_allin_pct": 0.33
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.2,
+     "sell_allin_pct": 0.4,
+     "buy_impact_pct": 0.2,
+     "buy_allin_pct": 0.4
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.4,
+     "sell_allin_pct": 0.5,
+     "buy_impact_pct": 0.4,
+     "buy_allin_pct": 0.5
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.79,
+     "sell_allin_pct": 0.7,
+     "buy_impact_pct": 0.8,
+     "buy_allin_pct": 0.7
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 1.58,
+     "sell_allin_pct": 1.09,
+     "buy_impact_pct": 1.6,
+     "buy_allin_pct": 1.1
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 1.96,
+     "sell_allin_pct": 1.28,
+     "buy_impact_pct": 2.0,
+     "buy_allin_pct": 1.3
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 3.87,
+     "sell_allin_pct": 2.25,
+     "buy_impact_pct": 4.03,
+     "buy_allin_pct": 2.3
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 5.72,
+     "sell_allin_pct": 3.2,
+     "buy_impact_pct": 6.07,
+     "buy_allin_pct": 3.3
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 7.52,
+     "sell_allin_pct": 4.12,
+     "buy_impact_pct": 8.14,
+     "buy_allin_pct": 4.3
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 10.4,
+     "sell_allin_pct": 5.63,
+     "buy_impact_pct": 11.6,
+     "buy_allin_pct": 5.96
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 14.23,
+     "sell_allin_pct": 7.66,
+     "buy_impact_pct": 16.59,
+     "buy_allin_pct": 8.3
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 20.23,
+     "sell_allin_pct": 10.95,
+     "buy_impact_pct": 25.36,
+     "buy_allin_pct": 12.3
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 30.49,
+     "sell_allin_pct": 16.88,
+     "buy_impact_pct": 43.86,
+     "buy_allin_pct": 20.3
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 40.75,
+     "sell_allin_pct": 23.25,
+     "buy_impact_pct": 68.77,
+     "buy_allin_pct": 30.3
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 48.89,
+     "sell_allin_pct": 28.72,
+     "buy_impact_pct": 95.66,
+     "buy_allin_pct": 40.3
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 59.13,
+     "sell_allin_pct": 36.27,
+     "buy_impact_pct": 144.7,
+     "buy_allin_pct": 56.9
+    }
+   ],
+   "1000000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.1,
+     "sell_allin_pct": 0.35,
+     "buy_impact_pct": 0.1,
+     "buy_allin_pct": 0.35
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.2,
+     "sell_allin_pct": 0.4,
+     "buy_impact_pct": 0.2,
+     "buy_allin_pct": 0.4
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.4,
+     "sell_allin_pct": 0.5,
+     "buy_impact_pct": 0.4,
+     "buy_allin_pct": 0.5
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.79,
+     "sell_allin_pct": 0.7,
+     "buy_impact_pct": 0.8,
+     "buy_allin_pct": 0.7
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.99,
+     "sell_allin_pct": 0.79,
+     "buy_impact_pct": 1.0,
+     "buy_allin_pct": 0.8
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 1.96,
+     "sell_allin_pct": 1.28,
+     "buy_impact_pct": 2.0,
+     "buy_allin_pct": 1.3
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 2.93,
+     "sell_allin_pct": 1.77,
+     "buy_impact_pct": 3.01,
+     "buy_allin_pct": 1.8
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 3.87,
+     "sell_allin_pct": 2.25,
+     "buy_impact_pct": 4.03,
+     "buy_allin_pct": 2.3
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 5.41,
+     "sell_allin_pct": 3.04,
+     "buy_impact_pct": 5.72,
+     "buy_allin_pct": 3.13
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 7.52,
+     "sell_allin_pct": 4.12,
+     "buy_impact_pct": 8.14,
+     "buy_allin_pct": 4.3
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 10.97,
+     "sell_allin_pct": 5.93,
+     "buy_impact_pct": 12.32,
+     "buy_allin_pct": 6.3
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 17.31,
+     "sell_allin_pct": 9.34,
+     "buy_impact_pct": 20.93,
+     "buy_allin_pct": 10.3
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 24.33,
+     "sell_allin_pct": 13.27,
+     "buy_impact_pct": 32.15,
+     "buy_allin_pct": 15.3
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 30.49,
+     "sell_allin_pct": 16.88,
+     "buy_impact_pct": 43.86,
+     "buy_allin_pct": 20.3
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 39.17,
+     "sell_allin_pct": 22.24,
+     "buy_impact_pct": 64.39,
+     "buy_allin_pct": 28.6
+    }
+   ],
+   "2500000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.04,
+     "sell_allin_pct": 0.32,
+     "buy_impact_pct": 0.04,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.08,
+     "sell_allin_pct": 0.34,
+     "buy_impact_pct": 0.08,
+     "buy_allin_pct": 0.34
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.16,
+     "sell_allin_pct": 0.38,
+     "buy_impact_pct": 0.16,
+     "buy_allin_pct": 0.38
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.32,
+     "sell_allin_pct": 0.46,
+     "buy_impact_pct": 0.32,
+     "buy_allin_pct": 0.46
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.4,
+     "sell_allin_pct": 0.5,
+     "buy_impact_pct": 0.4,
+     "buy_allin_pct": 0.5
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.79,
+     "sell_allin_pct": 0.7,
+     "buy_impact_pct": 0.8,
+     "buy_allin_pct": 0.7
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 1.19,
+     "sell_allin_pct": 0.89,
+     "buy_impact_pct": 1.2,
+     "buy_allin_pct": 0.9
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 1.58,
+     "sell_allin_pct": 1.09,
+     "buy_impact_pct": 1.6,
+     "buy_allin_pct": 1.1
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 2.22,
+     "sell_allin_pct": 1.41,
+     "buy_impact_pct": 2.27,
+     "buy_allin_pct": 1.43
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 3.12,
+     "sell_allin_pct": 1.87,
+     "buy_impact_pct": 3.22,
+     "buy_allin_pct": 1.9
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 4.62,
+     "sell_allin_pct": 2.63,
+     "buy_impact_pct": 4.84,
+     "buy_allin_pct": 2.7
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 7.52,
+     "sell_allin_pct": 4.12,
+     "buy_impact_pct": 8.14,
+     "buy_allin_pct": 4.3
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 10.97,
+     "sell_allin_pct": 5.93,
+     "buy_impact_pct": 12.32,
+     "buy_allin_pct": 6.3
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 14.23,
+     "sell_allin_pct": 7.66,
+     "buy_impact_pct": 16.59,
+     "buy_allin_pct": 8.3
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 19.25,
+     "sell_allin_pct": 10.41,
+     "buy_impact_pct": 23.85,
+     "buy_allin_pct": 11.62
+    }
+   ]
+  },
+  "max_trade": [
+   {
+    "tvl": 100000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 50.13,
+    "max_sell_usd": 50.23
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 175.22,
+    "max_sell_usd": 176.45
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 424.48,
+    "max_sell_usd": 431.79
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 1165.0,
+    "max_sell_usd": 1221.78
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 125.31,
+    "max_sell_usd": 125.56
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 438.05,
+    "max_sell_usd": 441.13
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 1061.21,
+    "max_sell_usd": 1079.48
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 2912.51,
+    "max_sell_usd": 3054.44
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 250.63,
+    "max_sell_usd": 251.13
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 876.1,
+    "max_sell_usd": 882.27
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 2122.41,
+    "max_sell_usd": 2158.96
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 5825.02,
+    "max_sell_usd": 6108.88
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 501.25,
+    "max_sell_usd": 502.26
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 1752.2,
+    "max_sell_usd": 1764.54
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 4244.82,
+    "max_sell_usd": 4317.92
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 11650.04,
+    "max_sell_usd": 12217.76
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 1253.14,
+    "max_sell_usd": 1255.65
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 4380.51,
+    "max_sell_usd": 4411.34
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 10612.06,
+    "max_sell_usd": 10794.8
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 29125.1,
+    "max_sell_usd": 30544.4
+   }
+  ],
+  "required_tvl": [
+   {
+    "trade_usd": 75,
+    "slippage_pct": 0.5,
+    "buy": 149624.74,
+    "sell": 149325.64,
+    "binding": 149624.74
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 1.0,
+    "buy": 42803.22,
+    "sell": 42504.12,
+    "binding": 42803.22
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 2.0,
+    "buy": 17668.58,
+    "sell": 17369.47,
+    "binding": 17668.58
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 5.0,
+    "buy": 6437.75,
+    "sell": 6138.6,
+    "binding": 6437.75
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 0.5,
+    "buy": 1994996.5,
+    "sell": 1991008.5,
+    "binding": 1994996.5
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 1.0,
+    "buy": 570709.55,
+    "sell": 566721.53,
+    "binding": 570709.55
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 2.0,
+    "buy": 235581.03,
+    "sell": 231592.96,
+    "binding": 235581.03
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 5.0,
+    "buy": 85836.62,
+    "sell": 81848.07,
+    "binding": 85836.62
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 0.5,
+    "buy": 3989993.0,
+    "sell": 3982017.0,
+    "binding": 3989993.0
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 1.0,
+    "buy": 1141419.09,
+    "sell": 1133443.07,
+    "binding": 1141419.09
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 2.0,
+    "buy": 471162.07,
+    "sell": 463185.92,
+    "binding": 471162.07
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 5.0,
+    "buy": 171673.23,
+    "sell": 163696.13,
+    "binding": 171673.23
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 0.5,
+    "buy": 9974982.51,
+    "sell": 9955042.51,
+    "binding": 9974982.51
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 1.0,
+    "buy": 2853547.74,
+    "sell": 2833607.67,
+    "binding": 2853547.74
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 2.0,
+    "buy": 1177905.17,
+    "sell": 1157964.81,
+    "binding": 1177905.17
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 5.0,
+    "buy": 429183.08,
+    "sell": 409240.33,
+    "binding": 429183.08
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 0.5,
+    "buy": 19949965.02,
+    "sell": 19910085.01,
+    "binding": 19949965.02
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 1.0,
+    "buy": 5707095.47,
+    "sell": 5667215.35,
+    "binding": 5707095.47
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 2.0,
+    "buy": 2355810.34,
+    "sell": 2315929.62,
+    "binding": 2355810.34
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 5.0,
+    "buy": 858366.17,
+    "sell": 818480.65,
+    "binding": 858366.17
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 0.5,
+    "buy": 28229200.5,
+    "sell": 28172770.29,
+    "binding": 28229200.5
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 1.0,
+    "buy": 8075540.09,
+    "sell": 8019109.72,
+    "binding": 8075540.09
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 2.0,
+    "buy": 3333471.63,
+    "sell": 3277040.41,
+    "binding": 3333471.63
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 5.0,
+    "buy": 1214588.12,
+    "sell": 1158150.13,
+    "binding": 1214588.12
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 0.5,
+    "buy": 39899930.04,
+    "sell": 39820170.02,
+    "binding": 39899930.04
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 1.0,
+    "buy": 11414190.94,
+    "sell": 11334430.7,
+    "binding": 11414190.94
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 2.0,
+    "buy": 4711620.67,
+    "sell": 4631859.23,
+    "binding": 4711620.67
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 5.0,
+    "buy": 1716732.33,
+    "sell": 1636961.31,
+    "binding": 1716732.33
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 0.5,
+    "buy": 99749825.1,
+    "sell": 99550425.05,
+    "binding": 99749825.1
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 1.0,
+    "buy": 28535477.35,
+    "sell": 28336076.74,
+    "binding": 28535477.35
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 2.0,
+    "buy": 11779051.68,
+    "sell": 11579648.08,
+    "binding": 11779051.68
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 5.0,
+    "buy": 4291830.83,
+    "sell": 4092403.27,
+    "binding": 4291830.83
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 0.5,
+    "buy": 282292005.03,
+    "sell": 281727702.89,
+    "binding": 282292005.03
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 1.0,
+    "buy": 80755400.91,
+    "sell": 80191097.18,
+    "binding": 80755400.91
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 2.0,
+    "buy": 33334716.27,
+    "sell": 32770404.07,
+    "binding": 33334716.27
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 5.0,
+    "buy": 12145881.24,
+    "sell": 11581501.26,
+    "binding": 12145881.24
+   }
+  ]
+ },
+ "V3 ±5%": {
+  "composition": [
+   {
+    "tvl": 100000,
+    "usdc": 50823.3,
+    "aurx": 347.5385,
+    "aurx_usd": 49176.7,
+    "gold_kg": 0.348
+   },
+   {
+    "tvl": 250000,
+    "usdc": 127058.25,
+    "aurx": 868.8463,
+    "aurx_usd": 122941.75,
+    "gold_kg": 0.869
+   },
+   {
+    "tvl": 500000,
+    "usdc": 254116.51,
+    "aurx": 1737.6925,
+    "aurx_usd": 245883.49,
+    "gold_kg": 1.738
+   },
+   {
+    "tvl": 1000000,
+    "usdc": 508233.01,
+    "aurx": 3475.3851,
+    "aurx_usd": 491766.99,
+    "gold_kg": 3.475
+   },
+   {
+    "tvl": 2500000,
+    "usdc": 1270582.53,
+    "aurx": 8688.4627,
+    "aurx_usd": 1229417.47,
+    "gold_kg": 8.688
+   }
+  ],
+  "curves": {
+   "100000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.04,
+     "sell_allin_pct": 0.32,
+     "buy_impact_pct": 0.04,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.07,
+     "sell_allin_pct": 0.34,
+     "buy_impact_pct": 0.07,
+     "buy_allin_pct": 0.34
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.15,
+     "sell_allin_pct": 0.37,
+     "buy_impact_pct": 0.15,
+     "buy_allin_pct": 0.37
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.45,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.45
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.36,
+     "sell_allin_pct": 0.48,
+     "buy_impact_pct": 0.37,
+     "buy_allin_pct": 0.48
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.73,
+     "sell_allin_pct": 0.66,
+     "buy_impact_pct": 0.73,
+     "buy_allin_pct": 0.67
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 1.09,
+     "sell_allin_pct": 0.84,
+     "buy_impact_pct": 1.1,
+     "buy_allin_pct": 0.85
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 1.44,
+     "sell_allin_pct": 1.02,
+     "buy_impact_pct": 1.47,
+     "buy_allin_pct": 1.03
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 2.03,
+     "sell_allin_pct": 1.32,
+     "buy_impact_pct": 2.08,
+     "buy_allin_pct": 1.34
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 2.86,
+     "sell_allin_pct": 1.73,
+     "buy_impact_pct": 2.94,
+     "buy_allin_pct": 1.77
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 4.24,
+     "sell_allin_pct": 2.44,
+     "buy_impact_pct": 4.43,
+     "buy_allin_pct": 2.5
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 71.96,
+     "sell_allin_pct": 16.01,
+     "buy_impact_pct": 296.9,
+     "buy_allin_pct": 22.52
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 91.27,
+     "sell_allin_pct": 38.8,
+     "buy_impact_pct": 1116.42,
+     "buy_allin_pct": 68.93
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 95.8,
+     "sell_allin_pct": 52.59,
+     "buy_impact_pct": 2383.26,
+     "buy_allin_pct": 118.19
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 98.15,
+     "sell_allin_pct": 65.68,
+     "buy_impact_pct": 5473.75,
+     "buy_allin_pct": 201.42
+    }
+   ],
+   "250000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.06,
+     "sell_allin_pct": 0.33,
+     "buy_impact_pct": 0.06,
+     "buy_allin_pct": 0.33
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.12,
+     "sell_allin_pct": 0.36,
+     "buy_impact_pct": 0.12,
+     "buy_allin_pct": 0.36
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.15,
+     "sell_allin_pct": 0.37,
+     "buy_impact_pct": 0.15,
+     "buy_allin_pct": 0.37
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.45,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.45
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 0.44,
+     "sell_allin_pct": 0.52,
+     "buy_impact_pct": 0.44,
+     "buy_allin_pct": 0.52
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 0.58,
+     "sell_allin_pct": 0.59,
+     "buy_impact_pct": 0.58,
+     "buy_allin_pct": 0.59
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 0.82,
+     "sell_allin_pct": 0.71,
+     "buy_impact_pct": 0.83,
+     "buy_allin_pct": 0.72
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 1.16,
+     "sell_allin_pct": 0.88,
+     "buy_impact_pct": 1.17,
+     "buy_allin_pct": 0.89
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 1.73,
+     "sell_allin_pct": 1.17,
+     "buy_impact_pct": 1.76,
+     "buy_allin_pct": 1.18
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 2.86,
+     "sell_allin_pct": 1.73,
+     "buy_impact_pct": 2.94,
+     "buy_allin_pct": 1.77
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 4.24,
+     "sell_allin_pct": 2.44,
+     "buy_impact_pct": 4.43,
+     "buy_allin_pct": 2.5
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 39.92,
+     "sell_allin_pct": 5.24,
+     "buy_impact_pct": 94.33,
+     "buy_allin_pct": 7.47
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 80.82,
+     "sell_allin_pct": 23.1,
+     "buy_impact_pct": 469.8,
+     "buy_allin_pct": 34.14
+    }
+   ],
+   "500000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.06,
+     "sell_allin_pct": 0.33,
+     "buy_impact_pct": 0.06,
+     "buy_allin_pct": 0.33
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.07,
+     "sell_allin_pct": 0.34,
+     "buy_impact_pct": 0.07,
+     "buy_allin_pct": 0.34
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.15,
+     "sell_allin_pct": 0.37,
+     "buy_impact_pct": 0.15,
+     "buy_allin_pct": 0.37
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 0.22,
+     "sell_allin_pct": 0.41,
+     "buy_impact_pct": 0.22,
+     "buy_allin_pct": 0.41
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.45,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.45
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 0.41,
+     "sell_allin_pct": 0.51,
+     "buy_impact_pct": 0.41,
+     "buy_allin_pct": 0.51
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 0.58,
+     "sell_allin_pct": 0.59,
+     "buy_impact_pct": 0.58,
+     "buy_allin_pct": 0.59
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 0.87,
+     "sell_allin_pct": 0.73,
+     "buy_impact_pct": 0.88,
+     "buy_allin_pct": 0.74
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 1.44,
+     "sell_allin_pct": 1.02,
+     "buy_impact_pct": 1.47,
+     "buy_allin_pct": 1.03
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 2.15,
+     "sell_allin_pct": 1.38,
+     "buy_impact_pct": 2.2,
+     "buy_allin_pct": 1.4
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 2.86,
+     "sell_allin_pct": 1.73,
+     "buy_impact_pct": 2.94,
+     "buy_allin_pct": 1.77
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 4.01,
+     "sell_allin_pct": 2.32,
+     "buy_impact_pct": 4.17,
+     "buy_allin_pct": 2.37
+    }
+   ],
+   "1000000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.04,
+     "sell_allin_pct": 0.32,
+     "buy_impact_pct": 0.04,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.07,
+     "sell_allin_pct": 0.34,
+     "buy_impact_pct": 0.07,
+     "buy_allin_pct": 0.34
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 0.11,
+     "sell_allin_pct": 0.35,
+     "buy_impact_pct": 0.11,
+     "buy_allin_pct": 0.36
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 0.15,
+     "sell_allin_pct": 0.37,
+     "buy_impact_pct": 0.15,
+     "buy_allin_pct": 0.37
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 0.21,
+     "sell_allin_pct": 0.4,
+     "buy_impact_pct": 0.21,
+     "buy_allin_pct": 0.4
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.45,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.45
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 0.44,
+     "sell_allin_pct": 0.52,
+     "buy_impact_pct": 0.44,
+     "buy_allin_pct": 0.52
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 0.73,
+     "sell_allin_pct": 0.66,
+     "buy_impact_pct": 0.73,
+     "buy_allin_pct": 0.67
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 1.09,
+     "sell_allin_pct": 0.84,
+     "buy_impact_pct": 1.1,
+     "buy_allin_pct": 0.85
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 1.44,
+     "sell_allin_pct": 1.02,
+     "buy_impact_pct": 1.47,
+     "buy_allin_pct": 1.03
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 2.03,
+     "sell_allin_pct": 1.32,
+     "buy_impact_pct": 2.08,
+     "buy_allin_pct": 1.34
+    }
+   ],
+   "2500000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 0.04,
+     "sell_allin_pct": 0.32,
+     "buy_impact_pct": 0.04,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 0.06,
+     "sell_allin_pct": 0.33,
+     "buy_impact_pct": 0.06,
+     "buy_allin_pct": 0.33
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 0.08,
+     "sell_allin_pct": 0.34,
+     "buy_impact_pct": 0.08,
+     "buy_allin_pct": 0.34
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 0.12,
+     "sell_allin_pct": 0.36,
+     "buy_impact_pct": 0.12,
+     "buy_allin_pct": 0.36
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 0.17,
+     "sell_allin_pct": 0.39,
+     "buy_impact_pct": 0.18,
+     "buy_allin_pct": 0.39
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.45,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.45
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 0.44,
+     "sell_allin_pct": 0.52,
+     "buy_impact_pct": 0.44,
+     "buy_allin_pct": 0.52
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 0.58,
+     "sell_allin_pct": 0.59,
+     "buy_impact_pct": 0.58,
+     "buy_allin_pct": 0.59
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 0.82,
+     "sell_allin_pct": 0.71,
+     "buy_impact_pct": 0.83,
+     "buy_allin_pct": 0.72
+    }
+   ]
+  },
+  "max_trade": [
+   {
+    "tvl": 100000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 1369.06,
+    "max_sell_usd": 1371.8
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 4785.74,
+    "max_sell_usd": 4819.42
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 11593.76,
+    "max_sell_usd": 11793.4
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 31819.4,
+    "max_sell_usd": 33369.99
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 3422.65,
+    "max_sell_usd": 3429.51
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 11964.36,
+    "max_sell_usd": 12048.55
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 28984.39,
+    "max_sell_usd": 29483.51
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 79548.5,
+    "max_sell_usd": 83424.99
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 6845.3,
+    "max_sell_usd": 6859.01
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 23928.72,
+    "max_sell_usd": 24097.1
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 57968.79,
+    "max_sell_usd": 58967.02
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 159096.99,
+    "max_sell_usd": 166849.97
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 13690.6,
+    "max_sell_usd": 13718.02
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 47857.43,
+    "max_sell_usd": 48194.21
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 115937.58,
+    "max_sell_usd": 117934.05
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 318193.98,
+    "max_sell_usd": 333699.94
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 34226.49,
+    "max_sell_usd": 34295.05
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 119643.59,
+    "max_sell_usd": 120485.52
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 289843.95,
+    "max_sell_usd": 294835.11
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 795484.95,
+    "max_sell_usd": 834249.86
+   }
+  ],
+  "required_tvl": [
+   {
+    "trade_usd": 75,
+    "slippage_pct": 0.5,
+    "buy": 5478.21,
+    "sell": 5467.26,
+    "binding": 5478.21
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 1.0,
+    "buy": 1567.15,
+    "sell": 1556.2,
+    "binding": 1567.15
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 2.0,
+    "buy": 646.9,
+    "sell": 635.95,
+    "binding": 646.9
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 5.0,
+    "buy": 235.71,
+    "sell": 224.75,
+    "binding": 235.71
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 0.5,
+    "buy": 73042.83,
+    "sell": 72896.82,
+    "binding": 73042.83
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 1.0,
+    "buy": 20895.4,
+    "sell": 20749.38,
+    "binding": 20895.4
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 2.0,
+    "buy": 8625.33,
+    "sell": 8479.32,
+    "binding": 8625.33
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 5.0,
+    "buy": 3142.74,
+    "sell": 2996.7,
+    "binding": 3142.74
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 0.5,
+    "buy": 146085.66,
+    "sell": 145793.63,
+    "binding": 146085.66
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 1.0,
+    "buy": 41790.79,
+    "sell": 41498.76,
+    "binding": 41790.79
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 2.0,
+    "buy": 17250.66,
+    "sell": 16958.63,
+    "binding": 17250.66
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 5.0,
+    "buy": 6285.47,
+    "sell": 5993.41,
+    "binding": 6285.47
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 0.5,
+    "buy": 365214.15,
+    "sell": 364484.08,
+    "binding": 365214.15
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 1.0,
+    "buy": 104476.98,
+    "sell": 103746.91,
+    "binding": 104476.98
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 2.0,
+    "buy": 43126.66,
+    "sell": 42396.58,
+    "binding": 43126.66
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 5.0,
+    "buy": 15713.69,
+    "sell": 14983.52,
+    "binding": 15713.69
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 0.5,
+    "buy": 730428.29,
+    "sell": 728968.16,
+    "binding": 730428.29
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 1.0,
+    "buy": 208953.95,
+    "sell": 207493.82,
+    "binding": 208953.95
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 2.0,
+    "buy": 86253.31,
+    "sell": 84793.16,
+    "binding": 86253.31
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 5.0,
+    "buy": 31427.37,
+    "sell": 29967.04,
+    "binding": 31427.37
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 0.5,
+    "buy": 1033556.03,
+    "sell": 1031489.95,
+    "binding": 1033556.03
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 1.0,
+    "buy": 295669.84,
+    "sell": 293603.75,
+    "binding": 295669.84
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 2.0,
+    "buy": 122048.43,
+    "sell": 119982.32,
+    "binding": 122048.43
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 5.0,
+    "buy": 44469.73,
+    "sell": 42403.36,
+    "binding": 44469.73
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 0.5,
+    "buy": 1460856.58,
+    "sell": 1457936.33,
+    "binding": 1460856.58
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 1.0,
+    "buy": 417907.9,
+    "sell": 414987.64,
+    "binding": 417907.9
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 2.0,
+    "buy": 172506.62,
+    "sell": 169586.31,
+    "binding": 172506.62
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 5.0,
+    "buy": 62854.74,
+    "sell": 59934.08,
+    "binding": 62854.74
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 0.5,
+    "buy": 3652141.46,
+    "sell": 3644840.82,
+    "binding": 3652141.46
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 1.0,
+    "buy": 1044769.75,
+    "sell": 1037469.09,
+    "binding": 1044769.75
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 2.0,
+    "buy": 431266.55,
+    "sell": 423965.78,
+    "binding": 431266.55
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 5.0,
+    "buy": 157136.85,
+    "sell": 149835.21,
+    "binding": 157136.85
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 0.5,
+    "buy": 10335560.33,
+    "sell": 10314899.53,
+    "binding": 10335560.33
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 1.0,
+    "buy": 2956698.4,
+    "sell": 2936037.54,
+    "binding": 2956698.4
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 2.0,
+    "buy": 1220484.34,
+    "sell": 1199823.17,
+    "binding": 1220484.34
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 5.0,
+    "buy": 444697.29,
+    "sell": 424033.63,
+    "binding": 444697.29
+   }
+  ]
+ },
+ "V3 ±10%": {
+  "composition": [
+   {
+    "tvl": 100000,
+    "usdc": 51628.03,
+    "aurx": 341.8514,
+    "aurx_usd": 48371.97,
+    "gold_kg": 0.342
+   },
+   {
+    "tvl": 250000,
+    "usdc": 129070.08,
+    "aurx": 854.6284,
+    "aurx_usd": 120929.92,
+    "gold_kg": 0.855
+   },
+   {
+    "tvl": 500000,
+    "usdc": 258140.16,
+    "aurx": 1709.2568,
+    "aurx_usd": 241859.84,
+    "gold_kg": 1.709
+   },
+   {
+    "tvl": 1000000,
+    "usdc": 516280.33,
+    "aurx": 3418.5136,
+    "aurx_usd": 483719.67,
+    "gold_kg": 3.419
+   },
+   {
+    "tvl": 2500000,
+    "usdc": 1290700.82,
+    "aurx": 8546.284,
+    "aurx_usd": 1209299.18,
+    "gold_kg": 8.546
+   }
+  ],
+  "curves": {
+   "100000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.02,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.02,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.07,
+     "sell_allin_pct": 0.34,
+     "buy_impact_pct": 0.07,
+     "buy_allin_pct": 0.34
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.14,
+     "sell_allin_pct": 0.37,
+     "buy_impact_pct": 0.14,
+     "buy_allin_pct": 0.37
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.44,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.44
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.57,
+     "sell_allin_pct": 0.58,
+     "buy_impact_pct": 0.57,
+     "buy_allin_pct": 0.59
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.71,
+     "sell_allin_pct": 0.65,
+     "buy_impact_pct": 0.72,
+     "buy_allin_pct": 0.66
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 1.41,
+     "sell_allin_pct": 1.01,
+     "buy_impact_pct": 1.43,
+     "buy_allin_pct": 1.02
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 2.11,
+     "sell_allin_pct": 1.36,
+     "buy_impact_pct": 2.15,
+     "buy_allin_pct": 1.38
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 2.8,
+     "sell_allin_pct": 1.7,
+     "buy_impact_pct": 2.88,
+     "buy_allin_pct": 1.73
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 3.92,
+     "sell_allin_pct": 2.28,
+     "buy_impact_pct": 4.08,
+     "buy_allin_pct": 2.33
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 5.48,
+     "sell_allin_pct": 3.07,
+     "buy_impact_pct": 5.8,
+     "buy_allin_pct": 3.17
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 8.05,
+     "sell_allin_pct": 4.4,
+     "buy_impact_pct": 8.75,
+     "buy_allin_pct": 4.6
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 68.43,
+     "sell_allin_pct": 15.47,
+     "buy_impact_pct": 298.33,
+     "buy_allin_pct": 24.93
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 90.68,
+     "sell_allin_pct": 37.95,
+     "buy_impact_pct": 1118.94,
+     "buy_allin_pct": 72.03
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 95.61,
+     "sell_allin_pct": 51.87,
+     "buy_impact_pct": 2386.85,
+     "buy_allin_pct": 122.08
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 98.1,
+     "sell_allin_pct": 65.14,
+     "buy_impact_pct": 5479.14,
+     "buy_allin_pct": 206.67
+    }
+   ],
+   "250000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.06,
+     "sell_allin_pct": 0.33,
+     "buy_impact_pct": 0.06,
+     "buy_allin_pct": 0.33
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.11,
+     "sell_allin_pct": 0.36,
+     "buy_impact_pct": 0.11,
+     "buy_allin_pct": 0.36
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.23,
+     "sell_allin_pct": 0.41,
+     "buy_impact_pct": 0.23,
+     "buy_allin_pct": 0.42
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.44,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.44
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.57,
+     "sell_allin_pct": 0.58,
+     "buy_impact_pct": 0.57,
+     "buy_allin_pct": 0.59
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 0.85,
+     "sell_allin_pct": 0.73,
+     "buy_impact_pct": 0.86,
+     "buy_allin_pct": 0.73
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 1.13,
+     "sell_allin_pct": 0.87,
+     "buy_impact_pct": 1.15,
+     "buy_allin_pct": 0.87
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 1.6,
+     "sell_allin_pct": 1.1,
+     "buy_impact_pct": 1.62,
+     "buy_allin_pct": 1.11
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 2.25,
+     "sell_allin_pct": 1.43,
+     "buy_impact_pct": 2.3,
+     "buy_allin_pct": 1.45
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 3.34,
+     "sell_allin_pct": 1.98,
+     "buy_impact_pct": 3.46,
+     "buy_allin_pct": 2.02
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 5.48,
+     "sell_allin_pct": 3.07,
+     "buy_impact_pct": 5.8,
+     "buy_allin_pct": 3.17
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 8.05,
+     "sell_allin_pct": 4.4,
+     "buy_impact_pct": 8.75,
+     "buy_allin_pct": 4.6
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 28.38,
+     "sell_allin_pct": 6.19,
+     "buy_impact_pct": 95.34,
+     "buy_allin_pct": 9.75
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 78.85,
+     "sell_allin_pct": 22.33,
+     "buy_impact_pct": 471.52,
+     "buy_allin_pct": 36.71
+    }
+   ],
+   "500000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.06,
+     "sell_allin_pct": 0.33,
+     "buy_impact_pct": 0.06,
+     "buy_allin_pct": 0.33
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.11,
+     "sell_allin_pct": 0.36,
+     "buy_impact_pct": 0.11,
+     "buy_allin_pct": 0.36
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.14,
+     "sell_allin_pct": 0.37,
+     "buy_impact_pct": 0.14,
+     "buy_allin_pct": 0.37
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.44,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.44
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 0.43,
+     "sell_allin_pct": 0.51,
+     "buy_impact_pct": 0.43,
+     "buy_allin_pct": 0.52
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 0.57,
+     "sell_allin_pct": 0.58,
+     "buy_impact_pct": 0.57,
+     "buy_allin_pct": 0.59
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 0.8,
+     "sell_allin_pct": 0.7,
+     "buy_impact_pct": 0.81,
+     "buy_allin_pct": 0.71
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 1.13,
+     "sell_allin_pct": 0.87,
+     "buy_impact_pct": 1.15,
+     "buy_allin_pct": 0.87
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 1.69,
+     "sell_allin_pct": 1.15,
+     "buy_impact_pct": 1.72,
+     "buy_allin_pct": 1.16
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 2.8,
+     "sell_allin_pct": 1.7,
+     "buy_impact_pct": 2.88,
+     "buy_allin_pct": 1.73
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 4.15,
+     "sell_allin_pct": 2.39,
+     "buy_impact_pct": 4.33,
+     "buy_allin_pct": 2.45
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 5.48,
+     "sell_allin_pct": 3.07,
+     "buy_impact_pct": 5.8,
+     "buy_allin_pct": 3.17
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 7.62,
+     "sell_allin_pct": 4.17,
+     "buy_impact_pct": 8.25,
+     "buy_allin_pct": 4.36
+    }
+   ],
+   "1000000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.06,
+     "sell_allin_pct": 0.33,
+     "buy_impact_pct": 0.06,
+     "buy_allin_pct": 0.33
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.07,
+     "sell_allin_pct": 0.34,
+     "buy_impact_pct": 0.07,
+     "buy_allin_pct": 0.34
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.14,
+     "sell_allin_pct": 0.37,
+     "buy_impact_pct": 0.14,
+     "buy_allin_pct": 0.37
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 0.21,
+     "sell_allin_pct": 0.41,
+     "buy_impact_pct": 0.21,
+     "buy_allin_pct": 0.41
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 0.29,
+     "sell_allin_pct": 0.44,
+     "buy_impact_pct": 0.29,
+     "buy_allin_pct": 0.44
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 0.4,
+     "sell_allin_pct": 0.5,
+     "buy_impact_pct": 0.4,
+     "buy_allin_pct": 0.5
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 0.57,
+     "sell_allin_pct": 0.58,
+     "buy_impact_pct": 0.57,
+     "buy_allin_pct": 0.59
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 0.85,
+     "sell_allin_pct": 0.73,
+     "buy_impact_pct": 0.86,
+     "buy_allin_pct": 0.73
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 1.41,
+     "sell_allin_pct": 1.01,
+     "buy_impact_pct": 1.43,
+     "buy_allin_pct": 1.02
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 2.11,
+     "sell_allin_pct": 1.36,
+     "buy_impact_pct": 2.15,
+     "buy_allin_pct": 1.38
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 2.8,
+     "sell_allin_pct": 1.7,
+     "buy_impact_pct": 2.88,
+     "buy_allin_pct": 1.73
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 3.92,
+     "sell_allin_pct": 2.28,
+     "buy_impact_pct": 4.08,
+     "buy_allin_pct": 2.33
+    }
+   ],
+   "2500000": [
+    {
+     "trade_usd": 75,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 250,
+     "sell_impact_pct": 0.0,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.0,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 500,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.3,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.3
+    },
+    {
+     "trade_usd": 1000,
+     "sell_impact_pct": 0.01,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.01,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 2000,
+     "sell_impact_pct": 0.02,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.02,
+     "buy_allin_pct": 0.31
+    },
+    {
+     "trade_usd": 2500,
+     "sell_impact_pct": 0.03,
+     "sell_allin_pct": 0.31,
+     "buy_impact_pct": 0.03,
+     "buy_allin_pct": 0.32
+    },
+    {
+     "trade_usd": 5000,
+     "sell_impact_pct": 0.06,
+     "sell_allin_pct": 0.33,
+     "buy_impact_pct": 0.06,
+     "buy_allin_pct": 0.33
+    },
+    {
+     "trade_usd": 7500,
+     "sell_impact_pct": 0.09,
+     "sell_allin_pct": 0.34,
+     "buy_impact_pct": 0.09,
+     "buy_allin_pct": 0.34
+    },
+    {
+     "trade_usd": 10000,
+     "sell_impact_pct": 0.11,
+     "sell_allin_pct": 0.36,
+     "buy_impact_pct": 0.11,
+     "buy_allin_pct": 0.36
+    },
+    {
+     "trade_usd": 14150,
+     "sell_impact_pct": 0.16,
+     "sell_allin_pct": 0.38,
+     "buy_impact_pct": 0.16,
+     "buy_allin_pct": 0.38
+    },
+    {
+     "trade_usd": 20000,
+     "sell_impact_pct": 0.23,
+     "sell_allin_pct": 0.41,
+     "buy_impact_pct": 0.23,
+     "buy_allin_pct": 0.42
+    },
+    {
+     "trade_usd": 30000,
+     "sell_impact_pct": 0.34,
+     "sell_allin_pct": 0.47,
+     "buy_impact_pct": 0.34,
+     "buy_allin_pct": 0.47
+    },
+    {
+     "trade_usd": 50000,
+     "sell_impact_pct": 0.57,
+     "sell_allin_pct": 0.58,
+     "buy_impact_pct": 0.57,
+     "buy_allin_pct": 0.59
+    },
+    {
+     "trade_usd": 75000,
+     "sell_impact_pct": 0.85,
+     "sell_allin_pct": 0.73,
+     "buy_impact_pct": 0.86,
+     "buy_allin_pct": 0.73
+    },
+    {
+     "trade_usd": 100000,
+     "sell_impact_pct": 1.13,
+     "sell_allin_pct": 0.87,
+     "buy_impact_pct": 1.15,
+     "buy_allin_pct": 0.87
+    },
+    {
+     "trade_usd": 141500,
+     "sell_impact_pct": 1.6,
+     "sell_allin_pct": 1.1,
+     "buy_impact_pct": 1.62,
+     "buy_allin_pct": 1.11
+    }
+   ]
+  },
+  "max_trade": [
+   {
+    "tvl": 100000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 699.7,
+    "max_sell_usd": 701.1
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 2445.91,
+    "max_sell_usd": 2463.12
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 5925.37,
+    "max_sell_usd": 6027.41
+   },
+   {
+    "tvl": 100000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 16262.36,
+    "max_sell_usd": 17054.84
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 1749.26,
+    "max_sell_usd": 1752.76
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 6114.78,
+    "max_sell_usd": 6157.81
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 14813.44,
+    "max_sell_usd": 15068.53
+   },
+   {
+    "tvl": 250000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 40655.9,
+    "max_sell_usd": 42637.11
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 3498.52,
+    "max_sell_usd": 3505.52
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 12229.57,
+    "max_sell_usd": 12315.62
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 29626.87,
+    "max_sell_usd": 30137.05
+   },
+   {
+    "tvl": 500000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 81311.8,
+    "max_sell_usd": 85274.22
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 6997.03,
+    "max_sell_usd": 7011.05
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 24459.13,
+    "max_sell_usd": 24631.25
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 59253.75,
+    "max_sell_usd": 60274.11
+   },
+   {
+    "tvl": 1000000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 162623.6,
+    "max_sell_usd": 170548.43
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 0.5,
+    "max_buy_usd": 17492.59,
+    "max_sell_usd": 17527.62
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 1.0,
+    "max_buy_usd": 61147.83,
+    "max_sell_usd": 61578.12
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 2.0,
+    "max_buy_usd": 148134.37,
+    "max_sell_usd": 150685.27
+   },
+   {
+    "tvl": 2500000,
+    "slippage_pct": 5.0,
+    "max_buy_usd": 406558.99,
+    "max_sell_usd": 426371.09
+   }
+  ],
+  "required_tvl": [
+   {
+    "trade_usd": 75,
+    "slippage_pct": 0.5,
+    "buy": 10718.83,
+    "sell": 10697.4,
+    "binding": 10718.83
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 1.0,
+    "buy": 3066.34,
+    "sell": 3044.91,
+    "binding": 3066.34
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 2.0,
+    "buy": 1265.74,
+    "sell": 1244.32,
+    "binding": 1265.74
+   },
+   {
+    "trade_usd": 75,
+    "slippage_pct": 5.0,
+    "buy": 461.19,
+    "sell": 439.76,
+    "binding": 461.19
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 0.5,
+    "buy": 142917.69,
+    "sell": 142632.0,
+    "binding": 142917.69
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 1.0,
+    "buy": 40884.53,
+    "sell": 40598.83,
+    "binding": 40884.53
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 2.0,
+    "buy": 16876.57,
+    "sell": 16590.87,
+    "binding": 16876.57
+   },
+   {
+    "trade_usd": 1000,
+    "slippage_pct": 5.0,
+    "buy": 6149.17,
+    "sell": 5863.44,
+    "binding": 6149.17
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 0.5,
+    "buy": 285835.38,
+    "sell": 285263.99,
+    "binding": 285835.38
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 1.0,
+    "buy": 81769.05,
+    "sell": 81197.67,
+    "binding": 81769.05
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 2.0,
+    "buy": 33753.14,
+    "sell": 33181.74,
+    "binding": 33753.14
+   },
+   {
+    "trade_usd": 2000,
+    "slippage_pct": 5.0,
+    "buy": 12298.34,
+    "sell": 11726.87,
+    "binding": 12298.34
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 0.5,
+    "buy": 714588.44,
+    "sell": 713159.98,
+    "binding": 714588.44
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 1.0,
+    "buy": 204422.64,
+    "sell": 202994.17,
+    "binding": 204422.64
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 2.0,
+    "buy": 84382.85,
+    "sell": 82954.36,
+    "binding": 84382.85
+   },
+   {
+    "trade_usd": 5000,
+    "slippage_pct": 5.0,
+    "buy": 30745.85,
+    "sell": 29317.19,
+    "binding": 30745.85
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 0.5,
+    "buy": 1429176.89,
+    "sell": 1426319.96,
+    "binding": 1429176.89
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 1.0,
+    "buy": 408845.27,
+    "sell": 405988.34,
+    "binding": 408845.27
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 2.0,
+    "buy": 168765.69,
+    "sell": 165908.72,
+    "binding": 168765.69
+   },
+   {
+    "trade_usd": 10000,
+    "slippage_pct": 5.0,
+    "buy": 61491.69,
+    "sell": 58634.37,
+    "binding": 61491.69
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 0.5,
+    "buy": 2022285.29,
+    "sell": 2018242.74,
+    "binding": 2022285.29
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 1.0,
+    "buy": 578516.06,
+    "sell": 574473.5,
+    "binding": 578516.06
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 2.0,
+    "buy": 238803.46,
+    "sell": 234760.83,
+    "binding": 238803.46
+   },
+   {
+    "trade_usd": 14150,
+    "slippage_pct": 5.0,
+    "buy": 87010.74,
+    "sell": 82967.63,
+    "binding": 87010.74
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 0.5,
+    "buy": 2858353.77,
+    "sell": 2852639.92,
+    "binding": 2858353.77
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 1.0,
+    "buy": 817690.55,
+    "sell": 811976.68,
+    "binding": 817690.55
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 2.0,
+    "buy": 337531.39,
+    "sell": 331817.43,
+    "binding": 337531.39
+   },
+   {
+    "trade_usd": 20000,
+    "slippage_pct": 5.0,
+    "buy": 122983.38,
+    "sell": 117268.74,
+    "binding": 122983.38
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 0.5,
+    "buy": 7145884.43,
+    "sell": 7131599.79,
+    "binding": 7145884.43
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 1.0,
+    "buy": 2044226.37,
+    "sell": 2029941.7,
+    "binding": 2044226.37
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 2.0,
+    "buy": 843828.47,
+    "sell": 829543.58,
+    "binding": 843828.47
+   },
+   {
+    "trade_usd": 50000,
+    "slippage_pct": 5.0,
+    "buy": 307458.45,
+    "sell": 293171.85,
+    "binding": 307458.45
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 0.5,
+    "buy": 20222852.92,
+    "sell": 20182427.41,
+    "binding": 20222852.92
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 1.0,
+    "buy": 5785160.64,
+    "sell": 5744735.01,
+    "binding": 5785160.64
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 2.0,
+    "buy": 2388034.56,
+    "sell": 2347608.33,
+    "binding": 2388034.56
+   },
+   {
+    "trade_usd": 141500,
+    "slippage_pct": 5.0,
+    "buy": 870107.43,
+    "sell": 829676.34,
+    "binding": 870107.43
+   }
+  ]
+ },
+ "liquidity_profile": {
+  "tvl": 1000000,
+  "designs": {
+   "V2": [
+    {
+     "price": 120.275,
+     "L": 42033.1352
+    },
+    {
+     "price": 120.4165,
+     "L": 42033.1352
+    },
+    {
+     "price": 120.558,
+     "L": 42033.1352
+    },
+    {
+     "price": 120.6995,
+     "L": 42033.1352
+    },
+    {
+     "price": 120.841,
+     "L": 42033.1352
+    },
+    {
+     "price": 120.9825,
+     "L": 42033.1352
+    },
+    {
+     "price": 121.124,
+     "L": 42033.1352
+    },
+    {
+     "price": 121.2655,
+     "L": 42033.1352
+    },
+    {
+     "price": 121.407,
+     "L": 42033.1352
+    },
+    {
+     "price": 121.5485,
+     "L": 42033.1352
+    },
+    {
+     "price": 121.69,
+     "L": 42033.1352
+    },
+    {
+     "price": 121.8315,
+     "L": 42033.1352
+    },
+    {
+     "price": 121.973,
+     "L": 42033.1352
+    },
+    {
+     "price": 122.1145,
+     "L": 42033.1352
+    },
+    {
+     "price": 122.256,
+     "L": 42033.1352
+    },
+    {
+     "price": 122.3975,
+     "L": 42033.1352
+    },
+    {
+     "price": 122.539,
+     "L": 42033.1352
+    },
+    {
+     "price": 122.6805,
+     "L": 42033.1352
+    },
+    {
+     "price": 122.822,
+     "L": 42033.1352
+    },
+    {
+     "price": 122.9635,
+     "L": 42033.1352
+    },
+    {
+     "price": 123.105,
+     "L": 42033.1352
+    },
+    {
+     "price": 123.2465,
+     "L": 42033.1352
+    },
+    {
+     "price": 123.388,
+     "L": 42033.1352
+    },
+    {
+     "price": 123.5295,
+     "L": 42033.1352
+    },
+    {
+     "price": 123.671,
+     "L": 42033.1352
+    },
+    {
+     "price": 123.8125,
+     "L": 42033.1352
+    },
+    {
+     "price": 123.954,
+     "L": 42033.1352
+    },
+    {
+     "price": 124.0955,
+     "L": 42033.1352
+    },
+    {
+     "price": 124.237,
+     "L": 42033.1352
+    },
+    {
+     "price": 124.3785,
+     "L": 42033.1352
+    },
+    {
+     "price": 124.52,
+     "L": 42033.1352
+    },
+    {
+     "price": 124.6615,
+     "L": 42033.1352
+    },
+    {
+     "price": 124.803,
+     "L": 42033.1352
+    },
+    {
+     "price": 124.9445,
+     "L": 42033.1352
+    },
+    {
+     "price": 125.086,
+     "L": 42033.1352
+    },
+    {
+     "price": 125.2275,
+     "L": 42033.1352
+    },
+    {
+     "price": 125.369,
+     "L": 42033.1352
+    },
+    {
+     "price": 125.5105,
+     "L": 42033.1352
+    },
+    {
+     "price": 125.652,
+     "L": 42033.1352
+    },
+    {
+     "price": 125.7935,
+     "L": 42033.1352
+    },
+    {
+     "price": 125.935,
+     "L": 42033.1352
+    },
+    {
+     "price": 126.0765,
+     "L": 42033.1352
+    },
+    {
+     "price": 126.218,
+     "L": 42033.1352
+    },
+    {
+     "price": 126.3595,
+     "L": 42033.1352
+    },
+    {
+     "price": 126.501,
+     "L": 42033.1352
+    },
+    {
+     "price": 126.6425,
+     "L": 42033.1352
+    },
+    {
+     "price": 126.784,
+     "L": 42033.1352
+    },
+    {
+     "price": 126.9255,
+     "L": 42033.1352
+    },
+    {
+     "price": 127.067,
+     "L": 42033.1352
+    },
+    {
+     "price": 127.2085,
+     "L": 42033.1352
+    },
+    {
+     "price": 127.35,
+     "L": 42033.1352
+    },
+    {
+     "price": 127.4915,
+     "L": 42033.1352
+    },
+    {
+     "price": 127.633,
+     "L": 42033.1352
+    },
+    {
+     "price": 127.7745,
+     "L": 42033.1352
+    },
+    {
+     "price": 127.916,
+     "L": 42033.1352
+    },
+    {
+     "price": 128.0575,
+     "L": 42033.1352
+    },
+    {
+     "price": 128.199,
+     "L": 42033.1352
+    },
+    {
+     "price": 128.3405,
+     "L": 42033.1352
+    },
+    {
+     "price": 128.482,
+     "L": 42033.1352
+    },
+    {
+     "price": 128.6235,
+     "L": 42033.1352
+    },
+    {
+     "price": 128.765,
+     "L": 42033.1352
+    },
+    {
+     "price": 128.9065,
+     "L": 42033.1352
+    },
+    {
+     "price": 129.048,
+     "L": 42033.1352
+    },
+    {
+     "price": 129.1895,
+     "L": 42033.1352
+    },
+    {
+     "price": 129.331,
+     "L": 42033.1352
+    },
+    {
+     "price": 129.4725,
+     "L": 42033.1352
+    },
+    {
+     "price": 129.614,
+     "L": 42033.1352
+    },
+    {
+     "price": 129.7555,
+     "L": 42033.1352
+    },
+    {
+     "price": 129.897,
+     "L": 42033.1352
+    },
+    {
+     "price": 130.0385,
+     "L": 42033.1352
+    },
+    {
+     "price": 130.18,
+     "L": 42033.1352
+    },
+    {
+     "price": 130.3215,
+     "L": 42033.1352
+    },
+    {
+     "price": 130.463,
+     "L": 42033.1352
+    },
+    {
+     "price": 130.6045,
+     "L": 42033.1352
+    },
+    {
+     "price": 130.746,
+     "L": 42033.1352
+    },
+    {
+     "price": 130.8875,
+     "L": 42033.1352
+    },
+    {
+     "price": 131.029,
+     "L": 42033.1352
+    },
+    {
+     "price": 131.1705,
+     "L": 42033.1352
+    },
+    {
+     "price": 131.312,
+     "L": 42033.1352
+    },
+    {
+     "price": 131.4535,
+     "L": 42033.1352
+    },
+    {
+     "price": 131.595,
+     "L": 42033.1352
+    },
+    {
+     "price": 131.7365,
+     "L": 42033.1352
+    },
+    {
+     "price": 131.878,
+     "L": 42033.1352
+    },
+    {
+     "price": 132.0195,
+     "L": 42033.1352
+    },
+    {
+     "price": 132.161,
+     "L": 42033.1352
+    },
+    {
+     "price": 132.3025,
+     "L": 42033.1352
+    },
+    {
+     "price": 132.444,
+     "L": 42033.1352
+    },
+    {
+     "price": 132.5855,
+     "L": 42033.1352
+    },
+    {
+     "price": 132.727,
+     "L": 42033.1352
+    },
+    {
+     "price": 132.8685,
+     "L": 42033.1352
+    },
+    {
+     "price": 133.01,
+     "L": 42033.1352
+    },
+    {
+     "price": 133.1515,
+     "L": 42033.1352
+    },
+    {
+     "price": 133.293,
+     "L": 42033.1352
+    },
+    {
+     "price": 133.4345,
+     "L": 42033.1352
+    },
+    {
+     "price": 133.576,
+     "L": 42033.1352
+    },
+    {
+     "price": 133.7175,
+     "L": 42033.1352
+    },
+    {
+     "price": 133.859,
+     "L": 42033.1352
+    },
+    {
+     "price": 134.0005,
+     "L": 42033.1352
+    },
+    {
+     "price": 134.142,
+     "L": 42033.1352
+    },
+    {
+     "price": 134.2835,
+     "L": 42033.1352
+    },
+    {
+     "price": 134.425,
+     "L": 42033.1352
+    },
+    {
+     "price": 134.5665,
+     "L": 42033.1352
+    },
+    {
+     "price": 134.708,
+     "L": 42033.1352
+    },
+    {
+     "price": 134.8495,
+     "L": 42033.1352
+    },
+    {
+     "price": 134.991,
+     "L": 42033.1352
+    },
+    {
+     "price": 135.1325,
+     "L": 42033.1352
+    },
+    {
+     "price": 135.274,
+     "L": 42033.1352
+    },
+    {
+     "price": 135.4155,
+     "L": 42033.1352
+    },
+    {
+     "price": 135.557,
+     "L": 42033.1352
+    },
+    {
+     "price": 135.6985,
+     "L": 42033.1352
+    },
+    {
+     "price": 135.84,
+     "L": 42033.1352
+    },
+    {
+     "price": 135.9815,
+     "L": 42033.1352
+    },
+    {
+     "price": 136.123,
+     "L": 42033.1352
+    },
+    {
+     "price": 136.2645,
+     "L": 42033.1352
+    },
+    {
+     "price": 136.406,
+     "L": 42033.1352
+    },
+    {
+     "price": 136.5475,
+     "L": 42033.1352
+    },
+    {
+     "price": 136.689,
+     "L": 42033.1352
+    },
+    {
+     "price": 136.8305,
+     "L": 42033.1352
+    },
+    {
+     "price": 136.972,
+     "L": 42033.1352
+    },
+    {
+     "price": 137.1135,
+     "L": 42033.1352
+    },
+    {
+     "price": 137.255,
+     "L": 42033.1352
+    },
+    {
+     "price": 137.3965,
+     "L": 42033.1352
+    },
+    {
+     "price": 137.538,
+     "L": 42033.1352
+    },
+    {
+     "price": 137.6795,
+     "L": 42033.1352
+    },
+    {
+     "price": 137.821,
+     "L": 42033.1352
+    },
+    {
+     "price": 137.9625,
+     "L": 42033.1352
+    },
+    {
+     "price": 138.104,
+     "L": 42033.1352
+    },
+    {
+     "price": 138.2455,
+     "L": 42033.1352
+    },
+    {
+     "price": 138.387,
+     "L": 42033.1352
+    },
+    {
+     "price": 138.5285,
+     "L": 42033.1352
+    },
+    {
+     "price": 138.67,
+     "L": 42033.1352
+    },
+    {
+     "price": 138.8115,
+     "L": 42033.1352
+    },
+    {
+     "price": 138.953,
+     "L": 42033.1352
+    },
+    {
+     "price": 139.0945,
+     "L": 42033.1352
+    },
+    {
+     "price": 139.236,
+     "L": 42033.1352
+    },
+    {
+     "price": 139.3775,
+     "L": 42033.1352
+    },
+    {
+     "price": 139.519,
+     "L": 42033.1352
+    },
+    {
+     "price": 139.6605,
+     "L": 42033.1352
+    },
+    {
+     "price": 139.802,
+     "L": 42033.1352
+    },
+    {
+     "price": 139.9435,
+     "L": 42033.1352
+    },
+    {
+     "price": 140.085,
+     "L": 42033.1352
+    },
+    {
+     "price": 140.2265,
+     "L": 42033.1352
+    },
+    {
+     "price": 140.368,
+     "L": 42033.1352
+    },
+    {
+     "price": 140.5095,
+     "L": 42033.1352
+    },
+    {
+     "price": 140.651,
+     "L": 42033.1352
+    },
+    {
+     "price": 140.7925,
+     "L": 42033.1352
+    },
+    {
+     "price": 140.934,
+     "L": 42033.1352
+    },
+    {
+     "price": 141.0755,
+     "L": 42033.1352
+    },
+    {
+     "price": 141.217,
+     "L": 42033.1352
+    },
+    {
+     "price": 141.3585,
+     "L": 42033.1352
+    },
+    {
+     "price": 141.5,
+     "L": 42033.1352
+    },
+    {
+     "price": 141.6415,
+     "L": 42033.1352
+    },
+    {
+     "price": 141.783,
+     "L": 42033.1352
+    },
+    {
+     "price": 141.9245,
+     "L": 42033.1352
+    },
+    {
+     "price": 142.066,
+     "L": 42033.1352
+    },
+    {
+     "price": 142.2075,
+     "L": 42033.1352
+    },
+    {
+     "price": 142.349,
+     "L": 42033.1352
+    },
+    {
+     "price": 142.4905,
+     "L": 42033.1352
+    },
+    {
+     "price": 142.632,
+     "L": 42033.1352
+    },
+    {
+     "price": 142.7735,
+     "L": 42033.1352
+    },
+    {
+     "price": 142.915,
+     "L": 42033.1352
+    },
+    {
+     "price": 143.0565,
+     "L": 42033.1352
+    },
+    {
+     "price": 143.198,
+     "L": 42033.1352
+    },
+    {
+     "price": 143.3395,
+     "L": 42033.1352
+    },
+    {
+     "price": 143.481,
+     "L": 42033.1352
+    },
+    {
+     "price": 143.6225,
+     "L": 42033.1352
+    },
+    {
+     "price": 143.764,
+     "L": 42033.1352
+    },
+    {
+     "price": 143.9055,
+     "L": 42033.1352
+    },
+    {
+     "price": 144.047,
+     "L": 42033.1352
+    },
+    {
+     "price": 144.1885,
+     "L": 42033.1352
+    },
+    {
+     "price": 144.33,
+     "L": 42033.1352
+    },
+    {
+     "price": 144.4715,
+     "L": 42033.1352
+    },
+    {
+     "price": 144.613,
+     "L": 42033.1352
+    },
+    {
+     "price": 144.7545,
+     "L": 42033.1352
+    },
+    {
+     "price": 144.896,
+     "L": 42033.1352
+    },
+    {
+     "price": 145.0375,
+     "L": 42033.1352
+    },
+    {
+     "price": 145.179,
+     "L": 42033.1352
+    },
+    {
+     "price": 145.3205,
+     "L": 42033.1352
+    },
+    {
+     "price": 145.462,
+     "L": 42033.1352
+    },
+    {
+     "price": 145.6035,
+     "L": 42033.1352
+    },
+    {
+     "price": 145.745,
+     "L": 42033.1352
+    },
+    {
+     "price": 145.8865,
+     "L": 42033.1352
+    },
+    {
+     "price": 146.028,
+     "L": 42033.1352
+    },
+    {
+     "price": 146.1695,
+     "L": 42033.1352
+    },
+    {
+     "price": 146.311,
+     "L": 42033.1352
+    },
+    {
+     "price": 146.4525,
+     "L": 42033.1352
+    },
+    {
+     "price": 146.594,
+     "L": 42033.1352
+    },
+    {
+     "price": 146.7355,
+     "L": 42033.1352
+    },
+    {
+     "price": 146.877,
+     "L": 42033.1352
+    },
+    {
+     "price": 147.0185,
+     "L": 42033.1352
+    },
+    {
+     "price": 147.16,
+     "L": 42033.1352
+    },
+    {
+     "price": 147.3015,
+     "L": 42033.1352
+    },
+    {
+     "price": 147.443,
+     "L": 42033.1352
+    },
+    {
+     "price": 147.5845,
+     "L": 42033.1352
+    },
+    {
+     "price": 147.726,
+     "L": 42033.1352
+    },
+    {
+     "price": 147.8675,
+     "L": 42033.1352
+    },
+    {
+     "price": 148.009,
+     "L": 42033.1352
+    },
+    {
+     "price": 148.1505,
+     "L": 42033.1352
+    },
+    {
+     "price": 148.292,
+     "L": 42033.1352
+    },
+    {
+     "price": 148.4335,
+     "L": 42033.1352
+    },
+    {
+     "price": 148.575,
+     "L": 42033.1352
+    },
+    {
+     "price": 148.7165,
+     "L": 42033.1352
+    },
+    {
+     "price": 148.858,
+     "L": 42033.1352
+    },
+    {
+     "price": 148.9995,
+     "L": 42033.1352
+    },
+    {
+     "price": 149.141,
+     "L": 42033.1352
+    },
+    {
+     "price": 149.2825,
+     "L": 42033.1352
+    },
+    {
+     "price": 149.424,
+     "L": 42033.1352
+    },
+    {
+     "price": 149.5655,
+     "L": 42033.1352
+    },
+    {
+     "price": 149.707,
+     "L": 42033.1352
+    },
+    {
+     "price": 149.8485,
+     "L": 42033.1352
+    },
+    {
+     "price": 149.99,
+     "L": 42033.1352
+    },
+    {
+     "price": 150.1315,
+     "L": 42033.1352
+    },
+    {
+     "price": 150.273,
+     "L": 42033.1352
+    },
+    {
+     "price": 150.4145,
+     "L": 42033.1352
+    },
+    {
+     "price": 150.556,
+     "L": 42033.1352
+    },
+    {
+     "price": 150.6975,
+     "L": 42033.1352
+    },
+    {
+     "price": 150.839,
+     "L": 42033.1352
+    },
+    {
+     "price": 150.9805,
+     "L": 42033.1352
+    },
+    {
+     "price": 151.122,
+     "L": 42033.1352
+    },
+    {
+     "price": 151.2635,
+     "L": 42033.1352
+    },
+    {
+     "price": 151.405,
+     "L": 42033.1352
+    },
+    {
+     "price": 151.5465,
+     "L": 42033.1352
+    },
+    {
+     "price": 151.688,
+     "L": 42033.1352
+    },
+    {
+     "price": 151.8295,
+     "L": 42033.1352
+    },
+    {
+     "price": 151.971,
+     "L": 42033.1352
+    },
+    {
+     "price": 152.1125,
+     "L": 42033.1352
+    },
+    {
+     "price": 152.254,
+     "L": 42033.1352
+    },
+    {
+     "price": 152.3955,
+     "L": 42033.1352
+    },
+    {
+     "price": 152.537,
+     "L": 42033.1352
+    },
+    {
+     "price": 152.6785,
+     "L": 42033.1352
+    },
+    {
+     "price": 152.82,
+     "L": 42033.1352
+    },
+    {
+     "price": 152.9615,
+     "L": 42033.1352
+    },
+    {
+     "price": 153.103,
+     "L": 42033.1352
+    },
+    {
+     "price": 153.2445,
+     "L": 42033.1352
+    },
+    {
+     "price": 153.386,
+     "L": 42033.1352
+    },
+    {
+     "price": 153.5275,
+     "L": 42033.1352
+    },
+    {
+     "price": 153.669,
+     "L": 42033.1352
+    },
+    {
+     "price": 153.8105,
+     "L": 42033.1352
+    },
+    {
+     "price": 153.952,
+     "L": 42033.1352
+    },
+    {
+     "price": 154.0935,
+     "L": 42033.1352
+    },
+    {
+     "price": 154.235,
+     "L": 42033.1352
+    },
+    {
+     "price": 154.3765,
+     "L": 42033.1352
+    },
+    {
+     "price": 154.518,
+     "L": 42033.1352
+    },
+    {
+     "price": 154.6595,
+     "L": 42033.1352
+    },
+    {
+     "price": 154.801,
+     "L": 42033.1352
+    },
+    {
+     "price": 154.9425,
+     "L": 42033.1352
+    },
+    {
+     "price": 155.084,
+     "L": 42033.1352
+    },
+    {
+     "price": 155.2255,
+     "L": 42033.1352
+    },
+    {
+     "price": 155.367,
+     "L": 42033.1352
+    },
+    {
+     "price": 155.5085,
+     "L": 42033.1352
+    },
+    {
+     "price": 155.65,
+     "L": 42033.1352
+    },
+    {
+     "price": 155.7915,
+     "L": 42033.1352
+    },
+    {
+     "price": 155.933,
+     "L": 42033.1352
+    },
+    {
+     "price": 156.0745,
+     "L": 42033.1352
+    },
+    {
+     "price": 156.216,
+     "L": 42033.1352
+    },
+    {
+     "price": 156.3575,
+     "L": 42033.1352
+    },
+    {
+     "price": 156.499,
+     "L": 42033.1352
+    },
+    {
+     "price": 156.6405,
+     "L": 42033.1352
+    },
+    {
+     "price": 156.782,
+     "L": 42033.1352
+    },
+    {
+     "price": 156.9235,
+     "L": 42033.1352
+    },
+    {
+     "price": 157.065,
+     "L": 42033.1352
+    },
+    {
+     "price": 157.2065,
+     "L": 42033.1352
+    },
+    {
+     "price": 157.348,
+     "L": 42033.1352
+    },
+    {
+     "price": 157.4895,
+     "L": 42033.1352
+    },
+    {
+     "price": 157.631,
+     "L": 42033.1352
+    },
+    {
+     "price": 157.7725,
+     "L": 42033.1352
+    },
+    {
+     "price": 157.914,
+     "L": 42033.1352
+    },
+    {
+     "price": 158.0555,
+     "L": 42033.1352
+    },
+    {
+     "price": 158.197,
+     "L": 42033.1352
+    },
+    {
+     "price": 158.3385,
+     "L": 42033.1352
+    },
+    {
+     "price": 158.48,
+     "L": 42033.1352
+    },
+    {
+     "price": 158.6215,
+     "L": 42033.1352
+    },
+    {
+     "price": 158.763,
+     "L": 42033.1352
+    },
+    {
+     "price": 158.9045,
+     "L": 42033.1352
+    },
+    {
+     "price": 159.046,
+     "L": 42033.1352
+    },
+    {
+     "price": 159.1875,
+     "L": 42033.1352
+    },
+    {
+     "price": 159.329,
+     "L": 42033.1352
+    },
+    {
+     "price": 159.4705,
+     "L": 42033.1352
+    },
+    {
+     "price": 159.612,
+     "L": 42033.1352
+    },
+    {
+     "price": 159.7535,
+     "L": 42033.1352
+    },
+    {
+     "price": 159.895,
+     "L": 42033.1352
+    },
+    {
+     "price": 160.0365,
+     "L": 42033.1352
+    },
+    {
+     "price": 160.178,
+     "L": 42033.1352
+    },
+    {
+     "price": 160.3195,
+     "L": 42033.1352
+    },
+    {
+     "price": 160.461,
+     "L": 42033.1352
+    },
+    {
+     "price": 160.6025,
+     "L": 42033.1352
+    },
+    {
+     "price": 160.744,
+     "L": 42033.1352
+    },
+    {
+     "price": 160.8855,
+     "L": 42033.1352
+    },
+    {
+     "price": 161.027,
+     "L": 42033.1352
+    },
+    {
+     "price": 161.1685,
+     "L": 42033.1352
+    },
+    {
+     "price": 161.31,
+     "L": 42033.1352
+    },
+    {
+     "price": 161.4515,
+     "L": 42033.1352
+    },
+    {
+     "price": 161.593,
+     "L": 42033.1352
+    },
+    {
+     "price": 161.7345,
+     "L": 42033.1352
+    },
+    {
+     "price": 161.876,
+     "L": 42033.1352
+    },
+    {
+     "price": 162.0175,
+     "L": 42033.1352
+    },
+    {
+     "price": 162.159,
+     "L": 42033.1352
+    },
+    {
+     "price": 162.3005,
+     "L": 42033.1352
+    },
+    {
+     "price": 162.442,
+     "L": 42033.1352
+    },
+    {
+     "price": 162.5835,
+     "L": 42033.1352
+    },
+    {
+     "price": 162.725,
+     "L": 42033.1352
+    }
+   ],
+   "V3 ±5%": [
+    {
+     "price": 120.275,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.4165,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.558,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.6995,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.841,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.9825,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.124,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.2655,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.407,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.5485,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.69,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.8315,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.973,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.1145,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.256,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.3975,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.539,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.6805,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.822,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.9635,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.105,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.2465,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.388,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.5295,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.671,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.8125,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.954,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.0955,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.237,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.3785,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.52,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.6615,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.803,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.9445,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.086,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.2275,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.369,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.5105,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.652,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.7935,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.935,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.0765,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.218,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.3595,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.501,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.6425,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.784,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.9255,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.067,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.2085,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.35,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.4915,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.633,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.7745,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.916,
+     "L": 14011.0451
+    },
+    {
+     "price": 128.0575,
+     "L": 14011.0451
+    },
+    {
+     "price": 128.199,
+     "L": 14011.0451
+    },
+    {
+     "price": 128.3405,
+     "L": 14011.0451
+    },
+    {
+     "price": 128.482,
+     "L": 14011.0451
+    },
+    {
+     "price": 128.6235,
+     "L": 14011.0451
+    },
+    {
+     "price": 128.765,
+     "L": 14011.0451
+    },
+    {
+     "price": 128.9065,
+     "L": 14011.0451
+    },
+    {
+     "price": 129.048,
+     "L": 14011.0451
+    },
+    {
+     "price": 129.1895,
+     "L": 14011.0451
+    },
+    {
+     "price": 129.331,
+     "L": 14011.0451
+    },
+    {
+     "price": 129.4725,
+     "L": 14011.0451
+    },
+    {
+     "price": 129.614,
+     "L": 14011.0451
+    },
+    {
+     "price": 129.7555,
+     "L": 14011.0451
+    },
+    {
+     "price": 129.897,
+     "L": 14011.0451
+    },
+    {
+     "price": 130.0385,
+     "L": 14011.0451
+    },
+    {
+     "price": 130.18,
+     "L": 14011.0451
+    },
+    {
+     "price": 130.3215,
+     "L": 14011.0451
+    },
+    {
+     "price": 130.463,
+     "L": 14011.0451
+    },
+    {
+     "price": 130.6045,
+     "L": 14011.0451
+    },
+    {
+     "price": 130.746,
+     "L": 14011.0451
+    },
+    {
+     "price": 130.8875,
+     "L": 14011.0451
+    },
+    {
+     "price": 131.029,
+     "L": 14011.0451
+    },
+    {
+     "price": 131.1705,
+     "L": 14011.0451
+    },
+    {
+     "price": 131.312,
+     "L": 14011.0451
+    },
+    {
+     "price": 131.4535,
+     "L": 14011.0451
+    },
+    {
+     "price": 131.595,
+     "L": 14011.0451
+    },
+    {
+     "price": 131.7365,
+     "L": 14011.0451
+    },
+    {
+     "price": 131.878,
+     "L": 14011.0451
+    },
+    {
+     "price": 132.0195,
+     "L": 14011.0451
+    },
+    {
+     "price": 132.161,
+     "L": 14011.0451
+    },
+    {
+     "price": 132.3025,
+     "L": 14011.0451
+    },
+    {
+     "price": 132.444,
+     "L": 14011.0451
+    },
+    {
+     "price": 132.5855,
+     "L": 14011.0451
+    },
+    {
+     "price": 132.727,
+     "L": 14011.0451
+    },
+    {
+     "price": 132.8685,
+     "L": 14011.0451
+    },
+    {
+     "price": 133.01,
+     "L": 14011.0451
+    },
+    {
+     "price": 133.1515,
+     "L": 14011.0451
+    },
+    {
+     "price": 133.293,
+     "L": 14011.0451
+    },
+    {
+     "price": 133.4345,
+     "L": 14011.0451
+    },
+    {
+     "price": 133.576,
+     "L": 14011.0451
+    },
+    {
+     "price": 133.7175,
+     "L": 14011.0451
+    },
+    {
+     "price": 133.859,
+     "L": 14011.0451
+    },
+    {
+     "price": 134.0005,
+     "L": 14011.0451
+    },
+    {
+     "price": 134.142,
+     "L": 14011.0451
+    },
+    {
+     "price": 134.2835,
+     "L": 14011.0451
+    },
+    {
+     "price": 134.425,
+     "L": 1148038.1928
+    },
+    {
+     "price": 134.5665,
+     "L": 1148038.1928
+    },
+    {
+     "price": 134.708,
+     "L": 1148038.1928
+    },
+    {
+     "price": 134.8495,
+     "L": 1148038.1928
+    },
+    {
+     "price": 134.991,
+     "L": 1148038.1928
+    },
+    {
+     "price": 135.1325,
+     "L": 1148038.1928
+    },
+    {
+     "price": 135.274,
+     "L": 1148038.1928
+    },
+    {
+     "price": 135.4155,
+     "L": 1148038.1928
+    },
+    {
+     "price": 135.557,
+     "L": 1148038.1928
+    },
+    {
+     "price": 135.6985,
+     "L": 1148038.1928
+    },
+    {
+     "price": 135.84,
+     "L": 1148038.1928
+    },
+    {
+     "price": 135.9815,
+     "L": 1148038.1928
+    },
+    {
+     "price": 136.123,
+     "L": 1148038.1928
+    },
+    {
+     "price": 136.2645,
+     "L": 1148038.1928
+    },
+    {
+     "price": 136.406,
+     "L": 1148038.1928
+    },
+    {
+     "price": 136.5475,
+     "L": 1148038.1928
+    },
+    {
+     "price": 136.689,
+     "L": 1148038.1928
+    },
+    {
+     "price": 136.8305,
+     "L": 1148038.1928
+    },
+    {
+     "price": 136.972,
+     "L": 1148038.1928
+    },
+    {
+     "price": 137.1135,
+     "L": 1148038.1928
+    },
+    {
+     "price": 137.255,
+     "L": 1148038.1928
+    },
+    {
+     "price": 137.3965,
+     "L": 1148038.1928
+    },
+    {
+     "price": 137.538,
+     "L": 1148038.1928
+    },
+    {
+     "price": 137.6795,
+     "L": 1148038.1928
+    },
+    {
+     "price": 137.821,
+     "L": 1148038.1928
+    },
+    {
+     "price": 137.9625,
+     "L": 1148038.1928
+    },
+    {
+     "price": 138.104,
+     "L": 1148038.1928
+    },
+    {
+     "price": 138.2455,
+     "L": 1148038.1928
+    },
+    {
+     "price": 138.387,
+     "L": 1148038.1928
+    },
+    {
+     "price": 138.5285,
+     "L": 1148038.1928
+    },
+    {
+     "price": 138.67,
+     "L": 1148038.1928
+    },
+    {
+     "price": 138.8115,
+     "L": 1148038.1928
+    },
+    {
+     "price": 138.953,
+     "L": 1148038.1928
+    },
+    {
+     "price": 139.0945,
+     "L": 1148038.1928
+    },
+    {
+     "price": 139.236,
+     "L": 1148038.1928
+    },
+    {
+     "price": 139.3775,
+     "L": 1148038.1928
+    },
+    {
+     "price": 139.519,
+     "L": 1148038.1928
+    },
+    {
+     "price": 139.6605,
+     "L": 1148038.1928
+    },
+    {
+     "price": 139.802,
+     "L": 1148038.1928
+    },
+    {
+     "price": 139.9435,
+     "L": 1148038.1928
+    },
+    {
+     "price": 140.085,
+     "L": 1148038.1928
+    },
+    {
+     "price": 140.2265,
+     "L": 1148038.1928
+    },
+    {
+     "price": 140.368,
+     "L": 1148038.1928
+    },
+    {
+     "price": 140.5095,
+     "L": 1148038.1928
+    },
+    {
+     "price": 140.651,
+     "L": 1148038.1928
+    },
+    {
+     "price": 140.7925,
+     "L": 1148038.1928
+    },
+    {
+     "price": 140.934,
+     "L": 1148038.1928
+    },
+    {
+     "price": 141.0755,
+     "L": 1148038.1928
+    },
+    {
+     "price": 141.217,
+     "L": 1148038.1928
+    },
+    {
+     "price": 141.3585,
+     "L": 1148038.1928
+    },
+    {
+     "price": 141.5,
+     "L": 1148038.1928
+    },
+    {
+     "price": 141.6415,
+     "L": 1148038.1928
+    },
+    {
+     "price": 141.783,
+     "L": 1148038.1928
+    },
+    {
+     "price": 141.9245,
+     "L": 1148038.1928
+    },
+    {
+     "price": 142.066,
+     "L": 1148038.1928
+    },
+    {
+     "price": 142.2075,
+     "L": 1148038.1928
+    },
+    {
+     "price": 142.349,
+     "L": 1148038.1928
+    },
+    {
+     "price": 142.4905,
+     "L": 1148038.1928
+    },
+    {
+     "price": 142.632,
+     "L": 1148038.1928
+    },
+    {
+     "price": 142.7735,
+     "L": 1148038.1928
+    },
+    {
+     "price": 142.915,
+     "L": 1148038.1928
+    },
+    {
+     "price": 143.0565,
+     "L": 1148038.1928
+    },
+    {
+     "price": 143.198,
+     "L": 1148038.1928
+    },
+    {
+     "price": 143.3395,
+     "L": 1148038.1928
+    },
+    {
+     "price": 143.481,
+     "L": 1148038.1928
+    },
+    {
+     "price": 143.6225,
+     "L": 1148038.1928
+    },
+    {
+     "price": 143.764,
+     "L": 1148038.1928
+    },
+    {
+     "price": 143.9055,
+     "L": 1148038.1928
+    },
+    {
+     "price": 144.047,
+     "L": 1148038.1928
+    },
+    {
+     "price": 144.1885,
+     "L": 1148038.1928
+    },
+    {
+     "price": 144.33,
+     "L": 1148038.1928
+    },
+    {
+     "price": 144.4715,
+     "L": 1148038.1928
+    },
+    {
+     "price": 144.613,
+     "L": 1148038.1928
+    },
+    {
+     "price": 144.7545,
+     "L": 1148038.1928
+    },
+    {
+     "price": 144.896,
+     "L": 1148038.1928
+    },
+    {
+     "price": 145.0375,
+     "L": 1148038.1928
+    },
+    {
+     "price": 145.179,
+     "L": 1148038.1928
+    },
+    {
+     "price": 145.3205,
+     "L": 1148038.1928
+    },
+    {
+     "price": 145.462,
+     "L": 1148038.1928
+    },
+    {
+     "price": 145.6035,
+     "L": 1148038.1928
+    },
+    {
+     "price": 145.745,
+     "L": 1148038.1928
+    },
+    {
+     "price": 145.8865,
+     "L": 1148038.1928
+    },
+    {
+     "price": 146.028,
+     "L": 1148038.1928
+    },
+    {
+     "price": 146.1695,
+     "L": 1148038.1928
+    },
+    {
+     "price": 146.311,
+     "L": 1148038.1928
+    },
+    {
+     "price": 146.4525,
+     "L": 1148038.1928
+    },
+    {
+     "price": 146.594,
+     "L": 1148038.1928
+    },
+    {
+     "price": 146.7355,
+     "L": 1148038.1928
+    },
+    {
+     "price": 146.877,
+     "L": 1148038.1928
+    },
+    {
+     "price": 147.0185,
+     "L": 1148038.1928
+    },
+    {
+     "price": 147.16,
+     "L": 1148038.1928
+    },
+    {
+     "price": 147.3015,
+     "L": 1148038.1928
+    },
+    {
+     "price": 147.443,
+     "L": 1148038.1928
+    },
+    {
+     "price": 147.5845,
+     "L": 1148038.1928
+    },
+    {
+     "price": 147.726,
+     "L": 1148038.1928
+    },
+    {
+     "price": 147.8675,
+     "L": 1148038.1928
+    },
+    {
+     "price": 148.009,
+     "L": 1148038.1928
+    },
+    {
+     "price": 148.1505,
+     "L": 1148038.1928
+    },
+    {
+     "price": 148.292,
+     "L": 1148038.1928
+    },
+    {
+     "price": 148.4335,
+     "L": 1148038.1928
+    },
+    {
+     "price": 148.575,
+     "L": 14011.0451
+    },
+    {
+     "price": 148.7165,
+     "L": 14011.0451
+    },
+    {
+     "price": 148.858,
+     "L": 14011.0451
+    },
+    {
+     "price": 148.9995,
+     "L": 14011.0451
+    },
+    {
+     "price": 149.141,
+     "L": 14011.0451
+    },
+    {
+     "price": 149.2825,
+     "L": 14011.0451
+    },
+    {
+     "price": 149.424,
+     "L": 14011.0451
+    },
+    {
+     "price": 149.5655,
+     "L": 14011.0451
+    },
+    {
+     "price": 149.707,
+     "L": 14011.0451
+    },
+    {
+     "price": 149.8485,
+     "L": 14011.0451
+    },
+    {
+     "price": 149.99,
+     "L": 14011.0451
+    },
+    {
+     "price": 150.1315,
+     "L": 14011.0451
+    },
+    {
+     "price": 150.273,
+     "L": 14011.0451
+    },
+    {
+     "price": 150.4145,
+     "L": 14011.0451
+    },
+    {
+     "price": 150.556,
+     "L": 14011.0451
+    },
+    {
+     "price": 150.6975,
+     "L": 14011.0451
+    },
+    {
+     "price": 150.839,
+     "L": 14011.0451
+    },
+    {
+     "price": 150.9805,
+     "L": 14011.0451
+    },
+    {
+     "price": 151.122,
+     "L": 14011.0451
+    },
+    {
+     "price": 151.2635,
+     "L": 14011.0451
+    },
+    {
+     "price": 151.405,
+     "L": 14011.0451
+    },
+    {
+     "price": 151.5465,
+     "L": 14011.0451
+    },
+    {
+     "price": 151.688,
+     "L": 14011.0451
+    },
+    {
+     "price": 151.8295,
+     "L": 14011.0451
+    },
+    {
+     "price": 151.971,
+     "L": 14011.0451
+    },
+    {
+     "price": 152.1125,
+     "L": 14011.0451
+    },
+    {
+     "price": 152.254,
+     "L": 14011.0451
+    },
+    {
+     "price": 152.3955,
+     "L": 14011.0451
+    },
+    {
+     "price": 152.537,
+     "L": 14011.0451
+    },
+    {
+     "price": 152.6785,
+     "L": 14011.0451
+    },
+    {
+     "price": 152.82,
+     "L": 14011.0451
+    },
+    {
+     "price": 152.9615,
+     "L": 14011.0451
+    },
+    {
+     "price": 153.103,
+     "L": 14011.0451
+    },
+    {
+     "price": 153.2445,
+     "L": 14011.0451
+    },
+    {
+     "price": 153.386,
+     "L": 14011.0451
+    },
+    {
+     "price": 153.5275,
+     "L": 14011.0451
+    },
+    {
+     "price": 153.669,
+     "L": 14011.0451
+    },
+    {
+     "price": 153.8105,
+     "L": 14011.0451
+    },
+    {
+     "price": 153.952,
+     "L": 14011.0451
+    },
+    {
+     "price": 154.0935,
+     "L": 14011.0451
+    },
+    {
+     "price": 154.235,
+     "L": 14011.0451
+    },
+    {
+     "price": 154.3765,
+     "L": 14011.0451
+    },
+    {
+     "price": 154.518,
+     "L": 14011.0451
+    },
+    {
+     "price": 154.6595,
+     "L": 14011.0451
+    },
+    {
+     "price": 154.801,
+     "L": 14011.0451
+    },
+    {
+     "price": 154.9425,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.084,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.2255,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.367,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.5085,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.65,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.7915,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.933,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.0745,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.216,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.3575,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.499,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.6405,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.782,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.9235,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.065,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.2065,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.348,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.4895,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.631,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.7725,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.914,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.0555,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.197,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.3385,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.48,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.6215,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.763,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.9045,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.046,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.1875,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.329,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.4705,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.612,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.7535,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.895,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.0365,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.178,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.3195,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.461,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.6025,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.744,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.8855,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.027,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.1685,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.31,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.4515,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.593,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.7345,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.876,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.0175,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.159,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.3005,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.442,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.5835,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.725,
+     "L": 14011.0451
+    }
+   ],
+   "V3 ±10%": [
+    {
+     "price": 120.275,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.4165,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.558,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.6995,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.841,
+     "L": 14011.0451
+    },
+    {
+     "price": 120.9825,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.124,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.2655,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.407,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.5485,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.69,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.8315,
+     "L": 14011.0451
+    },
+    {
+     "price": 121.973,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.1145,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.256,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.3975,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.539,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.6805,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.822,
+     "L": 14011.0451
+    },
+    {
+     "price": 122.9635,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.105,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.2465,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.388,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.5295,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.671,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.8125,
+     "L": 14011.0451
+    },
+    {
+     "price": 123.954,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.0955,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.237,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.3785,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.52,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.6615,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.803,
+     "L": 14011.0451
+    },
+    {
+     "price": 124.9445,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.086,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.2275,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.369,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.5105,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.652,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.7935,
+     "L": 14011.0451
+    },
+    {
+     "price": 125.935,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.0765,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.218,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.3595,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.501,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.6425,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.784,
+     "L": 14011.0451
+    },
+    {
+     "price": 126.9255,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.067,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.2085,
+     "L": 14011.0451
+    },
+    {
+     "price": 127.35,
+     "L": 586743.0302
+    },
+    {
+     "price": 127.4915,
+     "L": 586743.0302
+    },
+    {
+     "price": 127.633,
+     "L": 586743.0302
+    },
+    {
+     "price": 127.7745,
+     "L": 586743.0302
+    },
+    {
+     "price": 127.916,
+     "L": 586743.0302
+    },
+    {
+     "price": 128.0575,
+     "L": 586743.0302
+    },
+    {
+     "price": 128.199,
+     "L": 586743.0302
+    },
+    {
+     "price": 128.3405,
+     "L": 586743.0302
+    },
+    {
+     "price": 128.482,
+     "L": 586743.0302
+    },
+    {
+     "price": 128.6235,
+     "L": 586743.0302
+    },
+    {
+     "price": 128.765,
+     "L": 586743.0302
+    },
+    {
+     "price": 128.9065,
+     "L": 586743.0302
+    },
+    {
+     "price": 129.048,
+     "L": 586743.0302
+    },
+    {
+     "price": 129.1895,
+     "L": 586743.0302
+    },
+    {
+     "price": 129.331,
+     "L": 586743.0302
+    },
+    {
+     "price": 129.4725,
+     "L": 586743.0302
+    },
+    {
+     "price": 129.614,
+     "L": 586743.0302
+    },
+    {
+     "price": 129.7555,
+     "L": 586743.0302
+    },
+    {
+     "price": 129.897,
+     "L": 586743.0302
+    },
+    {
+     "price": 130.0385,
+     "L": 586743.0302
+    },
+    {
+     "price": 130.18,
+     "L": 586743.0302
+    },
+    {
+     "price": 130.3215,
+     "L": 586743.0302
+    },
+    {
+     "price": 130.463,
+     "L": 586743.0302
+    },
+    {
+     "price": 130.6045,
+     "L": 586743.0302
+    },
+    {
+     "price": 130.746,
+     "L": 586743.0302
+    },
+    {
+     "price": 130.8875,
+     "L": 586743.0302
+    },
+    {
+     "price": 131.029,
+     "L": 586743.0302
+    },
+    {
+     "price": 131.1705,
+     "L": 586743.0302
+    },
+    {
+     "price": 131.312,
+     "L": 586743.0302
+    },
+    {
+     "price": 131.4535,
+     "L": 586743.0302
+    },
+    {
+     "price": 131.595,
+     "L": 586743.0302
+    },
+    {
+     "price": 131.7365,
+     "L": 586743.0302
+    },
+    {
+     "price": 131.878,
+     "L": 586743.0302
+    },
+    {
+     "price": 132.0195,
+     "L": 586743.0302
+    },
+    {
+     "price": 132.161,
+     "L": 586743.0302
+    },
+    {
+     "price": 132.3025,
+     "L": 586743.0302
+    },
+    {
+     "price": 132.444,
+     "L": 586743.0302
+    },
+    {
+     "price": 132.5855,
+     "L": 586743.0302
+    },
+    {
+     "price": 132.727,
+     "L": 586743.0302
+    },
+    {
+     "price": 132.8685,
+     "L": 586743.0302
+    },
+    {
+     "price": 133.01,
+     "L": 586743.0302
+    },
+    {
+     "price": 133.1515,
+     "L": 586743.0302
+    },
+    {
+     "price": 133.293,
+     "L": 586743.0302
+    },
+    {
+     "price": 133.4345,
+     "L": 586743.0302
+    },
+    {
+     "price": 133.576,
+     "L": 586743.0302
+    },
+    {
+     "price": 133.7175,
+     "L": 586743.0302
+    },
+    {
+     "price": 133.859,
+     "L": 586743.0302
+    },
+    {
+     "price": 134.0005,
+     "L": 586743.0302
+    },
+    {
+     "price": 134.142,
+     "L": 586743.0302
+    },
+    {
+     "price": 134.2835,
+     "L": 586743.0302
+    },
+    {
+     "price": 134.425,
+     "L": 586743.0302
+    },
+    {
+     "price": 134.5665,
+     "L": 586743.0302
+    },
+    {
+     "price": 134.708,
+     "L": 586743.0302
+    },
+    {
+     "price": 134.8495,
+     "L": 586743.0302
+    },
+    {
+     "price": 134.991,
+     "L": 586743.0302
+    },
+    {
+     "price": 135.1325,
+     "L": 586743.0302
+    },
+    {
+     "price": 135.274,
+     "L": 586743.0302
+    },
+    {
+     "price": 135.4155,
+     "L": 586743.0302
+    },
+    {
+     "price": 135.557,
+     "L": 586743.0302
+    },
+    {
+     "price": 135.6985,
+     "L": 586743.0302
+    },
+    {
+     "price": 135.84,
+     "L": 586743.0302
+    },
+    {
+     "price": 135.9815,
+     "L": 586743.0302
+    },
+    {
+     "price": 136.123,
+     "L": 586743.0302
+    },
+    {
+     "price": 136.2645,
+     "L": 586743.0302
+    },
+    {
+     "price": 136.406,
+     "L": 586743.0302
+    },
+    {
+     "price": 136.5475,
+     "L": 586743.0302
+    },
+    {
+     "price": 136.689,
+     "L": 586743.0302
+    },
+    {
+     "price": 136.8305,
+     "L": 586743.0302
+    },
+    {
+     "price": 136.972,
+     "L": 586743.0302
+    },
+    {
+     "price": 137.1135,
+     "L": 586743.0302
+    },
+    {
+     "price": 137.255,
+     "L": 586743.0302
+    },
+    {
+     "price": 137.3965,
+     "L": 586743.0302
+    },
+    {
+     "price": 137.538,
+     "L": 586743.0302
+    },
+    {
+     "price": 137.6795,
+     "L": 586743.0302
+    },
+    {
+     "price": 137.821,
+     "L": 586743.0302
+    },
+    {
+     "price": 137.9625,
+     "L": 586743.0302
+    },
+    {
+     "price": 138.104,
+     "L": 586743.0302
+    },
+    {
+     "price": 138.2455,
+     "L": 586743.0302
+    },
+    {
+     "price": 138.387,
+     "L": 586743.0302
+    },
+    {
+     "price": 138.5285,
+     "L": 586743.0302
+    },
+    {
+     "price": 138.67,
+     "L": 586743.0302
+    },
+    {
+     "price": 138.8115,
+     "L": 586743.0302
+    },
+    {
+     "price": 138.953,
+     "L": 586743.0302
+    },
+    {
+     "price": 139.0945,
+     "L": 586743.0302
+    },
+    {
+     "price": 139.236,
+     "L": 586743.0302
+    },
+    {
+     "price": 139.3775,
+     "L": 586743.0302
+    },
+    {
+     "price": 139.519,
+     "L": 586743.0302
+    },
+    {
+     "price": 139.6605,
+     "L": 586743.0302
+    },
+    {
+     "price": 139.802,
+     "L": 586743.0302
+    },
+    {
+     "price": 139.9435,
+     "L": 586743.0302
+    },
+    {
+     "price": 140.085,
+     "L": 586743.0302
+    },
+    {
+     "price": 140.2265,
+     "L": 586743.0302
+    },
+    {
+     "price": 140.368,
+     "L": 586743.0302
+    },
+    {
+     "price": 140.5095,
+     "L": 586743.0302
+    },
+    {
+     "price": 140.651,
+     "L": 586743.0302
+    },
+    {
+     "price": 140.7925,
+     "L": 586743.0302
+    },
+    {
+     "price": 140.934,
+     "L": 586743.0302
+    },
+    {
+     "price": 141.0755,
+     "L": 586743.0302
+    },
+    {
+     "price": 141.217,
+     "L": 586743.0302
+    },
+    {
+     "price": 141.3585,
+     "L": 586743.0302
+    },
+    {
+     "price": 141.5,
+     "L": 586743.0302
+    },
+    {
+     "price": 141.6415,
+     "L": 586743.0302
+    },
+    {
+     "price": 141.783,
+     "L": 586743.0302
+    },
+    {
+     "price": 141.9245,
+     "L": 586743.0302
+    },
+    {
+     "price": 142.066,
+     "L": 586743.0302
+    },
+    {
+     "price": 142.2075,
+     "L": 586743.0302
+    },
+    {
+     "price": 142.349,
+     "L": 586743.0302
+    },
+    {
+     "price": 142.4905,
+     "L": 586743.0302
+    },
+    {
+     "price": 142.632,
+     "L": 586743.0302
+    },
+    {
+     "price": 142.7735,
+     "L": 586743.0302
+    },
+    {
+     "price": 142.915,
+     "L": 586743.0302
+    },
+    {
+     "price": 143.0565,
+     "L": 586743.0302
+    },
+    {
+     "price": 143.198,
+     "L": 586743.0302
+    },
+    {
+     "price": 143.3395,
+     "L": 586743.0302
+    },
+    {
+     "price": 143.481,
+     "L": 586743.0302
+    },
+    {
+     "price": 143.6225,
+     "L": 586743.0302
+    },
+    {
+     "price": 143.764,
+     "L": 586743.0302
+    },
+    {
+     "price": 143.9055,
+     "L": 586743.0302
+    },
+    {
+     "price": 144.047,
+     "L": 586743.0302
+    },
+    {
+     "price": 144.1885,
+     "L": 586743.0302
+    },
+    {
+     "price": 144.33,
+     "L": 586743.0302
+    },
+    {
+     "price": 144.4715,
+     "L": 586743.0302
+    },
+    {
+     "price": 144.613,
+     "L": 586743.0302
+    },
+    {
+     "price": 144.7545,
+     "L": 586743.0302
+    },
+    {
+     "price": 144.896,
+     "L": 586743.0302
+    },
+    {
+     "price": 145.0375,
+     "L": 586743.0302
+    },
+    {
+     "price": 145.179,
+     "L": 586743.0302
+    },
+    {
+     "price": 145.3205,
+     "L": 586743.0302
+    },
+    {
+     "price": 145.462,
+     "L": 586743.0302
+    },
+    {
+     "price": 145.6035,
+     "L": 586743.0302
+    },
+    {
+     "price": 145.745,
+     "L": 586743.0302
+    },
+    {
+     "price": 145.8865,
+     "L": 586743.0302
+    },
+    {
+     "price": 146.028,
+     "L": 586743.0302
+    },
+    {
+     "price": 146.1695,
+     "L": 586743.0302
+    },
+    {
+     "price": 146.311,
+     "L": 586743.0302
+    },
+    {
+     "price": 146.4525,
+     "L": 586743.0302
+    },
+    {
+     "price": 146.594,
+     "L": 586743.0302
+    },
+    {
+     "price": 146.7355,
+     "L": 586743.0302
+    },
+    {
+     "price": 146.877,
+     "L": 586743.0302
+    },
+    {
+     "price": 147.0185,
+     "L": 586743.0302
+    },
+    {
+     "price": 147.16,
+     "L": 586743.0302
+    },
+    {
+     "price": 147.3015,
+     "L": 586743.0302
+    },
+    {
+     "price": 147.443,
+     "L": 586743.0302
+    },
+    {
+     "price": 147.5845,
+     "L": 586743.0302
+    },
+    {
+     "price": 147.726,
+     "L": 586743.0302
+    },
+    {
+     "price": 147.8675,
+     "L": 586743.0302
+    },
+    {
+     "price": 148.009,
+     "L": 586743.0302
+    },
+    {
+     "price": 148.1505,
+     "L": 586743.0302
+    },
+    {
+     "price": 148.292,
+     "L": 586743.0302
+    },
+    {
+     "price": 148.4335,
+     "L": 586743.0302
+    },
+    {
+     "price": 148.575,
+     "L": 586743.0302
+    },
+    {
+     "price": 148.7165,
+     "L": 586743.0302
+    },
+    {
+     "price": 148.858,
+     "L": 586743.0302
+    },
+    {
+     "price": 148.9995,
+     "L": 586743.0302
+    },
+    {
+     "price": 149.141,
+     "L": 586743.0302
+    },
+    {
+     "price": 149.2825,
+     "L": 586743.0302
+    },
+    {
+     "price": 149.424,
+     "L": 586743.0302
+    },
+    {
+     "price": 149.5655,
+     "L": 586743.0302
+    },
+    {
+     "price": 149.707,
+     "L": 586743.0302
+    },
+    {
+     "price": 149.8485,
+     "L": 586743.0302
+    },
+    {
+     "price": 149.99,
+     "L": 586743.0302
+    },
+    {
+     "price": 150.1315,
+     "L": 586743.0302
+    },
+    {
+     "price": 150.273,
+     "L": 586743.0302
+    },
+    {
+     "price": 150.4145,
+     "L": 586743.0302
+    },
+    {
+     "price": 150.556,
+     "L": 586743.0302
+    },
+    {
+     "price": 150.6975,
+     "L": 586743.0302
+    },
+    {
+     "price": 150.839,
+     "L": 586743.0302
+    },
+    {
+     "price": 150.9805,
+     "L": 586743.0302
+    },
+    {
+     "price": 151.122,
+     "L": 586743.0302
+    },
+    {
+     "price": 151.2635,
+     "L": 586743.0302
+    },
+    {
+     "price": 151.405,
+     "L": 586743.0302
+    },
+    {
+     "price": 151.5465,
+     "L": 586743.0302
+    },
+    {
+     "price": 151.688,
+     "L": 586743.0302
+    },
+    {
+     "price": 151.8295,
+     "L": 586743.0302
+    },
+    {
+     "price": 151.971,
+     "L": 586743.0302
+    },
+    {
+     "price": 152.1125,
+     "L": 586743.0302
+    },
+    {
+     "price": 152.254,
+     "L": 586743.0302
+    },
+    {
+     "price": 152.3955,
+     "L": 586743.0302
+    },
+    {
+     "price": 152.537,
+     "L": 586743.0302
+    },
+    {
+     "price": 152.6785,
+     "L": 586743.0302
+    },
+    {
+     "price": 152.82,
+     "L": 586743.0302
+    },
+    {
+     "price": 152.9615,
+     "L": 586743.0302
+    },
+    {
+     "price": 153.103,
+     "L": 586743.0302
+    },
+    {
+     "price": 153.2445,
+     "L": 586743.0302
+    },
+    {
+     "price": 153.386,
+     "L": 586743.0302
+    },
+    {
+     "price": 153.5275,
+     "L": 586743.0302
+    },
+    {
+     "price": 153.669,
+     "L": 586743.0302
+    },
+    {
+     "price": 153.8105,
+     "L": 586743.0302
+    },
+    {
+     "price": 153.952,
+     "L": 586743.0302
+    },
+    {
+     "price": 154.0935,
+     "L": 586743.0302
+    },
+    {
+     "price": 154.235,
+     "L": 586743.0302
+    },
+    {
+     "price": 154.3765,
+     "L": 586743.0302
+    },
+    {
+     "price": 154.518,
+     "L": 586743.0302
+    },
+    {
+     "price": 154.6595,
+     "L": 586743.0302
+    },
+    {
+     "price": 154.801,
+     "L": 586743.0302
+    },
+    {
+     "price": 154.9425,
+     "L": 586743.0302
+    },
+    {
+     "price": 155.084,
+     "L": 586743.0302
+    },
+    {
+     "price": 155.2255,
+     "L": 586743.0302
+    },
+    {
+     "price": 155.367,
+     "L": 586743.0302
+    },
+    {
+     "price": 155.5085,
+     "L": 586743.0302
+    },
+    {
+     "price": 155.65,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.7915,
+     "L": 14011.0451
+    },
+    {
+     "price": 155.933,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.0745,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.216,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.3575,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.499,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.6405,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.782,
+     "L": 14011.0451
+    },
+    {
+     "price": 156.9235,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.065,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.2065,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.348,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.4895,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.631,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.7725,
+     "L": 14011.0451
+    },
+    {
+     "price": 157.914,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.0555,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.197,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.3385,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.48,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.6215,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.763,
+     "L": 14011.0451
+    },
+    {
+     "price": 158.9045,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.046,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.1875,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.329,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.4705,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.612,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.7535,
+     "L": 14011.0451
+    },
+    {
+     "price": 159.895,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.0365,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.178,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.3195,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.461,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.6025,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.744,
+     "L": 14011.0451
+    },
+    {
+     "price": 160.8855,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.027,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.1685,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.31,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.4515,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.593,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.7345,
+     "L": 14011.0451
+    },
+    {
+     "price": 161.876,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.0175,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.159,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.3005,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.442,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.5835,
+     "L": 14011.0451
+    },
+    {
+     "price": 162.725,
+     "L": 14011.0451
+    }
+   ]
+  }
+ },
+ "efficiency": [
+  {
+   "slippage_pct": 0.5,
+   "V2_max_sell": 502.26,
+   "V3 ±5%_max_sell": 13718.02,
+   "V3 ±5%_multiple": 27.313,
+   "V3 ±10%_max_sell": 7011.05,
+   "V3 ±10%_multiple": 13.959
+  },
+  {
+   "slippage_pct": 1.0,
+   "V2_max_sell": 1764.54,
+   "V3 ±5%_max_sell": 48194.21,
+   "V3 ±5%_multiple": 27.313,
+   "V3 ±10%_max_sell": 24631.25,
+   "V3 ±10%_multiple": 13.959
+  },
+  {
+   "slippage_pct": 2.0,
+   "V2_max_sell": 4317.92,
+   "V3 ±5%_max_sell": 117934.05,
+   "V3 ±5%_multiple": 27.313,
+   "V3 ±10%_max_sell": 60274.11,
+   "V3 ±10%_multiple": 13.959
+  },
+  {
+   "slippage_pct": 5.0,
+   "V2_max_sell": 12217.76,
+   "V3 ±5%_max_sell": 333699.94,
+   "V3 ±5%_multiple": 27.313,
+   "V3 ±10%_max_sell": 170548.43,
+   "V3 ±10%_multiple": 13.959
+  }
+ ],
+ "fee_sensitivity": [
+  {
+   "fee_pct": 0.3,
+   "design": "V2",
+   "slippage_pct": 0.5,
+   "max_sell_at_1m": 502.26
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V2",
+   "slippage_pct": 1.0,
+   "max_sell_at_1m": 1764.54
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V2",
+   "slippage_pct": 2.0,
+   "max_sell_at_1m": 4317.92
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V2",
+   "slippage_pct": 5.0,
+   "max_sell_at_1m": 12217.76
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V3 ±5%",
+   "slippage_pct": 0.5,
+   "max_sell_at_1m": 13718.02
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V3 ±5%",
+   "slippage_pct": 1.0,
+   "max_sell_at_1m": 48194.21
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V3 ±5%",
+   "slippage_pct": 2.0,
+   "max_sell_at_1m": 117934.05
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V3 ±5%",
+   "slippage_pct": 5.0,
+   "max_sell_at_1m": 333699.94
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V3 ±10%",
+   "slippage_pct": 0.5,
+   "max_sell_at_1m": 7011.05
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V3 ±10%",
+   "slippage_pct": 1.0,
+   "max_sell_at_1m": 24631.25
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V3 ±10%",
+   "slippage_pct": 2.0,
+   "max_sell_at_1m": 60274.11
+  },
+  {
+   "fee_pct": 0.3,
+   "design": "V3 ±10%",
+   "slippage_pct": 5.0,
+   "max_sell_at_1m": 170548.43
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V2",
+   "slippage_pct": 0.5,
+   "max_sell_at_1m": 1129.38
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V2",
+   "slippage_pct": 1.0,
+   "max_sell_at_1m": 2393.25
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V2",
+   "slippage_pct": 2.0,
+   "max_sell_at_1m": 4949.95
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V2",
+   "slippage_pct": 5.0,
+   "max_sell_at_1m": 12860.66
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V3 ±5%",
+   "slippage_pct": 0.5,
+   "max_sell_at_1m": 30846.3
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V3 ±5%",
+   "slippage_pct": 1.0,
+   "max_sell_at_1m": 65366.2
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V3 ±5%",
+   "slippage_pct": 2.0,
+   "max_sell_at_1m": 135196.49
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V3 ±5%",
+   "slippage_pct": 5.0,
+   "max_sell_at_1m": 351259.35
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V3 ±10%",
+   "slippage_pct": 0.5,
+   "max_sell_at_1m": 15765.02
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V3 ±10%",
+   "slippage_pct": 1.0,
+   "max_sell_at_1m": 33407.57
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V3 ±10%",
+   "slippage_pct": 2.0,
+   "max_sell_at_1m": 69096.65
+  },
+  {
+   "fee_pct": 0.05,
+   "design": "V3 ±10%",
+   "slippage_pct": 5.0,
+   "max_sell_at_1m": 179522.75
+  }
+ ],
+ "out_of_band": [
+  {
+   "design": "V3 ±5%",
+   "gold_move_pct": -6.0,
+   "slippage_pct": 0.5,
+   "max_sell_in_band": 13718.02,
+   "max_sell_out_of_band": 162.32
+  },
+  {
+   "design": "V3 ±5%",
+   "gold_move_pct": -6.0,
+   "slippage_pct": 1.0,
+   "max_sell_in_band": 48194.21,
+   "max_sell_out_of_band": 570.26
+  },
+  {
+   "design": "V3 ±5%",
+   "gold_move_pct": -6.0,
+   "slippage_pct": 2.0,
+   "max_sell_in_band": 117934.05,
+   "max_sell_out_of_band": 1395.46
+  },
+  {
+   "design": "V3 ±5%",
+   "gold_move_pct": -6.0,
+   "slippage_pct": 5.0,
+   "max_sell_in_band": 333699.94,
+   "max_sell_out_of_band": 3948.52
+  },
+  {
+   "design": "V3 ±5%",
+   "gold_move_pct": 6.0,
+   "slippage_pct": 0.5,
+   "max_sell_in_band": 13718.02,
+   "max_sell_out_of_band": 172.37
+  },
+  {
+   "design": "V3 ±5%",
+   "gold_move_pct": 6.0,
+   "slippage_pct": 1.0,
+   "max_sell_in_band": 48194.21,
+   "max_sell_out_of_band": 605.57
+  },
+  {
+   "design": "V3 ±5%",
+   "gold_move_pct": 6.0,
+   "slippage_pct": 2.0,
+   "max_sell_in_band": 117934.05,
+   "max_sell_out_of_band": 55243.12
+  },
+  {
+   "design": "V3 ±5%",
+   "gold_move_pct": 6.0,
+   "slippage_pct": 5.0,
+   "max_sell_in_band": 333699.94,
+   "max_sell_out_of_band": 277387.71
+  },
+  {
+   "design": "V3 ±10%",
+   "gold_move_pct": -11.0,
+   "slippage_pct": 0.5,
+   "max_sell_in_band": 7011.05,
+   "max_sell_out_of_band": 157.94
+  },
+  {
+   "design": "V3 ±10%",
+   "gold_move_pct": -11.0,
+   "slippage_pct": 1.0,
+   "max_sell_in_band": 24631.25,
+   "max_sell_out_of_band": 554.89
+  },
+  {
+   "design": "V3 ±10%",
+   "gold_move_pct": -11.0,
+   "slippage_pct": 2.0,
+   "max_sell_in_band": 60274.11,
+   "max_sell_out_of_band": 1357.84
+  },
+  {
+   "design": "V3 ±10%",
+   "gold_move_pct": -11.0,
+   "slippage_pct": 5.0,
+   "max_sell_in_band": 170548.43,
+   "max_sell_out_of_band": 3842.07
+  },
+  {
+   "design": "V3 ±10%",
+   "gold_move_pct": 11.0,
+   "slippage_pct": 0.5,
+   "max_sell_in_band": 7011.05,
+   "max_sell_out_of_band": 176.39
+  },
+  {
+   "design": "V3 ±10%",
+   "gold_move_pct": 11.0,
+   "slippage_pct": 1.0,
+   "max_sell_in_band": 24631.25,
+   "max_sell_out_of_band": 619.68
+  },
+  {
+   "design": "V3 ±10%",
+   "gold_move_pct": 11.0,
+   "slippage_pct": 2.0,
+   "max_sell_in_band": 60274.11,
+   "max_sell_out_of_band": 30852.23
+  },
+  {
+   "design": "V3 ±10%",
+   "gold_move_pct": 11.0,
+   "slippage_pct": 5.0,
+   "max_sell_in_band": 170548.43,
+   "max_sell_out_of_band": 147033.44
+  }
+ ],
+ "breach": [
+  {
+   "design": "V3 ±5%",
+   "days": 7,
+   "prob_pct": 1.9
+  },
+  {
+   "design": "V3 ±5%",
+   "days": 30,
+   "prob_pct": 40.9
+  },
+  {
+   "design": "V3 ±5%",
+   "days": 90,
+   "prob_pct": 87.3
+  },
+  {
+   "design": "V3 ±10%",
+   "days": 7,
+   "prob_pct": 0.0
+  },
+  {
+   "design": "V3 ±10%",
+   "days": 30,
+   "prob_pct": 3.1
+  },
+  {
+   "design": "V3 ±10%",
+   "days": 90,
+   "prob_pct": 31.8
+  }
+ ],
+ "budget": [
+  {
+   "tier": "Recommended",
+   "design": "V2",
+   "lines": [
+    {
+     "text": "Any SIP-sized trade (up to USD 2,000) inside 0.5%",
+     "trade_usd": 2000,
+     "slippage_pct": 0.5,
+     "required_tvl": 3989993.0
+    },
+    {
+     "text": "A 100 g trade inside 1%",
+     "trade_usd": 14150,
+     "slippage_pct": 1.0,
+     "required_tvl": 8075540.09
+    },
+    {
+     "text": "A 1 kg trade inside 5%",
+     "trade_usd": 141500,
+     "slippage_pct": 5.0,
+     "required_tvl": 12145881.24
+    }
+   ],
+   "tvl": 12145881.24,
+   "usdc": 6072940.62,
+   "aurx": 42918.308,
+   "gold_kg": 42.918
+  },
+  {
+   "tier": "Recommended",
+   "design": "V3 ±5%",
+   "lines": [
+    {
+     "text": "Any SIP-sized trade (up to USD 2,000) inside 0.5%",
+     "trade_usd": 2000,
+     "slippage_pct": 0.5,
+     "required_tvl": 146085.66
+    },
+    {
+     "text": "A 100 g trade inside 1%",
+     "trade_usd": 14150,
+     "slippage_pct": 1.0,
+     "required_tvl": 295669.84
+    },
+    {
+     "text": "A 1 kg trade inside 5%",
+     "trade_usd": 141500,
+     "slippage_pct": 5.0,
+     "required_tvl": 444697.29
+    }
+   ],
+   "tvl": 444697.29,
+   "usdc": 226009.84,
+   "aurx": 1545.494,
+   "gold_kg": 1.545
+  },
+  {
+   "tier": "Recommended",
+   "design": "V3 ±10%",
+   "lines": [
+    {
+     "text": "Any SIP-sized trade (up to USD 2,000) inside 0.5%",
+     "trade_usd": 2000,
+     "slippage_pct": 0.5,
+     "required_tvl": 285835.38
+    },
+    {
+     "text": "A 100 g trade inside 1%",
+     "trade_usd": 14150,
+     "slippage_pct": 1.0,
+     "required_tvl": 578516.06
+    },
+    {
+     "text": "A 1 kg trade inside 5%",
+     "trade_usd": 141500,
+     "slippage_pct": 5.0,
+     "required_tvl": 870107.43
+    }
+   ],
+   "tvl": 870107.43,
+   "usdc": 449219.35,
+   "aurx": 2974.474,
+   "gold_kg": 2.974
+  },
+  {
+   "tier": "Comfortable",
+   "design": "V2",
+   "lines": [
+    {
+     "text": "A 1 kg trade inside 2%",
+     "trade_usd": 141500,
+     "slippage_pct": 2.0,
+     "required_tvl": 33334716.27
+    }
+   ],
+   "tvl": 33334716.27,
+   "usdc": 16667358.13,
+   "aurx": 117790.517,
+   "gold_kg": 117.791
+  },
+  {
+   "tier": "Comfortable",
+   "design": "V3 ±5%",
+   "lines": [
+    {
+     "text": "A 1 kg trade inside 2%",
+     "trade_usd": 141500,
+     "slippage_pct": 2.0,
+     "required_tvl": 1220484.34
+    }
+   ],
+   "tvl": 1220484.34,
+   "usdc": 620290.43,
+   "aurx": 4241.653,
+   "gold_kg": 4.242
+  },
+  {
+   "tier": "Comfortable",
+   "design": "V3 ±10%",
+   "lines": [
+    {
+     "text": "A 1 kg trade inside 2%",
+     "trade_usd": 141500,
+     "slippage_pct": 2.0,
+     "required_tvl": 2388034.56
+    }
+   ],
+   "tvl": 2388034.56,
+   "usdc": 1232895.27,
+   "aurx": 8163.529,
+   "gold_kg": 8.164
+  }
+ ]
+}

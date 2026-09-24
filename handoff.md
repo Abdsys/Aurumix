@@ -4,7 +4,7 @@
 >
 > ⚠ **Read §0 and §9 first, then grep for what your task needs.** Loading this file whole cost ~35k tokens on 2026-08-19, which is most of a context window spent before any work starts. It was trimmed that day from 408 lines. **Keep it that way: add a pointer, not a paragraph.**
 >
-> **Last updated:** 2026-09-22. **Phase 5 is CLOSED** — `deliverables/5-simulations/PHASE5_STATE.md` §0 and §5b carry what landed (per-cell conditions map, one recorded run behind every Part 4 number, paired-MC tornado; all gates pass; both branded PDFs rebuilt in `final/`). **The MD document is at v1.2**: decisions 52 to 56 closed the four open design questions plus the buyback/redemption terminology, and a review pass trimmed the front matter. 🔴 **New debt from decision 54:** nobody has checked what the twin and the Phase 4 workbook assume about **lapsed cardholders**; check before quoting card or credit stream figures. **§9 item 1 (decision-50 propagation) is CLOSED 2026-09-24:** the MD document v1.2 and the legal brief already carry every post-50 position; the superseded drafts are left as audit trail, not rewritten.
+> **Last updated:** 2026-09-24. **Phase 3 is DONE as a liquidity-only audit** (`deliverables/3-supply-side-tokenomics/final/`, 30-page PDF): recommended pool **V3 ±10%, USD 870k = USD 449k stablecoin + 2.97 kg gold**; V2 would need USD 12.1m. **Phase 5 is CLOSED** — `deliverables/5-simulations/PHASE5_STATE.md` §0 and §5b carry what landed (per-cell conditions map, one recorded run behind every Part 4 number, paired-MC tornado; all gates pass; both branded PDFs rebuilt in `final/`). **The MD document is at v1.2**: decisions 52 to 56 closed the four open design questions plus the buyback/redemption terminology, and a review pass trimmed the front matter. 🔴 **New debt from decision 54:** nobody has checked what the twin and the Phase 4 workbook assume about **lapsed cardholders**; check before quoting card or credit stream figures. **§9 item 1 (decision-50 propagation) is CLOSED 2026-09-24:** the MD document v1.2 and the legal brief already carry every post-50 position; the superseded drafts are left as audit trail, not rewritten.
 
 ---
 
@@ -17,6 +17,7 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | 0 Discovery | ✅ Complete, client-reviewed |
 | 1 Market Research | ✅ Complete, 52-page summary delivered |
 | 2 Mechanism Design | 🔄 Design complete; consolidated MD document at v1.2, decisions 52-56 closed the last open design questions. Decision-50 propagation closed by the MD document itself (§9 item 1) |
+| 3 Supply Side | ✅ **Liquidity-only audit, 2026-09-24** (Abdur's scope: no allocations/vesting/ROI, AURX has none). Pool sizing, slippage, V2 vs V3. 🔴 Two items for the client: the pool undercuts the 5% entry fee, and whether Aurumix may be its own LP goes to counsel |
 | 4 Revenue Modeling | ✅ Complete. `reference_model/` is the oracle. **Two defects found by Phase 5 are logged, not fixed** (§9). 🆕 Plus decision 54's lapsed-cardholder check |
 | 5 Simulations | ✅ **CLOSED 2026-09-22.** All three finalization items landed, gates pass, PDFs in `final/`. See `deliverables/5-simulations/PHASE5_STATE.md` |
 
@@ -89,6 +90,8 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | `_source_vara_issuance_rulebook_2025.txt` | Verified primary text. **Confirms 19 May 2025 and Annex 2 III.E** |
 | `_source_difc_trust_law_2018.txt` | Verified primary text. **Caught the Art 60(6) misreading.** Keep; DIFC site 403s |
 | **Process map sets** (16) | ICS_Scoring (10, **the ICS call set**), ICS_Benefits (8, ⚠ seven-tier pass owed), Composability (8), Credit_And_Card (11), Family_And_Succession (8, **map 5 must never be cut**), Referrals (4), Minting (8), Redemption (7), Redemption_Fee (1), Revenue_Streams, Payments (7), Custody_Fee, Ownership_Structure (4), SIP_Structure + SIP_Spot_ICS (⚠ **both owe the 2026-08-10 revision**), `Aurumix_Process_Maps.md` (14, ⚠ predates SIP/spot/ICS) |
+| **3-supply-side-tokenomics/** | |
+| `Aurumix_Liquidity_Audit.md` | ✅ The audit source. `final/` holds the PDF + HTML. Rebuild: `liquidity/` → `python verify.py`, `run.py`, `charts.py`; then `_branded_working/` → `npm install`, `python build_liq.py`, `node render_liq.js Aurumix_Liquidity_Audit.html ../final/Aurumix_Liquidity_Audit.pdf` (zero overflow). ⚠ Slippage uses the plugin engine's definition (ceiling − fee = price move); the service standard sizing the budget is ours, not the client's |
 | **4-revenue-modeling/** | |
 | `Aurumix_Revenue_Model_Architecture_Brief.md` | 🔴 **v2.2. THE THING TO REVIEW.** ~4,100 lines, 23 sections. **Read §0** (findings), **§3** (the engine — the sign-off gate), **§3.y** (what the approach cannot do), **§5** (segments, rebuilt 2026-08-19). ⚠ **All output figures are still from the v2.0 ten-year run and will move.** §15 lists **25 corrections owed** |
 | `reference_model/` | **The oracle for the Excel build.** `NUMERICAL_SPINE.md` (703 lines) + `VALIDATION.md`. ⚠ **Not rebuilt for D21–D23, and not re-run since the D25 segment re-cut** |

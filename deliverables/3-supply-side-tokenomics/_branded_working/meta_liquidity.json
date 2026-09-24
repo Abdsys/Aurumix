@@ -1,0 +1,62 @@
+{
+ "title": "Aurumix AURX: Secondary Market Liquidity Audit",
+ "eyebrow": "Prepared for Aurumix",
+ "subtitle": "How deep a stablecoin pool AURX needs, what trades will cost in it, and how much of it is gold.",
+ "date": "September 2026",
+ "tagline": "Built by founders. Designed for founders.",
+ "legal": "Prepared by Tokenomics.net for Aurumix. © 2026. Confidential.",
+ "executive_summary": {
+  "intro": [
+   "AURX can trade on a secondary market, and the Mechanism Design Document already says not to seed a thin pool at launch. This audit sizes a pool that is not thin: one where everyday amounts trade at almost exactly the gold price and the largest bar can still exit inside the entry fee. It covers liquidity only, because AURX has no allocations, investors or unlocks to audit."
+  ],
+  "stats": [
+   {
+    "value": "USD 870k",
+    "label": "Recommended pool: USD 449k stablecoin plus 2.97 kg of gold"
+   },
+   {
+    "value": "14×",
+    "label": "Depth of a ±10% concentrated pool against a simple pool, same capital"
+   },
+   {
+    "value": "USD 12.1m",
+    "label": "What a simple (V2) pool would need for the same service"
+   }
+  ],
+  "findings": [
+   {
+    "title": "A simple pool does not work for AURX",
+    "body": "A V2 pool spreads its capital across every price, most of which gold will never reach. At USD 1m it takes only USD 1,765 of selling inside 1%, and a 100 g holder moves its price about 5.7%. Holding the service standard would need USD 12.1m."
+   },
+   {
+    "title": "A concentrated pool does, for under a million",
+    "body": "Two thirds of the capital in a ±10% band around the gold price: USD 870k meets the standard. A USD 2,000 trade costs 0.37%, a 100 g exit 0.76%, and a 1 kg exit stays inside the 5% entry fee. A ±5% band does the same with USD 445k."
+   },
+   {
+    "title": "The band needs an owner",
+    "body": "Gold leaves a ±5% band within a month in two runs out of five, and a ±10% band in 3%. Once outside, capacity falls 40 to 85 times and the pool shows the discount the design forbids. ±10% needs a quarterly review; ±5% needs a market maker."
+   },
+   {
+    "title": "The pool undercuts the entry fee",
+    "body": "A buyer who can reach the pool pays about 0.3 to 0.8% over gold instead of 5%. That is fine if it is a deliberate choice for existing holders and crypto-native buyers. Whether Aurumix may provide the liquidity itself is a question for counsel."
+   }
+  ]
+ },
+ "parts": {
+  "1": {
+   "subtitle": "What a secondary market means for a gold-backed token, why only liquidity is audited, and how the pool sits against Aurumix's own doors."
+  },
+  "2": {
+   "subtitle": "The standard constant-product pool: price impact, maximum trade size and the capital it needs."
+  },
+  "3": {
+   "subtitle": "Capital concentrated around the gold price: the depth it buys, and how often gold moves out of the band."
+  },
+  "4": {
+   "subtitle": "The two designs side by side, the budget for a stated service standard, and what to do."
+  },
+  "5": {
+   "subtitle": "The formulas, the checks against the audit engine, and what this audit leaves out."
+  }
+ }
+}

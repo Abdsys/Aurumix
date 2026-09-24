@@ -1,0 +1,90 @@
+[
+  {
+    "text": "Executive summary",
+    "page": "1"
+  },
+  {
+    "text": "Part 1: What this audit covers",
+    "page": "2"
+  },
+  {
+    "text": "Why a liquidity audit, and why only this part of one",
+    "page": "3"
+  },
+  {
+    "text": "How AURX differs from a normal launch token",
+    "page": "3"
+  },
+  {
+    "text": "How the pool sits against the primary door",
+    "page": "4"
+  },
+  {
+    "text": "Method in brief",
+    "page": "4"
+  },
+  {
+    "text": "Part 2: The simple pool (Uniswap V2)",
+    "page": "6"
+  },
+  {
+    "text": "Price impact",
+    "page": "7"
+  },
+  {
+    "text": "Maximum trade size",
+    "page": "8"
+  },
+  {
+    "text": "Liquidity required",
+    "page": "10"
+  },
+  {
+    "text": "Part 3: The concentrated pool (Uniswap V3)",
+    "page": "12"
+  },
+  {
+    "text": "Where the liquidity sits",
+    "page": "13"
+  },
+  {
+    "text": "Price impact",
+    "page": "7"
+  },
+  {
+    "text": "Maximum trade size",
+    "page": "8"
+  },
+  {
+    "text": "How often gold leaves the band",
+    "page": "16"
+  },
+  {
+    "text": "Part 4: V2 against V3, and the budget",
+    "page": "19"
+  },
+  {
+    "text": "Side by side",
+    "page": "20"
+  },
+  {
+    "text": "The service standard, and the budget it needs",
+    "page": "21"
+  },
+  {
+    "text": "Fee tier",
+    "page": "23"
+  },
+  {
+    "text": "Conclusion",
+    "page": "23"
+  },
+  {
+    "text": "Recommendations",
+    "page": "24"
+  },
+  {
+    "text": "Part 5: Appendix",
+    "page": "25"
+  }
+]
