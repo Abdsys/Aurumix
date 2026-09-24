@@ -29,7 +29,7 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 
 **The five things a new session most often needs to know:**
 
-1. **All 56 decisions live in `deliverables/2-mechanism-design/_decisions-log.md`.** §6 here is only the index. **Read the log entry before acting on any decision.**
+1. **All 57 decisions live in `deliverables/2-mechanism-design/_decisions-log.md`.** §6 here is only the index. **Read the log entry before acting on any decision.**
 2. **Decision 50 reversed the token-standard chain** (AURX can be an open ERC-20 with a blocklist). Decisions 10, 24, 33, 37, 38 and 40 are revised by it. **The MD document v1.2 is the authoritative post-50 statement; the older drafts and log entries were deliberately not rewritten** (Abdur, 2026-09-24).
 3. **`client container/100 G Business_Model.docx` / `.md` is the single source of truth.** ⚠ The client calls it "VERSION 3"; **say "the 100 G Business Model"**, because "V3" also meant a dead pricing formula.
 4. **v1.0's Phase 4 numbers must not be quoted anywhere.** They did not reconcile. Every figure now comes from `reference_model/`.
@@ -68,7 +68,7 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | `Aurumix_Market_Research.md` | ✅ Earlier, narrower, 5 protocols |
 | `Aurumix_Market_Research_Summary.md` / `.html` | ✅ **DELIVERED.** 52 pages. Generated: edit `_summary_working/`, never the `.md` |
 | **2-mechanism-design/** | |
-| `_decisions-log.md` | 🔴 **THE DECISION LOG. All 56 in full.** Append here, index in §6, same commit |
+| `_decisions-log.md` | 🔴 **THE DECISION LOG. All 57 in full.** Append here, index in §6, same commit |
 | 🆕 `final/Aurumix_Mechanism_Design_Document.md` | **THE CONSOLIDATED MD DOCUMENT, v1.2 (2026-09-22), written for the client's counsel.** 15 sections + 3 appendices; post-decision-50 positions; filing-grade citations corrected; decisions 52-56 written in; front matter trimmed on review.
 | The per-topic map sets | **Superseded audit trail; the live diagram set is `final/Aurumix_Process_Maps.md`.** `Aurumix_Process_Maps_Minting.md`, `Aurumix_Process_Maps_Redemption.md`, `Aurumix_Process_Maps_Redemption_Fee.md`, `Aurumix_Process_Maps_Payments.md`, `Aurumix_Process_Maps_Custody_Fee.md`, `Aurumix_Process_Maps_Composability.md`, `Aurumix_Process_Maps_Credit_And_Card.md`, `Aurumix_Process_Maps_Referrals.md`, `Aurumix_Process_Maps_Revenue_Streams.md`, `Aurumix_Process_Maps_Family_And_Succession.md`, `Aurumix_Process_Maps_ICS_Scoring.md`, `Aurumix_Process_Maps_SIP_Structure.md`, `Aurumix_Process_Maps_SIP_Spot_ICS.md`, `_reserve_sip-spot-ics-diagrams.md` `final/` also holds the 42-diagram `Aurumix_Process_Maps.md`, the branded HTML and the 112-page PDF. Rebuild: `_branded_working/build_mdd.py` then `render_mdd.js` (layout audit must return zero overflow). The drafts below remain the audit trail |
 | `Aurumix_Legal_Brief_and_Open_Questions.md` | 🔴 **361 lines, "for review". Client-facing, for onward instruction of counsel.** Part 1 describes the build for a lawyer with no prior exposure; Part 2 is the open legal questions. ⚠ **Check against decision 50 and the enforcement-sale-as-redemption question before it is sent** |
@@ -197,6 +197,7 @@ Markers: ✅ settled · 🔄 revised or superseded · ⚠ carries a caveat · �
 | 54 | 🔴 | A LAPSED CUSTOMER KEEPS THE CARD AND CREDIT. **Phase 4/5 propagation owed** |
 | 55 | ✅ | The USD 20 floor is confirmed, conditional on the rail price |
 | 56 | ✅ | "Buyback" is the product term for the exit; "redemption" is the legal category |
+| 57 | 🔴 | CARD AND CREDIT OPEN TO ALL (40% LTV, L1 base); ICS improves terms. Revises 54's gate. **Phase 4/5 propagation owed** |
 
 **Phase 4 architecture decisions D1–D25 are recorded separately** in `deliverables/4-revenue-modeling/supporting/_working_architecture-decisions-v2.md`.
 

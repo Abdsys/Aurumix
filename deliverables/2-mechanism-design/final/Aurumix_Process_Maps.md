@@ -194,9 +194,9 @@ Under the class-defined trust, the transfer is the change of ownership.
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
-    A["Ali sends AURX to Sara"] --> B["Gold stays in the vehicle"]
+    A["John sends AURX to Emma"] --> B["Gold stays in the vehicle"]
     B --> C["Trust deed reads the ledger"]
-    C --> D["Sara owns the grams"]
+    C --> D["Emma owns the grams"]
     D --> E["No register write, no approval"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
@@ -336,9 +336,9 @@ graph LR
 
 ---
 
-## 5b. Money, then title, then token
+## 5b. The purchase flow
 
-The ordering rule on every purchase, and why the mint halts if title cannot be recorded.
+Money, then title, then token: every SIP contribution and spot purchase runs this sequence.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {
@@ -349,22 +349,34 @@ The ordering rule on every purchase, and why the mint halts if title cannot be r
     'secondaryColor': '#FAF8F5',
     'tertiaryColor': '#D4CFC8',
     'fontFamily': 'Libre Franklin, sans-serif',
-    'edgeLabelBackground': '#D4CFC8',
-    'clusterBkg': '#FAF8F5',
-    'clusterBorder': '#B8956E'
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
 }}}%%
-graph LR
-    A["Funds clear into the Client Account"] --> B["Price struck at the next LBMA fix"]
-    B --> C["Title crosses: float to trust"]
-    C --> D["Token minted, 1 AURX per gram"]
-    D --> E["Entry fee becomes Aurumix's"]
-
-    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+sequenceDiagram
+    participant C as Customer
+    participant A as Aurumix
+    participant T as Trust and vault
+    participant K as AURX contract
+    C->>A: 1. SIP date or spot order
+    C->>A: 2. Pay via AANI (min USD 20)
+    Note over A: 3. Held in Client Account<br/>(still the customer's money)
+    Note over A: 4. Price struck at next LBMA fix<br/>grams = (payment - fee) / fix
+    A->>T: 5. Allocate grams from float
+    Note over T: Gold held for the customer
+    A->>K: 6. Call mint
+    Note over K: Check: trust gold >= AURX outstanding
+    K-->>C: 7. AURX delivered, 1 per gram
+    Note over A: 8. Fee moves to Aurumix account<br/>Gold Receipt and ICS updated
 ```
+
+<!-- Speaker notes: the order never changes. Money first, then the gold is put in the customer's name, and only then is the token minted. If title cannot be recorded, the mint does not happen. Target: under 24 hours from cleared funds. -->
 
 ---
 
@@ -532,9 +544,9 @@ graph LR
 
 ---
 
-## 7a. The exit path
+## 7a. The buyback flow
 
-Checks, next fix, burn, title return, payout.
+Checks first, then the price, then the burn, then the cash. No fee at any step.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {
@@ -545,22 +557,33 @@ Checks, next fix, burn, title return, payout.
     'secondaryColor': '#FAF8F5',
     'tertiaryColor': '#D4CFC8',
     'fontFamily': 'Libre Franklin, sans-serif',
-    'edgeLabelBackground': '#D4CFC8',
-    'clusterBkg': '#FAF8F5',
-    'clusterBorder': '#B8956E'
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
 }}}%%
-graph LR
-    A["Request, then checks"] --> B["Price struck at the next fix"]
-    B --> C["Tokens burned"]
-    C --> D["Grams return to the float"]
-    D --> E["Cash to their own bank, T+1"]
-
-    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+sequenceDiagram
+    participant C as Customer
+    participant A as Aurumix
+    participant K as AURX contract
+    participant T as Trust and float
+    C->>A: 1. Sell request (grams or amount)
+    Note over A: 2. Checks: onboarded, sanctions,<br/>residence, bank name, no pledge
+    Note over A: 3. Price struck at next LBMA fix
+    A->>K: 4. Burn tokens
+    Note over K: Supply falls by the grams sold
+    A->>T: 5. Grams return to the float
+    Note over T: Resold to the next buyer
+    A-->>C: 6. Cash to own bank account, T+1
+    Note over C: No exit fee
 ```
+
+<!-- Speaker notes: the checks run before the price is struck, so a failed check never leaves a price hanging. Gold only goes to the dealer if the float grows above its upper limit. -->
 
 ---
 
@@ -824,9 +847,9 @@ graph LR
 
 ---
 
-## 9a. What unlocks at each tier
+## 9a. What each tier adds
 
-The full tier by benefit matrix.
+Credit and the card are open to everyone; the tiers improve the terms.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {
@@ -842,10 +865,11 @@ The full tier by benefit matrix.
     'clusterBorder': '#B8956E'
 }}}%%
 graph TD
+    E["Every customer"] --> E1["Credit 40%, card L1"]
     A["Silver"] --> A1["0.4pp off entry fee"]
     A1 --> A2["Will plan 10% off"]
-    B["Gold"] --> B1["Credit unlocks at 50%"]
-    B1 --> B2["Card L1, Rewards 0.15%"]
+    B["Gold"] --> B1["Credit rises to 50%"]
+    B1 --> B2["Better card terms, Rewards 0.15%"]
     B2 --> B3["0.8pp off, will 20%"]
     C["Platinum"] --> C1["Credit 65%, card L2"]
     C1 --> C2["Rewards 0.45%, 1.2pp off"]
@@ -854,6 +878,8 @@ graph TD
     D1 --> D2["Rewards 0.75%, 1.5pp off"]
     D2 --> D3["Will 50%, beneficiary 20%"]
 
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E1 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
@@ -906,6 +932,148 @@ graph LR
 
 ---
 
+## 9c. The credit limit by tier
+
+What 10 g of seasoned gold (about USD 1,100) lets each tier borrow.
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}}}%%
+graph LR
+    A["10 g held, USD 1,100"] --> B["No tier or Silver: USD 440"]
+    A --> C["Gold: USD 550"]
+    A --> D["Platinum: USD 715"]
+    A --> E["Sovereign: USD 880"]
+
+    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+```
+
+<!-- Speaker notes: same grams, same gold price; only the tier's loan-to-value changes. 40 / 50 / 65 / 80 percent. -->
+
+---
+
+## 9d. The card ladder
+
+Everyone gets the card; the tier improves it.
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}}}%%
+graph LR
+    A["Every customer: L1 card"] --> B["Gold: lower FX, ATM allowance"]
+    A --> C["Platinum: L2 card"]
+    A --> D["Sovereign: L3 card"]
+    A --> E["Never downgrades"]
+
+    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+```
+
+<!-- Speaker notes: the plastic upgrades after three months at the higher tier and never downgrades; fees follow the tier each statement. -->
+
+---
+
+## 9e. How Gold Rewards is paid
+
+Card spending creates the revenue that pays the reward.
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
+}}}%%
+sequenceDiagram
+    participant C as Customer
+    participant M as Merchant
+    participant I as Card issuer
+    participant A as Aurumix
+    C->>M: 1. Pays with the Aurumix card
+    M->>I: 2. Pays interchange (1.8 to 2.1%)
+    I->>A: 3. Aurumix's share of interchange
+    Note over A: 4. Month end: tier rate x spend,<br/>capped at what this customer generated
+    A-->>C: 5. Reward credited in grams
+    Note over C: Never called yield or interest
+```
+
+<!-- Speaker notes: the merchant pays for the reward, not other savers and not company profit. Gold+ tiers only: 0.15 / 0.45 / 0.75 percent. -->
+
+---
+
+## 9f. Family services by tier
+
+Open to everyone who pays; the tier lowers the price.
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}}}%%
+graph LR
+    A["Family features: open to all"] --> B["Silver: 10% off"]
+    A --> C["Gold: 20% off"]
+    A --> D["Platinum: 35% off"]
+    A --> E["Sovereign: 50% off"]
+
+    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+```
+
+<!-- Speaker notes: discounts on the annual plan fee; per-beneficiary discount adds 10% at Platinum and 20% at Sovereign. -->
+
+---
+
 ## 10a. One facility, two draws
 
 The cash channel and the card channel spend the same limit.
@@ -939,7 +1107,7 @@ graph LR
 
 ---
 
-## 10b. A card tap in three seconds
+## 10b. A card tap, authorised live
 
 Just-in-time authorisation against live collateral headroom.
 
@@ -961,14 +1129,12 @@ graph LR
     B --> C["Processor asks Aurumix"]
     C --> D["Grams times fix times ratio"]
     D --> E["Approve, decline or partial"]
-    E --> F["Three seconds or auto-decline"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
 ```
 
 ---
@@ -1025,10 +1191,13 @@ The gold fall each tier needs before the ladder bites.
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
+    G["No tier or Silver, at 40"] --> H["Needs a 57 percent fall"]
     A["Gold tier, drawn at 50"] --> B["Needs a 46 percent fall"]
     C["Platinum, drawn at 65"] --> D["Needs a 29 percent fall"]
     E["Sovereign, drawn at 80"] --> F["Needs a 13 percent fall"]
 
+    style G fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style H fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
     style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
     style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
@@ -1245,9 +1414,9 @@ The wall between a bounty and an annuity.
     'clusterBorder': '#B8956E'
 }}}%%
 graph LR
-    A["You introduce Bilal"] --> B["You are paid once"]
-    B --> C["Bilal introduces Chandra"]
-    C --> D["Bilal is paid"]
+    A["You introduce Mark"] --> B["You are paid once"]
+    B --> C["Mark introduces Sophie"]
+    C --> D["Mark is paid"]
     C --> E["You are paid nothing"]
 
     style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
@@ -1293,9 +1462,9 @@ graph LR
 
 ---
 
-## 13b. The B2B platform fee
+## 13b. How the partner channel works
 
-Partners pay monthly on the assets their customers hold.
+The partner owns the customer; Aurumix supplies the gold and earns a monthly platform fee.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {
@@ -1306,22 +1475,32 @@ Partners pay monthly on the assets their customers hold.
     'secondaryColor': '#FAF8F5',
     'tertiaryColor': '#D4CFC8',
     'fontFamily': 'Libre Franklin, sans-serif',
-    'edgeLabelBackground': '#D4CFC8',
-    'clusterBkg': '#FAF8F5',
-    'clusterBorder': '#B8956E'
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
 }}}%%
-graph LR
-    A["Customer buys in the partner's app: one all-in price"] --> B["Entry spread splits: partner keeps 70 to 80%, paid once"]
-    B --> C["The gram lands in Aurumix custody, on the Aurumix register"]
-    C --> D["Partner invoiced monthly: platform fee in bps on their whole book"]
-    D --> E["Revenue scales with partner AUM, no new sale needed"]
-
-    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
-    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
-    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+sequenceDiagram
+    participant C as Partner's customer
+    participant P as Partner app
+    participant A as Aurumix
+    participant T as Trust and vault
+    C->>P: 1. Buys gold at one all-in price
+    P->>A: 2. Order through Aurumix's register
+    A->>T: 3. Grams allocated, AURX minted
+    Note over T: Same gold and protections<br/>as a direct customer
+    Note over P: Partner keeps most of the entry fee
+    A->>P: 4. Monthly invoice
+    P-->>A: 5. Platform fee, about 0.6% a year<br/>on its customers' gold
+    Note over A: Grows with gold held,<br/>no new sale needed
 ```
+
+<!-- Speaker notes: worked example, USD 100m of partner-customer gold at 0.60% = about USD 600,000 a year. Partner customers earn no ICS. -->
 
 ---
 
