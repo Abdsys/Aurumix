@@ -14,90 +14,121 @@ created: 2026-09-24
 
 ## Part 1: What this audit covers
 
-### Why a liquidity audit, and why only this part of one
+### Why this audit
 
-AURX is an open ERC-20 token: one token is one gram of allocated gold (decision 50, Mechanism Design Document section 3.5.3). Any holder can send it to anyone else, so it can trade on a secondary market that Aurumix does not run. The Mechanism Design Document already sets the rule for when that market opens. Secondary trading comes after the licence, once the float is deep, in order of increasing risk: a VARA-licensed exchange first, then a broader exchange, then decentralised venues (section 4.5). It also sets a standing prohibition: **do not seed a thin liquidity pool at launch**, because a thin pool shows a visible, continuous discount to the gold price.
+AURX is an open ERC-20 token. One AURX is one gram of allocated gold.
 
-This audit puts a number on "deep enough". It answers three questions:
+- Any holder can send AURX to anyone else.
+- So AURX can trade on a secondary market that Aurumix does not run.
+- The Mechanism Design Document (section 4.5) sets the order: a VARA-licensed exchange first, then a broader exchange, then decentralised venues.
+- It also sets one rule: **do not seed a thin pool at launch.** A thin pool shows a visible discount to the gold price.
 
-1. If AURX is paired with a stablecoin (USDC or USDT) in a pool, how much does a trade of a given size move the price?
-2. How big a pool does Aurumix need so that ordinary trades, and the occasional large exit, clear at an acceptable cost?
-3. How much of that is stablecoin, and how much is gold?
+This audit answers three questions:
 
-A standard Tokenomics.net audit also covers allocations, vesting, investor discounts, investor returns and unlock-driven sell pressure. **None of those apply to AURX, and all are left out on purpose.** AURX has no allocation table, no investors holding discounted tokens and no unlock schedule. Every token is minted only when a customer's money has bought a gram, and burned when that gram is sold back. There is no supply to distribute, so the only supply-side question left is liquidity.
+1. How much does a trade move the price in an AURX/stablecoin pool?
+2. How big must the pool be for trades to clear at a fair cost?
+3. How much of the pool is stablecoin, and how much is gold?
 
-### How AURX differs from a normal launch token
+### What is left out
 
-Three facts change how the standard liquidity analysis applies.
+A standard audit also covers allocations, vesting, investor discounts, investor returns and unlock sell pressure. None of these apply to AURX.
 
-**The price is anchored to gold, not discovered.** A normal token's pool is the place where its price is found. AURX already has a price: the LBMA gold price per gram (the fix). The pool's job is to stay close to it. So this audit does not ask the standard question, "what happens when X% of the circulating supply is sold". It asks how large a single trade can be before the pool price moves too far from gold.
+- AURX has no allocation table.
+- No investor holds discounted tokens.
+- Nothing unlocks over time.
+- Every AURX is minted when a customer's money buys a gram, and burned when that gram is sold back.
 
-**Both sides of the pool cost real money.** A normal project mints its own token side for free and only funds the stablecoin side. Every AURX in a pool must be backed by a real gram in the vault, minted like any customer's. A USD 1m pool is roughly USD 0.5m of stablecoin plus USD 0.5m of gold. The gold is not spent (Aurumix still owns it), but it is capital tied up in the pool.
+### How AURX differs from a launch token
 
-**The customer always has a second door.** A buyer can go to Aurumix directly and pay the fix plus the entry fee (5% at launch, decision 9). A seller can use the buyback and receive the fix with no fee, because VARA forbids charging for redemption (Annex 2 III.E.4). The pool only wins a trade when it beats both doors. That is why this audit uses tighter slippage ceilings than the standard one (next section).
+**1. The price is set by gold.**
 
-### How the pool sits against the primary door
+- AURX tracks the LBMA gold price per gram (the fix).
+- The pool's job is to stay close to that price.
 
-The two doors fence in where the pool price can settle.
+**2. Both sides of the pool cost real money.**
 
-- **The floor is the fix.** If the pool price falls below the gold price, any holder who has completed onboarding can buy AURX in the pool and sell it back to Aurumix at the next fix, for free. That arbitrage pulls the pool back up. It is not instant: the buyback strikes at the next fix, hours away, and needs a verified account, so small discounts can persist for a few hours.
-- **The ceiling is the fix plus the entry fee.** If the pool price rises above what a new customer pays at the primary door, buying directly becomes cheaper and mint-and-sell becomes profitable. That pulls the pool back down.
+- Every AURX in the pool is backed by a real gram in the vault.
+- A USD 1m pool holds about USD 0.5m of stablecoin and USD 0.5m of gold.
+- Aurumix still owns the gold. It is capital tied up in the pool.
 
-So the pool sits in a band between the gold price and the gold price plus about 5%. Two consequences follow. Both return in the conclusion.
+**3. The customer has two other doors.**
 
-1. **For sellers, the pool competes with a free buyback.** A holder will sell in the pool only if the slippage is a fair price for skipping the wait for the fix. That is why this audit's tightest ceiling is 0.5%.
-2. **For buyers, the pool undercuts the entry fee.** A crypto-native buyer who can reach the pool gets gold at the fix plus a fraction of a percent, instead of the fix plus 5%. The pool is a cheaper door into AURX than Aurumix's own app, for the buyers who can use it. That is acceptable if Aurumix chooses it deliberately.
+- **Buying:** pay the fix plus the entry fee (5% at launch) through the Aurumix app.
+- **Selling:** use the buyback. It pays the fix with no fee (VARA Annex 2 III.E.4).
+- The pool only wins a trade when it is cheaper than these doors.
 
-### Method in brief
+### Where the pool price will sit
 
-The pool arithmetic follows the Tokenomics.net audit engine exactly: the Uniswap V2 constant-product formulas for price impact, maximum trade size and minimum liquidity, and the Uniswap V3 concentrated-liquidity formulas for the band design. Appendix A gives the formulas and the checks that tie our figures back to the engine.
+The two doors set a floor and a ceiling.
+
+| | Price | What happens |
+|---|---|---|
+| **Floor** | The fix | Below it, a verified holder buys in the pool and sells back to Aurumix for free. The pool price rises. |
+| **Ceiling** | The fix plus about 5% | Above it, buying through the app is cheaper. The pool price falls. |
+
+Two things follow.
+
+- **Sellers compare the pool with a free buyback.** They use the pool only if slippage is small. So the tightest ceiling in this audit is 0.5%.
+- **Buyers get a cheaper way in.** A buyer who can reach the pool pays the fix plus a fraction of a percent, instead of the fix plus 5%.
+
+### Method and inputs
+
+The pool maths follows the Tokenomics.net audit engine. Appendix A lists the formulas and the checks.
 
 | Input | Value | Source |
 |---|---|---|
-| AURX price | USD 141.50 (1 gram of gold) | Phase 4 and 5 gold price |
-| Pool fee | 0.30% on both designs | Uniswap V2 standard; V3 set equal so the comparison measures shape, not fee |
-| Slippage ceilings | 0.5%, 1%, 2%, 5% | The standard audit uses 2, 5 and 10%; tightened because the customer's other doors cost 0% (sell) and 5% (buy) |
-| Pool sizes tested | USD 100k, 250k, 500k, 1m, 2.5m, both sides combined | There is no token raise to derive a single figure from, so a range is swept |
-| Trade sizes | USD 1k, 5k, 10k, 20k, 50k, plus four Aurumix sizes | Standard audit grid, plus the sizes that matter to this product |
-| Aurumix sizes | USD 75 (target monthly SIP), USD 2,000 (top SIP ticket), 100 g (USD 14,150), 1 kg (USD 141,500) | Product specification and launch bar denominations |
-| V3 layout | Two thirds of capital in a band around the gold price, one third spread over all prices | Standard audit layout |
-| V3 bands | ±5% and ±10% around the gold price | Gold moves about 4% in a typical month |
-| Gold volatility | 15% a year | The figure used in the Phase 5 simulation |
+| AURX price | USD 141.50 (1 gram) | Phase 4 and 5 gold price |
+| Pool fee | 0.30% on both designs | Uniswap V2 standard |
+| Slippage ceilings | 0.5%, 1%, 2%, 5% | Tighter than the standard 2, 5 and 10%, because of the two doors |
+| Pool sizes tested | USD 100k to 2.5m, both sides combined | No token raise to size from |
+| Trade sizes | USD 1k, 5k, 10k, 20k, 50k | Standard audit grid |
+| Aurumix trade sizes | USD 75 (monthly SIP), USD 2,000 (top SIP ticket), 100 g (USD 14,150), 1 kg (USD 141,500) | Product and bar sizes |
+| V3 layout | Two thirds of capital in a band around gold, one third across all prices | Standard audit layout |
+| V3 bands | ±5% and ±10% | Gold moves about 4% in a typical month |
+| Gold volatility | 15% a year | Phase 5 simulation |
 
-**What "slippage" means here.** The audit engine's definition is used throughout. A 1% ceiling allows the fee (0.3%) plus 0.7% of price impact, where price impact is how far the pool's price has moved when the trade is done. This is deliberately conservative: the seller's average price across the whole trade is always better than the final price. Where the difference matters, both figures are given. For example, a 1 kg sale in the recommended pool measures 4.79% against the 5% ceiling, but the seller receives, on average, 2.56% below the gold price.
+**How slippage is measured.** A 1% ceiling allows the 0.3% fee plus 0.7% of price movement. The seller's average price is better: a 1 kg sale measured at 4.79% receives 2.56% below gold.
 
 ---
 
 ## Part 2: The simple pool (Uniswap V2)
 
-A Uniswap V2 pool spreads its liquidity evenly across every possible price, from zero to infinity. It needs no management and never runs out of either asset, which makes it the standard starting point. For a token whose price is tied to gold, it is also wasteful: nearly all of the capital sits at prices AURX will never trade at, such as half or double the price of gold. This part measures what that costs.
+A V2 pool spreads its capital across every price, from zero upwards.
+
+- It needs no management.
+- It never runs out of either asset.
+- Most of its capital sits at prices AURX will never reach, such as half or double the gold price.
 
 ### Price impact
 
-**What this shows.** How far the pool's price moves when someone sells a given dollar amount of AURX into it. Sale size runs along the bottom and slippage up the side. Each line is one pool size, and the dashed lines are the four slippage ceilings. A trade fits a ceiling if, at that trade's size, the pool's line is still below the dashed line.
-
-**What to look for.** A healthy pool keeps the product's everyday trade sizes (the SIP ticket and the top ticket) under 0.5%, and ordinary exits under 1 to 2%.
+**How to read it.** Sale size runs along the bottom. Slippage runs up the side. Each line is one pool size. A trade fits a ceiling when its line is below that dashed line.
 
 ![Slippage against sale size in a V2 pool, one line per pool size](liquidity/outputs/charts/01_v2_price_impact.png)
 
-The picture is poor across the whole range. Between USD 250k and USD 1m, only the USD 75 monthly payment clears the 0.5% ceiling. A USD 1k trade needs the USD 2.5m pool to do the same. The top SIP ticket (USD 2,000) costs about 1.1% even in a USD 1m pool, and a 100 g holder selling into that same pool moves the price about 5.7%. The 1 kg line only comes into view in the USD 2.5m pool, and there it still moves the price about 20%.
+**What it shows:**
 
-The pool formula explains why. In a constant-product pool, price impact grows roughly in proportion to trade size divided by pool size, so every doubling of the trade needs a doubling of the pool. No pool size escapes this rule. Each gain in depth costs capital in the same proportion.
+- From USD 250k to USD 1m, only the USD 75 SIP payment clears 0.5%.
+- A USD 1k trade needs the USD 2.5m pool to clear 0.5%.
+- In a USD 1m pool, a USD 2,000 sale costs about 1.1%.
+- In the same pool, a 100 g sale costs about 5.7%.
+- A 1 kg sale costs about 20% even in the USD 2.5m pool.
+
+**Why.** Price impact grows with trade size divided by pool size. Double the trade and you need double the pool.
 
 #### Key insights
 
-- **A V2 pool cannot hold AURX near the gold price for any trade larger than a monthly SIP.** At USD 1m of capital, a USD 2,000 sale costs about 1.1% by the engine's measure. A holder would lose more in slippage than the wait for the free buyback costs them.
-- **The 0.3% fee takes most of a tight slippage budget.** At a 0.5% ceiling only 0.2% is left for price impact, which is why even small trades struggle at that ceiling.
-- **The large exits are out of reach at any tested size.** A 1 kg sale moves a USD 2.5m pool by about 20%, which is four times the entry fee a buyer pays at the primary door.
+- A V2 pool cannot hold AURX near gold for anything larger than a SIP payment.
+- The 0.3% fee uses most of a 0.5% ceiling. Only 0.2% is left for price movement.
+- Large exits are out of reach at every tested size.
 
 #### Potential risks
 
-- A thin V2 pool produces exactly the continuous visible discount the Mechanism Design Document prohibits. Anyone watching the pool would see AURX quoted below gold, which undermines the claim the product rests on.
-- Large sellers who cannot wait for the fix will sell into the pool and move the displayed price, even though the gold behind each token is unchanged.
+- A thin V2 pool shows AURX below gold. The Mechanism Design Document prohibits this.
+- A large seller who will not wait for the fix moves the displayed price. The gold behind each token has not changed.
 
 ### Maximum trade size
 
-**What this shows.** The reverse question: at each ceiling, what is the biggest sale the pool can take? Bars are grouped by ceiling, one bar per pool size. The vertical axis is logarithmic, so each gridline is ten times the one below.
+**How to read it.** For each ceiling, the largest sale the pool can take. One bar per pool size. Each gridline is ten times the one below.
 
 ![Largest sale inside each ceiling, V2 pool](liquidity/outputs/charts/02_v2_max_trade.png)
 
@@ -109,17 +140,18 @@ The pool formula explains why. In a constant-product pool, price impact grows ro
 | USD 1m | USD 502 | USD 1,765 | USD 4,318 | USD 12,218 |
 | USD 2.5m | USD 1,256 | USD 4,411 | USD 10,795 | USD 30,544 |
 
-The table scales in a straight line with pool size: double the pool and every cell doubles. A USD 1m pool takes USD 502 of selling inside 0.5% and USD 1,765 inside 1%. Buys are slightly smaller than sells at the same ceiling (USD 501 and USD 1,752 in the USD 1m pool).
+- Double the pool and every cell doubles.
+- Buys are slightly smaller than sells: USD 501 and USD 1,752 in the USD 1m pool.
 
 #### Key insights
 
-- **The best-case pool (USD 2.5m) cannot absorb one 100 g exit inside 2%.** The biggest sale it takes inside 2% is USD 10,795, about 76 g.
-- **The standard audit's benchmark fails at every tested size.** That benchmark asks for USD 10k to 50k trades inside 2 to 3%. The largest V2 pool tested reaches USD 10,795 inside 2%.
-- **Buy and sell capacity are nearly equal**, within about 5% of each other at every ceiling, so one number per ceiling is a fair summary.
+- The USD 2.5m pool cannot take one 100 g sale inside 2%. Its limit is USD 10,795, about 76 g.
+- The standard audit benchmark is USD 10k to 50k inside 2 to 3%. No V2 pool tested meets it.
+- Buy and sell limits are within about 5% of each other.
 
 ### Liquidity required
 
-**What this shows.** How large the pool must be (both sides combined) for a given trade to clear inside a given ceiling. Each line is one trade size. Where a buy and a sell of the same size need different amounts, the larger is shown.
+**How to read it.** The pool size needed for each trade to clear each ceiling. One line per trade size. Where a buy needs more than a sale, the larger figure is shown.
 
 ![Pool size needed against slippage ceiling, V2, one line per trade size](liquidity/outputs/charts/03_v2_required_tvl.png)
 
@@ -131,48 +163,63 @@ The table scales in a straight line with pool size: double the pool and every ce
 | 100 g (USD 14,150) | USD 28.2m | USD 8.08m | USD 3.33m | USD 1.21m |
 | 1 kg (USD 141,500) | USD 282m | USD 80.8m | USD 33.3m | USD 12.1m |
 
-The grid below shows the same result another way. For each pool size (columns) and trade size (rows), it gives the tightest ceiling the trade clears. Darker cells mean a tighter ceiling, which is better.
+The grid below gives the tightest ceiling each trade clears at each pool size. Darker is better.
 
 ![Tightest ceiling each trade clears, by pool size, V2](liquidity/outputs/charts/04_v2_coverage.png)
 
-Below USD 2.5m, the lower half of the grid is blank: nothing from USD 14k up clears even the 5% ceiling. The USD 2.5m pool brings the 100 g and USD 20k trades inside 5%, and the 1 kg exit never clears it.
+- Below USD 2.5m, nothing from USD 14k up clears even 5%.
+- At USD 2.5m, the 100 g and USD 20k trades clear 5%.
+- The 1 kg sale never clears 5%.
 
 #### Key insights
 
-- **Letting a 100 g holder out inside 1% would take a USD 8.08m V2 pool.** That is about USD 570 of pool for every dollar of the trade it is meant to serve, and about USD 2,000 per dollar at the 0.5% ceiling.
-- **A 1 kg exit inside 5% would need USD 12.1m.** That is more than the peak funding the Phase 5 simulation measured for the whole business.
-- **The requirement grows in step with trade size.** A trade ten times larger needs a pool ten times larger at the same ceiling, so there is no economy of scale to wait for.
+- A 100 g sale inside 1% needs a USD 8.08m pool. That is about USD 570 of pool per dollar traded.
+- A 1 kg sale inside 5% needs USD 12.1m. That is more than the peak funding Phase 5 measured for the whole business.
+- The pool needed grows in step with trade size. There is no saving at scale.
 
 ---
 
 ## Part 3: The concentrated pool (Uniswap V3)
 
-A Uniswap V3 pool lets the liquidity provider choose the price range their capital works in. For AURX this is the natural design: the price should always sit near the gold price, so capital can be concentrated there instead of spread across prices that never occur. This audit uses the standard layout: two thirds of the capital in a band centred on the gold price, and one third across all prices as a backstop so the pool never runs dry if gold jumps. Two bands are tested, ±5% and ±10%.
+A V3 pool puts its capital inside a chosen price band.
+
+- AURX should always trade near gold, so the band sits around the gold price.
+- Layout: two thirds of the capital in the band, one third across all prices as a backstop.
+- Two bands are tested: ±5% and ±10%.
 
 ### Where the liquidity sits
 
-**What this shows.** The depth each design offers at each price, as a multiple of the V2 pool, for the same USD 1m of capital. Depth here is Uniswap's liquidity measure: the more of it at the current price, the less a trade moves the price.
+**How to read it.** Depth at each price, as a multiple of V2, for the same USD 1m. More depth means a trade moves the price less.
 
 ![Depth by price, as a multiple of V2, same capital](liquidity/outputs/charts/05_v3_liquidity_profile.png)
 
-Inside its band, the ±10% design is 14 times as deep as V2 and the ±5% design is 27 times as deep. Outside the band, both fall to one third of V2's depth, because only the backstop third is working there. This is the central V3 trade-off: a narrower band gives more depth near the gold price and less protection when gold moves.
+- Inside the band, ±10% is 14 times as deep as V2.
+- Inside the band, ±5% is 27 times as deep as V2.
+- Outside the band, both drop to one third of V2. Only the backstop is working.
+- A narrower band gives more depth, and less protection when gold moves.
 
 ### Price impact
 
-**What this shows.** The same chart as for V2, now for the ±10% band. Read it against the V2 chart: the same pool sizes, the same trades, the same dashed ceilings.
+**How to read it.** The same chart as for V2, for the ±10% band.
 
 ![Slippage against sale size in a V3 ±10% pool, one line per pool size](liquidity/outputs/charts/06_v3_price_impact.png)
 
-Every curve sits far below its V2 counterpart. In a USD 500k pool the top SIP ticket costs about 0.4% and a 100 g exit about 1.1%. A 1 kg exit still costs about 7.9% at that size. It needs the USD 1m pool (4.2%) to fit inside 5%. The two smallest pools show a kink at the right-hand end. Past that point the sale has pushed the price out of the band and onto the thin backstop, and slippage rises steeply. That kink marks the practical limit of each pool.
+**What it shows (USD 500k pool):**
+
+- USD 2,000 sale: about 0.4%.
+- 100 g sale: about 1.1%.
+- 1 kg sale: about 7.9%. It needs the USD 1m pool (4.2%) to fit inside 5%.
+
+The two smallest pools bend sharply at the right. There the sale has pushed the price out of the band. That bend is the pool's practical limit.
 
 #### Key insights
 
-- **Concentration leaves everyday trades costing little more than the fee.** A USD 2,000 sale into a USD 1m ±10% pool costs about 0.36%, of which 0.30% is the fee.
-- **Costs jump at the band edge.** Once a trade carries the price out of the band, slippage goes from single digits to tens of percent within one step of trade size. A pool must be sized so that the largest expected trade stays inside the band.
+- Everyday trades cost little more than the fee. A USD 2,000 sale in a USD 1m pool costs about 0.36%, of which 0.30% is the fee.
+- Costs jump once a trade leaves the band. Size the pool so the largest trade stays inside.
 
 ### Maximum trade size
 
-**What this shows.** The largest sale inside each ceiling for a USD 1m pool, V2 against the two V3 bands.
+**How to read it.** The largest sale inside each ceiling for a USD 1m pool, V2 against both V3 bands.
 
 ![Largest sale inside each ceiling, USD 1m pool, V2 against V3](liquidity/outputs/charts/07_v3_max_trade.png)
 
@@ -183,21 +230,22 @@ Every curve sits far below its V2 counterpart. In a USD 500k pool the top SIP ti
 | 2% | USD 4,318 | USD 60,274 | USD 117,934 |
 | 5% | USD 12,218 | USD 170,548 | USD 333,700 |
 
-The multiple over V2 is the same at every ceiling: 14.0 times for the ±10% band and 27.3 times for the ±5% band. That holds as long as the trade stays inside the band, which it does for every cell in this table. The ±10% pool takes a 1 kg exit inside 5% at USD 1m, which V2 could not do at USD 2.5m.
+- ±10% takes 14.0 times more than V2 at every ceiling.
+- ±5% takes 27.3 times more.
+- At USD 1m, ±10% takes a 1 kg sale inside 5%. V2 cannot do this even at USD 2.5m.
 
-The same grid as in Part 2, now for the ±10% design: the tightest ceiling each trade clears at each pool size.
+The same grid as in Part 2, for the ±10% band:
 
 ![Tightest ceiling each trade clears, by pool size, V3 ±10%](liquidity/outputs/charts/08_v3_coverage.png)
 
 #### Key insights
 
-- **At the same capital, a ±10% band takes trades fourteen times larger than V2.** The USD 1m pool that took USD 1,765 inside 1% under V2 takes USD 24,631 under V3 ±10%.
-- **A USD 1m ±10% pool meets the standard audit benchmark.** USD 10k to 50k trades clear inside 2%, which V2 could not reach at any tested size.
-- **Halving the band doubles the depth again**, but only for as long as gold stays inside it. The next section measures how long that is.
+- A USD 1m ±10% pool meets the standard benchmark. USD 10k to 50k trades clear inside 2%.
+- Halving the band doubles the depth. It only lasts while gold stays inside the band.
 
 ### How often gold leaves the band
 
-**What this shows.** A V3 band is fixed when it is set, but gold keeps moving. When gold moves past the band edge, the pool price follows it (arbitrage keeps AURX on gold), and the band stops working. For each band, this chart shows the chance that gold touches the band edge within 7, 30 and 90 days of the band being set. The figures come from 20,000 simulated gold paths at 15% annual volatility, the same assumption the Phase 5 simulation uses.
+**How to read it.** Once gold passes the band edge, the band stops working. The chart shows the chance of that within 7, 30 and 90 days (20,000 gold paths at 15% a year).
 
 ![Chance gold leaves each band within 7, 30 and 90 days](liquidity/outputs/charts/09_v3_band_breach.png)
 
@@ -206,25 +254,21 @@ The same grid as in Part 2, now for the ±10% design: the tightest ceiling each 
 | ±5% | 1.9% | 40.9% | 87.3% |
 | ±10% | 0.0% | 3.1% | 31.8% |
 
-What happens after a breach, in a USD 1m pool, for a sale inside a 1% ceiling:
+**After a breach** (USD 1m pool, largest sale inside 1%):
 
-| Band | Inside the band | Gold 1 point below the lower edge | Gold 1 point above the upper edge |
+| Band | Inside the band | Gold 1 point below the band | Gold 1 point above the band |
 |---|---|---|---|
 | ±5% | USD 48,194 | USD 570 | USD 606 |
 | ±10% | USD 24,631 | USD 555 | USD 620 |
 
-When gold has fallen through the band, every seller meets only the backstop, and capacity collapses by a factor of about 85 for the ±5% band and about 44 for the ±10% band. When gold has risen through the band, small sales also meet only the backstop, but a larger sale pushes the price back down into the band and regains its depth. Inside 2%, a USD 1m ±5% pool takes USD 55,243 of selling after gold rises through the band, against USD 1,395 after it falls through. Buyers meet the backstop instead.
+- **Gold falls through the band:** sellers meet only the backstop. Capacity drops about 85 times (±5%) or 44 times (±10%).
+- **Gold rises through the band:** buyers meet the backstop. A larger sale pushes the price back into the band. Inside 2%, a ±5% pool takes USD 55,243 after a rise, against USD 1,395 after a fall.
 
 #### Key insights
 
-- **A ±5% band is a monthly job.** Gold leaves it within a month in two runs out of five, and within a quarter in nearly nine out of ten. Someone must re-centre it, which means withdrawing and re-depositing the position, roughly monthly and sometimes sooner.
-- **A ±10% band is a quarterly review.** Gold leaves it within a month in 3% of runs. A quarterly check with a re-centre when needed keeps it working.
-- **Breaches are most likely when holders most want to sell.** A sharp gold sell-off is when holders most want to sell, and it is exactly when a band left below gold has stopped working.
-
-#### Potential risks
-
-- An unmanaged ±5% pool will spend long stretches outside its band, showing the thin, discounted quotes the Mechanism Design Document prohibits.
-- Re-centring has its own cost: each time the band is reset, the position must trade some AURX for stablecoin or the reverse to match the new centre. That cost is not measured here.
+- **±5% needs monthly work.** Gold leaves it within a month in two runs out of five. Someone must re-centre it.
+- **±10% needs a quarterly review.** Gold leaves it within a month in 3% of runs.
+- Breaches are most likely when holders most want to sell: during a sharp fall in gold.
 
 ---
 
@@ -232,13 +276,19 @@ When gold has fallen through the band, every seller meets only the backstop, and
 
 ### Side by side
 
-**What this shows.** The three designs at the same USD 1m of capital, on the same axes.
+**How to read it.** All three designs at USD 1m.
 
 ![Slippage against sale size, USD 1m pool, three designs](liquidity/outputs/charts/10_cmp_price_impact.png)
 
-V2 crosses the 1% ceiling a little above USD 1,700. V3 ±10% crosses it near USD 25k, and V3 ±5% near USD 48k. For everyday trades V3 is clearly better. The only open question is how much management Aurumix can take on.
+Where each design crosses the 1% ceiling:
 
-The required pool size for the ±10% design, in the same layout as the V2 table in Part 2:
+- V2: a little above USD 1,700.
+- V3 ±10%: near USD 25k.
+- V3 ±5%: near USD 48k.
+
+V3 is clearly better. The choice between the two bands depends on how much management Aurumix can take on.
+
+Pool size needed for the ±10% band:
 
 ![Pool size needed against slippage ceiling, V3 ±10%, one line per trade size](liquidity/outputs/charts/11_v3_required_tvl.png)
 
@@ -249,79 +299,99 @@ The required pool size for the ±10% design, in the same layout as the V2 table 
 | 100 g (USD 14,150) | USD 2.02m | USD 579k | USD 239k | USD 87k |
 | 1 kg (USD 141,500) | USD 20.2m | USD 5.79m | USD 2.39m | USD 870k |
 
-### The service standard, and the budget it needs
+### The budget
 
-A budget needs a target. We propose the following service standard. It is ours, not the client's, and the budget scales in a straight line if Aurumix prefers a different one.
+We set a service standard to size the budget. It is our proposal. If Aurumix picks a different one, the budget scales in a straight line.
 
 | Line | Trade | Inside | Why |
 |---|---|---|---|
-| 1 | Any SIP-sized trade, up to USD 2,000 | 0.5% | Close enough to the fix that a holder never needs the buyback for everyday amounts |
-| 2 | 100 g (USD 14,150), the launch bar size | 1% | A meaningful holder can exit the same day at a small cost |
-| 3 | 1 kg (USD 141,500), the largest bar | 5% | The largest exit still stays inside the entry fee, so the pool never quotes worse than the primary door does |
+| 1 | Up to USD 2,000 | 0.5% | Everyday amounts trade at almost the fix |
+| 2 | 100 g (USD 14,150) | 1% | A launch-bar holder can exit the same day |
+| 3 | 1 kg (USD 141,500) | 5% | The largest bar stays inside the entry fee |
 
-The smallest pool meeting all three lines, by design:
+The smallest pool that meets all three lines:
 
 ![Pool size needed for the service standard, split into USDC and gold](liquidity/outputs/charts/12_cmp_budget.png)
 
-| Design | Pool size | Stablecoin side | Gold side | Management |
+| Design | Pool size | Stablecoin | Gold | Management |
 |---|---|---|---|---|
 | V2 | USD 12.1m | USD 6.07m | 42.9 kg (USD 6.07m) | None |
 | V3 ±5% | USD 445k | USD 226k | 1.55 kg (USD 219k) | Re-centre about monthly |
 | **V3 ±10%** | **USD 870k** | **USD 449k** | **2.97 kg (USD 421k)** | **Review quarterly** |
 
-The 1 kg line sets the size in every design. The other two lines are met with room to spare. In the recommended ±10% pool the three reference trades cost:
+- The 1 kg line sets the size in every design.
+- Both V3 options give the same service. ±5% uses half the capital and needs monthly work.
 
-| Trade | Slippage (engine measure) | Average price received against gold |
+What trades cost in the recommended ±10% pool:
+
+| Trade | Slippage (engine measure) | Average price against gold |
 |---|---|---|
 | USD 2,000 | 0.37% | 0.33% below |
 | 100 g (USD 14,150) | 0.76% | 0.53% below |
 | 1 kg (USD 141,500), sale | 4.79% | 2.56% below |
 | 1 kg (USD 141,500), purchase | 5.00% | 2.63% above |
 
-The two V3 options give exactly the same service. They are sized so their bands hold the same depth. The ±5% pool therefore does the same job with half the capital, at the cost of monthly management instead of quarterly.
+**A stricter standard** (1 kg inside 2%) would need:
 
-A stricter standard, the 1 kg trade inside 2% instead of 5%, would need USD 2.39m under ±10% (USD 1.23m stablecoin plus 8.16 kg of gold), USD 1.22m under ±5%, and USD 33.3m under V2.
+- USD 2.39m under ±10% (USD 1.23m stablecoin plus 8.16 kg of gold).
+- USD 1.22m under ±5%.
+- USD 33.3m under V2.
 
 ### Fee tier
 
-All figures above use the 0.30% fee tier. Uniswap V3 also offers a 0.05% tier, which leaves more of each ceiling for price impact. At USD 1m, a ±10% pool at 0.05% takes USD 15,765 inside 0.5% (against USD 7,011 at 0.30%) and USD 33,408 inside 1% (against USD 24,631). The gain is large at tight ceilings and small at wide ones. The trade-off is that a lower fee earns the pool less to offset its costs, which this audit does not measure. The tier is a decision for launch, not for this budget.
+All figures use the 0.30% fee. Uniswap V3 also offers 0.05%.
+
+- A USD 1m ±10% pool at 0.05% takes USD 15,765 inside 0.5% (USD 7,011 at 0.30%).
+- Inside 1%: USD 33,408 (USD 24,631 at 0.30%).
+- A lower fee earns the pool less. This audit does not measure that.
+- The fee tier is a launch decision. It does not change the budget.
 
 ### Conclusion
 
-**Assessment: a pool is viable, but only as a managed concentrated position, and only once Aurumix is ready to fund both sides of it.**
+**Assessment:** a pool works as a managed V3 position, once Aurumix can fund both sides.
 
-A V2 pool is ruled out. To hold AURX within the proposed service standard it would need USD 12.1m, more than Phase 5's measured peak funding for the whole business. A V3 pool does the same job for USD 870k with a quarterly review, or USD 445k with a monthly one. The pool can deliver what the product needs: everyday amounts at almost exactly the gold price, a launch-bar holder out the same day for under 1%, and the largest bar inside the entry fee. The budget is the easy part. The pool has to be managed, it will change who uses the primary door, and it must open only after the licence and the regulated venues.
+- A V2 pool would need USD 12.1m. That rules it out.
+- A V3 ±10% pool does the job for USD 870k with a quarterly review.
+- A V3 ±5% pool does it for USD 445k with monthly work.
+- The pool must be managed. It will change how some buyers enter. It opens after the licence and the regulated venues.
 
-**Key strengths**
+**Strengths**
 
-- AURX's price is anchored by two arbitrage doors (the free buyback below, the primary door above), so the pool only has to hold depth near one known price. That is the best case for concentrated liquidity.
-- A modest, fixed budget covers every trade size the product generates. Nothing in the SIP book comes close to straining it: the largest ticket is USD 2,000.
-- The gold side of the pool is not spent. It remains Aurumix's gold, held as AURX.
+- Two doors anchor the price: the free buyback below, the app above. The pool only needs depth near one price.
+- One fixed budget covers every trade size the product creates. The largest SIP ticket is USD 2,000.
+- The gold in the pool is still Aurumix's gold.
 
-**Critical risks, in order**
+**Risks, most serious first**
 
-1. **An unmanaged or undersized pool is worse than no pool.** Once gold leaves the band, capacity falls by about 44 to 85 times, and the pool shows exactly the discount the Mechanism Design Document forbids. Seeding a pool without a named owner for its management breaks the standing prohibition.
-2. **The pool undercuts the entry fee for anyone who can reach it.** A buyer who can use the pool pays about 0.3 to 0.8% over gold instead of 5%. For crypto-native buyers the pool becomes the cheaper way in, while the entry fee is the largest retail revenue line.
-3. **The breach risk is highest exactly when selling pressure is highest.** A sharp fall in gold both triggers selling and pushes the price out of the band.
-4. **Whether Aurumix may provide the liquidity itself is a regulatory question this audit does not answer.** Providing liquidity in its own token on an open venue may be a licensed activity in its own right. This belongs with counsel before any pool is seeded.
+1. **An unmanaged pool shows a discount.** Once gold leaves the band, capacity falls about 44 to 85 times.
+2. **The pool undercuts the entry fee.** A buyer who can reach it pays about 0.3 to 0.8% over gold, instead of 5%. The entry fee is the largest retail revenue line.
+3. **Breaches come with selling pressure.** A sharp fall in gold triggers selling and pushes the price out of the band.
+4. **Aurumix as its own liquidity provider may be a licensed activity.** This is a question for counsel before any pool opens.
 
 ### Recommendations
 
-#### 1. Plan for a USD 870k V3 ±10% pool, not a V2 pool
+#### 1. Plan for a USD 870k V3 ±10% pool
 
-Budget USD 449k of stablecoin plus 2.97 kg of gold, held as AURX minted against the vault like any customer's. That meets the service standard with a quarterly review. Move to ±5% (USD 445k) only once a market maker is under contract to re-centre it at least monthly. Do not seed a V2 pool at any size.
+- USD 449k of stablecoin plus 2.97 kg of gold, minted as AURX. Review quarterly.
+- Move to ±5% (USD 445k) only with a market maker under contract.
+- Do not seed a V2 pool.
 
-#### 2. Name who manages the band before the pool opens
+#### 2. Name the pool's owner before it opens
 
-The pool needs an owner: someone who watches the gold price, re-centres the band when gold nears its edge, and tops up the AURX side by minting at cost when buyers drain it. Write the re-centring trigger down (for example, re-centre when gold has moved 7% from the band's centre) so it is a rule, not a judgement call made under pressure.
+- The owner watches gold, re-centres the band, and mints AURX at cost when buyers drain it.
+- Write the trigger down. For example: re-centre when gold moves 7% from the band's centre.
 
-#### 3. Open the pool last, as the Mechanism Design Document already sequences
+#### 3. Open the pool last
 
-A VARA-licensed exchange with a contracted market maker comes first, then a broader exchange, then the pool. As a rough guide, the depth figures here carry over to an order book: it should hold about the same value within the same distance of the gold price. Seed the pool only when the budget above is available in full. A half-funded pool is the thin pool the prohibition describes.
+- Order: a VARA-licensed exchange with a market maker, then a broader exchange, then the pool.
+- On an exchange, hold about the same value within the same distance of the gold price.
+- Seed the pool only when the full budget is available. A half-funded pool is a thin pool.
 
-#### 4. Decide on purpose whether the pool may undercut the entry fee
+#### 4. Decide whether the pool may undercut the entry fee
 
-Priced near the fix, the pool will be cheaper than the app for anyone who can use it. That is acceptable if Aurumix treats the pool as a service to existing holders and to crypto-native buyers it would not otherwise reach. It is not acceptable as an accident. Put the decision next to the entry-fee calibration, and add the question of Aurumix acting as its own liquidity provider to the counsel list.
+- Near the fix, the pool is cheaper than the app for anyone who can use it.
+- Decide this next to the entry-fee calibration.
+- Add Aurumix as its own liquidity provider to the counsel list.
 
 ---
 
@@ -329,33 +399,39 @@ Priced near the fix, the pool will be cheaper than the app for anyone who can us
 
 ### Appendix A: Method and formulas
 
-All pool arithmetic reproduces the Tokenomics.net audit engine (`lib/tokenomics_audit/analyses`). The script `liquidity/verify.py` checks our pool engine against the engine's closed forms before any figure is used, and all checks pass.
+The pool maths reproduces the Tokenomics.net audit engine (`lib/tokenomics_audit/analyses`). The script `liquidity/verify.py` checks every formula against the engine. All checks pass.
 
-**Notation.** Price P in USD per AURX; fee f = 0.3%; a slippage ceiling s leaves s − f for price impact (the engine's definition).
+**Notation.** P = price in USD per AURX. f = fee (0.3%). A ceiling s leaves s − f for price movement, as in the engine.
 
-**V2 maximum trade** (engine: `max_trade_size_analysis.py`). With stablecoin reserve y and AURX reserve x:
+**V2 maximum trade** (`max_trade_size_analysis.py`). Stablecoin reserve y, AURX reserve x:
 
 - Largest buy: y × (√(1 + s − f) − 1) ÷ (1 − f)
 - Largest sale, in AURX: x × (√(1 ÷ (1 − (s − f))) − 1) ÷ (1 − f), valued at P
 
-**V2 minimum pool size** (engine: `liquidity_required_analysis.py`): 2 × (1 − f) × T ÷ (√(1 + s − f) − 1) for a buy of T dollars. Where the sale side needs more, the larger figure is used.
+**V2 pool needed** (`liquidity_required_analysis.py`): 2 × (1 − f) × T ÷ (√(1 + s − f) − 1) for a buy of T dollars. Where a sale needs more, the larger figure is used.
 
-**V3** (engine: `v3_liquidity_analysis.py`). A position with liquidity L between prices Pa and Pb behaves, inside that range, as a V2 pool with virtual reserves L ÷ √P of AURX and L × √P of stablecoin. Our engine walks a trade across range edges instead of stopping at them, which is the same arithmetic generalised. Two departures from the engine, both deliberate:
+**V3** (`v3_liquidity_analysis.py`). Inside its band, a position with liquidity L behaves as a V2 pool with L ÷ √P of AURX and L × √P of stablecoin. Our engine carries a trade across band edges. Two deliberate differences from the engine:
 
-- The engine's V3 module lets the price move by the full ceiling s, while its V2 module allows s − f. Using different rules would flatter V3 by the fee, so the V2 rule is applied to both designs.
-- Tick-spacing alignment is ignored. At the 0.30% tier ticks are about 0.6% apart, which moves a band edge by at most that much.
+- The engine's V3 module lets price move by the full ceiling s. Its V2 module allows s − f. We apply s − f to both, so the comparison is fair.
+- Tick spacing is ignored. It moves a band edge by at most 0.6%.
 
-**Checks run.** V2 price moves match the engine to the cent at 0.5, 2 and 5%; V2 maximum trades and minimum pool sizes match at all four ceilings; a V3 trade inside its band matches a V2 pool on the band's virtual reserves; capacity triples when capital triples; the V3 layout hits its target pool size and its two-thirds split.
+**Checks run:**
 
-**Band breach.** 20,000 gold paths, daily steps, 15% annual volatility, no drift beyond the volatility correction. A breach is counted when the price touches the band edge on any day, not only when it ends outside.
+- V2 price moves match the engine to the cent at 0.5, 2 and 5%.
+- V2 maximum trades and pool sizes match at all four ceilings.
+- A V3 trade inside its band matches a V2 pool on the band's reserves.
+- Capacity triples when capital triples.
+- The V3 layout hits its pool size and its two-thirds split.
 
-**Reproduce.** From `deliverables/3-supply-side-tokenomics/liquidity/`: `python verify.py`, then `python run.py`, then `python charts.py`. Every input is in `params.py` with its source.
+**Band breach.** 20,000 gold paths, daily steps, 15% a year. A breach counts when gold touches the band edge on any day.
+
+**Reproduce.** In `deliverables/3-supply-side-tokenomics/liquidity/`, run `python verify.py`, `python run.py`, then `python charts.py`. All inputs are in `params.py` with sources.
 
 ### Appendix B: What this audit does not cover
 
-- **Allocations, vesting, investor discounts, returns and unlock sell pressure.** Not applicable: AURX has no allocations or investors (Part 1).
-- **The liquidity provider's profit and loss.** Fee income, and the loss a liquidity provider takes when gold moves and arbitrageurs rebalance the pool, are not measured. The pool is sized for service, not for return.
-- **Re-centring cost.** Each reset of a V3 band trades part of the position at the prevailing price. Not measured.
-- **Order-book exchanges.** Centralised exchanges use order books and market makers, not these formulas. The depth figures are a rough guide only.
-- **Chain and gas costs.** No chain is assumed; network fees are excluded.
-- **Legal questions.** Whether Aurumix may act as its own liquidity provider, and whether a pool listing changes how AURX is classified, are for counsel.
+- **Allocations, vesting, discounts, returns, unlocks.** AURX has none.
+- **The liquidity provider's profit and loss.** Fee income and losses from gold moves are not measured.
+- **Re-centring cost.** Each reset trades part of the position. Not measured.
+- **Order-book exchanges.** They use market makers. The depth figures are a rough guide.
+- **Chain and gas costs.** No chain is assumed.
+- **Legal questions.** Aurumix as its own liquidity provider, and whether a listing changes how AURX is classified, are for counsel.
