@@ -20,8 +20,7 @@ AURX is an open ERC-20 token. One AURX is one gram of allocated gold.
 
 - Any holder can send AURX to anyone else.
 - So AURX can trade on a secondary market that Aurumix does not run.
-- The Mechanism Design Document (section 4.5) sets the order: a VARA-licensed exchange first, then a broader exchange, then decentralised venues.
-- It also sets one rule: **do not seed a thin pool at launch.** A thin pool shows a visible discount to the gold price.
+- The Mechanism Design Document sets one rule: **do not seed a thin pool at launch.** A thin pool shows a visible discount to the gold price.
 
 This audit answers three questions:
 
@@ -54,7 +53,7 @@ A standard audit also covers allocations, vesting, investor discounts, investor 
 **3. The customer has two other doors.**
 
 - **Buying:** pay the fix plus the entry fee (5% at launch) through the Aurumix app.
-- **Selling:** use the buyback. It pays the fix with no fee (VARA Annex 2 III.E.4).
+- **Selling:** use the buyback. It pays the fix with no fee.
 - The pool only wins a trade when it is cheaper than these doors.
 
 ### Method and inputs
@@ -299,7 +298,7 @@ All figures use the 0.30% fee. Uniswap V3 also offers 0.05%.
 - A V2 pool would need USD 12.1m. That rules it out.
 - A V3 ±10% pool does the job for USD 870k with a quarterly review.
 - A V3 ±5% pool does it for USD 445k with monthly work.
-- The pool must be managed. It will change how some buyers enter. It opens after the licence and the regulated venues.
+- The pool must be managed. It will change how some buyers enter.
 
 **Strengths**
 
@@ -325,11 +324,11 @@ All figures use the 0.30% fee. Uniswap V3 also offers 0.05%.
 - The owner watches gold, re-centres the band, and mints AURX at cost when buyers drain it.
 - Write the trigger down. For example: re-centre when gold moves 7% from the band's centre.
 
-#### 3. Open the pool last
+#### 3. Open on a DEX, fully funded
 
-- Order: a VARA-licensed exchange with a market maker, then a broader exchange, then the pool.
-- On an exchange, hold about the same value within the same distance of the gold price.
+- AURX is an open ERC-20, so a DEX pool can be the first venue.
 - Seed the pool only when the full budget is available. A half-funded pool is a thin pool.
+- A centralised exchange can follow. It should hold about the same value within the same distance of the gold price.
 
 #### 4. Decide whether the pool may undercut the entry fee
 
