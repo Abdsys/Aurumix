@@ -22,6 +22,7 @@
     "2": {
       "status": "in_progress",
       "files": [
+        "Aurumix_Mechanism_Design_Document.md",
         "Aurumix_Process_Maps.md",
         "Aurumix_Process_Maps_Family_And_Succession.md",
         "Aurumix_Process_Maps_ICS_Benefits.md",
@@ -45,7 +46,7 @@
         "render_mdd.js",
         "shots_mdd.js"
       ],
-      "updated_at": "2026-09-22",
+      "updated_at": "2026-09-24",
       "notes": "2026-09-08: consolidated Mechanism Design Document written for counsel and client (final/), with 42-diagram process map set and branded PDF, on the post-decision-50 positions with the filing-grade citation corrections applied. 2026-09-22: decisions 52-56 closed the four open design questions (forced sales vs the score, redeemed gold to the float, card and credit through a lapse, the USD 20 floor's rail condition) plus buyback/redemption terminology; document at v1.2 after a review pass on the front matter."
     },
     "3": {
@@ -60,14 +61,21 @@
       "notes": "Liquidity-only audit by agreement (AURX is an open ERC-20 with no allocations, investors or unlocks, so vesting/discount/ROI/buy-pressure analyses are out of scope). Plugin engine formulas reproduced and checked (liquidity/verify.py). Recommendation: V3 +/-10% pool of USD 870k (USD 449k stablecoin + 2.97 kg gold), quarterly review; +/-5% at USD 445k needs a market maker; V2 would need USD 12.1m. Service standard is ours, not the client's."
     },
     "4a": {
-      "status": "in_progress",
+      "status": "complete",
+      "updated_at": "2026-09-24",
       "files": [
-        "build_revenue_model.py",
-        "check_scenarios.py",
-        "recalc_py.py",
-        "verify_model.py"
+        "Aurumix_Revenue_Model_Architecture_Brief.md",
+        "Aurumix_Revenue_Model_Architecture_Brief_Simplified.md",
+        "tools/Aurumix_Revenue_Model.xlsx",
+        "tools/Aurumix_Revenue_Model_calculated.xlsx",
+        "Aurumix_Revenue_Model_Explainer.md",
+        "_explainer_numbers_ledger.md",
+        "charts/",
+        "final/Aurumix_Revenue_Model_Explainer.html",
+        "final/Aurumix_Revenue_Model_Explainer.pdf",
+        "_branded_working/"
       ],
-      "updated_at": "2026-08-26"
+      "notes": "2026-09-24: explainer written, copyedited, humanized and independently QC'd twice (461/470 figures matched first pass; the 9 misses, all from stale workbook notes, fixed), then condensed on review to 6 sections, ~4,800 words, branded PDF 27 pp in final/. Decision 58 records that the workbook and twin already open the card to the whole book. Workbook: switch/Cover/Summary notes corrected, numbers unchanged, 219/219 checks. Still owed: decision 57's 40% base LTV for No tier and Silver (workbook and twin use 50%); ~15 stale Source-column notes in the workbook (none change a number); orphan input Assumptions!B15."
     },
     "5": {
       "status": "complete",

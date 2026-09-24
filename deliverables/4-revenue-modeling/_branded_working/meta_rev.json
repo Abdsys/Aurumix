@@ -1,0 +1,65 @@
+{
+ "title": "Aurumix: Revenue Model Explainer",
+ "eyebrow": "Prepared for Aurumix",
+ "subtitle": "How the seven-year revenue, cost and funding model works, what it assumes and why, and how to use it.",
+ "date": "September 2026",
+ "tagline": "Built by founders. Designed for founders.",
+ "legal": "Prepared by Tokenomics.net for Aurumix. © 2026. Confidential.",
+ "executive_summary": {
+  "intro": [
+   "The workbook models Aurumix from 2027 to 2033: customers in the UAE, Oman and Bahrain, and India, the gold they hold, six revenue streams, the cost base and the funding need. Headcount and tax are not yet in the costs, so every profit figure is an upper bound."
+  ],
+  "stats": [
+   {
+    "value": "USD 4.49m",
+    "label": "Revenue in Y7, from USD 32k in Y1 (Base case)"
+   },
+   {
+    "value": "USD 2.29m",
+    "label": "Peak funding need, reached at the end of Y3"
+   },
+   {
+    "value": "Y4",
+    "label": "First profitable year; cumulative profit turns positive in Y6 (upper bound)"
+   }
+  ],
+  "findings": [
+   {
+    "title": "Three sources carry the revenue",
+    "body": "In Y7 the B2B platform fee is 34.7% of revenue, the SIP entry fee 29.5% and cardholder fees 21.2%. The family plan adds 10.0%, the spot entry fee 2.4%, and interchange and lending 2.3% between them."
+   },
+   {
+    "title": "Customers who stop paying still count",
+    "body": "A customer who stops contributing keeps their gold, their card and their credit line. By Y7 the book holds 71,208 paying customers and 130,638 holders, and the vault holds 403,565 grams worth USD 91.1m."
+   },
+   {
+    "title": "B2B partners are the largest single uncertainty",
+    "body": "The five most sensitive inputs are all B2B inputs. With 5 partners by Y7 instead of 11, Y7 is roughly at break-even and the funding need rises to USD 3.23m. The first signed partner term sheet is the most valuable evidence the model could receive."
+   },
+   {
+    "title": "The profit line is an upper bound",
+    "body": "Salaries, legal and trust costs and tax sit only inside a 15% contingency. A 30% contingency alone cuts Y7 profit from USD 0.85m to USD 0.37m. The real headcount figure will matter more than any other single input."
+   }
+  ]
+ },
+ "sections": {
+  "1": {
+   "subtitle": "What the workbook covers, the two caveats on profit, and how to find your way around it."
+  },
+  "2": {
+   "subtitle": "The seven-year Base case at a glance."
+  },
+  "3": {
+   "subtitle": "How customers are won, kept and turned into gold."
+  },
+  "4": {
+   "subtitle": "What each stream charges and why each value was chosen."
+  },
+  "5": {
+   "subtitle": "Costs, profit, payback, capital and the funding need."
+  },
+  "6": {
+   "subtitle": "How the answer moves, what the model leaves out, and how to use it."
+  }
+ }
+}

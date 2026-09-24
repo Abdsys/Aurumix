@@ -202,8 +202,10 @@ ws_cover["B3"] = "Hybrid Monthly + Annual View  |  7-Year Projection"
 ws_cover["B3"].font = COVER_SUB
 for r, (lbl, val) in enumerate([
     ("Date", "=TODAY()"),
-    ("Scope", "REVENUE ONLY. Six revenue streams, reported net of cost of revenue. Operating costs, tax, "
-              "cash and funding are added in a later build."),
+    ("Scope", "Six revenue streams at their full charge, with the fabrication premium as cost of goods sold, "
+              "plus the modelled cost base, net profit, "
+              "unit economics, regulatory capital, the float and the peak funding need. Headcount and tax are "
+              "not yet in the cost base, so every profit figure is an upper bound."),
     ("Periods", "24 monthly (M1-M24) + 5 annual (Y3-Y7) = 29 total.  M1 = January %d" % START_YEAR),
     ("Engine", "Rolling customer balance: opening + new - churned = closing, by region. Customers who stop "
                "paying keep their gold and move to a HOLDERS balance."),
@@ -237,8 +239,9 @@ for r, t in enumerate([
 
 ws_cover["B24"] = "SIMPLIFIED BUILD - cohort and archetype detail moves to the Phase 5 simulation."
 ws_cover["B24"].font = RED_BOLD
-ws_cover["B25"] = ("Kept as inputs rather than engines: card eligibility (% who qualify, months to qualify), "
-                   "the holders balance, and the fabrication premium inside stream 1.")
+ws_cover["B25"] = ("Kept as inputs rather than engines: the holders balance, the fabrication premium inside "
+                   "stream 1, and the ICS qualification rate (a memo that prices benefits; it no longer gates "
+                   "the card).")
 ws_cover["B25"].font = NOTE_FONT
 widths(ws_cover, {"A": 3, "B": 30, "C": 104})
 
@@ -1890,9 +1893,10 @@ for key, label, default, dvl, on_val, desc in [
      "ON (Prepaid) caps interchange at 1.00% and removes the credit stream entirely. 'NOT A PRODUCT CHOICE, "
      "IT IS THE BUSINESS MODEL.' Worth ~USD 2.3m of Y10 revenue on the ten-year run."),
     ("lapsed_keeps_card", "Holders keep the card", "ON", '"ON,OFF"', "ON",
-     "NOBODY HAS DECIDED THIS. It determines whether the card streams - the majority of revenue - decay with "
-     "churn or are immune to it. Worth a 42% swing in terminal revenue. Default ON because nothing in the "
-     "design revokes the card; report both."),
+     "DECIDED 2026-09-22 (decision 54): a customer who stops paying keeps the card and the credit line; only "
+     "the collateral ladder, the customer or the lender can close them. So ON is the design, and the card "
+     "streams do not decay with churn. OFF is kept as a sensitivity: recalculated 2026-09-24, it takes Y7 "
+     "revenue from USD 4.49m to 3.88m (-13.7%) and streams 2, 4 and 5 together down 58%."),
     ("premium_absorbed", "Fabrication premium borne by", "Aurumix", '"Customer,Aurumix"', "Aurumix",
      "DEFAULT AURUMIX, which REVERSES the 2026-08-21 client decision and does so deliberately. That review "
      "put the premium on the customer - grams delivered short by (1+premium), stream 1 keeping the full "
@@ -3639,9 +3643,11 @@ s_block("CUSTOMERS AND AUM (year end)", [
     ("rev_per_cust", "Net revenue per paying customer (annualised)", "close", FMT_USD, False),
 ])
 note(ws_summ, _sy[0],
-     "REVENUE ONLY. Operating costs, tax, working capital, cash and funding are added in a later build, so "
-     "there is no profit or break-even line here. Stream 1 IS reported net of the fabrication premium, "
-     "because that is cost OF REVENUE rather than an operating cost - reporting it gross would read ~43% high.")
+     "Headcount and tax are not yet in the cost base, so net profit and payback are upper bounds. Stream 1 "
+     "is shown at the full entry fee; the fabrication premium paid to the dealer sits in the cost base as "
+     "cost of goods sold. Read on its own, the gross fee overstates what Aurumix keeps by 29-39% of the net "
+     "figure, depending on the year. Y1 and Y2 ratio rows (card cost share, contribution, payback) use the "
+     "M12 and M24 month-end run rates, not annual totals.")
 
 # ============================================================================
 registered, rejected = 0, []
