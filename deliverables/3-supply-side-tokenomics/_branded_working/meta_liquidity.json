@@ -7,7 +7,7 @@
  "legal": "Prepared by Tokenomics.net for Aurumix. © 2026. Confidential.",
  "executive_summary": {
   "intro": [
-   "AURX can trade on a secondary market, and the Mechanism Design Document already says not to seed a thin pool at launch. This audit sizes a pool that is not thin: one where everyday amounts trade at almost exactly the gold price and the largest bar can still exit inside the entry fee. It covers liquidity only, because AURX has no allocations, investors or unlocks to audit."
+   "AURX can trade on a secondary market. This audit sizes a pool that is not thin: one where everyday amounts trade at almost exactly the gold price and the largest bar can still exit inside the entry fee. It covers liquidity only, because AURX has no allocations, investors or unlocks to audit."
   ],
   "stats": [
    {
@@ -34,29 +34,26 @@
    },
    {
     "title": "The band needs an owner",
-    "body": "Gold leaves a ±5% band within a month in two runs out of five, and a ±10% band in 3%. Once outside, capacity falls 40 to 85 times and the pool shows the discount the design forbids. ±10% needs a quarterly review; ±5% needs a market maker."
+    "body": "Gold moves, so the band must be re-centred. If nobody does it, trades get expensive and the pool shows a discount. ±10% needs a quarterly review; ±5% needs a market maker."
    },
    {
     "title": "The pool undercuts the entry fee",
-    "body": "A buyer who can reach the pool pays about 0.3 to 0.8% over gold instead of 5%. That is fine if it is a deliberate choice for existing holders and crypto-native buyers. Whether Aurumix may provide the liquidity itself is a question for counsel."
+    "body": "A buyer who can reach the pool pays about 0.3 to 0.8% over gold instead of 5%. That is fine if it is a deliberate choice for existing holders and crypto-native buyers."
    }
   ]
  },
  "parts": {
   "1": {
-   "subtitle": "What a secondary market means for a gold-backed token, why only liquidity is audited, and how the pool sits against Aurumix's own doors."
+   "subtitle": "What a secondary market means for a gold-backed token, and why only liquidity is audited."
   },
   "2": {
    "subtitle": "The standard constant-product pool: price impact, maximum trade size and the capital it needs."
   },
   "3": {
-   "subtitle": "Capital concentrated around the gold price: the depth it buys, and how often gold moves out of the band."
+   "subtitle": "Capital concentrated around the gold price, and the depth it buys."
   },
   "4": {
    "subtitle": "The two designs side by side, the budget for a stated service standard, and what to do."
-  },
-  "5": {
-   "subtitle": "The formulas, the checks against the audit engine, and what this audit leaves out."
   }
  }
 }

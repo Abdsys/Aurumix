@@ -57,23 +57,9 @@ A standard audit also covers allocations, vesting, investor discounts, investor 
 - **Selling:** use the buyback. It pays the fix with no fee (VARA Annex 2 III.E.4).
 - The pool only wins a trade when it is cheaper than these doors.
 
-### Where the pool price will sit
-
-The two doors set a floor and a ceiling.
-
-| | Price | What happens |
-|---|---|---|
-| **Floor** | The fix | Below it, a verified holder buys in the pool and sells back to Aurumix for free. The pool price rises. |
-| **Ceiling** | The fix plus about 5% | Above it, buying through the app is cheaper. The pool price falls. |
-
-Two things follow.
-
-- **Sellers compare the pool with a free buyback.** They use the pool only if slippage is small. So the tightest ceiling in this audit is 0.5%.
-- **Buyers get a cheaper way in.** A buyer who can reach the pool pays the fix plus a fraction of a percent, instead of the fix plus 5%.
-
 ### Method and inputs
 
-The pool maths follows the Tokenomics.net audit engine. Appendix A lists the formulas and the checks.
+The pool maths follows the Tokenomics.net audit engine.
 
 | Input | Value | Source |
 |---|---|---|
@@ -85,7 +71,6 @@ The pool maths follows the Tokenomics.net audit engine. Appendix A lists the for
 | Aurumix trade sizes | USD 75 (monthly SIP), USD 2,000 (top SIP ticket), 100 g (USD 14,150), 1 kg (USD 141,500) | Product and bar sizes |
 | V3 layout | Two thirds of capital in a band around gold, one third across all prices | Standard audit layout |
 | V3 bands | ±5% and ±10% | Gold moves about 4% in a typical month |
-| Gold volatility | 15% a year | Phase 5 simulation |
 
 **How slippage is measured.** A 1% ceiling allows the 0.3% fee plus 0.7% of price movement. The seller's average price is better: a 1 kg sale measured at 4.79% receives 2.56% below gold.
 
@@ -163,19 +148,10 @@ A V2 pool spreads its capital across every price, from zero upwards.
 | 100 g (USD 14,150) | USD 28.2m | USD 8.08m | USD 3.33m | USD 1.21m |
 | 1 kg (USD 141,500) | USD 282m | USD 80.8m | USD 33.3m | USD 12.1m |
 
-The grid below gives the tightest ceiling each trade clears at each pool size. Darker is better.
-
-![Tightest ceiling each trade clears, by pool size, V2](liquidity/outputs/charts/04_v2_coverage.png)
-
-- Below USD 2.5m, nothing from USD 14k up clears even 5%.
-- At USD 2.5m, the 100 g and USD 20k trades clear 5%.
-- The 1 kg sale never clears 5%.
-
 #### Key insights
 
-- A 100 g sale inside 1% needs a USD 8.08m pool. That is about USD 570 of pool per dollar traded.
+- A 100 g sale inside 1% needs USD 8.08m, about USD 570 of pool per dollar traded.
 - A 1 kg sale inside 5% needs USD 12.1m. That is more than the peak funding Phase 5 measured for the whole business.
-- The pool needed grows in step with trade size. There is no saving at scale.
 
 ---
 
@@ -186,6 +162,7 @@ A V3 pool puts its capital inside a chosen price band.
 - AURX should always trade near gold, so the band sits around the gold price.
 - Layout: two thirds of the capital in the band, one third across all prices as a backstop.
 - Two bands are tested: ±5% and ±10%.
+- Gold moves, so the band must be re-centred from time to time. A narrower band needs this more often.
 
 ### Where the liquidity sits
 
@@ -234,41 +211,10 @@ The two smallest pools bend sharply at the right. There the sale has pushed the 
 - ±5% takes 27.3 times more.
 - At USD 1m, ±10% takes a 1 kg sale inside 5%. V2 cannot do this even at USD 2.5m.
 
-The same grid as in Part 2, for the ±10% band:
-
-![Tightest ceiling each trade clears, by pool size, V3 ±10%](liquidity/outputs/charts/08_v3_coverage.png)
-
 #### Key insights
 
 - A USD 1m ±10% pool meets the standard benchmark. USD 10k to 50k trades clear inside 2%.
 - Halving the band doubles the depth. It only lasts while gold stays inside the band.
-
-### How often gold leaves the band
-
-**How to read it.** Once gold passes the band edge, the band stops working. The chart shows the chance of that within 7, 30 and 90 days (20,000 gold paths at 15% a year).
-
-![Chance gold leaves each band within 7, 30 and 90 days](liquidity/outputs/charts/09_v3_band_breach.png)
-
-| Band | Within 7 days | Within 30 days | Within 90 days |
-|---|---|---|---|
-| ±5% | 1.9% | 40.9% | 87.3% |
-| ±10% | 0.0% | 3.1% | 31.8% |
-
-**After a breach** (USD 1m pool, largest sale inside 1%):
-
-| Band | Inside the band | Gold 1 point below the band | Gold 1 point above the band |
-|---|---|---|---|
-| ±5% | USD 48,194 | USD 570 | USD 606 |
-| ±10% | USD 24,631 | USD 555 | USD 620 |
-
-- **Gold falls through the band:** sellers meet only the backstop. Capacity drops about 85 times (±5%) or 44 times (±10%).
-- **Gold rises through the band:** buyers meet the backstop. A larger sale pushes the price back into the band. Inside 2%, a ±5% pool takes USD 55,243 after a rise, against USD 1,395 after a fall.
-
-#### Key insights
-
-- **±5% needs monthly work.** Gold leaves it within a month in two runs out of five. Someone must re-centre it.
-- **±10% needs a quarterly review.** Gold leaves it within a month in 3% of runs.
-- Breaches are most likely when holders most want to sell: during a sharp fall in gold.
 
 ---
 
@@ -363,10 +309,8 @@ All figures use the 0.30% fee. Uniswap V3 also offers 0.05%.
 
 **Risks, most serious first**
 
-1. **An unmanaged pool shows a discount.** Once gold leaves the band, capacity falls about 44 to 85 times.
+1. **An unmanaged pool shows a discount.** If gold leaves the band and nobody re-centres it, trades get expensive.
 2. **The pool undercuts the entry fee.** A buyer who can reach it pays about 0.3 to 0.8% over gold, instead of 5%. The entry fee is the largest retail revenue line.
-3. **Breaches come with selling pressure.** A sharp fall in gold triggers selling and pushes the price out of the band.
-4. **Aurumix as its own liquidity provider may be a licensed activity.** This is a question for counsel before any pool opens.
 
 ### Recommendations
 
@@ -391,47 +335,3 @@ All figures use the 0.30% fee. Uniswap V3 also offers 0.05%.
 
 - Near the fix, the pool is cheaper than the app for anyone who can use it.
 - Decide this next to the entry-fee calibration.
-- Add Aurumix as its own liquidity provider to the counsel list.
-
----
-
-## Part 5: Appendix
-
-### Appendix A: Method and formulas
-
-The pool maths reproduces the Tokenomics.net audit engine (`lib/tokenomics_audit/analyses`). The script `liquidity/verify.py` checks every formula against the engine. All checks pass.
-
-**Notation.** P = price in USD per AURX. f = fee (0.3%). A ceiling s leaves s − f for price movement, as in the engine.
-
-**V2 maximum trade** (`max_trade_size_analysis.py`). Stablecoin reserve y, AURX reserve x:
-
-- Largest buy: y × (√(1 + s − f) − 1) ÷ (1 − f)
-- Largest sale, in AURX: x × (√(1 ÷ (1 − (s − f))) − 1) ÷ (1 − f), valued at P
-
-**V2 pool needed** (`liquidity_required_analysis.py`): 2 × (1 − f) × T ÷ (√(1 + s − f) − 1) for a buy of T dollars. Where a sale needs more, the larger figure is used.
-
-**V3** (`v3_liquidity_analysis.py`). Inside its band, a position with liquidity L behaves as a V2 pool with L ÷ √P of AURX and L × √P of stablecoin. Our engine carries a trade across band edges. Two deliberate differences from the engine:
-
-- The engine's V3 module lets price move by the full ceiling s. Its V2 module allows s − f. We apply s − f to both, so the comparison is fair.
-- Tick spacing is ignored. It moves a band edge by at most 0.6%.
-
-**Checks run:**
-
-- V2 price moves match the engine to the cent at 0.5, 2 and 5%.
-- V2 maximum trades and pool sizes match at all four ceilings.
-- A V3 trade inside its band matches a V2 pool on the band's reserves.
-- Capacity triples when capital triples.
-- The V3 layout hits its pool size and its two-thirds split.
-
-**Band breach.** 20,000 gold paths, daily steps, 15% a year. A breach counts when gold touches the band edge on any day.
-
-**Reproduce.** In `deliverables/3-supply-side-tokenomics/liquidity/`, run `python verify.py`, `python run.py`, then `python charts.py`. All inputs are in `params.py` with sources.
-
-### Appendix B: What this audit does not cover
-
-- **Allocations, vesting, discounts, returns, unlocks.** AURX has none.
-- **The liquidity provider's profit and loss.** Fee income and losses from gold moves are not measured.
-- **Re-centring cost.** Each reset trades part of the position. Not measured.
-- **Order-book exchanges.** They use market makers. The depth figures are a rough guide.
-- **Chain and gas costs.** No chain is assumed.
-- **Legal questions.** Aurumix as its own liquidity provider, and whether a listing changes how AURX is classified, are for counsel.

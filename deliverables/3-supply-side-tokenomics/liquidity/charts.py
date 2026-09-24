@@ -97,10 +97,14 @@ def impact_chart(design, name, budgets=BUDGETS):
     ceiling_lines(ax)
     for t, lab in AURUMIX.items():
         ax.axvline(t, color=WARM, lw=0.8, zorder=0)
-        ax.text(t, 0.32, " " + lab.split(" (")[0], rotation=90, va="bottom", ha="right",
-                fontsize=7.5, color=MED,
-                bbox=dict(facecolor=CREAM, edgecolor="none", pad=0.5, alpha=0.85))
-    ax.legend(loc="lower right", fontsize=8.5, frameon=False)
+
+    # marker labels sit above the plot so they never cross a curve
+    short = {75: "Monthly SIP", 2_000: "Top SIP ticket"}
+    for t, lab in AURUMIX.items():
+        ax.text(t, 1.01, short.get(t, lab.split(" holder")[0]), transform=ax.get_xaxis_transform(),
+                ha="center", va="bottom", fontsize=8, color=MED)
+    # top left is empty on every curve set; lower right collided with the lines and labels
+    ax.legend(loc="upper left", fontsize=8.5, frameon=True, facecolor=CREAM, edgecolor=WARM, framealpha=1)
     save(fig, name)
 
 
@@ -131,7 +135,7 @@ def max_trade_chart(design, name):
 def required_chart(design, name):
     """The plugin's minimum-TVL chart: required pool size against ceiling,
     one line per trade size."""
-    fig, ax = plt.subplots(figsize=(9, 5.4))
+    fig, ax = plt.subplots(figsize=(9, 4.4))
     style(ax, fig)
     trades = PAR["trades"]
     from matplotlib.colors import LinearSegmentedColormap
@@ -310,12 +314,9 @@ if __name__ == "__main__":
     impact_chart("V2", "01_v2_price_impact.png")
     max_trade_chart("V2", "02_v2_max_trade.png")
     required_chart("V2", "03_v2_required_tvl.png")
-    coverage_chart("V2", "04_v2_coverage.png")
     profile_chart("05_v3_liquidity_profile.png")
     impact_chart("V3 ±10%", "06_v3_price_impact.png")
     v3_max_chart("07_v3_max_trade.png")
-    coverage_chart("V3 ±10%", "08_v3_coverage.png")
-    breach_chart("09_v3_band_breach.png")
     compare_impact_chart("10_cmp_price_impact.png")
     required_chart("V3 ±10%", "11_v3_required_tvl.png")
     budget_chart("12_cmp_budget.png")
