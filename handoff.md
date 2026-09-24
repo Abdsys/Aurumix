@@ -4,7 +4,7 @@
 >
 > ⚠ **Read §0 and §9 first, then grep for what your task needs.** Loading this file whole cost ~35k tokens on 2026-08-19, which is most of a context window spent before any work starts. It was trimmed that day from 408 lines. **Keep it that way: add a pointer, not a paragraph.**
 >
-> **Last updated:** 2026-09-22. **Phase 5 is CLOSED** — `deliverables/5-simulations/PHASE5_STATE.md` §0 and §5b carry what landed (per-cell conditions map, one recorded run behind every Part 4 number, paired-MC tornado; all gates pass; both branded PDFs rebuilt in `final/`). **The MD document is at v1.2**: decisions 52 to 56 closed the four open design questions plus the buyback/redemption terminology, and a review pass trimmed the front matter. 🔴 **New debt from decision 54:** nobody has checked what the twin and the Phase 4 workbook assume about **lapsed cardholders**; check before quoting card or credit stream figures. **The next session starts on §9 item 1, the decision-50 propagation.**
+> **Last updated:** 2026-09-22. **Phase 5 is CLOSED** — `deliverables/5-simulations/PHASE5_STATE.md` §0 and §5b carry what landed (per-cell conditions map, one recorded run behind every Part 4 number, paired-MC tornado; all gates pass; both branded PDFs rebuilt in `final/`). **The MD document is at v1.2**: decisions 52 to 56 closed the four open design questions plus the buyback/redemption terminology, and a review pass trimmed the front matter. 🔴 **New debt from decision 54:** nobody has checked what the twin and the Phase 4 workbook assume about **lapsed cardholders**; check before quoting card or credit stream figures. **§9 item 1 (decision-50 propagation) is CLOSED 2026-09-24:** the MD document v1.2 and the legal brief already carry every post-50 position; the superseded drafts are left as audit trail, not rewritten.
 
 ---
 
@@ -16,7 +16,7 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 |---|---|
 | 0 Discovery | ✅ Complete, client-reviewed |
 | 1 Market Research | ✅ Complete, 52-page summary delivered |
-| 2 Mechanism Design | 🔄 Design complete; consolidated MD document at v1.2, decisions 52-56 closed the last open design questions. **What remains is propagation debt, not design** (§9 item 1) |
+| 2 Mechanism Design | 🔄 Design complete; consolidated MD document at v1.2, decisions 52-56 closed the last open design questions. Decision-50 propagation closed by the MD document itself (§9 item 1) |
 | 4 Revenue Modeling | ✅ Complete. `reference_model/` is the oracle. **Two defects found by Phase 5 are logged, not fixed** (§9). 🆕 Plus decision 54's lapsed-cardholder check |
 | 5 Simulations | ✅ **CLOSED 2026-09-22.** All three finalization items landed, gates pass, PDFs in `final/`. See `deliverables/5-simulations/PHASE5_STATE.md` |
 
@@ -28,8 +28,8 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 
 **The five things a new session most often needs to know:**
 
-1. **All 51 decisions live in `deliverables/2-mechanism-design/_decisions-log.md`.** §6 here is only the index. **Read the log entry before acting on any decision.**
-2. **Decision 50 reversed the token-standard chain** (AURX can be an open ERC-20 with a blocklist). Decisions 10, 24, 33, 37, 38 and 40 are all revised by it and **none of that propagation has run.**
+1. **All 56 decisions live in `deliverables/2-mechanism-design/_decisions-log.md`.** §6 here is only the index. **Read the log entry before acting on any decision.**
+2. **Decision 50 reversed the token-standard chain** (AURX can be an open ERC-20 with a blocklist). Decisions 10, 24, 33, 37, 38 and 40 are revised by it. **The MD document v1.2 is the authoritative post-50 statement; the older drafts and log entries were deliberately not rewritten** (Abdur, 2026-09-24).
 3. **`client container/100 G Business_Model.docx` / `.md` is the single source of truth.** ⚠ The client calls it "VERSION 3"; **say "the 100 G Business Model"**, because "V3" also meant a dead pricing formula.
 4. **v1.0's Phase 4 numbers must not be quoted anywhere.** They did not reconcile. Every figure now comes from `reference_model/`.
 5. **Plan before build.** Propose architecture changes as a plan and get agreement *before* touching code or regenerating artefacts. **The brief is the deliverable; the reference model serves it.**
@@ -67,7 +67,7 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | `Aurumix_Market_Research.md` | ✅ Earlier, narrower, 5 protocols |
 | `Aurumix_Market_Research_Summary.md` / `.html` | ✅ **DELIVERED.** 52 pages. Generated: edit `_summary_working/`, never the `.md` |
 | **2-mechanism-design/** | |
-| `_decisions-log.md` | 🔴 **THE DECISION LOG. All 51 in full.** Append here, index in §6, same commit |
+| `_decisions-log.md` | 🔴 **THE DECISION LOG. All 56 in full.** Append here, index in §6, same commit |
 | 🆕 `final/Aurumix_Mechanism_Design_Document.md` | **THE CONSOLIDATED MD DOCUMENT, v1.2 (2026-09-22), written for the client's counsel.** 15 sections + 3 appendices; post-decision-50 positions; filing-grade citations corrected; decisions 52-56 written in; front matter trimmed on review.
 | The per-topic map sets | **Superseded audit trail; the live diagram set is `final/Aurumix_Process_Maps.md`.** `Aurumix_Process_Maps_Minting.md`, `Aurumix_Process_Maps_Redemption.md`, `Aurumix_Process_Maps_Redemption_Fee.md`, `Aurumix_Process_Maps_Payments.md`, `Aurumix_Process_Maps_Custody_Fee.md`, `Aurumix_Process_Maps_Composability.md`, `Aurumix_Process_Maps_Credit_And_Card.md`, `Aurumix_Process_Maps_Referrals.md`, `Aurumix_Process_Maps_Revenue_Streams.md`, `Aurumix_Process_Maps_Family_And_Succession.md`, `Aurumix_Process_Maps_ICS_Scoring.md`, `Aurumix_Process_Maps_SIP_Structure.md`, `Aurumix_Process_Maps_SIP_Spot_ICS.md`, `_reserve_sip-spot-ics-diagrams.md` `final/` also holds the 42-diagram `Aurumix_Process_Maps.md`, the branded HTML and the 112-page PDF. Rebuild: `_branded_working/build_mdd.py` then `render_mdd.js` (layout audit must return zero overflow). The drafts below remain the audit trail |
 | `Aurumix_Legal_Brief_and_Open_Questions.md` | 🔴 **361 lines, "for review". Client-facing, for onward instruction of counsel.** Part 1 describes the build for a lawyer with no prior exposure; Part 2 is the open legal questions. ⚠ **Check against decision 50 and the enforcement-sale-as-redemption question before it is sent** |
@@ -324,7 +324,7 @@ That file carries the state, the file map, the regeneration order, the verificat
 
 **Next, in order:**
 
-**1. 🔴 THE PROPAGATION DEBT FROM DECISION 50.** The composability reversal changed the token-standard answer after six decisions and several drafts were written on the old one, and **none of it has run.** In order: **(a)** rewrite decisions 10, 24, 33, 37, 38, 40 in the log and flip their index markers; **(b)** withdraw *"an open DEX listing is incompatible with Option A"*, *"both parties must be registered holders"* and *"an unregistered recipient cannot receive AURX"* from `_draft_purchase-structure.md` §4/§6 and `_draft_entities-licensing-and-payments.md`; **(c)** re-cut **counsel batch 4 question 1**, which **must not be sent as written**; **(d)** change the invariant to `trust holdings ≥ tokens outstanding` in the minting and redemption maps; **(e)** add the self-custody-is-a-disposal rule to `_draft_ics-scoring.md` §1.5 and §10. ⚠ **Then the three filing-grade citation fixes from decision 48** (Annex 2 III.E not Issuance Rulebook III.E; 19 May not 19 June 2025; ADGM s.30 not Art 33), reaching five files. 🔴 **The client conversation changed shape: we told him the token had to be permissioned and an open listing was impossible. Both are withdrawn. He is building in September.**
+**1. ✅ DECISION-50 PROPAGATION: CLOSED 2026-09-24, via the MD document, not the drafts.** Verified: MD doc v1.2 withdraws the three permissioned claims (§3.5.3), re-cuts counsel Question 1 on the class-defined trust, states the invariant as `trust gold holdings ≥ AURX outstanding`, treats self-custody as a sale, and carries all three citation fixes. The legal brief is also post-50. **The drafts and log entries 10/24/33/37/38/40 are left stale on purpose (Abdur's call); the MD doc wins where they conflict.** ⚠ One line to fix before the legal brief is sent: its line 147 calls the permissioned fallback "a token contract rebuild"; the MD doc (§4.4) says the proxy + hook make it a switch. 🔴 **Still owed to the client: we told him the token had to be permissioned and an open listing was impossible. Both are withdrawn.**
 
 **2. 🆕 🔴 THE SEGMENT RE-CUT REACHES BACK INTO PHASES 0 AND 2.** D25 was built on primary sources (Oman NCSI bulletin, Bahrain Social Insurance wage dataset, the CBB rulebook text, CBUAE FSR 2025, AMFI July 2026, Abu Dhabi 2024 census). Four consequences outside Phase 4:
    - 🔴 **The market is South Asian, not Indian.** Bangladeshis outnumber Indians in Oman (605,486 vs 515,361). **The MEA overseas-Indians table is the wrong instrument** and omits Bangladeshis and Pakistanis entirely. **Correct decision 31 a second time**, and on a different basis than the first correction.
@@ -356,8 +356,8 @@ That file carries the state, the file map, the regeneration order, the verificat
 🆕 🔴 **THE ADOPTION BRIDGE IS NOT A DELIVERABLE IN ANY PHASE, AND IT SHOULD BE.** Abdur's framing, 2026-08-19: *the real challenge is bridging a South Asian life-insurance-policyholder mindset to a crypto one.* **The model agrees and prices it but cannot solve it.** `S27`, the archetype mix, is **rank 1 load-bearing and a confirmed sourcing negative** — no source anywhere decomposes a savings-lapse curve into behavioural archetypes. Downstream: **only 53.5% of accounts ever pass the six-payment gate, at a mean of M8.1, and everything worth having sits behind it.** So the strategy question has a precise shape: **how do we move the archetype mix, and get more of the book through six consecutive payments faster?** ⚠ **Closest existing homes are the charter persona (§9 item 2) and the agent-network model, both of which D25 already broke open. Scope it deliberately rather than letting it fall between phases.**
 
 **Open decisions that are Abdur's, not ours:**
-- 🔴 **Does a lapsed customer keep the card and the credit facility?** **USD 3.39m/yr, 42% of Y10 revenue.** Nobody has ever asked. It decides whether the largest stream decays with persistency or is immune to it.
-- 🔴 **The minimum-ticket resolution** in item 3 above.
+- ✅ ~~Lapsed customer keeps card and credit?~~ **Yes, decision 54.** Model check still owed (§9 Phase 5 note 4).
+- ✅ ~~Minimum-ticket resolution~~ **USD 20 floor kept, conditional on the rail, decision 55.** Item 3's split is now only the fallback.
 - **Should card spend track the savings ticket by segment?** The single largest revenue driver, currently keyed to ticket as an income proxy. If Aurumix's card is realistically a *secondary* card for everyone, that is wrong, and it changes which region is worth acquiring.
 - **Brief length.** ~4,100 lines against a 1,791-line benchmark. The build-only material (§10 row map, §12 sheet bands) could split into a companion build spec, leaving ~2,200 lines to review.
 - **How hard to land the conclusion.** v2.0 is materially harsher than what v1.0 told the client.
