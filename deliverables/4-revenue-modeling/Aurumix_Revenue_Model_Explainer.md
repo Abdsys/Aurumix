@@ -19,7 +19,7 @@ Two caveats apply wherever profit appears:
 - **Profit is an upper bound.** Headcount and tax are outside the cost base, covered only by a 15% contingency. Profit, payback and funding figures are all upper bounds.
 - **Stream 1 rows show the full 5% entry fee.** The fabrication premium paid to the dealer is a separate cost-of-goods-sold line.
 
-### 1.2 The colour code
+### 1.2 Colour code
 
 | Colour | Meaning | Editable? |
 |---|---|---|
@@ -27,7 +27,7 @@ Two caveats apply wherever profit appears:
 | **Green text** | Cross-sheet links to the live value on Scenario Parameters | No |
 | **Black text** | In-sheet formulas | No |
 
-### 1.3 The five tabs
+### 1.3 Five tabs
 
 | Tab | What it holds |
 |---|---|
@@ -47,7 +47,7 @@ Two caveats apply wherever profit appears:
 
 ## 2. Key results
 
-### 2.1 The seven-year picture (Base case)
+### 2.1 Seven-year Base case
 
 Money figures in USD. Net profit is an upper bound, before headcount and tax.
 
@@ -84,11 +84,11 @@ Money figures in USD. Net profit is an upper bound, before headcount and tax.
 
 ### 2.2 Takeaways
 
-- Revenue reaches **USD 4.49m in Y7** and USD 14.68m over the seven years.
+- Revenue reaches USD 4.49m in Y7 and USD 14.68m over the seven years.
 - B2B is the largest Y7 stream at 34.7%, ahead of the SIP entry fee (29.5%) and cardholder fees (21.2%).
 - Stream 1 net of the fabrication premium is USD 1.11m in Y7.
 - Net profit (upper bound) turns positive in Y4. Cumulative profit bottoms at -USD 1.43m in Y3 and turns positive in Y6.
-- The **peak funding need is USD 2.29m** (upper bound), at the end of Y3.
+- The peak funding need is USD 2.29m (upper bound), at the end of Y3.
 - At Y7, 71,208 customers are paying and 130,638 are holders. The vault holds 403,565 grams, worth USD 91.1m (USD 57.1m at the launch price).
 
 ---
@@ -101,7 +101,7 @@ Each region runs this balance every period:
 
 > opening paying customers + new customers - customers who stop paying = closing paying customers
 
-- A customer who stops paying keeps their gold and moves to the **holders** balance.
+- A customer who stops paying keeps their gold and moves to the holders balance.
 - Paying customers plus holders always equals everyone ever acquired. A check row confirms it.
 - Holders keep gold in the vault, sell back faster, and keep their card and credit line.
 
@@ -134,7 +134,7 @@ Each region runs this balance every period:
 
 ### 3.4 Retention
 
-- **Persistency: 55%** of customers still pay twelve months after joining. Monthly churn is 4.86%.
+- **Persistency.** 55% of customers still pay twelve months after joining. Monthly churn is 4.86%.
 - **Basis.** IRDAI life insurance persistency, adjusted down because a saver loses nothing by stopping.
 - By Y7, 64.7% of everyone ever acquired are holders.
 
@@ -162,14 +162,14 @@ Each region runs this balance every period:
 | Buyback | 6% of gold a year, × 1.6 for holders | PAXG's 5.9% annual turnover |
 | Gold moved to own wallets | 6% a year | Lowers collateral-eligible gold only |
 
-- **Gold under custody** is everything in the vault: USD 91.1m at Y7.
-- **Collateral-eligible AUM** is the part that can back a credit line: USD 82.66m at Y7.
+- **Gold under custody.** Everything in the vault: USD 91.1m at Y7.
+- **Collateral-eligible AUM.** The part that can back a credit line: USD 82.66m at Y7.
 
 ---
 
-## 4. The six revenue streams
+## 4. Revenue streams
 
-### 4.1 Stream 1: Entry fee (1a SIP, 1b spot)
+### 4.1 Stream 1: Entry fees
 
 **In plain words:** 1a = paying customers × monthly ticket × 5%. 1b = paying customers × spot attach × purchases per buyer × spot ticket × 5%.
 
@@ -186,7 +186,7 @@ Each region runs this balance every period:
 
 **In plain words:** card spend × 1.80% interchange × Aurumix's 40% share.
 
-**Y7: USD 56,241** on USD 7.81m of card spend.
+**Y7: USD 56,241.** On USD 7.81m of card spend.
 
 **Who gets the card.** The Gold Card is open to the whole book, with 18% take-up. The ICS tier sets only the benefits (fee discounts, FX rates, rebates). A customer who stops paying keeps the card and credit line, which only the collateral rules, the customer or the lender can close (decisions 54 and 57).
 
@@ -237,7 +237,7 @@ graph LR
 
 **In plain words:** plan subscribers × (USD 50 + USD 6 for each beneficiary beyond the first).
 
-**Y7: USD 448,317** from 7,599 subscribers, about 10.7% of paying customers.
+**Y7: USD 448,317.** From 7,599 subscribers, about 10.7% of paying customers.
 
 | Assumption | Base | Reason and source |
 |---|---|---|
@@ -276,7 +276,7 @@ graph LR
 
 **In plain words:** partners signed × gold held per partner × 0.75% a year.
 
-**Y7: USD 1,559,250** on USD 207.9m of partner gold from 11 partners, the largest stream.
+**Y7: USD 1,559,250.** On USD 207.9m of partner gold from 11 partners, the largest stream.
 
 Gulf wallets and exchange houses white-label Aurumix's gold infrastructure.
 
@@ -288,13 +288,13 @@ Gulf wallets and exchange houses white-label Aurumix's gold infrastructure.
 | Gold per adopting user | USD 350 | Botim gold, about USD 363 |
 | Fee | 0.75% a year | Top of the cited 0.5-0.75% band |
 
-Gold per partner is **USD 18.9m**, charged in full from signing.
+Gold per partner is USD 18.9m, charged in full from signing.
 
 ---
 
 ## 5. Costs, profit and funding
 
-### 5.1 The cost base
+### 5.1 Cost base
 
 | Line | Basis | Y7 cost (USD) |
 |---|---|---:|
@@ -321,7 +321,7 @@ Gold per partner is **USD 18.9m**, charged in full from signing.
 
 ### 5.2 ICS benefit costs
 
-The Investor Conviction Score (ICS) rewards consistent saving with rising benefits. Each rate applies only to the **55% of customers who reach a benefit tier**, so the cost is roughly half the headline rate.
+The Investor Conviction Score (ICS) rewards consistent saving with rising benefits. Each rate applies only to the 55% of customers who reach a benefit tier, so the cost is roughly half the headline rate.
 
 | Benefit | Rate for qualifying customers | Y7 cost (USD) |
 |---|---|---:|
@@ -351,34 +351,38 @@ The Investor Conviction Score (ICS) rewards consistent saving with rising benefi
 
 ### 5.4 Contingency and missing costs
 
-- **Contingency: 15%** of modelled costs, by client instruction. It stands in for headcount, legal, security, overhead, tax and minting.
-- It falls short. Headcount alone is about USD 588,000 in Y1, against a Y1 contingency of USD 112,367.
-- Minting costs roughly USD 8,500 a year on a layer-2 network by Y7, or about USD 1.7m on Ethereum mainnet.
+- **Contingency.** 15% of modelled costs, by client instruction. It stands in for headcount, legal, security, overhead, tax and minting.
+- **Shortfall.** Headcount alone is about USD 588,000 in Y1, against a Y1 contingency of USD 112,367.
+- **Minting.** Roughly USD 8,500 a year on a layer-2 network by Y7, or about USD 1.7m on Ethereum mainnet.
 
-### 5.5 Net profit and payback (upper bound)
+### 5.5 Net profit and payback
 
-- **Net profit** is -USD 829,064 in Y1, turns positive in Y4 (USD 260,844) and reaches **USD 846,578 in Y7**, an 18.8% margin.
-- **Contribution per paying customer** rises from USD 19 in Y3 to USD 37 in Y7.
-- **Payback:** 15.6 months in Y3, 8.9 in Y4, 8.4 in Y5, 9.9 in Y6 and 12.1 in Y7. It lengthens after Y5 as marketing keeps rising and saturation slows new customers.
-- **Treadmill:** 1.8 new customers per net addition in Y1, 2.1 in Y3, 3.5 in Y6 and 7.5 in Y7.
+All figures here are upper bounds (section 1.1).
+
+- **Net profit.** A loss of USD 829,064 in Y1, positive in Y4 (USD 260,844) and USD 846,578 in Y7, an 18.8% margin.
+- **Contribution per paying customer.** USD 19 in Y3, rising to USD 37 in Y7.
+- **Payback.** 15.6 months in Y3, 8.9 in Y4, 8.4 in Y5, 9.9 in Y6 and 12.1 in Y7. It lengthens after Y5 as marketing keeps rising and saturation slows new customers.
+- **Treadmill.** 1.8 new customers per net addition in Y1, 2.1 in Y3, 3.5 in Y6 and 7.5 in Y7.
 
 ![Revenue, cost base and cumulative net profit, Y1 to Y7 (upper bound, before headcount and tax)](charts/profit.png)
 
-### 5.6 Funding, capital and float (upper bound)
+### 5.6 Funding, capital and float
 
-- **Peak funding need: USD 2.29m** at the end of Y3: USD 1.43m of cumulative loss plus USD 864,412 of capital. It rises once headcount lands.
-- **Regulatory capital: USD 571,818.** VA Issuance AED 1.5m plus Broker-Dealer AED 600,000, held on the balance sheet.
-- **Gold float:** at least two 100 g bars. 200 g at M1, 3,406 g (USD 780,282) at Y7.
-- **Card settlement prefunding:** USD 100,000 from M13.
-- **Total capital tied up at Y7: USD 1,452,099.**
+Funding figures are upper bounds (section 1.1).
+
+- **Peak funding need.** USD 2.29m at the end of Y3: USD 1.43m of cumulative loss plus USD 864,412 of capital. It rises once headcount lands.
+- **Regulatory capital.** USD 571,818: VA Issuance AED 1.5m plus Broker-Dealer AED 600,000, held on the balance sheet.
+- **Gold float.** At least two 100 g bars. 200 g at M1, 3,406 g (USD 780,282) at Y7.
+- **Card settlement prefunding.** USD 100,000 from M13.
+- **Total capital tied up.** USD 1,452,099 at Y7.
 
 ---
 
 ## 6. Scenarios, sensitivities and limits
 
-### 6.1 Scenario results (Y7)
+### 6.1 Scenario results
 
-Aggressive and Conservative move every uncertain input at once, so both are unlikely outer bounds. Profit and funding rows are upper bounds.
+Y7 values. Aggressive and Conservative move every uncertain input at once, so both are unlikely outer bounds. Profit and funding rows are upper bounds.
 
 | Y7 | Conservative | Base | Aggressive |
 |---|---:|---:|---:|
@@ -428,18 +432,18 @@ The levers that matter most:
 - **Card take-up.** At 8%, Y7 profit falls to USD 0.42m.
 - **Retention.** At 45% persistency Y7 paying customers fall to 54,457.
 
-### 6.4 The workbook and the Phase 5 simulation
+### 6.4 Workbook and Phase 5 simulation
 
-- **The workbook** is one deterministic path. Use it to understand and change the plan.
-- **The simulation** runs individual customers 2,000 times. Use it to decide how much to raise.
+- **The workbook.** One deterministic path. Use it to understand and change the plan.
+- **The simulation.** Runs individual customers 2,000 times. Use it to decide how much to raise.
 - **Shared inputs.** 55% persistency and the 55% benefit-tier share. The workbook and simulation reconcile line by line at Y7.
 
 ### 6.5 Limitations and working assumptions
 
 - **Incomplete costs.** Profit, payback and peak funding are upper bounds.
-- **One average customer** and annual periods from Y3.
-- **Frozen prices** in 2027 dollars while gold rises 8.1% a year.
-- **No B2B adoption ramp** and flat technology maintenance.
+- **Simplified engine.** One average customer, and annual periods from Y3.
+- **Frozen prices.** Tickets and fees stay in 2027 dollars while gold rises 8.1% a year.
+- **No B2B adoption ramp.** Technology maintenance is also flat.
 - **India's payment route is assumed solved.** India is 30.2% of Y7 revenue.
 
 These inputs rest on judgement or client instruction:
@@ -457,14 +461,14 @@ These inputs rest on judgement or client instruction:
 
 ### 6.6 Conventions and using the workbook
 
-- **Y1 and Y2 ratio rows** on the Summary are M12 and M24 month-end run rates.
-- **Oman and Bahrain marketing** (18% of the budget) is spent from M1, but the region opens at M13, so its Y1 spend acquires no customers.
+- **Y1 and Y2 ratio rows.** On the Summary these are M12 and M24 month-end run rates.
+- **Oman and Bahrain marketing.** 18% of the budget is spent from M1, but the region opens at M13, so its Y1 spend acquires no customers.
 - **Buyback earns no revenue.** VARA forbids any fee on redemption.
 - **Edit blue cells only.** Uncertain inputs sit on Scenario Parameters, fixed inputs on Assumptions.
-- **Switch scenario** in cell B6. Switches sit in rows 130 to 133.
+- **Switching scenario.** Use cell B6. The structural switches sit in rows 130 to 133.
 - **Checks.** `verify_model.py` runs 219 checks on the recalculated workbook.
 
-### Glossary
+### 6.7 Glossary
 
 | Term | Meaning |
 |---|---|
@@ -484,7 +488,7 @@ These inputs rest on judgement or client instruction:
 | **Redemption** | The legal category the buyback falls under. VARA forbids any fee on it |
 | **SIP** | Systematic Investment Plan, the monthly savings commitment |
 
-### Sources
+### 6.8 Sources
 
 1. Visa. UAE Interchange Reimbursement Fees, 18 October 2025, and International Service Assessment rates.
 2. Khaleej Times. Botim gold (O Gold) ticket, users and volume. November 2025.
