@@ -110,7 +110,7 @@ def impact_chart(design, name, budgets=BUDGETS):
 
 def max_trade_chart(design, name):
     """Largest sale inside each ceiling, grouped by pool budget."""
-    fig, ax = plt.subplots(figsize=(9, 5))
+    fig, ax = plt.subplots(figsize=(9, 4.2))
     style(ax, fig)
     n = len(BUDGETS)
     w = 0.8 / n
@@ -135,7 +135,7 @@ def max_trade_chart(design, name):
 def required_chart(design, name):
     """The plugin's minimum-TVL chart: required pool size against ceiling,
     one line per trade size."""
-    fig, ax = plt.subplots(figsize=(9, 4.4))
+    fig, ax = plt.subplots(figsize=(9, 3.8))
     style(ax, fig)
     trades = PAR["trades"]
     from matplotlib.colors import LinearSegmentedColormap
