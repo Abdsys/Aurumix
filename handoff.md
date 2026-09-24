@@ -19,6 +19,7 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | 2 Mechanism Design | 🔄 Design complete; consolidated MD document at v1.2, decisions 52-56 closed the last open design questions. Decision-50 propagation closed by the MD document itself (§9 item 1) |
 | 3 Supply Side | ✅ **Liquidity-only audit, 2026-09-24** (Abdur's scope: no allocations/vesting/ROI, AURX has none). Pool sizing, slippage, V2 vs V3. 🔴 For the client: the pool undercuts the 5% entry fee. (Aurumix-as-own-LP counsel question was cut from the report at Abdur's request; still open internally) |
 | 4 Revenue Modeling | ✅ Complete. `reference_model/` is the oracle. **Two defects found by Phase 5 are logged, not fixed** (§9). 🆕 Plus decision 54's lapsed-cardholder check |
+| 6 Whitepaper | ✅ **2026-09-24.** `deliverables/6-whitepaper/final/Aurumix_Whitepaper.pdf`, 42 pages, market-facing, from MD doc v1.2. Rebuild: `_branded_working/build_wp.py` then `render_wp.js`. Not yet applied to VARA; ERC-20 on Ethereum |
 | 5 Simulations | ✅ **CLOSED 2026-09-22.** All three finalization items landed, gates pass, PDFs in `final/`. See `deliverables/5-simulations/PHASE5_STATE.md` |
 
 **The product in one line:** 100% of every dollar buys allocated physical gold, 1 AURX = 1 gram, monthly SIP from USD 20, behaviour-scored benefits (ICS), a credit facility and a gold-backed card.

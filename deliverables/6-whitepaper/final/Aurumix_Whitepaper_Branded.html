@@ -1,0 +1,4038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <title>Aurumix Whitepaper - Tokenomics.net</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Brand System CSS (inlined from branded-docs-main/css/brand-system.css) -->
+  <style>
+/**
+ * Tokenomics.net Brand System CSS
+ * Version: 2.0.0
+ * Aesthetic: "The Institution" — Private Museum Standard
+ *
+ * Single source of truth for all branded document templates.
+ * Link in compose.html or individual templates via relative path.
+ *
+ * Brand References:
+ *   - tokenomics_visual_standard_v1.2.md
+ *   - Tokenomics_net_Brand_Strategy_Branded.docx
+ */
+
+/* ================================================================
+   FONT LOADING
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap');
+
+
+/* ================================================================
+   CUSTOM PROPERTIES
+   ================================================================ */
+
+:root {
+  /* Brand Colors — LOCKED (Visual Standard v1.2) */
+  --warm-charcoal: #1A1714;
+  --warm-white: #FAF8F5;
+  --gold: #B8956E;
+  --light-gold: #D4B896;
+  --dark-gold: #96734A;
+  --concrete: #9A9590;
+  --stone: #D4CFC8;
+  --stone-light: #E8E4DF;
+  --border-light: #E5E2DE;
+
+  /* Semantic Status Colors */
+  --success: #4A7C59;
+  --success-light: #E8F0EB;
+  --warning: #C4783C;
+  --warning-light: #F5EDDF;
+  --danger: #8C3D3D;
+  --danger-light: #F3E8E8;
+  --info: #3D6B8C;
+  --info-light: #E8EFF5;
+
+  /* Semantic Text Colors */
+  --text-primary: #1A1714;
+  --text-secondary: #5A5652;
+  --text-tertiary: #9A9590;
+
+  /* Typography — LOCKED */
+  --font-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Libre Franklin', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+
+  /* Page Dimensions — Portrait (Letter) */
+  --page-width: 8.5in;
+  --page-height: 11in;
+  --safe-margin: 0.5in;
+  --safe-margin-top: 0.6in;
+  --safe-margin-bottom: 0.6in;
+
+  /* Page Dimensions — Landscape (Letter) */
+  --page-width-landscape: 11in;
+  --page-height-landscape: 8.5in;
+
+  /* Footer Positioning */
+  --footer-inset-left: 0.5in;
+  --footer-inset-right: 0.5in;
+
+  /* Spacing Scale */
+  --space-2xs: 0.125rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Gold Accent Widths */
+  --accent-thin: 1px;
+  --accent-medium: 2px;
+  --accent-thick: 4px;
+  --accent-heavy: 6px;
+}
+
+
+/* ================================================================
+   RESET + BASE
+   ================================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--warm-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ================================================================
+   PAGE CONTAINER SYSTEM
+   ================================================================ */
+
+/* Portrait Page */
+.page {
+  width: var(--page-width);
+  height: var(--page-height);
+  position: relative;
+  overflow: hidden;
+  background: var(--warm-white);
+  margin: 0 auto;
+}
+
+/* Landscape Page */
+.page--landscape {
+  width: var(--page-width-landscape);
+  height: var(--page-height-landscape);
+  --footer-inset-left: 0.7in;
+  --footer-inset-right: 0.7in;
+}
+
+/* Safe zone for content (respects margins) */
+.page-content {
+  position: absolute;
+  top: var(--safe-margin-top);
+  left: var(--safe-margin);
+  right: var(--safe-margin);
+  bottom: var(--safe-margin-bottom);
+}
+
+/* Full-bleed container (edge to edge) */
+.page-bleed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ================================================================
+   TYPOGRAPHY SCALE
+   Print-optimized sizes (pt for precision)
+   ================================================================ */
+
+/* Display — hero titles on covers */
+.text-display {
+  font-family: var(--font-serif);
+  font-size: 42pt;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1, .text-h1 {
+  font-family: var(--font-serif);
+  font-size: 32pt;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+h2, .text-h2 {
+  font-family: var(--font-serif);
+  font-size: 22pt;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+h3, .text-h3 {
+  font-family: var(--font-serif);
+  font-size: 16pt;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+h4, .text-h4 {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+p, .text-body {
+  font-family: var(--font-sans);
+  font-size: 10.5pt;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.text-body-large {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.text-caption {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.text-meta {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--concrete);
+}
+
+.text-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+
+.text-small {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+
+/* ================================================================
+   LISTS
+   ================================================================ */
+
+ul, ol {
+  font-family: var(--font-sans);
+  font-size: 10.5pt;
+  line-height: 1.65;
+  margin-bottom: var(--space-md);
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: var(--space-xs);
+}
+
+li::marker {
+  color: var(--gold);
+}
+
+
+/* ================================================================
+   WORDMARK
+   ================================================================ */
+
+.wordmark {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+  display: inline-block;
+}
+
+.wordmark-period {
+  color: var(--gold);
+}
+
+.wordmark--light {
+  color: var(--warm-white);
+}
+
+.wordmark--dark {
+  color: var(--warm-charcoal);
+}
+
+.wordmark--sm { font-size: 14px; }
+.wordmark--md { font-size: 18px; }
+.wordmark--lg { font-size: 24px; }
+.wordmark--xl { font-size: 36px; }
+.wordmark--2xl { font-size: 48px; }
+
+
+/* ================================================================
+   GOLD ACCENT LINES / RULES
+   ================================================================ */
+
+.gold-rule {
+  border: none;
+  border-bottom: var(--accent-medium) solid var(--gold);
+  margin: var(--space-lg) 0;
+}
+
+.gold-rule--thin {
+  border-bottom-width: var(--accent-thin);
+}
+
+.gold-rule--thick {
+  border-bottom-width: var(--accent-thick);
+}
+
+.gold-rule--heavy {
+  border-bottom-width: var(--accent-heavy);
+}
+
+.gold-rule--short {
+  width: 60px;
+}
+
+.gold-rule--short-center {
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stone-rule {
+  border: none;
+  border-bottom: 1px solid var(--stone);
+  margin: var(--space-lg) 0;
+}
+
+.gold-bar-left {
+  border-left: var(--accent-thick) solid var(--gold);
+  padding-left: var(--space-md);
+}
+
+.gold-bar-top {
+  border-top: var(--accent-heavy) solid var(--gold);
+}
+
+
+/* ================================================================
+   CALLOUT BOXES
+   ================================================================ */
+
+.callout {
+  background: var(--stone-light);
+  border-left: var(--accent-thick) solid var(--gold);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.callout-title {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.callout-body {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.callout--dark {
+  background: var(--warm-charcoal);
+  border-left-color: var(--gold);
+}
+
+.callout--dark .callout-title {
+  color: var(--warm-white);
+}
+
+.callout--dark .callout-body {
+  color: var(--stone);
+}
+
+
+/* ================================================================
+   PULL QUOTES
+   ================================================================ */
+
+.pull-quote {
+  text-align: center;
+  padding: var(--space-xl) var(--space-2xl);
+  margin: var(--space-xl) 0;
+  border-top: var(--accent-medium) solid var(--gold);
+  border-bottom: var(--accent-medium) solid var(--gold);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pull-quote-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18pt;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.pull-quote-attribution {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 500;
+  color: var(--concrete);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* ================================================================
+   STAT CARDS
+   ================================================================ */
+
+.stat-row {
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.stat-card {
+  flex: 1;
+  padding: var(--space-lg);
+  border: 1px solid var(--border-light);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.stat-card--gold {
+  border-color: var(--gold);
+  border-width: 2px;
+}
+
+.stat-value {
+  font-family: var(--font-serif);
+  font-size: 28pt;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.1;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+/* ================================================================
+   DATA TABLES
+   ================================================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  line-height: 1.5;
+  margin-bottom: var(--space-lg);
+}
+
+thead th {
+  background: var(--warm-charcoal);
+  color: var(--warm-white);
+  font-weight: 600;
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--gold);
+}
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--stone-light);
+}
+
+tbody tr:hover {
+  background: var(--stone);
+}
+
+tfoot td {
+  padding: 10px 14px;
+  font-weight: 600;
+  background: rgba(184, 149, 110, 0.08);
+  border-top: 2px solid var(--gold);
+  color: var(--text-primary);
+}
+
+.table-caption {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  color: var(--concrete);
+  margin-top: var(--space-xs);
+  font-style: italic;
+}
+
+
+/* ================================================================
+   IMAGE PLACEHOLDERS
+   ================================================================ */
+
+.image-placeholder {
+  background: var(--stone-light);
+  border: 2px dashed var(--stone);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--concrete);
+  overflow: hidden;
+}
+
+.image-placeholder-label {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 500;
+  color: var(--concrete);
+  margin-bottom: var(--space-xs);
+}
+
+.image-placeholder-prompt {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  color: var(--stone);
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+/* When image is loaded, hide placeholder UI */
+.image-placeholder[style*="background-image"] .image-placeholder-label,
+.image-placeholder[style*="background-image"] .image-placeholder-prompt {
+  display: none;
+}
+
+
+/* ================================================================
+   LOGO (SVG <img> tag)
+   ================================================================ */
+
+.logo {
+  display: inline-block;
+  height: auto;
+  vertical-align: middle;
+}
+
+.logo--sm { width: 90px; }
+.logo--md { width: 120px; }
+.logo--lg { width: 150px; }
+.logo--xl { width: 200px; }
+.logo--cover { width: 160px; }
+.logo--2xl { width: 280px; }
+
+
+/* ================================================================
+   CTA BUTTONS
+   ================================================================ */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn--gold {
+  background: var(--gold);
+  color: var(--warm-white);
+}
+
+.btn--gold-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+}
+
+.btn--dark {
+  background: var(--warm-charcoal);
+  color: var(--warm-white);
+}
+
+
+
+
+/* ================================================================
+   PAGE NUMBERS
+   ================================================================ */
+
+.page-number {
+  position: absolute;
+  bottom: 0.25in;
+  right: var(--footer-inset-right);
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  color: var(--concrete);
+  font-variant-numeric: tabular-nums;
+}
+
+.page-number--left {
+  right: auto;
+  left: var(--footer-inset-left);
+}
+
+
+/* ================================================================
+   TOC ENTRY
+   ================================================================ */
+
+.toc-entry {
+  display: flex;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--stone);
+}
+
+.toc-entry-text {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 400;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.toc-entry-dots {
+  flex: 1;
+  min-width: 20px;
+}
+
+.toc-entry-page {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  padding-left: 8px;
+}
+
+.toc-entry--section {
+  padding-top: 14px;
+  border-bottom: 1px solid var(--stone);
+}
+
+.toc-entry--section .toc-entry-text {
+  font-weight: 600;
+  font-size: 11pt;
+}
+
+.toc-entry--sub {
+  padding-left: 24px;
+}
+
+.toc-entry--sub .toc-entry-text {
+  font-size: 10pt;
+  color: var(--text-secondary);
+}
+
+
+/* ================================================================
+   FINDINGS / NUMBERED ITEMS
+   ================================================================ */
+
+.finding {
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.finding-number {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.finding-content {
+  flex: 1;
+}
+
+.finding-title {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.finding-body {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+
+/* ================================================================
+   CONTACT GRID
+   ================================================================ */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.contact-item-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--concrete);
+  margin-bottom: var(--space-2xs);
+}
+
+.contact-item-value {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  color: var(--text-primary);
+}
+
+
+/* ================================================================
+   UTILITY CLASSES
+   ================================================================ */
+
+/* Text Alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Colors */
+.text-gold { color: var(--gold); }
+.text-charcoal { color: var(--warm-charcoal); }
+.text-white { color: var(--warm-white); }
+.text-concrete { color: var(--concrete); }
+
+/* Backgrounds */
+.bg-charcoal { background: var(--warm-charcoal); }
+.bg-white { background: var(--warm-white); }
+.bg-stone { background: var(--stone); }
+.bg-stone-light { background: var(--stone-light); }
+
+/* Margins */
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-2xl { margin-top: var(--space-2xl); }
+.mt-3xl { margin-top: var(--space-3xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mb-2xl { margin-bottom: var(--space-2xl); }
+
+/* Print utilities */
+.keep-together {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.break-before {
+  break-before: page;
+  page-break-before: always;
+}
+
+.break-after {
+  break-after: page;
+  page-break-after: always;
+}
+
+/* Flexbox helpers */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { align-items: center; justify-content: center; }
+.flex-between { justify-content: space-between; }
+.flex-end { justify-content: flex-end; }
+.flex-1 { flex: 1; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.gap-xl { gap: var(--space-xl); }
+
+
+/* ================================================================
+   PRINT MEDIA
+   ================================================================ */
+
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+
+@page landscape {
+  size: 11in 8.5in;
+  margin: 0;
+}
+
+@media print {
+  *, *::before, *::after {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  /* Each .page triggers a page break */
+  .page {
+    page-break-after: always;
+    break-after: page;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Landscape pages use named @page rule */
+  .page--landscape {
+    page: landscape;
+  }
+
+  /* Prevent orphaned headings */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Keep blocks together */
+  .callout,
+  .stat-card,
+  .finding,
+  figure,
+  blockquote,
+  .keep-together {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Table handling */
+  table { page-break-inside: auto; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Orphans/widows */
+  p { orphans: 3; widows: 3; }
+
+
+  /* Hide screen-only elements */
+  .screen-only { display: none !important; }
+}
+
+
+/* ================================================================
+   SHARED COMPONENTS — EXTENDED
+   Recommendation cards, scoring, strengths/risks, timeline,
+   pricing, checklists
+   ================================================================ */
+
+/* Recommendation Cards */
+.recommendation-card {
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--gold);
+  padding: var(--space-lg);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.recommendation-number {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.recommendation-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.recommendation-title {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  margin-bottom: 4px;
+}
+
+.recommendation-body {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.priority-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 7pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.priority-tag--high { background: var(--danger-light); color: var(--danger); }
+.priority-tag--medium { background: var(--warning-light); color: var(--warning); }
+.priority-tag--low { background: var(--success-light); color: var(--success); }
+
+/* Scoring & Verdict */
+.verdict-display {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid var(--border-light);
+  margin-bottom: 20px;
+}
+
+.verdict-score {
+  font-family: var(--font-serif);
+  font-size: 48pt;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.verdict-label {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+}
+
+.verdict-display--success { border-color: var(--success); }
+.verdict-display--success .verdict-score { color: var(--success); }
+.verdict-display--warning { border-color: var(--warning); }
+.verdict-display--warning .verdict-score { color: var(--warning); }
+.verdict-display--danger { border-color: var(--danger); }
+.verdict-display--danger .verdict-score { color: var(--danger); }
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.score-label {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: var(--warm-charcoal);
+  width: 2in;
+  flex-shrink: 0;
+}
+
+.score-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--stone-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--gold);
+}
+
+.score-fill--success { background: var(--success); }
+.score-fill--warning { background: var(--warning); }
+.score-fill--danger { background: var(--danger); }
+
+.score-value {
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--gold);
+  width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Strengths & Risks Boxes */
+.strengths-risks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3in;
+}
+
+.strengths-box {
+  background: var(--success-light);
+  border-left: 4px solid var(--success);
+  padding: var(--space-lg);
+}
+
+.risks-box {
+  background: var(--danger-light);
+  border-left: 4px solid var(--danger);
+  padding: var(--space-lg);
+}
+
+.sr-box-title {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.strengths-box .sr-box-title { color: var(--success); }
+.risks-box .sr-box-title { color: var(--danger); }
+
+.sr-item {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding: 4px 0;
+  padding-left: 18px;
+  position: relative;
+}
+
+.sr-item::before {
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+.strengths-box .sr-item::before { content: '✓'; color: var(--success); }
+.risks-box .sr-item::before { content: '⚠'; color: var(--danger); font-size: 8pt; }
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 48px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: var(--gold);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-node {
+  position: absolute;
+  left: -48px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 1;
+}
+
+.timeline-date {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  margin-bottom: 4px;
+}
+
+.timeline-body {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Pricing Columns */
+.pricing-columns {
+  display: flex;
+  gap: 0.2in;
+}
+
+.pricing-card {
+  flex: 1;
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card--featured {
+  border: 2px solid var(--gold);
+}
+
+.pricing-header {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pricing-card--featured .pricing-header {
+  background: var(--gold);
+}
+
+.pricing-name {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--warm-charcoal);
+}
+
+.pricing-card--featured .pricing-name {
+  color: var(--warm-white);
+}
+
+.pricing-price {
+  font-family: var(--font-serif);
+  font-size: 28pt;
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  padding: 16px;
+}
+
+.pricing-card--featured .pricing-price {
+  color: var(--warm-charcoal);
+}
+
+.pricing-features {
+  padding: 0 16px 16px;
+  flex: 1;
+}
+
+.pricing-feature {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pricing-feature::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.pricing-feature--excluded {
+  color: var(--concrete);
+}
+
+.pricing-feature--excluded::before {
+  content: '—';
+  color: var(--concrete);
+}
+
+/* Checklist Items */
+.checklist-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.checklist-check {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid var(--border-light);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10pt;
+  margin-top: 2px;
+}
+
+.checklist-item--checked .checklist-check {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--warm-white);
+}
+
+.checklist-item--checked .checklist-check::after {
+  content: '✓';
+}
+
+.checklist-item-title {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--warm-charcoal);
+}
+
+.checklist-item-desc {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Scope Section Headers */
+.scope-header {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+
+.scope-header--in {
+  background: var(--success-light);
+  color: var(--success);
+  border-left: 4px solid var(--success);
+}
+
+.scope-header--out {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-left: 4px solid var(--danger);
+}
+
+
+/* ================================================================
+   WORKSHEET PRIMITIVES — Fill-in Areas, Answer Boxes, Rating Scales
+   ================================================================ */
+
+/* Module badge — course module identifier pill */
+.module-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  background: var(--warning-light);
+  border: 1px solid var(--light-gold);
+  border-radius: 20px;
+  padding: 3px 12px;
+  line-height: 1.4;
+}
+
+/* Worksheet instruction bar */
+.worksheet-instruction {
+  background: var(--warm-white);
+  border: 1.5px solid var(--light-gold);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.worksheet-instruction-title {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+
+.worksheet-instruction-body {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Lined area — ruled-paper fill-in space */
+.lined-area {
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    var(--border-light) 27px,
+    var(--border-light) 28px
+  );
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  min-height: 112px;
+  padding: 6px 8px 0 8px;
+}
+
+.lined-area--tall { min-height: 168px; }
+.lined-area--short { min-height: 56px; }
+
+/* Answer box — bordered blank area */
+.answer-box {
+  border: 1.5px solid var(--stone);
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-height: 48px;
+  background: var(--warm-white);
+}
+
+.answer-box--gold {
+  border-color: var(--light-gold);
+  background: linear-gradient(135deg, var(--warm-white) 0%, #FDF8F2 100%);
+}
+
+.answer-box-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--concrete);
+  margin-bottom: 4px;
+}
+
+/* Canvas zone — labeled region for framework canvases */
+.canvas-zone {
+  border: 1.5px dashed var(--stone);
+  border-radius: 4px;
+  padding: 8px 10px;
+  background: var(--warm-white);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.canvas-zone-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.canvas-zone-hint {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-style: italic;
+  color: var(--concrete);
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+/* Rating scale — 1-5 circle rating system */
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.rating-label {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  color: var(--text-primary);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.rating-scale {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.rating-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--stone);
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.rating-circle--filled {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* Fill blank — inline underline blank */
+.fill-blank {
+  display: inline-block;
+  border-bottom: 1.5px solid var(--stone);
+  min-width: 120px;
+  height: 1.2em;
+  vertical-align: baseline;
+}
+
+.fill-blank--short { min-width: 60px; }
+.fill-blank--long { min-width: 200px; }
+
+/* Fill cell — empty table cell for student input */
+td.fill-cell {
+  background: var(--warm-white);
+  border: 1px solid var(--border-light);
+  min-height: 32px;
+}
+
+td.fill-cell--highlight {
+  background: linear-gradient(135deg, var(--warm-white) 0%, #FDF8F2 100%);
+  border-color: var(--light-gold);
+}
+
+
+/* ================================================================
+   SLIDE / PRESENTATION PRIMITIVES — Large Typography, Screen Display
+   ================================================================ */
+
+/* Slide typography scale — enlarged for screen projection */
+.slide-display {
+  font-family: var(--font-serif);
+  font-size: 54pt;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--warm-charcoal);
+}
+
+.slide-h1 {
+  font-family: var(--font-serif);
+  font-size: 40pt;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--warm-charcoal);
+}
+
+.slide-h2 {
+  font-family: var(--font-serif);
+  font-size: 30pt;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--warm-charcoal);
+}
+
+.slide-h3 {
+  font-family: var(--font-sans);
+  font-size: 22pt;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--warm-charcoal);
+}
+
+.slide-body {
+  font-family: var(--font-sans);
+  font-size: 18pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.slide-body-large {
+  font-family: var(--font-sans);
+  font-size: 22pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.slide-caption {
+  font-family: var(--font-sans);
+  font-size: 14pt;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--concrete);
+}
+
+.slide-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 14pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+.slide-meta {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  font-weight: 400;
+  color: var(--concrete);
+}
+
+/* Slide number — larger for presentation */
+.slide-number {
+  position: absolute;
+  bottom: 0.35in;
+  right: var(--footer-inset-right);
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  color: var(--concrete);
+}
+
+.slide-number--light {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Slide big number — hero stat display */
+.slide-big-number {
+  font-family: var(--font-serif);
+  font-size: 96pt;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.slide-big-label {
+  font-family: var(--font-sans);
+  font-size: 18pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-top: 12px;
+}
+
+/* Slide bullets — generously spaced list */
+.slide-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slide-bullets li {
+  font-family: var(--font-sans);
+  font-size: 18pt;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  padding: 10px 0 10px 32px;
+  position: relative;
+}
+
+.slide-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Slide horizontal process — left-to-right step flow */
+.slide-process {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+
+.slide-process-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 0 12px;
+}
+
+.slide-process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  right: -10%;
+  width: 20%;
+  height: 2px;
+  background: var(--light-gold);
+}
+
+.slide-process-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: 18pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin-bottom: 12px;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.slide-process-title {
+  font-family: var(--font-sans);
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  margin-bottom: 6px;
+}
+
+.slide-process-desc {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Slide key takeaway box */
+.slide-takeaway {
+  background: var(--stone-light);
+  border-left: 6px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 28px 32px;
+}
+
+.slide-takeaway-label {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.slide-takeaway-text {
+  font-family: var(--font-serif);
+  font-size: 24pt;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--warm-charcoal);
+}
+
+/* Slide wordmark — bottom-left branding */
+.slide-wordmark {
+  position: absolute;
+  bottom: 0.35in;
+  left: var(--footer-inset-left);
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--concrete);
+  letter-spacing: 0.02em;
+}
+
+.slide-wordmark--light {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Slide gold accent bar */
+.slide-gold-bar {
+  width: 80px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+/* Dark slide background */
+.page--slide-dark {
+  background: var(--warm-charcoal);
+}
+
+.page--slide-dark .slide-display,
+.page--slide-dark .slide-h1,
+.page--slide-dark .slide-h2,
+.page--slide-dark .slide-h3 {
+  color: var(--warm-white);
+}
+
+.page--slide-dark .slide-body,
+.page--slide-dark .slide-body-large,
+.page--slide-dark .slide-caption {
+  color: var(--stone);
+}
+
+.page--slide-dark .slide-big-label {
+  color: var(--stone);
+}
+
+
+/* ================================================================
+   DIAGRAM COMPONENTS
+   ================================================================ */
+
+.diagram-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.diagram-area img,
+.diagram-area .image-placeholder {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  object-fit: contain;
+  display: block;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+}
+
+.diagram-caption {
+  font-family: var(--font-sans);
+  font-size: 8.5pt;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  line-height: 1.45;
+}
+
+.diagram-source {
+  font-family: var(--font-sans);
+  font-size: 7.5pt;
+  color: var(--concrete);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.diagram-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-light);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 7.5pt;
+  color: var(--text-secondary);
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.diagram-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 18pt;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.diagram-stage-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.diagram-stage-desc {
+  font-family: var(--font-sans);
+  font-size: 8.5pt;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.diagram-subtitle {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  margin-bottom: 6px;
+}
+
+
+/* ================================================================
+   FORMULA COMPONENTS (KaTeX)
+   ================================================================ */
+
+.formula-display-block {
+  background: var(--stone-light);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+  padding: 20px 24px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.formula-display-block .katex {
+  font-size: 1.4em;
+}
+
+.formula-label {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.formula-explanation {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.notation-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.notation-table th {
+  font-family: var(--font-sans);
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--concrete);
+  background: var(--stone-light);
+  border: 1px solid var(--border-light);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.notation-table td {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  padding: 6px 10px;
+  vertical-align: top;
+}
+
+.notation-symbol {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--warm-charcoal);
+  white-space: nowrap;
+}
+
+.notation-table td.notation-symbol {
+  width: 60px;
+  text-align: center;
+}
+
+.formula-series-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.formula-series-item:last-child {
+  border-bottom: none;
+}
+
+.formula-series-item .formula-display-block {
+  margin-top: 6px;
+}
+
+
+/* ================================================================
+   SCREEN PREVIEW MODE
+   ================================================================ */
+
+@media screen {
+  body {
+    background: #d5d2cd;
+    padding: 40px;
+  }
+
+  .page {
+    box-shadow: 0 2px 16px rgba(26, 23, 20, 0.12), 0 8px 40px rgba(26, 23, 20, 0.06);
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+
+}
+
+  </style>
+  <!-- KaTeX (kept for the shell; no formula page in v2) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <style>
+/* ---- template: cover-minimal-typographic ---- */
+
+    .page--cover-minimal-typographic {
+      background: var(--warm-white);
+    }
+
+    .page--cover-minimal-typographic .cover-gold-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--gold);
+    }
+
+    .page--cover-minimal-typographic .cover-content {
+      position: absolute;
+      top: 50%;
+      left: 0.7in;
+      right: 0.7in;
+      transform: translateY(-55%);
+    }
+
+    .page--cover-minimal-typographic .cover-eyebrow {
+      margin-bottom: 16px;
+    }
+
+    .page--cover-minimal-typographic .cover-title {
+      font-family: var(--font-serif);
+      font-size: 42pt;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--warm-charcoal);
+      margin-bottom: 20px;
+    }
+
+    .page--cover-minimal-typographic .cover-subtitle {
+      font-family: var(--font-sans);
+      font-size: 13pt;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 5.5in;
+    }
+
+    .page--cover-minimal-typographic .cover-rule {
+      border: none;
+      border-bottom: 1px solid var(--stone);
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    .page--cover-minimal-typographic .cover-bottom {
+      position: absolute;
+      bottom: 0.8in;
+      left: 0.7in;
+      right: 0.7in;
+    }
+
+    .page--cover-minimal-typographic .cover-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: 9pt;
+      font-weight: 500;
+      color: var(--concrete);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .page--cover-minimal-typographic .cover-wordmark {
+      position: absolute;
+      bottom: 0.75in;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+/* ---- template: special-table-of-contents ---- */
+
+    .page--special-table-of-contents .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+    }
+
+    .page--special-table-of-contents .toc-title {
+      font-family: var(--font-serif);
+      font-size: 32pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 8px;
+    }
+
+    .page--special-table-of-contents .toc-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 28px;
+      width: 100%;
+    }
+
+    .page--special-table-of-contents .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .page--special-table-of-contents::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gold);
+    }
+  
+/* ---- template: section-typographic ---- */
+
+    .page--section-typographic {
+      background: var(--warm-white);
+    }
+
+    .page--section-typographic .section-content {
+      position: absolute;
+      top: 2in;
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+    }
+
+    .page--section-typographic .section-number {
+      font-family: var(--font-serif);
+      font-size: 48pt;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .page--section-typographic .section-title {
+      font-family: var(--font-serif);
+      font-size: 32pt;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--warm-charcoal);
+      margin-bottom: 20px;
+    }
+
+    .page--section-typographic .section-rule {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .page--section-typographic .section-subtitle {
+      font-family: var(--font-sans);
+      font-size: 12pt;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 5.5in;
+    }
+
+    .page--section-typographic .section-image {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 60%;
+      bottom: var(--safe-margin-bottom);
+      background: var(--stone-light);
+      border: 2px dashed var(--stone);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .page--section-typographic .section-image .image-placeholder-label {
+      font-family: var(--font-sans);
+      font-size: 10pt;
+      font-weight: 500;
+      color: var(--concrete);
+      margin-bottom: 4px;
+    }
+
+  
+/* ---- template: special-executive-summary ---- */
+
+    .page--special-executive-summary .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+    }
+
+    .page--special-executive-summary .summary-title {
+      font-family: var(--font-serif);
+      font-size: 28pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 6px;
+    }
+
+    .page--special-executive-summary .summary-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .page--special-executive-summary .summary-intro {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .page--special-executive-summary .stats-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .page--special-executive-summary .stats-row .stat-card {
+      flex: 1;
+      padding: 18px 16px;
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--gold);
+      break-inside: avoid;
+    }
+
+    .page--special-executive-summary .stats-row .stat-value {
+      font-family: var(--font-serif);
+      font-size: 24pt;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .page--special-executive-summary .stats-row .stat-label {
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  
+/* ---- template: content-single-column ---- */
+
+    .page--content-single-column .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .page--content-single-column .content-heading {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .page--content-single-column .heading-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .page--content-single-column .content-image {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      margin-bottom: 6px;
+      flex-shrink: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .page--content-single-column .content-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .page--content-single-column .image-caption {
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      color: var(--concrete);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+  
+/* ---- template: content-data-table ---- */
+
+    .page--content-data-table .content-area {
+      position: absolute;
+      top: var(--safe-margin-top);
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .page--content-data-table .content-heading {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .page--content-data-table .heading-rule {
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .page--content-data-table .stats-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .page--content-data-table .stats-row .stat-card {
+      flex: 1;
+      padding: 14px 14px;
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--gold);
+      break-inside: avoid;
+    }
+
+    .page--content-data-table .stats-row .stat-value {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .page--content-data-table .stats-row .stat-label {
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  
+/* ---- template: special-appendix ---- */
+
+    .page--special-appendix .content-area {
+      position: absolute;
+      top: 120px;
+      left: var(--safe-margin);
+      right: var(--safe-margin);
+      bottom: var(--safe-margin-bottom);
+    }
+
+    .page--special-appendix .appendix-header {
+      background: var(--stone-light);
+      padding: 20px var(--safe-margin) 20px;
+      border-bottom: 3px solid var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .page--special-appendix .appendix-title {
+      font-family: var(--font-serif);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--warm-charcoal);
+      margin-bottom: 4px;
+    }
+
+    .page--special-appendix .appendix-subtitle {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .page--special-appendix .appendix-body {
+      column-count: 2;
+      column-gap: 0.4in;
+      column-rule: 1px solid var(--border-light);
+    }
+
+    .page--special-appendix .appendix-body p {
+      font-size: 9.5pt;
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    .page--special-appendix .appendix-body h4 {
+      font-size: 10pt;
+      margin-bottom: 4px;
+      break-after: avoid;
+    }
+  
+/* ---- template: closing-back-cover ---- */
+
+    .page--closing-back-cover {
+      background: var(--warm-charcoal);
+    }
+
+    .page--closing-back-cover .back-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      text-align: center;
+    }
+
+    .page--closing-back-cover .back-tagline {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      font-weight: 400;
+      color: var(--concrete);
+      letter-spacing: 0.05em;
+      margin-top: 20px;
+    }
+
+    .page--closing-back-cover .back-legal {
+      position: absolute;
+      bottom: 0.75in;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-sans);
+      font-size: 8pt;
+      color: var(--concrete);
+      text-align: center;
+      white-space: nowrap;
+    }
+  
+
+/* ================= Whitepaper v2: single column only (page plan section 0 and 3) ================= */
+#document-pages .page[data-auto-continue] .content-area { display: block; overflow: visible; }
+/* Typography and spacing copied from the Mechanism Design document (measured computed styles) */
+.content-area p, .content-area li { font-size: 10.5pt; line-height: 1.65; }
+.content-area p { margin: 0 0 16px; }
+.content-area ul, .content-area ol { font-size: 10.5pt; line-height: 1.65; margin: 0 0 16px; padding-left: 21px; }
+.content-area li { margin-bottom: 4px; }
+/* Headings: Libre Baskerville 700, sentence case. Section 22pt > subsection 16pt > sub-subsection 13pt. */
+.content-area h2.wp-h2 { font-family: var(--font-serif); font-size: 22pt; font-weight: 700; line-height: 1.2;
+  color: var(--warm-charcoal); border-bottom: 1.5px solid var(--gold); padding-bottom: 6px;
+  margin: 32px 0 16px; break-after: avoid; }
+.content-area > h2.wp-h2:first-child { margin-top: 0; }
+.content-area h3 { font-family: var(--font-serif); font-size: 16pt; font-weight: 700; line-height: 1.25;
+  color: var(--warm-charcoal); margin: 8px 0 16px; break-after: avoid; }
+.content-area h2.wp-h2 + h3 { margin-top: 0; }
+.content-area h4 { font-family: var(--font-serif); font-size: 13pt; font-weight: 700; line-height: 1.3;
+  color: var(--warm-charcoal); margin: 8px 0 8px; break-after: avoid; }
+.page--special-executive-summary .summary-title, .page--content-data-table .content-heading,
+.page--special-appendix .appendix-title {
+  font-family: var(--font-serif); font-size: 22pt; font-weight: 700; }
+.wp-find-title, .wp-ex-label { font-family: var(--font-serif) !important; font-weight: 700 !important;
+  text-transform: none !important; letter-spacing: 0 !important; }
+.content-area > h3:first-child { margin-top: 0; }
+.content-area table { width: 100%; font-size: 10pt; line-height: 1.5; margin: 0 0 24px; break-inside: avoid; }
+.content-area thead th { font-size: 9pt; padding: 8px 14px; }
+.content-area tbody td { padding: 8px 14px; vertical-align: top; }
+.content-area table td:first-child { font-weight: 500; }
+.content-area strong { font-weight: 700; }
+.table-benefits td, .table-benefits th { text-align: center; }
+.table-benefits td:first-child, .table-benefits th:first-child { text-align: left; }
+
+/* FIG: centred figure on its own row, caption below; nothing beside it */
+.wp-fig { display: block; margin: 16px auto 16px; max-width: 100%; break-inside: avoid; }
+.wp-fig .mermaid { display: block; text-align: center; }
+.wp-fig .mermaid svg { display: block; margin: 0 auto; height: auto; }
+.wp-fig figcaption { font-family: var(--font-sans); font-size: 9pt; line-height: 1.5; color: var(--concrete);
+  text-align: center; margin-top: 8px; }
+.wp-fig figcaption .fig-num { font-weight: 700; color: var(--text-secondary); }
+
+/* BAND: full-width callout band */
+.wp-band { background: var(--stone-light); border-left: 4px solid var(--gold); padding: 12px 16px; margin: 12px 0 16px; break-inside: avoid; }
+.wp-band p { font-size: 10.5pt !important; line-height: 1.6 !important; font-weight: 700; color: var(--warm-charcoal); margin: 0 !important; }
+.wp-band.mixed p { font-weight: 400; }
+.wp-band.mixed p strong { font-weight: 700; }
+
+/* EX: full-width worked-example box */
+.wp-ex { background: #F4F1EC; border: 1px solid var(--border-light); border-top: 3px solid var(--gold); padding: 14px 16px 2px; margin: 12px 0 16px; break-inside: avoid; }
+.wp-ex-label { font-size: 11pt; color: var(--warm-charcoal); margin-bottom: 4px; }
+.wp-ex p { margin-bottom: 6px; }
+.wp-ex table { margin-bottom: 6px; background: var(--warm-white); }
+
+/* STEPS: process-steps markers in one column (circle is absolutely positioned, not a grid) */
+ol.wp-steps { list-style: none; padding: 0; margin: 4px 0 8px; break-inside: avoid; }
+ol.wp-steps li { position: relative; padding: 5px 0 9px 44px; margin: 0; min-height: 30px; }
+ol.wp-steps li:not(:last-child)::after { content: ''; position: absolute; left: 14px; top: 32px; bottom: -3px; width: 2px; background: var(--light-gold); }
+ol.wp-steps .wp-step-n { position: absolute; left: 0; top: 2px; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--gold); color: var(--warm-white); font-family: var(--font-serif); font-size: 12pt; font-weight: 700;
+  line-height: 30px; text-align: center; }
+
+/* STAT3 */
+.wp-stat3 { display: flex; gap: 12px; margin: 4px 0 10px; break-inside: avoid; }
+.wp-stat3 .stat-card { flex: 1; padding: 10px 12px; border: 1px solid var(--border-light); border-top: 3px solid var(--gold); }
+.wp-stat3 .stat-value { font-family: var(--font-serif); font-size: 19pt; font-weight: 700; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
+.wp-stat3--words .stat-value { font-size: 16pt; white-space: nowrap; }
+.wp-stat3 .stat-label { font-family: var(--font-sans); font-size: 8.5pt; line-height: 1.35; font-weight: 500; color: var(--text-secondary); text-transform: none; letter-spacing: 0; }
+
+/* executive summary page: findings as a stacked numbered list (number is absolutely positioned) */
+.page--special-executive-summary .summary-rule { margin-bottom: 12px; }
+.page--special-executive-summary .summary-intro { font-size: 11pt; line-height: 1.5; margin-bottom: 12px; }
+.page--special-executive-summary .stats-row .stat-value { font-size: 21pt; }
+.wp-label { font-weight: 700; margin-bottom: 6px !important; }
+ol.wp-findings { list-style: none; padding: 0; margin: 0 0 10px; break-inside: avoid; }
+ol.wp-findings li { position: relative; padding: 0 0 7px 38px; margin: 0; border-bottom: 1px solid var(--border-light); margin-bottom: 7px; }
+ol.wp-findings li:last-child { border-bottom: none; margin-bottom: 0; }
+ol.wp-findings .wp-find-n { position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--gold); color: var(--warm-white); font-family: var(--font-serif); font-size: 10.5pt; font-weight: 700;
+  line-height: 24px; text-align: center; }
+ol.wp-findings .wp-find-title { font-size: 11pt; color: var(--warm-charcoal); margin-bottom: 1px; }
+ol.wp-findings .wp-find-body { font-size: 9.5pt; line-height: 1.4; color: var(--text-primary); }
+
+/* data-table page (section 15 flow) */
+.page--content-data-table .heading-rule { margin-bottom: 10px; border-bottom-width: 1.5px; }
+.page--content-data-table .content-heading { margin-bottom: 6px; }
+
+/* part dividers */
+.page--section-typographic .section-number { font-size: 30pt; letter-spacing: 0.02em; }
+.page--section-typographic .part-sections { list-style: none; padding: 0; margin: 0; font-size: 12pt; line-height: 1.5; }
+.page--section-typographic .part-sections li { padding: 7px 0; border-bottom: 1px solid var(--border-light); color: var(--text-primary); margin: 0; }
+.page--section-typographic .part-sec-num { display: inline-block; width: 36px; font-family: var(--font-serif); font-weight: 700; color: var(--gold); }
+
+/* contents: 26 entries on one page, one column */
+.page--special-table-of-contents .toc-rule { margin-bottom: 10px; }
+.page--special-table-of-contents .toc-title { font-size: 28pt; }
+.page--special-table-of-contents .toc-entry { padding: 3px 0; }
+.page--special-table-of-contents .toc-entry--section { padding-top: 11px; }
+.page--special-table-of-contents .toc-entry--sub .toc-entry-text { font-size: 10pt; }
+
+/* cover: no meta lines; Tokenomics.net wordmark alone, bottom left, aligned with the title */
+.page--cover-minimal-typographic .cover-wordmark { left: 0.7in !important; right: auto !important;
+  bottom: 0.9in !important; transform: none !important; text-align: left !important; justify-content: flex-start !important; }
+.page--cover-minimal-typographic .cover-wordmark img { margin: 0 !important; }
+
+/* appendix (glossary, references, notice): ONE column, overriding the template's column-count: 2 */
+.page--special-appendix .content-area { top: 110px; }
+.page--special-appendix .appendix-header { padding: 18px var(--safe-margin) 16px; }
+.page--special-appendix .appendix-body, .page--special-appendix .content-area { column-count: 1 !important; column-rule: none !important; }
+.page--special-appendix h2.wp-app-h2 { font-family: var(--font-serif); font-size: 13pt; font-weight: 700;
+  color: var(--warm-charcoal); border-bottom: 1.5px solid var(--gold); padding-bottom: 3px; margin: 12px 0 6px; break-after: avoid; }
+.page--special-appendix .content-area > h2.wp-app-h2:first-child { margin-top: 0; }
+.page--special-appendix .content-area table td:first-child { font-weight: 600; white-space: nowrap; width: 24%; }
+.page--special-appendix .content-area ol { font-size: 10.5pt; line-height: 1.65; padding-left: 21px; }
+.page--special-appendix .content-area ol li { margin-bottom: 8px; word-break: break-word; }
+
+  </style>
+</head>
+<body>
+  <main id="document-pages">
+
+    <div class="page page--cover-minimal-typographic" data-template="cover-minimal-typographic">
+      <div class="cover-gold-bar"></div>
+      <div class="cover-content">
+        <div class="cover-eyebrow text-eyebrow" data-text-role="eyebrow">Whitepaper</div>
+        <h1 class="cover-title" data-text-role="title">Aurumix Whitepaper</h1>
+        <p class="cover-subtitle" data-text-role="subtitle">Allocated gold, saved by the gram</p>
+        <hr class="cover-rule">
+      </div>
+      <div class="cover-wordmark">
+        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gVG9rZW5vbWljcy5uZXQgTG9nbyAtIERhcmsgVGV4dCAoZm9yIGxpZ2h0IGJhY2tncm91bmRzKSAtLT4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTUwIDEzIj4NCiAgPGRlZnM+DQogICAgPHN0eWxlPg0KICAgICAgLnRleHQgeyBmaWxsOiAjMWExNzE1OyB9DQogICAgICAuZG90IHsgZmlsbDogI2I4OTU2ZTsgfQ0KICAgIDwvc3R5bGU+DQogIDwvZGVmcz4NCiAgPCEtLSB0b2tlbm9taWNzIC0tPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTIuNCw1LjI0SDB2LTEuODFoMi40Vi42OWgyLjE0djIuNzNoNC4ydjEuODFoLTQuMnY0LjEyYzAsMS4yMS42NywxLjU4LDIuMTEsMS41OC44LDAsMS40NS0uMiwyLjA5LS4zOWwuMzYsMS44MWMtLjcxLjI3LTEuODcuNS0yLjg0LjUtMi4wNCwwLTMuODctLjgtMy44Ny0zLjN2LTQuMzJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNMjAuNDMsOC4xYzAsMi44OS0yLjQyLDQuODUtNS40NCw0Ljg1cy01LjQ1LTEuOTUtNS40NS00Ljg1LDIuNDItNC44NSw1LjQ1LTQuODUsNS40NCwxLjk1LDUuNDQsNC44NVpNMTguMzQsOC4xYzAtMS45LTEuNDktMy4wMi0zLjM1LTMuMDJzLTMuMzYsMS4xMi0zLjM2LDMuMDIsMS40OSwzLjAyLDMuMzYsMy4wMiwzLjM1LTEuMTIsMy4zNS0zLjAyWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTI0LjE4LDguMWw1LjY1LTQuNjdoMy4wNWwtNS4wNyw0LjA4LDUuMjcsNS4yNGgtMi44bC00LjA0LTMuOTgtMi4wNywxLjY3djIuMzFoLTIuMThWMGgyLjE4djguMVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik00MS4zNyw5LjIybDEuNzUuOTFjLS41OCwxLjQ2LTIuMzgsMi44Mi00Ljk0LDIuODItMy4xOCwwLTUuNTEtMS45Ny01LjUxLTQuODVzMi4yNS00Ljg1LDUuNTEtNC44NSw1LjEzLDIuMDQsNS4xMyw0Ljcydi43NWgtOC41NmMuMjksMS40OSwxLjY1LDIuNDIsMy40NCwyLjQyLDEuNTgsMCwyLjc1LS43OCwzLjItMS45MlpNMzQuODMsNy4xMmg2LjM2Yy0uMTUtLjk4LTEuMzMtMi4xLTMuMTMtMi4xLTEuNTEsMC0yLjgyLjczLTMuMjQsMi4xWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTQ0Ljg5LDMuNDNoMi4xOHYxLjIzYy42Ny0uNzYsMS44Ny0xLjQsMy41My0xLjQsMi42NSwwLDQuMTUsMS44MSw0LjE1LDQuNDJ2NS4wOGgtMi4xOHYtNC43MmMwLTEuNjUtLjg3LTIuODItMi42NC0yLjgyLTEuODUsMC0yLjg1LDEuMTQtMi44NSwyLjg2djQuNjloLTIuMThWMy40M1oiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik02Ny4wOSw4LjFjMCwyLjg5LTIuNDIsNC44NS01LjQ0LDQuODVzLTUuNDUtMS45NS01LjQ1LTQuODUsMi40Mi00Ljg1LDUuNDUtNC44NSw1LjQ0LDEuOTUsNS40NCw0Ljg1Wk02NSw4LjFjMC0xLjktMS40OS0zLjAyLTMuMzUtMy4wMnMtMy4zNiwxLjEyLTMuMzYsMy4wMiwxLjQ5LDMuMDIsMy4zNiwzLjAyLDMuMzUtMS4xMiwzLjM1LTMuMDJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNNjguNjYsMy40M2gyLjE4djEuMTljLjY5LS43NiwxLjcxLTEuMzcsMy4zNS0xLjM3czIuNzEuNjYsMy4zNCwxLjc0Yy45MS0xLjA1LDIuMTgtMS43NCwzLjg3LTEuNzQsMi45NiwwLDQuMzgsMS44MSw0LjM4LDQuNTF2NC45OWgtMi4xOHYtNC43MmMwLTEuNjUtLjc1LTIuODItMi41My0yLjgyLTEuODcsMC0yLjc2LDEuMTQtMi43NiwyLjg2djQuNjloLTIuMTh2LTQuNzJjMC0xLjY1LS43NS0yLjgyLTIuNTMtMi44Mi0xLjg5LDAtMi43NiwxLjE0LTIuNzYsMi44NnY0LjY5aC0yLjE4VjMuNDNaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNODcuODMsMGgyLjI1djIuMThoLTIuMjVWMFpNOTAuMDUsMTIuNzVoLTIuMThWMy40M2gyLjE4djkuMzJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNOTcuMTEsMy4yNWMyLjQ5LDAsNC4yNywxLjQsNC44NywyLjg5bC0xLjc1Ljk4Yy0uMzgtMS4wOC0xLjU4LTIuMDYtMy4xNC0yLjA2LTEuOTUsMC0zLjQ0LDEuMTQtMy40NCwzLjA0czEuNDksMy4wNCwzLjQ0LDMuMDRjMS41NiwwLDIuNzYtLjk4LDMuMTQtMi4wNmwxLjczLDEuMDFjLS42MiwxLjQ3LTIuMzYsMi44Ni00Ljg1LDIuODYtMy4xMSwwLTUuNTQtMS45Ny01LjU0LTQuODVzMi40NC00Ljg1LDUuNTQtNC44NVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xMDMuOTUsOS40MWMuOTgsMS4yNCwyLjMzLDEuNzgsNC4wMiwxLjc4LDEuNTEsMCwyLjUzLS4zNCwyLjUzLTEuMTRzLS44Mi0uODMtMy4wOS0xLjFjLTIuNDktLjMtNC4zOC0uNzEtNC4zOC0yLjY4LDAtMS43NiwxLjc1LTMuMDIsNC41MS0zLjAyLDIuMjksMCw0LjA3Ljg1LDQuODksMS45MmwtMS40LDEuMzFjLS43MS0uOTItMi0xLjQ3LTMuNTgtMS40N3MtMi4zMy40My0yLjMzLDEuMDYuNzEuNzUsMi44Ljk5YzIuNTYuMyw0LjczLjYsNC43MywyLjc3cy0yLjI0LDMuMTEtNC42NSwzLjExLTQuNTMtLjc4LTUuNTgtMi4xN2wxLjU1LTEuMzdaIi8+DQogIDwhLS0gZ29sZCBwZXJpb2QgLS0+DQogIDxwYXRoIGNsYXNzPSJkb3QiIGQ9Ik0xMTQsMTAuMTdoMi42NHYyLjU4aC0yLjY0di0yLjU4WiIvPg0KICA8IS0tIG5ldCAtLT4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xMTguNTYsMy40M2gyLjE4djEuMjNjLjY3LS43NiwxLjg3LTEuNCwzLjUzLTEuNCwyLjY1LDAsNC4xNCwxLjgxLDQuMTQsNC40MnY1LjA4aC0yLjE4di00LjcyYzAtMS42NS0uODctMi44Mi0yLjY0LTIuODItMS44NSwwLTIuODUsMS4xNC0yLjg1LDIuODZ2NC42OWgtMi4xOFYzLjQzWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTEzOC41OCw5LjIybDEuNzUuOTFjLS41OCwxLjQ2LTIuMzgsMi44Mi00Ljk0LDIuODItMy4xOCwwLTUuNTEtMS45Ny01LjUxLTQuODVzMi4yNS00Ljg1LDUuNTEtNC44NSw1LjEzLDIuMDQsNS4xMyw0Ljcydi43NWgtOC41NmMuMjksMS40OSwxLjY1LDIuNDIsMy40NCwyLjQyLDEuNTgsMCwyLjc1LS43OCwzLjItMS45MlpNMTMyLjA0LDcuMTJoNi4zNmMtLjE1LS45OC0xLjMzLTIuMS0zLjEzLTIuMS0xLjUxLDAtMi44Mi43My0zLjI0LDIuMVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xNDMuMjksNS4yNGgtMi40di0xLjgxaDIuNFYuNjloMi4xNHYyLjczaDQuMnYxLjgxaC00LjJ2NC4xMmMwLDEuMjEuNjcsMS41OCwyLjExLDEuNTguOCwwLDEuNDUtLjIsMi4wOS0uMzlsLjM2LDEuODFjLS43MS4yNy0xLjg3LjUtMi44NC41LTIuMDQsMC0zLjg3LS44LTMuODctMy4zdi00LjMyWiIvPg0KPC9zdmc+DQo=" alt="Tokenomics.net" class="logo logo--cover">
+      </div>
+    </div>
+
+    <div class="page page--special-table-of-contents" data-template="special-table-of-contents">
+      <div class="content-area">
+        <h1 class="toc-title" data-text-role="title">Contents</h1>
+        <hr class="toc-rule">
+        <div class="toc-list" data-text-role="toc-entries">
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-part-1"><span class="toc-entry-text">Part 1. What Aurumix is and how it works</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-1-aurumix-in-brief"><span class="toc-entry-text">1. Aurumix in brief</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-2-the-problem-saving-in-gold-today"><span class="toc-entry-text">2. The problem: saving in gold today</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-3-how-aurumix-works"><span class="toc-entry-text">3. How Aurumix works</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-4-who-can-join"><span class="toc-entry-text">4. Who can join</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-part-2"><span class="toc-entry-text">Part 2. Buying and selling</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-5-buying-gold"><span class="toc-entry-text">5. Buying gold</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-6-selling-your-gold-back"><span class="toc-entry-text">6. Selling your gold back</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-part-3"><span class="toc-entry-text">Part 3. The score and its benefits</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-7-the-investor-conviction-score"><span class="toc-entry-text">7. The Investor Conviction Score</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-8-the-five-benefits"><span class="toc-entry-text">8. The five benefits</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-part-4"><span class="toc-entry-text">Part 4. Credit, card and rewards</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-9-credit-and-the-gold-card"><span class="toc-entry-text">9. Credit and the Gold Card</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-10-gold-rewards"><span class="toc-entry-text">10. Gold Rewards</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-part-5"><span class="toc-entry-text">Part 5. Family, partners and the token</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-11-family-portfolio-and-succession"><span class="toc-entry-text">11. Family Portfolio and succession</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-12-partners-agents-and-referrals"><span class="toc-entry-text">12. Partners, agents and referrals</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-13-the-aurx-token"><span class="toc-entry-text">13. The AURX token</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-part-6"><span class="toc-entry-text">Part 6. Safety, fees, legal and risks</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-14-safety-and-transparency"><span class="toc-entry-text">14. Safety and transparency</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-15-fees-at-a-glance"><span class="toc-entry-text">15. Fees at a glance</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-16-legal-and-regulatory-status"><span class="toc-entry-text">16. Legal and regulatory status</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--sub" data-toc-ref="toc-17-risks"><span class="toc-entry-text">17. Risks</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-glossary"><span class="toc-entry-text">Glossary</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-references"><span class="toc-entry-text">References</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+          <div class="toc-entry toc-entry--section" data-toc-ref="toc-important-notice"><span class="toc-entry-text">Important notice</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
+        </div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--section-typographic" data-template="section-typographic">
+      <div class="section-content">
+        <div class="section-number" data-text-role="section-number">Part 1</div>
+        <h2 id="toc-part-1" class="section-title" data-text-role="section-title">What Aurumix is and how it works</h2>
+        <hr class="section-rule">
+        <div class="section-subtitle" data-text-role="subtitle"><ul class="part-sections"><li><span class="part-sec-num">1.</span>Aurumix in brief</li><li><span class="part-sec-num">2.</span>The problem: saving in gold today</li><li><span class="part-sec-num">3.</span>How Aurumix works</li><li><span class="part-sec-num">4.</span>Who can join</li></ul></div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--special-executive-summary " data-template="special-executive-summary" data-auto-continue>
+      <div class="content-area">
+<h2 id="toc-1-aurumix-in-brief" class="summary-title" data-text-role="title">1. Aurumix in brief</h2>
+<hr class="summary-rule">
+<p class="summary-intro" data-text-role="body">Aurumix lets you save in real gold from USD 20 a month. Each gram is held for you in a vault in Dubai. You receive one AURX token for every gram you own.</p>
+<div class="stats-row wp-stat3"><div class="stat-card"><div class="stat-value" data-text-role="stat-1-value">1 AURX</div><div class="stat-label" data-text-role="stat-1-label">Equals one gram of gold</div></div><div class="stat-card"><div class="stat-value" data-text-role="stat-2-value">USD 20</div><div class="stat-label" data-text-role="stat-2-label">Monthly plan minimum</div></div><div class="stat-card"><div class="stat-value" data-text-role="stat-3-value">None</div><div class="stat-label" data-text-role="stat-3-label">Storage or exit fee</div></div></div>
+<ol class="wp-findings" data-text-role="findings"><li><span class="wp-find-n">1</span><div class="wp-find-title">Real gold by the gram.</div><div class="wp-find-body">99.99% pure bars from LBMA-accredited refiners.</div></li><li><span class="wp-find-n">2</span><div class="wp-find-title">Ownership outside Aurumix.</div><div class="wp-find-body">A trust holds the gold for AURX holders.</div></li><li><span class="wp-find-n">3</span><div class="wp-find-title">An easy way in.</div><div class="wp-find-body">A monthly plan from USD 20, plus one-off purchases.</div></li><li><span class="wp-find-n">4</span><div class="wp-find-title">An easy way out.</div><div class="wp-find-body">Sell back for cash at the next gold price.</div></li><li><span class="wp-find-n">5</span><div class="wp-find-title">Benefits for steady saving.</div><div class="wp-find-body">Your Investor Conviction Score (ICS) rewards regular saving with better terms.</div></li><li><span class="wp-find-n">6</span><div class="wp-find-title">Services on top.</div><div class="wp-find-body">A credit line, a Gold Card and family transfers.</div></li></ol>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 20, 'useMaxWidth': true, 'wrappingWidth': 70, 'padding': 6}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph LR
+    A["Saver's bank money"] --&gt; B["Aurumix buys gold"]
+    B --&gt; C["Held in trust, Dubai vault"]
+    C --&gt; D["AURX issued, 1 per gram"]
+    A -.-&gt;|"Steady saving"| E["Investor Conviction Score"]
+    E --&gt; F["Five benefits"]
+    D -.-&gt;|"Sell back"| H["Cash at next LBMA price"]
+
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style E fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style H fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+</div><figcaption><span class="fig-num">Figure 1.</span> Aurumix at a glance. Bank money in, gold held in trust, one AURX per gram, and cash back at the next LBMA price.</figcaption></figure>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--content-single-column " data-template="content-single-column" data-auto-continue>
+      <div class="content-area">
+<h2 id="toc-2-the-problem-saving-in-gold-today" class="wp-h2">2. The problem: saving in gold today</h2>
+<p>Millions of Gulf households, especially South Asian families, save in gold every month. Few routes serve them well.</p>
+<table>
+<thead><tr><th>Route</th><th>Where it falls short</th></tr></thead>
+<tbody>
+<tr><td>Jewellery</td><td>Making charges add to the price. Resale is marked down</td></tr>
+<tr><td>Coins and small bars</td><td>High mark-ups at small sizes. You store them yourself</td></tr>
+<tr><td>Bank gold accounts</td><td>Usually unallocated. No bars are held for you</td></tr>
+<tr><td>Most gold tokens</td><td>Built for traders. No savings plan</td></tr>
+</tbody>
+</table>
+<h2 id="toc-3-how-aurumix-works" class="wp-h2">3. How Aurumix works</h2>
+<h3 id="toc-31-the-gold">3.1 The gold</h3>
+<table>
+<thead><tr><th>Feature</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Metal</td><td>Gold, 99.99% pure</td></tr>
+<tr><td>Source</td><td>Refiners accredited by the London Bullion Market Association (LBMA)</td></tr>
+<tr><td>Form</td><td>Serial-numbered bars, checked by an independent assayer on arrival</td></tr>
+<tr><td>Storage</td><td>Allocated bars in a Dubai vault, separate from any gold Aurumix owns</td></tr>
+</tbody>
+</table>
+<h3 id="toc-32-one-token-one-gram">3.2 One token, one gram</h3>
+<div class="wp-band keep-together"><p>One AURX always equals one gram of gold. If your app shows 7.8200 AURX, you own 7.8200 grams. Aurumix never takes fees out of your grams.</p></div>
+<h3 id="toc-33-what-you-own-and-who-holds-it">3.3 What you own and who holds it</h3>
+<p>You own your share of identified, serial-numbered bars, recorded to the fraction of a gram. A separate trust in the Dubai International Financial Centre (DIFC) is the legal owner of the bars. It holds them for whoever holds AURX, away from Aurumix's creditors.</p>
+<figure class="wp-fig " style="max-width:85%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true, 'subGraphTitleMargin': {'top': 12, 'bottom': 12}}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    subgraph OWN["Who holds what"]
+        V["Bar in Dubai vault"] --&gt; T["Held by DIFC trust"]
+        T --&gt; L["Recorded on token ledger"]
+        L --&gt; P["Shown in app as AURX"]
+    end
+    subgraph MOVE["A transfer"]
+        J["John sends 5 AURX"] --&gt; U["Only the ledger changes"]
+        U --&gt; E["Emma owns 5 grams"]
+    end
+    P -.- K["1 AURX = 1 gram, always"]
+    E -.- B["Bar stays in the vault"]
+
+    style V fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style T fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style L fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style P fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style J fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style U fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style K fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style OWN fill:#FAF8F5,stroke:#B8956E,color:#1A1714
+    style MOVE fill:#FAF8F5,stroke:#B8956E,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 2.</span> One token, one gram. The bar, the trust, the ledger and the app all describe the same gram. A transfer changes only the ledger.</figcaption></figure>
+<h3 id="toc-34-who-does-what">3.4 Who does what</h3>
+<p>Aurumix issues AURX, buys the gold and runs the buyback. Licensed partners do the lending and issue the card.</p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph LR
+    U["Saver"] --&gt; A["Aurumix: issuer and app"]
+    subgraph OUT["Outside Aurumix's own assets"]
+        T["DIFC trust"]
+        V["Dubai vault"]
+    end
+    A --&gt;|"Title"| T
+    A --&gt;|"Storage"| V
+    A --&gt;|"Bars in, out"| D["Bullion dealer"]
+    A --&gt;|"Checks"| Y["Assayer"]
+    A --&gt;|"Credit"| L["Licensed lender"]
+    A --&gt;|"Gold Card"| C["Licensed card issuer"]
+
+    style U fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style T fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style V fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style Y fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style L fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style OUT fill:#FAF8F5,stroke:#9A9590,color:#1A1714,stroke-dasharray:5 5
+</div><figcaption><span class="fig-num">Figure 3.</span> Who does what. Aurumix is the issuer. Licensed partners hold, check, lend and issue the card.</figcaption></figure>
+<h2 id="toc-4-who-can-join" class="wp-h2">4. Who can join</h2>
+<div class="wp-band keep-together"><p>Your country of residence decides, whatever your passport. UAE-based non-resident Indians can join.</p></div>
+<table>
+<thead><tr><th>Where you live</th><th>Can you join?</th></tr></thead>
+<tbody>
+<tr><td>United Arab Emirates</td><td>Yes</td></tr>
+<tr><td>India (residents)</td><td>No</td></tr>
+<tr><td>United States</td><td>No</td></tr>
+<tr><td>Countries on the FATF blacklist</td><td>No</td></tr>
+<tr><td>Other countries</td><td>Only where local rules allow. The list is in the app</td></tr>
+</tbody>
+</table>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--section-typographic" data-template="section-typographic">
+      <div class="section-content">
+        <div class="section-number" data-text-role="section-number">Part 2</div>
+        <h2 id="toc-part-2" class="section-title" data-text-role="section-title">Buying and selling</h2>
+        <hr class="section-rule">
+        <div class="section-subtitle" data-text-role="subtitle"><ul class="part-sections"><li><span class="part-sec-num">5.</span>Buying gold</li><li><span class="part-sec-num">6.</span>Selling your gold back</li></ul></div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--content-single-column " data-template="content-single-column" data-auto-continue>
+      <div class="content-area">
+<h2 id="toc-5-buying-gold" class="wp-h2">5. Buying gold</h2>
+<h3 id="toc-51-two-ways-to-buy">5.1 Two ways to buy</h3>
+<table>
+<thead><tr><th></th><th>Monthly savings plan (SIP)</th><th>Spot purchase</th></tr></thead>
+<tbody>
+<tr><td>When</td><td>Once a month, on your chosen date</td><td>Any time</td></tr>
+<tr><td>Amount</td><td>From USD 20</td><td>From USD 20</td></tr>
+<tr><td>Builds your ICS score</td><td>Yes</td><td>No</td></tr>
+</tbody>
+</table>
+<h3 id="toc-52-getting-started">5.2 Getting started</h3>
+<figure class="wp-fig " style="max-width:55%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 22, 'rankSpacing': 24, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    A["Open account, record residence"] --&gt; B["Pass KYC and sanctions checks"]
+    B --&gt; C["Register a bank account in your name"]
+    C --&gt; D["Accept the terms, including the trust"]
+    D --&gt; E["Set date and amount"]
+    E --&gt; F["Pay each month"]
+
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style E fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 4.</span> Getting started. Six steps from opening an account to the first monthly payment.</figcaption></figure>
+<p>Aurumix accepts bank money only. It does not accept cryptocurrency or stablecoins.</p>
+<h3 id="toc-53-how-you-pay">5.3 How you pay</h3>
+<p>Aurumix never pulls money from your account. Each month you approve a one-tap request in your banking app through AANI, the UAE's instant payment system [2]. Or you prefund several months in one transfer.</p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 40, 'messageMargin': 24, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+sequenceDiagram
+    participant S as Saver
+    participant B as Saver's bank (AANI)
+    participant C as Client account
+    participant A as Aurumix
+    alt Path A, one tap a month
+        A-&gt;&gt;B: 1. Monthly payment request
+        B-&gt;&gt;S: 2. Request shown in banking app
+        S-&gt;&gt;B: 3. One-tap approval
+        B-&gt;&gt;C: 4. Money lands
+        Note over S,B: Skipped? The request expires.&lt;br/&gt;No fee, nothing bounces
+    else Path B, prefund
+        S-&gt;&gt;B: 5. One prefund transfer
+        B-&gt;&gt;C: 6. Prefund lands
+        A-&gt;&gt;C: 7. Draws this month's amount on your date
+        Note over C: Unused balance stays yours
+    end
+</div><figcaption><span class="fig-num">Figure 5.</span> Two ways to pay. A one-tap request each month, or one prefund that Aurumix draws from on your date.</figcaption></figure>
+<h3 id="toc-54-what-happens-when-you-pay">5.4 What happens when you pay</h3>
+<div class="wp-band keep-together"><p>Every purchase follows one order: money, then title, then token. The price is the first LBMA Gold Price [1] after your money clears. Aurumix aims to finish within 24 hours.</p></div>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 40, 'messageMargin': 24, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+sequenceDiagram
+    participant S as Saver
+    participant A as Aurumix
+    participant T as DIFC trust
+    participant L as Token ledger
+    S-&gt;&gt;A: 1. Approves payment from own bank
+    Note over A: 2. Money lands in client account&lt;br/&gt;(still the saver's money)
+    Note over A: 3. Price set at next LBMA fix
+    A-&gt;&gt;T: 4. Grams move from float to trust
+    A-&gt;&gt;L: 5. Mint AURX
+    L--&gt;&gt;S: 6. AURX delivered, 1 per gram
+    Note over A: 7. Fee moves to Aurumix&lt;br/&gt;ICS month recorded
+    Note over S,L: Money, then title, then token
+</div><figcaption><span class="fig-num">Figure 6.</span> What happens when you pay. Money, then title, then token: every purchase runs in this order.</figcaption></figure>
+<h3 id="toc-55-a-worked-example">5.5 A worked example</h3>
+<div class="wp-ex keep-together"><p>John pays USD 75 into his monthly plan. He has no tier yet, so his entry fee is 5%.</p><table>
+<thead><tr><th>Step</th><th>Amount</th></tr></thead>
+<tbody>
+<tr><td>Payment</td><td>USD 75.00</td></tr>
+<tr><td>Entry fee (5%)</td><td>USD 3.75</td></tr>
+<tr><td>Goes to gold</td><td>USD 71.25</td></tr>
+<tr><td>Gold price at the next fix</td><td>USD 109.31 per gram</td></tr>
+<tr><td>Gold and AURX John receives</td><td><strong>0.6518 g / 0.6518 AURX</strong></td></tr>
+</tbody>
+</table><p>At the Gold tier his fee falls to 4.2%, so the same USD 75 buys 0.6573 g.</p></div>
+<h3 id="toc-56-large-purchases">5.6 Large purchases</h3>
+<p>Larger purchases need more checks. Very large buyers can purchase a whole bar at a quoted price.</p>
+<figure class="wp-fig " style="max-width:55%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 22, 'rankSpacing': 24, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    A["Up to AED 3,500&lt;br/&gt;Standard purchase"] --&gt; B["Above AED 3,500&lt;br/&gt;Extra sender details"]
+    B --&gt; C["Above AED 50,000&lt;br/&gt;Bank transfer, enhanced checks, source of funds"]
+    C --&gt; D["Above about one bar&lt;br/&gt;Direct bar purchase, same-day quote"]
+
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 7.</span> Large purchases. Checks step up with the size of the purchase.</figcaption></figure>
+<h3 id="toc-57-the-gold-float">5.7 The gold float</h3>
+<p>Dealers sell whole bars, but savers buy fractions of a gram. The gold float is a small stock of bars Aurumix buys with its own money to fill small purchases. It never counts as backing for AURX.</p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 25, 'useMaxWidth': true, 'wrappingWidth': 90}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph LR
+    D["Dealer sells a whole bar"] --&gt; F["Gold float"]
+    F --&gt;|"Purchases"| T["Small amounts to trust"]
+    T --&gt; X["Each becomes AURX"]
+    T --&gt;|"Buybacks"| F
+    F --&gt;|"Runs low"| B["Aurumix buys another bar"]
+    B --&gt; D
+    F -.- N["Aurumix's own gold, never counted as backing"]
+
+    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style X fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style T fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style N fill:#9A9590,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 8.</span> The gold float. A small stock of Aurumix's own bars lets savers buy and sell fractions of a gram.</figcaption></figure>
+<h2 id="toc-6-selling-your-gold-back" class="wp-h2">6. Selling your gold back</h2>
+<p>You can sell any amount back to Aurumix for cash at any time, at the next LBMA Gold Price. There is no fee. Cash goes to your own bank account, and Aurumix does not deliver physical gold.</p>
+<p><em>Example: Sophie sells 10 g at USD 110.00 per gram. She receives USD 1,100.00.</em></p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 40, 'messageMargin': 24, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+sequenceDiagram
+    participant S as Saver
+    participant A as Aurumix
+    participant L as Token ledger
+    participant T as DIFC trust
+    S-&gt;&gt;A: 1. Sale requested
+    Note over A: 2. Checks run: identity, sanctions,&lt;br/&gt;residence, bank name, no pledge
+    Note over A: 3. Price set at next LBMA fix
+    A-&gt;&gt;L: 4. Burn AURX
+    T-&gt;&gt;A: 5. Grams go back to the float
+    A-&gt;&gt;S: 6. Cash paid to own bank
+    Note over S,T: No exit fee. No physical delivery.
+</div><figcaption><span class="fig-num">Figure 9.</span> Selling your gold back. Checks first, then the next LBMA price, then cash to your own bank.</figcaption></figure>
+<h3 id="toc-61-how-long-it-takes">6.1 How long it takes</h3>
+<p>Most sales are paid the next business day. Large sales take up to five business days and may be paid in stages.</p>
+<h3 id="toc-62-if-many-people-sell-at-once">6.2 If many people sell at once</h3>
+<p>New purchases cover most sales through the float. Sales pause only if the gold market closes or the vault fails, never for lack of cash. Your gold stays yours in the trust either way.</p>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--section-typographic" data-template="section-typographic">
+      <div class="section-content">
+        <div class="section-number" data-text-role="section-number">Part 3</div>
+        <h2 id="toc-part-3" class="section-title" data-text-role="section-title">The score and its benefits</h2>
+        <hr class="section-rule">
+        <div class="section-subtitle" data-text-role="subtitle"><ul class="part-sections"><li><span class="part-sec-num">7.</span>The Investor Conviction Score</li><li><span class="part-sec-num">8.</span>The five benefits</li></ul></div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--content-single-column " data-template="content-single-column" data-auto-continue>
+      <div class="content-area">
+<h2 id="toc-7-the-investor-conviction-score" class="wp-h2">7. The Investor Conviction Score</h2>
+<h3 id="toc-71-what-the-score-does">7.1 What the score does</h3>
+<p>The ICS runs from 0 to 100. It measures how steadily you save, never how much. A saver paying USD 20 a month and one paying USD 2,000 reach the top tier on the same day.</p>
+<h3 id="toc-72-the-first-six-months">7.2 The first six months</h3>
+<p>Your score starts after six monthly payments in a row of at least USD 20, called Confirmed SIP. It is permanent. You start at Silver (score 25) and never fall below it.</p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 25, 'useMaxWidth': true, 'wrappingWidth': 90}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph LR
+    A["First payment, at least USD 20"] --&gt; B["Six in a row, app shows 4 of 6"]
+    B --&gt;|"Month 6"| C["Confirmed SIP, permanent"]
+    C --&gt; D["Score starts at 25, Silver"]
+    B --&gt;|"Miss"| X["Counter back to 1"]
+    X --&gt; Y["Your gold is untouched"]
+
+    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style Y fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style X fill:#9A9590,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 10.</span> The first six months. Six payments in a row unlock Confirmed SIP, which is permanent and starts the score at 25.</figcaption></figure>
+<h3 id="toc-73-how-the-score-works">7.3 How the score works</h3>
+<table>
+<thead><tr><th>Measure</th><th>What it counts</th></tr></thead>
+<tbody>
+<tr><td><strong>Record</strong></td><td>Months paid since your six-month run began. Never goes down</td></tr>
+<tr><td><strong>Recent</strong></td><td>How many of the last 12 months you paid</td></tr>
+<tr><td><strong>Kept</strong></td><td>How much of your gold you still hold compared with a year ago</td></tr>
+</tbody>
+</table>
+<figure class="wp-fig " style="max-width:70%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 22, 'rankSpacing': 24, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    R["Record: months paid"] --&gt; M["Take the lower"]
+    N["Recent: paid of last 12"] --&gt; M
+    M --&gt; X["Reduce if over 30% gold left"]
+    K["Kept: gold vs a year ago"] --&gt; X
+    X --&gt; Z["Score 0 to 100 sets tier"]
+
+    style R fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style N fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style K fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style M fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style X fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style Z fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+</div><figcaption><span class="fig-num">Figure 11.</span> How the score is worked out. Record and Recent set the score. Kept reduces it only after heavy selling.</figcaption></figure>
+<p>Any amount from USD 20 counts the same. The score is tied to you and does not move with your tokens.</p>
+<h3 id="toc-74-the-tiers">7.4 The tiers</h3>
+<table>
+<thead><tr><th>Tier</th><th>Score</th><th>What it takes</th><th>Earliest month</th></tr></thead>
+<tbody>
+<tr><td>No tier</td><td>None yet</td><td>Confirmed SIP not yet reached</td><td></td></tr>
+<tr><td><strong>Silver</strong></td><td>25</td><td>Six payments in a row</td><td>6</td></tr>
+<tr><td><strong>Gold</strong></td><td>50</td><td>12 months paid, and 6 of the last 12</td><td>12</td></tr>
+<tr><td><strong>Platinum</strong></td><td>75</td><td>36 months paid, and 9 of the last 12</td><td>36</td></tr>
+<tr><td><strong>Sovereign</strong></td><td>100</td><td>60 months paid, 12 of the last 12, and no more than 30% sold in the last year</td><td>60</td></tr>
+</tbody>
+</table>
+<figure class="wp-fig " style="max-width:60%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 22, 'rankSpacing': 24, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph BT
+    A["No tier&lt;br/&gt;Before Confirmed SIP"] --&gt; B["Silver, score 25&lt;br/&gt;6 in a row, from month 6"]
+    B --&gt; C["Gold, score 50&lt;br/&gt;12 paid, 6 of last 12"]
+    C --&gt; D["Platinum, score 75&lt;br/&gt;36 paid, 9 of last 12"]
+    D --&gt; E["Sovereign, score 100&lt;br/&gt;60 paid, 12 of last 12"]
+    E -.- N["The amount you save plays no part"]
+
+    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style N fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+</div><figcaption><span class="fig-num">Figure 12.</span> The tiers. Five rungs, set by months paid and paid months in the last 12.</figcaption></figure>
+<h3 id="toc-75-what-a-missed-month-costs">7.5 What a missed month costs</h3>
+<p>Mark has reached Sovereign. If he misses 1 to 3 months in a row he drops to Platinum, and after 4 he drops to Gold. When he resumes, about nine steady months restore Platinum.</p>
+<div class="wp-band keep-together mixed"><p><strong>A lower score changes your benefits only. It never touches your gold.</strong></p></div>
+<figure class="wp-fig " style="max-width:70%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 22, 'rankSpacing': 24, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    A["Start: Mark is Sovereign"] --&gt; B["Months 1 to 3 missed: Platinum"]
+    B --&gt; C["Month 4 missed: Gold"]
+    C --&gt; D["Month 5: payments resume"]
+    D --&gt; E["About 9 steady months: Platinum"]
+    E --&gt; F["Full year paid: Sovereign again"]
+    C -.- G["Grams unchanged all 24 months"]
+
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style F fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style G fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style C fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style D fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style E fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 13.</span> What a missed month costs. Mark misses four months as a Sovereign saver. His tier dips and recovers. His grams never move.</figcaption></figure>
+<p>If you become resident in India, your account pauses. You keep your gold.</p>
+<h2 id="toc-8-the-five-benefits" class="wp-h2">8. The five benefits</h2>
+<h3 id="toc-81-what-each-tier-gets">8.1 What each tier gets</h3>
+<p>Credit and the Gold Card are open to <strong>every customer</strong> at base terms: 40% loan-to-value and the L1 card. Tiers improve the terms.</p>
+<table>
+<thead><tr><th>Benefit</th><th>No tier</th><th>Silver</th><th>Gold</th><th>Platinum</th><th>Sovereign</th></tr></thead>
+<tbody>
+<tr><td><strong>1. Entry-fee discount</strong></td><td>None</td><td>0.4 points</td><td>0.8 points</td><td>1.2 points</td><td>1.5 points</td></tr>
+<tr><td><strong>2. Credit: loan-to-value</strong></td><td>40%</td><td>40%</td><td>50%</td><td>65%</td><td>80%</td></tr>
+<tr><td><strong>3. Card level</strong></td><td>L1</td><td>L1</td><td>L1</td><td>L2</td><td>L3</td></tr>
+<tr><td><strong>3. Card FX margin</strong></td><td>Standard</td><td>Standard</td><td>2.0%</td><td>1.5%</td><td>1.0%</td></tr>
+<tr><td><strong>3. Card ATM allowance (AED a month)</strong></td><td>Standard</td><td>Standard</td><td>1,000</td><td>2,500</td><td>5,000</td></tr>
+<tr><td><strong>4. Gold Rewards rate</strong></td><td>None</td><td>None</td><td>0.15%</td><td>0.45%</td><td>0.75%</td></tr>
+<tr><td><strong>5. Family plan fee discount</strong></td><td>None</td><td>10%</td><td>20%</td><td>35%</td><td>50%</td></tr>
+<tr><td><strong>5. Per-beneficiary fee discount</strong></td><td>None</td><td>None</td><td>None</td><td>10%</td><td>20%</td></tr>
+</tbody>
+</table>
+<h3 id="toc-82-rules-for-every-benefit">8.2 Rules for every benefit</h3>
+<p>A lower tier never takes back what you already received. No benefit grows with the amount you save.</p>
+<h3 id="toc-83-when-each-benefit-starts">8.3 When each benefit starts</h3>
+<p>Fee and family plan discounts apply from launch. Credit, the card and Gold Rewards follow once the licensed partners are in place.</p>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--section-typographic" data-template="section-typographic">
+      <div class="section-content">
+        <div class="section-number" data-text-role="section-number">Part 4</div>
+        <h2 id="toc-part-4" class="section-title" data-text-role="section-title">Credit, card and rewards</h2>
+        <hr class="section-rule">
+        <div class="section-subtitle" data-text-role="subtitle"><ul class="part-sections"><li><span class="part-sec-num">9.</span>Credit and the Gold Card</li><li><span class="part-sec-num">10.</span>Gold Rewards</li></ul></div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--content-single-column " data-template="content-single-column" data-auto-continue>
+      <div class="content-area">
+<h2 id="toc-9-credit-and-the-gold-card" class="wp-h2">9. Credit and the Gold Card</h2>
+<h3 id="toc-91-one-credit-line-two-ways-to-use-it">9.1 One credit line, two ways to use it</h3>
+<p>One gold-secured credit line lets you use your gold's value without selling it. Draw cash to your bank, or spend with the Gold Card.</p>
+<figure class="wp-fig " style="max-width:80%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    G["Pledged grams"] --&gt; P["Gold-secured credit line"]
+    P --&gt; A["Cash to your bank"]
+    P --&gt; B["Gold Card spend"]
+    subgraph ROLES["Who does what"]
+        L["Licensed lender&lt;br/&gt;owns the loans"]
+        I["Card issuer&lt;br/&gt;issues the card"]
+        R["Card processor&lt;br/&gt;approves each tap"]
+        M["Aurumix&lt;br/&gt;app, valuation, servicing"]
+        L ~~~ R
+        I ~~~ M
+    end
+    A ~~~ ROLES
+
+    style G fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style P fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style L fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style I fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style R fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style M fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style ROLES fill:#FAF8F5,stroke:#B8956E,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 14.</span> One credit line, two ways to use it. Pledged grams back one line, drawn as cash or spent on the Gold Card.</figcaption></figure>
+<h3 id="toc-92-your-borrowing-limit">9.2 Your borrowing limit</h3>
+<p>Your limit is your eligible grams (held at least 90 days) times the gold price times your loan-to-value (LTV). Emma holds 100 g at USD 109.31 per gram:</p>
+<table>
+<thead><tr><th>Emma's tier</th><th>LTV</th><th>Limit on USD 10,931 of gold</th></tr></thead>
+<tbody>
+<tr><td>No tier or Silver</td><td>40%</td><td>USD 4,372.40</td></tr>
+<tr><td>Gold</td><td>50%</td><td>USD 5,465.50</td></tr>
+<tr><td>Sovereign</td><td>80%</td><td>USD 8,744.80</td></tr>
+</tbody>
+</table>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph LR
+    E["Eligible grams&lt;br/&gt;held 90 days, unpledged"] --&gt;|"×"| P["Gold price"]
+    P --&gt;|"×"| L["LTV by tier&lt;br/&gt;40% to 80%"]
+    L --&gt;|"="| Y["Your limit"]
+
+    style E fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style Y fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style P fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style L fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 15.</span> Your borrowing limit. Limit = eligible grams × gold price × loan-to-value.</figcaption></figure>
+<p>The lender shows its costs before you draw.</p>
+<h3 id="toc-93-the-gold-card">9.3 The Gold Card</h3>
+<p>Every customer can have the L1 card. Each payment is checked live against your gold.</p>
+<figure class="wp-fig " style="max-width:60%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 22, 'rankSpacing': 24, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph BT
+    A["No tier and Silver&lt;br/&gt;L1, standard terms"] --&gt; B["Gold&lt;br/&gt;L1, 2.0% FX, AED 1,000 ATM"]
+    B --&gt; C["Platinum&lt;br/&gt;L2, 1.5% FX, AED 2,500 ATM"]
+    C --&gt; D["Sovereign&lt;br/&gt;L3, 1.0% FX, AED 5,000 ATM"]
+    D -.- N["Never downgrades"]
+
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style N fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+</div><figcaption><span class="fig-num">Figure 16.</span> The Gold Card by tier. Every customer gets the L1 card. Higher tiers improve the level, FX margin and ATM allowance.</figcaption></figure>
+<p>The card never downgrades, and a tier fall never closes it.</p>
+<h3 id="toc-94-if-the-gold-price-falls">9.4 If the gold price falls</h3>
+<p>A lower gold price raises your loan as a share of your pledged gold. Aurumix warns you early and sells only what is needed.</p>
+<div class="wp-band keep-together"><p>At Sovereign with a full limit, a 13% gold fall triggers a sale. Borrowing less gives you more room.</p></div>
+<figure class="wp-fig " style="max-width:70%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 22, 'rankSpacing': 24, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph BT
+    A["Up to 80%: normal"] --&gt;|"Gold falls"| B["85%: app notice"]
+    B --&gt; C["88%: formal notice, 14 days"]
+    C --&gt; D["92%: sale back to 88%"]
+    D -.- P["Gold fall before a sale&lt;br/&gt;No tier, Silver: 57%&lt;br/&gt;Gold: 46%&lt;br/&gt;Platinum: 29%&lt;br/&gt;Sovereign: 13%"]
+    A -.- N["A lower tier never triggers a sale"]
+
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style P fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style N fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+</div><figcaption><span class="fig-num">Figure 17.</span> If the gold price falls. Warnings at 85% and 88%. Only at 92% is some gold sold, just enough to get back to 88%.</figcaption></figure>
+<h2 id="toc-10-gold-rewards" class="wp-h2">10. Gold Rewards</h2>
+<p><strong>Gold Rewards is cashback in gold on card spending.</strong> Each month your tier's rate is applied to your Gold Card spend and credited in grams. It starts at the Gold tier.</p>
+<table>
+<thead><tr><th>Tier</th><th>Rate on card spend</th></tr></thead>
+<tbody>
+<tr><td>No tier and Silver</td><td>None</td></tr>
+<tr><td>Gold</td><td>0.15%</td></tr>
+<tr><td>Platinum</td><td>0.45%</td></tr>
+<tr><td>Sovereign</td><td>0.75%</td></tr>
+</tbody>
+</table>
+<div class="wp-ex keep-together"><p><em>Example: Emma is at Platinum and spends USD 800 on her card in March. Her reward is USD 3.60, or 0.0329 g at USD 109.31 per gram.</em></p></div>
+<p>Rewards are funded from the fees merchants pay on card payments (interchange). Your gold balance plays no part.</p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 40, 'messageMargin': 24, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+sequenceDiagram
+    participant H as Cardholder
+    participant M as Merchant
+    participant I as Card issuer
+    participant A as Aurumix
+    H-&gt;&gt;M: 1. Card payment
+    M-&gt;&gt;I: 2. Merchant side pays interchange
+    I-&gt;&gt;A: 3. Aurumix's share passed on
+    Note over A: 4. Month end: tier rate on card spend&lt;br/&gt;capped at this cardholder's revenue
+    Note over A: 5. Reward grams allocated in DIFC trust
+    A-&gt;&gt;H: 6. Grams credited at next fix
+    Note over H,A: Cashback on card spending, funded by card revenue
+</div><figcaption><span class="fig-num">Figure 18.</span> How Gold Rewards is paid. Cashback in gold on card spending, funded by card revenue.</figcaption></figure>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--section-typographic" data-template="section-typographic">
+      <div class="section-content">
+        <div class="section-number" data-text-role="section-number">Part 5</div>
+        <h2 id="toc-part-5" class="section-title" data-text-role="section-title">Family, partners and the token</h2>
+        <hr class="section-rule">
+        <div class="section-subtitle" data-text-role="subtitle"><ul class="part-sections"><li><span class="part-sec-num">11.</span>Family Portfolio and succession</li><li><span class="part-sec-num">12.</span>Partners, agents and referrals</li><li><span class="part-sec-num">13.</span>The AURX token</li></ul></div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--content-single-column " data-template="content-single-column" data-auto-continue>
+      <div class="content-area">
+<h2 id="toc-11-family-portfolio-and-succession" class="wp-h2">11. Family Portfolio and succession</h2>
+<h3 id="toc-111-two-family-features">11.1 Two family features</h3>
+<table>
+<thead><tr><th>Feature</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Family Portfolio</strong></td><td>Sets aside gold for named family members. It stays yours until it moves</td></tr>
+<tr><td><strong>Beneficiary Transfer Instruction</strong></td><td>Moves gold to named people when a set event happens</td></tr>
+</tbody>
+</table>
+<p>Both are open to every customer on the family plan.</p>
+<h3 id="toc-112-triggers">11.2 Triggers</h3>
+<table>
+<thead><tr><th>Trigger</th><th>Example</th><th>When gold moves</th></tr></thead>
+<tbody>
+<tr><td><strong>A date</strong></td><td>A child's 18th birthday</td><td>On the date</td></tr>
+<tr><td><strong>A condition</strong></td><td>Starting university, marriage</td><td>Once the event is shown to have happened</td></tr>
+<tr><td><strong>Death</strong></td><td></td><td>After a court grant of probate</td></tr>
+</tbody>
+</table>
+<p>Probate cannot be avoided, but verified beneficiaries can receive gold within days of the grant.</p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    D1["A date"] --&gt; R["Beneficiary re-verified"]
+    D2["A condition"] --&gt;|"Event shown"| R
+    D3["Death"] --&gt; F["Account frozen until court grant"]
+    F --&gt;|"Grant received"| R
+    R --&gt; L["Loan settled first"]
+    L --&gt; M["AURX moves to beneficiary"]
+    L --&gt;|"India resident"| X["Paid in cash"]
+
+    style D1 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D2 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D3 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style R fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style L fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style M fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style X fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 19.</span> How family gold moves. Three triggers, one path: re-verify the beneficiary, settle any loan, then move the gold.</figcaption></figure>
+<h3 id="toc-113-what-aurumix-does-and-does-not-do">11.3 What Aurumix does and does not do</h3>
+<table>
+<thead><tr><th>Aurumix does</th><th>Aurumix does not</th></tr></thead>
+<tbody>
+<tr><td>Carry out your written standing instruction</td><td>Decide who is entitled to an estate</td></tr>
+<tr><td>Wait for a court grant before any transfer on death</td><td>Write, witness or register a will</td></tr>
+<tr><td>Register and monitor your beneficiaries</td><td>Give estate, tax or succession advice</td></tr>
+</tbody>
+</table>
+<h3 id="toc-114-price">11.4 Price</h3>
+<p>The family plan costs USD 32 a year and covers up to four beneficiaries. Each extra beneficiary costs USD 20, with a household cap of about USD 60 a year. Tier discounts apply (section 8.1).</p>
+<div class="wp-ex keep-together"><p><em>Example: Emma is at Platinum and names five beneficiaries.</em></p><table>
+<thead><tr><th>Item</th><th>Price</th><th>Discount</th><th>Emma pays</th></tr></thead>
+<tbody>
+<tr><td>Family plan (four names)</td><td>USD 32.00</td><td>35%</td><td>USD 20.80</td></tr>
+<tr><td>Fifth beneficiary</td><td>USD 20.00</td><td>10%</td><td>USD 18.00</td></tr>
+<tr><td><strong>Total a year</strong></td><td></td><td></td><td><strong>USD 38.80</strong></td></tr>
+</tbody>
+</table></div>
+<h2 id="toc-12-partners-agents-and-referrals" class="wp-h2">12. Partners, agents and referrals</h2>
+<h3 id="toc-121-the-partner-channel">12.1 The partner channel</h3>
+<p>Wallets, neobanks and payment apps can offer Aurumix gold inside their own apps. Their customers get the same gold and protections, but no ICS score.</p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'actorBkg': '#B8956E',
+    'actorBorder': '#1A1714',
+    'actorTextColor': '#1A1714',
+    'actorLineColor': '#9A9590',
+    'signalColor': '#1A1714',
+    'signalTextColor': '#1A1714',
+    'noteBkgColor': '#F3E7C9',
+    'noteBorderColor': '#B8956E',
+    'noteTextColor': '#1A1714'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 40, 'messageMargin': 24, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+sequenceDiagram
+    participant C as Partner's customer
+    participant P as Partner app
+    participant A as Aurumix
+    participant T as DIFC trust and vault
+    C-&gt;&gt;P: 1. Buys at partner's all-in price
+    P-&gt;&gt;A: 2. Order through Aurumix's register
+    A-&gt;&gt;T: 3. Grams allocated
+    Note over A: 4. AURX minted
+    Note over C,T: Same gold and protections as a direct customer
+    A-&gt;&gt;P: 5. Monthly invoice
+    P-&gt;&gt;A: 6. Platform fee paid
+    Note over A: Partner books kept separate
+</div><figcaption><span class="fig-num">Figure 20.</span> The partner channel. Partners sell Aurumix gold inside their own apps and pay a platform fee.</figcaption></figure>
+<p>The partner pays Aurumix a platform fee of about 0.50 to 0.75% a year on its customers' gold.</p>
+<h3 id="toc-122-agents">12.2 Agents</h3>
+<p>Contracted agents must tell customers they are paid. Aurumix answers for what they say.</p>
+<h3 id="toc-123-member-referrals">12.3 Member referrals</h3>
+<p>A one-time reward in grams goes to both people once the new customer reaches Confirmed SIP. The programme runs only once VARA has confirmed it.</p>
+<h2 id="toc-13-the-aurx-token" class="wp-h2">13. The AURX token</h2>
+<h3 id="toc-131-token-facts">13.1 Token facts</h3>
+<table>
+<thead><tr><th>Feature</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Name and symbol</td><td>Aurumix, AURX</td></tr>
+<tr><td>Standard</td><td>An ERC-20 token on Ethereum [3]</td></tr>
+<tr><td>Backing</td><td>1 AURX = 1 gram of allocated gold</td></tr>
+<tr><td>Supply</td><td>No fixed cap. Created when gold is allocated, burned when gold is sold back</td></tr>
+<tr><td>Allocations</td><td>None. No team, investor or treasury tokens and no pre-mine</td></tr>
+<tr><td>Transfers</td><td>Open, subject to a blocklist</td></tr>
+</tbody>
+</table>
+<h3 id="toc-132-identity-at-the-two-doors">13.2 Identity at the two doors</h3>
+<p>Identity is checked when AURX is created and when it is sold back. In between, AURX moves like any ERC-20 token.</p>
+<figure class="wp-fig " style="max-width:80%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    A["Create&lt;br/&gt;Identity check, AURX issued"] --&gt; B["Hold and send&lt;br/&gt;Moves freely between wallets"]
+    B --&gt; C["Sell back&lt;br/&gt;Identity check, AURX burned"]
+    C --&gt; D["Cash to your own bank"]
+    B -.- G["Blocklist gate"]
+    A -.- N["Score, credit, family see Aurumix account only"]
+
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style C fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style G fill:#9A9590,stroke:#9A9590,color:#1A1714
+    style N fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 21.</span> Identity at the two doors. Identity is checked when AURX is created and when it is sold back. In between it moves freely.</figcaption></figure>
+<p>Sending AURX moves ownership of the gold while the bars stay in the vault. Aurumix charges no fee to send, but Ethereum charges its own network fee.</p>
+<h3 id="toc-133-controls-aurumix-holds">13.3 Controls Aurumix holds</h3>
+<table>
+<thead><tr><th>Control</th><th>When it is used</th></tr></thead>
+<tbody>
+<tr><td><strong>Blocklist and freeze</strong></td><td>Stop an address or balance moving, for sanctions, a court order or fraud</td></tr>
+<tr><td><strong>Seize and reissue</strong></td><td>Where a court or the law requires, or to restore tokens to their owner</td></tr>
+<tr><td><strong>Pause minting</strong></td><td>Automatically, if backing cannot be confirmed</td></tr>
+<tr><td><strong>Upgrade</strong></td><td>If the law requires, for example limiting holding to verified customers</td></tr>
+</tbody>
+</table>
+<h3 id="toc-134-trading-elsewhere">13.4 Trading elsewhere</h3>
+<p>AURX may trade on other venues at prices that differ from the gold price. Aurumix does not set those prices or promise any listing.</p>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--section-typographic" data-template="section-typographic">
+      <div class="section-content">
+        <div class="section-number" data-text-role="section-number">Part 6</div>
+        <h2 id="toc-part-6" class="section-title" data-text-role="section-title">Safety, fees, legal and risks</h2>
+        <hr class="section-rule">
+        <div class="section-subtitle" data-text-role="subtitle"><ul class="part-sections"><li><span class="part-sec-num">14.</span>Safety and transparency</li><li><span class="part-sec-num">15.</span>Fees at a glance</li><li><span class="part-sec-num">16.</span>Legal and regulatory status</li><li><span class="part-sec-num">17.</span>Risks</li></ul></div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--content-single-column " data-template="content-single-column" data-auto-continue>
+      <div class="content-area">
+<h2 id="toc-14-safety-and-transparency" class="wp-h2">14. Safety and transparency</h2>
+<h3 id="toc-141-the-backing-rule">14.1 The backing rule</h3>
+<div class="wp-band keep-together mixed"><p><strong>Gold held in the trust must always at least equal the AURX in circulation.</strong> The system checks this continuously and stops minting if it cannot be confirmed.</p></div>
+<h3 id="toc-142-the-monthly-allocation-report">14.2 The monthly Allocation Report</h3>
+<p>Every month Aurumix publishes each bar's serial number and assay certificate, total AURX against total gold held, and the float balance shown separately.</p>
+<figure class="wp-fig "><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 25, 'useMaxWidth': true, 'wrappingWidth': 90}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph LR
+    subgraph L4["4. Independent title register"]
+        subgraph L3["3. DIFC trust"]
+            subgraph L2["2. Customer terms, with trust"]
+                B["1. Allocated, numbered bars"]
+            end
+        end
+    end
+    L4 -.- R["Monthly Allocation Report"]
+    R --&gt; K["Gold held ≥ AURX outstanding"]
+
+    style B fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style L4 fill:#FAF8F5,stroke:#B8956E,color:#1A1714
+    style L3 fill:#FAF8F5,stroke:#B8956E,color:#1A1714
+    style L2 fill:#FAF8F5,stroke:#B8956E,color:#1A1714
+    style R fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style K fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+</div><figcaption><span class="fig-num">Figure 22.</span> Layers of protection. Four layers record that the gold is held for you, checked by a monthly report.</figcaption></figure>
+<h3 id="toc-143-separation-and-layers-of-ownership">14.3 Separation and layers of ownership</h3>
+<p>Your money sits in a UAE bank client account until the gold is yours. After that, four layers record that the gold is held for you: allocated bars, your customer terms, the DIFC trust [4] and an independent title register. If one layer is challenged, the others still stand.</p>
+<h3 id="toc-144-if-aurumix-winds-down">14.4 If Aurumix winds down</h3>
+<p>Aurumix keeps a wind-down plan that never depends on selling customer assets. Holders are bought out within a published claim window.</p>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--content-data-table " data-template="content-data-table" data-auto-continue>
+      <div class="content-area">
+<h2 id="toc-15-fees-at-a-glance" class="content-heading" data-text-role="section-title">15. Fees at a glance</h2>
+<hr class="heading-rule">
+<div class="stats-row wp-stat3"><div class="stat-card"><div class="stat-value" data-text-role="stat-1-value">2% to 5%</div><div class="stat-label" data-text-role="stat-1-label">Entry fee, less your tier discount</div></div><div class="stat-card"><div class="stat-value" data-text-role="stat-2-value">None</div><div class="stat-label" data-text-role="stat-2-label">Storage fee</div></div><div class="stat-card"><div class="stat-value" data-text-role="stat-3-value">None</div><div class="stat-label" data-text-role="stat-3-label">Exit fee</div></div></div>
+<h3 id="toc-151-what-you-pay">15.1 What you pay</h3>
+<table>
+<thead><tr><th>Fee</th><th>Amount</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Entry fee</strong></td><td>2% to 5% of each purchase, 5% at launch, less your tier discount</td><td>Each purchase</td></tr>
+<tr><td><strong>Storage fee</strong></td><td>None</td><td>Never</td></tr>
+<tr><td><strong>Exit fee</strong></td><td>None</td><td>Never</td></tr>
+<tr><td><strong>Sending AURX</strong></td><td>No Aurumix fee. Ethereum network fee applies</td><td>Each transfer</td></tr>
+<tr><td><strong>Gold Card</strong></td><td>L1 on the issuer's standard terms. Better terms by tier</td><td>As you use it</td></tr>
+<tr><td><strong>Credit</strong></td><td>Set by the licensed lender, shown before you draw</td><td>When you borrow</td></tr>
+<tr><td><strong>Family plan</strong></td><td>USD 32 a year for up to four names, USD 20 per extra name, capped at about USD 60, less your tier discount</td><td>At registration</td></tr>
+</tbody>
+</table>
+<p>The entry fee is shown before you pay. Aurumix adds no mark-up to the LBMA price.</p>
+<h3 id="toc-152-how-aurumix-earns">15.2 How Aurumix earns</h3>
+<figure class="wp-fig " style="max-width:90%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 28, 'rankSpacing': 32, 'useMaxWidth': true, 'wrappingWidth': 110}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph LR
+    F1["Entry fee"] --&gt; A["Aurumix"]
+    F2["Card interchange share"] --&gt; A
+    F3["Cardholder fees"] --&gt; A
+    F4["Lending fees, via lender"] --&gt; A
+    F5["Family plan fees"] --&gt; A
+    F6["Partner platform fee"] --&gt; A
+    F2 --&gt;|"Funds"| R["Gold Rewards to cardholders"]
+    A -.- N["Never charged: storage, exit, gold mark-up"]
+
+    style F1 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F2 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F3 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F4 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F5 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style F6 fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style A fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style R fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style N fill:#9A9590,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 23.</span> How Aurumix earns. Six fee sources. Three things are never charged.</figcaption></figure>
+<p>Aurumix earns from the fees above, card revenue and partner platform fees.</p>
+<h2 id="toc-16-legal-and-regulatory-status" class="wp-h2">16. Legal and regulatory status</h2>
+<h3 id="toc-161-regulators">16.1 Regulators</h3>
+<table>
+<thead><tr><th>Regulator</th><th>What it covers</th></tr></thead>
+<tbody>
+<tr><td><strong>VARA</strong> (Dubai Virtual Assets Regulatory Authority)</td><td>Issuing AURX, this whitepaper and marketing</td></tr>
+<tr><td><strong>CBUAE</strong> (Central Bank of the UAE)</td><td>Lending and card issuance, through licensed partners</td></tr>
+<tr><td><strong>DFSA</strong> (Dubai Financial Services Authority)</td><td>The DIFC trust</td></tr>
+</tbody>
+</table>
+<h3 id="toc-162-licence">16.2 Licence</h3>
+<p>Aurumix intends to apply to VARA for a Virtual Asset Issuance licence [5]. AURX is designed as an Asset-Referenced Virtual Asset (ARVA) in which holders own the gold itself. AURX will be offered only after VARA grants the licence and approves this whitepaper.</p>
+<figure class="wp-fig " style="max-width:55%"><div class="mermaid">
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px', 
+    'primaryColor': '#B8956E',
+    'primaryTextColor': '#1A1714',
+    'primaryBorderColor': '#1A1714',
+    'lineColor': '#1A1714',
+    'secondaryColor': '#FAF8F5',
+    'tertiaryColor': '#D4CFC8',
+    'fontFamily': 'Libre Franklin, sans-serif',
+    'edgeLabelBackground': '#D4CFC8',
+    'clusterBkg': '#FAF8F5',
+    'clusterBorder': '#B8956E'
+}, 'flowchart': {'nodeSpacing': 22, 'rankSpacing': 24, 'useMaxWidth': true}, 'sequence': {'mirrorActors': false, 'actorMargin': 40, 'width': 130, 'height': 46, 'messageMargin': 30, 'boxMargin': 8, 'noteMargin': 8, 'useMaxWidth': true, 'wrap': true}}}%%
+graph TD
+    A["Apply for VARA licence"] --&gt; B["Licence granted"]
+    B --&gt; C["Whitepaper approved"]
+    C --&gt; D["AURX offered"]
+    D --&gt; E["Credit and card, once partners licensed"]
+
+    style A fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style B fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style C fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+    style D fill:#B8956E,stroke:#1A1714,color:#FAF8F5
+    style E fill:#D4CFC8,stroke:#9A9590,color:#1A1714
+</div><figcaption><span class="fig-num">Figure 24.</span> Path to launch. AURX is offered only after VARA grants the licence and approves the whitepaper.</figcaption></figure>
+<h3 id="toc-163-positions-that-rest-on-legal-reading">16.3 Positions that rest on legal reading</h3>
+<p>These positions are being confirmed with legal advisers and, where needed, the regulator. None has been tested in court.</p>
+<ul><li><strong>Ownership moves with the token.</strong></li><li><strong>Gold in the trust is protected if Aurumix fails.</strong></li><li><strong>The buyback is a redemption right</strong> under VARA's rules.</li><li><strong>The trust is not an investment fund.</strong></li><li><strong>A lender can take valid security</strong> over a customer's gold.</li><li><strong>The family features are standing instructions</strong>, not estate or trustee services.</li></ul>
+<p>If a reading changes, the design changes with it, most likely by limiting AURX holding to verified customers.</p>
+<h3 id="toc-164-what-aurx-is">16.4 What AURX is</h3>
+<ul><li>AURX represents ownership of gold. Holding it earns no payments.</li><li>Customers get no share of Aurumix's profits.</li><li>Benefits depend on saving behaviour and card use, never on the amount of gold held.</li></ul>
+<h2 id="toc-17-risks" class="wp-h2">17. Risks</h2>
+<table>
+<thead><tr><th>Risk</th><th>What could happen</th><th>How it is limited</th></tr></thead>
+<tbody>
+<tr><td><strong>Gold price</strong></td><td>AURX falls in value with gold</td><td>Nothing removes this</td></tr>
+<tr><td><strong>Borrowing</strong></td><td>A price fall forces a partial sale</td><td>Two notices and 14 days to act</td></tr>
+<tr><td><strong>Legal structure</strong></td><td>A court rejects a reading in section 16.3</td><td>Four ownership layers</td></tr>
+<tr><td><strong>Aurumix failure</strong></td><td>Aurumix fails as a business</td><td>Gold in the trust, a wind-down plan</td></tr>
+<tr><td><strong>Buyback pressure</strong></td><td>Many sell at once</td><td>The float, and large sales paid in stages</td></tr>
+<tr><td><strong>Partners</strong></td><td>The dealer, vault, lender or card issuer leaves</td><td>Gold stays in the trust</td></tr>
+<tr><td><strong>Card systems</strong></td><td>An outage stops live gold checks</td><td>Small, capped backup approvals</td></tr>
+<tr><td><strong>Secondary markets</strong></td><td>AURX trades below the gold price elsewhere</td><td>The LBMA-price buyback stays open</td></tr>
+<tr><td><strong>Regulatory change</strong></td><td>New rules change who can hold AURX</td><td>Upgradeable contract</td></tr>
+<tr><td><strong>Payments</strong></td><td>Providers raise prices</td><td>Missed payments cost nothing</td></tr>
+</tbody>
+</table>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--special-appendix" data-template="special-appendix" data-auto-continue>
+      <div class="appendix-header">
+        <h2 id="toc-glossary" class="appendix-title" data-text-role="title">Glossary</h2>
+        <p class="appendix-subtitle" data-text-role="subtitle">Terms used in this whitepaper</p>
+      </div>
+      <div class="content-area">
+        <table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Allocated gold</td><td>Specific, serial-numbered bars held for customers</td></tr>
+<tr><td>ARVA</td><td>Asset-Referenced Virtual Asset. VARA's category for a token linked to a real asset such as gold</td></tr>
+<tr><td>Confirmed SIP</td><td>Six monthly payments in a row. Starts your score. Permanent once reached</td></tr>
+<tr><td>ERC-20</td><td>The standard token format on Ethereum, supported by most wallets and exchanges</td></tr>
+<tr><td>The fix</td><td>The LBMA Gold Price, set twice each London business day</td></tr>
+<tr><td>The float</td><td>Aurumix's own small stock of bars. It fills small purchases and never counts as backing</td></tr>
+<tr><td>Gold Rewards</td><td>Cashback in gold on Gold Card spending, funded by card revenue</td></tr>
+<tr><td>ICS</td><td>Investor Conviction Score. A 0 to 100 score of how steadily you save</td></tr>
+<tr><td>Interchange</td><td>A small fee on each card payment, paid by the merchant's side</td></tr>
+<tr><td>LBMA</td><td>London Bullion Market Association. Sets gold market standards</td></tr>
+<tr><td>Loan-to-value (LTV)</td><td>The amount borrowed as a share of the pledged gold's value</td></tr>
+<tr><td>Probate</td><td>The court process that confirms who inherits after a death</td></tr>
+<tr><td>SIP</td><td>Systematic investment plan. Your monthly savings plan</td></tr>
+</tbody>
+</table>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--special-appendix" data-template="special-appendix" data-auto-continue>
+      <div class="appendix-header">
+        <h2 id="toc-references" class="appendix-title" data-text-role="title">References</h2>
+        <p class="appendix-subtitle" data-text-role="subtitle">Sources cited in this whitepaper</p>
+      </div>
+      <div class="content-area">
+        <ol><li>ICE Benchmark Administration. "LBMA Gold Price." lbma.org.uk/prices-and-data/precious-metal-prices</li><li>Al Etihad Payments (Central Bank of the UAE). "AANI instant payments platform." aani.ae</li><li>Vogelsteller, F. and Buterin, V. "EIP-20: Token Standard." Ethereum Improvement Proposals, 2015. eips.ethereum.org/EIPS/eip-20</li><li>DIFC Trust Law, DIFC Law No. 4 of 2018. difc.ae</li><li>Dubai Virtual Assets Regulatory Authority. "Virtual Asset Issuance Rulebook." rulebooks.vara.ae</li></ol>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--special-appendix" data-template="special-appendix" data-auto-continue>
+      <div class="appendix-header">
+        <h2 id="toc-important-notice" class="appendix-title" data-text-role="title">Important notice</h2>
+        <p class="appendix-subtitle" data-text-role="subtitle">Please read before relying on this whitepaper</p>
+      </div>
+      <div class="content-area">
+        <p>This whitepaper describes the Aurumix product and the AURX token as designed. It is not an offer to sell, or a request to buy, any virtual asset where that would be unlawful. AURX is not offered to residents of India, the United States or countries on the FATF blacklist, or anywhere its offer is not permitted.</p><p>AURX will be offered only after VARA grants the required licence and approves this whitepaper. Nothing here is financial, legal, tax or investment advice. The value of gold can go down as well as up, and holding AURX earns no payments.</p><p>Credit and the Gold Card depend on licensed partners, and some legal positions are still being confirmed (section 16.3). Terms, fees and features may change. The client agreement and published fee schedule take precedence.</p><p>If you are unsure, speak to an independent adviser.</p>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>
+
+    <div class="page page--closing-back-cover" data-template="closing-back-cover">
+      <div class="back-center">
+        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gVG9rZW5vbWljcy5uZXQgTG9nbyAtIExpZ2h0IFRleHQgKGZvciBkYXJrIGJhY2tncm91bmRzKSAtLT4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTUwIDEzIj4NCiAgPGRlZnM+DQogICAgPHN0eWxlPg0KICAgICAgLnRleHQgeyBmaWxsOiAjZmFmOGY1OyB9DQogICAgICAuZG90IHsgZmlsbDogI2I4OTU2ZTsgfQ0KICAgIDwvc3R5bGU+DQogIDwvZGVmcz4NCiAgPCEtLSB0b2tlbm9taWNzIC0tPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTIuNCw1LjI0SDB2LTEuODFoMi40Vi42OWgyLjE0djIuNzNoNC4ydjEuODFoLTQuMnY0LjEyYzAsMS4yMS42NywxLjU4LDIuMTEsMS41OC44LDAsMS40NS0uMiwyLjA5LS4zOWwuMzYsMS44MWMtLjcxLjI3LTEuODcuNS0yLjg0LjUtMi4wNCwwLTMuODctLjgtMy44Ny0zLjN2LTQuMzJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNMjAuNDMsOC4xYzAsMi44OS0yLjQyLDQuODUtNS40NCw0Ljg1cy01LjQ1LTEuOTUtNS40NS00Ljg1LDIuNDItNC44NSw1LjQ1LTQuODUsNS40NCwxLjk1LDUuNDQsNC44NVpNMTguMzQsOC4xYzAtMS45LTEuNDktMy4wMi0zLjM1LTMuMDJzLTMuMzYsMS4xMi0zLjM2LDMuMDIsMS40OSwzLjAyLDMuMzYsMy4wMiwzLjM1LTEuMTIsMy4zNS0zLjAyWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTI0LjE4LDguMWw1LjY1LTQuNjdoMy4wNWwtNS4wNyw0LjA4LDUuMjcsNS4yNGgtMi44bC00LjA0LTMuOTgtMi4wNywxLjY3djIuMzFoLTIuMThWMGgyLjE4djguMVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik00MS4zNyw5LjIybDEuNzUuOTFjLS41OCwxLjQ2LTIuMzgsMi44Mi00Ljk0LDIuODItMy4xOCwwLTUuNTEtMS45Ny01LjUxLTQuODVzMi4yNS00Ljg1LDUuNTEtNC44NSw1LjEzLDIuMDQsNS4xMyw0Ljcydi43NWgtOC41NmMuMjksMS40OSwxLjY1LDIuNDIsMy40NCwyLjQyLDEuNTgsMCwyLjc1LS43OCwzLjItMS45MlpNMzQuODMsNy4xMmg2LjM2Yy0uMTUtLjk4LTEuMzMtMi4xLTMuMTMtMi4xLTEuNTEsMC0yLjgyLjczLTMuMjQsMi4xWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTQ0Ljg5LDMuNDNoMi4xOHYxLjIzYy42Ny0uNzYsMS44Ny0xLjQsMy41My0xLjQsMi42NSwwLDQuMTUsMS44MSw0LjE1LDQuNDJ2NS4wOGgtMi4xOHYtNC43MmMwLTEuNjUtLjg3LTIuODItMi42NC0yLjgyLTEuODUsMC0yLjg1LDEuMTQtMi44NSwyLjg2djQuNjloLTIuMThWMy40M1oiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik02Ny4wOSw4LjFjMCwyLjg5LTIuNDIsNC44NS01LjQ0LDQuODVzLTUuNDUtMS45NS01LjQ1LTQuODUsMi40Mi00Ljg1LDUuNDUtNC44NSw1LjQ0LDEuOTUsNS40NCw0Ljg1Wk02NSw4LjFjMC0xLjktMS40OS0zLjAyLTMuMzUtMy4wMnMtMy4zNiwxLjEyLTMuMzYsMy4wMiwxLjQ5LDMuMDIsMy4zNiwzLjAyLDMuMzUtMS4xMiwzLjM1LTMuMDJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNNjguNjYsMy40M2gyLjE4djEuMTljLjY5LS43NiwxLjcxLTEuMzcsMy4zNS0xLjM3czIuNzEuNjYsMy4zNCwxLjc0Yy45MS0xLjA1LDIuMTgtMS43NCwzLjg3LTEuNzQsMi45NiwwLDQuMzgsMS44MSw0LjM4LDQuNTF2NC45OWgtMi4xOHYtNC43MmMwLTEuNjUtLjc1LTIuODItMi41My0yLjgyLTEuODcsMC0yLjc2LDEuMTQtMi43NiwyLjg2djQuNjloLTIuMTh2LTQuNzJjMC0xLjY1LS43NS0yLjgyLTIuNTMtMi44Mi0xLjg5LDAtMi43NiwxLjE0LTIuNzYsMi44NnY0LjY5aC0yLjE4VjMuNDNaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNODcuODMsMGgyLjI1djIuMThoLTIuMjVWMFpNOTAuMDUsMTIuNzVoLTIuMThWMy40M2gyLjE4djkuMzJaIi8+DQogIDxwYXRoIGNsYXNzPSJ0ZXh0IiBkPSJNOTcuMTEsMy4yNWMyLjQ5LDAsNC4yNywxLjQsNC44NywyLjg5bC0xLjc1Ljk4Yy0uMzgtMS4wOC0xLjU4LTIuMDYtMy4xNC0yLjA2LTEuOTUsMC0zLjQ0LDEuMTQtMy40NCwzLjA0czEuNDksMy4wNCwzLjQ0LDMuMDRjMS41NiwwLDIuNzYtLjk4LDMuMTQtMi4wNmwxLjczLDEuMDFjLS42MiwxLjQ3LTIuMzYsMi44Ni00Ljg1LDIuODYtMy4xMSwwLTUuNTQtMS45Ny01LjU0LTQuODVzMi40NC00Ljg1LDUuNTQtNC44NVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xMDMuOTUsOS40MWMuOTgsMS4yNCwyLjMzLDEuNzgsNC4wMiwxLjc4LDEuNTEsMCwyLjUzLS4zNCwyLjUzLTEuMTRzLS44Mi0uODMtMy4wOS0xLjFjLTIuNDktLjMtNC4zOC0uNzEtNC4zOC0yLjY4LDAtMS43NiwxLjc1LTMuMDIsNC41MS0zLjAyLDIuMjksMCw0LjA3Ljg1LDQuODksMS45MmwtMS40LDEuMzFjLS43MS0uOTItMi0xLjQ3LTMuNTgtMS40N3MtMi4zMy40My0yLjMzLDEuMDYuNzEuNzUsMi44Ljk5YzIuNTYuMyw0LjczLjYsNC43MywyLjc3cy0yLjI0LDMuMTEtNC42NSwzLjExLTQuNTMtLjc4LTUuNTgtMi4xN2wxLjU1LTEuMzdaIi8+DQogIDwhLS0gZ29sZCBwZXJpb2QgLS0+DQogIDxwYXRoIGNsYXNzPSJkb3QiIGQ9Ik0xMTQsMTAuMTdoMi42NHYyLjU4aC0yLjY0di0yLjU4WiIvPg0KICA8IS0tIG5ldCAtLT4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xMTguNTYsMy40M2gyLjE4djEuMjNjLjY3LS43NiwxLjg3LTEuNCwzLjUzLTEuNCwyLjY1LDAsNC4xNCwxLjgxLDQuMTQsNC40MnY1LjA4aC0yLjE4di00LjcyYzAtMS42NS0uODctMi44Mi0yLjY0LTIuODItMS44NSwwLTIuODUsMS4xNC0yLjg1LDIuODZ2NC42OWgtMi4xOFYzLjQzWiIvPg0KICA8cGF0aCBjbGFzcz0idGV4dCIgZD0iTTEzOC41OCw5LjIybDEuNzUuOTFjLS41OCwxLjQ2LTIuMzgsMi44Mi00Ljk0LDIuODItMy4xOCwwLTUuNTEtMS45Ny01LjUxLTQuODVzMi4yNS00Ljg1LDUuNTEtNC44NSw1LjEzLDIuMDQsNS4xMyw0Ljcydi43NWgtOC41NmMuMjksMS40OSwxLjY1LDIuNDIsMy40NCwyLjQyLDEuNTgsMCwyLjc1LS43OCwzLjItMS45MlpNMTMyLjA0LDcuMTJoNi4zNmMtLjE1LS45OC0xLjMzLTIuMS0zLjEzLTIuMS0xLjUxLDAtMi44Mi43My0zLjI0LDIuMVoiLz4NCiAgPHBhdGggY2xhc3M9InRleHQiIGQ9Ik0xNDMuMjksNS4yNGgtMi40di0xLjgxaDIuNFYuNjloMi4xNHYyLjczaDQuMnYxLjgxaC00LjJ2NC4xMmMwLDEuMjEuNjcsMS41OCwyLjExLDEuNTguOCwwLDEuNDUtLjIsMi4wOS0uMzlsLjM2LDEuODFjLS43MS4yNy0xLjg3LjUtMi44NC41LTIuMDQsMC0zLjg3LS44LTMuODctMy4zdi00LjMyWiIvPg0KPC9zdmc+DQo=" alt="Tokenomics.net" class="logo logo--2xl">
+        <p class="back-tagline" data-text-role="tagline">Built by founders. Designed for founders.</p>
+      </div>
+      <div class="back-legal" data-text-role="legal-line">Prepared by Tokenomics.net. &copy; 2026</div>
+    </div>
+  </main>
+
+  <!-- Mermaid (rendered before auto-continue so real heights are measured) -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>
+  mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme: 'base',
+    themeVariables: { fontSize: '14px' },
+    flowchart: { nodeSpacing: 28, rankSpacing: 32, useMaxWidth: true },
+    sequence: { mirrorActors: false, actorMargin: 40, width: 130, height: 46, messageMargin: 30, boxMargin: 8, noteMargin: 8, useMaxWidth: true } });
+  </script>
+  <!-- Auto-continuation, renumbering and TOC population -->
+  <script>
+  (function(){
+    'use strict';
+    var BUFFER=2;
+    function isAtomic(el){
+      if(!el||el.nodeType!==1)return false;
+      var s=window.getComputedStyle(el);
+      var bi=s.getPropertyValue('break-inside')||s.getPropertyValue('-webkit-break-inside');
+      if(bi==='avoid')return true;
+      var t=el.tagName.toLowerCase();
+      if(t==='table'||t==='figure'||t==='blockquote')return true;
+      if(el.classList.contains('callout')||el.classList.contains('pull-quote')||
+         el.classList.contains('stat-row')||el.classList.contains('finding')||
+         el.classList.contains('keep-together'))return true;
+      return false;
+    }
+    function isWrapper(el){
+      if(!el||el.nodeType!==1)return false;
+      if(el.tagName.toLowerCase()!=='div')return false;
+      if(el.hasAttribute('data-text-role')&&el.children.length>1)return true;
+      return false;
+    }
+    function flattenWrappers(ca){
+      var changed=true;
+      while(changed){changed=false;
+        var ch=Array.prototype.slice.call(ca.children);
+        for(var i=0;i<ch.length;i++){
+          if(isWrapper(ch[i])){
+            var w=ch[i],p=w.parentNode,nx=w.nextSibling;
+            var inner=Array.prototype.slice.call(w.children);
+            for(var j=0;j<inner.length;j++)p.insertBefore(inner[j],nx);
+            p.removeChild(w);changed=true;break;
+          }
+        }
+      }
+    }
+    function makeCont(orig){
+      var c=document.createElement('div');
+      c.className=orig.className;
+      c.setAttribute('data-template',orig.getAttribute('data-template')||'');
+      c.setAttribute('data-auto-continue','');
+      c.setAttribute('data-continuation','');
+      var ca=document.createElement('div');
+      ca.className='content-area';
+      c.appendChild(ca);
+      var pn=document.createElement('div');
+      pn.className='page-number';
+      pn.setAttribute('data-text-role','page-number');
+      c.appendChild(pn);
+      return c;
+    }
+    function getCA(p){return p.querySelector('.content-area');}
+    function neutralizeLayout(ca){
+      var cs=window.getComputedStyle(ca);
+      if(cs.display==='flex'||cs.display==='inline-flex'||cs.overflow==='hidden'){
+        ca.style.display='block';ca.style.flexDirection='';ca.style.overflow='visible';
+      }
+    }
+    function process(page){
+      var ca=getCA(page);
+      if(!ca)return[page];
+      flattenWrappers(ca);
+      neutralizeLayout(ca);
+      var uh=ca.clientHeight-BUFFER;
+      if(ca.scrollHeight<=uh+BUFFER){page.setAttribute('data-auto-continued','');return[page];}
+      var ch=[];for(var i=0;i<ca.children.length;i++)ch.push(ca.children[i]);
+      var si=-1,ar=ca.getBoundingClientRect();
+      for(var i=0;i<ch.length;i++){
+        if(ch[i].classList.contains('page-number'))continue;
+        if(ch[i].getBoundingClientRect().bottom-ar.top>uh){si=i;break;}
+      }
+      if(si===-1){page.setAttribute('data-auto-continued','');return[page];}
+      var oc=ch[si];
+      if(oc.getBoundingClientRect().top-ar.top<uh&&isAtomic(oc)){/* straddles — move whole */}
+      var nd=0;
+      for(var n=0;n<ch.length;n++){
+        if(!ch[n].classList.contains('page-number')&&
+           !ch[n].classList.contains('content-heading')&&
+           ch[n].tagName.toLowerCase()!=='hr')nd++;
+      }
+      if(si===0&&nd<=1){page.setAttribute('data-auto-continued','');return[page];}
+      if(si===0){si=1;}
+      while(si>1){var pv=ch[si-1];if(!pv||pv.nodeType!==1)break;var pt=pv.tagName.toLowerCase();if(pt==='h2'||pt==='h3'||pt==='h4'||pt==='h5'){si--;}else{break;}}
+      var cp=makeCont(page);
+      page.parentNode.insertBefore(cp,page.nextSibling);
+      var cca=getCA(cp),tm=[];
+      for(var j=si;j<ch.length;j++){if(!ch[j].classList.contains('page-number'))tm.push(ch[j]);}
+      for(var k=0;k<tm.length;k++)cca.appendChild(tm[k]);
+      page.setAttribute('data-auto-continued','');
+      return[page].concat(process(cp));
+    }
+    function renumber(){
+      var pp=document.querySelectorAll('#document-pages > .page');
+      var pageNum=1;
+      for(var i=0;i<pp.length;i++){
+        var pg=pp[i];
+        // Skip cover, TOC, and closing cover pages - they don't get numbered
+        if(pg.classList.contains('page--cover-minimal-typographic'))continue;
+        if(pg.classList.contains('page--special-table-of-contents'))continue;
+        if(pg.classList.contains('page--closing-back-cover'))continue;
+        var n=pg.querySelector('.page-number');
+        if(n)n.textContent=String(pageNum++);
+      }
+    }
+    function populateTOC(){
+      var ee=document.querySelectorAll('.toc-entry[data-toc-ref]');
+      if(ee.length===0)return;
+      for(var i=0;i<ee.length;i++){
+        var ref=ee[i].getAttribute('data-toc-ref');if(!ref)continue;
+        var t=document.getElementById(ref);
+        if(!t)t=document.querySelector('.page[data-toc-id="'+ref+'"]');
+        if(!t)continue;
+        var pg=t.closest?t.closest('#document-pages > .page'):null;
+        if(!pg){var nd=t;while(nd&&nd!==document.body){if(nd.classList&&nd.classList.contains('page')&&nd.parentNode&&nd.parentNode.id==='document-pages'){pg=nd;break;}nd=nd.parentNode;}}
+        if(!pg&&t.classList&&t.classList.contains('page'))pg=t;
+        if(!pg)continue;
+        var nm=pg.querySelector('.page-number');if(!nm)continue;
+        var sp=ee[i].querySelector('.toc-entry-page');if(sp)sp.textContent=nm.textContent;
+      }
+    }
+    function fixLastPageBreak(){
+      var lastPage=document.querySelector('#document-pages > .page:last-child');
+      if(lastPage){
+        lastPage.style.pageBreakAfter='auto';
+        lastPage.style.breakAfter='auto';
+      }
+    }
+    function run(){
+      var pp=document.querySelectorAll('.page[data-auto-continue]');
+      if(pp.length===0){renumber();populateTOC();fixLastPageBreak();document.dispatchEvent(new Event('auto-continue-complete'));return;}
+      var a=Array.prototype.slice.call(pp);
+      for(var i=0;i<a.length;i++)process(a[i]);
+      renumber();populateTOC();fixLastPageBreak();
+      document.dispatchEvent(new Event('auto-continue-complete'));
+    }
+    function waitForMermaid(){
+      return new Promise(function(resolve){
+        if(typeof mermaid==='undefined'){resolve();return;}
+        var dd=document.querySelectorAll('.mermaid');
+        if(dd.length===0){resolve();return;}
+        var att=0,max=100;
+        function chk(){
+          var ok=true;
+          for(var i=0;i<dd.length;i++){if(!dd[i].querySelector('svg')){ok=false;break;}}
+          if(ok||att>=max){resolve();}else{att++;setTimeout(chk,100);}
+        }
+        chk();
+      });
+    }
+    window.__wpAutoContinue=run;
+  })();
+
+  </script>
+  <script>
+  (async function () {
+    await document.fonts.ready;
+    try {
+      renderMathInElement(document.body, { delimiters: [
+        { left: '\\[', right: '\\]', display: true }, { left: '\\(', right: '\\)', display: false }] });
+    } catch (e) { console.error('katex', e); }
+    try { await mermaid.run({ querySelector: '.mermaid' }); } catch (e) { console.error('mermaid', e); }
+    // Layout-only fix for sequence diagrams: with wrapped messages, Mermaid sizes a note over one
+    // participant to the participant width, so a note with a manual line break can spill out of
+    // its box (and past the right edge). Widen each note box to its text, then refit the viewBox.
+    document.querySelectorAll('.mermaid svg').forEach(function (svg) {
+      var notes = svg.querySelectorAll('rect.note');
+      if (!notes.length) return;
+      var grew = false;
+      notes.forEach(function (r) {
+        var texts = r.parentNode.querySelectorAll('text.noteText');
+        if (!texts.length) return;
+        var x0 = Infinity, x1 = -Infinity;
+        texts.forEach(function (t) { var b = t.getBBox(); x0 = Math.min(x0, b.x); x1 = Math.max(x1, b.x + b.width); });
+        var w = parseFloat(r.getAttribute('width')), x = parseFloat(r.getAttribute('x'));
+        var need = (x1 - x0) + 20;
+        if (need > w) {
+          var cx = (x0 + x1) / 2;
+          r.setAttribute('x', cx - need / 2); r.setAttribute('width', need); grew = true;
+        }
+      });
+      if (!grew) return;
+      var bb = svg.getBBox();
+      var vb = svg.viewBox.baseVal;
+      var nx = Math.min(vb.x, bb.x - 8), nr = Math.max(vb.x + vb.width, bb.x + bb.width + 8);
+      svg.setAttribute('viewBox', nx + ' ' + vb.y + ' ' + (nr - nx) + ' ' + vb.height);
+      svg.style.maxWidth = (nr - nx) + 'px';
+    });
+    await new Promise(function (r) { requestAnimationFrame(function () { setTimeout(r, 50); }); });
+    window.__wpAutoContinue();
+    document.body.setAttribute('data-render-complete', '1');
+  })();
+  </script>
+</body>
+</html>

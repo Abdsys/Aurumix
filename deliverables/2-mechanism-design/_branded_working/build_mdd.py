@@ -54,6 +54,8 @@ def load_shell():
     # extra styles for markdown blocks
     extra = """
   <style>
+    /* sub-subheadings share the serif heading face with h2/h3, one step below h3 */
+    .content-area h4 { font-family: var(--font-serif); font-size: 13pt; font-weight: 700; line-height: 1.25; }
     .content-area pre { font-family: 'Courier New', monospace; font-size: 9pt; line-height: 1.5;
       background: #F4F1EC; padding: 10px 14px; border-left: 3px solid var(--gold);
       white-space: pre-wrap; margin: 12px 0; }

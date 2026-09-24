@@ -153,7 +153,7 @@ The reasoning is the removal of free options. Any rule that lets either side cho
 
 The published price formula in the client's document (`price = vault gold x fix / tokens outstanding`) is retained as a **verification identity**: it is what a holder uses to check that supply still equals metal. It is not the price definition. Under fixed weight, the price of one AURX is simply the fix per gram.
 
-### 2.4 The premium is zero, and is modelled at zero everywhere
+### 2.4 The premium: modelled at zero
 
 The client's specification assumed AURX would trade at a 3 to 8% premium to the gold price, and built a scarcity mechanism to support it. Both are removed, on evidence:
 
@@ -249,7 +249,7 @@ Four independent layers each assert that the customer owns the gold, so no singl
 3. **The DIFC trust vehicle.** DIFC Trust Law 2018 Art 14(2): in plain terms, once assets are properly transferred into a trust, the transfer cannot be unwound just because the person who made it later goes bankrupt. This statutory protection is why the metal is held through DIFC rather than onshore: onshore UAE law could not give a verifiable answer to whether allocated but fungible gold can be reclaimed from a bankruptcy estate (the single most important open item in section 14).
 4. **An independent title register** (the Tradeflow warrant, held by the vehicle), as evidence beyond Aurumix's own systems.
 
-#### 3.5.2 The class-defined trust: how ownership moves with the token
+#### 3.5.2 The class-defined trust
 
 **The problem.** The gold sits in a trust: the trustee (the DIFC vehicle) is the legal owner on paper and holds the gold for the customers. Under most trust law, when a beneficiary passes their interest to someone else, they must sign a written transfer. AURX is an open token that can move many times a day, often to people Aurumix has never met, so a signed document for every transfer is not workable.
 
@@ -369,13 +369,13 @@ trust gold holdings (grams)  >=  AURX outstanding
 
 checked continuously, published monthly, with minting halted automatically if the invariant is at risk, if custodian attestation lapses, or if the vault position cannot be confirmed.
 
-### 4.4 The fallback, and the trap that is never built
+### 4.4 The fallback and the wrapper trap
 
 **Fallback (if counsel rejects the class-defined trust):** flip the transfer hook to an allowlist. The token becomes permissioned, every holder is registered, transfers write to a named register, and the open-listing strategy is foreclosed. Buildable, more expensive, and the reason the proxy ships from day one. The legal brief asks counsel to say which limb fails, because the fallback differs by limb.
 
 **Never built, under either answer: a permissioned base token with an open wrapper.** Inside a wrapper the registered holder is the wrapper contract, so the person holding the wrapped token owns no gold. The comparable set contains exactly this failure: on one venue the issuer's terms grant holders title, on that issuer's own wrapped version a separate company's terms grant "no legal, equitable or beneficial right, title or interest" in the reserves, with the difference invisible unless both documents are read. If a wrapper is ever issued, its own terms must state what the wrapper holder does and does not own.
 
-### 4.5 What a transfer is, legally and mechanically
+### 4.5 What a transfer is
 
 - A transfer moves the beneficial interest with the token (section 3.5.2). It is not a redemption, so the no-fee rule does not touch it.
 - ICS state does not transfer: the score attaches to the verified identity of the account holder (section 8.7). Received grams start their own credit-seasoning clock (section 10.3).
@@ -556,7 +556,7 @@ The float does five jobs:
 
 **Aurumix funds the float from its own capital from the first month.** Customer money is never used for it, and the float and customer gold are always kept separate, in the vault and in the accounts.
 
-### 6.3 How big the float is, and when to move to bigger bars
+### 6.3 Float size and bar upgrades
 
 **Size:** at least one bar plus a buffer of a few days' purchases. At launch the setting is two 100 g bars, about USD 22,000 of gold. The float is a fixed amount, so it becomes a smaller share of total assets as the business grows.
 
@@ -578,7 +578,7 @@ The float does five jobs:
 
 The monthly report replaces the client's "Mining Event" as a verifiable public update on the gold.
 
-### 6.5 The rules the system always enforces
+### 6.5 Rules the system enforces
 
 Checked automatically and published monthly:
 
@@ -588,7 +588,7 @@ Checked automatically and published monthly:
 - **Order:** money, then title, then token (section 5.3).
 - **Sourcing:** gold only from accredited refiners, with bars swapped if a refiner loses accreditation (section 2.1).
 
-### 6.6 What this section depends on: the bullion dealer
+### 6.6 The dependency: the bullion dealer
 
 **Aurumix has not yet named its two-way bullion dealer**, and the float, the refills, the buyback and the fee levels all depend on one. The vault stores gold but does not sell or buy it; a dealer does. Dubai's wholesale gold market does not publish premiums, buy-sell spreads, minimum order sizes or title-register fees, so several numbers in this section are estimates until a dealer quotes real terms. Signing a dealer is the most important commercial step on the critical path.
 
@@ -596,7 +596,7 @@ Checked automatically and published monthly:
 
 ## 7. The exit: cash buyback
 
-### 7.1 The design position: treat the buyback as a redemption right
+### 7.1 The buyback as a redemption right
 
 Customers exit by selling their gold back to Aurumix for cash; there is no physical delivery, which suits customers who hold fractions of a bar. VARA makes a redemption right optional for an ARVA (section 3.7). Aurumix grants it anyway, for three reasons:
 
@@ -633,7 +633,7 @@ The worry is that Aurumix must pay the dealer's buy-sell spread every time a cus
 
 **Aurumix only pays the spread on net outflow, not on every exit.** In a growing business that is close to zero. This is also the strongest argument for funding the float.
 
-### 7.4 If many customers exit at once
+### 7.4 Many exits at once
 
 The last row of the table, a run, is possible, and the design deals with it openly. VARA does not allow an exit fee, so Aurumix cannot use price to slow exits down. The only room the rule gives is time: exits must be completed "within a reasonable period" (III.E.3). The design uses that room in four ways:
 
@@ -651,7 +651,7 @@ Sending AURX to another person moves the gold's ownership with the token (sectio
 
 ## 8. The Investor Conviction Score
 
-### 8.1 What ICS is, and the one rule that shapes it
+### 8.1 What ICS is
 
 The Investor Conviction Score (ICS) is the loyalty engine: a 0 to 100 score that prices every benefit in the product. It exists because the economics demand it. The persistency benchmark for the persona (Indian life insurance) retains roughly 79% of savers at month 13 and 38% at month 61, and a customer is barely profitable in year one; churn kills this model, not fee levels. The score is the retention machinery.
 
@@ -888,7 +888,7 @@ One rule this structure forces: **the facility is struck once, at facility openi
 
 A second rule: **the facility and the card are open to every customer, and a tier fall never closes them.** No tier is needed to open either; the tier only sets the terms. The plastic never downgrades. Card parameters flex with the tier of record down to the base terms and stop there. The annual review re-strikes the limit at the current tier of record, never below the 40% base ratio. Only the collateral ladder (section 10.4), the customer or the lender of record can close them. So a saver who stops contributing keeps the card and the credit line for as long as the collateral supports them. This follows from two positions already taken: no delivered benefit is ever clawed back, and the loan is secured on gold the customer owns, not on their payment behaviour.
 
-### 10.2 The stack: four roles, and who carries which risk
+### 10.2 The stack: four roles and their risks
 
 | Role | Does | Carries |
 |---|---|---|
@@ -899,7 +899,7 @@ A second rule: **the facility and the card are open to every customer, and a tie
 
 Aurumix does not lend or issue cards itself, for two reasons: a VARA lending permission only covers lending a virtual asset and getting the same asset back, so a cash loan in dirhams falls outside it; and issuing cards requires card-scheme membership plus a CBUAE retail-payments licence. Suggested partners: **NymCard** as processor (UAE-native, credit-capable, a principal member of both schemes in its own right, which may collapse the bank-plus-processor pair into one vendor), **Emirates Money** then Mashreq as lender of record (Emirates Money already lends against physical gold at 80% LTV, vaulted at DMCC with Brink's: the same product, the same number, the same vault), Zand or CBD for VASP banking.
 
-### 10.3 Setting the limit, and how a tap is authorised
+### 10.3 Setting the limit and authorising a tap
 
 ```
 borrowing headroom = seasoned, unpledged grams x fix x LTV(tier)
@@ -982,7 +982,7 @@ The family product has two separate parts, with different legal character, costs
 
 During life, a sub-account is a declaration of intent and a display: the gold remains entirely the primary holder's, family members see their designated grams read-only, and a sub-account has **no independent credit facility and no ICS sub-score** during the primary's life. You cannot lend against gold someone does not yet own, and ICS is one number about one person. Each family member's own account passes its own gate when gold actually transfers to them.
 
-### 11.2 The precondition: it works on the gold you keep with Aurumix
+### 11.2 The precondition: gold kept with Aurumix
 
 Under an open token a customer can withdraw AURX to their own wallet, and at that moment there is nothing for a standing instruction to act on. **The Family Portfolio and the BTI are custodial-account features; they attach to the account, never to the token.** A withdrawal to self-custody removes those grams from the family features and counts as a disposal for scoring (one rule, two problems closed). This is not a weakness to hide: it is the honest reason a balance stays on-platform, and it is what every custodian does. The 30% annual Retention allowance is the pressure valve that keeps the strict rule fair.
 
@@ -992,7 +992,7 @@ Probate is the court process that confirms who inherits a person's property afte
 
 Other providers are in the same position: the largest regulated crypto custodian offers no beneficiary option at all and asks for probate documents before releasing anything. What Aurumix offers is a **faster probate process**: beneficiaries are named, verified, screened and their shares set in advance, so the transfer happens within days of the grant arriving.
 
-### 11.4 The trigger matrix, and why residence inverts it
+### 11.4 The trigger matrix and residence
 
 The three triggers are three different legal events, not three flavours of one:
 
@@ -1188,7 +1188,7 @@ Every load-bearing assumption in the design is collected here, stated as a propo
 
 Research method, for calibration of the confidence labels: load-bearing rules were fetched and read verbatim at primary source (the VARA rulebooks, the DIFC Trust Law 2018 text, the CBUAE rulebook, the scheme interchange schedule); claims that rest on secondary sources or could not be verified carry explicit confidence levels.
 
-### 14.2 The seven questions, mapped to the design
+### 14.2 The seven questions for counsel
 
 | # | What we are assuming, in plain terms | What depends on it | Where designed |
 |---|---|---|---|
@@ -1203,7 +1203,7 @@ Research method, for calibration of the confidence labels: load-bearing rules we
 
 Questions 1, 2 and 3 decide whether the product works at all. Questions 1 and 7 also change what gets built: an open or a permissioned token, and whether the family feature ships.
 
-### 14.3 Further assumptions, by mechanism
+### 14.3 Further assumptions by mechanism
 
 **Held back from counsel deliberately** (they follow from the seven and several will answer themselves): whether VARA's client-asset estate exclusion reaches physical metal; whether the 2%-of-reserves capital component can bite where no Reserve Assets exist; whether the buyback engages Exchange or Broker-Dealer licensing; VAT treatment of the entry fee, the gold and the services (investment-grade metal is zero-rated, but under direct ownership Aurumix is arguably supplying gold, and the margin consequence of a 5% VAT surprise against a thin fee line must not be discovered late); the custody-fee authority question; how the wind-down plan interacts with the DIFC vehicle; whether a Gold Rewards gram credit may land on a regulatorily blocked account; and the mechanics of pledging under the trust.
 

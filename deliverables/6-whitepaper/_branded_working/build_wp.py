@@ -1,0 +1,811 @@
+#!/usr/bin/env python3
+"""Build the branded HTML for the Aurumix Whitepaper.
+
+Inputs (read only):
+  ../Aurumix_Whitepaper.md                 copy (wording is not edited)
+  ../Aurumix_Whitepaper_Process_Maps.md    diagrams WP-01..WP-25 (Mermaid, used as-is)
+  Aurumix_Whitepaper_Page_Plan.md          the v2 single-column plan (37 pages, 40 max)
+  plugin branded-docs-main                 brand CSS, template <style> blocks, logos
+  auto_continue.js                         the proven auto-continue / TOC script
+
+Output: ../final/Aurumix_Whitepaper_Branded.html
+Render + audit: node render_wp.js ../final/Aurumix_Whitepaper_Branded.html ../final/Aurumix_Whitepaper.pdf
+"""
+import base64, html, io, json, os, re, sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PHASE = os.path.dirname(HERE)
+DOC = os.path.join(PHASE, "Aurumix_Whitepaper.md")
+MAPS = os.path.join(PHASE, "Aurumix_Whitepaper_Process_Maps.md")
+OUT = os.path.join(PHASE, "final", "Aurumix_Whitepaper_Branded.html")
+AUTO = os.path.join(HERE, "auto_continue.js")
+
+
+def _first_existing(*candidates):
+    for c in candidates:
+        if os.path.exists(c):
+            return c
+    raise SystemExit("none of these paths exist:\n  " + "\n  ".join(candidates))
+
+
+BRAND = _first_existing(
+    os.path.expanduser(r"~\.claude\plugins\cache\tokenomics-net\tokenomics\1.1.0\standards\branded-docs-main"),
+    os.path.expanduser(r"~\.claude\plugins\marketplaces\tokenomics-net\tokenomics-plugin\standards\branded-docs-main"))
+TPL = os.path.join(BRAND, "templates", "portrait")
+
+# ---------------------------------------------------------------- helpers
+def esc(t):
+    return html.escape(t, quote=False)
+
+
+def slug(t):
+    t = re.sub(r"[^\w\s-]", "", t.lower())
+    return "toc-" + re.sub(r"\s+", "-", t.strip())[:60]
+
+
+def inline(text):
+    text = esc(text)
+    text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"(?<![\*\w])\*([^*\n]+)\*(?!\*)", r"<em>\1</em>", text)
+    return text
+
+
+def logo_data(name):
+    b = open(os.path.join(BRAND, "assets", name), "rb").read()
+    return "data:image/svg+xml;base64," + base64.b64encode(b).decode()
+
+
+def template_style(tid):
+    t = io.open(os.path.join(TPL, tid + ".html"), encoding="utf-8").read()
+    m = re.search(r"<style>(.*?)</style>", t, re.S)
+    css = m.group(1)
+    # section-typographic ships an orphaned declaration list after its last rule; drop it
+    css = re.sub(r"\}\s*\n(\s*font-family: var\(--font-sans\);\s*font-size: 8pt;\s*color: var\(--stone\);\s*line-height: 1\.4;\s*\})", "}\n", css)
+    return "/* ---- template: %s ---- */\n%s" % (tid, css)
+
+
+# ---------------------------------------------------------------- markdown model
+class Block:
+    def __init__(self, kind, raw, html_, extra=None):
+        self.kind, self.raw, self.html, self.extra, self.used = kind, raw, html_, extra, False
+
+    def __repr__(self):
+        return "<%s %s>" % (self.kind, str(self.raw)[:40])
+
+
+ALL_BLOCKS = []
+
+
+def split_row(line):
+    return [c.strip() for c in line.strip().strip("|").split("|")]
+
+
+def table_html(rows, cls=""):
+    head, body = rows[0], rows[1:]
+    h = '<table%s>\n<thead><tr>' % (' class="%s"' % cls if cls else "")
+    h += "".join("<th>%s</th>" % inline(c) for c in head) + "</tr></thead>\n<tbody>\n"
+    for r in body:
+        h += "<tr>" + "".join("<td>%s</td>" % inline(c) for c in r) + "</tr>\n"
+    return h + "</tbody>\n</table>"
+
+
+def md_blocks(lines):
+    blocks, i, n = [], 0, len(lines)
+    while i < n:
+        s = lines[i].strip()
+        if not s or s == "---":
+            i += 1; continue
+        if s.startswith("### "):
+            txt = s[4:].strip()
+            blocks.append(Block("h3", txt, '<h3 id="%s">%s</h3>' % (slug(txt), inline(txt)))); i += 1
+        elif s.startswith("[DIAGRAM:"):
+            wp = re.match(r"\[DIAGRAM: (WP-\d+)", s).group(1)
+            # drop the placeholder line and its designer brief (the following paragraph lines)
+            j = i + 1
+            while j < n and lines[j].strip():
+                j += 1
+            blocks.append(Block("diag", wp, "")); i = j
+        elif s.startswith("|"):
+            rows = []
+            while i < n and lines[i].strip().startswith("|"):
+                r = split_row(lines[i])
+                if not all(re.fullmatch(r"[-: ]*", c) for c in r):
+                    rows.append(r)
+                i += 1
+            blocks.append(Block("table", rows, table_html(rows)))
+        elif s.startswith("- "):
+            items = []
+            while i < n and lines[i].strip().startswith("- "):
+                items.append(lines[i].strip()[2:]); i += 1
+            blocks.append(Block("ul", items, "<ul>" + "".join("<li>%s</li>" % inline(x) for x in items) + "</ul>"))
+        elif re.match(r"^\d+\.\s", s):
+            items = []
+            while i < n and re.match(r"^\d+\.\s", lines[i].strip()):
+                items.append(re.sub(r"^\d+\.\s+", "", lines[i].strip())); i += 1
+            blocks.append(Block("ol", items, "<ol>" + "".join("<li>%s</li>" % inline(x) for x in items) + "</ol>"))
+        else:
+            buf = [s]; j = i + 1
+            while j < n and lines[j].strip() and not re.match(r"^(- |\||#|\d+\.\s|\[DIAGRAM)", lines[j].strip()):
+                buf.append(lines[j].strip()); j += 1
+            txt = " ".join(buf)
+            blocks.append(Block("p", txt, "<p>%s</p>" % inline(txt))); i = j
+    ALL_BLOCKS.extend(blocks)
+    return blocks
+
+
+class Section:
+    def __init__(self, title, lines):
+        self.title = title
+        self.num = int(title.split(".")[0]) if re.match(r"^\d+\.", title) else None
+        self.id = slug(title)
+        self.blocks = md_blocks(lines)
+        self.intro, self.subs, cur = [], {}, None
+        for b in self.blocks:
+            if b.kind == "h3":
+                cur = b.raw.split(" ")[0]
+                self.subs[cur] = [b]
+            elif cur is None:
+                self.intro.append(b)
+            else:
+                self.subs[cur].append(b)
+
+    def h2(self, cls="wp-h2", tag="h2"):
+        return '<%s id="%s" class="%s">%s</%s>' % (tag, self.id, cls, inline(self.title), tag)
+
+    def sub(self, key):
+        return self.subs[key]
+
+
+def parse_doc():
+    lines = io.open(DOC, encoding="utf-8").read().splitlines()
+    # numbered body sections 1-17 are keyed by number; the unnumbered back matter by title
+    secs, cur = {}, None
+    for l in lines:
+        m = re.match(r"^## (.+)$", l)
+        if m and (re.match(r"^\d+\. ", m.group(1)) or m.group(1) in ("Glossary", "References", "Important notice")):
+            cur = Section(m.group(1).strip(), [])
+            cur._lines = []
+            secs[cur.num if cur.num else cur.title] = cur
+        elif m:
+            cur = None  # title-page subtitle and the copy's own contents list
+        elif cur is not None:
+            cur._lines.append(l)
+    for s in secs.values():
+        s.__init__(s.title, s._lines)
+    return secs
+
+
+def U(b):
+    """Emit a block and mark it used."""
+    assert not b.used, "block used twice: %r" % b
+    b.used = True
+    return b.html
+
+
+def mark(*bs):
+    for b in bs:
+        assert not b.used, "block used twice: %r" % b
+        b.used = True
+
+
+# ---------------------------------------------------------------- diagrams
+LAYOUT_THEME = "'fontSize': '14px', "
+# Plan 3.4 global render config (layout only). Per-diagram additions below keep text at or above
+# 9pt: label wrapping narrows wide left-to-right flows, and wrapped sequence messages stop long
+# messages from widening the diagram. No node, label, colour or structure changes.
+FLOW_BASE = {"nodeSpacing": 28, "rankSpacing": 32, "useMaxWidth": True}
+SEQ_BASE = {"mirrorActors": False, "actorMargin": 40, "width": 130, "height": 46, "messageMargin": 30,
+            "boxMargin": 8, "noteMargin": 8, "useMaxWidth": True, "wrap": True}
+FLOW_OVR = {
+    "WP-01": {"wrappingWidth": 70, "rankSpacing": 20, "padding": 6},
+    "WP-05": {"wrappingWidth": 90, "rankSpacing": 25},
+    "WP-07": {"wrappingWidth": 90, "rankSpacing": 25},
+    "WP-17": {"wrappingWidth": 90, "rankSpacing": 25},
+    "WP-18": {"wrappingWidth": 110},
+    "WP-02": {"subGraphTitleMargin": {"top": 12, "bottom": 12}},
+}
+# Plan section 7 reductions 1 and 2 (spacing only; text size unchanged)
+for _wp in ("WP-19", "WP-21", "WP-22", "WP-08", "WP-24", "WP-12", "WP-25", "WP-09"):
+    FLOW_OVR.setdefault(_wp, {}).update({"rankSpacing": 24, "nodeSpacing": 22})
+SEQ_OVR = {_wp: {"messageMargin": 24, "height": 40} for _wp in ("WP-20", "WP-04", "WP-06", "WP-13", "WP-15")}
+
+
+def _cfg(d):
+    return json.dumps(d).replace('"', "'")
+
+
+def load_maps():
+    t = io.open(MAPS, encoding="utf-8").read()
+    probe = json.loads(os.environ.get("PROBE_OVR", "{}"))
+    d = {}
+    for m in re.finditer(r"^## (WP-\d+)\. (.+?)$\n\n(.+?)\n\n```mermaid\n(.*?)\n```", t, re.M | re.S):
+        wp, title, desc, code = m.groups()
+        assert code.count("'themeVariables': {") == 1 and code.count("}}}%%") == 1, wp
+        flow = {**FLOW_BASE, **FLOW_OVR.get(wp, {}), **probe.get("flowchart", {})}
+        seq = {**SEQ_BASE, **SEQ_OVR.get(wp, {}), **probe.get("sequence", {})}
+        code = code.replace("'themeVariables': {", "'themeVariables': {" + LAYOUT_THEME, 1)
+        code = code.replace("}}}%%", "}, 'flowchart': %s, 'sequence': %s}}%%%%" % (_cfg(flow), _cfg(seq)), 1)
+        d[wp] = dict(title=title.strip(), desc=desc.strip(), code=code, used=False)
+    assert len(d) == 25, len(d)
+    # WP-10 (benefits fan) was cut from the copy: it repeated the 8.1 table
+    for wp in RETIRED:
+        d.pop(wp, None)
+    return d
+
+
+RETIRED = ("WP-10",)
+
+
+DIAG = {}
+FIG = {"n": 0, "order": []}
+DIAG_BLOCKS = {}
+
+
+def fig(wp, width=None, cls=""):
+    d = DIAG[wp]
+    assert not d["used"], wp
+    d["used"] = True
+    if wp in DIAG_BLOCKS:
+        DIAG_BLOCKS[wp].used = True
+    FIG["n"] += 1
+    FIG["order"].append(wp)
+    style = ' style="max-width:%s"' % width if width else ""
+    return ('<figure class="wp-fig %s"%s><div class="mermaid">\n%s\n</div>'
+            '<figcaption><span class="fig-num">Figure %d.</span> %s. %s</figcaption></figure>'
+            % (cls, style, esc(d["code"]), FIG["n"], esc(d["title"]), esc(d["desc"])))
+
+
+# ---------------------------------------------------------------- inner blocks (all single column)
+def stat3(items, cls="stats-row"):
+    """STAT3: three stat cards in one row, values and labels only (the one allowed row)."""
+    cards = "".join('<div class="stat-card"><div class="stat-value" data-text-role="stat-%d-value">%s</div>'
+                    '<div class="stat-label" data-text-role="stat-%d-label">%s</div></div>'
+                    % (i + 1, inline(v), i + 1, inline(l)) for i, (v, l) in enumerate(items))
+    return '<div class="%s wp-stat3">%s</div>' % (cls, cards)
+
+
+BANDS = []
+
+
+def band(b):
+    """BAND: a whole copy paragraph moved into a full-width callout band."""
+    mark(b)
+    BANDS.append(b.raw[:40])
+    mixed = " mixed" if "**" in b.raw else ""
+    return '<div class="wp-band keep-together%s"><p>%s</p></div>' % (mixed, inline(b.raw))
+
+
+def ex(inner_html, label=True):
+    """EX: full-width worked-example box."""
+    lab = '<div class="wp-ex-label">Worked example</div>' if label else ""
+    return '<div class="wp-ex keep-together">%s%s</div>' % (lab, inner_html)
+
+
+def steps(ol):
+    """STEPS: numbered stack in process-steps style, one column (number circle is absolutely positioned)."""
+    mark(ol)
+    lis = "".join('<li><span class="wp-step-n">%d</span>%s</li>' % (i + 1, inline(x)) for i, x in enumerate(ol.raw))
+    return '<ol class="wp-steps keep-together">%s</ol>' % lis
+
+
+def P(md):
+    return "<p>%s</p>" % inline(md)
+
+
+FIG_W = {  # plan section 5 widths (max-width of the centred figure)
+    "WP-02": "85%", "WP-19": "55%", "WP-21": "55%", "WP-22": "70%", "WP-08": "60%", "WP-09": "70%",
+    "WP-10": "90%", "WP-11": "80%", "WP-24": "60%", "WP-12": "70%", "WP-16": "80%", "WP-18": "90%",
+    "WP-25": "55%",
+}
+
+
+def F(wp):
+    return fig(wp, FIG_W.get(wp))
+
+
+# ---------------------------------------------------------------- page shells
+def page_content(tid, inner, extra_cls=""):
+    return """
+    <div class="page page--%s %s" data-template="%s" data-auto-continue>
+      <div class="content-area">
+%s
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>""" % (tid, extra_cls, tid, inner)
+
+
+def page_cover():
+    return """
+    <div class="page page--cover-minimal-typographic" data-template="cover-minimal-typographic">
+      <div class="cover-gold-bar"></div>
+      <div class="cover-content">
+        <div class="cover-eyebrow text-eyebrow" data-text-role="eyebrow">Whitepaper</div>
+        <h1 class="cover-title" data-text-role="title">Aurumix Whitepaper</h1>
+        <p class="cover-subtitle" data-text-role="subtitle">Allocated gold, saved by the gram</p>
+        <hr class="cover-rule">
+      </div>
+      <div class="cover-wordmark">
+        <img src="%s" alt="Tokenomics.net" class="logo logo--cover">
+      </div>
+    </div>""" % logo_data("tokenomics-logo-dark.svg")
+
+
+def page_toc(entries):
+    rows = []
+    for kind, txt, ref in entries:
+        cls = "toc-entry--section" if kind == "sec" else "toc-entry--sub"
+        rows.append('<div class="toc-entry %s" data-toc-ref="%s"><span class="toc-entry-text">%s</span>'
+                    '<span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>'
+                    % (cls, ref, inline(txt)))
+    return """
+    <div class="page page--special-table-of-contents" data-template="special-table-of-contents">
+      <div class="content-area">
+        <h1 class="toc-title" data-text-role="title">Contents</h1>
+        <hr class="toc-rule">
+        <div class="toc-list" data-text-role="toc-entries">
+          %s
+        </div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>""" % "\n          ".join(rows)
+
+
+def page_divider(n, title, sections):
+    lis = "".join('<li><span class="part-sec-num">%d.</span>%s</li>' % (num, esc(t)) for num, t in sections)
+    return """
+    <div class="page page--section-typographic" data-template="section-typographic">
+      <div class="section-content">
+        <div class="section-number" data-text-role="section-number">Part %d</div>
+        <h2 id="toc-part-%d" class="section-title" data-text-role="section-title">%s</h2>
+        <hr class="section-rule">
+        <div class="section-subtitle" data-text-role="subtitle"><ul class="part-sections">%s</ul></div>
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>""" % (n, n, esc(title), lis)
+
+
+def page_back():
+    # copied from templates/portrait/closing-back-cover.html; slot text and logo src only
+    return """
+    <div class="page page--closing-back-cover" data-template="closing-back-cover">
+      <div class="back-center">
+        <img src="%s" alt="Tokenomics.net" class="logo logo--2xl">
+        <p class="back-tagline" data-text-role="tagline">Built by founders. Designed for founders.</p>
+      </div>
+      <div class="back-legal" data-text-role="legal-line">Prepared by Tokenomics.net. &copy; 2026</div>
+    </div>""" % logo_data("tokenomics-logo-light.svg")
+
+
+# ---------------------------------------------------------------- CSS
+EXTRA_CSS = r"""
+/* ================= Whitepaper v2: single column only (page plan section 0 and 3) ================= */
+#document-pages .page[data-auto-continue] .content-area { display: block; overflow: visible; }
+/* Typography and spacing copied from the Mechanism Design document (measured computed styles) */
+.content-area p, .content-area li { font-size: 10.5pt; line-height: 1.65; }
+.content-area p { margin: 0 0 16px; }
+.content-area ul, .content-area ol { font-size: 10.5pt; line-height: 1.65; margin: 0 0 16px; padding-left: 21px; }
+.content-area li { margin-bottom: 4px; }
+/* Headings: Libre Baskerville 700, sentence case. Section 22pt > subsection 16pt > sub-subsection 13pt. */
+.content-area h2.wp-h2 { font-family: var(--font-serif); font-size: 22pt; font-weight: 700; line-height: 1.2;
+  color: var(--warm-charcoal); border-bottom: 1.5px solid var(--gold); padding-bottom: 6px;
+  margin: 32px 0 16px; break-after: avoid; }
+.content-area > h2.wp-h2:first-child { margin-top: 0; }
+.content-area h3 { font-family: var(--font-serif); font-size: 16pt; font-weight: 700; line-height: 1.25;
+  color: var(--warm-charcoal); margin: 8px 0 16px; break-after: avoid; }
+.content-area h2.wp-h2 + h3 { margin-top: 0; }
+.content-area h4 { font-family: var(--font-serif); font-size: 13pt; font-weight: 700; line-height: 1.3;
+  color: var(--warm-charcoal); margin: 8px 0 8px; break-after: avoid; }
+.page--special-executive-summary .summary-title, .page--content-data-table .content-heading,
+.page--special-appendix .appendix-title {
+  font-family: var(--font-serif); font-size: 22pt; font-weight: 700; }
+.wp-find-title, .wp-ex-label { font-family: var(--font-serif) !important; font-weight: 700 !important;
+  text-transform: none !important; letter-spacing: 0 !important; }
+.content-area > h3:first-child { margin-top: 0; }
+.content-area table { width: 100%; font-size: 10pt; line-height: 1.5; margin: 0 0 24px; break-inside: avoid; }
+.content-area thead th { font-size: 9pt; padding: 8px 14px; }
+.content-area tbody td { padding: 8px 14px; vertical-align: top; }
+.content-area table td:first-child { font-weight: 500; }
+.content-area strong { font-weight: 700; }
+.table-benefits td, .table-benefits th { text-align: center; }
+.table-benefits td:first-child, .table-benefits th:first-child { text-align: left; }
+
+/* FIG: centred figure on its own row, caption below; nothing beside it */
+.wp-fig { display: block; margin: 16px auto 16px; max-width: 100%; break-inside: avoid; }
+.wp-fig .mermaid { display: block; text-align: center; }
+.wp-fig .mermaid svg { display: block; margin: 0 auto; height: auto; }
+.wp-fig figcaption { font-family: var(--font-sans); font-size: 9pt; line-height: 1.5; color: var(--concrete);
+  text-align: center; margin-top: 8px; }
+.wp-fig figcaption .fig-num { font-weight: 700; color: var(--text-secondary); }
+
+/* BAND: full-width callout band */
+.wp-band { background: var(--stone-light); border-left: 4px solid var(--gold); padding: 12px 16px; margin: 12px 0 16px; break-inside: avoid; }
+.wp-band p { font-size: 10.5pt !important; line-height: 1.6 !important; font-weight: 700; color: var(--warm-charcoal); margin: 0 !important; }
+.wp-band.mixed p { font-weight: 400; }
+.wp-band.mixed p strong { font-weight: 700; }
+
+/* EX: full-width worked-example box */
+.wp-ex { background: #F4F1EC; border: 1px solid var(--border-light); border-top: 3px solid var(--gold); padding: 14px 16px 2px; margin: 12px 0 16px; break-inside: avoid; }
+.wp-ex-label { font-size: 11pt; color: var(--warm-charcoal); margin-bottom: 4px; }
+.wp-ex p { margin-bottom: 6px; }
+.wp-ex table { margin-bottom: 6px; background: var(--warm-white); }
+
+/* STEPS: process-steps markers in one column (circle is absolutely positioned, not a grid) */
+ol.wp-steps { list-style: none; padding: 0; margin: 4px 0 8px; break-inside: avoid; }
+ol.wp-steps li { position: relative; padding: 5px 0 9px 44px; margin: 0; min-height: 30px; }
+ol.wp-steps li:not(:last-child)::after { content: ''; position: absolute; left: 14px; top: 32px; bottom: -3px; width: 2px; background: var(--light-gold); }
+ol.wp-steps .wp-step-n { position: absolute; left: 0; top: 2px; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--gold); color: var(--warm-white); font-family: var(--font-serif); font-size: 12pt; font-weight: 700;
+  line-height: 30px; text-align: center; }
+
+/* STAT3 */
+.wp-stat3 { display: flex; gap: 12px; margin: 4px 0 10px; break-inside: avoid; }
+.wp-stat3 .stat-card { flex: 1; padding: 10px 12px; border: 1px solid var(--border-light); border-top: 3px solid var(--gold); }
+.wp-stat3 .stat-value { font-family: var(--font-serif); font-size: 19pt; font-weight: 700; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
+.wp-stat3--words .stat-value { font-size: 16pt; white-space: nowrap; }
+.wp-stat3 .stat-label { font-family: var(--font-sans); font-size: 8.5pt; line-height: 1.35; font-weight: 500; color: var(--text-secondary); text-transform: none; letter-spacing: 0; }
+
+/* executive summary page: findings as a stacked numbered list (number is absolutely positioned) */
+.page--special-executive-summary .summary-rule { margin-bottom: 12px; }
+.page--special-executive-summary .summary-intro { font-size: 11pt; line-height: 1.5; margin-bottom: 12px; }
+.page--special-executive-summary .stats-row .stat-value { font-size: 21pt; }
+.wp-label { font-weight: 700; margin-bottom: 6px !important; }
+ol.wp-findings { list-style: none; padding: 0; margin: 0 0 10px; break-inside: avoid; }
+ol.wp-findings li { position: relative; padding: 0 0 7px 38px; margin: 0; border-bottom: 1px solid var(--border-light); margin-bottom: 7px; }
+ol.wp-findings li:last-child { border-bottom: none; margin-bottom: 0; }
+ol.wp-findings .wp-find-n { position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--gold); color: var(--warm-white); font-family: var(--font-serif); font-size: 10.5pt; font-weight: 700;
+  line-height: 24px; text-align: center; }
+ol.wp-findings .wp-find-title { font-size: 11pt; color: var(--warm-charcoal); margin-bottom: 1px; }
+ol.wp-findings .wp-find-body { font-size: 9.5pt; line-height: 1.4; color: var(--text-primary); }
+
+/* data-table page (section 15 flow) */
+.page--content-data-table .heading-rule { margin-bottom: 10px; border-bottom-width: 1.5px; }
+.page--content-data-table .content-heading { margin-bottom: 6px; }
+
+/* part dividers */
+.page--section-typographic .section-number { font-size: 30pt; letter-spacing: 0.02em; }
+.page--section-typographic .part-sections { list-style: none; padding: 0; margin: 0; font-size: 12pt; line-height: 1.5; }
+.page--section-typographic .part-sections li { padding: 7px 0; border-bottom: 1px solid var(--border-light); color: var(--text-primary); margin: 0; }
+.page--section-typographic .part-sec-num { display: inline-block; width: 36px; font-family: var(--font-serif); font-weight: 700; color: var(--gold); }
+
+/* contents: 26 entries on one page, one column */
+.page--special-table-of-contents .toc-rule { margin-bottom: 10px; }
+.page--special-table-of-contents .toc-title { font-size: 28pt; }
+.page--special-table-of-contents .toc-entry { padding: 3px 0; }
+.page--special-table-of-contents .toc-entry--section { padding-top: 11px; }
+.page--special-table-of-contents .toc-entry--sub .toc-entry-text { font-size: 10pt; }
+
+/* cover: no meta lines; Tokenomics.net wordmark alone, bottom left, aligned with the title */
+.page--cover-minimal-typographic .cover-wordmark { left: 0.7in !important; right: auto !important;
+  bottom: 0.9in !important; transform: none !important; text-align: left !important; justify-content: flex-start !important; }
+.page--cover-minimal-typographic .cover-wordmark img { margin: 0 !important; }
+
+/* appendix (glossary, references, notice): ONE column, overriding the template's column-count: 2 */
+.page--special-appendix .content-area { top: 110px; }
+.page--special-appendix .appendix-header { padding: 18px var(--safe-margin) 16px; }
+.page--special-appendix .appendix-body, .page--special-appendix .content-area { column-count: 1 !important; column-rule: none !important; }
+.page--special-appendix h2.wp-app-h2 { font-family: var(--font-serif); font-size: 13pt; font-weight: 700;
+  color: var(--warm-charcoal); border-bottom: 1.5px solid var(--gold); padding-bottom: 3px; margin: 12px 0 6px; break-after: avoid; }
+.page--special-appendix .content-area > h2.wp-app-h2:first-child { margin-top: 0; }
+.page--special-appendix .content-area table td:first-child { font-weight: 600; white-space: nowrap; width: 24%; }
+.page--special-appendix .content-area ol { font-size: 10.5pt; line-height: 1.65; padding-left: 21px; }
+.page--special-appendix .content-area ol li { margin-bottom: 8px; word-break: break-word; }
+"""
+
+# ---------------------------------------------------------------- scripts
+def scripts():
+    auto = io.open(AUTO, encoding="utf-8").read()
+    old_guard = "if(si===0&&nd<=1){page.setAttribute('data-auto-continued','');return[page];}"
+    assert old_guard in auto
+    auto = auto.replace(old_guard, old_guard + "\n      if(si===0){si=1;}")
+    trig = auto[auto.index("    if(document.readyState==='loading'){"):auto.rindex("  })();")]
+    auto = auto.replace(trig, "    window.__wpAutoContinue=run;\n")
+    # keep a section heading (h2) with the block after it, as h3/h4 already are
+    old_keep = "if(pt==='h3'||pt==='h4'||pt==='h5'){si--;}"
+    assert old_keep in auto
+    auto = auto.replace(old_keep, "if(pt==='h2'||pt==='h3'||pt==='h4'||pt==='h5'){si--;}")
+    return """
+  <!-- Mermaid (rendered before auto-continue so real heights are measured) -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>
+  mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme: 'base',
+    themeVariables: { fontSize: '14px' },
+    flowchart: { nodeSpacing: 28, rankSpacing: 32, useMaxWidth: true },
+    sequence: { mirrorActors: false, actorMargin: 40, width: 130, height: 46, messageMargin: 30, boxMargin: 8, noteMargin: 8, useMaxWidth: true } });
+  </script>
+  <!-- Auto-continuation, renumbering and TOC population -->
+  <script>
+%s
+  </script>
+  <script>
+  (async function () {
+    await document.fonts.ready;
+    try {
+      renderMathInElement(document.body, { delimiters: [
+        { left: '\\\\[', right: '\\\\]', display: true }, { left: '\\\\(', right: '\\\\)', display: false }] });
+    } catch (e) { console.error('katex', e); }
+    try { await mermaid.run({ querySelector: '.mermaid' }); } catch (e) { console.error('mermaid', e); }
+    // Layout-only fix for sequence diagrams: with wrapped messages, Mermaid sizes a note over one
+    // participant to the participant width, so a note with a manual line break can spill out of
+    // its box (and past the right edge). Widen each note box to its text, then refit the viewBox.
+    document.querySelectorAll('.mermaid svg').forEach(function (svg) {
+      var notes = svg.querySelectorAll('rect.note');
+      if (!notes.length) return;
+      var grew = false;
+      notes.forEach(function (r) {
+        var texts = r.parentNode.querySelectorAll('text.noteText');
+        if (!texts.length) return;
+        var x0 = Infinity, x1 = -Infinity;
+        texts.forEach(function (t) { var b = t.getBBox(); x0 = Math.min(x0, b.x); x1 = Math.max(x1, b.x + b.width); });
+        var w = parseFloat(r.getAttribute('width')), x = parseFloat(r.getAttribute('x'));
+        var need = (x1 - x0) + 20;
+        if (need > w) {
+          var cx = (x0 + x1) / 2;
+          r.setAttribute('x', cx - need / 2); r.setAttribute('width', need); grew = true;
+        }
+      });
+      if (!grew) return;
+      var bb = svg.getBBox();
+      var vb = svg.viewBox.baseVal;
+      var nx = Math.min(vb.x, bb.x - 8), nr = Math.max(vb.x + vb.width, bb.x + bb.width + 8);
+      svg.setAttribute('viewBox', nx + ' ' + vb.y + ' ' + (nr - nx) + ' ' + vb.height);
+      svg.style.maxWidth = (nr - nx) + 'px';
+    });
+    await new Promise(function (r) { requestAnimationFrame(function () { setTimeout(r, 50); }); });
+    window.__wpAutoContinue();
+    document.body.setAttribute('data-render-complete', '1');
+  })();
+  </script>
+""" % auto
+
+
+def head():
+    css = io.open(os.path.join(BRAND, "css", "brand-system.css"), encoding="utf-8").read()
+    tpls = ["cover-minimal-typographic", "special-table-of-contents", "section-typographic",
+            "special-executive-summary", "content-single-column", "content-data-table",
+            "special-appendix", "closing-back-cover"]
+    tcss = "\n".join(template_style(t) for t in tpls)
+    return """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <title>Aurumix Whitepaper - Tokenomics.net</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Brand System CSS (inlined from branded-docs-main/css/brand-system.css) -->
+  <style>
+%s
+  </style>
+  <!-- KaTeX (kept for the shell; no formula page in v2) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <style>
+%s
+%s
+  </style>
+</head>
+<body>
+  <main id="document-pages">
+""" % (css, tcss, EXTRA_CSS)
+
+
+# ---------------------------------------------------------------- the pages (plan v2, section 6)
+# Block mapping follows the copy's own order instead of fixed unpacking, so trims to the copy do not
+# break the build. Special treatments (bands, worked-example boxes) are keyed on the text they hold;
+# a treatment whose source text is gone is reported and skipped.
+PARTS = [
+    (1, "What Aurumix is and how it works", [1, 2, 3, 4]),
+    (2, "Buying and selling", [5, 6]),
+    (3, "The score and its benefits", [7, 8]),
+    (4, "Credit, card and rewards", [9, 10]),
+    (5, "Family, partners and the token", [11, 12, 13]),
+    (6, "Safety, fees, legal and risks", [14, 15, 16, 17]),
+]
+BACK = ["Glossary", "References", "Important notice"]
+
+# plan section 3.3 band list: (label, section key, start of the whole copy paragraph that becomes the band)
+BAND_RULES = [
+    ("§1 closing line", "1", "Holding AURX earns no payments"),
+    ("3.2 first paragraph", "3.2", "One AURX always equals one gram"),
+    ("§4 rule line", "4", "Your country of residence decides"),
+    ("5.4 first paragraph", "5.4", "Every purchase follows one order"),
+    ("7.5 bold paragraph", "7.5", "**A lower score changes your benefits only"),
+    ("9.2 formula line", "9.2", "**Limit = eligible grams"),
+    ("9.4 warning sentence", "9.4", "Gold can fall 13%"),
+    ("14.1 paragraph", "14.1", "**Gold held in the trust must always"),
+    ("16.2 licence gate paragraph", "16.2", "AURX will be offered only after VARA"),
+]
+# 9.4's trimmed copy states the same warning in new words; the band follows the text
+BAND_ALT = {"9.4 warning sentence": "At Sovereign with a full limit, a 13% gold fall"}
+BANDED = set()
+
+
+def _band_for(key, b):
+    if b.kind != "p":
+        return None
+    for label, k, start in BAND_RULES:
+        if k != key:
+            continue
+        for st in (start, BAND_ALT.get(label)):
+            if st and b.raw.startswith(st):
+                BANDED.add(label)
+                return band(b)
+    return None
+
+
+def emit(key, blocks, ex_mode=None):
+    """Emit a run of blocks in copy order. ex_mode 'all' boxes the whole run as a worked example (5.5);
+    'example' boxes an '*Example' paragraph together with a table directly after it."""
+    if ex_mode == "all":
+        body = [b for b in blocks if b.kind != "diag"]
+        mark(*body)
+        out = [ex("".join(b.html for b in body), label=False)]
+        for b in blocks:
+            if b.kind == "diag":
+                DIAG_BLOCKS[b.raw] = b
+                out.append(F(b.raw))
+        return out
+    out, i = [], 0
+    while i < len(blocks):
+        b = blocks[i]
+        if b.kind == "diag":
+            DIAG_BLOCKS[b.raw] = b
+            out.append(F(b.raw))
+        elif b.kind == "p" and b.raw.startswith("*Example") and ex_mode == "example":
+            mark(b)
+            inner = P(b.raw)
+            if i + 1 < len(blocks) and blocks[i + 1].kind == "table":
+                i += 1
+                mark(blocks[i])
+                inner += blocks[i].html
+            out.append(ex(inner, label=False))
+        else:
+            bd = _band_for(key, b)
+            out.append(bd if bd else U(b))
+        i += 1
+    return out
+
+
+EX_SUBS = {"5.5": "all", "11.4": "example"}
+EX_SECS = {10: "example"}
+
+
+def section_items(sec, h2=True):
+    items = [sec.h2()] if h2 else []
+    items += emit(str(sec.num), sec.intro, EX_SECS.get(sec.num))
+    for key, blocks in sec.subs.items():
+        items.append(U(blocks[0]))
+        items += emit(key, blocks[1:], EX_SUBS.get(key))
+    return items
+
+
+def heading_block(sec):
+    return ('<h2 id="%s" class="content-heading" data-text-role="section-title">%s</h2>\n<hr class="heading-rule">'
+            % (sec.id, inline(sec.title)))
+
+
+def build_pages(S):
+    pages = []
+    div = {n: page_divider(n, t, [(num, S[num].title.split(". ", 1)[1]) for num in secs]) for n, t, secs in PARTS}
+    flow = lambda items: page_content("content-single-column", "\n".join(items))
+
+    pages.append(page_cover())
+    toc = []
+    for n, t, secs in PARTS:
+        toc.append(("sec", "Part %d. %s" % (n, t), "toc-part-%d" % n))
+        for num in secs:
+            toc.append(("sub", S[num].title, S[num].id))
+    for k in BACK:
+        toc.append(("sec", S[k].title, S[k].id))
+    pages.append(page_toc(toc))
+
+    # ================= Part 1: executive summary page for section 1, then a flow for 2 to 4
+    pages.append(div[1])
+    s1 = S[1]
+    blocks = list(s1.intro)
+    intro = blocks.pop(0)
+    assert intro.kind == "p"
+    mark(intro)
+    body = []
+    for b in blocks:
+        if b.kind == "ul" and all(re.match(r"\*\*(.+?)\*\*", x) for x in b.raw):
+            mark(b)
+            finds = ""
+            for i, item in enumerate(b.raw):
+                m = re.match(r"\*\*(.+?)\*\*\s*(.*)$", item)
+                finds += ('<li><span class="wp-find-n">%d</span><div class="wp-find-title">%s</div>'
+                          '<div class="wp-find-body">%s</div></li>' % (i + 1, inline(m.group(1)), inline(m.group(2))))
+            body.append('<ol class="wp-findings" data-text-role="findings">%s</ol>' % finds)
+        elif b.kind == "p" and re.fullmatch(r"\*\*[^*]+:\*\*", b.raw):
+            body.append('<p class="wp-label">%s</p>' % U(b)[3:-4])
+        else:
+            body += emit("1", [b])
+    pages.append(page_content("special-executive-summary", "\n".join([
+        '<h2 id="%s" class="summary-title" data-text-role="title">%s</h2>\n<hr class="summary-rule">' % (s1.id, inline(s1.title)),
+        '<p class="summary-intro" data-text-role="body">%s</p>' % inline(intro.raw),
+        stat3([("1 AURX", "Equals one gram of gold"), ("USD 20", "Monthly plan minimum"), ("None", "Storage or exit fee")]),
+    ] + body)))
+    pages.append(flow(section_items(S[2]) + section_items(S[3]) + section_items(S[4])))
+
+    # ================= Parts 2 to 5: one flow each
+    for n in (2, 3, 4, 5):
+        pages.append(div[n])
+        items = []
+        for num in PARTS[n - 1][2]:
+            items += section_items(S[num])
+        pages.append(flow(items))
+
+    # ================= Part 6: section 14 on its own, then the data-table flow for 15 to 17
+    pages.append(div[6])
+    pages.append(flow(section_items(S[14])))
+    s15 = S[15]
+    items = [heading_block(s15),
+             stat3([("2% to 5%", "Entry fee, less your tier discount"), ("None", "Storage fee"), ("None", "Exit fee")])]
+    items += section_items(s15, h2=False)
+    items += section_items(S[16]) + section_items(S[17])
+    pages.append(page_content("content-data-table", "\n".join(items)))
+
+    # ---- back matter (unnumbered): one appendix page each, laid out like the MD document's appendices
+    g, r, nt = S["Glossary"], S["References"], S["Important notice"]
+
+    def appendix(sec, subtitle, body):
+        return """
+    <div class="page page--special-appendix" data-template="special-appendix" data-auto-continue>
+      <div class="appendix-header">
+        <h2 id="%s" class="appendix-title" data-text-role="title">%s</h2>
+        <p class="appendix-subtitle" data-text-role="subtitle">%s</p>
+      </div>
+      <div class="content-area">
+        %s
+      </div>
+      <div class="page-number" data-text-role="page-number"></div>
+    </div>""" % (sec.id, inline(sec.title), subtitle, body)
+
+    pages.append(appendix(g, "Terms used in this whitepaper", "".join(U(b) for b in g.intro)))
+    pages.append(appendix(r, "Sources cited in this whitepaper", "".join(U(b) for b in r.intro)))
+    pages.append(appendix(nt, "Please read before relying on this whitepaper", "".join(U(b) for b in nt.intro)))
+
+    pages.append(page_back())
+    return pages
+
+
+def main():
+    global DIAG
+    DIAG.update(load_maps())
+    S = parse_doc()
+    assert sorted(k for k in S if isinstance(k, int)) == list(range(1, 18)) and all(k in S for k in BACK), list(S)
+    pages = build_pages(S)
+
+    unused = [b for b in ALL_BLOCKS if not b.used]
+    if unused:
+        print("UNUSED BLOCKS:")
+        for b in unused:
+            print("  ", b)
+        sys.exit(1)
+    missing = [k for k, v in DIAG.items() if not v["used"]]
+    assert not missing, missing
+    plan_order = ["WP-01", "WP-02", "WP-03", "WP-19", "WP-20", "WP-04", "WP-21", "WP-05", "WP-06", "WP-07",
+                  "WP-22", "WP-08", "WP-09", "WP-11", "WP-23", "WP-24", "WP-12", "WP-13", "WP-14",
+                  "WP-15", "WP-16", "WP-17", "WP-18", "WP-25"]
+    assert FIG["order"] == plan_order, FIG["order"]
+    skipped = [label for label, _, _ in BAND_RULES if label not in BANDED]
+
+    out = head() + "\n".join(pages) + "\n  </main>\n" + scripts() + "</body>\n</html>\n"
+    body = out.split("<main")[1].split("</main>")[0]
+    assert "—" not in body, "em dash in page content"
+    for bad in ("wp-split", "wp-2col", "sidebar-layout", "pull-quote", "formula-display", "wp-list-card"):
+        assert bad not in body, bad
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    io.open(OUT, "w", encoding="utf-8", newline="\n").write(out)
+    print("written:", OUT)
+    print("source pages:", len(pages), "figures:", FIG["n"], "bands:", len(BANDS))
+    print("bands skipped (source text cut):", skipped)
+
+
+if __name__ == "__main__":
+    main()

@@ -90,6 +90,17 @@
       ],
       "updated_at": "2026-09-22",
       "notes": "Closed 2026-09-22. The three client-agreed finalization items landed: conditions map rebuilt as per-cell Monte Carlos (plan cell -0.02m, frontier at base CAC now 14 partners), all eight Part 4 lever attributions re-measured on one recorded run (partners lever +990k -> +415k with arrival risk priced in), tornado upgraded to paired Monte Carlos per end. All verification gates pass; both branded documents rebuilt in final/. Handed onward: decision 54's lapsed-cardholder check against the twin and workbook."
+    },
+    "6": {
+      "status": "complete",
+      "updated_at": "2026-09-24",
+      "files": [
+        "Aurumix_Whitepaper.md",
+        "Aurumix_Whitepaper_Process_Maps.md",
+        "final/Aurumix_Whitepaper.pdf",
+        "final/Aurumix_Whitepaper_Branded.html"
+      ],
+      "notes": "Whitepaper (plugin process 5) from the MD document v1.2: market-facing, ~3,800 words, 24 diagrams, single-column Stockpile-style layout with MD typography, 42 pages. Aurumix intends to apply to VARA (not yet applied); ERC-20 on Ethereum; family plan USD 32/yr."
     }
   }
 }
