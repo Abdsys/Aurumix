@@ -835,6 +835,22 @@ tfoot td {
 .mb-xl { margin-bottom: var(--space-xl); }
 .mb-2xl { margin-bottom: var(--space-2xl); }
 
+/* Mermaid diagrams — block layout so SVG height flows naturally */
+figure.mermaid,
+figure .mermaid {
+  display: block;
+  overflow: visible;
+  margin: 0.15in 0;
+  text-align: center;
+}
+figure.mermaid svg,
+figure .mermaid svg {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+
 /* Print utilities */
 .keep-together {
   break-inside: avoid;
@@ -2003,6 +2019,17 @@ td.fill-cell--highlight {
 
 
 /* ================================================================
+   AUTO-CONTINUATION
+   ================================================================ */
+
+/* Hide heading + gold rule on continuation pages */
+.page[data-continuation] .content-heading,
+.page[data-continuation] .heading-rule {
+  display: none;
+}
+
+
+/* ================================================================
    SCREEN PREVIEW MODE
    ================================================================ */
 
@@ -2991,7 +3018,7 @@ graph LR
 </div><figcaption style="font-family: var(--font-sans); font-size: 9pt; color: var(--concrete); margin-top: 8px; text-align: center;">Figure 2: The premium: three ways it fails</figcaption></figure>
 <h3 id="toc-25-custody-and-the-ownership-record">2.5 Custody and the ownership record</h3>
 <p>Physical custody and legal ownership are two different problems, and the design separates them deliberately.</p>
-<p><strong>Physical custody</strong> is a vault contract: allocated, serial-numbered bars, segregated from Aurumix's own metal, with an independent assay on intake and a monthly Allocation Report publishing bar serials, assay certificates and both ledger balances. The recommended vault is Brink's Global Services DMCC, which has the useful property that the recommended lending partner already lends against gold held there (section 10.3).</p>
+<p><strong>Physical custody</strong> is a vault contract: allocated, serial-numbered bars, segregated from Aurumix's own metal, with an independent assay on intake and a monthly Allocation Report publishing bar serials, assay certificates and both ledger balances. The recommended vault is Brink's Global Services DMCC, which has the useful property that the recommended lending partner already lends against gold held there (section 10.2).</p>
 <p><strong>Legal ownership</strong> runs through the structure in section 3. One honest disclosure belongs here because it shapes the marketing: a USD 75-a-month saver can never own a specific bar. After a year they hold under 1% of a kilobar. The accurate description of what a customer owns, used in every document, is an <strong>individually recorded, pro-rata undivided interest in identified, serial-numbered bars</strong>. "100% individually allocated" would overstate it; "not a pooled allocation" (the client's wording) overstates it too. The pool itself is allocated and customer-segregated; each customer owns a recorded share of it.</p>
 <p><strong>The title record.</strong> The preferred independent record is a DMCC Tradeflow warrant: an electronic record, maintained by DMCC as registrar, of which bars sit in which approved vault for which owner, transferable and pledgeable on the platform. Its honest limits: DMCC's own framework calls a warrant an electronic document of title, but that claim rests on DMCC's contract framework rather than a naming statute, and no court has tested it. The design therefore uses the warrant as one evidentiary layer among several, never as the foundation (section 3.5). Whether Tradeflow supports the sub-account structures Aurumix would want is an open commercial question for DMCC.</p>
       </div>

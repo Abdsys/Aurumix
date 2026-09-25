@@ -169,7 +169,7 @@ The scarcity layer (capped, time-boxed, oversubscribed "Mining Events") is delet
 
 Physical custody and legal ownership are two different problems, and the design separates them deliberately.
 
-**Physical custody** is a vault contract: allocated, serial-numbered bars, segregated from Aurumix's own metal, with an independent assay on intake and a monthly Allocation Report publishing bar serials, assay certificates and both ledger balances. The recommended vault is Brink's Global Services DMCC, which has the useful property that the recommended lending partner already lends against gold held there (section 10.3).
+**Physical custody** is a vault contract: allocated, serial-numbered bars, segregated from Aurumix's own metal, with an independent assay on intake and a monthly Allocation Report publishing bar serials, assay certificates and both ledger balances. The recommended vault is Brink's Global Services DMCC, which has the useful property that the recommended lending partner already lends against gold held there (section 10.2).
 
 **Legal ownership** runs through the structure in section 3. One honest disclosure belongs here because it shapes the marketing: a USD 75-a-month saver can never own a specific bar. After a year they hold under 1% of a kilobar. The accurate description of what a customer owns, used in every document, is an **individually recorded, pro-rata undivided interest in identified, serial-numbered bars**. "100% individually allocated" would overstate it; "not a pooled allocation" (the client's wording) overstates it too. The pool itself is allocated and customer-segregated; each customer owns a recorded share of it.
 
