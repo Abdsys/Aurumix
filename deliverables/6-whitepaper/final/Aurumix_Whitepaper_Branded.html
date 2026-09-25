@@ -832,6 +832,22 @@ tfoot td {
 .mb-xl { margin-bottom: var(--space-xl); }
 .mb-2xl { margin-bottom: var(--space-2xl); }
 
+/* Mermaid diagrams — block layout so SVG height flows naturally */
+figure.mermaid,
+figure .mermaid {
+  display: block;
+  overflow: visible;
+  margin: 0.15in 0;
+  text-align: center;
+}
+figure.mermaid svg,
+figure .mermaid svg {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+
 /* Print utilities */
 .keep-together {
   break-inside: avoid;
@@ -2000,6 +2016,17 @@ td.fill-cell--highlight {
 
 
 /* ================================================================
+   AUTO-CONTINUATION
+   ================================================================ */
+
+/* Hide heading + gold rule on continuation pages */
+.page[data-continuation] .content-heading,
+.page[data-continuation] .heading-rule {
+  display: none;
+}
+
+
+/* ================================================================
    SCREEN PREVIEW MODE
    ================================================================ */
 
@@ -2095,13 +2122,6 @@ td.fill-cell--highlight {
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
-
-    .page--cover-minimal-typographic .cover-wordmark {
-      position: absolute;
-      bottom: 0.75in;
-      left: 50%;
-      transform: translateX(-50%);
-    }
   
 /* ---- template: special-table-of-contents ---- */
 
@@ -2142,6 +2162,11 @@ td.fill-cell--highlight {
       width: 4px;
       height: 100%;
       background: var(--gold);
+    }
+    /* Hide title and rule on continuation pages */
+    .page--special-table-of-contents[data-continuation] .toc-title,
+    .page--special-table-of-contents[data-continuation] .toc-rule {
+      display: none;
     }
   
 /* ---- template: section-typographic ---- */
@@ -2278,6 +2303,12 @@ td.fill-cell--highlight {
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
+
+    /* Hide heading and rule on continuation pages */
+    .page--special-executive-summary[data-continuation] .summary-title,
+    .page--special-executive-summary[data-continuation] .summary-rule {
+      display: none;
+    }
   
 /* ---- template: content-single-column ---- */
 
@@ -2329,6 +2360,14 @@ td.fill-cell--highlight {
       color: var(--concrete);
       font-style: italic;
       margin-bottom: 16px;
+    }
+
+    /* Hide heading and rule on continuation pages */
+    .page--content-single-column[data-continuation] .content-heading,
+    .page--content-single-column[data-continuation] .heading-rule,
+    .page--content-single-column[data-continuation] .content-image,
+    .page--content-single-column[data-continuation] .image-caption {
+      display: none;
     }
   
 /* ---- template: content-data-table ---- */
@@ -2391,6 +2430,11 @@ td.fill-cell--highlight {
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
+    /* Hide heading and rule on continuation pages */
+    .page--content-data-table[data-continuation] .content-heading,
+    .page--content-data-table[data-continuation] .heading-rule {
+      display: none;
+    }
   
 /* ---- template: special-appendix ---- */
 
@@ -2425,9 +2469,44 @@ td.fill-cell--highlight {
     }
 
     .page--special-appendix .appendix-body {
-      column-count: 2;
-      column-gap: 0.4in;
-      column-rule: 1px solid var(--border-light);
+      font-family: var(--font-sans);
+      font-size: 9.5pt;
+      line-height: 1.55;
+    }
+
+    .page--special-appendix .appendix-body table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .page--special-appendix .appendix-body th {
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--warm-charcoal);
+      color: var(--warm-white);
+      font-weight: 600;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .page--special-appendix .appendix-body td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: top;
+    }
+
+    .page--special-appendix .appendix-body td:first-child {
+      font-weight: 600;
+      white-space: nowrap;
+      width: 25%;
+    }
+
+    /* Also supports h4+p format for non-glossary appendices (references, stakeholder journeys) */
+    .page--special-appendix .appendix-body h4 {
+      font-size: 10pt;
+      margin-bottom: 4px;
+      break-after: avoid;
     }
 
     .page--special-appendix .appendix-body p {
@@ -2436,10 +2515,9 @@ td.fill-cell--highlight {
       margin-bottom: 10px;
     }
 
-    .page--special-appendix .appendix-body h4 {
-      font-size: 10pt;
-      margin-bottom: 4px;
-      break-after: avoid;
+    /* Hide header on continuation pages */
+    .page--special-appendix[data-continuation] .appendix-header {
+      display: none;
     }
   
 /* ---- template: closing-back-cover ---- */
@@ -2580,7 +2658,7 @@ ol.wp-findings .wp-find-body { font-size: 9.5pt; line-height: 1.4; color: var(--
   bottom: 0.9in !important; transform: none !important; text-align: left !important; justify-content: flex-start !important; }
 .page--cover-minimal-typographic .cover-wordmark img { margin: 0 !important; }
 
-/* appendix (glossary, references, notice): ONE column, overriding the template's column-count: 2 */
+/* appendix (glossary, references): ONE column, overriding the template's column-count: 2 */
 .page--special-appendix .content-area { top: 110px; }
 .page--special-appendix .appendix-header { padding: 18px var(--safe-margin) 16px; }
 .page--special-appendix .appendix-body, .page--special-appendix .content-area { column-count: 1 !important; column-rule: none !important; }
@@ -2639,7 +2717,6 @@ ol.wp-findings .wp-find-body { font-size: 9.5pt; line-height: 1.4; color: var(--
           <div class="toc-entry toc-entry--sub" data-toc-ref="toc-17-risks"><span class="toc-entry-text">17. Risks</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
           <div class="toc-entry toc-entry--section" data-toc-ref="toc-glossary"><span class="toc-entry-text">Glossary</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
           <div class="toc-entry toc-entry--section" data-toc-ref="toc-references"><span class="toc-entry-text">References</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
-          <div class="toc-entry toc-entry--section" data-toc-ref="toc-important-notice"><span class="toc-entry-text">Important notice</span><span class="toc-entry-dots"></span><span class="toc-entry-page">.</span></div>
         </div>
       </div>
       <div class="page-number" data-text-role="page-number"></div>
@@ -3809,17 +3886,6 @@ graph TD
       </div>
       <div class="content-area">
         <ol><li>ICE Benchmark Administration. "LBMA Gold Price." lbma.org.uk/prices-and-data/precious-metal-prices</li><li>Al Etihad Payments (Central Bank of the UAE). "AANI instant payments platform." aani.ae</li><li>Vogelsteller, F. and Buterin, V. "EIP-20: Token Standard." Ethereum Improvement Proposals, 2015. eips.ethereum.org/EIPS/eip-20</li><li>DIFC Trust Law, DIFC Law No. 4 of 2018. difc.ae</li><li>Dubai Virtual Assets Regulatory Authority. "Virtual Asset Issuance Rulebook." rulebooks.vara.ae</li></ol>
-      </div>
-      <div class="page-number" data-text-role="page-number"></div>
-    </div>
-
-    <div class="page page--special-appendix" data-template="special-appendix" data-auto-continue>
-      <div class="appendix-header">
-        <h2 id="toc-important-notice" class="appendix-title" data-text-role="title">Important notice</h2>
-        <p class="appendix-subtitle" data-text-role="subtitle">Please read before relying on this whitepaper</p>
-      </div>
-      <div class="content-area">
-        <p>This whitepaper describes the Aurumix product and the AURX token as designed. It is not an offer to sell, or a request to buy, any virtual asset where that would be unlawful. AURX is not offered to residents of India, the United States or countries on the FATF blacklist, or anywhere its offer is not permitted.</p><p>AURX will be offered only after VARA grants the required licence and approves this whitepaper. Nothing here is financial, legal, tax or investment advice. The value of gold can go down as well as up, and holding AURX earns no payments.</p><p>Credit and the Gold Card depend on licensed partners, and some legal positions are still being confirmed (section 16.3). Terms, fees and features may change. The client agreement and published fee schedule take precedence.</p><p>If you are unsure, speak to an independent adviser.</p>
       </div>
       <div class="page-number" data-text-role="page-number"></div>
     </div>

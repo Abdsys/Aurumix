@@ -29,7 +29,6 @@
 17. Risks
 Glossary
 References
-Important notice
 
 ---
 
@@ -565,15 +564,3 @@ If a reading changes, the design changes with it, most likely by limiting AURX h
 3. Vogelsteller, F. and Buterin, V. "EIP-20: Token Standard." Ethereum Improvement Proposals, 2015. eips.ethereum.org/EIPS/eip-20
 4. DIFC Trust Law, DIFC Law No. 4 of 2018. difc.ae
 5. Dubai Virtual Assets Regulatory Authority. "Virtual Asset Issuance Rulebook." rulebooks.vara.ae
-
----
-
-## Important notice
-
-This whitepaper describes the Aurumix product and the AURX token as designed. It is not an offer to sell, or a request to buy, any virtual asset where that would be unlawful. AURX is not offered to residents of India, the United States or countries on the FATF blacklist, or anywhere its offer is not permitted.
-
-AURX will be offered only after VARA grants the required licence and approves this whitepaper. Nothing here is financial, legal, tax or investment advice. The value of gold can go down as well as up, and holding AURX earns no payments.
-
-Credit and the Gold Card depend on licensed partners, and some legal positions are still being confirmed (section 16.3). Terms, fees and features may change. The client agreement and published fee schedule take precedence.
-
-If you are unsure, speak to an independent adviser.

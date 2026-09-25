@@ -1,83 +1,37 @@
 {
- "total": 43,
+ "total": 42,
  "overflow": [],
  "empties": [],
- "sparse": [
-  {
-   "page": 8,
-   "fill": 5
-  },
-  {
-   "page": 8,
-   "template": "content-single-column",
-   "fill": 5
-  }
- ],
+ "sparse": [],
  "mermaidFail": [],
  "tocBad": []
 }
-FILLS 2:94 4:88 5:98 6:64 7:99 8:5 10:96 11:87 12:69 13:99 14:76 15:67 17:76 18:77 19:87 20:81 21:40 22:80 24:86 25:100 26:42 27:97 28:67 30:54 31:89 32:97 33:76 34:87 36:85 37:65 38:75 39:90 40:47 41:56 42:67
-CONTINUATIONS [6,7,8,11,12,13,14,15,18,19,20,21,22,25,26,27,28,31,32,33,34,38,39,40,41]
+FILLS 2:91 4:89 5:94 6:67 7:100 9:97 10:88 11:70 12:99 13:77 14:67 16:76 17:77 18:88 19:82 20:60 22:87 23:44 24:79 25:98 26:68 28:54 29:90 30:98 31:76 32:88 34:86 35:65 36:75 37:90 38:47 39:56 40:63 41:19
+CONTINUATIONS [6,7,10,11,12,13,14,17,18,19,20,23,24,25,26,29,30,31,32,36,37,38,39]
 DIAG {"page":4,"fig":"Figure 1. ","scale":1,"minPt":10.5,"w":718,"h":218}
-DIAG {"page":6,"fig":"Figure 2. ","scale":1,"minPt":10.5,"w":577,"h":457}
+DIAG {"page":6,"fig":"Figure 2. ","scale":1,"minPt":10.5,"w":577,"h":481}
 DIAG {"page":7,"fig":"Figure 3. ","scale":1,"minPt":10.5,"w":690,"h":519}
-DIAG {"page":10,"fig":"Figure 4. ","scale":1,"minPt":10.5,"w":276,"h":547}
-DIAG {"page":11,"fig":"Figure 5. ","scale":0.97,"minPt":11.6,"w":720,"h":652}
-DIAG {"page":12,"fig":"Figure 6. ","scale":0.97,"minPt":11.7,"w":720,"h":497}
-DIAG {"page":13,"fig":"Figure 7. ","scale":1,"minPt":10.5,"w":276,"h":439}
-DIAG {"page":14,"fig":"Figure 8. ","scale":0.98,"minPt":10.3,"w":720,"h":408}
-DIAG {"page":15,"fig":"Figure 9. ","scale":0.97,"minPt":11.6,"w":720,"h":398}
-DIAG {"page":17,"fig":"Figure 10.","scale":0.97,"minPt":10.1,"w":720,"h":212}
-DIAG {"page":18,"fig":"Figure 11.","scale":0.94,"minPt":9.9,"w":504,"h":284}
-DIAG {"page":19,"fig":"Figure 12.","scale":1,"minPt":10.5,"w":276,"h":593}
-DIAG {"page":20,"fig":"Figure 13.","scale":0.92,"minPt":9.7,"w":504,"h":483}
-DIAG {"page":22,"fig":"Figure 14.","scale":1,"minPt":10.5,"w":647,"h":509}
-DIAG {"page":24,"fig":"Figure 15.","scale":1,"minPt":10.5,"w":547,"h":500}
-DIAG {"page":25,"fig":"Figure 16.","scale":0.97,"minPt":10.2,"w":720,"h":89}
-DIAG {"page":25,"fig":"Figure 17.","scale":1,"minPt":10.5,"w":265,"h":470}
-DIAG {"page":27,"fig":"Figure 18.","scale":1,"minPt":10.5,"w":500,"h":516}
-DIAG {"page":28,"fig":"Figure 19.","scale":0.91,"minPt":10.9,"w":720,"h":441}
-DIAG {"page":31,"fig":"Figure 20.","scale":1,"minPt":10.5,"w":569,"h":479}
-DIAG {"page":32,"fig":"Figure 21.","scale":0.97,"minPt":11.7,"w":720,"h":481}
-DIAG {"page":34,"fig":"Figure 22.","scale":0.86,"minPt":9.1,"w":576,"h":340}
-DIAG {"page":36,"fig":"Figure 23.","scale":0.97,"minPt":10.2,"w":720,"h":255}
-DIAG {"page":38,"fig":"Figure 24.","scale":1,"minPt":10.5,"w":630,"h":594}
-DIAG {"page":39,"fig":"Figure 25.","scale":1,"minPt":10.5,"w":276,"h":401}
+DIAG {"page":9,"fig":"Figure 4. ","scale":1,"minPt":10.5,"w":276,"h":547}
+DIAG {"page":10,"fig":"Figure 5. ","scale":0.97,"minPt":11.6,"w":720,"h":652}
+DIAG {"page":11,"fig":"Figure 6. ","scale":0.97,"minPt":11.7,"w":720,"h":497}
+DIAG {"page":12,"fig":"Figure 7. ","scale":1,"minPt":10.5,"w":276,"h":439}
+DIAG {"page":13,"fig":"Figure 8. ","scale":0.98,"minPt":10.3,"w":720,"h":408}
+DIAG {"page":14,"fig":"Figure 9. ","scale":0.97,"minPt":11.6,"w":720,"h":398}
+DIAG {"page":16,"fig":"Figure 10.","scale":0.97,"minPt":10.1,"w":720,"h":212}
+DIAG {"page":17,"fig":"Figure 11.","scale":0.94,"minPt":9.9,"w":504,"h":284}
+DIAG {"page":18,"fig":"Figure 12.","scale":1,"minPt":10.5,"w":276,"h":593}
+DIAG {"page":19,"fig":"Figure 13.","scale":0.92,"minPt":9.7,"w":504,"h":483}
+DIAG {"page":22,"fig":"Figure 14.","scale":1,"minPt":10.5,"w":547,"h":500}
+DIAG {"page":23,"fig":"Figure 15.","scale":0.97,"minPt":10.2,"w":720,"h":89}
+DIAG {"page":24,"fig":"Figure 16.","scale":1,"minPt":10.5,"w":265,"h":470}
+DIAG {"page":25,"fig":"Figure 17.","scale":1,"minPt":10.5,"w":500,"h":516}
+DIAG {"page":26,"fig":"Figure 18.","scale":0.91,"minPt":10.9,"w":720,"h":441}
+DIAG {"page":29,"fig":"Figure 19.","scale":1,"minPt":10.5,"w":569,"h":479}
+DIAG {"page":30,"fig":"Figure 20.","scale":0.97,"minPt":11.7,"w":720,"h":481}
+DIAG {"page":32,"fig":"Figure 21.","scale":0.86,"minPt":9.1,"w":576,"h":340}
+DIAG {"page":34,"fig":"Figure 22.","scale":0.97,"minPt":10.2,"w":720,"h":255}
+DIAG {"page":36,"fig":"Figure 23.","scale":1,"minPt":10.5,"w":630,"h":594}
+DIAG {"page":37,"fig":"Figure 24.","scale":1,"minPt":10.5,"w":276,"h":401}
 TWOCOL []
 MIN_DIAG_PT 9.1
-P2 h=941: h1.toc-title[43] Contents | hr.toc-rule[53]  | div.toc-list[889] Part 1. What Aurum
-P4 h=941: h2.summary-title[35] 1. Aurumix in brie | hr.summary-rule[43]  | p.summary-intro[99] Aurumix lets you s | div.stats-row[200] 1 AURXEquals one g | ol.wp-findings[568] 1Real gold by the  | figure.wp-fig[828] #mermaid-179026658
-P5 h=941: h2.wp-h2[42] 2. The problem: sa | p[104] Millions of Gulf h | table[304] RouteWhere it fall | h2.wp-h2[379] 3. How Aurumix wor | h3[421] 3.1 The gold | table[658] FeatureDetail Met | h3[709] 3.2 One token, one | div.wp-band[794] One AURX always eq | h3[836] 3.3 What you own a | p[921] You own your share
-P6(cont) h=941: figure.wp-fig[517] #mermaid-179026658 | h3[560] 3.4 Who does what | p[599] Aurumix issues AUR
-P7(cont) h=941: figure.wp-fig[561] #mermaid-179026658 | h2.wp-h2[635] 4. Who can join | div.wp-band[697] Your country of re | table[934] Where you liveCan 
-P8(cont) h=941: p[46] Non-resident India
-P10 h=941: h2.wp-h2[42] 5. Buying gold | h3[85] 5.1 Two ways to bu | table[248] Monthly savings pl | h3[298] 5.2 Getting starte | figure.wp-fig[905] #mermaid-179026658
-P11(cont) h=941: p[23] Aurumix accepts ba | h3[66] 5.3 How you pay | p[128] Aurumix never pull | figure.wp-fig[822] AurumixClient acco
-P12(cont) h=941: h3[27] 5.4 What happens w | div.wp-band[111] Every purchase fol | figure.wp-fig[650] Token ledgerDIFC t
-P13(cont) h=941: h3[27] 5.5 A worked examp | div.wp-ex[348] John pays USD 75 i | h3[390] 5.6 Large purchase | p[430] Larger purchases n | figure.wp-fig[928] #mermaid-179026658
-P14(cont) h=941: h3[27] 5.7 The gold float | p[89] Dealers sell whole | figure.wp-fig[539] #mermaid-179026658 | h2.wp-h2[614] 6. Selling your go | p[676] You can sell any a | p[715] Example: Sophie se
-P15(cont) h=941: figure.wp-fig[440] DIFC trustToken le | h3[482] 6.1 How long it ta | p[521] Most sales are pai | h3[564] 6.2 If many people | p[626] New purchases cove
-P17 h=941: h2.wp-h2[42] 7. The Investor Co | h3[85] 7.1 What the score | p[147] The ICS runs from  | h3[190] 7.2 The first six  | p[252] Your score starts  | figure.wp-fig[506] #mermaid-179026658 | h3[548] 7.3 How the score  | table[711] MeasureWhat it cou
-P18(cont) h=941: figure.wp-fig[344] #mermaid-179026658 | p[383] Any amount from US | h3[426] 7.4 The tiers | table[720] TierScoreWhat it t
-P19(cont) h=941: figure.wp-fig[653] #mermaid-179026658 | h3[696] 7.5 What a missed  | p[758] Mark has reached S | div.wp-band[820] A lower score chan
-P20(cont) h=941: figure.wp-fig[543] #mermaid-179026658 | p[582] If you become resi | h2.wp-h2[656] 8. The five benefi | h3[699] 8.1 What each tier | p[761] Credit and the Gol
-P21(cont) h=941: table[372] BenefitNo tierSilv
-P22(cont) h=941: figure.wp-fig[569] #mermaid-179026658 | h3[612] 8.2 Rules for ever | p[651] A lower tier never | h3[693] 8.3 When each bene | p[756] Fee and family pla
-P24 h=941: h2.wp-h2[42] 9. Credit and the  | h3[85] 9.1 One credit lin | p[147] One gold-secured c | figure.wp-fig[707] #mermaid-179026658 | h3[749] 9.2 Your borrowing | p[812] Your limit is your
-P25(cont) h=941: table[147] Emma's tierLTVLimi | figure.wp-fig[286] #mermaid-179026658 | p[325] The lender shows i | h3[368] 9.3 The Gold Card | p[407] Every customer can | figure.wp-fig[937] #mermaid-179026658
-P26(cont) h=941: p[23] The card never dow | h3[66] 9.4 If the gold pr | p[128] A lower gold price | table[328] Loan as a share of | div.wp-band[398] At Sovereign with 
-P27(cont) h=941: figure.wp-fig[576] #mermaid-179026658 | h2.wp-h2[650] 10. Gold Rewards | p[712] Gold Rewards is ca | table[912] TierRate on card s
-P28(cont) h=941: div.wp-ex[84] Example: Emma is a | p[146] Rewards are funded | figure.wp-fig[630] AurumixCard issuer
-P30 h=941: h2.wp-h2[42] 11. Family Portfol | h3[85] 11.1 Two family fe | table[211] FeatureWhat it doe | p[258] Both are open to e | h3[301] 11.2 Triggers | table[464] TriggerExampleWhen | p[511] Probate cannot be 
-P31(cont) h=941: figure.wp-fig[521] #mermaid-179026658 | h3[563] 11.3 What Aurumix  | table[726] Aurumix doesAurumi | h3[777] 11.4 Price | p[839] The family plan co
-P32(cont) h=941: div.wp-ex[214] Example: Emma is a | h2.wp-h2[288] 12. Partners, agen | h3[331] 12.1 The partner c | p[393] Wallets, neobanks  | figure.wp-fig[916] DIFC trust andvaul
-P33(cont) h=941: p[23] The partner pays A | h3[66] 12.2 Agents | p[105] Contracted agents  | h3[148] 12.3 Member referr | p[210] A one-time reward  | h2.wp-h2[284] 13. The AURX token | h3[327] 13.1 Token facts | table[600] FeatureDetail Nam | h3[651] 13.2 Identity at t | p[713] Identity is checke
-P34(cont) h=941: figure.wp-fig[400] #mermaid-179026658 | p[462] Sending AURX moves | h3[505] 13.3 Controls Auru | table[705] ControlWhen it is  | h3[756] 13.4 Trading elsew | p[818] AURX may trade on 
-P36 h=941: h2.wp-h2[42] 14. Safety and tra | h3[85] 14.1 The backing r | div.wp-band[170] Gold held in the t | h3[212] 14.2 The monthly A | p[274] Every month Aurumi | figure.wp-fig[571] #mermaid-179026658 | h3[614] 14.3 Separation an | p[699] Your money sits in | h3[742] 14.4 If Aurumix wi | p[804] Aurumix keeps a wi
-P37 h=941: h2.content-heading[35] 15. Fees at a glan | hr.heading-rule[42]  | div.stats-row[149] 2% to 5%Entry fee, | h3[196] 15.1 What you pay | table[567] FeeAmountWhen Ent | p[614] The entry fee is s
-P38(cont) h=941: h3[27] 15.2 How Aurumix e | figure.wp-fig[663] #mermaid-179026658 | p[702] Aurumix earns from
-P39(cont) h=941: h2.wp-h2[42] 16. Legal and regu | h3[85] 16.1 Regulators | table[248] RegulatorWhat it c | h3[298] 16.2 Licence | p[384] Aurumix intends to | figure.wp-fig[844] #mermaid-179026658
-P40(cont) h=941: h3[27] 16.3 Positions tha | p[89] These positions ar | ul[263] Ownership moves wi | p[303] If a reading chang | h3[345] 16.4 What AURX is | ul[438] AURX represents ow
-P41(cont) h=941: h2.wp-h2[42] 17. Risks | table[524] RiskWhat could hap
-P42 h=888: p.gl[17] Allocated gold. Sp | p.gl[36] ARVA. Asset-Refere | p.gl[56] Confirmed SIP. Six | p.gl[75] ERC-20. The standa | p.gl[95] The fix. The LBMA  | p.gl[114] The float. Aurumix | p.gl[134] Gold Rewards. Cash | p.gl[153] ICS. Investor Conv | p.gl[173] Interchange. A sma | p.gl[192] LBMA. London Bulli | p.gl[212] Loan-to-value (LTV | p.gl[232] Probate. The court | p.gl[251] SIP. Systematic in | h2.wp-app-h2[288] References | ol.wp-refs[399] ICE Benchmark Admi | h2.wp-app-h2[436] Important notice | p.notice[493] This whitepaper de | p.notice[531] AURX will be offer | p.notice[570] Credit and the Gol | p.notice[591] If you are unsure,
-PDF written: C:\Users\pc\OneDrive - Institute of Business Administration\Desktop\Aurumix\deliverables\6-whitepaper\final\Aurumix_Whitepaper.pdf
+PDF written: C:\Users\BlockApex\Desktop\Aurumix\Aurumix\deliverables\6-whitepaper\final\Aurumix_Whitepaper.pdf

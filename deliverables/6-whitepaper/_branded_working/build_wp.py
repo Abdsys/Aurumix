@@ -162,7 +162,7 @@ def parse_doc():
     secs, cur = {}, None
     for l in lines:
         m = re.match(r"^## (.+)$", l)
-        if m and (re.match(r"^\d+\. ", m.group(1)) or m.group(1) in ("Glossary", "References", "Important notice")):
+        if m and (re.match(r"^\d+\. ", m.group(1)) or m.group(1) in ("Glossary", "References")):
             cur = Section(m.group(1).strip(), [])
             cur._lines = []
             secs[cur.num if cur.num else cur.title] = cur
@@ -480,7 +480,7 @@ ol.wp-findings .wp-find-body { font-size: 9.5pt; line-height: 1.4; color: var(--
   bottom: 0.9in !important; transform: none !important; text-align: left !important; justify-content: flex-start !important; }
 .page--cover-minimal-typographic .cover-wordmark img { margin: 0 !important; }
 
-/* appendix (glossary, references, notice): ONE column, overriding the template's column-count: 2 */
+/* appendix (glossary, references): ONE column, overriding the template's column-count: 2 */
 .page--special-appendix .content-area { top: 110px; }
 .page--special-appendix .appendix-header { padding: 18px var(--safe-margin) 16px; }
 .page--special-appendix .appendix-body, .page--special-appendix .content-area { column-count: 1 !important; column-rule: none !important; }
@@ -606,7 +606,7 @@ PARTS = [
     (5, "Family, partners and the token", [11, 12, 13]),
     (6, "Safety, fees, legal and risks", [14, 15, 16, 17]),
 ]
-BACK = ["Glossary", "References", "Important notice"]
+BACK = ["Glossary", "References"]
 
 # plan section 3.3 band list: (label, section key, start of the whole copy paragraph that becomes the band)
 BAND_RULES = [
@@ -751,7 +751,7 @@ def build_pages(S):
     pages.append(page_content("content-data-table", "\n".join(items)))
 
     # ---- back matter (unnumbered): one appendix page each, laid out like the MD document's appendices
-    g, r, nt = S["Glossary"], S["References"], S["Important notice"]
+    g, r = S["Glossary"], S["References"]
 
     def appendix(sec, subtitle, body):
         return """
@@ -768,7 +768,6 @@ def build_pages(S):
 
     pages.append(appendix(g, "Terms used in this whitepaper", "".join(U(b) for b in g.intro)))
     pages.append(appendix(r, "Sources cited in this whitepaper", "".join(U(b) for b in r.intro)))
-    pages.append(appendix(nt, "Please read before relying on this whitepaper", "".join(U(b) for b in nt.intro)))
 
     pages.append(page_back())
     return pages
