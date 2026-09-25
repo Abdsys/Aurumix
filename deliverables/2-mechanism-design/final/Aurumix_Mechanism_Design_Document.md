@@ -2,12 +2,6 @@
 
 ## Gold-backed savings infrastructure under VARA
 
-**Prepared by:** Tokenomics.net
-**For:** Aurumix project team and counsel
-**Date:** 8 September 2026
-**Version:** 1.0
-**Status:** Consolidated design record. Supersedes the individual Phase 2 decision drafts as the single reading copy; the drafts remain the detailed audit trail.
-
 ---
 
 ## How to read this document
