@@ -259,7 +259,7 @@ def parse_doc():
     # front matter: up to '## 1. Introduction'
     first = next(i for i, l in enumerate(lines) if re.match(r"^## 1\. Introduction", l))
     front = lines[:first]
-    # sections: '## N. Title' and '## Appendix X' / '## References' / '## Document control'
+    # sections: '## N. Title' and '## Appendix X' / '## References'
     secs = []
     cur = None
     for l in lines[first:]:
@@ -393,7 +393,6 @@ def main():
     numbered = [s for s in secs if re.match(r"^\d+\.", s["title"])]
     appendices = [s for s in secs if s["title"].startswith("Appendix")]
     refs = get_sec(secs, "References")
-    docctl = get_sec(secs, "Document control")
 
     # TOC entries
     toc_entries.append(("sub", "How to read this document", "toc-how-to-read-this-document"))
@@ -409,7 +408,6 @@ def main():
         sid = slug(s["title"]); s["id"] = sid
         toc_entries.append(("sec", s["title"], sid))
     toc_entries.append(("sec", "References", slug("References")))
-    toc_entries.append(("sec", "Document control", slug("Document control")))
 
     pages.append(page_toc(toc_entries))
 
@@ -499,8 +497,6 @@ def main():
         pages.append(page_appendix(s["title"], subtitles.get(key, ""), blocks_html(blocks), s["id"]))
     pages.append(page_appendix("References", "Primary sources verified during the design",
                                blocks_html(md_blocks(refs["lines"])), slug("References")))
-    pages.append(page_appendix("Document control", "",
-                               blocks_html(md_blocks(docctl["lines"])), slug("Document control")))
 
     pages.append(page_back())
 

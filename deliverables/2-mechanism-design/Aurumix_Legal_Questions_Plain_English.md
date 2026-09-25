@@ -103,7 +103,7 @@ VARA says that where a token gives holders a right to redeem, the issuer may cha
 ### B. The distribution model
 
 - **Is the three-level agent network lawful in the UAE?** We could not retrieve the UAE's anti-pyramid law. Member referrals are single level for that reason; the agent network still has three levels, organised by role rather than recruitment.
-- **Do agents need a licence?** Agents help people sign up and keep saving, which could look like "arranging" or "advising". This is not yet in the counsel brief and should be added.
+- **Do agents need a licence?** Agents help people sign up and keep saving, which could look like "arranging" or "advising".
 - **Do referrers need a licence?** We assumed not, because they only share a code and never place orders or give advice.
 
 ### C. Countries beyond the UAE

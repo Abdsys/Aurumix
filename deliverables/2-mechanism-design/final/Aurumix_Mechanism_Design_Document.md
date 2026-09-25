@@ -39,7 +39,7 @@ Three conventions are used throughout.
 15. Risk and adversarial analysis
 
 Appendix A: Glossary
-References and document control
+References
 
 ---
 
@@ -1279,7 +1279,7 @@ VARA says that where a token gives holders a right to redeem, the issuer may cha
 #### B. The distribution model
 
 - **Is the three-level agent network lawful in the UAE?** We could not retrieve the UAE's anti-pyramid law. Member referrals are single level for that reason; the agent network still has three levels, organised by role rather than recruitment.
-- **Do agents need a licence?** Agents help people sign up and keep saving, which could look like "arranging" or "advising". This is not yet in the counsel brief and should be added.
+- **Do agents need a licence?** Agents help people sign up and keep saving, which could look like "arranging" or "advising".
 - **Do referrers need a licence?** We assumed not, because they only share a code and never place orders or give advice.
 
 #### C. Countries beyond the UAE
@@ -1419,17 +1419,3 @@ Primary sources, verified verbatim during the design and held in the project rec
 14. The Phase 1 market research record: nineteen-protocol landscape, 292 sources (Aurumix Protocol Landscape).
 
 The full Phase 2 record (eleven decision drafts, the 51-entry decision log, sixteen process map sets, and the two verified statute texts) is available to counsel on request.
-
----
-
-## Document control
-
-| Field | Value |
-|---|---|
-| Version | 1.2. v1.1 closed four open design questions (forced sales and the score, redeemed gold's routing, card and credit through a lapse, the USD 20 floor's rail condition); v1.2 is a front-matter and readability pass from review |
-| Date | 22 September 2026 |
-| Prepared by | Tokenomics.net |
-| Status | Consolidated design record, for the project team and counsel |
-| Companion documents | Aurumix: Design Summary and Open Legal Questions (19 Aug 2026); Aurumix Process Maps (this deliverable's diagram set); the Phase 2 decision drafts (audit trail) |
-| Basis | The client's 100 G Business Model (current specification), 57 logged design decisions, and primary-source regulatory research through September 2026 |
-| Contact | Tokenomics.net |
