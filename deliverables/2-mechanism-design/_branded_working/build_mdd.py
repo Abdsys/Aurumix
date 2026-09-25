@@ -293,7 +293,6 @@ def page_cover():
       <div class="cover-bottom">
         <div class="cover-meta">
           <img src="%s" alt="Tokenomics.net" class="logo logo--cover">
-          <span>September 2026</span>
         </div>
       </div>
     </div>""" % logo_data("tokenomics-logo-dark.svg")
