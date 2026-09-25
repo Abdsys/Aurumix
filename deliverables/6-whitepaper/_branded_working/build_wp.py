@@ -476,7 +476,8 @@ ol.wp-findings .wp-find-body { font-size: 9.5pt; line-height: 1.4; color: var(--
 .page--special-table-of-contents .toc-entry--sub .toc-entry-text { font-size: 10pt; }
 
 /* cover: no meta lines; Tokenomics.net wordmark alone, bottom left, aligned with the title */
-.page--cover-minimal-typographic .cover-wordmark { left: 0.7in !important; right: auto !important;
+/* position set here, not inherited: newer plugin templates dropped it and the wordmark jumped to the top left */
+.page--cover-minimal-typographic .cover-wordmark { position: absolute !important; top: auto !important; left: 0.7in !important; right: auto !important;
   bottom: 0.9in !important; transform: none !important; text-align: left !important; justify-content: flex-start !important; }
 .page--cover-minimal-typographic .cover-wordmark img { margin: 0 !important; }
 
