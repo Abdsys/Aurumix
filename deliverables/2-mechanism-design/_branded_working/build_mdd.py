@@ -161,15 +161,22 @@ def md_blocks(lines):
             inner = "".join("<p>%s</p>" % inline(p.replace("\n", " ")) for p in paras if p.strip())
             blocks.append(("quote", "<blockquote>%s</blockquote>" % inner, None))
         elif s.startswith("- ") or s.startswith("* "):
-            items = []
+            items = []  # [text, [sub-items]]; an indented "  - " line nests under the item above it
             while i < n and (lines[i].strip().startswith("- ") or lines[i].strip().startswith("* ")):
+                nested = len(lines[i]) - len(lines[i].lstrip()) >= 2 and items
                 item = lines[i].strip()[2:]
                 # absorb continuation lines
                 j = i + 1
                 while j < n and lines[j].strip() and not re.match(r"^(\-|\*|\||#|>|```)", lines[j].strip()):
                     item += " " + lines[j].strip(); j += 1
-                items.append(item); i = j
-            blocks.append(("ul", "<ul>" + "".join("<li>%s</li>" % inline(it) for it in items) + "</ul>", None))
+                if nested:
+                    items[-1][1].append(item)
+                else:
+                    items.append([item, []])
+                i = j
+            blocks.append(("ul", "<ul>" + "".join(
+                "<li>%s%s</li>" % (inline(it), "<ul>" + "".join("<li>%s</li>" % inline(s) for s in sub) + "</ul>" if sub else "")
+                for it, sub in items) + "</ul>", None))
         elif re.match(r"^\d+\.\s", s):
             items = []
             while i < n and re.match(r"^\d+\.\s", lines[i].strip()):

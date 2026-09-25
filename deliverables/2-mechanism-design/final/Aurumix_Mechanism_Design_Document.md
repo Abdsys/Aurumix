@@ -75,7 +75,7 @@ The serviceable perimeter at launch is narrower than the population, because vir
 | Open at launch | UAE | The issuer's own jurisdiction. Roughly 3.5 million Indian residents alone, before other South Asian communities |
 | Open, needs local authorisation | Oman, then Bahrain | Oman has no VASP regime in force (a gap, not a permission). Bahrain requires CBB approval, local capital and a locally licensed distributor |
 | Effectively closed | Saudi Arabia, Kuwait, Qatar | Central bank restrictions on institutions processing virtual asset transactions. A banking problem, not a marketing one |
-| Closed | India (residents) | Multiple independent bars. Section 14.5 and Appendix A of the legal brief |
+| Closed | India (residents) | Multiple independent bars. Section 14.4 and Appendix A of the legal brief |
 | Reachable, each needs its own licence | UK, Singapore, Canada, Australia | Not launch markets |
 | Excluded | United States, FATF blacklist jurisdictions | Deliberate |
 
@@ -463,7 +463,7 @@ Using push payments avoids three problems: no mandates to manage, no bank charge
 
 Four SIP payment rules:
 
-- **USD 20 is a hard minimum.** A smaller payment is returned, never partly credited. The minimum holds as long as each collection costs about USD 0.25 or less, which the Request to Pay contract must confirm (section 14.4). At that cost a payment covers its own cost from about USD 11. At the higher prices found in research, it would take about USD 66, and the minimum would need revisiting.
+- **USD 20 is a hard minimum.** A smaller payment is returned, never partly credited. The minimum holds as long as each collection costs about USD 0.25 or less, which the Request to Pay contract must confirm (section 14.6). At that cost a payment covers its own cost from about USD 11. At the higher prices found in research, it would take about USD 66, and the minimum would need revisiting.
 - **The grace period is 5 calendar days** from the contribution date, and never ends on a weekend or public holiday. Insurance products use 15 days because failed debits take time to recover; a push payment has no such delay, so grace only covers being busy or away.
 - **A failed payment and a skipped payment are tracked separately.** The system logs whether each request was delivered and opened, so "never saw it" and "chose not to pay" can be told apart. Published benchmarks put accidental churn at 20 to 40% of subscription churn, and the design keeps it from being read as a decision.
 - **Lowering the amount is free, instant and never affects the score.** Otherwise the customer's only alternative is to stop.
@@ -565,7 +565,7 @@ The float does five jobs:
 **Two costs to know:**
 
 - **Refill price risk.** The float gives out gold at today's price and is refilled at a later price. At normal gold volatility this is well under 0.5% of purchases and averages out to zero over time.
-- **The pricing rule itself.** Setting the customer's price at the next LBMA fix, hours away, instead of a live quote costs about 0.79 percentage points. Switching to live quotes is a client decision still to be made (section 14.4).
+- **The pricing rule itself.** Setting the customer's price at the next LBMA fix, hours away, instead of a live quote costs about 0.79 percentage points. Switching to live quotes is a client decision still to be made.
 
 ### 6.4 Refilling the float
 
@@ -1081,7 +1081,7 @@ The 30% is a placeholder, to be set with the agent rates once the revenue model 
 - **No cap on the amount.** The reward is a fixed share of what the new customer actually paid, so it scales like a normal commission. Someone could pay large amounts for six months and then drop to the minimum, but they would still lose money on the round trip, and large payments trigger source-of-funds checks.
 - **It also helps retention.** The reward lands at the new customer's sixth month, when savers are most likely to drop off.
 - **No cap on the number of referrals.** VARA's own guidance shows a licensed firm paying referral codes with no maximum. Aurumix keeps the right to review anyone who is clearly running a referral business.
-- **It does not pay back quickly.** A referred customer covers their reward after about nine to eleven months, and the whole calculation depends on the payment collection cost (section 14.4).
+- **It does not pay back quickly.** A referred customer covers their reward after about nine to eleven months, and the whole calculation depends on the payment collection cost (section 14.6).
 
 **Open decision:** launch the reward as designed (a thank-you), make it much larger and fund it from capital (to compete with bank referral offers), or record referrals at launch and set the reward later (which also removes it from VARA's approval timeline). The recommendation is the first option, announced at launch; in any version, no reward can be paid before about month 13.
 
@@ -1146,7 +1146,7 @@ At launch, with 100 g bars, these costs put the fee at **the top of the 2 to 5% 
 **Two more points:**
 
 - **The fee shown to the customer is not all margin.** Part of it pays the bar premium, so the fee disclosed and what Aurumix keeps are different numbers. Both are stated openly (section 5.3).
-- **The payment collection cost decides the USD 20 minimum.** It varies by payment method, and the real price only comes from a signed contract with the provider (section 14.4).
+- **The payment collection cost decides the USD 20 minimum.** It varies by payment method, and the real price only comes from a signed contract with the provider (section 14.6).
 
 ### 13.3 Custody: no storage fee for savers
 
@@ -1182,55 +1182,140 @@ Stablecoins are handled by signposting, not acceptance. UAE payment-token rules 
 
 ## 14. Assumptions register and open legal questions
 
-### 14.1 How this register works
+### 14.1 The questions at a glance
 
-Every load-bearing assumption in the design is collected here, stated as a proposition that is either true or false, with where it bites and what changes if it fails. The seven highest-value questions are already with the project team in the companion legal brief (`Aurumix: Design Summary and Open Legal Questions`, 19 August 2026), framed for onward instruction of counsel; this section maps those questions onto the mechanisms and adds the register behind them.
-
-Research method, for calibration of the confidence labels: load-bearing rules were fetched and read verbatim at primary source (the VARA rulebooks, the DIFC Trust Law 2018 text, the CBUAE rulebook, the scheme interchange schedule); claims that rest on secondary sources or could not be verified carry explicit confidence levels.
-
-### 14.2 The seven questions for counsel
-
-| # | What we are assuming, in plain terms | What depends on it | Where designed |
+| # | The question, in plain terms | What it decides | Priority |
 |---|---|---|---|
-| 1 | **Owning the token means owning the gold.** The DIFC trust can say it holds the gold for "whoever holds AURX at any moment", ownership can pass with the token without signed paperwork, and VARA accepts this as proof that ownership moves with the token | How the token is built, whether it can be listed, the capital needed, and all marketing | 3.5, 4.3 |
-| 2 | **Customers' gold is safe if Aurumix goes bust.** Gold held in the DIFC trust cannot be taken by Aurumix's creditors, even though customers own a share of a pool of bars and not specific bars | The trust structure, and the safety promise to savers | 3.5, 3.6 |
-| 3 | **The buyback rules are read the way we read them.** The buyback counts as a redemption, "equal value" means the full gold price with no deduction, and selling a customer's gold after a loan default is not caught by the no-fee rule | The cost of every exit, and recovering money on loan defaults | 3.7, 7, 10.4 |
-| 4 | **The trust is not an investment fund and needs no extra licence.** Holding gold for customers does not make the trust a fund, and a trustee company that runs only this one trust does not need a DFSA licence | Whether the DIFC structure is affordable | 3.5.3 |
-| 5 | **The lender's claim on pledged gold holds up.** A lender can take and register a valid legal claim over a customer's share of the gold, and Aurumix acting as valuer, agent and buyer at once is acceptable if disclosed | The whole credit and card product | 10.5 |
-| 6 | **The payment set-up is allowed.** Overseas payment providers that are e-money firms (not banks) can hold client money for Aurumix, and publishing a list of exchanges where customers can convert stablecoins does not count as arranging the trade | Collecting payments from abroad, and the stablecoin position | 5.4, 13.4 |
-| 7 | **The family product needs no extra licence.** It can work as a standing instruction on the account, without counting as will-writing, estate administration or acting as a trustee | Whether the family product launches, and under what name | 11 |
-| A | **Indian residents cannot take part.** Indian residents cannot legally send money to buy AURX, and Aurumix would be exposed if it accepted or marketed to them | The size of the market and the target customer | 1.3, 11.4 |
+| 1 | Does owning the token mean owning the gold? | The whole product, the token, the capital needed, the marketing | Blocking |
+| 2 | Is the customers' gold safe if Aurumix goes bust? | The trust structure and the safety promise to savers | Blocking |
+| 3 | Do VARA's buyback rules mean what we think? | The cost of every exit, and loan default recovery | Blocking |
+| 4 | Is the trust an investment fund, and does its trustee need a licence? | Whether the DIFC structure is affordable | High |
+| 5 | Can a lender take a legal claim on pledged gold? | The credit line and the Gold Card | High |
+| 6 | Is the payment setup allowed? | Collecting money from abroad, and the stablecoin position | High |
+| 7 | How can the family product be offered lawfully? | Whether the family feature launches, and its name | High |
+| A | Can Indian residents take part? | The size of the market | Indian counsel |
+| B | Is the distribution model lawful? | The agent network and referrals | High |
+| C | Which countries beyond the UAE can we serve? | Every market after launch | Before each market |
 
-Questions 1, 2 and 3 decide whether the product works at all. Questions 1 and 7 also change what gets built: an open or a permissioned token, and whether the family feature ships.
+**If only three questions could be asked, ask 1, 2 and 3 first.**
 
-### 14.3 Further assumptions by mechanism
+### 14.2 The three questions that decide whether the product works
 
-**Held back from counsel deliberately** (they follow from the seven and several will answer themselves): whether VARA's client-asset estate exclusion reaches physical metal; whether the 2%-of-reserves capital component can bite where no Reserve Assets exist; whether the buyback engages Exchange or Broker-Dealer licensing; VAT treatment of the entry fee, the gold and the services (investment-grade metal is zero-rated, but under direct ownership Aurumix is arguably supplying gold, and the margin consequence of a 5% VAT surprise against a thin fee line must not be discovered late); the custody-fee authority question; how the wind-down plan interacts with the DIFC vehicle; whether a Gold Rewards gram credit may land on a regulatorily blocked account; and the mechanics of pledging under the trust.
+#### Question 1: Does owning the token mean owning the gold?
 
-**Design assumptions that are ours, not counsel's:**
+- **What we assumed.** A trust in the DIFC is the legal owner of the gold on paper. Its deed says it holds the gold for *whoever holds AURX at any moment*. So when a customer sends AURX to someone else, ownership of the gold moves with it automatically, with no paperwork.
+- **Why it matters.** VARA requires the issuer to prove two things: that the customer really owns the gold, and that ownership moves with the token. This is the most important open point in the project.
+- **What we need counsel to confirm, as three separate answers:**
+  - Can a trust define its beneficiaries as "whoever holds the token"?
+  - Can the trust deed remove the usual rule that a beneficiary must sign a written document to pass on their interest? (English law does not allow this; DIFC law appears to.)
+  - If yes to both, does that satisfy VARA?
+- **If counsel says no.** AURX becomes a token that only verified, registered customers can hold. The token is built so this is a setting change, not a rebuild. The cost: AURX can no longer trade freely or be listed openly.
+- **If direct ownership fails altogether.** A much heavier VARA regime applies, including extra capital that could approach USD 4 million at the Year 10 target, and the marketing has to change from "you own gold" to "you have exposure to gold".
 
-| Assumption | Basis | If wrong |
+#### Question 2: Is the customers' gold safe if Aurumix goes bust?
+
+- **What we assumed.** Gold held in the DIFC trust cannot be taken by Aurumix's creditors, even though customers own a share of a pool of bars rather than specific bars.
+- **Why it matters.** It is the core safety promise to savers. It is also the reason the trust exists: VARA's rule protecting customer assets in an insolvency is written for virtual assets (tokens), and gold bars are not virtual assets. Onshore UAE law gave us no clear answer on whether pooled gold can be recovered from a bankrupt company.
+- **What we need counsel to confirm:**
+  - Can gold that is allocated to customers but pooled be recovered from an onshore UAE bankruptcy?
+  - Does the DIFC trust genuinely improve that position?
+  - Would a UAE court honour VARA's insolvency protection for physical gold at all?
+  - Is the DMCC Tradeflow record a legal document of title, or only a contract with DMCC? (The design treats it as supporting evidence, not the foundation.)
+- **If counsel says no.** We cannot tell savers their gold is safe if Aurumix fails, and the ownership structure has to be redesigned. ADGM is not a simple swap: under an ADGM foundation the customer would own nothing until the gold is paid out.
+
+#### Question 3: Do VARA's buyback rules mean what we think they mean?
+
+VARA says that where a token gives holders a right to redeem, the issuer may charge **no fee of any kind** on redemption. The rulebook never defines "redemption", so three things need confirming:
+
+- **Is the buyback a "redemption"?** We assumed yes, and designed for it: there is no exit fee at all. We would like VARA to confirm this in writing before the application.
+- **What does "equal value" mean?** We assumed the customer gets the full gold price, not the lower price a dealer would pay. If counsel reads it the other way, the payout is still fine, but the cost assumption behind every exit changes.
+- **Is selling a borrower's gold after a loan default caught by the no-fee rule?** We assumed not. If it is, Aurumix cannot charge the borrower its recovery costs.
+
+### 14.3 The questions that decide individual features
+
+#### Question 4: Is the trust an investment fund, and does its trustee need a licence?
+
+- **What we assumed.** The trust is not a fund, because the gold earns no income, is not actively managed, and each customer's share is fixed. A trustee company running only this one trust may not need a DFSA licence.
+- **Why it matters.** A fund carries far heavier rules and cost. This is one of the main reasons the client's profit-sharing dividend was removed: bringing it back would bring this question back, and could bring the securities regulator in too.
+- **Also needed, a practical ask rather than a legal one:** an indicative cost to set up and run the DIFC trust each year. The client cannot make a build decision without a number.
+
+#### Question 5: Can a lender take a legal claim on a customer's pledged gold?
+
+- **What we assumed.** The lender can register a valid claim under DIFC law over the customer's share of the trust. Aurumix valuing the gold, acting as the lender's agent and buying the gold on a sale, all at once, is acceptable if disclosed.
+- **What we need counsel to confirm:**
+  - Can the claim be validly taken and registered, and how?
+  - Does AURX count as a "digital asset" under DIFC law? It changes how the claim is taken.
+  - Is Aurumix's triple role acceptable with disclosure, or must an independent party take one of the roles (which adds cost to every loan)?
+- **If counsel says no.** The credit line and the Gold Card do not work as designed, and the benefit ladder has to be rethought.
+
+#### Question 6: Is the payment setup allowed?
+
+- **Overseas collection.** VARA says money from overseas customers must sit with third-party **banks**. The providers that collect small payments abroad are usually e-money firms, not banks. **Does that count?** If not, collecting small monthly payments from outside the UAE may not be economic, and the market shrinks to people who can pay from a UAE bank account.
+- **Stablecoins.** Aurumix accepts bank money only. Customers who hold stablecoins convert them at a licensed exchange and pay by bank transfer. We plan to publish a list of licensed exchanges, with no fee and no data shared. **Does publishing that list count as "arranging" a stablecoin service?** This is the one load-bearing assumption in the payment design.
+
+#### Question 7: How can the family product be offered lawfully?
+
+- **We have no position on this one; it is an open question.** No VARA licence covers wills, estates or trust services.
+- **What we assumed.** The family transfer works as a standing instruction on the customer's account, not as will-writing, estate administration or acting as a trustee.
+- **What we need counsel to answer:**
+  - Can it sit outside those licensed activities, and if not, what licence or partner is needed?
+  - Are there customer groups or countries where it cannot be offered?
+  - Does the name "Digital Will" on its own imply a regulated service?
+- **A related point to raise: domicile.** Many Gulf-based Indians remain legally domiciled in India, and an Indian court could apply Indian inheritance law to their gold. We recommend asking for a domicile declaration at onboarding.
+- **What does not need a lawyer:** probate cannot be avoided on death. That is already settled in the design; the product speeds probate up rather than replacing it.
+
+### 14.4 Market and distribution questions
+
+#### A. India (for Indian counsel)
+
+- **What we assumed.** Indian residents cannot take part. Gold abroad is not something they are allowed to buy under India's Liberalised Remittance Scheme, and a separate rule closes the GIFT City route too. The client's original "USDT via P2P" route for Indian residents was removed.
+- **Why it matters.** We changed the target customer on the strength of this. If we are wrong, the market is much larger.
+- **What we need counsel to confirm:**
+  - Can an Indian resident lawfully pay in monthly? Is there exposure for Aurumix in accepting them or marketing to them, including through agents?
+  - When a customer dies and the beneficiary lives in India, can we pay them in cash instead of transferring tokens? (This is our design.)
+  - A customer who moves back to India keeps their gold but cannot add money. Is that right?
+  - Lifetime gifts to relatives in India are blocked at launch, because the rules turn on the giver's passport. Is that more cautious than it needs to be?
+
+#### B. The distribution model
+
+- **Is the three-level agent network lawful in the UAE?** We could not retrieve the UAE's anti-pyramid law. Member referrals are single level for that reason; the agent network still has three levels, organised by role rather than recruitment.
+- **Do agents need a licence?** Agents help people sign up and keep saving, which could look like "arranging" or "advising". This is not yet in the counsel brief and should be added.
+- **Do referrers need a licence?** We assumed not, because they only share a code and never place orders or give advice.
+
+#### C. Countries beyond the UAE
+
+- VARA gives a test, not a list: serve customers only where the activity is allowed locally, and meet the stricter of the two sets of rules.
+- **Each new market needs its own local legal advice before any marketing there.**
+
+| Country | Our reading | What is needed |
 |---|---|---|
-| The persistency curve resembles Indian life insurance (79% at month 13, 38% at month 61) | Category benchmark; the closest behavioural analogue | The scoring calibration and the entire retention economics re-cut |
-| The premium is zero (section 2.4) | Nine-protocol evidence, two discount cases | Only upside exists; nothing in the design depends on a premium |
-| True allocated custody cost is 0.15 to 0.40%/yr | Research-derived; the vault quote decides it | If materially higher, custody recovery (13.3) re-opens as a pricing decision |
-| The measured fabrication ladder (1.50% / 0.95%) | Same-page quote methodology, evidence pass | The fee build-up and minimum ticket move with it |
-| The USD 20 floor clears its own collection cost at the assumed rail price, near USD 0.25 per collection (section 5.4) | The measured fee build-up, and the client's market positioning against AED 10 to 15 competitors. Confirmed as the design position, September 2026 | If the contracted rail price lands materially higher, the collection minimum splits from the marketing minimum and contributions batch through the prefunded balance |
+| UAE | Open at launch | VARA licence |
+| Oman | No crypto regime in force. A gap, not a permission | Local counsel |
+| Bahrain | Needs central bank approval, local capital and a locally licensed distributor | Local counsel and approval |
+| Saudi Arabia, Kuwait, Qatar | Blocked at the banks | Not a launch market |
+| UK, Singapore, Canada, Australia | Each needs its own licence | Not a launch market |
+| India (residents), United States, FATF blacklist | Excluded | None |
 
-### 14.4 The commercial unknowns
+### 14.5 Smaller points for a second batch
 
-Four numbers cannot be closed by research and sit on the critical path as conversations:
+These follow from the main answers. Several will answer themselves once the questions above are settled.
 
-1. **The two-way bullion dealer**: identity, spreads, minimum tickets, buyback commitment. Gates the float, the fee calibration and the exit (section 6.6).
-2. **The vault quote**: the real annual custody cost per gram at Aurumix's scale. Decides how comfortable "no storage fee" is.
-3. **The Request to Pay origination cost**: which bank or PSP will originate merchant collection requests for a gold-token merchant, at what per-request price. Sets the collection floor and decides the referral programme's economics. No UAE PSP publishes a policy on gold or virtual-asset merchants.
-4. **The programme-manager interchange share**: unpublished anywhere in the region; the rewards ladder needs roughly 36% at the top tier (section 10.6).
+- Could VARA still require the extra capital of 2% of gold held, even though a direct-ownership token has no "reserves" in VARA's sense? Potentially several million dollars.
+- Does the buyback also need an exchange or broker-dealer licence on top of the issuing licence?
+- **VAT:** does the entry fee, the gold or the services attract 5% VAT? The entry-fee margin is thin, so this needs a tax adviser early.
+- How does the mandatory wind-down plan work alongside the DIFC trust?
+- Gold Rewards moves Aurumix's own gold to a customer. Does it need the same ownership mechanism as a purchase, and can rewards be credited to an account that is blocked for compliance reasons?
+- The age of majority for beneficiaries moved to 18 in 2026, and sources disagree on which law enacted it. Confirm before it is built into the app.
 
-A fifth is sequencing rather than a number: **approaching a bank before the licence exists creates a refusal record visible to other banks.** Bank conversations are ordered accordingly.
+### 14.6 What neither we nor counsel can answer
 
-### 14.5 The India perimeter
-
-Stated here because it shapes the persona, with the full brief in the legal document's Appendix A: gold is not a permitted asset class under the individual remittance scheme, the bullion-exchange route is expressly closed to resident individuals, crypto-purpose remittances are rejected in banking practice, and the tax treatment (flat 30% on virtual digital assets, no loss offset, plus foreign-asset reporting exposure) is punitive even where a route existed. The original specification's "USDT via P2P" route for Indian residents is deleted, not softened: it would put Aurumix in receipt of funds with no regulated counterparty and no source-of-funds visibility. The India-facing product is therefore: NRIs while non-resident, cash settlement to India-resident beneficiaries on death, a regulatory pause for the returning NRI, and a Year 3+ feeder-fund conversation if the client wants Indian retail at scale.
+| Item | Why it matters | Who resolves it |
+|---|---|---|
+| The two-way bullion dealer | The float, the buyback and the fee level all depend on one | The client, by negotiation |
+| The vault price | Decides how comfortable "no storage fee" is | The client, by quote |
+| The monthly payment collection cost | Decides whether the USD 20 minimum works | The client, by contract with a bank or payment provider |
+| The card revenue share | Gold Rewards needs roughly 36% of card interchange | The client, by negotiation with the card partner |
+| The VARA approval date | VARA publishes no timeline | Nobody. Never give investors a firm date |
 
 ---
 
@@ -1269,7 +1354,7 @@ The anti-gaming register (8.7) closes six of eleven attacks structurally; the cr
 
 ### 15.7 Payment rail risk
 
-Push-only collection removes bounce fees and mandate risk but leaves two dependencies: the Request to Pay origination cost (14.4) and the e-money/banks client-money question (Question 6). If the second fails, cross-border collection shrinks to wire-viable tickets, which is a material market change and would be known before launch rather than after.
+Push-only collection removes bounce fees and mandate risk but leaves two dependencies: the Request to Pay origination cost (14.6) and the e-money/banks client-money question (Question 6). If the second fails, cross-border collection shrinks to wire-viable tickets, which is a material market change and would be known before launch rather than after.
 
 ### 15.8 Operational and continuity risk
 
