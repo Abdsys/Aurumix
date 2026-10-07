@@ -1,0 +1,136 @@
+Franklin OnChain U.S. Dollar Short-Term Money Market Fund
+
+A (acc) USD: SGXZ71843866                                                                                              Money Market | Factsheet as of 30 April 2026
+
+Investment Overview                                                                                                    Fund Overview                  Franklin Templeton
+                                                                                                                       Umbrella                         Investments VCC
+The investment objective of the Sub-Fund is to provide investors with a high level of current income as is                                                           USD
+consistent with the preservation of capital and liquidity.                                                             Fund Base Currency                     18/09/2025
+                                                                                                                       Fund Inception Date
+Past performance does not predict future returns.                                                                      Share Class Inception                  18/09/2025
+Performance From Inception in Share Class Currency (%)                                                                 Date                                SGXZ71843866
+                                                                                                                       ISIN
+Franklin OnChain U.S. Dollar Short-Term Money                                                                          Bloomberg                            FROUDAA SP
+Market Fund - A (acc) USD                                                                                              Morningstar Peer Group  USD Money Market - Short
+
+103                                                                                                                    Minimum Investment                           Term
+                                                                                                                       (USD)
+102                                                                                                                    Subscription Type                               20
+                                                                                                                                                                    Cash
+102
+
+101
+
+101                                                                                                                    Benchmark(s) and Type
+                                                                                                                       Bloomberg U.S. Treasury 1-3 Month
+100                                                                                                                    Index
+
+100                                                                                                                                                       Comparator
+
+09/25                      11/25                        01/26              03/26                            04/26
+
+Total Returns (%)                                                                                                      Charges                            0.00%
+                                                                                                                       Maximum Initial Charge                 --
+                                                                                                            Inception  Exit Charge
+                                                                                                                       Total Expense Ratio                0.20%
+              1-Mo 3-Mo YTD 1-Yr 3-Yr 5-Yr Inception 3-Yr 5-Yr Inception                                    Date       Performance Fee                        --
+
+A (acc)       0.28 0.83 1.12 -- -- --                          2.18 -- --         -- 18/09/2025                        The charges are the fees the Fund charges to investors
+USD­Net of                                                                                                             to cover the costs of running the Fund. Additional costs,
+Fees          0.28 0.83 1.12 -- -- --                          2.18 -- --         -- 18/09/2025                        including transaction fees, will also be incurred. These
+A (acc)       0.30 0.89 1.19 -- -- --                          2.34 -- --                                              costs are paid out by the Fund, which will impact on the
+USD­After                                                                         --                        --         overall return of the Fund. Fund charges will be incurred
+Sales Charge                                                                                                           in multiple currencies, meaning that payments may
+Benchmark                                                                                                              increase or decrease as a result of currency exchange
+(USD)                                                                                                                  fluctuations.
+
+Performance details provided are in the share class currency, based on NAV-NAV and include reinvested dividends.       Fund Characteristics                       Fund
+Performances of different share classes will vary. References to indices are made for comparative purposes only and    NAV-A (acc) USD                            $1.02
+are provided to represent the investment environment existing during the time periods shown.                           Total Net Assets (USD)             $12.52 Million
+When performance for either the portfolio or its benchmark has been converted, different foreign exchange closing
+rates may be used between the portfolio and its benchmark.
+After Sales Charge: Calculated based on initial sales charge of 0%.
+
+Templeton Asset Management Ltd Phone (65) 6241 2662 | 7 Temasek Blvd #26-03 Suntec Tower One Singapore 038987 | franklintempleton.com.sg
+Franklin OnChain U.S. Dollar Short-Term Money Market Fund A (acc) USD                      as of 30 April 2026
+
+Portfolio Management                                                   Years with Firm   Years of Experience
+                                                                                     31                    30
+Joanne M Driscoll, CFA                                                              28                     28
+Michael J Lima, CFA                                                                 29                     30
+Shawn Lyons, CFA
+
+What are the Risks?
+
+The value of shares in the Fund and income received from it can go down as well as up and investors may not get back the full amount invested. Debt Securities Risk:
+Investments in debt securities or money market instruments are subject to interest rate risk, credit risk, default risk and may be exposed to specific risks including but not limited
+to sovereign risk, high yield securities risk, restructuring risk and risk related to the use of credit ratings. Foreign Exchange and Currency Risk: The Sub-Fund can be affected
+favourably or unfavourably by changes in currencies and exchange control regulations. The income earned by the Sub-Fund may be affected by fluctuations in foreign
+exchange rates. Interest Rate Risk: Investments in fixed income securities are subject to interest rate fluctuations. In general, the prices of fixed income securities rise when
+interest rate falls, and fall when interest rate rises. The longer the term of a fixed income security, the more sensitive it will be to fluctuations in value from interest rate changes.
+Liquidity Risk: Trading volumes in the underlying investments of the Sub-Fund may fluctuate significantly depending on market sentiment. There is a risk that investments
+made by the Sub-Fund may become less liquid in response to market developments, adverse investor perceptions or regulatory and government intervention (including the
+possibility of widespread trading suspensions implemented by domestic regulators). In extreme market conditions, there may be no willing buyer for an investment and so that
+investment cannot be readily sold at the desired time or price, and consequently the Sub-Fund may have to accept a lower price to sell the relevant investment or may not be
+able to sell the investment at all. An inability to sell a particular investment or portion of the Sub-Fund's assets can have a negative impact on the value of the Sub-Fund or
+prevent the Sub-Fund from being able to take advantage of other investment opportunities. Redemption Risk: There may be a 10% limit on the number of Shares of a Class
+that can be redeemed on a Dealing Day. Therefore, a redemption request may be deferred to the next Dealing Day (which is subject to the same limit) if redemptions exceed the
+limit on that day. Risks relating to Tokenisation of the Register: Shares in respect of the Sub-Fund will be evidenced by an entry in the Register in the form of a Tokenised
+Register to be maintained by the Registrar and Transfer Agent in respect of the Sub-Fund in the form of transactional data via public blockchain networks represented by blocks
+on a distributed ledger plus certain Off-Chain Information (if any). Distributed ledger technology is still new, widely untested and subject to known and unknown risks. These
+include dependence on third party providers to access the distributed ledger, potential software weaknesses and undiscovered technical flaws due to the early developmental
+state of the blockchain ecosystem architecture (including but not limited to the distributed ledger, the smart contract (or token configuration) and any related technology or
+software), legal uncertainties surrounding the regulatory status of Tokenised Register and distributed ledger technologies and privacy risks. On the account of these risks, the
+Company may never achieve market acceptance and may not be able to attract sizable assets or achieve scale. Securities Lending or Repurchase Transactions Risk:
+Securities lending or repurchase transaction (including reverse repurchase transactions) involve counterparty risk, credit risk, liquidity risk, sufficiency of collateral risk, collateral
+investment risk, delivery risk and operational risk.
+Complete information on the risks of investing in the Fund are set out in the Fund's prospectus.
+
+Glossary
+
+Total Expense Ratio: Total Expense Ratio (TER) includes the fees paid to the management company, the investment manager and the depository, as well as certain other
+expenses. The TER is calculated by taking the relevant main material costs paid out over the 12-month period indicated and dividing them by the average net assets over the
+same period. The TER does not include all expenses paid by the fund (for example, it does not include what the fund pays for buying and selling securities). For a comprehensive
+list of the types of costs deducted from fund assets, see the relevant offering documents. For funds that lack 12 months of data, or for which TER is not likely to give a fair idea of
+likely future costs, the figure shown is an estimate. Comparator: Benchmark is used for comparing Fund performance, but is not a constraint to Fund Investment.
+Franklin OnChain U.S. Dollar Short-Term Money Market Fund A (acc) USD  as of 30 April 2026
+
+Important Information
+The Franklin OnChain U.S. Dollar Short-Term Money Market Fund is a money market fund (Sub-Fund Registration No.: T24VC0111E-SF001). The purchase of a Share in this
+Sub-Fund is not the same as placing funds on deposit with a bank or deposit-taking company. Although the Manager/Sub-Manager may seek to maintain or preserve the
+principal value of this Sub-Fund, there can be no assurance that this Sub-Fund will be able to meet this objective. This Sub-Fund is not a guaranteed fund, in that there is no
+guarantee as to the amount of capital invested or return received. The assets and liabilities of the Franklin OnChain U.S. Dollar Short-Term Money Market Fund are segregated in
+accordance with section 29 of the Variable Capital Companies Act 2018.
+
+This material is intended to be of general interest only and should not be construed as investment advice. It does not constitute legal or tax advice and it is not an offer for
+shares or an invitation to apply for shares in the Sub-Fund(s) ("Shares") under Franklin Templeton Investments VCC (the "Company"), a variable capital company incorporated in
+Singapore (UEN: T24VC0111E) with variable capital and limited liability. For the avoidance of doubt, if you make a decision to invest, you will be buying units/shares in the Fund
+and will not be investing directly in the underlying assets of the Fund.
+The value of shares in the Fund and income received from it can go down as well as up, and investors may not get back the full amount invested. Past performance is not
+necessarily indicative nor a guarantee of future performance of the Fund. Currency fluctuations may affect the value of overseas investments. When investing in a fund
+denominated in a foreign currency, your performance may also be affected by currency fluctuations.
+Franklin Templeton ("FT") shall not be liable to any user of this document or to any other person or entity for the inaccuracy of information or any errors or omissions in its
+contents, regardless of the cause of such inaccuracy, error or omission. Any opinions expressed are the author's at publication date and they are subject to change without prior
+notice. Any research and analysis contained in this marketing material has been procured by FT for its own purposes and is provided to you only incidentally. Data from third
+party sources may have been used in the preparation of this document and FT has not independently verified, validated or audited such data. References to particular
+industries, sectors or companies are for general information and are not necessarily indicative of the Fund's holding at any one time.
+No shares of the Fund may be directly or indirectly offered or sold to residents of the United States of America. Shares of the Fund are not available for public distribution in all
+jurisdictions and prospective investors should consult their financial advisor before deciding to invest. The Fund may invest in shares of other short-term MMFs which may
+entail specific risks more fully described in the Fund's Prospectus and, where available, the relevant offering documents.
+Subscriptions to shares of the Fund should only be made on the basis of the Fund's current Prospectus, and, where available, the relevant offering documents.
+
+This advertisement or publication has not been reviewed by the Monetary Authority of Singapore.
+Investors may wish to seek advice from a financial adviser before making a commitment to invest in shares of the Fund. In the event an investor chooses not to
+seek advice from a financial adviser, he/she should consider whether the Fund is suitable for him/her.
+CFA® and Chartered Financial Analyst® are trademarks owned by CFA Institute.
+© Morningstar, Inc. All rights reserved. The information contained here in (1) is proprietary to Morningstar and/or its content providers; (2) may not be copied or distributed;
+and (3) is not warranted to be accurate, complete or timely. Neither Morningstar nor its content providers are responsible for any damages or losses arising from any use of this
+information.
+Source: Bloomberg Indices. Indices are unmanaged, and one cannot invest directly in an index. They do not reflect any fees, expenses or sales charges. Important data provider
+notices and terms available at www.franklintempletondatasources.com.
+Subscriptions may only be made on the basis of the most recent Prospectus and Product Highlights Sheet which is available at Templeton Asset Management Ltd or authorised
+distributors of the Fund. Potential investors should read the details of the Prospectus and Product Highlights Sheet before deciding to subscribe for or purchase the Fund. This
+shall not be construed as the making of any offer or invitation to anyone in any jurisdiction in which such offer is not authorised or in which the person making such offer is not
+qualified to do so or to anyone to whom it is unlawful to make such an offer.
+© 2026 Franklin Templeton. All rights reserved.
+

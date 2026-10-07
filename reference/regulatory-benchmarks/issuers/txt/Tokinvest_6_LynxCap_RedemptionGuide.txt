@@ -1,0 +1,322 @@
+LCL Series AC Digital Bond | Investor Redemption Guide | For informational purposes only
+
+    LCL OPPORTUNITIES 3 S.à r.l.
+
+   Series AC Digital Bond -- ISIN XS3356029788
+
+    Investor Guide: What Happens at Early Redemption
+
+    Issuer Call Option | Investor Put Option
+
+This information document explains to you as an investor what will happen to your investment in
+the LCL Series AC Digital Bond in three scenarios:
+(1) when the Issuer decides to call (redeem early) all bonds,
+(2) if the Issuer redeems for tax reasons, and
+(3) when you as an investor choose to exercise your put option on a specific date.
+
+Please read this guide alongside the Issuer's Information Memorandum and Final Terms. If you
+have any questions, please contact Tokinvest before any deadline.
+
+Bond Quick Reference
+
+Bond                          LCL Opportunities 3 -- Series AC Digital Bond
+ISIN                          XS3356029788
+Issue Date                    15 May 2026
+Maturity Date                 15 May 2030
+Coupon                        10.0% per annum, paid quarterly
+Interest Payment              10 Business Days after each Determination Date (1 Jan, 1 Apr,
+                              1 Jul, 1 Oct)
+Issuer Call -- Eligible From  15 May 2028 (at Issuer's discretion on any date after this)
+Investor Put Dates            15 May 2028 and 15 May 2029 (specific dates only)
+Redemption Amount             1.00 per bond plus accrued and unpaid interest
+Smart Contract                0x83eCECE38d58C7CCa6085462F2437Ad67c7c338F
+                              (Ethereum)
+
+Section 1 -- What Happens When the Issuer Calls the Bond
+
+1.1 What is the Issuer Call Option?
+The Issuer (LCL Opportunities 3 S.à r.l.) has the right -- but not the obligation -- to redeem some
+or all outstanding Series AC Digital Bonds before the scheduled Maturity Date of 15 May 2030.
+This means that the digital bonds are returned to the Issuer and your principal and accrued interest
+is returned to you. This is called exercising the "Call Option."
+The Issuer may exercise this right on any date from 15 May 2028 onwards. You will not be asked
+for your consent and cannot opt out or refuse. Once the Issuer has given notice it is irrevocable
+and the bonds must be returned.
+
+                                                                                                                                  1
+LCL Series AC Digital Bond | Investor Redemption Guide | For informational purposes only
+
+1.2 Could the Issuer call only some bonds and not mine?
+Yes. The IM permits the Issuer to call all or some of the outstanding bonds. If a partial call is made,
+only the holders of the bonds selected for redemption will be affected -- the remaining bonds
+continue until maturity or a further call. If the Issuer calls bonds held on your behalf by Tokinvest
+we will notify you directly that your bonds are included in a call.
+
+1.3 How much notice will you receive?
+The Issuer must give at least 7 calendar days' notice before the Call Option Redemption Date.
+Tokinvest will receive the notice on your behalf and advise you via your registered contact details
+held in our records for you. The notice is irrevocable once issued -- the Issuer cannot withdraw it.
+Redemption takes effect 7 calendar days after the notice period expires. Notice may also be
+published on the LynxCap Investments website (https://www.lynxcapinvestments.com).
+
+1.4 What will you receive?
+For each bond called you will receive:
+
+   · 1.00 -- the full face value (principal) per bond
+   · Plus all interest that has accrued and has not yet been paid, up to (but not including) the Call
+
+       Option Redemption Date
+
+Payment will be made up to 10 Business Days after the Call Option Redemption Date. Funds will
+be returned to your account with Tokinvest where you can withdraw to your bank or invest in other
+products on our platform.
+
+1.5 What do you need to do?
+In most cases, nothing -- the redemption is automatic for the bonds selected. However, you
+should:
+
+STEP  Watch for notice from Tokinvest
+   1
+      You will receive communication confirming whether your bonds are included in the call,
+      the Call Option Redemption Date, and the amount you will receive. Ensure your
+      contact details on the platform are current.
+
+STEP  Verify your payment details are correct
+   2
+      Ensure your registered bank account or payment details on Tokinvest are up to date if
+      you wish to withdraw the funds to an external account.
+
+STEP  Note the redemption date
+   3
+      Interest accrues up to but not including the Call Option Redemption Date. Payment
+      arrives 10 Business Days after that date.
+
+STEP  Check your account for receipt of funds
+   4
+      The tokens for called bonds will be redeemed and funds will appear in your account
+      within the settlement period. If only some of your bonds were called, your remaining
+      tokens continue as before.
+
+                                                                                              2
+LCL Series AC Digital Bond | Investor Redemption Guide | For informational purposes only
+
+1.6 What happens to your bond tokens?
+This bond is implemented as a digital token on the Ethereum blockchain (smart contract:
+0x83eCECE38d58C7CCa6085462F2437Ad67c7c338F). Tokens for called bonds will be returned
+to the Issuer where they may be cancelled ("burned") on-chain automatically. You do not need to
+take any action. If only some of your bonds are called, the tokens for the remaining bonds are
+unaffected.
+
+Section 2 -- Early Redemption for Tax Reasons or Force Majeure Event
+
+2.1 What are these redemptions?
+Separately from the Call Option, the Issuer has the right to redeem all Series AC digital bonds
+early if;
+
+i) a change in tax law or its official interpretation means the Issuer would be required to make a
+withholding or deduction from payments to bondholders -- for reasons outside its control and after
+taking reasonable steps to avoid it. This is called an "Early Redemption for Taxation Reasons" and
+is described in Section 9.11.3 of the IM documentation
+(* note that this is an edge-case protection for the Issuer against unforeseen tax changes. It has
+nothing to do with your personal tax position).
+
+OR
+
+ii) An event occurs due to circumstances outside the Issuer's reasonable control that prevent it
+from operating normally -- for example, extreme events that disrupt its business or ability to
+perform its obligations under the bond. Such events are known as Force Majeure Events. This is
+called exercising the FME Option and is described in section 9.11.6 of the IM documentation
+
+Like the Call Option, these redemptions are the Issuer's rights, not yours. You will not be asked for
+your consent in the case of an Early Redemption for Taxations Reasons or the Issuer exercising
+the FME Option.
+
+2.2 Key features of a Tax Redemption
+   · The Issuer may only use this right if the tax change becomes effective after the Issue Date
+       (15 May 2026).
+   · Unlike the Call Option, a tax redemption must redeem all outstanding bonds -- the Issuer
+       cannot selectively redeem some.
+   · Notice: the Issuer must give between 30 and 60 Business Days' irrevocable notice to
+       bondholders.
+   · Redemption occurs on the next Interest Payment Date following expiry of the notice period.
+   · You will receive: 1.00 principal per bond plus accrued interest to (but not including) the
+       redemption date -- the same amount as a standard early redemption.
+
+You do not need to take any action if a tax redemption is triggered. The process is automatic, and
+proceeds will be paid to your account with Tokinvest in the same way as a standard redemption.
+
+                                                                                                                                  3
+LCL Series AC Digital Bond | Investor Redemption Guide | For informational purposes only
+
+2.3 Key features of a Force Majeure redemption
+
+    · The Issuer may only use this right while a Force Majeure Event is continuing.
+
+    · Notice: the Issuer must give at least 7 calendar days' notice to bondholders. Once given,
+         this notice is irrevocable.
+
+    · Redemption Date: redemption takes place 7 calendar days after the notice period expires
+         (the "FME Redemption Date").
+
+    · Scope: the Issuer may redeem all or only some of the outstanding bonds -- similar to the
+         Call Option, this is not necessarily a whole-series redemption.
+
+    · Amount you will receive: 1.00 principal per bond, plus interest accrued (but not yet paid)
+         up to (but not including) the FME Redemption Date.
+
+You do not need to take any action. If your bonds are included in a Force Majeure redemption, you
+will be notified directly, and proceeds will be paid to your registered payment details in the usual
+way, with settlement 10 Business Days after the FME Redemption Date.
+
+Section 3 -- Exercising Your Put Option
+
+3.1 What is the Put Option?
+
+The Put Option gives you -- as the bondholder -- the right to require the Issuer to redeem your
+bonds early on specific dates. Unlike the Issuer Call (which the Issuer decides), the Put Option is
+your personal right. You choose whether to exercise it; other investors are not affected by your
+decision.
+
+3.2 When can you exercise your Put Option?
+There are two and only two dates on which you may exercise the Put Option:
+
+Put Option Date  What you receive (per bond)                   Notice deadline
+
+15 May 2028      Principal (1.00) + accrued unpaid interest    By 31 March 2028 (end of
+15 May 2029      to (but not including) redemption date, less  Q1 2028)
+                 any pro-rata Issuer fees/costs
+                                                               By 31 March 2029 (end of
+                 Principal (1.00) + accrued unpaid interest    Q1 2029)
+                 to (but not including) redemption date, less
+                 any pro-rata Issuer fees/costs
+
+Important: If you miss both Put Option dates without exercising, your bonds will continue until the
+Maturity Date of 15 May 2030 (or until the Issuer exercises its Call Option, if earlier).
+
+3.3 How much will you receive? -- The Put Option Redemption Amount
+
+For each bond you hold, the Put Option Redemption Amount is calculated as follows:
+
+   · 1.00 -- the full principal amount per bond
+   · Plus accrued and unpaid interest from the last interest payment date up to (but not including)
+
+       the Put Option Date
+   · Less any pro-rata share of fees, costs and expenses incurred and recharged by the Issuer in
+
+       connection with the redemption
+
+                                                                                                     4
+LCL Series AC Digital Bond | Investor Redemption Guide | For informational purposes only
+
+Always check whether the Issuer has issued any Information Notice that may affect the amount
+before submitting your Put Option Notice. You can contact Tokinvest directly to enquire about this
+or any other question you have about the Put Option ahead of submitting your notice.
+
+3.4 How do you give notice? -- The notice mechanics
+To exercise the Put Option you must submit a written Put Option Notice to the Issuer (via
+Tokinvest) by the end of the calendar quarter immediately before the Put Option Date you wish to
+elect. The specific deadlines are:
+
+   · For the 15 May 2028 Put Option Date: your notice must be submitted by 31 March 2028 (end
+       of Q1 2028).
+
+   · For the 15 May 2029 Put Option Date: your notice must be submitted by 31 March 2029 (end
+       of Q1 2029).
+
+Your Put Option Notice must specify the number of bonds that you wish to redeem and should be
+sent to Tokinvest directly ops@tokinvest.capital.
+
+3.5 Minimum size -- Can I exercise on only part of my holding?
+Yes. You may exercise the Put Option on some or all of your bonds, provided the amount you are
+putting represents at least 25% of your total Series AC bond holding. You cannot exercise on less
+than 25% of your holding.
+
+3.6 What if the Issuer cannot pay in full? -- The Adverse Event process
+If the Issuer's available assets are insufficient to pay the full Put Option Redemption Amount, this
+constitutes an "Adverse Event." The following process applies:
+
+1 Issuer issues             At least 20 Business Days before the payment date, the Issuer must
+                            send you a formal Information Notice containing: (i) details of the
+        Information Notice  Adverse Event; (ii) the revised (reduced) amount it can pay on the
+                            original date; and (iii) a revised later date on which it could pay the full
+                            Put Option Redemption Amount. Tokinvest will receive this notice on
+                            your behalf and inform you via your registered contact details. Please
+                            ensure that these are up to date.
+
+2 You respond within 5 Within 5 Business Days of receiving the Information Notice you must
+Business Days               confirm whether you wish to: (a) proceed immediately and accept the
+
+                            revised (lower) amount on the original date, or (b) wait and receive the
+
+                            full Put Option Redemption Amount on the revised later date. Respond
+
+                            Tokinvest immediately if you receive an Information Notice -- do not
+
+                            miss this 5 Business Day window.
+
+3.7 Step-by-step: How to exercise the Put Option
+
+STEP  Check for Information Notices
+   1
+      Before anything else, confirm whether the Issuer has issued any Information Notice
+      amending the Put Option Redemption Amount or conditions. These are available via
+      Tokinvest and at https://www.lynxcapinvestments.com.
+
+                                                                                                          5
+LCL Series AC Digital Bond | Investor Redemption Guide | For informational purposes only
+
+STEP  Verify you meet the minimum threshold
+   2
+      You can only exercise on a portion of your holding if that portion is at least 25% of your
+      total Series AC bonds. Please check on the Tokinvest investor platform to confirm your
+      current holding before submitting your notice.
+
+STEP  Submit Put Option Notice before the quarterly deadline
+   3
+      Contact Tokinvest and submit your formal Put Option Notice by end of the calendar
+      quarter before your chosen date -- 31 March 2028 or 31 March 2029. Late notices will
+      not be accepted.
+
+STEP  Respond promptly to any Adverse Event Information Notice
+   4
+      If you receive an Adverse Event Information Notice from the Issuer, you have only 5
+      Business Days to elect whether to proceed at the revised amount or wait for full
+      payment. Respond to Tokinvest immediately.
+
+STEP  Token burn and settlement
+   5
+      On the Put Option Date your bond tokens returned to the Issuer where they will be
+      cancelled. The Put Option Redemption Amount (principal + accrued interest, less any
+      Issuer fees) is transferred your account with Tokinvest, settling within 10 Business
+      Days.
+
+Section 4 -- Important Reminders
+
+   · Keep your contact details on the Tokinvest platform up to date. All notices -- including
+       irrevocable call notices (minimum 7 calendar days) and tax redemption notices (30­60
+       Business Days) -- will be sent to your registered details.
+
+   · Keep your payment / bank account details current if you wish to withdraw your funds from the
+       Tokinvest platform after redemption.
+
+   · Monitor your inbox and the LynxCap website (https://www.lynxcapinvestments.com) for any
+       Information Notices that may update the Put Option Redemption Amount or other terms.
+
+   · The Issuer may call some but not all bonds -- if a partial call occurs, check your Tokinvest
+       account to confirm whether your specific bonds are affected.
+
+   · The bond is governed by Luxembourg law. Any disputes are subject to Luxembourg
+       jurisdiction.
+
+   · This digital bond is not guaranteed or insured. Capital is at risk.
+
+  Disclaimer
+
+   This document is provided for informational purposes only and is intended to summarise key
+   redemption mechanics from the Final Terms and Information Memorandum. It does not constitute
+   financial, legal, or tax advice. In the event of any inconsistency between this guide and the Final
+   Terms or Information Memorandum, the Final Terms and Information Memorandum shall prevail.
+   Please read those documents carefully and seek independent professional advice if required.
+
+                                                                                                                                  6
+

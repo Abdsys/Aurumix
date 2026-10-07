@@ -1,0 +1,1168 @@
+
+MiCA Whitepaper Inline XBRL
+            MANTRA MiCA White Paper
+Index
+General information 
+Page 3 
+Part A - Information about the offeror or the person seeking admission to trading 
+Page 4 
+Part B - Information about the issuer, if different from the offeror or person seeking admission to trading 
+Page 5 
+Part C - Information about the operator of the trading platform in cases where it draws up the crypto-asset white paper and information about other persons drawing the crypto-asset white paper pursuant to Article 6(1), second subparagraph, of Regulation (EU) 2023/1114 
+Page 6 
+Part D - Information about the crypto-asset project 
+Page 7 
+Part E - Information about the offer to the public of crypto-assets or their admission to trading 
+Page 8 
+Part F - Information about the crypto-assets 
+Page 9 
+Part G - Information on the rights and obligations attached to the crypto-assets 
+Page 10 
+Part H – Information on underlying technology 
+Page 11 
+Part I - Information on risks 
+Page 12 
+Part J - Information on the sustainability indicators in relation to adverse impact on the climate and other environment-related adverse impacts 
+Page 13 
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+General information
+N
+Field
+Content
+00
+Table of contents
+General Information 
+Part A: Information about the offeror or the person seeking admission to trading 
+Part B: Information about the issuer, if different from the offeror or person seeking admission to trading 
+Part C: Information about the operator of the trading platform in cases where it draws up the crypto-asset white paper and information about other persons drawing the crypto-asset white paper pursuant to Article 6(1), second subparagraph, of Regulation (EU) 2023/1114 
+Part D: Information about the crypto-asset project
+Part E: Information about the offer to the public of crypto-assets or their admission to trading
+Part F: Information about the crypto-assets 
+Part G: Information on the rights and obligations attached to the crypto-assets 
+Part H: Information on the underlying technology 
+Part I: Information on the risks 
+Part J: Information on the sustainability indicators in relation to adverse impact on the climate and other environment-related adverse impacts
+01
+Date of notification
+2026-05-11
+02
+Statement in accordance with Article 6(3) of Regulation (EU) 2023/1114
+This crypto-asset white paper has not been approved by any competent authority in any Member State of the European Union. The person seeking admission to trading of the crypto-asset is solely responsible for the content of this crypto-asset white paper.
+03
+Compliance statement in accordance with Article 6(6) of Regulation (EU) 2023/1114
+This crypto-asset white paper complies with Title II of Regulation (EU) 2023/1114 of the European Parliament and of the Council and, to the best of the knowledge of the management body, the information presented in the crypto-asset white paper is fair, clear and not misleading and the crypto-asset white paper makes no omission likely to affect its import.
+04
+Statement in accordance with Article 6(5), points (a), (b), (c), of Regulation (EU) 2023/1114
+The crypto-asset referred to in this crypto-asset white paper may lose its value in part or in full, may not always be transferable and may not be liquid.
+05
+Statement in accordance with Article 6(5), point (d), of Regulation (EU) 2023/1114
+FALSE
+06
+Statement in accordance with Article 6(5), points (e) and (f), of Regulation (EU) 2023/1114
+The crypto-asset referred to in this white paper is not covered by the investor compensation schemes under Directive 97/9/EC of the European Parliament and of the Council or the deposit guarantee schemes under Directive 2014/49/EU of the European Parliament and of the Council.
+07
+Warning in accordance with Article 6(7), second subparagraph, of Regulation (EU) 2023/1114
+Warning
+This summary should be read as an introduction to the crypto-asset white paper. The prospective holder should base any decision to purchase this crypto-asset on the content of the crypto-asset white paper as a whole and not on the summary alone. The offer to the public of this crypto-asset does not constitute an offer or solicitation to purchase financial instruments and any such offer or solicitation can be made only by means of a prospectus or other documents pursuant to the applicable national law.
+This crypto-asset white paper does not constitute a prospectus as referred to in Regulation (EU) 2017/1129 of the European Parliament and of the Council or any other offer document pursuant to Union or national law.
+08
+Characteristics of the crypto-asset
+MANTRA is the native and governance asset of MANTRA Chain, a Layer 1 blockchain built using the Cosmos SDK and designed to support the compliant tokenisation of real-world assets (RWAs). The network operates under a proof-of-stake (PoS) consensus mechanism, whereby validators and delegators stake MANTRA to secure the network and earn rewards. The token plays a central role within the ecosystem, including payment of transaction fees, participation in governance, and securing the network through staking.
+The MANTRA token (formerly issued as the OM ERC-20 asset on Ethereum) transitioned to a native token on MANTRA Chain as part of the network’s evolution to a dedicated Layer 1 infrastructure. This transition enabled full integration of staking, governance, and protocol-level functionality within the native chain environment.
+The token’s supply is governed by a dynamic economic model designed to support long-term network sustainability. Issuance mechanisms, including staking rewards, are managed at the protocol level and may be adjusted through governance to align incentives across validators, users, and ecosystem participants.
+Under the Markets in Crypto-Assets (MiCA) framework, MANTRA may be classified as a crypto-asset that does not fall within the categories of asset-referenced tokens or e-money tokens, as it is not designed to maintain a stable value by referencing external assets or fiat currency. Instead, it functions as a settlement asset within the MANTRA ecosystem, enabling transaction processing, governance participation, and network security.
+09
+This field does not apply, as 05 is false.
+10
+Key information about the offer to the public or admission to trading
+MANTRA token has been tradable across multiple centralised and decentralised exchanges worldwide, including Kraken and Binance. MANTRA Chain Association is seeking its admission to trading within Kraken to enable compliant secondary market liquidity.
+This admission would allow existing holders to trade MANTRA tokens on a regulated EU venue, ensuring transparent price discovery and stronger market depth. It also supports broader token distribution, which is essential for decentralised governance and wider stakeholder participation in ecosystem decisions.
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part A - Information about the offeror or the person seeking admission to trading
+N
+Field
+Content
+A.1
+Name
+MANTRA Chain Association
+A.2
+Legal form
+H781
+A.3
+Registered address
+Baarerstrasse 10, 6300
+A.3
+Country
+Switzerland
+A.3
+Sub-division
+CH-ZG
+A.4
+Head office
+Baarerstrasse 10, 6300
+A.4
+Country
+Switzerland
+A.4
+Sub-division
+CH-ZG
+A.5
+Registration date
+2023-04-21
+A.6
+Legal entity identifier
+    N/A
+A.7
+Another identifier required pursuant to applicable national law
+CHE-155.373.439
+A.8
+Contact telephone number
++852 4643 6276
+A.9
+E-mail address
+support@mantra.finance and legal@mantra.finance
+A.10
+Response time (Days)
+030
+A.11
+Parent company
+This field does not apply as MANTRA Chain Association operates as an independent entity and is not part of any parent company.
+A.12
+Members of the management body
+Identity
+Business Address
+Functions
+ John Patrick Mullin
+ Baarerstrasse 10, 6300, CH-ZG, CH 
+ Co-Founder and CEO 
+ Stephen Peepels
+ Baarerstrasse 10, 6300, CH-ZG, CH 
+ Chief Legal Officer 
+A.13
+Business activity
+The MANTRA Chain Association is the principal developer and maintainer of MANTRA Chain, an EVM-compatible, purpose-built, open-source blockchain platform designed to support the tokenisation of RWAs.
+The MANTRA Chain Association offers a suite of compliance-focused modules and tools that provide developers and institutions with the necessary infrastructure to create, trade, and manage tokenised RWAs. These services include identity verification systems, compliance modules, and other tools designed to facilitate regulatory adherence in decentralised finance (DeFi) applications. 
+MANTRA Chain enables third-party projects and consortiums to launch permissioned blockchain environments that anchor securely to the MANTRA mainnet. These environments provide scalable and regulatory-compliant infrastructure solutions, allowing for the development of customised applications within a secure and compliant framework.
+Other activities are described in indicator F.11.
+A.14
+Parent company business activity
+This field does not apply as MANTRA Chain Association operates as an independent entity and is not part of any parent company.
+A.15
+Newly established
+FALSE
+A.16
+Financial condition for the past three years
+Since its inception, the financial condition of the MANTRA token has experienced significant volatility, marked by both substantial growth and precipitous decline.
+Early Growth and Expansion
+Initially launched as an ERC-20 token in August 2020, MANTRA (formerly named as OM) served as the native token for the MANTRA DAO ecosystem. In October 2024, the project transitioned to its own Layer-1 blockchain, MANTRA Chain, and implemented significant changes to OM’s tokenomics, including doubling the total supply from 888 million to 1.77 billion tokens and transitioning to an inflationary model with a 3% annual inflation rate. These changes were intended to support network security and growth but raised concerns among investors about potential dilution and long-term value.
+April 2025 Market Crash
+On April 13, 2025, OM experienced a 90% price decline. The price drop occurred during what are typically low-liquidity trading hours – Sunday evening UTC and early Monday morning Asia time. According to MANTRA co-founder John Patrick Mullin, the crash was triggered by reckless forced closures initiated by centralised exchanges on OM account holders.
+Post-Crash Recovery Efforts
+In response to these market conditions, MANTRA implemented a combination of measures aimed at stabilising MANTRA's position and maintaining market confidence, including the retention of locked team and advisory allocations, substantial token supply reductions by tokens burning or bridging (approximately USD 277 million including 150 million burn of team allocation), and the implementation of a USD 25 million token buyback programme. In parallel, the business continued to advance its strategic development through a USD 20 million partnership with Inveniam to support institutional market infrastructure and broaden participation in tokenised assets.
+Current Status
+As of early 2026, the MANTRA token is trading in the range of approximately USD 0.014–USD 0.016, with a market capitalisation of roughly USD 51–55 million, depending on market conditions.
+A.17
+Financial condition since registration
+This field does not apply as A.15 is true.
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part B - Information about the issuer, if different from the offeror or person seeking admission to trading
+    New MANTRA tokens are issued through the MANTRA protocol. Following the upgrade and consolidation of the network, MANTRA operates under a Proof-of-Stake consensus mechanism. Under this mechanism, new MANTRA tokens are continuously minted as part of block rewards and distributed to validators and delegators securing the network, without a clearly identifiable issuer. In addition to ongoing inflation, part of the current supply derives from the upgrade event, during which existing OM tokens were converted into MANTRA tokens at a fixed ratio of 1:4. This conversion did not create new economic value, but instead constituted a redenomination of the pre-existing supply.
+MANTRA Chain Association plays a role in deploying funds raised through pre-seed and seed allocations and in managing ecosystem reserves used to support development and growth. On this basis, the Association was responsible for structuring and distribution of the genesis supply.
+N
+Field
+Content
+B.1
+Issuer different from offerror or person seeking admission to trading
+FALSE
+B.2
+Name
+    N/A
+B.3
+Legal form
+    N/A
+B.4
+Registered address
+    N/A
+B.5
+Head office
+    N/A
+B.6
+Registration date
+    N/A
+B.7
+Legal entity identifier
+    N/A
+B.8
+Another identifier required pursuant to applicable national law
+    N/A
+B.9
+Parent company
+    N/A
+B.10
+Members of the management body
+    N/A
+B.11
+Business activity
+    N/A
+B.12
+Parent company business activity
+    N/A
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part C - Information about the operator of the trading platform in cases where it draws up the crypto-asset white paper and information about other persons drawing the crypto-asset white paper pursuant to Article 6(1), second subparagraph, of Regulation (EU) 2023/1114
+N
+Field
+Content
+C.1
+Name
+    N/A
+C.2
+Legal form
+    N/A
+C.3
+Registered address
+    N/A
+C.4
+Head office
+    N/A
+C.5
+Registration date
+    N/A
+C.6
+Legal entity identifier
+    N/A
+C.7
+Another identifier required pursuant to applicable national law
+    N/A
+C.8
+Parent company
+    N/A
+C.9
+Reason for crypto-asset white paper Preparation
+    N/A
+C.10
+Members of the management body
+    N/A
+C.11
+Operator business activity
+    N/A
+C.12
+Parent company business activity
+    N/A
+C.13
+Other persons drawing up the crypto-asset white paper according to Article 6(1), second subparagraph, of Regulation (EU) 2023/1114
+    N/A
+C.14
+Reason for drawing the white paper by persons referred to in Article 6(1), second subparagraph, of Regulation (EU) 2023/1114
+    N/A
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part D - Information about the crypto-asset project
+N
+Field
+Content
+D.1
+Crypto-asset project name
+MANTRA Chain
+D.2
+Crypto-asset name
+    N/A as DTI is provided in F.13
+D.3
+Abbreviation
+    N/A as DTI is provided in F.13
+D.4
+Crypto-asset project description
+MANTRA Chain is a permissionless, decentralised Layer 1 blockchain purpose-built for the compliant issuance, management, and trading of RWAs. 
+Through the UAE-based entity MANTRA Finance FZE, MANTRA holds a Virtual Asset Service Provider (VASP) license from the Dubai Virtual Assets Regulatory Authority (VARA), which enables it to provide virtual asset exchange, broker-dealer, management, and investment services.
+Built using the Cosmos SDK and fully IBC-compatible, MANTRA Chain enables seamless cross-chain interoperability with leading blockchain ecosystems. The network is designed to meet regulatory and institutional requirements while preserving the transparency and security of decentralised ledger technology.
+MANTRA is the native staking token of MANTRA Chain, securing the network through a proof-of-stake consensus mechanism and incentivising validators and delegators. The network achieves high throughput and deterministic finality through the Tendermint consensus protocol, while validator rotation and slashing mechanisms help mitigate centralisation and operational risks. MANTRA was previously issued as “OM”, an ERC-20 token on Ethereum and has since been fully migrated to MANTRA Chain as its native staking coin, with the ERC-20 version deprecated.
+D.5
+Details of all natural or legal persons involved in implementation of crypto-asset project
+Name of person
+Type of person
+Business address
+Domicile
+          MANTRA Chain Association
+        Development team
+          Baarerstrasse 10, 6300, CH-ZG, CH
+Switzerland
+D.6
+Utility Token Classification
+FALSE
+D.7
+Key Features of Goods/Services for Utility Token Projects
+This field does not apply as MANTRA is not a utility token.
+D.8
+Description of past milestones
+Past milestones
+MANTRA was founded in October 2020 and introduced its native token, OM, as an ERC-20 asset on Ethereum with a fixed total supply of 888.88 million. OM functioned as both a governance and staking token, enabling holders to participate in protocol decisions, including parameters such as inflation and network policies.
+In 2021, MANTRA announced a partnership with Kylin Network to integrate decentralised oracle services, enhancing access to reliable on-chain data feeds.
+In 2022, development efforts focused on transitioning OM toward a dedicated Layer 1 blockchain. This included early architectural design using the Cosmos SDK, alongside planning for staking, compliance features, and token migration mechanisms.
+In 2023, the Hongbai public testnet was launched to validate the new infrastructure, utilising a placeholder token (“AUM”). During this period, community discussions advanced around unifying OM as the native asset of the future MANTRA Chain.
+In 2024, following community approval, OM was designated as the native token of MANTRA Chain. The MANTRA mainnet launched, introducing a native version of OM and enabling its use for gas fees, staking, and governance. A token bridge facilitated the migration from ERC-20 OM to the native chain. In March 2024, MANTRA was in a pre-launch phase focused on preparing the Hongbai Incentivised Testnet, which attracted over 80,000 waitlist sign-ups, indicating strong early demand for its real-world asset (RWA) tokenisation infrastructure. During the same period, the project increased its visibility through thought leadership, with its CEO participating in the Digital Asset Summit in London and engaging in multiple online discussions, while governance activity began to take shape through a community proposal to establish a permissionless staking platform.
+In April 2024, MANTRA transitioned from preparation to active ecosystem rollout with the official launch of the Hongbai Incentivised Testnet, designed to simulate real network usage and onboard users through incentives. The project also launched an incubator program in Dubai to attract developers and expand its ecosystem, while strengthening its market presence through sponsorship and participation in major events such as TOKEN2049. Community growth accelerated significantly, with its social following surpassing 220,000 users, reflecting increasing engagement and awareness.
+In May 2024, MANTRA experienced rapid growth, with participation in the Hongbai Testnet exceeding 2.23 million users globally and the project becoming the most followed on Galxe with over 855,000 followers. Engagement mechanisms were expanded through additional Galxe quests, allowing users to earn rewards and climb leaderboards, while token utility increased through integration with Binance Simple Earn, offering up to 19.9% APR on OM tokens. At the governance level, a proposal was submitted to establish the first OM liquidity pool on Base Chain, and the ecosystem expanded through integration with Ondo Finance’s USDY product, a tokenised US Treasury instrument used as a foundational liquidity asset, alongside the launch of a multi-chain yield vault offering additional token incentives and a structured reward mechanism designed to prevent dilution.
+In June 2024, the USDY multi-chain vault was launched to the public, enabling users to deposit stablecoins and gain exposure to short-term US Treasury yields while earning additional rewards in ONDO and OM tokens, thereby introducing a low-risk yield layer into the MANTRA ecosystem and strengthening its connection to institutional-grade financial products.
+Network security and decentralisation were strengthened by onboarding Binance as an active validator, while the protocol achieved full EVM compatibility, enabling lower fees, higher throughput, and improved liquidity integration with the Ethereum ecosystem. During this period, a USD 25 million OM token buyback program was also launched, and the roadmap was extended toward continued scaling into 2025 and beyond.
+In September 2024, MANTRA entered its final pre-mainnet phase, announcing the upcoming launch of its mainnet in October and positioning itself as a ledger of record for real-world assets. The project defined key features of the network, including enhanced security, mitigation of counterparty risk, and infrastructure for institutional capital deployment, while also launching MANTRA Academy to educate users and support adoption of RWA tokenisation concepts.
+In October 2024, MANTRA launched its mainnet, marking its transition to a fully operational Layer 1 blockchain designed for real-world asset tokenisation and institutional use. The project reinforced its global positioning through participation in major industry events in Dubai, including Cosmoverse, Hackmos, and Binance Blockchain Week, where it focused on advancing discussions around RWA tokenisation and regulatory frameworks. Strategic partnerships were further expanded, including onboarding Google Cloud as a validator and infrastructure provider and enabling access to institutional investment products such as the BlackRock ICS Money Market Fund through collaboration with Libre. Governance developments included updates to OM tokenomics and the activation of mainnet staking rewards.
+In 2025, MANTRA implemented a token supply reduction strategy, including a 150 million OM burn, with additional reductions under consideration. These measures aimed to optimise token economics, reduce inflationary pressure, and enhance staking incentives.
+At the beginning of 2025, MANTRA continued its transition toward a fully operational Layer 1 ecosystem, including updates to staking infrastructure. From January 1, 2025, EVM staking was maintained only on Ethereum, while staking on Binance Smart Chain and Polygon was deprecated, and rewards began to be distributed in mainnet OM tokens, with monthly allocations initially set at 1 million OM and later reduced to 500,000 OM due to increased mainnet integration.
+In February 2025, MANTRA achieved a significant regulatory and strategic milestone by obtaining a Virtual Asset Service Provider (VASP) licence from Dubai’s VARA, enabling it to operate as an exchange and provide broker-dealer and investment services. This development reinforced its positioning as a regulated infrastructure provider for real-world asset tokenisation and supported its expansion in the UAE and globally. During the same period, MANTRA launched the RWAccelerator program in partnership with Google Cloud, designed to support startups building in real estate, financial products, and alternative assets. The program provided selected participants with cloud credits, technical support, mentorship, and guidance across areas such as tokenomics, compliance, and listing processes.
+Throughout early 2025, the MANTRA ecosystem showed continued growth in network activity and adoption. The validator network expanded to dozens of active validators globally, strengthening decentralisation and network security, while more than USD 4 million worth of OM was staked through liquid staking protocols. At the same time, over 62 million OM tokens had been bridged to the MANTRA Chain, increasing liquidity and utility within the ecosystem, and multiple exchanges had already integrated the network, with additional integrations planned.
+In parallel, governance and token structure continued to evolve. A DAO proposal passed with overwhelming approval to formally establish OM as the native Layer 1 token of MANTRA Chain, reinforcing its role in network security, staking, and ecosystem operations. Staking participation grew significantly, with over 145 million OM tokens staked, representing approximately 18% of circulating supply, while the validator network expanded to more than 90 validators across over 30 countries, reflecting increasing global decentralisation.
+MANTRA also focused heavily on exchange expansion and market accessibility in 2025. The OM token was integrated across a wide range of centralised and decentralised platforms, including Gate.io, Kraken, Binance, Bybit, Bitget, Hyperliquid, Levana Protocol, and Nolus Protocol, significantly increasing global trading access and liquidity. These integrations enabled tens of millions of users across different regions to trade OM, while also introducing additional features such as staking pools, leveraged trading, and perpetual contracts.
+Later In 2025, MANTRA expanded its market presence through the listing of OM on Bithumb, complementing its existing listing on Upbit and establishing a strong foothold in the South Korean market. The project further aligned itself with institutional initiatives by joining the Tokenised Asset Coalition, while continuing infrastructure development through the launch of a mainnet RPC node on Google Cloud Marketplace, improving accessibility for developers. At the same time, additional yield campaigns on Binance Earn offered up to 29.9% APR, reinforcing token utility and attracting liquidity.
+Institutional infrastructure and custody solutions were further strengthened through integration with Tungsten, enabling institutional clients to securely custody OM within a regulated framework. At the same time, developer accessibility improved through integration with tools such as Mintscan, providing real-time blockchain insights and analytics.
+In terms of ecosystem development and industry engagement, MANTRA continued to position itself at the centre of the RWA tokenisation sector. The project organised and participated in events such as the upcoming MANTRA RWA Summit in Seoul (April 2025), aimed at bringing together stakeholders from traditional finance, policy, and blockchain development. Additionally, MANTRA supported innovation through hackathons, including its first RWA-focused hackathon in Jaipur, which attracted over 200 projects exploring use cases such as tokenised assets, lending, and stablecoins.
+Community engagement and incentive programs also remained active throughout 2025. Partnerships such as the collaboration with Zoth provided OM holders with rewards through participation in ecosystem activities, while ongoing educational initiatives and developer programs aimed to expand adoption and build new applications on MANTRA Chain.
+In August 2025, MANTRA entered a phase of institutional and technical consolidation, marked by a strategic partnership with Inveniam, which included a USD 20 million investment to support the tokenisation of private market assets.
+In 2026, MANTRA completed the full deprecation of the ERC-20 OM token on Ethereum, BNB Chain, Polygon, and Base, consolidating all activity on MANTRA Chain. The network was upgraded from v6 to v7 at block 13,000,000, at which point each OM token was redenominated into four MANTRA tokens through a non-dilutive 1:4 split, establishing a maximum supply of 10,000,000,000 MANTRA. The base denomination unit changed from OM to MANTRA. All prior allocations, vesting schedules, and governance parameters were preserved proportionally.
+D.8
+Description of future milestones
+Future milestones
+MANTRA will continue to evaluate token supply management mechanisms, including potential additional burns, to maintain sustainable tokenomics, while expanding real-time analytics tools to enhance transparency across supply, staking participation, validator performance, and overall network activity. In parallel, the protocol will explore market operation strategies aimed at supporting long-term ecosystem stability, which may include treasury-led participation in the market.
+MANTRA Chain aims to expand its validator set to enhance decentralisation, security, and network resilience, while developing EVM-compatible environments to support broader developer adoption and application deployment. The protocol will further advance its focus on real-world asset tokenisation through the integration of new asset classes, institutional partnerships, and cross-chain interoperability via IBC, alongside introducing new products and tools, such as vaults and yield strategies, to improve user participation and capital efficiency.
+D.9
+Resource allocation
+The supply dynamics of MANTRA are governed by protocol-defined issuance mechanisms, including staking rewards for validator participation and governance-controlled parameters. Unlike fixed-supply models, the token’s issuance is designed to evolve in response to network growth, validator incentives, and broader ecosystem development.
+Prior to the upgrade and the 1:4 redenomination completed in 2026, MANTRA launched with a total supply of 1,777,777,776 OM tokens  and were distributed across several categories.
+The MANTRA mainnet tokenomics proposal was approved by the community in October 2024. Following community feedback, vesting conditions were extended and the inflation rate was reduced to 3%. The revised proposal was subsequently presented through two separate governance votes to ERC-20 OM holders and mainnet validator nodes, both of which passed successfully, with 82.17% of ERC-20 OM holders and 49.17% of validators voting in favor.
+A total of 67.5% was dedicated to the OM upgrade, including 50%(888,888,888) allocated to mirror the existing ERC-20 supply and 17.5%(311,111,111) reserved for upgrade incentives distributed to legacy OM participants, subject to vesting conditions including a four-month cliff and 44-month linear release. The remaining allocation included 2.12%(37,777,777) assigned to the MANTRA Chain Association ecosystem and operations, 5.6%(100,000,000) to pre-seed participants (subject to a 12-month cliff and 24-month vesting), 5.1%(90,000,000) to seed participants (with a 6-month lock-up and 12-month vesting), 16.9%(300,000,000) to core contributors (with a 30-month cliff and 30-month vesting schedule), and 2.8%(50,000,000) allocated for airdrops, with partial initial unlocks followed by linear vesting through 2027.
+Since the genesis, the token allocation intended to mirror the existing ERC-20 supply was divided across the Public Sale that accounts for 8.5% of the total supply, all circulating since the token generation event. The Private Sale makes up 9%, with most tokens already vested and the remainder unlocking in two future events. Team and Advisors hold 17.5%, locked and gradually released over multiple vesting periods after a one-year cliff. Staking Rewards, representing 30% of the supply, are being distributed over approximately five years, with some tokens already in circulation. Referrals and Reserves represent 12.5% and 10% respectively, with gradual releases on a fixed schedule. Grants account for 12.5% of the supply and are fully locked in escrow, to be released only for protocol improvement and development.
+As part of the network’s evolution, a token upgrade was implemented at block 13,000,000 (around March 2026), introducing a 1:4 token split and rebranding from OM to MANTRA. Under this upgrade, each OM token was converted into four MANTRA tokens, resulting in a proportional expansion of total supply and establishing a maximum supply of 10,000,000,000 MANTRA. All prior allocations remained proportionally consistent following the conversion.
+The token structure distinguishes between legacy ERC-20 OM tokens, native mainnet staking tokens at genesis, and the upgraded MANTRA token post-split. Legacy OM tokens were initially mirrored on MANTRA Chain and held within a canonical bridge contract to facilitate migration, with gradual deprecation of the ERC-20 version in favor of native tokens.
+D.10
+Planned use of Collected funds or crypto-Assets
+This field is not applicable, as no funds are expected to be raised through public offerings.
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part E - Information about the offer to the public of crypto-assets or their admission to trading
+N
+Field
+Content
+E.1
+Public offering or admission to trading
+ATTR
+E.2
+Reasons for public offer or admission to trading
+By admitting the MANTRA asset to trading, holders of the token will gain transparent price discovery and improved liquidity. This enables the project’s community and ecosystem participants to more easily enter and exit positions, supporting a dynamic and efficient market.
+E.3
+Fundraising target
+    N/A
+E.4
+Minimum subscription goals
+    N/A
+E.5
+Maximum subscription goals
+    N/A
+E.6
+Oversubscription acceptance
+    N/A
+E.7
+Oversubscription allocation
+    N/A
+E.8
+Issue price
+    N/A
+E.9
+Official currency or any other crypto-assets determining the issue price
+    N/A
+E.10
+Subscription fee
+    N/A
+E.11
+Offer price determination method
+    N/A
+E.12
+Total number of offered/traded crypto-assets
+4787380264
+The number of MANTRA  admitted to trading may vary over time due to changes in circulating supply driven by factors such as staking participation, vesting schedules, treasury allocations, and ecosystem incentive distributions. As of the date of this white paper, the circulating supply is 4,787,380,264.39 MANTRA, with the remaining tokens subject to lockups, vesting conditions, or protocol-defined distribution schedules in accordance with the MANTRA ecosystem’s tokenomics framework.
+E.13
+Targeted holders
+ALL
+E.14
+Holder restrictions
+    N/A
+E.15
+Reimbursement notice
+    N/A
+E.16
+Refund mechanism
+    N/A
+E.17
+Refund timeline
+    N/A
+E.18
+Offer phases
+    N/A
+E.19
+Early purchase discount
+    N/A
+E.20
+Time-limited offer
+    N/A
+E.21
+Subscription period beginning
+    N/A
+E.22
+Subscription period end
+    N/A
+E.23
+Safeguarding arrangements for offered funds/crypto-Assets
+    N/A
+E.24
+Payment methods for crypto-asset purchase
+    N/A
+E.25
+Value transfer methods for reimbursement
+    N/A
+E.26
+Right of withdrawal
+    N/A
+E.27
+Transfer of purchased crypto-assets
+    N/A
+E.28
+Transfer time schedule
+    N/A
+E.29
+Purchaser's technical requirements
+    N/A
+E.30
+Crypto-asset service provider (CASP) name
+    N/A
+E.31
+CASP identifier
+    N/A
+E.32
+Placement form
+    N/A
+E.33
+Trading platforms name
+Payward Global Solutions Limited (Kraken)
+E.34
+Trading platforms Market identifier code (MIC)
+PGSL
+E.35
+Trading platforms access
+Admission to trading of the MANTRA crypto-asset is sought on Kraken. Access to trading, once admission is granted, will be provided through Kraken’s trading platform, including its website and mobile applications, in accordance with Kraken’s terms of use and applicable regulatory requirements.
+E.36
+Involved costs
+Exchanges may apply a service fee calculated as a percentage of each transaction, with the exact amount disclosed to the user prior to execution. Deposits and withdrawals involving fiat currency may also be subject to additional commissions imposed by external payment service providers.
+Kraken applies a fixed 1% trading fee for instant buy, sell, or convert transactions executed via its standard interface, with spreads incorporated into the quoted execution price. Additional payment processing fees may apply depending on the selected funding method (e.g. card payments, bank transfers), and deposit and withdrawal fees vary according to the currency and payment rail used.
+E.37
+Offer expenses
+No offer related expenses are involved.
+E.38
+Conflicts of interest
+There are no conflicts of interest arising at the moment of writing the white paper in relation to the offer or admission to trading.
+E.39
+Applicable law
+Ireland
+E.40
+Competent court
+Ireland
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part F - Information about the crypto-assets
+N
+Field
+Content
+F.1
+Crypto-asset type
+Crypto-assets other than asset-referenced tokens or e-money tokens
+F.2
+Crypto-asset functionality
+MANTRA enables users to engage in a range of activities across MANTRA Chain and its ecosystem applications. It is used to pay transaction fees, participate in staking to secure the network. 
+MANTRA holders who delegate their tokens to validators or operate a validator themselves can participate in network governance by submitting proposals and voting on protocol changes. The token also facilitates interaction with on-chain applications and services, supporting asset issuance, decentralised finance functionality, and broader ecosystem participation within the MANTRA network.
+F.3
+Planned application of functionalities
+All main crypto asset functionalities have already been deployed, whereas mainnet functionalities are updated or improved constantly.
+F.4
+Type of crypto-asset white paper
+OTHR
+F.5
+The type of submission
+NEWT
+F.6
+Crypto-asset characteristics
+MANTRA is the native crypto-asset of MANTRA Chain and inherits the characteristics of its Cosmos SDK-based proof-of-stake infrastructure. As such, transactions on the network benefit from low latency, deterministic finality, and a resource-efficient consensus model. The network is secured by a decentralised validator set and incorporates protocol-defined mechanisms to incentivise participation and maintain network security.
+MANTRA functions as a fungible staking token, used to pay transaction fees, secure the network through staking, and participate in governance. It underpins interactions across the MANTRA ecosystem, including asset issuance, decentralised applications, and compliance-oriented financial infrastructure.
+Following its transition from an earlier ERC-20 implementation, MANTRA is now natively issued on MANTRA Chain, which serves as its canonical environment. The token’s supply and issuance are governed by the protocol’s economic framework, with mechanisms designed to balance network security, participation incentives, and long-term sustainability.
+F.7
+Commercial name or trading name
+    N/A as DTI is provided in F.13
+F.8
+Website of the issuer
+https://www.mantrachain.io/
+F.9
+Starting date of offer to the public or admission to trading
+2026-06-10
+F.10
+Publication date
+2026-06-09
+F.11
+Any other services provided by the issuer
+In addition, MANTRA supports CosmWasm, a smart contract framework designed for the Cosmos ecosystem, which enables developers to build secure and interoperable decentralised applications using WebAssembly. This allows for greater flexibility, upgradability, and cross-chain functionality within the network.
+Together, these technologies provide a robust developer environment, supported by standard Cosmos-based tooling, documentation, and infrastructure, enabling developers to deploy and manage decentralised applications efficiently within the MANTRA ecosystem.
+F.12
+Language or languages of the crypto-asset white paper
+English
+F.13
+Digital token identifier code used to uniquely identify the crypto-asset or each of the several crypto assets to which the white paper relates, where available
+BTV0D00Z6
+F.14
+Functionally fungible group digital token identifier, where available
+11B60HRDS
+F.15
+Voluntary data flag
+FALSE
+F.16
+Personal data flag
+TRUE
+F.17
+LEI eligibility
+TRUE
+F.18
+Home Member State
+Ireland
+F.19
+Host Member States
+Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part G - Information on the rights and obligations attached to the crypto-assets
+N
+Field
+Content
+G.1
+Purchaser rights and obligations
+This field does not apply as the token is not associated with any legal claim of ownership, profit participation, entitlement to dividends, or repayment obligations from an issuer or its affiliates.
+MANTRA tokens only grant, for validators and holders delegating their tokens to validators, limited governance functional rights within the ecosystem, which are further described as crypto-asset functionalities in F.2.
+G.2
+Exercise of rights and obligations
+This field does not apply as the token confers no ownership or financial claims. The requirements set out below constitute technical preconditions and user responsibilities necessary to access and maintain the governance functional rights mentioned in G.1 and further described in F.2.
+To take part in governance, participants must hold MANTRA tokens and typically stake them by delegating to a validator or running a validator node themselves. Submitting a proposal requires a minimum deposit of 355,552 MANTRA tokens, ensuring that only serious proposals are considered. Voting on proposals is carried out by token holders who have staked their tokens, either directly as validators or indirectly by delegating to a validator. 
+Participants can submit proposals suggesting changes to the network, future developments, or the use of community funds. Once a proposal is submitted, other participants can vote on it by choosing options such as yes, no, or abstain. After the voting period ends, the votes are counted, and the result determines whether the proposal is approved and implemented or rejected.
+G.3
+Conditions for modifications of rights and obligations
+This field does not apply as the token confers no ownership or financial claims as of the date of this white paper.
+G.4
+Future public offers
+This field does not apply as there is no offer to the public.
+G.5
+Issuer retained crypto-assets
+536000000
+G.6
+Utility Token Classification
+FALSE
+G.7
+Key features of goods/services of utility tokens
+This field does not apply as G.6 is false.
+G.8
+Utility tokens redemption
+This field does not apply as G.6 is false.
+G.9
+Non-trading request
+TRUE
+G.10
+Crypto-assets purchase or sale modalities
+In addition to centralised platforms, MANTRA may be accessed through decentralised trading environments and on-chain liquidity venues within its native ecosystem. Following its transition to MANTRA Chain, the token is now primarily issued and utilised on its native network, which serves as its canonical environment.
+G.11
+Crypto-assets transfer restrictions
+No transfer restrictions are applicable. The MANTRA assets are freely transferable and tradable.
+G.12
+Supply adjustment protocols
+FALSE
+G.13
+Supply adjustment mechanisms
+This field does not apply as G.12 is false.
+G.14
+Token value protection schemes
+FALSE
+G.15
+Token value protection schemes description
+This field does not apply as G.14 is false.
+G.16
+Compensation schemes
+FALSE
+G.17
+Compensation schemes description
+This field does not apply as G.16 is false.
+G.18
+Applicable law
+There is no written legal agreement between the offeror and the crypto asset-holder that sets out the laws that govern the legal relationship between those two parties. In the absence of such an agreement, the laws that govern that relationship will depend on the location of the issuer and the given crypto asset-holder and characteristic performance of the legal relationship, and any agreed intention of the issuer and crypto asset-holder.
+G.19
+Competent court
+There is no written legal agreement between the offeror and the crypto asset-holder that sets out which jurisdiction's courts will have authority to deal with a dispute between the crypto asset-holder and the issuer. In the absence of such an agreement, the laws of the competent court will depend on the location of the issuer and the given crypto asset-holder and characteristic performance of the legal relationship, and any agreed intention of the issuer and crypto asset-holder.
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part H – Information on underlying technology
+N
+Field
+Content
+H.1
+Distributed ledger technology
+    N/A as DTI is provided in F.13.
+H.2
+Protocols and technical standards
+Network Protocol
+    MANTRA Chain is a Layer-1 blockchain built using the Cosmos SDK, with the MANTRA token serving as its native asset. The protocol’s architecture enables highly modular functionality through standard Cosmos SDK modules (e.g., staking, governance, bank, distribution, and authz), and is strictly optimised for real-world asset (RWA) tokenisation and DeFi applications. Operating within the broader Cosmos ecosystem, the chain leverages the Inter-Blockchain Communication (IBC) protocol for seamless cross-chain interoperability. This modular design empowers the network to support decentralised smart contract execution, on-chain governance, validator coordination, and native staking simultaneously.
+    Consensus and Cryptographic Standards
+    MANTRA Chain utilises standard cryptographic primitives implemented within the Cosmos SDK framework. It relies on SHA-256 for hashing, ed25519 for validator consensus signatures, and secp256k1/eth-secp256k1 (ECDSA curves) for standard user accounts and EVM transactions. This dual-curve approach is consistent with the Cosmos SDK’s default cryptographic libraries and ensures compatibility across both native and Ethereum-based tooling.
+    Smart Contract Layer
+    The network natively supports CosmWasm, a highly secure smart contract module built for the Cosmos ecosystem. This layer enables composable DeFi, DAO infrastructure, and RWA issuance directly on-chain, utilising MANTRA as the transaction gas and incentive mechanism. All smart contract upgrades, deployments, and protocol-level parameter changes are subject to decentralised on-chain governance using MANTRA as the voting token.
+    Address Format and Interoperability
+    Native addresses on MANTRA Chain follow the standard Cosmos bech32 format, denoted by a chain-specific prefix (mantra1...). The chain is fully integrated into the Cosmos Chain Registry, ensuring out-of-the-box connection with Cosmos-compatible wallets such as Keplr and Leap, while supporting robust cross-chain communication via established IBC channels.
+    EVM Module (MANTRA Chain v5.0.0 and later)
+    Through MANTRA Chain v5.0.0 upgrade, MANTRA Chain introduced robust native EVM (Ethereum Virtual Machine) compatibility, leveraging an architecture based on the ICL EVM module. This infrastructure enables seamless smart contract management—handling everything from deployment and state transitions to deterministic EVM gas metering—while operating natively within the Cosmos state machine. By operating alongside the CosmWasm environment, the EVM module provides a dual-execution MultiVM infrastructure on a single chain. Developers can deploy Solidity smart contracts using industry-standard Ethereum development tooling, including Hardhat, Foundry, and Remix, bypassing the need to adopt new programming paradigms.
+    Cryptographic Interoperability and Address Mapping
+    To achieve frictionless interoperability between the EVM and native Cosmos environments, MANTRA Chain utilises the eth-secp256k1 cryptographic curve for private key generation. By standardising the BIP44 HD wallet derivation path to use the Ethereum-native coin-type 60 (i.e., m/44'/60'/0'/0/0 ), the protocol ensures complete account unification.
+    Under this architecture, a single generated private key yields an underlying 20-byte account format that translates directly into two interoperable formats:
+An EVM-compatible 0x address for use in Ethereum-native tooling (like MetaMask).
+A corresponding Bech32-encoded address (mantra1...) for native Cosmos operations.
+            This 1:1 deterministic mapping allows users and developers to manage a single unified identity and balance across both execution environments without requiring complex account abstraction or cross-chain bridging mechanisms.
+            Static Precompiles for Native Cosmos Interoperability
+            A defining feature of MANTRA Chain's EVM integration is the use of stateful precompiled contracts to bridge the execution layers. These precompiles are assigned static, fixed 0x addresses within the EVM environment and act as direct API gateways to the underlying Cosmos SDK modules.
+            Instead of relying on asynchronous cross-VM message passing, developers can write standard Solidity smart contracts that interact directly with these static 0x addresses to execute native Cosmos transactions. This empowers EVM-based dApps to natively trigger protocol-level functions, such as:
+Staking (x/staking): Delegating tokens, undelegating, and claiming rewards natively from a Solidity contract.
+Governance (x/gov): Submitting or voting on chain-level governance proposals.
+            This architecture deeply unifies the Ethereum developer experience with the sovereign, application-specific power of the Cosmos SDK.
+            Base Denomination (post v7 upgrade)
+            Following Governance Proposal 26 and the v7 chain upgrade enacted at block 13,000,000, the network's base denomination unit successfully transitioned from uom (6 decimals) to aMANTRA (18 decimals) at a scaling ratio of 1:4 x 10^12 (1 OM = 4 MANTRA). This comprehensive migration affected core modules including Authz, Bank, Crisis, Distribution, EVM, Feegrant, Gov, Mint, PreciseBank, and Staking, dynamically scaling all global balances and network parameters.
+            Supported  protocol-level  technical standards
+Cosmos SDK Modules: staking, governance, bank, distribution, authz
+Consensus Protocol: CometBFT (formerly Tendermint BFT)
+Smart Contracts: CosmWasm (Rust) and EVM (Solidity)
+Cross-Chain Messaging: IBC v1.0+
+Address Format: Bech32 for native MANTRA Chain accounts
+Wallet Integration: Chain Registry integration for unified wallet and explorer compatibility
+Compliance Modules: MANTRA DID and Guard modules for identity-enforced access control
+Tokenisation Services: MANTRA Token Service (MTS) for programmable RWA lifecycle controls
+H.3
+Technology used
+MANTRA Chain is purpose-built to support the compliant tokenisation and management of RWAs. The protocol seamlessly integrates on-chain governance, dual-VM smart contracts, and modular compliance infrastructure, all secured by the MANTRA token for staking and transaction fees.
+    CosmWasm and WebAssembly
+    Native smart contract execution is powered by CosmWasm, integrating WebAssembly (Wasm) directly into the Cosmos SDK stack. Contracts are predominantly written in Rust, compiled to highly efficient Wasm binaries, and executed in a secure, sandboxed environment. This architecture guarantees deterministic, high-performance contract behavior.
+WebAssembly (Wasm): A compact, binary instruction format designed for near-native execution speed, cross-platform portability, and strict security constraints.
+Rust: The primary language for CosmWasm, offering memory safety, zero-cost abstractions, and concurrency management without data races, making it the ideal standard for handling high-value RWA logic.
+            Ledger Model and State Management
+            MANTRA Chain utilises an account-based ledger model, where individual accounts securely maintain balances, roles, and smart contract state. Every finalised block represents a complete, cryptographically recorded state transition of the network. These state updates are strictly deterministic and verifiable via Merkle proofs, aligning with foundational Cosmos SDK design principles.
+            Validator Node Design
+            Validators perform block proposals, consensus voting, and on-chain governance. They secure the network via MANTRA staking and are rewarded in MANTRA. Each validator must meet operational and infrastructure requirements, including:
+Staking a minimum allocation of MANTRA.
+Maintaining high uptime, security standards, and relay capability for IBC interactions.
+Participating in governance and upgrade coordination.
+H.4
+Consensus Mechanism
+MANTRA Chain employs the Tendermint consensus protocol and the Proof of Stake consensus mechanism. Tendermint is a BFT protocol designed to enable secure and consistent replication of a transaction log across distributed validator nodes. It ensures that all honest nodes arrive at the same ordering of transactions, even in the presence of up to one-third of faulty or malicious participants. This deterministic finality is critical for mission-critical applications such as tokenised assets, decentralised governance, and regulated finance. The protocol comprises two main components: 
+Tendermint Core: Manages consensus and block production using BFT principles.
+ABCI (Application Blockchain Interface): Decouples the consensus engine from the application logic in design, and connects them in function, allowing smart contract and state machine implementations in any programming language.
+            Tendermint optimises the classic BFT model using a blockchain structure, where blocks are cryptographically linked, and transactions are processed in strict global order. This design facilitates fast block finality and avoids the probabilistic delays inherent in Proof-of-Work systems.
+            Validator-Based Proof-of-Stake Design
+            Validators are responsible for proposing new blocks and participating in the consensus process through cryptographically signed votes. Each validator's influence is weighted by the total amount of staked MANTRA tokens, including both their self-bonded tokens and those delegated by other participants. Validator selection is thus determined by total stake, not direct appointment.
+            Delegation and Economic Incentives
+            MANTRA Chain supports Proof-of-Stake (PoS), enabling MANTRA holders to assign their tokens to validator candidates. This delegation mechanism empowers the broader community to participate in governance and consensus indirectly, while also earning staking rewards.
+            Slashing and Misbehaviour Penalties
+            To maintain network integrity, the protocol enforces slashing penalties for malicious or negligent behaviour. Penalties result in the reduction of staked tokens, aligned with the severity of the violation. Validators and their delegators can be penalised for actions such as:
+Double-signing (e.g., signing conflicting blocks)
+Extended downtime (i.e., failing to validate or propose blocks
+            Defensive Architecture: Sentry Nodes
+            To safeguard against network-layer attacks such as Denial-of-Service (DoS), MANTRA Chain validators may implement a sentry node architecture. This setup includes:
+Isolating validator nodes behind one or more sentry nodes
+Connecting only to trusted full-nodes
+Routing external connections through sentry nodes operating in cloud environments
+Maintaining private IP space between validator and sentry nodes
+            Key Management Practices
+Private keys must be stored securely, ideally in encrypted wallets or Hardware Security Modules (HSMs).
+Backup strategies include offline storage in multiple secure locations.
+Key-sharing is strictly discouraged; delegation mechanisms enable staking participation without key exposure.
+            Consensus Finality and Security
+            The Tendermint consensus protocol ensures instant finality once a block is committed. It tolerates up to one-third of validators being faulty or malicious, while still maintaining consensus safety and liveness, as long as the remaining two-thirds operate correctly. This property guarantees that committed transactions cannot be reverted or reorganised.
+            Technical Comparison with Other Systems
+            Proof of Work (PoW): Proof-of-Work networks, such as Bitcoin, rely on competitive mining, where nodes expend significant computational resources to solve cryptographic puzzles and propose new blocks. This model offers strong security guarantees but is energy-intensive and suffers from delayed transaction finality, as confirmations depend on successive block depth to reduce the probability of chain reorganisations. In contrast, MANTRA Chain eliminates mining entirely. The network employs Tendermint’s BFT consensus, which deterministically selects validators to propose and finalise blocks through a quorum-based voting mechanism. This enables faster finality (within seconds), lower energy usage, and more predictable settlement, making the network more suitable for enterprise and regulated financial applications.
+            Proof of Stake (PoS): General PoS systems, such as Ethereum 2.0, assign block production rights based on token staking. While PoS is more energy-efficient than PoW, it can lead to centralisation risks, where larger stakeholders may exert disproportionate influence over consensus outcomes and governance. MANTRA Chain mitigates these risks through the following mechanisms:
+A validator set governed by staking-based selection and community governance, limiting centralisation.
+Delegated staking, allowing broad token holder participation in consensus via validator delegation.
+A slashing mechanism that penalises validators for misbehaviour such as double-signing or extended downtime.
+Optional use of a sentry node architecture, which enhances security by isolating validator infrastructure from external threats.
+            MANTRA Chain currently operates on software version v7, through which all validator delegation scales and consensus module parameters are aligned with the current MANTRA token denomination.
+H.5
+Incentive Mechanisms and Applicable Fees
+Validator and Staking Incentives
+    MANTRA Chain operates on a PoS consensus mechanism where validators and delegators jointly maintain the network. Rewards are distributed on a per-block basis. Validators propose and validate blocks and receive incentives through block provisions and transaction fees. Each validator may set a commission rate that is deducted from their delegators’ earned rewards. Delegators (MANTRA token holders who stake their tokens) receive staking rewards proportional to their contribution after the validator's commission.
+    Validator Selection and Reward Metrics
+    When choosing a validator, delegators may consider indicators: 
+APR (Annual Percentage Rate): Indicates the estimated annual return for staked MANTRA tokens.
+Commission Rate: The validator's fee, deducted from the delegator’s staking rewards.
+Staking Volume: Total MANTRA tokens staked with a validator, often reflecting their reliability and popularity.
+            Inflationary Tokenomics
+            To sustain long-term network incentives, MANTRA Chain employs an inflationary model for the MANTRA token:
+Annual Inflation Rate: 3% fixed rate during the first year.
+Allocation of Inflation: 60% (1.8% of total supply) directed to staking rewards. 40% (1.2% of total supply) allocated to the MANTRA Chain Association for ecosystem development.
+            Note: The 3% annual inflation rate and the distribution percentages described in this section were approved by community governance, with 82.17% of legacy OM holders and 49.17% of mainnet validators voting in favour.
+            Transaction Fees
+            MANTRA tokens are used to pay for transaction fees on MANTRA Chain. The collected fees are distributed among validators and their delegators. These fees are incurred for operations such as:
+Executing smart contracts.
+Interacting with dApps.
+Transferring tokens.
+            Validator Commission and Slashing
+Commission: Validators have the autonomy to set their commission rates, which are deducted from the rewards earned by their delegators. This mechanism allows validators to cover operational costs and incentivises them to maintain high-performance standards.
+Slashing: To maintain the integrity of the network, MANTRA Chain enforces slashing penalties for validator misconduct, including instances of downtime. If a validator signs less than 50% of the blocks within a 1,000-block segment, they will be temporarily jailed for 1 minute and incur a 0.1% slashing fee. In cases of double-signing—when a validator confirms two different blocks at the same height—there is a substantial slashing penalty of 5%, and the validator will be permanently barred from earning any rewards.
+            Historical Ecosystem Incentives (Testnet Phase)
+            During the development of MANTRA Chain, an incentivised testnet program was launched, allocating up to USD 500,000 in MANTRA for participation rewards. The program consisted of several phases in which validators completed challenges and missions to earn points. Rewards were distributed based on performance rankings. This initiative successfully stimulated early validator engagement and network testing.
+H.6
+Use of distributed ledger technology
+FALSE
+H.7
+DLT functionality description
+The MANTRA chain is not operated by MANTRA Chain Association or any third party acting on its behalf.
+H.8
+Audit
+TRUE
+H.9
+Audit outcome
+Hacken, June–November 2024, Protocol Security Audit
+Object: Security review of the MANTRA Chain codebase covering token creation, decentralised identity management, access control, liquidity provision, and market-making modules. The review assessed adherence to Go best practices, operational resilience, and compliance readiness of KYC/AML and DID modules across the full protocol stack.
+Results: 16 findings identified: 1 critical (indirect dependency vulnerability in the github.com/rs/cors library), 1 high (outdated CosmWasm version risking stack overflow and gas mispricing), 1 medium, 5 low, and 8 informational observations.
+Actions: All issues resolved or accepted with planned remediations. The critical vulnerability was addressed by upgrading to a secure version of the affected library. The high-severity issue was mitigated by updating to the latest stable CosmWasm version. All remaining issues were resolved or accepted with documented remediation plans.
+            Oak Security, October 2024, MANTRA Claimdrop v1.0 Smart Contract
+Object: Comprehensive security audit of the MANTRA Claimdrop v1.0 smart contract (MANTRA-Finance/claimdrop-contract), commissioned by MANTRA Ventures Limited. The audit covered Merkle proof-based token distribution, functional correctness, vesting logic, rounding compensation, and claim tracking mechanisms. Initial commit: 89313f05b7dc70eaba7d8f2320c66fb39cd6232c. Test coverage: 93.93% (418/445 lines).
+Results: 3 minor issues identified (compensation revert risk on empty claim mappings; vesting misconfiguration permitting early claim of unvested tokens; duplicate Merkle claims resulting in overclaim limitations) and 5 informational findings (fallback logic inefficiency, misleading parameter naming, unused code, missing event emissions, and underutilised invariants in computation logic).
+Actions: 7 of 8 issues resolved on re-audit (final fix verification commit: 615e7d3bdf4c983f0898d85310d4c72baf99dd98). The duplicate claims handling issue was acknowledged with usage recommendations for off-chain tooling and Merkle construction constraints.
+            Code4rena, November 2024–January 2025, Smart Contract Competitive Audit
+Object: Public competitive audit engaging multiple independent security researchers across MANTRA Chain's smart contract logic and overall security framework, evaluating functional correctness, gas efficiency, and operational robustness with a focus on modules unique to MANTRA Chain.
+Results: 12 high severity issues (including misconfigured tri-token CPMM pools using incorrect formulas, missing slippage controls in swaps, and insufficient access restrictions on administrative functions), 19 medium severity issues (gas inefficiencies, missing reentrancy protections, and weak input validation in pool creation), and 11 low/informational findings (missing event emissions, inconsistent naming, and redundant code patterns).
+Actions: All issues acknowledged by the MANTRA Chain team with remediation plans implemented or scheduled.
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part I - Information on risks
+N
+Field
+Content
+I.1
+Offer-related risks
+Secondary Market Liquidity Risk
+Admission of MANTRA to trading on Kraken does not guarantee sufficient liquidity depth or narrow bid-ask spreads for all transaction sizes. Liquidity on any individual venue may vary significantly depending on prevailing market conditions, trading volumes, and the overall demand for MANTRA at the time of trading. Illiquid conditions may result in material price impact for holders seeking to enter or exit positions, particularly during periods of market stress or low volume.
+Market Price Volatility at Admission
+The market price of MANTRA may be subject to significant volatility at and following its admission to trading. Admission does not establish a reference or fair value price. Trading conditions may reflect speculative dynamics, broader crypto-asset market sentiment, and macroeconomic factors that are unrelated to the fundamental characteristics of MANTRA or MANTRA Chain.
+Trading Platform Dependency
+Access to MANTRA trading through Kraken is subject to the exchange's continued operation, its terms of use, applicable jurisdictional restrictions, technical availability, and its own regulatory compliance obligations. Any suspension, delisting, technical outage, or change in Kraken's operational policies would impair the ability of holders to trade MANTRA on that venue.
+Admission Refusal or Revocation Risk
+Admission to trading is subject to Kraken's applicable rules and the requirements of competent authorities. There is no guarantee that admission will be granted, maintained indefinitely, or not suspended or revoked. Changes in regulatory requirements, the token's legal classification, or the issuer's compliance status under MiCA could result in admission being refused, suspended, or withdrawn without notice.
+Geographic Access Restrictions
+Access to MANTRA trading on Kraken may be restricted in certain jurisdictions based on Kraken's eligibility criteria, applicable local laws, or regulatory guidance. Persons in restricted jurisdictions may be unable to access trading regardless of admission status, and the issuer has no control over such platform-level or jurisdiction-level restrictions.
+I.2
+Issuer-related risks
+Treasury and Token Allocation Risks 
+MANTRA Chain Association manages a substantial portion of the MANTRA token supply. Changes in circulating supply are determined by internal release schedules and vesting structures. These holdings fund ecosystem development, validation incentives, and infrastructure operations. Any disruptions in the controlled release, sale, or application of these tokens due to market illiquidity, strategic delays, or regulatory intervention could limit the issuer’s ability to sustain core network functions.
+Token Unlock and Vesting Control
+A portion of the total MANTRA supply is reserved for team, advisors, and ecosystem development, subject to internal vesting mechanisms. As these allocations become liquid, large-scale token movements may influence market dynamics, especially in illiquid conditions. If token unlocks occur without sufficient transparency or communication, it may contribute to price volatility or reputational risk.
+Treasury Discretion and Governance
+The issuer retains discretionary authority over the Ecosystem Development Fund and other major allocations. While the MANTRA token Dashboard provides transparency into token allocations and burn events, this introduces the risk of oversight or suboptimal treasury deployment. 
+Custodial Centralisation of Reserves
+Token reserves under issuer or foundation control are held in centralised custody. This introduces risks related to custodial mismanagement, internal access control failures, or insufficient multi-signature protection. 
+Resource Allocation Efficiency
+The long-term growth of MANTRA Chain may be influenced by the issuer’s ability to allocate technical, legal, and financial resources effectively. Prioritisation mismatches, underinvestment in infrastructure, or delays in addressing compliance may hinder network evolution and ecosystem growth. 
+Operational Integrity
+MANTRA Chain Association must maintain adequate internal controls over exchange coordination, validator onboarding, token distribution, and public communications. Failures in these controls could expose the project to data breaches, compliance penalties, or loss of market confidence. 
+Governance and Ecosystem Influence
+While validator-level consensus is decentralised, the issuer and its aligned entities maintain substantial influence over the GitHub repositories and the Ecosystem Fund, and are allocated a minority but sizable share of the supply. This may create perceived or actual conflicts between decentralisation goals and real-world project control. The governance framework of MANTRA Chain allows MANTRA holders to participate in governance decisions, but the extent of decentralised control remains evolving. 
+Partnership and Infrastructure Dependencies
+Platforms such as MANTRA Finance, which facilitate real-world use cases in trade finance and supply chain tokenisation, are significant use cases within the issuer’s ecosystem strategy. Any failure of these platforms to reach commercial viability, or withdrawal of enterprise partners due to regulatory or strategic reasons, could undermine MANTRA’s core utility proposition.
+Regulatory and Jurisdictional Risk
+MANTRA Chain Association is incorporated in Switzerland, where digital asset regulation is evolving. Although crypto assets are currently treated with regulatory flexibility, future classification changes could result in licensing requirements, product restrictions, or compliance burdens. Furthermore, as the MANTRA token is available in global markets, it is exposed to jurisdictional variations in token classification (e.g., MiCA in the EU, securities law in the U.S.). Inconsistent regulatory approaches may create frictions affecting exchange access, custodial arrangements, or institutional participation.
+I.3
+Crypto-assets-related risks
+Market Risks
+Pricing Volatility: The MANTRA token has experienced significant price fluctuations, notably a 90% drop in April 2025, highlighting its susceptibility to market volatility. Factors such as speculative trading, macroeconomic events, and changes in tokenomics can lead to rapid price swings, affecting the token's utility and financial predictability.
+Market Demand: The utility of MANTRA is closely tied to its adoption within DeFi applications and real-world asset tokenisation. Failure to achieve sustained adoption or integration can lead to decreased demand, adversely affecting the token's value.
+            Regulatory Risks
+Jurisdictional Uncertainty: The regulatory classification of MANTRA varies across jurisdictions. While it may be considered a utility token in some regions, others might classify it differently, leading to inconsistent regulatory treatment and potential legal uncertainties for holders and platforms.
+Compliance Requirements: MANTRA operates on a public ledger, necessitating compliance with global Anti-Money Laundering (AML) and Counter-Terrorism Financing (CTF) standards. Platforms supporting MANTRA must implement robust compliance measures, which may limit adoption or restrict access in certain jurisdictions.
+Exchange Risk Due to Regulatory Action: Regulatory actions against exchanges or reclassification of MANTRA could lead to delistings or trading suspensions, impairing liquidity and access. Such actions can also indirectly affect MANTRA's usage through restrictions on custodial infrastructure.
+            Operational Risks
+Private Key Management: Holders are responsible for safeguarding their private keys. Loss or theft of these credentials results in permanent loss of the associated MANTRA tokens, with no protocol-level recovery possible.
+Custodial Risks: Delegating key management to centralised exchanges or third-party custodians exposes users to risks such as cyberattacks, insolvency, operational errors, or internal fraud. Losses in these scenarios may not be recoverable.
+Irreversibility of Transactions: MANTRA transactions are immutable. Once confirmed on-chain, they cannot be reversed or modified. Errors, such as sending to the wrong address or transactions resulting from fraud, are not rectifiable through the protocol.
+            Privacy and Taxation Risks
+Privacy Limitations: MANTRA transactions are pseudonymous but not fully anonymous. On-chain activity can be analysed and potentially linked to real-world identities, especially when transacted via regulated platforms or KYC-enabled wallets.
+Tax Implications: Transactions involving MANTRA may trigger tax obligations, including capital gains or income taxes, depending on the jurisdiction. The absence of harmonised global tax policies creates uncertainty for token holders and may result in complex reporting requirements.
+            Macroeconomic Conditions
+            Economic downturns, rising interest rates, or declines in investor appetite for digital assets may reduce demand for MANTRA. These external market conditions can limit access to capital, deter adoption, and suppress overall liquidity.
+            Impact of Large Transactions or “Whales”
+            Large transactions from early holders or ecosystem funds can significantly impact MANTRA's market price, particularly if executed without notice or during periods of low trading volume. Such activities may destabilise the market and affect investor confidence.
+            Interoperability Risks
+            MANTRA's interoperability with other blockchains through IBC introduces dependencies and potential vulnerabilities. Misconfigurations or protocol-level failures in IBC channels could affect token transfers or data reliability across chains.
+I.4
+Project implementation-related risks
+Technical Delays and Quality Assurance
+Delays in the development of MANTRA Chain can occur due to several interconnected factors. Firstly, the technical complexity involved in integrating new features can pose significant challenges, especially when ensuring interoperability with other blockchains through the Inter-Blockchain Communication (IBC) protocol. Additionally, resource constraints related to engineering capacity or the review process can further hinder progress. Lastly, the presence of software bugs, logic flaws, or insufficient test coverage may lead to performance degradation or create security vulnerabilities, all of which can disrupt transaction processing and undermine confidence in the network's reliability.
+Third Party Dependancy
+The protocol's functionality enhancements rely on several key third-party organisations. Any operational setbacks, legal challenges, or funding issues faced by these partners could delay the achievement of core milestones.
+Adoption by Users and Institutions
+The success of technical upgrades and enterprise applications relies on the adoption by developers, node operators, and institutional users. If adoption efforts fail at both grassroots and institutional levels, the benefits of new features will be limited, impacting token velocity. Risks may include slow uptake of staking or validator upgrades due to insufficient documentation or incentives, limited deployment of decentralised applications if access to tools and funding remains inadequate, and resistance from enterprise users driven by regulatory worries or perceived complexity.
+Community Support and Governance Transition
+As MANTRA Chain transitions to community-led governance, certain risks may arise. Insufficient participation in proposal processes could hinder decision-making, while conflicts may arise between the interests of the foundation and the community. Additionally, unclear voting rules and grant allocation criteria could create challenges for meaningful engagement in governance.
+Market Penetration and Competitive Positioning
+MANTRA Chain's focus on tokenising real-world assets offers unique advantages; however, limited awareness beyond core financial sectors may hinder its visibility, while overlap with permissioned systems could fragment its positioning in regulated industries. Additionally, underdeveloped integrations with decentralised finance (DeFi) and retail platforms may impact liquidity and reduce its broader applicability.
+Human Resource Constraints
+The MANTRA ecosystem's advancement depends on a skilled pool of developers, researchers, and infrastructure operators. However, the competitive landscape for talent in the blockchain sector presents significant challenges. Key risks include the potential loss of vital contributors, difficulties in hiring experienced engineers in blockchain consensus and compliance, and the possibility of volunteer fatigue among community developers and validator node operators.
+I.5
+Technology-related risks
+Consensus Mechanism: CometBFT
+    MANTRA Chain employs CometBFT as its consensus mechanism: a Byzantine Fault Tolerant (BFT) consensus algorithm provides instant finality and high throughput. It is a core component of any blockchain built with the Cosmos SDK, separating the networking and consensus layers from the application layer via the Application Blockchain Interface (ABCI). This modularity allows developers to build their blockchain's application logic in any programming language while relying on CometBFT for secure and consistent state replication.
+    Consensus and Cryptoeconomic Risks
+    This category encompasses threats to the fundamental agreement mechanisms and the economic incentives that keep validators honest.
+Slashing Risks (Delegator and Validator): Validators face harsh penalties for misbehavior to uphold network integrity. Downtime results in temporary jailing and a minor percentage slash, while double-signing incurs a massive penalty and permanent disqualification ("tombstoning"). Delegators share this risk, losing a portion of their staked tokens if their chosen validator is slashed.
+Validator Incentive Sustainability Risk:  The long-term security of the chain depends on sustainable validator participation. If ecosystem growth stagnates or token emissions decrease without a corresponding rise in fee revenue, validators may operate at a loss, leading them to shut down nodes and degrading consensus performance.
+Nothing-at-Stake Risk:  In older Proof-of-Stake (PoS) models, validators could theoretically sign multiple conflicting forks at no cost to maximise block rewards, potentially leading to unresolved network forks.
+Long-Range Attack Risk: A theoretical attack where a colluding group of early validators attempts to reconstruct an alternative transaction history from an old genesis block, aiming to create a fake chain that overrides the canonical one.
+            Network and Operational Risks
+            These risks involve attacks on the physical infrastructure and peer-to-peer (P2P) networking layer of the blockchain.
+Distributed Denial-of-Service (DDoS) Attacks: Public-facing validator nodes are susceptible to DDoS attacks. If a significant portion of the validator set's voting power becomes unreachable, block finality is delayed, and the chain will temporarily halt (prioritising safety over liveness).
+Connectivity and Validator Isolation Risk: Network latency, misconfigurations, or regional internet outages can isolate validators. If multiple high-stake validators are isolated and the network cannot reach the 2/3+ voting threshold, consensus stalls.
+Spam and Mempool Flooding Attacks: If transaction fees are set too low, attackers can flood the network's mempool with millions of low-value transactions. This congests the network, delays legitimate users, and can cause memory exhaustion on nodes.
+            Centralisation and Collusion Risks
+            These risks emerge from the social and economic concentration of token power.
+Censorship Risk via Validator Collusion: If a coalition of validators controls more than 33% of the staked voting power, they can halt block production. If they control more than 66%, they can actively censor specific transactions or addresses from ever being included in a block.
+Centralisation Risk in Block Creation: If node operation becomes too expensive, or if retail delegators only stake with the top 5 largest validators (such as centralised exchanges), voting power becomes highly concentrated, making the network fragile to coordinated attacks or regulatory pressure.
+            Application Layer and Interoperability Risks
+            Because Cosmos SDK allows for highly customised application logic, vulnerabilities often exist at the app layer rather than the consensus layer.
+State Migration Risk (Chain Upgrades): Comprehensive migrations of core module states (like EVM, Bank, and Staking modules) during chain upgrades are highly complex. Edge cases can surface under live network conditions, potentially leading to incorrect balances or consensus failures.
+Reentrancy Attacks (Smart Contract): A smart contract vulnerability where an external untrusted contract is called and recursively calls back to the original contract before the initial execution resolves is called a reentrancy attack: allowing for unauthorised repeated actions like draining funds
+Relay and Replay Attacks (IBC): Attackers might attempt to reuse a signed transaction from one blockchain on another to deceive recipients or smart contracts via the Inter-Blockchain Communication (IBC) protocol.
+I.6
+Mitigation measures
+Offer-Related Risks
+Secondary Market Liquidity Risk: MANTRA is listed on multiple centralised and decentralised exchanges, thereby distributing liquidity across venues and reducing dependence on any single platform. Holders also have the option of non-custodial on-chain holding through MANTRA Chain-compatible wallets.
+Market Price Volatility at Admission: MANTRA's admission to trading on Kraken enables transparent and continuous price discovery through an established market structure. The real-time MANTRA token dashboard provides publicly accessible supply, staking, and distribution data to support informed market participation. No mechanism can eliminate market price volatility; this disclosure is maintained as a residual risk.
+Trading Platform Dependency: MANTRA tokens can be traded on several platforms, so they do not rely on any single exchange, including Kraken. In addition, holders can keep and use their tokens in their own wallets, without using an exchange, and interact directly with the MANTRA Chain.
+            Issuer-Related Risks
+Treasury and Token Allocation Risks: Token allocations are governed by structured vesting schedules and community-approved proposals to ensure long-term monetary predictability and reduce the risk of market oversupply or inflationary dilution.
+Token Unlock and Vesting Control: Tokens allocated for team, advisors, and ecosystem development are released through predefined vesting schedules that are publicly disclosed with cliff and linear release periods enforced on-chain.
+Treasury Discretion and Governance: Funds supporting infrastructure development, validator participation, and community programmes are managed by the MANTRA Chain Association in accordance with defined internal governance procedures.
+Custodial Centralisation of Reserves: MANTRA Chain has partnered with regulated custodians, including Tungsten Custody and Hex Trust to mitigate risks associated with custodial mismanagement, internal access control failures, or insufficient multi-signature protection. These partnerships provide institutional-grade custody solutions for token reserves.
+Resource Allocation Efficiency: The MANTRA Chain Association employs a structured prioritisation framework ensuring critical technical, legal, and financial needs are met. Regular reviews of resource distribution, coupled with community feedback mechanisms, help align investments with ecosystem growth objectives.
+Operational Integrity: The MANTRA Chain Association enforces strict internal controls over exchange coordination, validator onboarding, token distribution, and public communications. These controls are enhanced by the MANTRA token dashboard, which centralises real-time data for efficient monitoring and quick resolution of issues related to token distribution, validator participation, and compliance metrics.
+Governance and Ecosystem Influence: MANTRA Chain is progressively migrating control over protocol upgrades, ecosystem grants, and key economic parameters to decentralised governance frameworks. Its governance structure provides formal on-chain mechanisms for MANTRA holders to participate in governance decisions and influence protocol direction independently of the issuer.
+Regulatory and Jurisdictional Risk: The MANTRA Chain Association maintains an active regulatory monitoring process across global regulatory frameworks and engages with licensed exchanges and custodians to ensure ongoing alignment with regulatory requirements. The implementation of the MANTRA Compliance Module supports regulatory adherence across participating applications. MANTRA Chain Association holds a Virtual Asset Service Provider (VASP) licence from Dubai's Virtual Assets Regulatory Authority (VARA), authorising it to operate as a Virtual Asset Exchange and provide broker-dealer, management, and investment services within that jurisdiction. This licence is jurisdiction-specific and does not constitute regulatory approval in all jurisdictions in which MANTRA is accessible.
+            Crypto-Asset-Related Risks
+Pricing Volatility: MANTRA's supply-side dynamics are governed by structured vesting schedules and predefined release mechanisms, reducing the risk of sudden large-scale market supply increases.
+Market Demand: MANTRA Chain's focus on regulated real-world asset tokenisation is supported by institutional partnerships and compliance-oriented protocol design intended to drive sustained adoption among regulated market participants. The expansion of the validator set and the ecosystem's RWA tokenisation pipeline support long-term demand-side development.
+Exchange Risk Due to Regulatory Action: Engagement with regulated CASPs and exchanges, combined with MiCA white paper notification, provides a structured basis for exchange access in the EU.
+Private Key Management: MANTRA is compatible with a range of non-custodial hardware and software wallet solutions, including Ledger, Keplr, and Leap, enabling holders to maintain exclusive control of their private keys without reliance on a custodian. Hardware wallets and encrypted backups are recommended for optimal key security.
+Custodial Risks: Institutional participants may utilise regulated custody solutions through MANTRA's partnerships with Tungsten Custody and Hex Trust. Retail users are encouraged to use non-custodial wallets compatible with MANTRA Chain to limit exposure to third-party custody risk. Both custody options and their respective risk profiles are described in publicly available documentation.
+Irreversibility of Transactions: User education materials and technical documentation provided through official MANTRA developer portals and the MANTRA token dashboard support informed transaction practices, including verification of recipient addresses prior to execution.
+Impact of Large Transactions: Vesting schedules for team, investor, and ecosystem allocations are enforced through on-chain governance, limiting the timing and rate at which large allocations can enter circulation. Real-time supply and holder distribution data is publicly accessible through the MANTRA token dashboard, enabling market participants to monitor token movements.
+Interoperability Risks: IBC channel communications are governed by on-chain governance and validator participation under the IBC v1.0+ protocol, which includes built-in replay protection and packet acknowledgement mechanisms. MANTRA Chain's validator sentry node architecture reduces the risk of relay disruption by isolating validator infrastructure from public-facing network connections.
+            Project Implementation-Related Risks
+Technical Delays and Quality Assurance: Major protocol milestones are publicly announced and implemented in phases. All updates are first deployed to testnets, allowing real-time testing, debugging, and community feedback before mainnet deployment. This staged process significantly reduces the likelihood of mainnet disruptions due to code errors or misconfiguration.
+Formal Code Review and Audit Procedures: Contributions to the core protocol are submitted through public GitHub repositories and subject to both internal review and, where applicable, third-party security audits as described in H.9. Known vulnerabilities are addressed through structured patch releases, ensuring that protocol upgrades maintain high standards of security, consistency, and backward compatibility.
+Third Party Dependency: The MANTRA Chain benefits from active support by validators, developers, enterprise partners, community members, and service providers. These entities coordinate platform maintenance, enterprise integration, and developer outreach, reducing dependency on any single third-party organisation and strengthening operational redundancy across the ecosystem.
+Adoption by Users and Institutions: The ecosystem supports adoption through developer grants, community proposals, and open-source contributions. Public SDKs, RPC endpoints, toolkits, and educational resources are made available to facilitate DApp deployment, validator onboarding, and smart contract development. Funding for these initiatives is transitioning to on-chain governance, ensuring transparent allocation.
+Community Support and Governance Transition: Control over key network parameters — including protocol upgrades, validator onboarding, and ecosystem funding — is being migrated to decentralised governance frameworks. This transition enhances long-term continuity, improves decentralisation, and supports transparent, community-driven decision-making through the governance framework.
+Market Penetration and Competitive Positioning / Institutional Adoption and Strategic Partnerships: Partnerships with regulated entities and integration into compliant enterprise platforms ensure MANTRA aligns with applicable legal frameworks, reducing the risk of restrictions or non-compliance. Adoption is supported by collaborating with enterprises and real-world tokenisation platforms, providing MANTRA with institutional utility beyond speculative use cases.
+Human Resource Constraints: Open-source development practices, public GitHub repositories, and community grant programmes support contributor diversity and reduce dependence on any single team or contributor group. Competitive validator incentives are designed to attract and retain technically capable node operators. The ecosystem's open architecture also enables community developers to contribute independently of the core team.
+            Technology-Related Risks
+            1. Consensus and Cryptoeconomic Risks
+Slashing Risks: Validators must deploy redundant, highly available infrastructure and utilise secure Key Management Systems (KMS) to prevent double-signing. Delegators should research node operators and diversify their stake across multiple reliable validators.
+Validator Incentive Sustainability Risks: The network must implement dynamic fee models, drive sustained Real-World Asset (RWA) utility to generate transaction volume, and utilise governance to adjust validator reward parameters as the ecosystem matures.
+Nothing-at-Stake Risk: CometBFT inherently neutralises this. It requires a 2/3+ pre-commit threshold for absolute, instant finality. Because conflicting signatures are cryptographically provable and severely slashed, there is a massive, immediate economic cost to attempting this attack. Some edge-case scenarios such as network partitions or validator collusion could theoretically compromise consensus integrity, but this can be further mitigated by active monitoring and thorough management of validator decentralisation and economics.
+Long-Range Attack Risks: CometBFT's instant finality prevents "longest chain" overrides. Furthermore, the Cosmos SDK employs "Weak Subjectivity" checkpoints and an unbonding period (typically 21 days). New nodes require a recent, trusted state hash rather than syncing blindly from genesis, mathematically neutralising the attack vector.
+            2. Network and Operational Risks
+Distributed Denial-of-Service (DDoS) Attacks: Validators utilise a "Sentry Node" architecture. They hide their core consensus nodes behind a firewall of scalable, expendable public sentry nodes, keeping the true validator IP addresses secret.
+Connectivity and Validator Isolation Risk: Validators employ persistent peering (hardcoding connections to other known, trusted validators) and geographic distribution of their infrastructure to ensure they always have a pathway to the honest majority.
+Spam and Mempool Flooding Attacks: The network implements dynamic gas pricing and fee markets. During times of congestion, the cost to transact increases, making it prohibitively expensive for an attacker to sustain a spam campaign.
+            3. Centralisation and Collusion Risks
+Censorship Risk via Validator Collusion: The network implements dynamic gas pricing and fee markets. During times of congestion, the cost to transact increases, making it prohibitively expensive for an attacker to sustain a spam campaign.
+Centralisation Risk in Block Creation: Foundations and governance bodies often run delegation programs that algorithmically distribute stake to smaller, performant validators to flatten the voting power curve and incentivise decentralisation.
+            4. Application Layer and Interoperability Risks
+State Migration Risk (Chain Upgrades): Upgrades undergo extensive rehearsal on public and internal testnets. Developers use formal verification for upgrade handlers and implement strict state-invariance checks before and after migration.
+Reentrancy Attacks (Smart Contracts): Developers adhere to strictly “checks-effects-interactions” coding patterns; additionally, all smart contracts deployed on-chain undergo rigorous third-party security audits before handling real-world assets.
+Relay and Replay Attacks (IBC): The IBC protocol includes built-in cryptographic safeguards, such as strict sequence nonces, connection identifiers, and timeouts. Light clients continuously verify the exact state of connected chains to ensure messages are uniquely processed only once.
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+            MANTRA MiCA White Paper
+Part J - Information on the sustainability indicators in relation to adverse impact on the climate and other environment-related adverse impacts
+N
+Field
+Content
+        Mandatory information on principal adverse impacts on the climate and other environment-related adverse impacts of the consensus mechanism
+        General information about adverse impacts
+S.1
+Name
+MANTRA Chain Association
+S.2
+Relevant legal entity identifier
+CHE-155.373.439
+S.3
+Name of the crypto-asset
+MANTRA
+S.4
+Consensus Mechanism
+MANTRA Chain employs the Tendermint consensus protocol and the Proof of Stake consensus mechanism. Tendermint is a BFT protocol designed to enable secure and consistent replication of a transaction log across distributed validator nodes. It ensures that all honest nodes arrive at the same ordering of transactions, even in the presence of up to one-third of faulty or malicious participants. This deterministic finality is critical for mission-critical applications such as tokenised assets, decentralised governance, and regulated finance. The protocol comprises two main components: 
+Tendermint Core: Manages consensus and block production using BFT principles.
+ABCI (Application Blockchain Interface): Decouples the consensus engine from the application logic in design, and connects them in function, allowing smart contract and state machine implementations in any programming language.
+            Tendermint optimises the classic BFT model using a blockchain structure, where blocks are cryptographically linked, and transactions are processed in strict global order. This design facilitates fast block finality and avoids the probabilistic delays inherent in Proof-of-Work systems.
+            Validator-Based Proof-of-Stake Design
+            Validators are responsible for proposing new blocks and participating in the consensus process through cryptographically signed votes. Each validator's influence is weighted by the total amount of staked MANTRA tokens, including both their self-bonded tokens and those delegated by other participants. Validator selection is thus determined by total stake, not direct appointment.
+            Delegation and Economic Incentives
+            MANTRA Chain supports Proof-of-Stake (PoS), enabling MANTRA holders to assign their tokens to validator candidates. This delegation mechanism empowers the broader community to participate in governance and consensus indirectly, while also earning staking rewards.
+            Slashing and Misbehaviour Penalties
+            To maintain network integrity, the protocol enforces slashing penalties for malicious or negligent behaviour. Penalties result in the reduction of staked tokens, aligned with the severity of the violation. Validators and their delegators can be penalised for actions such as:
+Double-signing (e.g., signing conflicting blocks)
+Extended downtime (i.e., failing to validate or propose blocks
+            Defensive Architecture: Sentry Nodes
+            To safeguard against network-layer attacks such as Denial-of-Service (DoS), MANTRA Chain validators may implement a sentry node architecture. This setup includes:
+Isolating validator nodes behind one or more sentry nodes
+Connecting only to trusted full-nodes
+Routing external connections through sentry nodes operating in cloud environments
+Maintaining private IP space between validator and sentry nodes
+            Key Management Practices
+Private keys must be stored securely, ideally in encrypted wallets or Hardware Security Modules (HSMs).
+Backup strategies include offline storage in multiple secure locations.
+Key-sharing is strictly discouraged; delegation mechanisms enable staking participation without key exposure.
+            Consensus Finality and Security
+            The Tendermint consensus protocol ensures instant finality once a block is committed. It tolerates up to one-third of validators being faulty or malicious, while still maintaining consensus safety and liveness, as long as the remaining two-thirds operate correctly. This property guarantees that committed transactions cannot be reverted or reorganised.
+            Technical Comparison with Other Systems
+            Proof of Work (PoW): Proof-of-Work networks, such as Bitcoin, rely on competitive mining, where nodes expend significant computational resources to solve cryptographic puzzles and propose new blocks. This model offers strong security guarantees but is energy-intensive and suffers from delayed transaction finality, as confirmations depend on successive block depth to reduce the probability of chain reorganisations. In contrast, MANTRA Chain eliminates mining entirely. The network employs Tendermint’s BFT consensus, which deterministically selects validators to propose and finalise blocks through a quorum-based voting mechanism. This enables faster finality (within seconds), lower energy usage, and more predictable settlement, making the network more suitable for enterprise and regulated financial applications.
+            Proof of Stake (PoS): General PoS systems, such as Ethereum 2.0, assign block production rights based on token staking. While PoS is more energy-efficient than PoW, it can lead to centralisation risks, where larger stakeholders may exert disproportionate influence over consensus outcomes and governance. MANTRA Chain mitigates these risks through the following mechanisms:
+A validator set governed by staking-based selection and community governance, limiting centralisation.
+Delegated staking, allowing broad token holder participation in consensus via validator delegation.
+A slashing mechanism that penalises validators for misbehaviour such as double-signing or extended downtime.
+Optional use of a sentry node architecture, which enhances security by isolating validator infrastructure from external threats.
+            MANTRA Chain currently operates on software version v7, through which all validator delegation scales and consensus module parameters are aligned with the current MANTRA token denomination.
+S.5
+Incentive Mechanisms and Applicable Fees
+See field H.5.
+S.6
+Beginning of the period to which the disclosed information relates
+2026-01-01
+S.7
+End of period to which disclosed information relates
+2026-03-30
+        Mandatory key indicator
+S.8
+Energy consumption
+1788.04292
+        Sources and methodologies
+S.9
+Energy consumption sources and methodologies
+Data provided by the MiCA Crypto Alliance as a third party, with no deviations from the calculation guidance of Commission Delegated Regulation (EU) 2025/422, Article 6(5).
+Full methodology available at: www.micacryptoalliance.com/methodologies
+        Supplementary information on principal adverse impacts on climate and other environment-related adverse impacts of the consensus mechanism
+        Supplementary key indicators
+S.10
+Renewable energy consumption
+0.3679825516
+S.11
+Energy intensity
+0.00222
+S.12
+Scope 1 DLT GHG emissions – Controlled
+0
+S.13
+Scope 2 DLT GHG emissions – Purchased
+0.56821
+S.14
+GHG intensity
+0.00070
+        Sources and methodologies
+S.15
+Key energy sources and methodologies
+Data provided by the MiCA Crypto Alliance as a third party, with no deviations from the calculation guidance of Commission Delegated Regulation (EU) 2025/422, Article 6(5).
+Full methodology available at: www.micacryptoalliance.com/methodologies
+S.16
+Key GHG sources and methodologies
+Data provided by the MiCA Crypto Alliance as a third party, with no deviations from the calculation guidance of Commission Delegated Regulation (EU) 2025/422, Article 6(5).
+Full methodology available at: www.micacryptoalliance.com/methodologies
+        Optional information on principal adverse impacts on the climate and on other environment-related adverse impacts of the consensus mechanism
+        Optional indicators
+S.17
+Energy mix
+Energy Source
+Percentage
+Bioenergy
+3.2853872414%
+Coal
+16.8645173314%
+Flared Methane
+0.0%
+Gas
+30.9763271417%
+Hydro
+8.7469299131%
+Nuclear
+12.8611554221%
+Other Fossil
+2.4997449408%
+Other Renewables
+0.4409373646%
+Solar
+6.6893035551%
+Vented Methane
+0.0%
+Wind
+17.6356970897%
+S.18
+Energy use reduction
+    N/A
+S.19
+Carbon intensity
+0.31778
+S.20
+Scope 3 DLT GHG emissions – Value chain
+    N/A
+S.21
+GHG emissions reduction targets or commitments
+    N/A
+S.22
+Generation of waste electrical and electronic equipment (WEEE)
+0.03774
+S.23
+Non-recycled WEEE ratio
+0.6235863182
+S.24
+Generation of hazardous waste
+0.00002
+S.25
+Generation of waste (all types)
+0.03774
+S.26
+Non-recycled waste ratio (all types)
+0.6235863182
+S.27
+Waste intensity (all types)
+0.04681
+S.28
+Waste reduction targets or commitments (all types)
+    N/A
+S.29
+Impact of the use of equipment on natural resources
+Land use: 43.37972 m²
+S.30
+Natural resources use reduction targets or commitments
+    N/A
+S.31
+Water use
+7.56710
+S.32
+Non recycled water ratio
+0.7350038172
+        Sources and and methodologies
+S.33
+Other energy sources and methodologies
+Data provided by the MiCA Crypto Alliance as a third party, with no deviations from the calculation guidance of Commission Delegated Regulation (EU) 2025/422, Article 6(5).
+Full methodology available at: www.micacryptoalliance.com/methodologies
+S.34
+Other GHG sources and methodologies
+Data provided by the MiCA Crypto Alliance as a third party, with no deviations from the calculation guidance of Commission Delegated Regulation (EU) 2025/422, Article 6(5).
+Full methodology available at: www.micacryptoalliance.com/methodologies
+S.35
+Waste sources and methodologies
+Data provided by the MiCA Crypto Alliance as a third party, with no deviations from the calculation guidance of Commission Delegated Regulation (EU) 2025/422, Article 6(5). As the base layer is a decentralised network, estimates on individual node weight, hazardous components and depreciation rate are used.
+Full methodology available at: www.micacryptoalliance.com/methodologies
+S.36
+Natural resources sources and methodologies
+Data provided by the MiCA Crypto Alliance as a third party, with no deviations from the calculation guidance of Commission Delegated Regulation (EU) 2025/422, Article 6(5). Usage of natural resources is approximated through land use metrics. Land use, water use and water recycling are calculated based on energy mix-specific estimates of purchased electricity land intensity, purchased electricity water intensity, and water recycling rates.
+Full methodology available at: www.micacryptoalliance.com/methodologies
+        XBRL Format Copyright © 2026 MiCA Crypto Alliance. All rights reserved.
+        Email : 
+contact@micacryptoalliance.com
+        Disclaimer: This document is made available by the MiCA Crypto Alliance Limited ("MiCA Crypto Alliance"), trading as “The MiCA Crypto Alliance”. MiCA Crypto Alliance does not provide any warranty of any kind, express or implied, including but not limited to warranties of accuracy, fitness for a particular purpose, compliance with any laws and/or non-infringement. MiCA Crypto Alliance also assumes no responsibility for any errors, defects, or omissions in the document. To the maximum extent permitted by applicable laws, MiCA Crypto Alliance will not be liable for any direct, indirect, incidental, special, consequential, or exemplary damages, including but not limited to, damages for loss of profits, goodwill, data, or other intangible losses arising out of or relating to any use and/or reliance on the information in this document, however arising, including negligence.
+        https://xbrl.org/2024/iso3166#CH
+        https://xbrl.org/2024/iso3166#CH
+          https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#DevelopmentTeam
+          https://xbrl.org/2024/iso3166#CH
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#AdmissionToTrading
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#AllTypesOfInvestors
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#OtherCryptoassetWhitePaper
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#NewTypeOfSubmission
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#IrelandMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#AustriaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#BelgiumMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#BulgariaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#CroatiaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#CyprusMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#CzechiaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#DenmarkMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#EstoniaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#FinlandMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#FranceMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#GermanyMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#GreeceMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#HungaryMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#IcelandMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#ItalyMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#LatviaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#LiechtensteinMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#LithuaniaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#LuxembourgMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#MaltaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#NetherlandsMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#NorwayMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#PolandMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#PortugalMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#RomaniaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#SlovakiaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#SloveniaMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#SpainMemberState
+        https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#SwedenMemberState
+           1
+CHE-155.373.439
+2026-12-31
+CHE-155.373.439
+2026-01-01
+2026-12-31
+CHE-155.373.439
+2026-01-01
+2026-12-31
+                1
+CHE-155.373.439
+2026-01-01
+2026-12-31
+                2
+CHE-155.373.439
+2026-01-01
+2026-12-31
+                1
+CHE-155.373.439
+2026-01-01
+2026-12-31
+                1
+utr:D
+iso4217:USD
+xbrli:pure
+utr:tCO2e
+xbrli:pure
+utr:kg
+utr:m3
+utr:t
+utr:J
+utr:kWh

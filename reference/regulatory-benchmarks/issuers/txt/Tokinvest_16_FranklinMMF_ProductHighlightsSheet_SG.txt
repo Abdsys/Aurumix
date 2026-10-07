@@ -1,0 +1,518 @@
+                                                                                                       Prepared on: 14/01/26
+This Product Highlights Sheet is an important document.
+
+· It highlights the key terms and risks of the investment product and complements the
+     prospectus of the Sub-Fund (the "Prospectus")1.
+
+· It is important to read the Prospectus before deciding whether to purchase the product. If
+     you do not have a copy, please contact us to ask for one.
+
+· You should not invest in the product if you do not understand it or are not comfortable with
+     the accompanying risks.
+
+· If you wish to purchase the product, you will need to make an application in the manner set
+     out in the Prospectus.
+
+· Shares in respect of the Sub-Fund may be evidenced by an entry in the Register in the form of
+     a Tokenised Register to be maintained by the Registrar and Transfer Agent in respect of the
+     Sub-Fund in the form of transactional data via public blockchain networks represented by
+     tokens on a distributed ledger plus certain Off-Chain Information (if any). As at the date of this
+     Product Highlights Sheet, the Registrar and Transfer Agent will maintain the Register in respect
+     of the Sub-Fund via a proprietary blockchain-integrated system that utilises features of
+     traditional book entry form and one or more public blockchain network(s). The Company
+     currently uses the Stellar and XRP Ledger public blockchain networks although other public
+     blockchain networks may be made available subject to the Directors' approval. You should
+     consider the specific risks associated with the tokenisation of the Register described below
+     and in the Prospectus before deciding whether to invest in the Shares of the Sub-Fund.
+
+Franklin OnChain U.S. Dollar Short-Term Money Market Fund (the "Sub-Fund")                                                    PRODUCT HIGHLIGHTS SHEET
+
+a sub-fund of the FRANKLIN TEMPLETON INVESTMENTS VCC (the "Company")
+
+Product Type  Variable Capital Company Launch Date                     18 September 2025
+
+Manager       Templeton             Asset Custodian                    DB International Trust
+
+              Management Ltd                                           (Singapore) Limited
+
+Trustee       Not applicable                 Dealing Frequency Every Business Day
+
+Capital Guaranteed No                        Expense Ratio (as at Not available
+
+Name of Guarantor Not applicable             31 December 2024)
+
+                                 PRODUCT SUITABILITY
+
+WHO IS THE PRODUCT SUITABLE FOR?                                       Further Information
+
+· The Sub-Fund is only suitable for investors who:                     Refer to Appendix I
+
+o seek current income and high degree of capital preservation by investing in of the Prospectus
+
+a portfolio of high-quality USD-denominated debt and debt-related securities, for               further
+
+money market instruments and cash denominated in US dollar; and        information              on
+
+o are looking to invest for the short term.                            product suitability.
+
+· The principal may be at risk.
+
+                                 KEY PRODUCT FEATURES
+
+WHAT ARE YOU INVESTING IN?                                             Refer to Appendix I
+
+· You are investing in a sub-fund of a variable capital company constituted in Singapore. of the Prospectus
+
+· The investment objective of the Sub-Fund is to provide investors with a high level for        further
+
+of current income as is consistent with the preservation of capital and liquidity. information  on
+
+· Distributions will be determined by the Directors in their sole and absolute features of the
+
+discretion. The Directors currently do not intend to make distributions to product.
+
+holders of Shares in the Sub-Fund.
+
+                                  Investment Strategy
+
+· (Prior to 13 February 2026) The Sub-Fund seeks to achieve its objective Refer to the
+
+by investing in a portfolio of high quality2 USD-denominated debt and debt- "Investment Focus
+
+related money market instruments, which consist primarily of short-term and               Approach"
+
+fixed and floating-rate debt securities, commercial papers, floating-rate section in Appendix
+
+notes and certificates of deposit of eligible financial institutions2. The Sub- I of the Prospectus
+
+Fund may also, to a lesser extent, invest in eligible securitisation and asset- for             further
+
+backed commercial paper ("ABCP") as well as ancillary liquid assets, bank information on the
+
+deposits denominated in US dollar and other money market instruments.
+
+1 The Prospectus is available for collection from the Company at 7 Temasek Boulevard, #26-03 Suntec
+Tower One, Singapore 038987 and its appointed agents or distributors during normal business hours,
+or accessible at https://www.franklintempleton.com.sg.
+2 As defined in Appendix 2 of the Code. Please refer to the Appendix: Glossary of Terms for further details.
+
+                                             -1-
+· (With effect from 13 February 2026) The Sub-Fund seeks to achieve its objective                   Sub-Fund's                 PRODUCT HIGHLIGHTS SHEET
+     by investing in a portfolio of high quality2 USD-denominated debt and debt-related             investment strategy.
+     money market instruments, which consist primarily of short-term fixed and floating-
+     rate debt securities, commercial papers, floating-rate notes and certificates of               Refer to the
+     deposit of eligible financial institutions2, as well as ancillary liquid assets, bank          "Management and
+     deposits denominated in US dollar and other money market instruments.                          Administration"
+                                                                                                    section of the
+· Up to 100% of the investments of the Sub-Fund may be issued or                                    Prospectus for further
+     guaranteed by sovereign governments of member states of the OECD                               information on the role
+     and/or related entities, supranational entities, including most prominently                    and responsibilities of
+     instruments issued or guaranteed by the United States Treasury or the U.S.                     these entities and
+     Federal Reserve, including the FNMA, the GNMA, and the Freddie Mac.                            what happens if they
+                                                                                                    become insolvent.
+· The Sub-Fund limits the dollar-weighted average maturity of its portfolio to                      Refer to the "Risk
+     60 calendar days or less and limits the dollar-weighted average life of its                    Factors" section of the
+     portfolio to 120 calendar days or less. The Sub-Fund only holds non-                           Prospectus and the
+     deposit investments which at the time of acquisition have an initial or                        "Specific Risk Factors"
+     remaining term to maturity of not more than 397 calendar days.                                 section in Appendix I
+                                                                                                    of the Prospectus for
+· The Sub-Fund may also invest in repurchase and reverse repurchase                                 further information on
+     agreements for the purposes of efficient portfolio management within the                       the risks of investing in
+     limits described in the Prospectus.                                                            the Sub-Fund.
+
+· The Sub-Fund currently does not intend to use financial derivative
+     instruments for any purpose.
+
+· The Sub-Fund is actively managed and uses the benchmark Bloomberg
+     US Treasury 1-3 Month Index for performance comparison purposes.
+                                                       Parties Involved
+
+WHO ARE YOU INVESTING WITH?
+· The Company is Franklin Templeton Investments VCC.
+· The Manager is Templeton Asset Management Ltd.
+· The Sub-Manager is Franklin Advisers, Inc.
+· The Registrar and Transfer Agent is Templeton Asset Management Ltd.
+· The Custodian is DB International Trust (Singapore) Limited.
+
+                                                          KEY RISKS
+WHAT ARE THE KEY RISKS OF THIS INVESTMENT?
+There can be no assurance that you will achieve a return on your investments
+in the Shares or a return on capital invested. Some or all of the following risks
+may adversely affect the Sub-Fund's Net Asset Value, yield, total return and/or
+its ability to achieve its investment objective.
+
+The value of the Sub-Fund and its distributions, if any, may rise or fall.
+These risk factors may cause you to lose some or all of your investment:
+
+                                                 Market and Credit Risks
+· Debt Securities Risk ­ Investments in debt securities or money market
+
+      instruments are subject to interest rate risk, credit risk, default risk and may be
+      exposed to specific risks including but not limited to sovereign risk, high yield
+      securities risk, restructuring risk and risk related to the use of credit ratings.
+· Foreign Exchange and Currency Risk ­ The Sub-Fund can be affected
+      favourably or unfavourably by changes in currencies and exchange
+      control regulations. The income earned by the Sub-Fund may be affected
+      by fluctuations in foreign exchange rates.
+· Interest Rate Risk ­ Investments in fixed income securities are subject to interest
+      rate fluctuations. In general, the prices of fixed income securities rise when interest
+      rate falls, and fall when interest rate rises. The longer the term of a fixed income
+      security, the more sensitive it will be to fluctuations in value from interest rate changes.
+
+                                                        Liquidity Risks
+· Liquidity Risk ­ Trading volumes in the underlying investments of the Sub-Fund
+
+-2-
+may fluctuate significantly depending on market sentiment. There is a risk that
+investments made by the Sub-Fund may become less liquid in response to market
+developments, adverse investor perceptions or regulatory and government
+
+intervention (including the possibility of widespread trading suspensions
+
+implemented by domestic regulators). In extreme market conditions, there may be
+
+no willing buyer for an investment and so that investment cannot be readily sold at
+
+the desired time or price, and consequently the Sub-Fund may have to accept a
+
+lower price to sell the relevant investment or may not be able to sell the investment
+
+at all. An inability to sell a particular investment or portion of the Sub-Fund's assets
+
+can have a negative impact on the value of the Sub-Fund or prevent the Sub-Fund
+
+from being able to take advantage of other investment opportunities.
+
+· Redemption Risk ­ There may be a 10% limit on the number of Shares
+      of a Class that can be redeemed on a Dealing Day. Therefore, a
+
+redemption request may be deferred to the next Dealing Day (which is
+
+subject to the same limit) if redemptions exceed the limit on that day.
+
+                                   Product-Specific Risks
+
+· Risks relating to Tokenisation of the Register ­ Distributed ledger
+      technology is still new, widely untested and subject to known and unknown
+
+risks. These include dependence on third party providers to access the
+
+distributed ledger, potential software weaknesses and undiscovered
+
+technical flaws due to the early developmental state of the blockchain
+
+ecosystem architecture (including but not limited to the distributed ledger,                                    PRODUCT HIGHLIGHTS SHEET
+
+the token configuration, the smart contract and any related technology or
+
+software), legal uncertainties surrounding the regulatory status of
+
+Tokenised Register and distributed ledger technologies and privacy risks.
+
+On the account of these risks, the Company may never achieve market
+
+acceptance and may not be able to attract sizable assets or achieve scale.
+
+· Securities Lending or Repurchase Transactions Risk ­ Securities
+      lending or repurchase transaction (including reverse repurchase
+
+transactions) involve counterparty risk, credit risk, liquidity risk, sufficiency
+
+of collateral risk, collateral investment risk, delivery risk and operational risk.
+
+                                   FEES AND CHARGES
+
+WHAT ARE THE FEES AND CHARGES OF THIS INVESTMENT?                                          Refer to the "Fees,
+
+Payable directly by you:                                                                   Charges     and
+
+You will need to pay the following fees and charges:                                       Expenses" section
+
+Subscription Fee* Currently 0%. Maximum 1%.                                                and the "Fees and
+
+Redemption Fee Currently 0%. Maximum 1%.                                                   Charges" section
+
+Switching Fee  Not applicable. No switching is allowed.                                    Appendix I of the
+
+* The Subscription Fee (if any) will be payable by Shareholders to the Company or to its   Prospectus  for
+
+appointed agents or distributors or will be shared between the Company and its appointed   further information
+
+agents or distributors depending on the arrangement between the Company and its            on fees and
+
+appointed agents or distributors. Some appointed agents or distributors may charge their   charges.
+
+customers additional fees for their services that are in addition to the Subscription Fee
+disclosed above, depending on the specific nature of services provided by them.
+Payable by the Sub-Fund from invested proceeds:
+
+Management Class A
+
+Fee            Currently: 0.20% per annum of the Net Asset Value^
+
+               Maximum: 0.40% per annum of the Net Asset Value^
+
+               ^Of which: (a) 50% to 100% of the Management Fee to be
+
+               retained by us and (b) 0% to 50% of the Management Fee
+
+               to be paid by us to our financial advisers (trailer fee)**.
+
+               Class I
+
+               Currently: 0.10% per annum of the Net Asset Value
+
+               Maximum: 0.15% per annum of the Net Asset Value
+
+               No trailer fee is paid by us to our financial advisers in respect
+
+               of Class I Shares.
+
+               Class X
+
+               Not applicable. No Management Fee is payable by the Sub-
+
+               Fund in respect of Class X Shares.
+
+                                   -3-
+Custodian Up to 0.025% per annum of the Net Asset Value of the Sub-
+
+Fee           Fund (excluding transaction fees and the prevailing goods
+
+              and services tax), subject to a minimum annual fee
+
+              depending on the size of the Sub-Fund.
+
+Other fees Other fees and charges include, but is not limited to, fund
+
+and charges: administration and valuation fees, audit fees, accounting fees,
+
+              licensing fees, corporate secretarial fees, legal fees, printing costs,
+
+              out-of-pocket expenses and Directors' fees. Such fees and
+
+              charges are subject to agreement with the relevant parties and
+
+              may amount to or exceed 0.10% of the Net Asset Value of the
+
+              Sub-Fund, depending on the proportion each fee or charge bears
+
+              to the Net Asset Value of the Sub-Fund.
+
+              VALUATIONS AND EXITING FROM THIS INVESTMENT
+
+HOW OFTEN ARE VALUATIONS AVAILABLE?                                                     Refer to the
+
+The Sub-Fund will be valued on each Dealing Day. The Shares of the Sub-Fund are "Miscellaneous
+
+issued on a forward pricing basis. The buying and selling prices of the Shares of the Information" and
+
+Sub-Fund and the respective Dealing Day to which the buying and selling prices of the "Subscription and
+
+Shares relates to will generally be available within 2 Business Days after the relevant Redemption"
+
+Dealing Day from the Company or its appointed agents or distributors, and may also sections of the
+
+be published on the Manager's website at https://www.franklintempleton.com.sg.          Prospectus for further
+
+HOW CAN YOU EXIT FROM THIS INVESTMENT AND WHAT ARE THE information                                        on
+
+RISKS AND COSTS IN DOING SO?                                                            valuation and exiting   PRODUCT HIGHLIGHTS SHEET
+
+· If you are subscribing for Shares in the Sub-Fund for the first time, subject to the from the product.
+
+Constitution and to the cancellation terms and conditions contained in the application
+
+form, you shall have the right to cancel your subscription of Shares within the
+
+Cancellation Period by providing notice in writing to the Company or its appointed
+
+agents or distributors in such form as the Directors may prescribe. Subject to the
+
+provisions of the Constitution, your Shares will be compulsorily redeemed and you
+
+will be paid cancellation proceeds determined as of the lower of the market value of
+
+the Shares held on the day of receipt and acceptance of such form or the original
+
+amount paid by you. Where the market value of the Shares held is greater than the
+
+original amount paid by you, the Company is not obliged to pay the excess amount
+
+to you and the excess amount shall be retained in the Sub-Fund.
+
+· You may realise your holdings in the Sub-Fund on any Dealing Day by
+
+submitting redemption requests to the Company or through its appointed
+
+agents or distributors, if applicable.
+
+· Where a redemption request is received on a day which is not a Dealing Day or
+
+is received after the Dealing Deadline on a Dealing Day, unless the Directors
+
+determine otherwise, that redemption request shall be held over and deemed to
+
+be received at the opening of business on the next following Dealing Day which
+
+shall be the relevant Dealing Day for the purposes of that redemption request.
+
+· You will normally receive your redemption proceeds within 7 Business
+
+Days from the receipt and acceptance of the redemption request.
+
+Illustration of how redemption proceeds are calculated:
+
+(1,000        x US$1.1000*) -           US$0                = US$1,100
+
+Number of     Redemption                Redemption               Redemption
+
+Shares to be  Price per                 Fee                      Proceeds
+
+redeemed      Share
+
+*You should note that the redemption price is for illustration purposes only and
+
+should not be taken as any forecast of future performance.
+
+                          CONTACT INFORMATION
+
+HOW DO YOU CONTACT US?
+
+· For account-related matters and product information, kindly contact the
+
+appointed agent or distributor through whom you purchased your Shares.
+
+· For product-related queries, kindly contact the Manager at 7 Temasek
+
+Boulevard, #26-03 Suntec Tower One, Singapore 038987 (address), +65
+
+6241 2662 (tel.), https://www.franklintempleton.com.sg (website).
+
+· Client Services Representative is available at +65 6432 9447 (tel.),
+
+OnchainServicingIntl@franklintempleton.com (email)
+
+                                        -4-
+"Business Day"                    APPENDIX: GLOSSARY OF TERMS
+                           means any day (other than a Saturday, Sunday or a gazetted public holiday)
+                           on which the New York Stock Exchange and banks in Singapore and the
+                           United States are open for normal business, or such other day or days as
+                           the Directors may determine from time to time.
+
+"Cancellation Period"      means the period of seven calendar days from the date of subscription of
+                           Shares or such longer period as may be determined by the Directors or
+                           such other period as may be prescribed by the Monetary Authority of
+                           Singapore.
+
+"Constitution"             means the constitution of the Company filed with the Accounting and
+                           Corporate Regulatory Authority of Singapore, as amended or restated from
+                           time to time.
+
+"Class"                    means a class of Shares and/or sub-class of a class of Shares issued by
+                           the Company in respect of the Sub-Fund, as the case may be.
+
+"Code"                     means the Code on Collective Investment Schemes issued by the Monetary
+                           Authority of Singapore pursuant to Section 321 of the Securities and
+                           Futures Act 2001, as the same may be modified, amended, supplemented,            PRODUCT HIGHLIGHTS SHEET
+                           revised or replaced from time to time.
+
+"Dealing Day"              means each Business Day during the continuance of the Sub-Fund, and/or
+                           such other day or days as the Directors may from time to time determine
+                           either generally or for a particular Class or Classes of Shares.
+
+"Dealing Deadline"         means 4.30 p.m. Singapore time on each Dealing Day (or such other time
+                           as the Directors may from time to time determine).
+
+"Directors"                means the directors of the Company for the time being or the directors of
+                           the Company present at a meeting of directors at which a quorum is present
+                           and includes any committee of the Directors duly constituted for the
+                           purposes relevant in the context in which any reference to the Directors
+                           appears or the members of such committee present at a meeting of such
+                           committee at which a quorum is present.
+
+"eligible       financial  An "eligible financial institution" is presently defined in Appendix 2 of the
+institutions"              Code as (i) a financial institution which has a minimum short-term rating of
+                           F-2 by Fitch, P-2 by Moody's or A-2 by Standard and Poor's (including such
+                           sub-categories or gradations therein); (ii) a financial institution rated other
+                           than by the credit rating organisations specified in paragraph (i) above for
+                           which the Manager has satisfied the Directors that its short-term rating is
+                           comparable to the ratings in paragraph (i) above; or (iii) a Singapore-
+                           incorporated bank licensed under the Banking Act 1970 of Singapore which
+                           is not rated, but has been approved under the Central Provident Fund
+                           Investment Scheme to accept fixed deposits.
+
+"Fitch"                    means Fitch Ratings Limited.
+
+"FNMA"                     means Federal National Mortgage Association.
+
+"Freddie Mac"              means Federal Home Loan Mortgage Corporation.
+
+"GNMA"                     means Government National Mortgage Association.
+
+"high quality"             A "high quality" debt security or debt security or money market instrument
+                           is presently defined in Appendix 2 of the Code as one: (i) with either a
+                           minimum short-term rating of F-2 by Fitch, P-2 by Moody's or A-2 by
+                           Standard and Poor's, or where it only has a long-term rating, such a rating
+
+                           -5-
+                      of A by Fitch, A by Moody's or A by Standard and Poor's (including such
+                      sub-categories or gradations therein); (ii) issued by supranational agencies
+                      or other foreign entities and rated other than by the credit rating
+                      organisations specified in paragraph (i), for which the Manager has satisfied
+                      the Directors that the quality of the debt security or money market
+                      instrument is comparable to those with the ratings specified in paragraph
+                      (i); or (iii) issued by a Singapore entity, including the Singapore Government
+                      and statutory boards, and is not rated, for which the Manager has satisfied
+                      the Directors that the quality of the debt security or money market
+                      instrument is comparable to those with the ratings specified in paragraph (i)
+                      above.
+
+"Moody's"             means Moody's Investors Service, Inc.
+
+"Net Asset Value"     means the net asset value of the Sub-Fund or, as the context may require,
+                      the net asset value of a Share of the Sub-Fund (or Class thereof) calculated
+                      pursuant to the Constitution.
+
+"OECD"                means Organisation for Economic Co-operation and Development.
+
+"Register"            means the register of Shareholders of the Company kept in accordance with
+                      Section 81 of the Variable Capital Companies Act.
+                                                                                                               PRODUCT HIGHLIGHTS SHEET
+"Securities        and means the Securities and Futures Act 2001 of Singapore, as the same may
+
+Futures Act 2001"     be modified, amended, supplemented, revised or replaced from time to
+
+                      time.
+
+"Shares"              means the shares in the capital of the Company issued by the Company in
+                      respect of the Sub-Fund (and includes shares evidenced by entries on a
+                      Tokenised Register), and may be divided into more than one Class of the
+                      same.
+
+"Standard and Poor's" means Standard and Poor's Corporation.
+
+"Tokenised Register"  means a Register being maintained in the form of (i) transactional data via
+                      public blockchain networks represented by tokens on a distributed ledger,
+                      as well as (ii) electronic records in computer servers or other data storage
+                      medium which are held outside of the blockchain network (i.e. "off-chain"),
+                      including information which links the wallet addresses of the entries on the
+                      distributed ledger to their real-world identities (the "Off-Chain
+                      Information").
+
+"United States" or "US" means the United States of America (including the states and District of
+                                 Columbia) and any of its territories, possessions and other areas subject to
+                                 its jurisdiction.
+
+"US dollar" or "US$" or means the lawful currency for the time being and from time to time of the
+
+"USD"                 US.
+
+"Variable    Capital means the Variable Capital Companies Act 2018 of Singapore, as the same
+
+Companies Act"        may be modified, amended, supplemented, revised or replaced from time
+
+                      to time.
+
+                                -6-
+

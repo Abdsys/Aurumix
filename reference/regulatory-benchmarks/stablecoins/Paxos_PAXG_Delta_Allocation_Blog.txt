@@ -1,0 +1,229 @@
+
+
+How We Map Physical Gold Bars to PAXG Holders in Real Time 
+
+Products
+Assets
+Company
+Transparency
+Developers
+Contact Us
+Sign In
+Products
+Assets
+Company
+Transparency
+Developers
+Contact Us
+Sign In
+< Blog Home
+Delta-Based Allocation: How We Map Physical Gold Bars to PAXG Holders in Real Time
+Aug 13, 2026
+Jayden Thompson
+Senior Software Engineer
+A gold bar is heavy, slow to move, and impossible to divide into small amounts. That is exactly what makes tokenizing it smart: a token can travel and split in ways the metal never could. But putting gold on-chain raises a question the physical bar never had to answer. A token is only worth the metal behind it, so the real test is whether you can prove that metal is real and trace it down to the specific bar.
+Other tokenized gold products reconcile holdings off-chain on a batch cadence. PAXG is built differently: every token in circulation maps to a specific physical bar in a London vault, and we keep that mapping current in real time. No other OCC-regulated gold token offers per-holder, per-bar attribution this way.
+To get there, we rebuilt our allocator from the ground up. The new system replaces a two-hour batch job with an event-driven engine that updates bar allocations within seconds of any mint, burn, or transfer. In this post we'll share how it works, why it fits the constraints of a vault-backed regulated asset, and what it unlocks for partners and auditors.
+Why gold bar allocation is harder than it looks
+Allocation is a bin-packing problem with real-world constraints.
+Gold bars are physical objects. They vary in weight (roughly 400 troy ounces each, but no two are identical) and purity (the fineness determines the fine troy ounces of pure gold). A holder with 1,200 oz of PAXG might be allocated across three bars: 400 oz on one, 395.123 oz on another, and the remainder on a third. All amounts are truncated to 3 decimal places, matching gold market conventions. And because PAXG can be minted on multiple chains, the allocator must be chain-agnostic from the start.
+The core idea: react to changes, don't recompute the world
+The old allocator's approach was simple and correct: load all balances, load all bars, run a full allocation pass, write the results. The problem is that it scales linearly with holder count, and most of that computation is wasted. Today there are more than 60,000 holders and ~500k oz of gold to keep in sync. In any given two-hour window, only a small fraction of holders' balances change.
+The new system splits the problem into two components with fundamentally different performance characteristics:
+A real-time delta engine
+ that processes individual events (transfers, mints, burns) and mutates only the affected holders' bar allocations. Each event is O(1), touching at most two holders and a handful of bars.
+A periodic optimizer
+ that runs hourly, consolidating fragmented allocations and promoting large holders to exclusive whole bars. This is the only component that scans all holders, and it runs infrequently enough that the cost is negligible.
+The delta engine handles correctness. The optimizer handles quality. Decoupling the two is what makes the system fast without being fragile.
+The delta engine: mints, transfers, and burns
+Each Kafka event is classified into one of three operations, then applied as a targeted mutation:
+Transfers
+ move gold between holders bar-by-bar. We sort the sender's allocations by amount ascending and move from the smallest first. This consolidates the sender's remaining holdings into fewer, larger allocations, a simple heuristic that reduces fragmentation without any periodic cleanup.
+Mints
+ pack new gold into bars with the most free capacity, filling largest-first. This clusters new allocations into fewer bars, keeping partially-filled bars available for future whole-bar promotions.
+Burns
+ debit from the holder's smallest allocations first, mirroring the transfer logic, and release bar capacity for future mints.
+All three operations execute within a single database transaction. The deduplication table (
+processed_events
+) is written in the same transaction as the allocation mutation, so either both commit or neither does. Average processing time per event: 1.24 milliseconds.
+The defragmentor: two-phase periodic optimization
+Over time, transfers scatter a holder's gold across many bars. Alice receives 10 oz from Bob (bar 1), 5 oz from Carol (bar 7), 20 oz from Dave (bar 12). She now has three fragments where one would do. The defragmentor fixes this.
+Phase 1: Fragment merging.
+ For each holder with allocations on more than one bar, we identify the largest fragment as the merge target. Smaller fragments are moved into the target bar, provided it has free capacity.
+The merge is a pair of database operations: decrement on the source bar, increment on the target, update both bars' free capacity. The holder's total balance never changes; only its distribution across bars.
+Phase 2: Whole-bar promotion.
+ Large holders, those with balance equal to or greater than a full bar, deserve exclusive bars. The promotion algorithm identifies eligible holders sorted by balance descending, then for each:
+Select a candidate bar where the holder already has the largest allocation
+Evacuate all other holders from that bar, repacking their gold onto bars with free capacity
+Source any deficit from the promoted holder's own fragments on other bars
+The result: the holder exclusively owns one complete bar
+Both phases respect a churn budget, a configurable cap (currently 5%) on the percentage of total supply that can be moved in a single cycle. In production, 141 holders are currently eligible for whole-bar promotion (those with balances above the smallest bar's 353 fine troy ounces). The merge phase handles the long tail: consolidating fragments for the thousands of smaller holders whose gold is spread across multiple bars.
+The full optimizer cycle completes in under 40 seconds across all 62,000+ holders. After each run, it validates the global invariant: total bar capacity must equal total allocated gold plus total free capacity. Any discrepancy triggers an alert.
+Making it safe: reconciliation and drift correction
+An event-driven system is only as reliable as its event stream. Kafka provides at-least-once delivery, but events can still be delayed, reordered within a partition, or, in rare cases, missed during consumer group rebalancing.
+We run two layers of reconciliation:
+Invariant reconciliation
+ runs every 15 minutes. It reads the aggregate totals from the allocation tables and validates the fundamental accounting equation: 
+bar_capacity = allocated + free_capacity
+. The current production discrepancy averages 3.55 troy ounces, within the tolerance expected from 3-decimal truncation accumulated across hundreds of thousands of operations.
+Holder reconciliation
+ runs hourly, comparing each holder's allocation total against the authoritative truth source: balances from on-chain state via our blockchain indexing service. When drift is detected, the reconciler auto-corrects by applying synthetic mint or burn operations under a per-holder advisory lock. It processes burns before mints, freeing bar capacity before consuming it.
+In a typical production cycle, the reconciler checks all 62,603 holders in about 77 seconds, finds drift in roughly 64 holders (0.1%), and auto-corrects all of them, totaling around 318 troy ounces of adjustment. Drift converges within one or two correction passes.
+Multi-chain by design
+PAXG currently lives on Ethereum, but the allocator was built to support any number of chains from day one. Off-platform holders are scoped by 
+(network, address)
+. The same physical person holding PAXG on both Ethereum and Solana appears as two distinct holders, each with independent bar allocations.
+Adding a new chain requires exactly one new component: a Kafka consumer that parses chain-specific events into the canonical transfer/mint/burn types. No changes to the allocation algorithm, database schema, optimizer, or serving layer. The shared bar pool, the defragmentor, and the reconciler are all chain-agnostic.
+From two hours to 1.24 milliseconds
+The system processes events at an average latency of 1.24 milliseconds. A holder's bar allocations update within seconds of an on-chain transfer, compared to the old system's two-hour batch window. The hourly optimizer scans all 62,000+ holders and completes its merge-and-promote pass in under 40 seconds, maintaining a bar fragmentation score of 1.08 (meaning the average holder's gold sits on just over one bar).
+The old batch allocator took about five minutes per run to recompute all allocations from scratch. Beyond the latency improvement, the delta approach eliminated the need for mint/burn signing pauses and removed the O(n) scaling bottleneck. Event processing cost is constant regardless of how many holders exist.
+Metric
+Old Batch Allocator
+Delta Allocator
+Update latency
+2 hours (batch interval)
+~1.24ms per event
+Full run duration
+~5 minutes
+Under 40 seconds (optimizer only)
+Holder count at scale
+O(n) recomputation
+O(1) per event
+Mint/burn signing pauses
+Required
+Not needed
+Holder drift detection
+None
+62,603 holders checked hourly
+Multi-chain support
+Not designed for it
+Built in
+Next major milestone: Multi-chain support and retiring the old allocator
+With the old batch allocator decommissioned and our consumer and cache systems fully live, we've moved beyond the initial implementation phase. Our next milestone is to enable automatic chain expansion: the system is designed to detect new PAXG-supported chains and instantly begin allocating for them without any required manual intervention.
+We're hiring engineers who like building systems where correctness isn't optional. Check out 
+paxos.com/careers
+.
+Related Posts
+Bringing PAXG to Solana
+From Vault to Blockchain: How Physical Gold Becomes Tokenized PAXG
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+

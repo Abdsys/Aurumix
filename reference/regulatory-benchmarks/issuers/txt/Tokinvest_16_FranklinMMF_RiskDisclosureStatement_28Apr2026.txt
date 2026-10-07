@@ -1,0 +1,332 @@
+  Franklin OnChain U.S. Dollar Short-Term Money Market Fund
+
+                              Risk Disclosure Statement
+
+                                                          28th April 2026
+
+1. Purpose of this Notice
+This Notice provides a description of the risks associated with investing in and transacting in
+Virtual Assets, including the FT Money Market Fund Token (the "Token").
+This Notice should be read together with the Whitepaper and all relevant fund documentation.
+
+2. Risk of Loss
+Investment in the Token involves a risk of loss of part or all of the invested capital.
+Returns are not guaranteed.
+The value of the Token reflects the performance of the underlying money market fund and may
+fluctuate due to changes in market conditions, interest rates, credit conditions, and liquidity
+dynamics. Investors may receive less than their original investment, or nothing at all.
+
+3. Nature of the Product and Rights
+The Token is a digital representation of an investor's economic exposure to an underlying money
+market fund accessed through Tokinvest's platform.
+The Token:
+
+     · does not represent legal or beneficial ownership of fund units or underlying assets;
+     · does not constitute a claim on the fund, its issuer, or its portfolio; and
+     · does not constitute a claim on the general assets of Tokinvest.
+
+Tokenholders have contractual rights solely against Tokinvest in respect of:
+
+     · platform access;
+     · submission of subscription and redemption instructions; and
+     · receipt of economic outcomes as determined and recorded in Tokinvest's internal
+
+          systems.
+
+All rights are contractual in nature and depend on the proper functioning of Tokinvest's platform
+and the wider distribution chain.
+
+4. No Direct Relationship with Fund Issuer
+Investors:
+
+     · are not registered as unitholders in the underlying fund;
+     · have no direct contractual or legal relationship with Franklin Templeton or any fund
+
+          entity; and
+     · cannot exercise rights directly against the fund or its service providers.
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    1
+Access to the fund is entirely intermediated through Tokinvest and its appointed distribution
+partners.
+
+5. Intermediation Chain Risk
+Investment in the Token relies on a multi-party structure involving:
+
+     · Tokinvest (platform operator and sub-distributor);
+     · appointed distributor(s), including Pinetree; and
+     · the fund issuer and its administrators and custodians.
+
+The ability to access, transact in, or realise value from the Token depends on the continued
+operation of all parties within this distribution chain.
+
+Failure, delay, or disruption at any level may:
+
+     · delay or prevent execution of subscriptions or redemptions;
+     · affect pricing, settlement, or availability of liquidity; or
+     · impair investor access to economic outcomes.
+
+6. Tokinvest Custody Model
+Virtual Assets are held within a Tokinvest-operated platform environment and supported by
+third-party custody providers.
+Tokinvest is not a VARA-regulated custodian and provides custody only as an incidental activity
+to its Brokerage Services, utilising third-party VARA-regulated custodians and/or custody
+technology providers.
+Custody arrangements may involve multiple layers of infrastructure. Failures or disruptions at
+any level may affect access to Tokens.
+
+7. No Investment Advice
+Tokinvest does not provide financial, legal, tax, or investment advice.
+Nothing in this Notice constitutes a recommendation or personalised advice.
+Investors are responsible for conducting their own independent assessment.
+
+8. No Clearing or Third-Party Brokerage
+Tokinvest does not provide clearing services for other VASPs and does not introduce clients to
+other VASPs.
+
+9. Not Exhaustive
+This Notice does not set out all risks.
+The risks applicable to any investment depend on individual circumstances and transaction
+terms.
+
+10. General Risk Categories
+Risks include:
+
+     · liquidity risk;
+     · market risk;
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    2
+     · settlement risk;
+     · currency risk;
+     · operational risk;
+     · regulatory risk;
+     · legal risk; and
+     · barriers to divestment.
+
+11. Tokinvest Insolvency Risk
+In the event of Tokinvest insolvency:
+
+     · investors rely on contractual rights, internal records, and custody arrangements;
+     · investor entitlements are determined solely by Tokinvest's internal records, which are
+
+          not independently recognised by the Issuer, Pinetree, or the fund registrar;
+     · access to the platform and Tokens may be restricted or suspended;
+     · investor positions may be subject to reconciliation processes across internal records,
+
+          custody providers, and upstream distributors; and
+     · recovery of value will depend on applicable legal frameworks, custody arrangements,
+
+          and Tokinvest's rights within the distribution chain.
+
+Delays, partial recovery, or total loss may occur.
+There is no assurance that investor interests will be fully protected or that access to underlying
+fund exposure can be preserved in a timely manner.
+
+12. Distributor and Counterparty Risk
+Tokinvest relies on third-party distributors and service providers to access and transact in the
+underlying fund.
+Failure or disruption of these parties may:
+
+     · delay or prevent execution;
+     · impact pricing or settlement; and
+     · impair investor access to underlying exposure.
+
+13. Commingling and Omnibus Account Risk
+Underlying fund positions may be held in omnibus or commingled accounts at distributor or
+intermediary level (including Pinetree).
+Tokinvest is recognised as a single investor at the distributor level, and underlying investors are
+not recorded or recognised by Pinetree, the Issuer, or the fund registrar.
+
+As a result:
+
+     · investor holdings are not individually segregated at the fund or distributor level;
+     · investor entitlements are determined solely by Tokinvest's internal records;
+     · errors, delays, or discrepancies in reconciliation may affect investor entitlements; and
+     · in insolvency or operational failure scenarios, recovery of interests may be delayed,
+
+          reduced, or uncertain.
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    3
+14. Conflicts of Interest Framework
+Tokinvest performs ongoing conflicts-of-interest assessments across its roles as platform
+operator and distributor.
+Conflicts are managed through governance controls, segregation of duties, and compliance
+oversight
+
+15. Fee Incentive Risk
+Fees are disclosed and applied in accordance with applicable documentation.
+Fee structures may create incentives related to transaction volume or platform usage.
+
+16. Execution and Timing Risk
+Execution timing depends on fund dealing cycles, distributor processing, and operational
+workflows.
+Tokinvest does not control fund-level execution timing.
+Transactions may be subject to delays, including those arising from funding, settlement, and
+processing timelines across jurisdictions.
+
+17. Tax and Legal Risk
+Tokinvest does not advise on tax or legal consequences.
+Investors are responsible for compliance with applicable laws and tax obligations.
+
+18. Acknowledgement of Risk
+By accessing the Product, investors acknowledge and accept the risks described in this Notice.
+
+19. Reliance on Documentation
+Investors must read the Whitepaper, this Risk Disclosure Statement, and all relevant fund
+documentation before making any investment decision.
+
+Market and Virtual Asset Risks
+20. Market Risk
+The value of the Token reflects the performance of the underlying fund and may fluctuate.
+
+21. Financial Crime Risk
+Virtual Asset markets may be exposed to fraud, manipulation, or illicit activity.
+
+22. Cybersecurity Risk
+Systems may be subject to cyber-attacks, data breaches, or operational compromise.
+
+23. Transparency and Ownership Risk
+Blockchain addresses do not identify beneficial ownership.
+Verification of ownership depends on Tokinvest's internal records and custody arrangements.
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    4
+24. Core Virtual Asset Risks
+Virtual Assets:
+
+     · may lose value;
+     · may not be transferable;
+     · may be illiquid; and
+     · may be subject to theft or fraud.
+
+25. Regulatory Risk
+Regulation may evolve and affect:
+
+     · access;
+     · transferability; and
+     · platform operations.
+
+26. Technology and Internet Risk
+Platform access may be disrupted due to connectivity or system failures.
+
+27. Emerging Technology Risk
+Virtual Assets operate within a rapidly evolving technological environment.
+
+28. Legal Uncertainty
+Legal treatment of Virtual Assets may vary across jurisdictions.
+
+29. Wallet and Access Risk
+Loss of credentials or access controls may restrict access to the platform and Token-related
+functionality.
+
+30. Token Pricing Risk
+Pricing of the Token may differ from the underlying fund's net asset value (NAV) due to:
+
+     · timing differences between NAV calculation and platform processing;
+     · subscription and redemption processing delays;
+     · applicable fees and charges; and
+     · liquidity conditions
+
+Investors may not be able to transact at NAV.
+
+31. Distributed Ledger Technology Risk
+Distributed ledger systems may:
+
+     · experience downtime;
+     · be subject to protocol changes; or
+     · be exposed to security vulnerabilities.
+
+32. Amendments
+Tokinvest may amend this Notice in accordance with regulatory requirements.
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    5
+33. Fiat and Payment Provider Risk
+Tokinvest relies on third-party banking and payment providers.
+Failures, delays, or restrictions may affect funding and withdrawals.
+
+Fund-Specific Risks
+
+34. Money Market Fund Risks
+The underlying fund is subject to:
+
+     · interest rate risk;
+     · credit risk;
+     · liquidity risk; and
+     · counterparty risk.
+Money market funds may incur losses and do not guarantee capital preservation.
+35. NAV and Pricing Risk
+The Token is intended to reflect the NAV of the underlying fund; however, pricing may diverge
+due to:
+     · operational timing differences;
+     · processing delays across the distribution chain;
+     · fees and charges;
+     · foreign exchange movements; and
+     · liquidity conditions.
+
+NAV is not a guaranteed exit price.
+36. Redemption Risk
+Redemption of Tokens depends on:
+
+     · the ability of Tokinvest to process redemption instructions; and
+     · the liquidity of the underlying fund.
+
+Redemptions may be affected by:
+     · dealing cycles and cut-off times;
+     · liquidity constraints;
+     · distributor or issuer restrictions; and
+     · operational or regulatory factors.
+
+Redemptions may be delayed, suspended, or executed at a price different from expectations.
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    6
+Technology and Platform Risks
+37. Smart Contract Risk
+The Product may utilise distributed ledger or smart contract infrastructure as part of it is
+tokenisation and record keeping framework.
+This may result in:
+
+     · incorrect execution;
+     · loss or freezing of Tokens;
+     · disruption to platform functionality; or
+     · administrative intervention.
+
+No assurance can be given that such systems are free from defects.
+
+38. Secondary Market Risk
+The Product does not currently provide an active secondary market. Investors may only realise
+liquidity through the redemption process and may experience delays or restrictions in accessing
+liquidity.
+
+39. Platform Suspension Risk
+Tokinvest may suspend access to the platform, in whole or in part, for operational, security, legal,
+or regulatory reasons.
+During any suspension:
+
+     · access to accounts may be restricted;
+     · transactions may be delayed or prevented; and
+     · functionality may be limited.
+
+Tokinvest does not guarantee uninterrupted availability.
+
+40. Regulatory Intervention and Licence Risk
+Regulatory authorities may impose restrictions or actions affecting Tokinvest's operations.
+Such actions may:
+
+     · restrict or suspend activity;
+     · impose additional requirements;
+     · require operational changes; or
+     · result in licence suspension or revocation.
+
+This may materially affect investor outcomes.
+
+41. Geo-Restriction Risk
+Access to the Product may be restricted based on jurisdiction.
+Users may lose access due to regulatory changes.
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    7
+

@@ -1,0 +1,260 @@
+                Horse Lease Token (HLT) ­ Feb 2026
+
+                       Risk Disclosure Statement
+
+1. This notice provides a description of risks that are associated with investing
+    and trading Virtual Assets ("Notice").
+
+2. At present there are:
+
+    a. Tokinvest is a full market licensed Broker Dealer operating under the
+         Dubai Virtual Asset Regulatory Authority (VARA) regulatory framework in
+         full compliance of all published Rulebooks
+
+    b. there are no identified conflicts of interest arising out of Tokinvest's trading
+         or business activities
+
+    c. strict policies and control mechanisms are in place that deal with
+         proprietary positions and revenue sharing arrangements with partners.
+         These comply with guidance in the VARA Rulebooks and are part of our
+         licensing requirement as a VARA regulated entity; and
+
+    d. no member of the Tokinvest senior management or board has any past
+         convictions or prosecutions, whether before the courts of the UAE or the
+         courts of another jurisdiction.
+
+3. Capitalised Terms used in this notice are defined in our Brokerage Terms of
+    Business published on the www.Tokinvest.capital website, the current version
+    of which are available on the www.Tokinvest.capital website ("Site").
+
+4. All users and clients of our Brokerage Services are advised to carefully study
+    the risks described in this Notice.
+
+5. Tokinvest Virtual Assets which you custody with us are under the control of
+    Tokinvest, however all client assets are segregated in bankruptcy remote
+    legal structures designed to isolate them from potential risks associated with
+    the financial health of the company. This ensures that any impairment or
+    insolvency of Tokinvest as a business will not affect assets held for clients.
+    Tokinvest is not a VARA regulated Custody service provider. Tokinvest will
+    provide Virtual Asset Custody only as an incidental activity to its Brokerage
+    Services leveraging a third-party VARA regulated Custodian and/or third-party
+    custody technology solutions providers. As further described in paragraphs 64
+    a-c of these Terms, Hex Trust will act as custodian for all Virtual Assets
+    except for Hedera based tokens;
+6. We do not provide professional financial advice and nothing in this Notice
+    shall be construed as such. You shall not make any investment decision
+    without first conducting your own research.
+
+7. Tokinvest does not hold or maintain funds or Virtual Assets or provide
+    clearing services for other VASPs providing Broker-Dealer Services.
+
+8. Tokinvest does not introduce our clients to any other VASPs.
+
+9. This Notice does not set out all risks arising in relation to Virtual Assets and
+    should not be relied upon as doing so. The risks applicable to any particular
+    investment or Virtual Asset will depend on your particular circumstances and
+    the terms of the relevant transaction. You should not deal in any investment
+    unless you understand the nature of the product you are dealing in (or
+    contract you are entering into), the extent of your exposure to risk, and unless
+    you are satisfied that the product is appropriate for you.
+
+10. Types of risks that may have an impact on your investment include liquidity
+    risk, market risk, settlement risk, currency risk, operational risk, business risk,
+    tax risk, regulatory risk, legal risk, barriers to or restrictions on divestment,
+    risks inherent to OTC trading and/or risks as a result of you assuming
+    additional obligations in relation to the investment.
+
+    - Settlement Risk: Transacting in Virtual Assets with Tokinvest involves
+    transfer of fiat currency to and from our client money account with Zand Bank
+    and of Virtual Assets to and from wallets within our custodian Hex Trust.
+    There is a possibility that the settlement of these transfers are delayed or may
+    fail. To mitigate this risk Tokinvest employs industry leading risk management
+    practices around transaction settlement which include;
+    a) fiat direct transfers into a Zand Bank client money account, including
+    payment instructions and unique customer reference numbers available.
+    b) ongoing reconciliation and immediate advice upon receipt of funds.
+    c) comprehensive internal token and wallet management.
+    d) activity audit and reporting on all transactions.
+    Any queries or concerns around settlement should be escalated in the first
+    instance to the Tokinvest Client Support team via email, phone or webchat.
+    - Liquidity Risk ­whilst Tokinvest will strive to provide a liquid marketplace for
+    investors, there may be periods where it is not possible to buy or sell these
+    tokens in the amount, or at the price desired, which may lead to a missed
+    opportunity or a financial loss on your investment.
+
+11. We have no obligation to inform you about tax or legal consequences of
+    Virtual Asset Trading. As both tax and regulatory treatment of Virtual Assets
+    can vary significantly across jurisdictions, we strongly encourage you to seek
+    independent, qualified professional advice regarding your individual situation.
+12. You are advised to read and understand the risks involved in trading and
+    custody of Virtual Assets.
+
+13. Anyone who uses our Site or the Brokerage Services acknowledges and
+    agrees that Tokinvest shall not be responsible for or otherwise liable for any
+    direct or indirect loss or damage of any kind whatsoever arising directly or
+    indirectly from the occurrence in full or in part of any or all of the following risk
+    events.
+
+14. You will also need to read the whitepaper, and any other offering
+    memorandum associated with Virtual Asset issuances.
+
+15. While most of the Virtual Assets which Tokinvest will broker are expected to
+    be real world asset backed Virtual Assets, there is a risk of volatility and
+    unpredictability of the price of Virtual Assets relative to fiat currencies.
+
+16. Trading in Virtual Assets may be susceptible to irrational market forces and
+    there is a risk of increased risk of Financial Crime.
+
+17. The nature of Virtual Assets may lead to an increased risk of cyber-attack and
+    there may be limitations around mechanisms for the recovery of lost or stolen
+    Virtual Assets.
+
+18. Virtual Asset balances are generally maintained as an address on the
+    blockchain and are accessed through private keys, which may be held by a
+    market participant or a custodian. Although Virtual Asset transactions are not
+    typically private and are publicly available on a blockchain or distributed
+    ledger, the public address does not identify the controller, owner or holder of
+    the private key. Unlike bank and brokerage accounts, Virtual Asset
+    exchanges and custodians that hold Virtual Assets do not always identify the
+    owner. The opaque underlying or spot market may pose asset verification
+    challenges for market participants, regulators and auditors and potentially
+    give rise to an increased risk of manipulation and fraud.
+
+19. You are hereby notified, accept and confirm your understanding that Virtual
+    Assets:
+
+    a. may lose their value in part or in full;
+    b. may not always be transferable;
+    c. may not be liquid; and
+    d. may be subject to fraud, manipulation, theft, including through hacks and
+
+         other targeted schemes, and loss.
+
+    There is no assurance that you will be able to sell Virtual Assets.
+20. Any links to Virtual Assets related activity outside the Emirate of Dubai, which
+    may be unregulated or subject to limited regulation and any regulatory
+    changes or actions by VARA or Non-VARA Regulator that may adversely
+    affect the use, transfer, exchange, and value of a Virtual Asset.
+
+21. Trading on an online platform exposes the participants to internet related risks
+    and the internet may be unreliable or unavailable at any given time.
+    Interruption, delay, corruption or loss of data or loss of confidentiality in the
+    transmission of data, may occur when transmitting data via the internet and
+    trading instructions may be delayed, intercepted, altered, or lost during
+    transmission, due to hardware, software or network connectivity issues or any
+    other issues arising from service provided by third party vendors.
+
+22. Virtual Assets are a new and evolving asset class and are part of a new and
+    rapidly evolving industry that is subject to a degree of uncertainty. The
+    investment characteristics of particular Virtual Assets may differ significantly.
+
+23. The legal status of certain Virtual Assets may be uncertain or vary from one
+    country to the next. You have a responsibility to comply with the relevant
+    Applicable Laws.
+
+24. Transfer from, or storage of Virtual Assets in a digital wallet exposes the
+    Virtual Asset to the risk of loss due to security breaches arising from hacking,
+    phishing, social engineering, smurfing, malware, spoofing and such other
+    means and it may not be possible to recover lost or stolen Virtual Assets.
+
+25. It may prove difficult to determine the value of a given Virtual Asset from time
+    to time, due to price volatility and the fragmentation of the markets and the
+    creation of new and innovative products and legal structures made possible
+    by the use of tokenisation technology. In addition, dispersed liquidity may
+    pose challenges for market participants trying to exit a position, particularly
+    during periods of stress.
+
+26. Virtual Assets and the underlying DLT technology typically involve
+    cryptographic and other algorithmic protocols that regulate the issuance and
+    transfer of Virtual Assets. This is a new and rapidly evolving industry that is
+    subject to a variety of factors that are difficult to evaluate. As Virtual Asset
+    networks continue to develop and grow, certain technical issues might be
+    uncovered, and the troubleshooting and resolution of such issues will likely
+    require the attention and efforts of decentralised development communities.
+    The evolving nature of DLT means that a malicious actor may be able to
+    misappropriate your Virtual Assets.
+
+27. In addition to the provisions of this disclosure statement, we may make
+    additional disclosures from time to time or amend this statement in
+    accordance with the requirements set out Rule I.B of the VARA Broker-Dealer
+    Services Rulebook, Market Conduct Rulebook and Compliance and Risk
+    Management Rulebook.
+
+28. Tokinvest uses third-party providers for fiat services:
+
+    a. Zand Bank ­ UAE authorised bank for Tokinvest operational accounts and
+         Client Money Accounts.
+
+    b. Wio Bank for Tokinvest operational accounts.
+
+29. In addition to the risks associated with trading and investing in Virtual Assets,
+    the below risks are specifically associated with investment in Horses and
+    Horse Lease products.
+
+30. Performance Risk: There is no guarantee that a horse will win any prize
+    money during the life of the lease. A horse could become the subject of an
+    inquiry, get injured, or become ill and be unable to compete in races.
+
+31. Potential Regulatory Changes: Unforeseen changes to laws or regulations
+    could impact prize money entitlement.
+
+32. Horse Management Risks: Tokinvest has endeavoured to select and work
+    with established racehorse management companies with excellent
+    reputations, however there is a risk that breakdowns in operational processes
+    and past performance does not guarantee future performance.
+
+33. Investor Protections: Investors should be aware that, unlike with certain
+    traditional financial instruments or securities offered under regulated markets,
+    this Virtual Asset is not covered by a statutory compensation or protection
+    scheme outside of those provided by the underlying asset.
+
+34. Reserve Asset Requirement: The Reserve Asset requirement is not
+    applicable to the HLT for the following legal and unique structural reasons:-
+    a. No Redemption Obligation or Right
+    The HLT does not entitle the holder to any redemption in cash, kind, or other
+    form. Upon lease expiry:
+    · The token is burnt,
+    · No residual claim arises, and
+    · The holder has no right to repayment or retrieval of subscription value .
+    This extinguishes any enforceable redemption obligation which would
+    otherwise require a corresponding reserve.
+    b. No Pegged Value
+    The HLT white paper expressly states that the HLT does not purport to
+    maintain a stable value. The value of the token on expiry of the lease terms is
+    zero. The HLT does not represent a stable or pegged value linked to any
+    asset or index. The token's value in is:
+    · Contingent upon racehorse performance, and
+             · Dependent on the commercial discretion of the horse owner and lease
+             manager.
+             c. No Legal or Beneficial Ownership in a Real-World Asset
+             While the HLT references a real-world horse, it expressly disclaims ownership
+             rights over the animal. Tokenholders receive limited-time usage rights under a
+             lease governed by NZTR rules, but no legal title or claim to the underlying
+             asset is conferred.
+             This negates the need for classification as an ARVA token requiring reserve
+             arrangements.
+             d. Funds Are Used Operationally, Not Reserved
+             Investor subscription funds are explicitly designated for training, care, and
+             operational management of the leased horse. They are not:
+             · Held in trust,
+             · Deposited as a financial reserve,
+             · Segregated for later redemption.
+             Accordingly, these funds do not function as reserve assets, nor are they
+             intended to back redemptions.
+
+Investor Hereby Acknowledges and agrees to the terms of the above Whitepaper and
+Risk Disclosure Statement:-
+
+Name
+
+Scott Thiel
+
+----------------------------------------------------
+
+Signature
+
+----------------------------------------------------
+
+Date
+2 February 2026
+

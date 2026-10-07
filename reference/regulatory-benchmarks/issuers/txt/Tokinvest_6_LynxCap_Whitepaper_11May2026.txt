@@ -1,0 +1,1043 @@
+                                          Tokinvest DMCC
+
+                   LynxCap LCL Opportunities 3 Digital Bond token
+                      Virtual Asset Whitepaper (Primary Distribution)
+
+                                            11th May 2026
+
+REGULATORY DISCLAIMER
+VARA has not taken any steps to verify the information set out in this whitepaper, including its accuracy and
+completeness, and has no responsibility for any loss arising from reliance on it. The liability for the content of
+the whitepaper lies with Tokinvest DMCC.
+This whitepaper is a regulated disclosure document prepared in accordance with the requirements of the Dubai
+Virtual Assets Regulatory Authority (VARA). It is intended to provide prospective investors with a clear
+explanation of the Token and its distribution through the Tokinvest platform.
+
+Core Product Sections (Sections 1­8)
+These sections contain the primary investor-facing disclosure:
+
+     1. Key Features & Core Definitions
+     2. Token Overview
+     3. Parties, Roles & Responsibilities
+     4. Purchase, Redemption & Flow of Funds
+     5. Token Representation & Custody
+     6. Dealing, Pricing & Liquidity
+     7. Key Risks
+     8. Legal Structure & Important Disclosures
+
+Appendices (Supporting Disclosures)
+The appendices contain supporting detail required for completeness and regulatory transparency:
+
+Appendix A ­ Tokinvest Overview, Governance & Regulatory Status
+Appendix B ­ Regulatory Disclosures & Legal Information
+
+This whitepaper provides a high-level description of:
+
+     · the Token; and
+     · its distribution through Tokinvest
+
+It does not replicate the full detail of the underlying asset and Token documentation.
+Investors should rely on:
+
+     · the LCL Opportunities 3 Digital Bond Final Terms prospectus;
+     · the LCL Opportunities 3 Limited Retail Programme information memorandum;
+     · the LCL Opportunities Bond Programme prospectus; and
+     · the Risk Disclosure Statement for a full description of risks
+1. KEY FEATURES & CORE DEFINITIONS
+
+This Section summarises the key structural, operational, and economic characteristics of the Token and defines
+the principal terms used throughout this document. Capitalised terms introduced in this Section have the
+meanings given below and apply throughout.
+
+1.1 Overview
+The Token is the LynxCap LCL Opportunities 3 Digital Bond token (the "Token"), a digital representation of
+the economic performance of a bond issued by LCL Opportunities S.C.S (the "Bond Issuer"). The Bond Issuer is
+a common limited partnership (société en commandite simple) organised under the laws of the Grand-Duchy of
+Luxembourg, having its registered office at 34, rue du Curé, L-1368 Luxembourg, Grand Duchy of Luxembourg,
+registered with the Luxembourg Register of Commerce and Companies (Registre de Commerce et des Sociétés)
+under number B 267834
+
+LCL Opportunities 3 (the "Token Issuer") is a private limited liability company (société à responsabilité limitée),
+having its registered office at 34, rue du Curé, L-1368 Luxembourg, Grand Duchy of Luxembourg, registered with
+the Luxembourg Register of Commerce and Companies (Registre de Commerce et des Sociétés, Luxembourg)
+under number B 260326.
+
+The Token Issuer is a fully owned subsidiary of LynxCap Investments AG, ("the Parent") a Swiss public limited
+liability company, having its registered office at Lüssihofweg 4, 6300 Zoug, Switzerland, registered with the
+Register of Commerce of the canton of Zug under number CHE-244.186.164.
+
+Decentral Limited ("Defactor"), is an Irish limited company, having its registered office at Dogpatch Labs, CHQ
+Building, Dublin 1, D01Y6H7, Ireland, registered under number 625523. Defactor provides the technology
+infrastructure for the tokenization process but does not act as an intermediary in issuance, custody, or
+compliance verification.
+
+The Token is issued and managed by the Token Issuer and is made available to investors through a structured
+distribution framework involving Tokinvest as a licensed distributor.
+
+1.2 Token Details
+The Token is an asset-referenced virtual asset (ARVA) that represents a fractional beneficial interest in a senior
+secured bond (or bonds) issued by the Bond Issuer and identified by its International Securities Identification
+Number (ISIN). The issued bond is part of a wider programme from the Bond Issuer, full details of which can be
+found on the Luxembourg Stock Exchange website at; Luxembourg Stock Exchange - LCL OPPORTUNITIES
+LUXEMBOURG S.C.S. | LuxSE
+
+The underlying bond confers defined contractual rights, including entitlement to principal and any applicable
+coupon payments, subject to the terms of the bond documentation. The Token does not constitute the bond
+itself but operates as a digital representation of an economic interest in the underlying instrument, with
+corresponding rights and obligations administered through an intermediary structure.
+
+Tokenholders' exposure is therefore dependent on the performance of the underlying bond and the proper
+operation of the associated legal, custody, and settlement arrangements. The product is intended to facilitate
+access, transferability, and fractionalisation of such exposure, while maintaining alignment with applicable
+regulatory requirements governing ARVAs.
+
+1.3 Investment Objective
+The Bond Issuer seeks to:
+
+     · provide a stable and attractive yield; and
+     · preserve capital and maintain liquidity
+The proceeds of the bonds issued under the above-mentioned program may be used in connection with the
+financing of the acquisition of non-performing, sub-performing and performing loans portfolio and real estate
+owned, through the subscription by the Bond Issuer of debt instruments or equity, issued by a fully directly or
+indirectly held Subsidiary or Affiliated Companies.
+
+1.4 Underlying Assets
+The Digital Bond invests only in the specific ISIN identified bonds issued by the Bond Issuer as described above.
+The Token Issuer is contractually obliged to pass all proceeds from the issuance of the Digital Bond (excluding
+fees) into the bonds as per the Limited Retail Programme information document (`the LRP") included with
+this submission (below).
+
+      Limited Retail
+ Programme informati
+
+1.5 Key Parties
+The following entities are involved in the structure, management, and distribution of the Token:
+
+     · Token Issuer: LCL Opportunities 3
+     · Bond Issuer: LCL Opportunities SCS
+     · Parent Company: LynxCap Investments AG
+     · Decentral Limited ("Defactor") provides the technology infrastructure for the tokens.
+     · Custodian: Hex Trust MENA (on behalf of clients of Tokinvest DMCC)
+     · Primary Distributor: Tokinvest DMCC, which provides investor onboarding, order aggregation,
+
+          execution, and platform access
+
+Tokinvest interfaces directly with the Token Issuer as its counterparty on behalf of underlying investors.
+
+1.6 Role of Tokinvest
+Tokinvest acts solely as:
+
+     · a licensed distributor of the Token; and
+     · the operator of the investor platform through which investors access the Token
+
+Tokinvest does not:
+     · issue the Token;
+     · manage the underlying assets related to the bond issuance;
+     · determine investment strategy; or
+     · guarantee performance or returns
+
+1.7 Token Purchases
+The Tokens are offered on a buy now basis on the Tokinvest platform. Investors must hold sufficient balances
+(including all applicable fees) in the currency of issuance on account with Tokinvest to purchase Tokens.
+
+Liquidity is subject to:
+     · sufficient balances of the Token available from the Token Issuer at the time of purchase;
+     · operational requirements on the Tokinvest Investor Platform; and
+     · prevailing market conditions
+
+1.8 Pricing and Valuation
+At primary purchase, the Tokens are valued at the same price as the underlying referenced senior secured bond.
+During the life of the bond there may be fluctuations between the prices of the two assets due to differences in
+liquidity between the token and the underlying instrument, prevailing market conditions in both the digital asset
+and traditional fixed income markets, supply and demand dynamics specific to the token, and any constraints on
+transferability or access to secondary markets
+1.9 Currency and Foreign Exchange
+
+     · Base currency of the Bonds: EUR and USD
+     · Tokinvest offering currency: EUR, USD or AED
+Purchases, coupon flows and repayment of principal may involve foreign exchange conversion if not in the
+currency of the Token. Investors are exposed to fluctuations between currencies in this case which may impact
+investment returns.
+1.10 Distributions
+Distributions arise in the form of periodic coupon payments and return of principal as documented in the details
+of the underlying bond. Whilst token purchases are atomic and the Token Issuer initiates the accrual period
+upon receipt of investor funds, distributions may take up to 10 business days to be received in the investor's
+account with Tokinvest DMCC due to the payment structure of the tokenisation. Diagram 1 below displays the
+cashflow processes;
+
+1.11 Capital Protection
+The Token does not provide:
+
+     · capital protection;
+     · guaranteed returns; or
+     · any form of insurance or principal preservation mechanism
+
+Investors may lose part or all of their invested capital.
+
+1.12 Nature of Investor Rights
+Investors:
+
+     · obtain economic exposure to senior secured bonds through the Token via Tokinvest's distribution
+          framework;
+
+     · are entitled to economic participation in the performance of the specific ISIN identified senior secured
+          bond through the Token; and
+
+     · do not hold direct ownership of said bonds, only the Tokens and the rights that they represent.
+
+All rights are governed by the documentation issued by the Token Issuer.
+
+1.13 Tokenisation Framework
+Ownership of the Token will be recorded on the CAP table held by Tokinvest DMCC, which:
+
+     · links investor identity to wallet addresses at a VARA approved custodian; and;
+     · records ownership using distributed ledger infrastructure
+
+As a licensed distributor, Tokinvest DMCC is the sole counterparty to the Token Issuer and sits on their CAP
+table. The Token Issuer does not record Tokinvest's investors on their CAP table.
+
+1.14 Token Identifiers & Reference Data
+The following identifiers and reference information relate to the Tokens:
+
+     · ISIN: XS3356029788
+     · Smart Contract Address: 0x83eCECE38d58C7CCa6085462F2437Ad67c7c338F
+
+          (see https://etherscan.io/token/0x83eCECE38d58C7CCa6085462F2437Ad67c7c338F)
+     · Issuer Domicile: Luxembourg
+     · Asset Class: Senior Secured Bond
+     · Tenor: 4 years (from date of issuance) /2 years option
+     · Call Option: as from 15th May 2028 (see section 9.11 in the Information Memorandum)
+     · Put Option: dates 15th May 2028/15th May 2029 (see 9.11.5 in the Information Memorandum)
+     · Coupon: 10% fixed, paid quarterly
+     · Minimum Investment (Token Issuer Level): EUR 10k/USD10k or currency equivalent
+     · Minimum Investment (through Tokinvest): EUR 10k/ USD10k or currency equivalent
+
+Further details are set out in the Final Terms Digital Bonds Series document ("the Final Terms") of the Digital
+Bond issued by the Token Issuer and included with this submission.
+
+ Final Terms Digital
+Bonds Series AC_RT_d
+
+1.15 Important Distinction
+The Token is:
+
+     · issued and managed by LCL Opportunities 3; and
+     · made available to investors via Tokinvest as a distribution platform
+
+Tokinvest does not act as issuer, asset manager, or fiduciary and does not assume responsibility for the
+investment performance of the Tokens.
+1.16 Smart Contract Information
+The Token is minted by a smart contract created and published by Defactor. The smart contract:
+
+     · is an ERC-20 compliant EVM compatible contract; and
+     · has been security audited and confirmed as secure by Zokyo on 28th March 2025. Audit findings are
+
+          available here; Zokyo_audit_report_Defactor_March28th_2025.pdf - Google Drive
+2. TOKEN OVERVIEW
+
+2.1 Overview
+The Token provides investors with access to the LCL Opportunities 3 Digital Bond, an on-chain product which
+allows investors to participate in the economic performance of senior secured bonds issued by the Bond Issuer
+as part of a limited retail programme (included with this submission).
+The Token is issued under a legal structure which makes it pari passu and pro rata with all other creditors of the
+Bond Issuer in the case of default (see sections 9.5 and 9.8 of the Token Issuer's LRP document included with
+this submission).
+
+2.2 Nature of the Token
+The Token is an ARVA which references the economic performance of a specific and ISIN identified senior
+secured bond issued by the Bond Issuer.
+
+2.3 Role of Tokinvest
+Tokinvest acts as a licensed distributor and provides access to the Token through its platform.
+Tokinvest enables investors to:
+
+     · purchase the Token;
+     · hold the Token within a controlled custody environment;
+     · receive cashflows arising from ownership of the Token; and
+     · list the Token for sale to other investors on the platform via a secondary market (where available)
+
+Tokinvest does not manage or have any involvement with the Token or underlying bond asset.
+
+2.4 Investment Exposure
+Investors gain exposure to the economic performance of the referenced senior secured bond, which has an
+attractive fixed quarterly coupon. Returns are achieved through the yield from the referenced bond with
+principal returned at the maturity of the bond.
+
+The Token represents fractionalised exposure to the underlying bond and is offered in lower minimum
+subscription denominations than other tokens issued by the Token Issuer. In consideration of the additional
+structuring and operational costs associated with enabling such fractional access, the coupon payable in respect
+of the Token may be set at a rate marginally lower than that of the underlying bond. The coupon payable by the
+Token is clearly described in the offering and this differential does not alter the disclosed entitlement of
+Tokenholders under the applicable terms and conditions
+
+2.5 Token Custody
+After purchase on the Tokinvest platform. investor holdings of the Token are maintained in individual
+segregated wallets held with a VARA regulated VA custodian under the oversight of Tokinvest. Tokinvest
+maintains a CAP table of each investor's holdings. Tokinvest's investors do not appear on the CAP table of the
+Token issuer.
+
+2.6 Access and Participation
+The LCL Opportunities 3 Digital Bond is a Token that is designed to be suitable for all investor types including
+retail. However, the Tokens may be made available through Tokinvest only to clients who have successfully
+completed all onboarding, KYC/AML, sanctions screening, suitability or appropriateness assessments, and who
+are located in jurisdictions where such distribution is lawful.
+
+The Tokens will not be offered, sold, transferred, or made available to:
+
+     · any U.S. person, or any person acting for the account or benefit of a U.S. person;
+     · retail members of the public in the United Kingdom;
+     · persons located in any jurisdiction where the offer or sale would be unlawful;
+     · or any sanctioned, restricted, or otherwise prohibited person.
+
+Access by persons resident in the European Economic Area may be restricted, limited, or unavailable depending
+on the laws and regulatory requirements of the relevant Member State.
+
+Tokinvest shall apply ongoing controls in relation to transfers, secondary trading access, and beneficial
+ownership screening to ensure continued compliance with applicable distribution restrictions.
+
+Tokinvest reserves the right to refuse, suspend, or terminate access where required for regulatory, legal, or
+investor protection reasons.
+
+2.7 Relationship to Issuer Documentation
+This document provides a high-level overview of the Token and its distribution through Tokinvest.
+Full details of the Token and the underlying bond programme are set out in the official documentation issued by
+the Token and Bond Issuers and included with or mentioned within this submission. Investors should thoroughly
+review this underlying documentation before investing.
+3. PARTIES, ROLES & RESPONSIBILITIES
+
+3.1 Overview
+The Token involves multiple parties across issuance, distribution, and custody. Tokinvest provides investor
+access to the Token but does not issue or manage the Token or the underlying bond.
+
+3.2 Token Issuer, Bond Issuer & Parent Company
+     · Token Issuer: LCL Opportunities 3
+     · Bond Issuer: LCL Opportunities SCS
+     · Parent Company: LynxCap Investments AG
+
+The Token Issuer is responsible for:
+     · issuance and Token integrity;
+     · accurate maintenance of underlying asset exposure;
+     · disclosure and reporting;
+     · ongoing compliance and regulatory alignment; and
+     · technology and smart contract governance
+
+3.3 Tokinvest (Licensed Distributor & Platform Operator)
+Tokinvest DMCC acts as a licensed distributor of the Token and operator of the investor platform.
+Tokinvest is responsible for:
+
+     · investor onboarding and AML/KYC;
+     · order execution between investors and the Token Issuer;
+     · client money handling and settlement;
+     · custody integration and investor record-keeping; and
+     · ongoing investor servicing and reporting
+
+Tokinvest does not:
+     · manage the Token, the underlying bond or control investment decisions; or
+     · guarantee performance or returns
+
+3.4 Custody
+Tokinvest operates a platform-controlled custody model supported by regulated third-party custodians.
+As at the date of this document, custody services are provided through Hex Trust.
+Custody providers are responsible for:
+
+     · safeguarding digital assets; and
+     · supporting secure holding and transfer within the platform environment
+
+Investors do not interact directly with the custodian.
+All holdings remain within the Tokinvest-controlled custody environment unless permitted for self-custody by
+Tokinvest.
+
+3.5 Investor Relationship
+Investors in this distribution:
+
+     · access the Token exclusively through Tokinvest;
+     · do not have a direct contractual relationship with the Token Issuer or Bond Issuer; and
+     · rely on Tokinvest for execution, custody, and servicing
+
+All investor-facing services for this distribution are provided by Tokinvest.
+3.6 Responsibility Summary
+     · Token Issuer: the structuring, issuance, and ongoing administration and regulatory compliance of the
+          Token
+     · Bond Issuer: performance of the bond, including payment of interest and principal in accordance with
+          its terms
+     · Tokinvest: investor access, execution, custody, and servicing
+
+Each party operates within its defined role and is responsible only for the functions described above.
+4. PURCHASE, REDEMPTION & FLOW OF FUNDS
+
+4.1 Overview
+Tokinvest investors access the Token exclusively through the Tokinvest platform. Tokinvest executes orders on
+behalf of investors and interfaces with the Token issuer for purchase and delivery of the Token.
+
+Tokinvest acts as the sole counterparty to the Token issuer on behalf of their investors.
+
+4.2 Token Purchase Process
+The purchase process operates as follows:
+
+     1. Onboarding
+          Investors complete onboarding, including AML/KYC verification and account setup on the Tokinvest
+          platform.
+
+     2. Funding
+          Investors deposit funds into their Tokinvest account via approved funding rails.
+
+     3. Instruction
+          Purchase orders are submitted through the Token offering page on the Tokinvest investor platform.
+
+     4. Execution
+          The purchase order is submitted to the Token Issuer and funds transferred to their fiat account with
+          their correspondent institution.
+
+     5. Delivery
+          Following execution, tokens are received in the Tokinvest corporate wallet with Hex Trust and then
+          transferred to the individual investor wallet and recorded on the Tokinvest CAP table.
+
+4.3 Minimum Purchase Amount
+Purchase amounts are:
+
+     · subject to minimum investment thresholds applied by the Token Issuer; and
+     · set at EUR10k, USD10k (or currency equivalent) as dictated by the issuance currency of the Token and
+
+          underlying bond.
+
+4.4 Redemption Process
+Under normal circumstances redemptions occur only at the expiry date of the Token which is itself dictated by
+the terms of the underlying bond:
+
+     1. The Token Issuer makes final payment of coupon and principal to all Tokenholders on its CAP table.
+     2. Tokinvest receives the aggregate proceeds for all Tokens held by Tokinvest investors.
+     3. Tokinvest distributes proceeds to each investor on their internal CAP table based on Token holdings.
+     4. Tokens are transferred out of investor wallets and returned to the Token Issuer
+     5. No further rights or distributions are retained by the Token.
+
+However, for specific issuances the Token Issuer may include a Put and/or Call option in the terms of the bond,
+as detailed in Section 9.11 of the LRP. A Put option allows the Tokenholder to request early redemption of the
+Token whilst a Call option allows the Token Issuer to redeem the Token early and pay principal plus any accrued
+interest to the Tokenholder.
+
+For this instance of the Digital Bond, as per sections 18-21 of the Final Terms, the Token Issuer has implemented
+a Call option as applicable from 15th May 2028 and a Put option as applicable on 15th May 2028 and 15th May
+2029 specifically.
+
+The Token Issuer also reserves the right to redeem the Token early for taxation reasons (unforeseen changes in
+tax rules relevant to the Token and/or the Token Issuer) or should a force majeure event occur. Investors are
+advised to refer to both documents mentioned in this Section 4.4 for full details and to confirm that either or
+both of these terms are applicable.
+Outside of the specific events mentioned above Tokens cannot be redeemed on demand and neither Tokinvest
+nor the Token Issuer are in any way obliged to redeem or repurchase tokens at any time.
+
+4.5 Flow of Funds
+Purchase:
+Investor  Tokinvest Client Money Account  Token Issuer  Bond Issuer
+
+     · Investor funds are held in a segregated Client Money Account (CMA).
+     · Tokinvest transfers funds to the Token Issuer for each executed order (net of fees).
+     · The Token Issuer in turn transfers all proceeds to the Bond Issuer for investment in the underlying bond.
+
+Redemption:
+Bond Issuer  Token Issuer  Tokinvest  Investor
+
+     · Redemption proceeds are received by Tokinvest from the Token Issuer
+     · Funds are credited to investor accounts on the platform.
+
+4.6 Accrual Start
+Coupon accrual commences when the Token Issuer has received and cleared subscription funds from the
+investor. Tokinvest will normally remit investor funds to the Token Issuer on the date of purchase (subject to a
+cut-off time of 6pm UAE), however such remittances may be subject to operational delays and confirmation
+from the Token Issuer may therefore occur on the same or a subsequent business day. Investors can view their
+tokens and accrual schedule on the Tokinvest investor platform once Tokinvest has received confirmation from
+the Token Issuer.
+
+Purchase orders received after the cut-off are processed on the next business day and the coupon accrual
+calculation is adjusted accordingly.
+
+4.7 Investor Token Positions
+Investors:
+
+     · do not submit instructions directly to the Token Issuer;
+     · are represented by Tokinvest in all purchase order and redemption activity; and
+     · receive allocations and proceeds through the Tokinvest platform.
+Tokinvest maintains the definitive internal record of their investor holdings and transactions within its platform.
+5. TOKEN REPRESENTATION & CUSTODY
+
+5.1 Overview
+Investor holdings in the Token are represented within the Tokinvest platform through a controlled framework.
+Tokens are custodied in individual investor wallets with a VARA regulated custodian under the oversight of
+Tokinvest unless permitted for withdrawal and self-custody.
+This framework enables precise digital record-keeping, custody, and operational functionality
+
+5.2 Upstream Ownership Representation
+The Token Issuer maintains their own CAP table of investors in the Token. Tokinvest sits on this CAP table on
+behalf of all Tokinvest investors.
+Tokinvest maintains its own CAP table of Tokinvest investors which represent the aggregate held on the Token
+Issuer CAP Table.
+
+5.3 Custody Model
+Investor holdings are maintained within a platform-controlled custody framework supported by regulated third-
+party custodians.
+As at the date of this document, custody services are provided through Hex Trust.
+
+     · All holdings remain within the Tokinvest-controlled environment unless Tokinvest permits transfer
+     · The Token cannot be withdrawn to external wallets unless Tokinvest permits self-custody
+
+Tokinvest may utilise alternative or additional regulated custody providers where appropriate, subject to
+regulatory requirements.
+
+5.4 Daily Reconciliation
+Tokinvest maintains a 1:1 economic alignment between:
+
+     · its aggregate holdings in the Token Issuer CAP Table; and
+     · the total of investor Tokens recorded on its platform and custodied as described in 5.3 above.
+Daily reconciliation processes are performed to ensure consistency between on-chain positions and investor-
+level records.
+
+5.5 Transferability
+Transfers of the Token, where permitted:
+
+     · is restricted to the Tokinvest platform or self-custody where approved;
+     · is restricted to approved and onboarded investors; and
+     · is subject to compliance and operational controls
+Tokens distributed by Tokinvest cannot be transferred to unapproved wallets or platforms.
+
+5.6 Nature of Investor Rights
+Investors:
+
+     · do not hold direct positions with the Token Issuer or Bond Issuer; and
+     · hold their interests through Tokinvest's platform and custody framework only.
+
+Investor rights are limited to ownership of the Token as facilitated through Tokinvest.
+6. DEALING, PRICING & LIQUIDITY
+
+6.1 Pricing
+The Token is offered for sale in the primary market on the Tokinvest platform at the prevailing market price at
+the time of transaction.
+
+     · In the primary market, the Token is priced at the same price as the underlying bond it relates to.
+     · The underlying bonds are not traded on an exchange and as a result prices tend to be stable
+     · Tokinvest will update their platform with any change of price immediately upon advice from the Token
+
+          Issuer
+
+Tokinvest does not determine or influence pricing of the Token in the primary market.
+
+6.2 Liquidity
+The Token is offered as part of a programme with a pre-defined total issuance amount. As such, liquidity is
+subject to:
+
+     · remaining outstanding Tokens available from the Token Issuer; and
+     · any applicable limits, suspensions, or market conditions
+
+Liquidity is not guaranteed, and investors may not be able to purchase Tokens that were previously available on
+the Tokinvest platform.
+
+6.3 Currency and Foreign Exchange
+The Tokens are denominated in EUR or USD, as determined by the underlying bond. Tokinvest may offer
+purchases in EUR, USD or AED.
+Foreign exchange conversion may be required at purchase and redemption and upon receipt of coupon
+cashflows. In such cases, investors are exposed to fluctuations between currencies, which may impact returns.
+The AED is currently pegged to the USD at a stable rate, which reduces but does not eliminate foreign exchange
+risk between this currency pair.
+
+6.4 Secondary Market
+Where possible Tokinvest will aim to provide a secondary trading market where Token holders may offer for sale
+Tokens previously purchased via the Tokinvest platform. Secondary market availability is subject to:
+
+     · market conditions;
+     · participant demand; and
+     · regulatory and compliance requirements.
+
+Liquidity in the secondary market is not guaranteed. Furthermore, Tokinvest is under no obligation to provide
+liquidity, support pricing, or facilitate continuous trading.
+
+6.5 Fees and Charges
+Investment in the Token is subject to fees and charges.
+
+Tokinvest Fees
+Tokinvest applies the following fees in connection with the Token:
+
+     · 2% brokerage fee for primary purchase, payable upon purchase and charged based on the value of
+          Tokens purchased;
+
+     · 0.25% transfer fee for OTC secondary market purchases and sales (payable by both Token buyer and
+          seller);
+
+     · 0.20% per annum custody fee, calculated daily and charged periodically, in respect of assets held within
+          the platform custody framework; and
+
+     · 0.10% transfer fee on transfers within the custody environment (including Hex Trust), where applicable.
+Other Costs
+Additional costs may arise from:
+
+     · banking and payment processing; and
+     · use of digital settlement rails, where applicable
+     · details of fees are available through the Tokinvest platform and Terms of Business.
+7. KEY RISKS
+
+7.1 Overview
+An investment in any financial product involves risk. The value of investments may go up or down, and investors
+may lose part or all of their invested capital.
+This Section provides a summary of key risks associated with accessing the Token through Tokinvest. It does not
+contain a complete description of all risks.
+Investors should review the official documentation issued by the Bond Issuer and Token Issuer for both bond
+and Token-level risks, and the Risk Disclosure Statement (RDS) for a comprehensive description of platform,
+custody, operational, and structural risks.
+
+7.2 Market Risk
+The performance of the Token depends on the performance of the underlying bond. Risks include:
+
+     · changes in interest rates;
+     · credit risk of the Bond Issuer, Token Issuer and/or Parent; and
+     · broader market conditions affecting fixed income instruments
+
+Returns are not guaranteed.
+
+7.3 Liquidity Risk
+The Tokens are not redeemable upon demand and are only redeemed upon expiry of the underlying bond asset
+or in the specific circumstances described in Section 4.4 of this whitepaper. Tokinvest does not guarantee a
+liquid secondary market; As such investors;
+
+     · may not be able to realise some or all of their investment until the expiry of the Token; and
+     · may be subject to wider bid-ask spread in secondary markets where available
+
+7.4 Foreign Exchange Risk
+The Tokens are denominated in EUR or USD, while investors may have a base currency of AED or another
+currency.
+Foreign exchange movements may impact such investors by:
+
+     · reducing returns; or
+     · increasing volatility in realised outcomes
+
+Tokinvest does not hedge FX exposure on behalf of investors.
+
+7.5 Platform and Intermediation Risk
+Investors access the Token through Tokinvest and do not interact directly with the Token Issuer. As a result:
+
+     · investors rely on Tokinvest for execution, custody, and servicing; and
+     · any disruption to Tokinvest's platform or operations may impact access to the Token.
+
+7.6 Custody Risk
+Investor holdings are maintained by Tokinvest within a platform-controlled custody framework supported by
+VARA licensed third-party custodians. Risks include:
+
+     · failure or disruption of custody providers; and
+     · loss or restriction of access to assets due to operational or security events
+
+7.7 Regulatory Risk
+The Token operates within a regulated environment.
+Changes in applicable laws or regulatory requirements may:
+
+     · affect the availability of the Token;
+     · restrict investor access; or
+     · impact the operation of the platform or distribution model
+7.8 Technology Risk
+Ownership of the Token incorporates digital systems and tokenised record-keeping infrastructure.
+Risks include:
+
+     · system failures or outages;
+     · data integrity issues; and
+     · cybersecurity threats
+
+7.9 Further Information
+This summary is not exhaustive. Investors should refer to the Bond Issuer and Token Issuer documentation and
+the Risk Disclosure Statement (RDS) for a full description of risks.
+8. LEGAL STRUCTURE & IMPORTANT DISCLOSURES
+
+8.1 Nature of the ARVA
+The Token represents ownership of the economic interest in underlying senior secured bond issued by the Bond
+Issuer and managed by the Token issuer.
+Investor holdings:
+
+     · do not constitute direct ownership of the underlying bond;
+     · are not deposits or guaranteed investments; and
+     · are subject to the terms of the Token and applicable issuance documentation
+
+8.2 Investor Position
+Investors access the Token through Tokinvest and:
+
+     · do not hold a direct contractual relationship with the Token Issuer;
+     · do not appear on the CAP Table at the Issuer level; and
+     · are represented through Tokinvest's aggregated position
+
+Investors have a contractual relationship with Tokinvest in respect of platform access, execution, and custody.
+
+8.3 Role of Tokinvest
+Tokinvest acts as:
+
+     · a licensed distributor; and
+     · the operator of the investor platform
+
+Tokinvest is responsible for;
+
+     · onboarding and AML/KYC;
+     · order aggregation and execution;
+     · custody integration and record-keeping; and
+     · investor servicing
+
+Tokinvest does not:
+
+     · manage the Token;
+     · control investment decisions; or
+     · guarantee performance or returns
+
+8.4 Custody and Control
+Investor holdings of the Token are maintained within a platform-controlled custody framework supported by
+regulated VARA approved third-party custodians.
+
+     · Investors do not self-custody assets unless permitted by Tokinvest
+     · Transfers are restricted to the Tokinvest platform unless self-custody is permitted
+     · Access and control are subject to platform and regulatory requirements
+
+8.5 No Ownership or Control Rights
+Investors:
+
+     · do not have legal or beneficial ownership of the underlying bond;
+     · do not have governance or voting rights; and
+     · do not participate in Token-level decision-making
+8.6 Reliance on Third Parties
+The Token depends on multiple parties, including:
+
+     · the Token Issuer and Bond Issuer;
+     · the Parent;
+     · custody providers; and
+     · Tokinvest's platform infrastructure
+
+Any failure or disruption involving these parties may impact investor outcomes.
+
+8.7 Insolvency and Structural Considerations
+Investors do not hold direct claims against the Token Issuer, the Bond Issuer, or the Parent. In the event of
+insolvency or operational failure of Tokinvest or any other party:
+
+     · investor access to the Token may be delayed, restricted, or suspended;
+     · recovery of assets will depend on the applicable legal framework, custody arrangements, and the rights
+
+          of Tokinvest within the distribution chain; and
+     · outcomes may be uncertain, including the risk of partial or total loss.
+
+Investors should assume that their rights are contractual and subject to applicable law.
+
+8.8 Regulatory Considerations
+The Token is distributed within a regulated framework.
+However:
+
+     · regulatory treatment may vary across jurisdictions; and
+     · changes in law or regulation may affect availability, transferability, or access
+
+Investors are responsible for complying with applicable local laws.
+
+8.9 No Investment Advice
+Tokinvest does not provide financial, legal, or investment advice.
+Nothing in this document constitutes a recommendation or suitability assessment.
+Investors are responsible for making their own investment decisions.
+
+8.10 Limitation of Liability
+To the extent permitted by applicable law:
+
+     · Tokinvest is not liable for market performance of the Token; and
+     · liability is limited to the performance of its operational responsibilities
+
+Nothing excludes liability for fraud, wilful misconduct, or matters that cannot be excluded under law.
+
+8.11 Further Information
+This document is a summary of the Token and its distribution through Tokinvest.
+Investors must refer to:
+
+     · the LRP and Final Terms documentation for Token-level details; and
+     · the Risk Disclosure Statement (RDS) for a comprehensive description of platform, custody, operational,
+
+          and structural risks
+
+These documents should be read together before making any investment decision.
+APPENDIX A
+TOKINVEST OVERVIEW, GOVERNANCE AND REGULATORY STATUS
+
+A.1 Tokinvest DMCC
+Tokinvest DMCC is a company incorporated in the United Arab Emirates, with its registered address at Unit No:
+UT-12-PO-8, DMCC Business Centre, Level 12, Uptown Tower, Dubai, United Arab Emirates.
+In relation to the Token described in this whitepaper, Tokinvest acts as:
+
+     · a licensed distributor; and
+     · the operator of the investor platform through which investors access the Token
+
+Tokinvest is not the issuer or manager of the Token.
+
+A.2 Incorporation and Registration
+Tokinvest DMCC is registered under DMCC licence number DMCC-928046 and was incorporated on 10 May
+2024.
+
+A.3 Regulatory Status
+Tokinvest DMCC is licensed by the Dubai Virtual Assets Regulatory Authority ("VARA") as a Broker-Dealer and
+Issuer under licence number VL/2024/12/004.
+In relation to the Token described in this whitepaper, Tokinvest acts solely as a distributor and platform
+operator.
+
+A.4 Ownership and Senior Management
+Tokinvest DMCC (DMCC-928046) is a wholly owned subsidiary of OREHC Holding Limited, a company
+incorporated and registered in the Abu Dhabi Global Market (ADGM) under registration number 25680.
+
+The current shareholders and senior management includes:
+
+     · Scott Thiel ­ Chief Executive Officer
+     · Matt Blom ­ Chief Strategy Officer
+     · Robert Cooper ­ Chief Operating Officer
+     · James Byrne ­ Chief Technology Officer
+
+The senior management team has experience across digital assets, financial markets, regulated financial services,
+operations, and technology. Responsibility for day-to-day management and strategic oversight rests with this
+team, subject to Tokinvest's internal governance framework and VARA regulatory oversight.
+
+A.5 Fit and Proper Status
+To the best of Tokinvest's knowledge and based on available information at the date of this document:
+
+     · no member of its board of directors, senior management, or other significant decision-makers has been
+          convicted of any offence involving dishonesty, fraud, financial crime, money laundering, insider trading,
+          or offences related to companies, banking, or insolvency, whether before the courts of the UAE or any
+          other jurisdiction; and
+
+     · no such individuals are subject to ongoing criminal investigations or regulatory enforcement actions
+
+A.6 Governance Framework
+Tokinvest DMCC operates under a formal corporate governance framework designed to ensure effective
+oversight, accountability, and risk management across all regulated activities.
+The Board of Directors is responsible for:
+     · setting strategic direction;
+
+     · approving material business and product decisions;
+
+     · overseeing risk management and regulatory compliance; and
+
+     · supervising senior management.
+
+The Board meets at least quarterly, with decisions taken by majority vote.
+The governance arrangements described in this Appendix are intended to support regulatory compliance and
+internal oversight and do not create contractual rights or obligations enforceable by Tokenholders.
+The governance structures, committees, and internal controls described in this Appendix
+reflect Tokinvest's enterprise governance framework and are subject to ongoing refinement in accordance
+with regulatory expectations and business needs.
+
+A.7 Committees and Oversight Structure
+The Board may delegate specific responsibilities to standing committees or executive forums operating under
+formal terms of reference, which may include:
+
+     · Risk Committee ­ enterprise and product-level risk oversight
+
+     · Listing Committee ­ review and approval of new Virtual Asset issuances
+
+     · Compliance & AML Oversight Committee ­ regulatory compliance and financial crime controls
+
+     · Technology / Product Committee ­ platform integrity, smart contract design, and DLT oversight
+
+     · Cyber Security Committee ­ information security, resilience, and incident response
+
+Each committee reports to the Board or relevant executive committee as appropriate.
+
+A.8 New Product Approval
+Products made available through the Tokinvest platform are subject to Tokinvest's internal new product
+approval process.
+This process includes structured assessment of:
+
+     · strategic alignment;
+     · legal and regulatory considerations;
+     · operational readiness;
+     · custody and settlement arrangements;
+     · financial crime risks; and
+     · technology and reputational risks
+
+Approval requirements are determined according to the assessed risk profile of the product.
+
+A.9 Financial Controls and Regulatory Capital
+Tokinvest maintains regulatory capital in accordance with VARA requirements, held in a dedicated capital lock-
+up account with a UAE-authorised bank.
+The company:
+
+     · maintains segregation between regulatory capital, operational funds, and client money;
+     · submits periodic financial and capital adequacy reports to VARA; and
+     · is subject to annual external audit by a UAE-registered audit firm
+A.10 Client Money and Asset Safeguarding
+Client fiat funds received in connection with subscriptions and redemptions are held in segregated client money
+accounts with authorised banking institutions.
+Tokinvest is not a standalone VARA-regulated custodian. Digital asset custody is provided as an incidental
+activity to its Broker-Dealer services using:
+
+     · VARA-licensed third-party custodians; and/or
+     · regulated custody technology providers
+
+Tokinvest remains responsible for oversight of these arrangements in accordance with applicable regulatory
+requirements.
+
+A.11 AML / CFT and Financial Crime Controls
+Tokinvest maintains AML/CFT policies and procedures in compliance with:
+
+     · VARA Rulebooks;
+     · UAE Federal Decree-Law No. 20 of 2018; and
+     · Cabinet Decision No. 10 of 2019.
+
+All investors accessing the Token through Tokinvest are subject to:
+
+     · customer due diligence and KYC;
+     · beneficial ownership verification (where applicable);
+     · sanctions and adverse media screening; and
+     · ongoing transaction monitoring
+
+Enhanced due diligence is applied where required. Oversight is performed by Tokinvest's appointed Money
+Laundering Reporting Officer (MLRO).
+
+A.12 Outsourcing and Third-Party Providers
+Tokinvest relies on third-party service providers for certain operational functions, including:
+
+     · banking and payment services;
+     · Virtual Asset custody;
+     · blockchain infrastructure; and
+     · technology and security services
+
+All outsourcing arrangements are subject to due diligence, contractual controls, and ongoing oversight.
+Outsourcing does not relieve Tokinvest of its regulatory responsibilities.
+
+A.13 Conflicts of Interest and Market Conduct
+Tokinvest maintains policies and controls to identify, manage, and mitigate conflicts of interest arising from its
+role as distributor and platform operator.
+These include:
+
+     · segregation of duties;
+     · restrictions on proprietary trading;
+     · governance oversight of principal trading for settlement facilitation only; and
+     · market surveillance and post-trade review.
+
+Tokinvest does not manage the Token.
+A.14 Role in Relation to the Token
+In relation to the Token described in this whitepaper, Tokinvest is responsible for:
+
+     · investor onboarding and AML/KYC;
+     · order processing and submission to the Token Issuer;
+     · client money handling and settlement;
+     · custody integration and investor record-keeping; and
+     · investor servicing through its platform
+
+Tokinvest does not:
+
+     · issue the Token;
+     · manage the Token; or
+     · guarantee investment performance or returns
+
+A.15 Other Key Parties
+Other parties involved in the Token include:
+
+     · Token Issuer: LCL Opportunities 3
+     · Bond Issuer: LCL Opportunities SCS
+     · Parent Company: LynxCap Investments AG
+     · Decentral Limited ("Defactor") provides the technology infrastructure for the tokens.
+     · Custodian: Hex Trust MENA (on behalf of clients of Tokinvest DMCC)
+
+These parties operate within their own defined roles and responsibilities.
+Tokinvest is not responsible for functions performed by these parties outside the scope of its role as distributor
+and platform operator.
+
+A.16 Governance, Risk and Product Approval Flow (Illustrative)
+The diagram below provides a high-level, illustrative overview of Tokinvest's governance, risk oversight, and
+product approval structure as it relates to products made available through the Tokinvest platform.
+This diagram is provided for explanatory purposes only and does not form part of the contractual terms
+applicable to the Token.
+APPENDIX B
+REGULATORY DISCLOSURES & LEGAL INFORMATION
+
+B.1 Status of this Whitepaper
+This whitepaper is a regulated disclosure document prepared by Tokinvest DMCC in accordance with the
+requirements of the Dubai Virtual Assets Regulatory Authority ("VARA").
+
+This document:
+
+     · does not constitute a prospectus under UAE securities legislation;
+     · does not constitute an offer of securities by Tokinvest; and
+     · is intended to provide a high-level description of the Token and its distribution through the Tokinvest
+
+          platform
+
+This whitepaper must be read together with:
+
+     · the applicable Risk and Disclosure Statement (RDS);
+     · the official Token documentation issued by LynxCap and its subsidiaries (including the underlying bond
+
+          prospectus and key investor information); and
+     · Tokinvest's Brokerage Terms of Business
+
+B.2 No Investment Advice
+This whitepaper is provided for informational and disclosure purposes only.
+Tokinvest:
+
+     · does not provide investment advice or personalised recommendations;
+     · does not act as a fiduciary, adviser, or portfolio manager; and
+     · does not assess the suitability of the Token for individual investors
+
+Investors are responsible for determining whether the Token is appropriate for their own circumstances.
+
+B.3 Eligibility and Jurisdictional Restrictions
+Access to the Token is limited to investors who:
+
+     · complete Tokinvest's onboarding and AML/KYC requirements; and
+     · meet applicable eligibility and regulatory requirements
+
+The Token may not be offered or made available in jurisdictions where such distribution would be unlawful.
+
+Tokinvest may:
+
+     · restrict or refuse access;
+     · suspend transactions; or
+     · impose additional controls
+
+where required to comply with applicable law, regulation, or internal compliance policies.
+
+B.4 Nature of Tokinvest's Role
+Tokinvest acts solely as:
+
+     · a licensed distributor of the Token; and
+     · the operator of the investor platform
+
+Tokinvest:
+
+     · is not the issuer of the Token;
+     · does not manage the Token or underlying bond; and
+     · does not guarantee performance or returns
+
+B.5 Reliance on Third Parties
+The Token relies on multiple third parties, including:
+
+     · the Token Issuer and Bond Issuer;
+     · the Parent;
+     · custody providers; and
+     · banking and payment partners
+
+Tokinvest is not responsible for the performance or actions of these parties outside the scope of its own role.
+
+B.6 Amendments and Updates
+Tokinvest may amend or update this whitepaper in accordance with applicable regulatory requirements.
+Material updates will be communicated through the Tokinvest platform or other appropriate channels.
+
+B.7 Governing Law and Jurisdiction
+Unless otherwise specified in applicable contractual documentation:
+
+     · this whitepaper; and
+     · the contractual relationship between Tokinvest and investors
+
+are governed by English law.
+
+Tokinvest submits to the jurisdiction of the courts of the Dubai International Financial Centre (DIFC), subject to
+applicable law.
+
+B.8 Hierarchy of Documents
+This whitepaper is a summary document.
+In the event of any inconsistency between:
+
+     · this Whitepaper;
+     · the Risk and Disclosure Statement;
+     · the Tokinvest Terms of Business; and
+     · the official Token Issuer Token documentation
+
+the relevant contractual and Token documentation shall prevail.
+
+B.9 Entirety of Disclosure
+This whitepaper should be read together with:
+
+     · the Risk and Disclosure Statement (RDS); and
+     · the official Token Issuer and Bond Issuer documentation
+
+These documents together form the complete disclosure framework for the Token.
+

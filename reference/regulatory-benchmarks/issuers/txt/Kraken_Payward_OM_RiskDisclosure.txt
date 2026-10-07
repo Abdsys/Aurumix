@@ -1,0 +1,111 @@
+                                 PAYWARD LTD
+
+                                      CRYPTO ASSET RISK DISCLOSURE
+                                                       Mantra (OM)
+
+Last updated on February 13, 2025
+
+Disclaimer
+
+Please note that this Crypto Asset Statement is not exhaustive of all risks associated with trading OM.
+Investors should perform their own assessment to determine the appropriate level of risk for their
+personal circumstances. Be sure to do your own research and due diligence while taking into account
+your own financial situation and risk tolerance. Please review the Risk Summary for additional
+discussion of general risks associated with the assets made available in the platform. These materials
+are for general information purposes only and are not investment advice or a recommendation or
+solicitation to buy, sell or hold any crypto asset or to engage in any specific trading strategy. The
+information contained in this Crypto Asset Statement is based on publicly available information that
+may be inaccurate, incomplete, or change at any time.
+
+What is Mantra and how does it work?
+
+Mantra is a Layer 1 blockchain built on the Cosmos SDK, designed to facilitate the tokenization of
+real-world assets (RWAs). By offering interoperability between traditional finance (TradFi) and
+decentralized finance (DeFi), Mantra enables users to tokenize assets such as art, commodities, or real
+estate on a permissionless chain that supports both permissionless and permissioned applications.
+
+Mantra's native utility token, OM, serves multiple functions within the ecosystem. It is used for gas fees
+and grants holders the ability to participate in governance by submitting and voting on proposals. OM
+can also be staked to earn rewards.
+
+The platform offers a suite of natively built modules to support RWA tokenization. Mantra Compliance
+helps Web3 platforms meet regulatory requirements, Mantra Token Service allows users to create and
+issue their own digital assets, Mantra Assets facilitates the issuance of security tokens, and Mantra DEX
+serves as a decentralized hub for RWA asset trading.
+
+Who is behind the project?
+
+Mantra's DAO was established in 2020. The project was co-founded by John Patrick Mullin and Jayant
+Ramanad. As of May 2024, Charu Pareek serves as Head of Product and Matthew Crooks is Mantra's
+Chief Technology Officer.
+
+Tokenomics of OM
+The original supply of OM was capped at 888,888,888. In February 2024, Mantra approved a governance
+proposal to mint an additional 888,888,888 OM tokens for its mainnet in addition to the existing
+888,888,888 OM limit. As of February 2025, OM has a circulating supply of ~972,118,679 OM.
+
+Initial distribution:
+
+                         Category                      Amount
+Initial Distribution
+Public Sale                               888,888,888
+Private Sale                              8.5%
+Team & Advisors                           9%
+Referrals                                 17.5%
+Grants                                    12.5%
+Reserves                                  12.5%
+Staking Rewards                           10%
+Second Distribution                       30%
+Upgrade to Mainnet Incentive              888,888,888
+Core Contributors                         35%
+Mainnet Pre-Seed                          33.8%
+Mainnet Seed                              11.2%
+Genesis Airdrop and Incentivised testnet  10.2%
+Ecosystem                                 5.6%
+                                          4.2%
+
+General Risks
+
+Like all other digital assets, there are some general risks to investing in OM. These include short history
+risk, volatility risk, liquidity risk, demand risk, forking risk, code defects, cryptography risk, regulatory risk,
+concentration risk, electronic trading risk and cyber security risk. For more information on general risks
+associated with smart contracts and digital assets, see Kraken's Risk Statement.
+Risks specific to MANTRA
+
+Competition Risks
+
+MANTRA faces competition from other RWAprojects such as CPOOL and ONDO. OM's value derives from
+the protocol's broader adoption in the market. If OM fails to achieve sufficient adoption compared to the
+other options in the market, this could negatively impact the value of OM.
+
+Due Diligence
+Prior to listing on the Kraken platform, Kraken performed due diligence on OM and determined it was
+permitted to make OM available for trading to UK users. This process generally consists of reviewing
+publicly available information on the following:
+
+     The creation, governance, usage and design of OM, including the source code, security and
+         roadmap for growth in the developer community and, if available, the background of the
+         developer(s) that created OM;
+
+     The supply, demand, maturity, utility and liquidity of OM;
+     Material technical risks associated with OM, including any code defects, security breaches and
+
+         other threats concerning OM and its supporting blockchain (such as the susceptibility to hacking
+         and impact of forking), or the practices and protocols that apply to them; and
+     Legal and regulatory risks associated with OM, including (i) any pending, potential, or prior civil,
+         regulatory, criminal, or enforcement action relating to the issuance, distribution, or use of OM,
+         and (ii) consideration of statements made by any regulators or securities regulatory authorities
+         in the UK, other regulators of the International Organization of Securities Commissions, or the
+         regulator with the most significant connection to OM about whether OM, or generally about
+         whether the type of crypto asset, is a security and/or derivative.
+
+ Don't invest unless you're prepared to lose all the money you invest. This is a high-risk investment
+ and you should not expect to be protected if something goes wrong. Take 2 mins to learn more.
+
+Payward Ltd (trading as Kraken) is registered as a cryptoasset firm with the Financial Conduct Authority
+(FRN: 928768) registered office at 6th Floor, One London Wall, London, EC2Y 5EB. Cryptoasset services
+offered by Payward Ltd are unregulated and not covered by the Financial Services Compensation Scheme
+as well as the FCA's consumer protection regulations. Note the value of cryptoassets can go down as well
+as up, gains may be subject to Capital Gains Tax and there may be extra charges when paying via credit
+card from your provider.
+

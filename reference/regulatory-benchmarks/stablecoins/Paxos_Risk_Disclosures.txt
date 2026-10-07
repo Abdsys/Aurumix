@@ -1,0 +1,196 @@
+
+
+Paxos | Terms and Conditions - Risk Disclosures
+
+Products
+Assets
+Company
+Transparency
+Developers
+Contact Us
+Sign In
+Products
+Assets
+Company
+Transparency
+Developers
+Contact Us
+Sign In
+Paxos
+General Terms and Conditions
+US Dollar-Backed Stablecoin Terms and Conditions
+PAX Gold Terms and Conditions
+Trading Terms and Conditions
+In Principal Stablecoin Conversion Terms and Conditions
+Anti-Money Laundering/Know Your Customer (AML/KYC) Disclosure​
+Market Manipulation Protection
+FDIC Pass Through Insurance Disclosures
+Licenses
+Illegal Activity
+Risk Disclosures
+Paxos Virtual Asset Listing and Governance Policies
+Privacy Policy
+Applicant Privacy Policy
+GLBA Privacy Notice
+Paxos Cookie Policy
+Paxos Europe
+Risk Disclosures
+Last Modified: December 12, 2025
+Risk Warning On Digital Payment Token Services 
+The Monetary Authority of Singapore (“MAS”) requires Paxos Global Pte. Ltd. (“
+Paxos Global
+,” “
+we
+,” “
+us
+” or “
+our
+”) to provide this risk warning to you as a customer of a digital payment token (“
+DPT
+”) service provider. Before you: (a) pay your DPT service provider any money or DPT; or (b) pay a third party any money or DPT under an arrangement by your DPT service provider, you should be aware of the following: 
+Your DPT service provider is licensed by MAS to provide DPT services. Please note that this does not mean you will be able to recover all the money or DPTs you paid to your DPT service provider or any other third party referred to above, if your DPT service provider’s or the third party’s business fails. You should be aware that MAS does not supervise or regulate your DPT service provider for the provision of unregulated services. This includes any service of trading digital payment token derivatives such as futures.
+You should not transact in the DPT if you are not familiar with this DPT. This includes how the DPT is created, and how the DPT you intend to transact is transferred or held by your DPT service provider.
+You should be aware that the value of DPTs may fluctuate greatly. You should buy DPTs only if you are prepared to accept the risk of losing all of the money you put into such tokens.
+You should be aware that your DPT service provider, as part of its licence to provide DPT services, may offer services related to DPTs which are promoted as having a stable value, commonly known as “stablecoin”.
+Paxos Global does not offer customers its own exchange rate. Customers who deposit currency other than USD into Paxos Global or its affiliates’ accounts at its third-party partner banks will have their foreign currency deposits automatically converted into USD at a rate independently determined by such bank. The exchange rate to be applied by such bank to relevant payment services will not be available at the point of transaction.
+Please note that by requesting and accepting access to and use of the services and products offered by Paxos Global, the customer agrees to Paxos Global converting all customer monies received in the customer’s account to Pax Dollar tokens (“
+USDP
+”), PayPal USD tokens (“
+PYUSD
+”), Global Dollar tokens (“
+USDG
+”), and/or Binance USD tokens (“
+BUSD
+”) (hereinafter together referred to as “USD Stablecoins”). Upon the receipt of customer monies, Paxos Global will apply such monies to purchase an equivalent amount of USD Stablecoins, which will be held by Paxos Global on behalf of the customer in segregated custodial accounts.
+USD Stablecoins are not money or legal tender and are not monetary instruments. Once you have USD Stablecoins, you can transfer them, trade them, keep them, use them to pay persons that will accept USD Stablecoins, or redeem them for U.S. dollars from the USD Stablecoin custody account, subject to certain limitations. Please refer to the Paxos General Terms and Conditions
+
+available at 
+https://paxos.com/2019/03/29/general-terms-and-conditions/
+ for more information.
+Please note that the safeguarding requirements under Section 23 of the Payment Services Act 2019 (“
+PS Act
+’) will not apply to USD Stablecoins held by Paxos Global on your behalf. The USD Stablecoins are fully backed by reserves in US dollars held by Paxos Trust Company, NA on the customer’s behalf in segregated custodial accounts with US banks, and/or debt instruments that are expressly guaranteed by the full faith and credit of the United States Government, and/or money-market funds composed of such debt instruments specifically held for the benefit of USD Stablecoin customers. Please refer to Paxos Trust Company, NA’s Monthly Reserves Holding Reports
+ here
+ for more information about assets backing USD Stablecoins.
+To the extent that Paxos Global is unable to effect the conversion of the customer monies into USD Stablecoins as described above, customer monies that have not been converted into USD Stablecoins will be deposited into a trust account maintained by Paxos Global with a safeguarding institution (as defined in Section 23(14) of the PS Act) in Singapore. Customer monies received from a customer will be deposited into the same trust account and be commingled with monies received by Paxos Global from other customers. Accordingly, in the event that there is a shortfall in the monies held in the trust account due to any part being utilised to apply towards the obligations or default of another customer, there is a risk that a customer may not recover all the customer monies that were held for that customer. In the event that the safeguarding institution holding the customer monies becomes insolvent, Paxos Global will be an unsecured creditor vis-à-vis the safeguarding institution in respect of the customer monies. As such, there is a risk that Paxos Global may not be able to fully recover all the customer monies placed with the safeguarding institution on account of its customers, and that a customer may not be able to fully recover all the customer monies that were deposited into the trust account to be held for that customer’s account.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+

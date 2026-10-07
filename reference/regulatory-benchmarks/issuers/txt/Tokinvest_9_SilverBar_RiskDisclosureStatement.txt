@@ -1,0 +1,258 @@
+                          Risk Disclosure Statement ­ DTFW Token Issuance
+
+1. This notice provides a description of risks that are associated with investing and trading
+    Virtual Assets ("Notice").
+
+2. At present there are:-
+
+         a. no identified conflicts of interest arising out of Tokinvest's trading or business
+              activities; and
+
+         b. no past convictions or prosecutions of any member of the Tokinvest senior
+              management or board, whether before the courts of the UAE or the courts of
+              another jurisdiction.
+
+3. Capitalised Terms in this notice are defined used in our Brokerage Terms of Business
+    published on the www.Tokinvest.capital website, the current version of which are available
+    on the www.Tokinvest.capital website ("Site").
+
+4. All users and clients of our Brokerage Services are advised to carefully study the risks
+    described in this Notice.
+
+5. Tokinvest Virtual Assets which you custody with us are under the control of Tokinvest.
+    Tokinvest is not a VARA regulated Custody service provider. Tokinvest will provide Virtual
+    Asset Custody only as an incidental activity to its Brokerage Services leveraging a third-party
+    VARA regulated Custodian and/or third party custody technology solutions providers. As
+    further described in paragraphs 64 a-c of the Brokerage Terms & Conditions;
+
+         a. Hex Trust will act as custodian for all Virtual Assets except for Hedera based tokens;
+
+    Details of the particular custody model for each Virtual Asset will be set out in the relevant
+    White Paper. Among the key arrangements envisaged to this end, Tokinvest shall select
+    providers only after having performed a solid due diligence entailing analysis on the
+    regulatory status of the parties involved, well-defined and structured internal approvals
+    processes as well as adopting strong risk management practices.
+
+6. We do not provide professional financial advice and noting in this Notice shall be construed
+    as such. You shall not make any investment decision without first conducting your own
+    research.
+
+7. Tokinvest does not hold or maintain funds or Virtual Assets or provide clearing services for
+    other VASPs providing Broker-Dealer Services.
+
+8. Tokinvest does not introduce our clients to any other VASPs.
+
+9. This Notice does not set out all risks arising in relation to Virtual Assets and should not be
+    relied upon as doing so. The risks applicable to any particular investment or Virtual Asset will
+    depend on your particular circumstances and the terms of the relevant transaction. You
+    should not deal in any investment unless you understand the nature of the product you are
+    dealing in (or contract you are entering into), the extent of your exposure to risk, and unless
+    you are satisfied that the product is appropriate for you.
+
+10. Types of risks that may have an impact on your investment include liquidity risk, market risk,
+    settlement risk, currency risk, operational risk, business risk, tax risk, regulatory risk, legal
+    risk, barriers to or restrictions on divestment, risks inherent to OTC trading and/or risks as a
+    result of you assuming additional obligations in relation to the investment.
+
+11. We have no obligation to inform you about tax or legal consequences of Virtual Asset
+    Trading.
+
+12. You are advised to read and understand the risks involved in trading and custody of Virtual
+    Assets.
+
+13. Anyone who uses our Site or the Brokerage Services acknowledges and agrees that Tokinvest
+    shall not be responsible for or otherwise liable for any direct or indirect loss or damage of
+    any kind whatsoever arising directly or indirectly from the occurrence in full or in part of any
+    or all of the following risk events.
+
+14. You will also need to read the whitepaper and any other offering memorandum associated
+    with Virtual Asset issuances.
+
+15. While most of the Virtual Assets which Tokinvest will broker are expected to be real world
+    asset backed Virtual Assets, there is a risk of volatility and unpredictability of the price of
+    Virtual Assets relative to fiat currencies.
+
+16. Trading in Virtual Assets may be susceptible to irrational market forces and there is a risk of
+    increased risk of Financial Crime.
+
+17. The nature of Virtual Assets may lead to an increased risk of cyber-attack and there may be
+    limitations around mechanisms for the recovery of lost or stolen Virtual Assets.
+
+18. Virtual Asset balances are generally maintained as an address on the blockchain and are
+    accessed through private keys, which may be held by a market participant or a custodian.
+    Although Virtual Asset transactions are not typically private and are publicly available on a
+    blockchain or distributed ledger, the public address does not identify the controller, owner or
+    holder of the private key. Unlike bank and brokerage accounts, Virtual Asset exchanges and
+    custodians that hold Virtual Assets do not always identify the owner. The opaque underlying
+    or spot market may pose asset verification challenges for market participants, regulators and
+    auditors and potentially give rise to an increased risk of manipulation and fraud.
+
+19. You are hereby notified, accept and confirm your understanding that Virtual Assets:-
+
+         a. may lose their value in part or in full;
+         b. may not always be transferable;
+         c. may not be liquid; and
+         d. may be subject to fraud, manipulation, theft, including through hacks and other
+
+              targeted schemes, and loss.
+    There is no assurance that you will be able to sell Virtual Assets.
+
+20. Any links to Virtual Assets related activity outside the Emirate of Dubai, which may be
+    unregulated or subject to limited regulation and any regulatory changes or actions by VARA
+    or Non-VARA Regulator that may adversely affect the use, transfer, exchange, and value of a
+    Virtual Asset.
+
+21. Trading on an online platform exposes the participants to internet related risks and the
+    internet may be unreliable or unavailable at any given time. Interruption, delay, corruption
+    or loss of data or loss of confidentiality in the transmission of data, may occur when
+    transmitting data via the internet and trading instructions may be delayed, intercepted,
+    altered, or lost during transmission, due to hardware, software or network connectivity
+    issues or any other issues arising from service provided by third party vendors.
+
+22. Virtual Assets are a new and evolving asset class and are part of a new and rapidly evolving
+    industry that is subject to a degree of uncertainty. The investment characteristics of
+    particular Virtual Assets may differ significantly.
+
+23. The legal status of certain Virtual Assets may be uncertain or vary from one country to the
+    next. You have a responsibility to comply with the relevant Applicable Laws.
+
+24. Transfer from or storage of Virtual Assets in a digital wallet exposes the Virtual Asset to the
+    risk of loss due to security breaches arising from hacking, phishing, social engineering,
+    smurfing, malware, spoofing and such other means and it may not be possible to recover lost
+    or stolen Virtual Assets.
+
+25. It may prove difficult to determine the value of a given Virtual Asset from time to time, due
+    to price volatility and the fragmentation of the markets and the creation of new and
+    innovative products and legal structures made possible by the use of tokenisation
+    technology. In addition, dispersed liquidity may pose challenges for market participants
+    trying to exit a position, particularly during periods of stress.
+
+26. Virtual Assets and the underlying DLT technology typically involve cryptographic and other
+    algorithmic protocols that regulate the issuance and transfer of Virtual Assets. This is a new
+    and rapidly evolving industry that is subject to a variety of factors that are difficult to
+    evaluate. As Virtual Asset networks continue to develop and grow, certain technical issues
+    might be uncovered, and the troubleshooting and resolution of such issues likely will require
+    the attention and efforts of decentralised development communities. These evolving nature
+    of DLT means that a malicious actor may be able to misappropriate your Virtual Assets.
+
+27. In addition to the provisions of this disclosure statement, we may make additional
+    disclosures from time to time or amend this statement in accordance with the requirements
+    set out Rule I.B of the VARA Broker-Dealer Services Rulebook, Market Conduct Rulebook and
+    Compliance and Risk Management Rulebook.
+
+28. Tokinvest uses third-party providers for fiat services:
+              a. Zand Bank ­ UAE authorised bank for Tokinvest operational accounts and Client
+                   Money Accounts.
+
+              b. Wio Bank for Tokinvest operational accounts.
+
+In addition to the risks of investing in Virtual Assets the additional risks represented by investing in
+DTFW tokens where the reference Asset is a DMCC Tradeflow Warrant are detailed below;
+
+    29. Nature of the Reference Asset
+         The Reference Asset is a Tokenised Tradeflow Warrant representing a contractual claim
+         linked to a specified Underlying Asset. The Reference Asset does not constitute direct legal
+         ownership of the Underlying Asset unless explicitly provided under the governing
+         documentation.
+         Holders are exposed to the risks inherent in:
+              · The enforceability and interpretation of the warrant structure;
+              · The performance and solvency of relevant counterparties; and
+              · The terms governing redemption, delivery, and valuation of the Underlying Asset as
+                   described on the whitepaper.
+         The Reference Asset may confer limited rights relative to direct physical ownership and may
+         be subject to contractual limitations, conditions precedent, or operational requirements.
+         Investors are required to read and carefully consider the relevant sections of the Whitepaper
+         before making any investment decision. The Whitepaper forms an integral part of this Risk
+         Disclosure and contains important information regarding the project, the token, and the
+         associated risks.
+
+    30. Underlying Asset Characteristics
+         Where the Underlying Asset is a collectible commodity rather than a standardised
+         commodity asset, such as high purity silver bar of historical relevance, it may possess both:
+              · Commodity value (based on silver content and prevailing market prices), and
+              · Numismatic / collectible value (based on rarity, provenance, historical importance,
+                   artistic merit, and market demand).
+         The combined valuation basis creates unique risk characteristics and investors must
+         understand the unique valuation risks associated with commodity assets that possess
+         numismatic value, including the potential for volatility, illiquidity, and price divergence from
+         the underlying commodity due to changes in collector demand
+
+    31. Dual-Valuation Uncertainty
+         The Underlying Asset's value may materially diverge from the spot price of the underlying
+         commodity asset due to its collectible attributes. Conversely, collectible premiums may
+         diminish independently of such price movements.
+         There is no assurance that:
+              · Numismatic or historical premiums will be sustained;
+              · Collectible demand will remain stable; and
+              · Market participants will value the asset consistently across time or jurisdictions.
+         In distressed or forced-sale conditions, the asset may potentially trade at or below melt
+         value.
+32. Redemption and Delivery Risk
+    Where the Reference Asset contemplates physical redemption:
+         · Delivery logistics may be complex and costly;
+         · Transfer may require compliance with customs, tax, and local regulations;
+         · Delivery may be delayed due to inspection or legal review.
+
+33. Regulatory Risk
+    Changes in laws or regulations regarding ownership or trading in the Underlying Asset could
+    alter market dynamics and adversely impact investor returns.
+
+34. Geopolitical Risk
+    Political instability or conflicts in silver-producing regions can affect supply and impact
+    commodity prices including that of the Underlying Asset.
+
+35. Counterparty Risk
+    As with all investments where the transaction involves more than one party, there is a risk
+    that the counterparty may default on obligations and impact the value of the investment.
+
+36. Custody and Storage Risk
+    The Underlying Asset associated with the Reference Asset will be held by third-party
+    custodians, as detailed in the whitepaper. The Issuer will employ internationally recognised
+    agents as custodian, however the use of such custodians does not eliminate custody or
+    storage risk. Investors remain exposed to risks including, but not limited to, physical loss,
+    damage, fraud, operational error, cyber-related incidents, legal or regulatory action,
+    insolvency of the custodian, and delays or restrictions in access to the underlying assets. Any
+    such occurrence may materially and adversely affect the value, liquidity, or enforceability of
+    the Reference Asset.
+
+37. Platform and Token Administration Fees
+    While Tokenholders are not liable for operating, storage, or insurance costs associated with
+    the underlying asset during the Economic Term, certain platform or token administration fees
+    may apply in connection with the holding, transfer, or custody of Tokens as described in the
+    relevant Whitepaper. These fees relate to the operation of the tokenisation infrastructure
+    and are distinct from costs associated with maintaining the underlying physical asset.
+
+38. Issuer Administrative Controls
+    The Issuer retains certain administrative powers over the token infrastructure used to issue
+    and manage DTFW Tokens. These powers may include the ability in limited circumstances to
+    mint, burn, freeze, or reissue Tokens.
+    Such administrative actions may occur where required to comply with legal or regulatory
+    obligations, enforce valid court orders, address fraud or theft incidents, correct operational
+    errors, or respond to technical incidents affecting the token infrastructure.
+    Any such action may affect the availability or transferability of Tokens and may alter token
+    balances in accordance with the legal or contractual framework governing the Token
+    issuance.
+
+39. Tradeflow Warrant Risk(s): The token references a Tradeflow Warrant issued and recorded
+    within the Dubai Multi Commodities Centre (DMCC) Tradeflow system, which evidences
+registered ownership of a specific physical commodity held in an approved storage facility.
+The Tradeflow Warrant functions solely as a title-recording and asset-management
+mechanism and does not itself constitute a financial product, investment instrument, or
+guarantee of value or liquidity. DMCC does not issue, sponsor, promote, or endorse the
+Token. Token holders do not have any direct contractual or legal rights of recourse against
+DMCC, the Tradeflow registry, the warehouse or vault operator, custodians, insurers, or other
+service providers involved in the storage, administration, or management of the underlying
+asset.
+
+Rights of token holders arise exclusively under the Token's issuance and contractual
+framework, pursuant to which the issuer is responsible for maintaining the Tradeflow
+registration, custody arrangements, insurance (where applicable), and payment of all
+associated storage, inspection, and administrative fees.
+
+Any transfer, sale, or liquidation of the Underlying Asset is subject to the operational
+procedures of the Tradeflow system, applicable fees, prevailing market conditions, and
+relevant legal or regulatory requirements. Delays, additional costs, or changes in these
+processes may affect the timing or amount of proceeds available to token holders. There is
+no assurance that the Underlying Asset can be realised at a particular price or within a
+particular timeframe.
+

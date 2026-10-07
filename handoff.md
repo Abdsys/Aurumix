@@ -98,7 +98,7 @@ Tokenomics.net is building a Data Room for **Aurumix**, a UAE (Dubai, VARA) gold
 | `reference_model/` | **The oracle for the Excel build.** `NUMERICAL_SPINE.md` (703 lines) + `VALIDATION.md`. ⚠ **Not rebuilt for D21–D23, and not re-run since the D25 segment re-cut** |
 | `supporting/` | v1.0 preserved; `_working_parameter-completion-set.md` (~50 inputs v1.0 never supplied); `_working_corpus-omissions-extract.md`; **`_working_architecture-decisions-v2.md` = the D1–D30 record with the finding that forced each** |
 | 🆕 `supporting/_working_dealer-premium-and-comparables-research.md` | **The 2026-08-19 evidence pass. F4 measured; PAXG / XAUT / Comtech binding terms; Tradeflow; LBMA.** ⚠ **Read §1 before doing any premium work — it carries the same-page method that fixed a measurement error which had returned impossible sub-spot prices** |
-| 🆕 `reference/regulatory-benchmarks/` | **Real UAE regulator-accepted token documents (2026-10-07):** VARA Schedule 1 whitepapers (Tokinvest, OKX ME, Ctrl Alt), RDSs, PAXG KPMG attestation, AEDZ/USDU/DDSC. Start at its `README.md`. ⚠ **Local only (gitignored, third-party docs), not in clones** |
+| 🆕 `reference/regulatory-benchmarks/` | **Real UAE regulator-accepted token documents (2026-10-07):** VARA Schedule 1 whitepapers (Tokinvest, OKX ME, Ctrl Alt), RDSs, PAXG KPMG attestation, AEDZ/USDU/DDSC. Start at its `README.md`. Third-party public documents, point-in-time copies |
 | **company container/** | `Proposal/Aurumix_Engagement_Brief.md` ⚠ written against the OLD model, superseded. `meeting-notes/2_June.md` = discovery transcript, Voice of Customer |
 
 ⛔ **Never point a directory-scanning skill at `deliverables/1-market-research/`.** Overlapping working copies. Pass explicit file paths.

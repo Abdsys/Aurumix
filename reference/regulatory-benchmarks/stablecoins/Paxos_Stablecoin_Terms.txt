@@ -1,0 +1,352 @@
+
+
+Paxos | Terms and Conditions - US Dollar-Backed Stablecoin Terms and Conditions
+
+Products
+Assets
+Company
+Transparency
+Developers
+Contact Us
+Sign In
+Products
+Assets
+Company
+Transparency
+Developers
+Contact Us
+Sign In
+Paxos
+General Terms and Conditions
+US Dollar-Backed Stablecoin Terms and Conditions
+PAX Gold Terms and Conditions
+Trading Terms and Conditions
+In Principal Stablecoin Conversion Terms and Conditions
+Anti-Money Laundering/Know Your Customer (AML/KYC) Disclosure​
+Market Manipulation Protection
+FDIC Pass Through Insurance Disclosures
+Licenses
+Illegal Activity
+Risk Disclosures
+Paxos Virtual Asset Listing and Governance Policies
+Privacy Policy
+Applicant Privacy Policy
+GLBA Privacy Notice
+Paxos Cookie Policy
+Paxos Europe
+US Dollar-Backed Stablecoin Terms and Conditions
+Last Modified: June 30, 2026 
+PLEASE NOTE: YOU MAY NO LONGER PURCHASE BUSD FROM PAXOS OR WITHDRAW BUSD FROM YOUR ACCOUNT. YOU MAY REDEEM YOUR BUSD FROM PAXOS SUBJECT TO THESE USD STABLECOIN TERMS AND CONDITIONS. PAXOS NO LONGER MINTS NEW BUSD BUT ALLOWS CUSTOMERS TO REDEEM BUSD. 
+These US Dollar-Backed Stablecoin Terms and Conditions (hereinafter, this “
+USD Stablecoin Agreemen
+t” or these “
+USD Stablecoin Terms and Conditions
+”) govern the provision of and use of (i) the US dollar denominated and backed stablecoin managed by Paxos Trust Company, NA (“
+Paxos Trust
+”) known as Paxos Dollar (“
+USDP
+”), (ii) the US dollar denominated and backed stablecoin managed by Paxos Trust known as PayPal USD (“
+PYUSD
+”), (iii) the US dollar denominated and backed stablecoin jointly managed by Paxos Digital Singapore Pte. Ltd. (“
+Paxos Digital
+”) and Paxos Issuance Europe Oy (“
+PIE
+”) known as Global Dollar (“
+USDG
+”), (iii) the US dollar denominated and backed stablecoin managed by Paxos Trust known as BUSD that is currently only available for redemption (“
+BUSD
+”), and (iv) other US dollar denominated and backed stablecoins that may be managed by Paxos or its affiliates from time to time and added to this USD Stablecoin Agreement (collectively and together with USDP, PYUSD, USDG and BUSD, the “
+USD Stablecoins”
+). As used herein, “
+Paxos
+,” “
+we
+,” “
+us
+” or “
+our
+” may refer to Paxos Trust, Paxos Digital, PIE or any of their applicable affiliates. These terms apply to each electronic form or contract executed by any User or Customer who accesses or uses Paxos’ products or services, including any website managed by Paxos with domains ending in “itbit.com” and “paxos.com” (together, the “
+Paxos Platform
+”) or the USD Stablecoins. As used in this USD Stablecoin Agreement, a “
+Customer
+” refers to a registered customer of Paxos who may obtain access to use additional non-public elements of the Paxos Platform and a “
+User
+” refers to any non-registered user that accesses any public portion of the Paxos Platform or the USD Stablecoins. 
+To the extent there is a conflict between this USD Stablecoin Agreement and the terms of any other agreement you (as a User or Customer, as applicable) may have with Paxos, including, for example, the General Terms and Conditions available at https://www.paxos.com/terms-and-conditions/general-terms-and-conditions (the “
+General Terms and Conditions
+”) and the Terms and Conditions for Platform Services (collectively, “
+Paxos Contractual Documentation
+”), the terms of this USD Stablecoin Agreement will govern and control. 
+For the avoidance of doubt, this USD Stablecoin Agreement constitutes an addendum or supplement to your applicable Paxos Contractual Documentation and forms part of your agreement with Paxos. 
+1. PRELIMINARY PROVISIONS. 
+1.1. ABOUT OUR USD STABLECOINS. 
+1.1.1. Our USD Stablecoins are fully backed by an equivalent amount of U.S. Dollar-denominated assets with regulated financial institutions in segregated accounts apart from our corporate funds, on behalf of, and for the benefit of, Customer Token Holders and Non-Customer Token Holders (as defined below). For every USD Stablecoin issued by us and remaining in circulation, Paxos will hold on behalf of Customer Token Holders and Non-Customer Token Holders either one U.S. Dollar or an
+equivalent amount of permitted USD-denominated assets in segregated accounts. Our USD Stablecoins are not designed to create returns or profits for holders, increase in value, or otherwise accrue financial benefit to the Customer Token Holders and Non-Customer Token Holders. 
+1.2 DEFINITIONS. 
+1.2.1. “
+Customer Token Holder
+” means any Customer that does, or intends to, hold USD Stablecoins. 
+1.2.2. “
+Non-Customer Token Holder
+” means anyone that is not a Customer (including a User) that does, or intends to, hold USD Stablecoins. 
+1.2.3. “
+Token Holder
+” means any Customer Token Holder or Non-Customer Token Holder. 1.3. DISCLAIMER; RISK FACTORS. 
+1.3.1. Blockchain protocols on which the USD Stablecoins are available may experience backlogs, higher than normal transaction fees, changes to the network, failure or a fork in the protocol. We do not own or control any blockchains protocols, are not responsible for the operation of blockchain networks and make no guarantees regarding any blockchain network’s security, functionality, or availability. 
+1.3.2. Because USD Stablecoins are blockchain based tokens, they may be compatible with software or other technology provided by a third-party. Paxos does not guarantee the security or functionality of any third-party software or technology and is not responsible for any losses of USD Stablecoins due to the failure of third-party software or technology. 
+1.3.3. The terms related to illegal activity available at https://www.paxos.com/terms-and-conditions/illegal-activity apply to all USD Stablecoins (whether held by Customer Token Holders or Non-Customer Token Holders) and are hereby incorporated by reference into these USD Stablecoin Terms and Conditions. 
+1.3.4. Services related to specific USD Stablecoins (such as the ability to purchase, sell, convert, redeem or transfer a USD Stablecoin) may not be available to a User based on where they reside or to a Customer based on the Paxos entity they registered with. 
+2. CUSTOMER TOKEN HOLDER-ONLY TERMS. 
+2.1. APPLICATION. 
+2.1.1. This Section 2 applies only to Customer Token Holders. You must agree to all of the terms of this USD Stablecoin Agreement. If you do not agree to or accept all of the terms of this USD Stablecoin Agreement, please immediately discontinue access to, and use of, the Paxos Platform and all Paxos services and products. 
+2.1.2. By agreeing to these USD Stablecoin Terms and Conditions, as a Customer Token Holder, you agree to be bound by the Paxos Contractual Documentation, as applicable to you. 
+2.2. THE PAXOS PLATFORM.
+2.2.1. The Paxos Platform is an online platform that allows Customers to acquire USD Stablecoins from Paxos for US dollars and redeem USD Stablecoins from Paxos for US dollars. 
+2.2.2. Only Customers may purchase USD Stablecoins from us or redeem USD Stablecoins from us. Paxos may prevent Customers from purchasing, redeeming, or otherwise accessing services related to specific USD Stablecoins depending on where they reside or the Paxos entity they registered with, as described in Section 1.3.4 of this USD Stablecoin Agreement. We may also refuse to issue USD Stablecoins to, or redeem USD Stablecoins from, a verified Customer in the event of any of the suspension and/or termination of your account with Paxos (an “
+Account
+”) or any circumstances in violation of the Paxos Contractual Documentation, including, without limitation, where we believe that the issuance or redemption of USD Stablecoins would be contrary to applicable law or would otherwise expose us to legal liability. Paxos also reserves the right to suspend minting USD Stablecoins for any reason it deems necessary or appropriate. Absent a reasonable justification not to redeem USD Stablecoins, and provided that you are a fully verified Customer of Paxos, your USD Stablecoins are freely redeemable, subject to the redemption minimums described herein. 
+2.2.3. Paxos reserves the right to issue USDG to customers, or redeem USDG from customers, through either Paxos Digital or PIE when permissible under the applicable statutes and regulations. 
+2.3. WITHDRAWALS. 
+2.3.1. Customers may withdraw some or all of their US dollars from their Accounts at any time, upon request to us. US dollars will be transferred from the Customer’s Account with the Paxos Platform to the bank account designated by, and owned by, the Customer. 
+2.3.2. Paxos may impose withdrawal limits on your Account as per the Paxos User Guide (available at https://help.paxos.com). 
+2.3.3. Please note that any withdrawal of US dollars may be delayed as necessary to comply with applicable law and/or the Paxos Platform’s compliance program, including verification of customer identification and anti-money laundering procedures. Withdrawals may take up to two (2) days to complete, provided that larger withdrawals may take substantially longer to complete. 
+2.4. FUNDING YOUR ACCOUNT. 
+2.4.1. After creating your Account with Paxos, you will be able to fund your Account with US dollars. 
+2.4.2. You may fund your Account with US dollars transferred from your account(s) with approved financial institutions. Once we receive your funds and validate that they are from a bank account owned by you, we will credit your Account with those funds. Unless otherwise explicitly agreed by us in writing, if a US dollar deposit does not originate from a bank account owned by you, it will be rejected and returned immediately. US dollar deposits sent before 3:00 p.m. EST will typically be credited to your Account on the same day or next business day. US dollar deposits may not be credited outside of normal banking hours. Transfer times are subject to bank holidays, the internal processes and jurisdiction of your bank, and the internal processes of our banks. 
+2.4.3. You represent and warrant that all funds that you transfer to us do not represent the proceeds of any criminal, sanctioned, unlawful or fraudulent activity. You are not allowed to receive funds in your Account from a sender other than yourself, unless you receive specific prior approval otherwise from us. If we reasonably determine that you are not the owner of the funds in your Account, we
+reserve the right to dispose of those funds in accordance with applicable law and in our sole discretion, which may include returning the funds to the originator or to a charity of our choosing. 
+2.5. PURCHASING USD STABLECOINS. 
+PLEASE NOTE: BEGINNING ON FEBRUARY 21, 2023, YOU MAY NO LONGER PURCHASE BUSD FROM PAXOS OR WITHDRAW BUSD FROM YOUR ACCOUNT. THROUGH AT LEAST FEBRUARY 1, 2024, YOU MAY REDEEM YOUR BUSD FROM PAXOS SUBJECT TO THESE USD STABLECOIN TERMS AND CONDITIONS. 
+2.5.1. After your Account has been funded, you may begin to purchase those USD Stablecoins made available in your jurisdiction with US dollars on a one-for-one basis, subject to the minimum purchase amount below. In order to receive USD Stablecoins, you must provide us with your blockchain public address. 
+2.5.2. Prior to the placement of a purchase order on the Paxos Platform, you will be required to review the following information: the amount of the purchase, the commission or fee (if any) to be charged by the Paxos Platform, and the blockchain address to which the USD Stablecoins will be sent. For more detailed instructions on how to be issued USD Stablecoins, please refer to https://help.paxos.com. 
+2.5.3. Once an issuance of USD Stablecoins has been executed and the appropriate assets have been credited and debited, the transaction may not be reversible. 
+2.5.4. Paxos may require a minimum amount for purchase, which may be updated from time to time, equal to the minimum wire fee charged by your bank for the transaction. 
+2.5.5. Once a purchase request has passed compliance checks, it will be processed according to the purchase schedule. 
+2.5.6. Paxos may require a minimum amount for withdrawal, which may be updated from time to time. 
+2.5.7. Paxos may impose withdrawal limits on your Account as per the Paxos User Guide available at https://help.paxos.com (the “
+Paxos User Guide
+”). 
+2.6. CANCELED ORDERS. 
+2.6.1. Paxos reserves the right to cancel or nullify orders in the event that the order contains a bug, mistake, or an actual or suspected breach of this USD Stablecoin Agreement or other Paxos Contractual Documentation. 
+2.7. REDEMPTION FROM USD STABLECOINS TO US DOLLARS. 
+PLEASE NOTE: AS OF FEBRUARY 21, 2023, YOU MAY NO LONGER PURCHASE BUSD FROM PAXOS OR WITHDRAW BUSD FROM YOUR ACCOUNT. YOU MAY STILL REDEEM YOUR BUSD FROM PAXOS SUBJECT TO THESE USD STABLECOIN TERMS AND CONDITIONS. 
+2.7.1. In order to redeem USD Stablecoins for US dollars through the Paxos Platform, you must have an Account. Your Account will have a unique redemption address for each type of USD Stablecoin to which you can send your respective USD Stablecoins. Upon sending your USD Stablecoins to your
+redemption address, Paxos will credit your Account a corresponding amount of US dollars. For example, if you send 5 USDP to the identified redemption address, Paxos will credit your Account with 5 US dollars. ALL REDEMPTIONS WILL BE ON A ONE-FOR-ONE BASIS, NOTWITHSTANDING ANY CHANGE IN THE MARKET VALUE OF THE RESERVE ASSETS BACKING USD STABLECOINS. 
+2.7.2. All USD Stablecoins will be rounded down to the nearest US cent at redemption. 
+2.7.3. Paxos will make commercially reasonable efforts to redeem your USD Stablecoins quickly. Once a redemption request has passed compliance checks, it will be processed according to the redemption schedule. 
+2.7.4. Paxos may require a minimum amount for redemption, which may be updated from time to time, equal to the minimum wire fee charged by your bank for the transaction. 
+2.8. FEES. 
+2.8.1. Fees on Issuance and Redemption. 
+2.8.1.1. An overview of our fees is set forth in the Paxos User Guide at https://help.paxos.com or otherwise in a pricing supplement provided to you by Paxos separate from this USD Stablecoin Agreement, which is incorporated herein by reference (the “
+Pricing Supplement
+”). In the event of a conflict between the Paxos User Guide and the Pricing Supplement, the Pricing Supplement will control. 
+2.8.1.2. We will apply a fee to reserves backing USD Stablecoins, and you agree to pay us such fee as determined by an appropriate market rate, provided that no fee will be imposed that reduces the USD Stablecoin reserves to below the amount of USD Stablecoins outstanding. 
+2.8.2. Banking Fees. 
+2.8.2.1. Paxos will not charge you fees for redeeming USD Stablecoins. Your financial institution and/or the provider of your crypto asset wallet may charge transaction and other fees related to the transfer of funds to your Account. To the extent Paxos is charged any banking fees by your financial institution or Paxos’s financial institution for the deposit or withdrawal of US dollars to or from your Account, Paxos will deduct an amount equal to any such fees from the amount being transferred. 
+2.8.3. Additional Fees for Certain Accounts. 
+2.8.3.1. Due to the cost of maintaining and supporting your Account and subject to applicable law, you will incur a monthly charge of two US dollars (US $2.00) if you maintain a non-zero balance and there has been no purchase or redemption activity on the Account for twelve months or longer. Such fee will be auto-debited from your account on a periodic basis in US dollars. 
+2.8.4. Right to Change Fees and Fee Structure. 
+2.8.4.1. We reserve the right to change or modify our fee structure or increase any of our fees at any time and from time to time. Any such changes, modifications or increases will be effective upon posting on the Platform, in the Paxos User Guide or an updated Pricing Supplement, subject to any requirement under applicable law to provide additional notice. Your first use of your Account following the posting of any changes to the fees will constitute your acceptance of such changes. If you do not
+agree to the posted changes, you may close your Account as provided in the Paxos Contractual Documentation. 
+3. CUSTOMER TOKEN HOLDER AND NON-CUSTOMER TOKEN HOLDER TERMS. 
+This Section 3 applies to all purchasers, sellers and holders of USD Stablecoins, including both Customer Token Holders and Non-Customer Token Holders. If you do not agree to or accept any of the terms of this Section 3, please immediately discontinue access to, and use of, all elements of the Paxos Platform. 
+3.1. USD STABLECOINS. 
+3.1.1. USD Stablecoins may be issued by Paxos Trust, Paxos Digital, PIE or another Paxos entity. Paxos Trust issues USDP, PYUSD and BUSD. Paxos Digital and PIE jointly issue USDG. USD Stablecoin tokens are not money or legal tender and are not monetary instruments, except to the extent USDG constitutes “money” under the Markets in Crypto-Assets Regulation promulgated by the European Union and the Second Electronic Money Directive (Directive 2009/110/EC) of the European Parliament. Once you have USD Stablecoin tokens, you can transfer them, trade them, keep them, use them to pay persons that will accept USD Stablecoins, or redeem them for U.S. dollars from your Account, subject to the limitations below. 
+3.1.2. USD Stablecoin tokens issued by Paxos Trust are fully backed by US dollars held by Paxos Trust on USD Stablecoin customers’ behalf in segregated custodial accounts with US banks, or by debt instruments that are expressly guaranteed by the full faith and credit of the United States Government, by reverse repurchase agreements collateralized by such debt instruments and/or money-market funds composed of such debt instruments (collectively, “
+Debt Instruments
+”) specifically held for the benefit of USD Stablecoin customers, as further described in Section 3.2 below. The US dollars used to purchase USD Stablecoins are deposited either in US, Federal Deposit Insurance Corporation (“
+FDIC
+”)-insured depository banks or used to purchase Debt Instruments, as described below, to maintain a one-to-one ratio of each USD Stablecoin to the amount of US dollar deposits or the face amount of Debt Instruments. For example, if you purchase five USDP with five US dollars, Paxos Trust will hold in custody for the benefit of USDP customers those five US dollars in a bank account or via the face value of Debt Instruments to support the five USDP in circulation. USD Stablecoin tokens issued by Paxos Digital are fully backed by US dollars held by Paxos Digital on USD Stablecoin customers’ behalf in segregated custodial bank accounts, or by Debt Instruments specifically held for the benefit of USD Stablecoin customers, as further described in Section 3.2 below. Likewise, USD Stablecoin tokens issued by PIE are fully backed by US dollars held by PIE on USD Stablecoin customers’ behalf in segregated custodial bank accounts, or by Debt Instruments specifically held for the benefit of USD Stablecoin customers, as further described in Section 3.2 below. The US dollars used to purchase USD Stablecoins are deposited in custodian banks or used to purchase Debt Instruments to maintain a one-to-one ratio of each USD Stablecoin to the amount of US dollar deposits or the face amount of Debt Instruments. For example, if you purchase five USDG issued by Paxos Digital with five US dollars, Paxos Digital will hold in custody for the benefit of USDG holders those five US dollars in a segregated bank account or via the face value of Debt Instruments to support the five USDG in circulation. If you purchase five USDG issued by PIE with five US dollars, PIE will hold in custody for the benefit of USDG holders those five US dollars in a segregated bank account or via the face value of Debt Instruments to support the five USDG in circulation. 
+3.1.3. The USD Stablecoins may exist as ERC20, SPL, or other token types on various public blockchains. As a result, they may be compatible with third-party software that supports these token standards.
+3.1.4. Paxos may, at its sole discretion, engage market makers to provide liquidity for USD Stablecoin markets, both on the Trading Platform and on third-party platforms. 
+3.1.5. Paxos Trust issues USD Stablecoins pursuant to specific approval from the Office of the Comptroller of the Currency (the “
+OCC
+”). Paxos Digital issues USD Stablecoins pursuant to its Major Payment Institution license, issued by the Monetary Authority of Singapore (the “
+MAS
+”). PIE issues USD Stablecoins pursuant to its Electronic Money Institution license, issued by the Finnish Financial Supervisory Authority (“
+FIN-FSA
+”). FIN-FSA’s contact information is: 
+FIN-FSA 
+P.O. Box 103, 00101 Helsinki 
+Telephone + 358 9 183 51 
+kirjaamo@fiva.fi 
+3.1.6. Subject to Section 1.3.4. of this USD Stablecoin Agreement, USD Stablecoins are available on the Paxos Platform for trading, for custody with Paxos, and for withdrawal. USD Stablecoins issued by Paxos Trust were approved for customers of Paxos Trust through specific approval from the OCC. USD Stablecoins issued by Paxos Digital were approved for customers of Paxos Digital through specific approval from the MAS. USD Stablecoins are issued by PIE to customers of PIE pursuant to the Electronic Money Institution license issued to PIE by the FIN-FSA. 
+3.1.7. Paxos Digital, PIE, and Paxos Trust each may decide to serve as a reseller of USD Stablecoins issued by one another. 
+3.1.8. Paxos may offer financial incentives, rewards, or other forms of compensation to third-party partners for promoting, listing, or recommending the USD Stablecoins to their users, subject to any restrictions on offering financial incentives, rewards, or other compensation to a third-party applicable to certain jurisdictions. Such incentives are designed to enhance the distribution and awareness of the USD Stablecoins and do not influence the quality, safety, or utility of the USD Stablecoins themselves. Users are encouraged to independently assess the appropriateness of the USD Stablecoins for their individual needs. 
+3.2. CASH MANAGEMENT. 
+3.2.1. Overview of Cash Backing USD Stablecoins. 
+3.2.1.1. Paxos Trust provides cash management for the US dollar deposits backing the USD Stablecoins it issues so that each USD Stablecoin it issues is backed by an equivalent amount of US dollar deposits or Debt Instruments. To achieve this, the US dollar deposits backing the USD Stablecoins are held in custody for benefit of stablecoin holders only in one or more of the following forms: (i) fiat currency held in FDIC-insured bank accounts; (ii) (a) direct investments (including through repurchase agreements) in debt instruments that are expressly guaranteed by the full faith and credit of the United States Government; and/or (b) money-market funds composed of such debt instruments; and (iii) fiat currency held at FDIC-insured banks in excess of FDIC-insured limits, only to the extent that Paxos in its reasonable discretion believes that such funds need to remain liquid and readily available to service customers and that option 3.2.1.1.ii. is therefore impracticable. Paxos Trust may modify its cash management program from time to time, provided that the US dollars will always be held in segregated accounts in one of the three forms described above. Paxos Digital provides cash management for the US dollar deposits backing the USD Stablecoins it issues so that each USD Stablecoin it issues is backed by an equivalent amount of US dollar deposits or US
+dollar-denominated Debt Instruments. To achieve this, the US dollar deposits backing the USD Stablecoins are held in custody by Paxos Digital only in one or more of the following forms: (i) fiat currency held in financial institutions licensed for custodial services in Singapore by MAS or overseas-based custodians with minimum credit rating of “A-” which have a branch in Singapore that is regulated by MAS to provide custodial services; or (ii) (a) direct investments (including through repurchase agreements) in debt instruments that are expressly guaranteed by the full faith and credit of the United States Government; and/or (b) money-market funds composed of such debt instruments. Paxos Digital may modify its cash management program from time to time, provided that the US dollars will always be held in segregated accounts in one of the forms described above. PIE provides cash management for the US dollar deposits backing the USD Stablecoins it issues so that each USD Stablecoin it issues is backed by an equivalent amount of US dollar deposits or US dollar-denominated Debt Instruments. To achieve this, the US dollar deposits backing the USD Stablecoins are held in custody by PIE only in one or more of the following forms: (i) fiat currency held in credit institutions; or (ii) (a) direct investments (including through repurchase agreements) in debt instruments that are expressly guaranteed by the full faith and credit of the United States Government; and/or (b) money-market funds composed of such debt instruments. PIE may modify its cash management program from time to time, provided that the US dollars will always be held in segregated accounts in one of the forms described above. 
+3.2.2. Coverage. 
+3.2.2.1. Each fiat cash depository account is (i) custodied by Paxos Trust, Paxos Digital or PIE in our name and under our control, (ii) separate from our business and operating bank accounts, and (iii) established specifically for the benefit of Customer Token Holders and Non-Customer Token Holders. The U.S. depository accounts that hold fiat cash are protected by FDIC insurance up to $250,000 for each account ownership category. In order to obtain additional FDIC insurance coverage, Paxos may utilize deposit placement networks. For the avoidance of doubt, USD Stablecoins themselves are not FDIC insured. 
+3.2.2.2. A list identifying deposit placement networks Paxos may use and their network banks can be found in the FDIC Pass Through Insurance Disclosures available at https://www.paxos.com/terms-and-conditions/fdic-pass-through-insurance-disclosures or as otherwise included in the Paxos Contractual Documentation (the “
+FDIC Pass Through Insurance Disclosures
+”). 
+3.2.2.3. Paxos may exclude particular insured depository institutions within each network from eligibility to receive funds. 
+3.2.2.4. A list of banks where FDIC insured deposits may also be held can be found in the FDIC Pass Through Insurance Disclosures. 
+3.2.2.5. Further, Paxos may from time to time obtain private uninsured deposit insurance. Not all deposits are covered by the FDIC or private insurance, and Paxos may still incur losses in the event of a bank insolvency. 
+3.2.2.6. In addition to the deposit placement network described above, US dollars backing the USD Stablecoins may be invested in Debt Instruments. 
+3.2.3. Pass-Through Insurance Option.
+3.2.3.1. For USD Stablecoins issued by Paxos Trust, you may elect to “opt in” to obtain FDIC “pass-through” deposit insurance for the portion of the reserve account backing your USD Stablecoins represented by fiat cash maintained at insured banks that separately insures you up to the applicable FDIC deposit insurance limits. FDIC insurance protects you against loss from the failure of the insured bank in which deposits are placed; it does not protect you against an insolvency of Paxos. Your assets held with Paxos Trust are held bankruptcy remote, and thus in the event of Paxos Trust’s insolvency, your assets would not be used to satisfy the debts of Paxos Trust. The portions of the reserve account held in U.S. Treasury bills (or money-market funds invested in the same) are not insured and that portion of reserves underlying your USD Stablecoins is therefore not eligible for “pass-through” deposit insurance. We may choose to allocate funds among reserve assets at our discretion, which will affect the extent to which FDIC pass-through insurance will apply to funds held for your benefit. For more information about FDIC pass-through insurance, please review the FDIC Pass Through Insurance Disclosures. 
+3.2.3.2. If you complete the opt-in registration and comply with all other terms and conditions, Paxos agrees to maintain records showing your interest in the fiat cash reserves held in deposit at insured banks. Assuming the foregoing conditions are met, the FDIC may provide pass-through deposit insurance coverage on fiat cash deposits at insured banks in an amount corresponding to the portion representing your funds in these deposit accounts, together with any other deposits you hold at the same insured bank in the same ownership capacity, so long as you can prove that these funds are owned by you in a manner satisfactory to the FDIC and you meet other requirements necessary for FDIC pass through insurance coverage. 
+3.2.3.3. We have provided the opt-in registration so that we can maintain the records necessary to confirm your identity and indirect ownership interest in the deposits at insured banks in the custodial account in a manner reasonably designed to satisfy the FDIC’s requirements for obtaining pass-through deposit insurance coverage. Your verification of your ownership of the USD Stablecoins and the equivalent balance of funds in the custodial account is essential. 
+3.2.3.4. Opting in as set forth in this Section 3.2.3 does not ensure FDIC insurance coverage. The actual amount of any pass-through insurance will also depend on whether you have any other insured-deposits held by the particular bank holding the fiat reserves since a depositor is only eligible for up to $250,000 in FDIC-insurance coverage per each insured bank for all deposit accounts held in your name or on your behalf in the same capacity per each insured bank. 
+3.2.3.5. As stated in Section 3.2.2.6, not all reserves backing USD Stablecoins are held in FDIC insured accounts. Please refer to https://paxos.com/regulation-and-transparency/ for further information on the reserves backing USD Stablecoins. 
+3.2.3.6. If we are unable to verify your ownership of the USD Stablecoins, either because you hold the USD Stablecoins in an omnibus account with others (such as at a trading platform or exchange) or otherwise, we will not be able to provide you this opt-in registration. Once you transfer the USD Stablecoins from the wallet(s) identified to us during the opt-in registration to another wallet (even if owned by you), Paxos is not responsible for taking any action to make FDIC insurance available on a pass-through basis for the funds backing that USD Stablecoins and makes no representations about the availability of FDIC insurance for such funds. 
+3.2.3.7. IF YOU DO NOT OPT IN AND YOU ARE A NON-CUSTOMER TOKEN HOLDER, “PASS-THROUGH” DEPOSIT INSURANCE WILL NOT BE AVAILABLE TO YOU DIRECTLY THROUGH PAXOS ON DEPOSITS BACKING YOUR USD STABLECOINS.
+For more information on this option, please reach out to help.paxos.com. 
+3.3. FORKS. 
+3.3.1. You understand, acknowledge and agree that the underlying operating rules of blockchain protocols may change from time to time in such a way as to result in more than one related version of an existing blockchain (each such instance of any such change, a “
+Fork
+”). If a Fork occurs, it may result in the creation of a new branch of a blockchain. Paxos will evaluate all Forks and make a determination, based on a number of factors, to support each USD Stablecoin on one, and only one, of the Forks. Paxos will continue to provide services for, support and hold US dollars against, USD Stablecoins held on the supported Fork only. 
+3.3.2. If a Fork occurs, you understand, acknowledge and agree that we may temporarily suspend the operations of the Paxos Platform. 
+3.4 BRIDGED STABLECOINS
+3.4.1 A USD Stablecoin may be made available on a blockchain in a bridged form that is deployed and issued by a third party rather than by Paxos (each, a "Bridged Stablecoin"). A Bridged Stablecoin is created when a third-party bridge provider locks or holds a USD Stablecoin on one blockchain and issues a corresponding token intended to represent that USD Stablecoin on another blockchain. A Bridged Stablecoin is not issued, minted, or redeemed by Paxos, and references in this USD Stablecoin Agreement to USD Stablecoins issued by Paxos do not include Bridged Stablecoins except where expressly stated.
+3.4.2 The "
+Bridged Stablecoin Standard
+" is the set of technical and contractual specifications that must be incorporated into the smart contracts of a Bridged Stablecoin at the time of, and as a condition of, its deployment. The Bridged Stablecoin Standard preserves Paxos's ability, in its sole discretion, to obtain ownership and control of a Bridged Stablecoin's token contract and to convert that token from a third-party-issued Bridged Stablecoin into a USD Stablecoin issued natively by Paxos ("
+Native Issuance
+").
+3.4.3 The Bridged Stablecoin Standard grants Paxos the option, but not the obligation, to obtain ownership of the token contract and upgrade to Native Issuance. The Bridged Stablecoin Standard must be incorporated prior to deployment of the Bridged Stablecoin and cannot be retroactively applied. The Bridged Stablecoin Standard is for informational purposes and will apply only if Paxos chooses to upgrade a particular Bridged Stablecoin to Native Issuance. The Bridged Stablecoin Standard does not constitute an offer to upgrade any particular Bridged Stablecoin. Paxos's decision to upgrade a particular Bridged Stablecoin to Native Issuance may be subject to additional terms and conditions. Bridged Stablecoins are not issued by Paxos and carry additional risks related to bridge security and cross-chain operations.
+3.4.4 Unless and until Paxos elects to effect Native Issuance of a particular Bridged Stablecoin, that Bridged Stablecoin remains the product of a third party and is subject to additional risks beyond those applicable to USD Stablecoins issued by Paxos, including risks relating to the security of the relevant bridge, cross-chain messaging and operations, and the third party responsible for deploying and operating the Bridged Stablecoin. Paxos does not own or control, and does not guarantee the security, functionality, or availability of, any bridge or third-party technology used to create or support a Bridged Stablecoin, and is not responsible for any losses arising from the failure of such bridge or technology. Paxos makes no representation or warranty that any Bridged Stablecoin will be upgraded to Native Issuance. This Section 3.4 applies to all holders of Bridged Stablecoins, regardless of whether the holder is a Customer of Paxos.
+3.5. UPGRADES AND FREEZES. 
+3.5.1. As part of the Services, Paxos has the ability and the right to freeze and upgrade all USD Stablecoins tokens (on an aggregate basis), regardless of where the USD Stablecoins are being held. Paxos will make commercially reasonable efforts to provide prior notice of any material freeze or upgrade and inform holders of USD Stablecoins of the reasons and consequences of such freeze and/or upgrade. Paxos will make commercially reasonable efforts to use the freeze and/or upgrade feature only under limited circumstances. 
+3.5.2. Paxos must comply with any legal directive to freeze, temporarily or permanently, user access to the USD Stablecoins or the US dollars backing your USD Stablecoins with or without advance notice. Paxos will only freeze such assets (1) if required to do so by law, specifically when Paxos receives a formal legal directive from a regulator, judicial body, law enforcement agency, or other legal entity having jurisdiction over Paxos, (2) pursuant to a formal notification by a Paxos partner according to previously agreed contractual terms, or (3) as deemed necessary or appropriate by Paxos in its sole discretion. Legal directive formats include court-ordered subpoenas, national security letters, and formal written directives from a regulator with oversight over Paxos. 
+3.5.3. Your USD Stablecoins and the US dollars backing your USD Stablecoins may be subject to seizure or forfeiture by formal written legal directive from a regulator, judicial body, law enforcement agency, or other legal entity having jurisdiction over Paxos, and we will comply with the legal process in respect thereof. Seizure may not occur under any circumstances absent such a binding legal directive. If USD Stablecoins are seized, the Paxos transaction generation will ensure that the seized funds are sent to a segregated wallet address held by Paxos for the purposes of seizure/forfeiture, until such time as they may be disposed of or otherwise handled as required by law. 
+3.5.4. If we determine after investigation that any of your USD Stablecoins have been used, or are being used, for illegal (or sanctioned) activity, we may not permit you to redeem your USD Stablecoins for US dollars from Paxos, and, if presented for redemption, such USD Stablecoins and the US dollars backing such USD Stablecoins may be forfeited. 
+3.5.5. Any USD Stablecoins or fiat currency underlying the USD Stablecoins that are subject to freeze, seizure, forfeiture or similar limitation on their use imposed by law may become wholly and permanently unrecoverable and unusable, and in appropriate circumstances, may be destroyed. If tokens are seized, the Paxos transaction generation will ensure that the seized funds are sent to a
+segregated wallet address held by Paxos for the purposes of seizure/forfeiture, until such time as they may be disposed of or otherwise handled as required by law. 
+3.5.6. This Section 3.5 applies to all holders of USD Stablecoins, regardless of whether the holder is a Customer of Paxos. 
+3.5.7. By using our USD Stablecoins, you agree that we may take the actions set forth above and that we will not be liable to you therefore. 
+3.5.8. If you are aware of improper conduct involving a Paxos supported asset backed token, you should immediately contact Paxos at help@paxos.com, as well as law enforcement to work towards filing a law enforcement report. Paxos will make reasonable effort to cooperate with law enforcement inquiries and assist with investigations pertaining to Paxos supported asset backed tokens. 
+3.5.9. Law enforcement may submit information requests to subpoenas@paxos.com. 3.5. 3.6 USE OF USD STABLECOINS 
+3.6.1 You are responsible for your use of the USD Stablecoins and that your use of the USD Stablecoins complies with all applicable laws. You understand and agree that Paxos is not responsible for ensuring that your use of the USD Stablecoins is in compliance with applicable laws. 
+3.6.2 You acknowledge that if the USD Stablecoins are used in a manner that requires a relevant financial license (e.g. if the USD Stablecoin is used in the provision of payment services, the said services require a relevant financial license, such as a payment institution license), you shall be solely responsible to ensure that your operations are carried out in accordance with applicable laws. You further acknowledge and accept that Paxos shall not be liable for anything related to your use of the USD Stablecoins. 
+3.7. ILLEGAL USE OF USD STABLECOINS. 
+WE MAY FREEZE, TEMPORARILY OR PERMANENTLY, YOUR USE OF, AND ACCESS TO, USD STABLECOINS OR THE US DOLLARS BACKING YOUR USD STABLECOINS, WITH OR WITHOUT ADVANCE NOTICE. 
+YOUR USD STABLECOINS AND THE US DOLLARS BACKING YOUR USD STABLECOINS MAY BE SUBJECT TO SEIZURE OR FORFEITURE BY LAW ENFORCEMENT, AND WE WILL COMPLY WITH LEGAL PROCESS IN RESPECT THEREOF. 
+IF WE DETERMINE AFTER INVESTIGATION THAT ANY OF YOUR USD STABLECOINS HAVE BEEN USED, OR ARE BEING USED, FOR ILLEGAL (OR SANCTIONED) ACTIVITY, WE MAY NOT PERMIT YOU TO REDEEM YOUR USD STABLECOINS FOR US DOLLARS FROM PAXOS, AND, IF PRESENTED FOR REDEMPTION, SUCH USD STABLECOINS AND THE US DOLLARS BACKING SUCH USD STABLECOINS MAY BE FORFEITED. 
+ANY USD STABLECOINS OR FIAT CURRENCY UNDERLYING USD STABLECOINS THAT ARE SUBJECT TO FREEZE, SEIZURE, FORFEITURE OR SIMILAR LIMITATION ON THEIR USE IMPOSED BY LAW MAY BECOME WHOLLY AND PERMANENTLY UNRECOVERABLE AND UNUSABLE, AND IN APPROPRIATE CIRCUMSTANCES, MAY BE DESTROYED.
+THIS SECTION 3.7 APPLIES TO ALL HOLDERS, REGARDLESS OF WHETHER THE HOLDER IS A CUSTOMER OF PAXOS. 
+BY USING USD STABLECOINS, YOU AGREE THAT WE MAY TAKE THE ACTIONS SET FORTH IN THIS SECTION 3.6 AND THAT WE WILL NOT BE LIABLE TO YOU AS A RESULT.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+

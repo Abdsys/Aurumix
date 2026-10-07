@@ -1,0 +1,411 @@
+         BREI VA Risk Disclosure Statement
+
+1. This notice provides a description of risks that are associated with investing and trading
+    Virtual Assets ("Notice")
+
+2. Investment in BREI Tokens involves a risk of loss of part or all of the invested capital.
+    Recoveries are not guaranteed. In the event of insolvency of Tokinvest DMCC, the asset
+    owner, or any relevant counterparty, enforcement of security interests, contractual rights, or
+    asset-related claims may be delayed, contested, or result in partial or no recovery. The BREI
+    Tokens provide investors with specific rights and recover mechanisms following such an
+    insolvency as set out in the whitepaper.
+    Tokenholders may receive less than their original investment, or nothing at all, depending on
+    legal, market, and insolvency outcomes.
+
+3. At present :
+
+         a. Tokinvest performs ongoing conflicts-of-interest assessments reflecting its multiple
+              regulated roles, including issuer, broker/platform operator, and secondary market
+              operator. Identified conflicts are managed through governance, operational
+              separation, disclosure, and compliance oversight, as described in this Risk Disclosure
+              Statement.; and
+
+         b. There are no past convictions or prosecutions of any member of the Tokinvest senior
+              management or board, whether before the courts of the UAE or the courts of
+              another jurisdiction.
+
+4. Capitalised terms used in this Notice have the meanings given to them in Tokinvest's
+    Brokerage Terms of Business available on www.tokinvest.capital (the "Site"), as amended
+    from time to time.
+
+5. All users and clients of our Brokerage Services are advised to carefully study the risks
+    described in this Notice.
+
+6. Tokinvest Virtual Assets which you custody with us are under the control of Tokinvest.
+    Tokinvest is not a VARA regulated Custody service provider. Tokinvest will provide Virtual
+    Asset Custody only as an incidental activity to its Brokerage Services leveraging a third-party
+    VARA regulated Custodian and/or third-party custody technology solutions providers. As
+    further described in paragraphs 64 a-c of these Terms, Hex Trust will act as custodian for all
+    Virtual Assets except for Hedera based tokens;
+
+7. Tokinvest does not provide financial, legal, tax, or investment advice. Nothing in this Notice
+    constitutes a recommendation or personalised advice. Investors are responsible for
+    conducting their own independent assessment before making any investment decision.
+
+8. Tokinvest does not hold or maintain funds or Virtual Assets or provide clearing services for
+    other VASPs providing Broker-Dealer Services.
+
+9. Tokinvest does not introduce our clients to any other VASPs.
+
+                                                           COMMERCIAL IN CONFIDENCE
+
+                                                                             1
+10. This Notice does not set out all risks arising in relation to Virtual Assets and should not be
+    relied upon as doing so. The risks applicable to any particular investment or Virtual Asset will
+    depend on your particular circumstances and the terms of the relevant transaction. You
+    should not deal in any investment unless you understand the nature of the product you are
+    dealing in (or contract you are entering into), the extent of your exposure to risk, and unless
+    you are satisfied that the product is appropriate for you.
+
+11. Types of risks that may have an impact on your investment include liquidity risk, market risk,
+    settlement risk, currency risk, operational risk, business risk, tax risk, regulatory risk, legal
+    risk, barriers to or restrictions on divestment, risks inherent to OTC trading and/or risks as a
+    result of you assuming additional obligations in relation to the investment.
+
+12. Tokinvest Insolvency:
+    In the event of Tokinvest DMCC's insolvency, the reference asset is held in a= segregated
+    company and does not form part of Tokinvest's own assets. Tokinvest maintains a Wind-
+    Down Plan approved as part of its licensing process. In addition, tokenholders benefit from
+    contractual third-party rights under the Asset Rights Agreement, allowing enforcement of
+    their economic entitlements directly against the asset owner, subject to applicable law.
+    The BREI Tokens provide investors with specific rights and recover mechanisms following
+    such an insolvency as set out in the whitepaper however Tokenholders may receive less than
+    their original investment, or nothing at all, depending on legal, market, and insolvency
+    outcomes.
+
+13. Asset Owner Insolvency:
+    Legal title to the underlying property is held by the asset owner through a dedicated SPV.
+    Tokinvest holds a first-ranking legal charge over the property and an assignment of all
+    related income and proceeds, which is registered with the UK Land Registry. In the event of
+    asset owner insolvency, enforcement of these security rights may involve legal proceedings,
+    timing delays, and recovery risk. While the security structure is intended to protect investor
+    economic interests, recoveries are not guaranteed and may be affected by insolvency costs
+    and market conditions.
+
+    Conflicts of Interest
+    Tokinvest performs formal conflicts-of-interest assessments reflecting its roles as issuer,
+    broker/platform operator, and secondary market operator. Identified conflicts are managed
+    through governance controls, operational separation, disclosure, and compliance oversight.
+
+14. Principal Trading Conflicts:
+    Tokinvest may, in limited circumstances, act as principal solely to facilitate settlement where
+    two client orders match on identical price and quantity. Such activity is risk-neutral,
+    operational in nature, and subject to uniform execution rules and compliance review.
+    Tokinvest does not engage in proprietary trading, market making, or directional trading.
+
+15. Fee Incentive Conflicts:
+    Tokinvest's fees are fixed, disclosed, and applied uniformly. Fees are not linked to token
+    price performance, sale timing, investor profitability, or Tokinvest acting as principal.
+    Employee remuneration is not tied to secondary market volumes or price outcomes.
+
+                                                           COMMERCIAL IN CONFIDENCE
+
+                                                                             2
+16. Buy-Back and Sale Timing Conflicts:
+    Any discretionary buy-back or sale decision is subject to objective triggers, internal approval
+    independent of commercial functions, and compliance oversight. Tokinvest does not use
+    buy-backs or sale timing to influence prices or generate trading profits, and all actions are
+    documented and reviewable.
+
+17. We have no obligation to inform you about tax or legal consequences of Virtual Asset
+    Trading.
+
+18. You are advised to read and understand the risks involved in trading and custody of Virtual
+    Assets.
+
+19. Anyone who uses our Site or the Brokerage Services acknowledges and agrees that
+    Tokinvest shall not be responsible for or otherwise liable for any direct or indirect loss or
+    damage of any kind whatsoever arising directly or indirectly from the occurrence in full or in
+    part of any or all of the following risk events. Notwithstanding the foregoing, Tokinvest does
+    exclude any form of actual or potential civil liability in respect of providing inaccurate or
+    misleading information.
+
+20. You will also need to read the whitepaper, and any other offering memorandum associated
+    with Virtual Asset issuances.
+
+21. While most of the Virtual Assets which Tokinvest will broker are expected to be real world
+    asset backed Virtual Assets, there is a risk of volatility and unpredictability of the price of
+    Virtual Assets relative to fiat currencies.
+
+22. Trading in Virtual Assets may be susceptible to irrational market behaviour and may carry an
+    elevated risk of financial crime, including fraud, market manipulation, or illicit activity.
+
+23. The nature of Virtual Assets may lead to an increased risk of cyber-attack and there may be
+    limitations around mechanisms for the recovery of lost or stolen Virtual Assets.
+
+24. Virtual Asset balances are generally maintained as an address on the blockchain and are
+    accessed through private keys, which may be held by a market participant or a custodian.
+    Although Virtual Asset transactions are not typically private and are publicly available on a
+    blockchain or distributed ledger, the public address does not identify the controller, owner
+    or holder of the private key. Unlike bank and brokerage accounts, Virtual Asset exchanges
+    and custodians that hold Virtual Assets do not always identify the owner. The opaque
+    underlying or spot market may pose asset verification challenges for market participants,
+    regulators and auditors and potentially give rise to an increased risk of manipulation and
+    fraud.
+
+25. You are hereby notified, accept and confirm your understanding that Virtual Assets:
+
+     a. may lose their value in part or in full;
+     b. may not always be transferable;
+     c. may not be liquid; and
+     d. may be subject to fraud, manipulation, theft, including through hacks and other targeted
+
+         schemes, and loss.
+
+                                                           COMMERCIAL IN CONFIDENCE
+
+                                                                             3
+    There is no assurance that you will be able to sell Virtual Assets.
+
+26. The regulatory treatment of Virtual Assets differs across jurisdictions and may evolve.
+    Regulatory actions by VARA or by non-VARA authorities may restrict cross-border transfers,
+    trading on certain platforms, or access by investors in particular jurisdictions. Such changes
+    may adversely affect liquidity, market value, or the ability to hold or transfer Tokens.
+
+27. Trading on an online platform exposes the participants to internet related risks and the
+    internet may be unreliable or unavailable at any given time. Interruption, delay, corruption
+    or loss of data or loss of confidentiality in the transmission of data, may occur when
+    transmitting data via the internet and trading instructions may be delayed, intercepted,
+    altered, or lost during transmission, due to hardware, software or network connectivity
+    issues or any other issues arising from service provided by third party vendors.
+
+28. Virtual Assets are a new and evolving asset class and are part of a new and rapidly evolving
+    industry that is subject to a degree of uncertainty. The investment characteristics of
+    particular Virtual Assets may differ significantly.
+
+29. The legal status of certain Virtual Assets may be uncertain or vary from one country to the
+    next. You have a responsibility to comply with the relevant Applicable Laws.
+
+30. Transfer from or storage of Virtual Assets in a digital wallet exposes the Virtual Asset to the
+    risk of loss due to security breaches arising from hacking, phishing, social engineering,
+    smurfing, malware, spoofing and such other means and it may not be possible to recover
+    lost or stolen Virtual Assets.
+
+31. It may prove difficult to determine the value of a given Virtual Assets from time to time, due
+    to price volatility and the fragmentation of the markets and the creation of new and
+    innovative products and legal structures made possible by the use of tokenisation
+    technology. In addition, dispersed liquidity may pose challenges for market participants
+    trying to exit a position, particularly during periods of stress.
+
+32. Virtual Assets and the underlying DLT technology typically involve cryptographic and other
+    algorithmic protocols that regulate the issuance and transfer of Virtual Assets. This is a new
+    and rapidly evolving industry that is subject to a variety of factors that are difficult to
+    evaluate. As Virtual Asset networks continue to develop and grow, certain technical issues
+    might be uncovered, and the troubleshooting and resolution of such issues will likely require
+    the attention and efforts of decentralised development communities. The evolving nature of
+    DLT means that a malicious actor may be able to misappropriate your Virtual Assets.
+
+33. In addition to the provisions of this disclosure statement, we may make additional
+    disclosures from time to time or amend this statement in accordance with the requirements
+    set out Rule I.B of the VARA Broker-Dealer Services Rulebook, Market Conduct Rulebook and
+    Compliance and Risk Management Rulebook.
+
+34. Tokinvest uses, or will use, third-party providers for fiat services:
+
+     a. Zand Bank ­ UAE authorised bank for Tokinvest DMCC operational accounts and Client
+         Money Accounts.
+
+     b. Wio Bank for Tokinvest operational accounts.
+     c. Nomupay as a payment services provider.
+
+                                                           COMMERCIAL IN CONFIDENCE
+
+                                                                             4
+35. In addition to the risks associated with trading and investing in Virtual Assets, the below risks
+    are specifically associated with investment in Built Real Estate;
+
+         a. Rental Returns Risk: The yield in the rental market is determined by supply and
+              demand and other factors which means that rents may increase or decrease, and
+              which could impact the predicted yield of the investment over time.
+
+         b. Vacant Property Risk; Whilst Birmingham is a location with stable rental demand,
+              future changes in economic circumstances may mean that the property is
+              untenanted for periods which would impact profitability of the investment over the
+              period of ownership.
+
+         c. General Economic Risk: Changes in the local and international economic
+              environment may affect the demand for rental properties and the ability for tenants
+              to pay rent. They may also negatively affect the resale value of the property.
+
+         d. Potential Regulatory Changes: Unforeseen changes to laws or regulations such as
+              rent controls, tenancy protection or eviction rules could impact rental income,
+              property values and management costs.
+
+         e. Property Maintenance Costs: Unforeseen damages to the property from tenants,
+              construction quality, environmental issues or other factors could incur unexpectedly
+              large costs which would impact overall investment returns.
+
+         f. Insurance Risks: Whilst Tokinvest will make every reasonable effort to maintain
+              adequate and comprehensive insurance cover, certain risks may not be covered
+              such as natural disasters or terrorism. Claims for losses may not result in full payouts
+              and any claims could result in increased future premium costs which may affect
+              profits.
+
+         g. Tenancy Risks: Tokinvest and its agents will undertake all reasonable due diligence
+              processes to ensure that only suitable tenants are accepted, however there are risks
+              that;
+                    i. tenants violate lease terms and conditions,
+                    ii. tenants fail to pay rent in a timely manner, or to pay at all,
+                   iii. tenants damage the property
+
+              Any or all of the above may lead to financial losses, including from eviction or other
+              legal processes which may prove lengthy and/or costly. There is also a risk of
+              reputational damage if such a situation arises.
+
+         h. Property Management Risks: The Issuer will endeavour to select and work with
+              established property management companies with excellent reputations, however
+              there is a risk that breakdowns in operational processes such as maintenance,
+              tenant support, rent collection and others could lead to tenant dissatisfaction, legal
+              issues or financial losses. Tokinvest or the property management company may rely
+              on third-party contractors for some services and there is a risk that these third-party
+              contractors do not fulfil their obligations to the standard required.
+
+                                                           COMMERCIAL IN CONFIDENCE
+
+                                                                             5
+         i. Short-Term Rental Risks: If the property is rented on a short-term basis there may be
+              additional risks related to high tenant turnover, vacant periods and changes in local
+              regulations around short-term rentals including additional taxes.
+
+         j. Resale Price Risk: While the intention is for this to be a long term Virtual Asset,
+              Tokinvest, reserves the right, in its sole discretion, to sell the underlying property
+              where it reasonably determines that circumstances justify an early sale, including
+              but not limited to: material changes in market conditions, regulatory developments,
+              unforeseen risks to the property or the project, or opportunities to realize enhanced
+              value for token holders. There is a risk that at this time market conditions are less
+              favourable and the property may have fallen in price or be difficult to sell as quickly
+              as desired. This could lead to a negative equity situation which would result in the
+              tokens having a redemption value below their issue price.
+
+         k. Environmental Risks: All properties are at risk from unforeseen natural disasters
+              such as flooding, fires and other catastrophic events. Insurance coverage may not
+              fully compensate for damages, cost of repairs and loss of rental income from such an
+              event.
+
+         l. Foreign Exchange Risk: The underlying Property is denominated in GBP. BREI Tokens
+              are issued in AED and may be reported or distributed in a permitted distribution
+              currency supported by Tokinvest's regulated infrastructure, which may include fiat
+              currency or a VARA-permitted Virtual Asset.
+              As a result:
+              · FX movements between GBP and the applicable distribution currency may affect
+                   the value of rental income and sale proceeds when converted.
+              · FX movements between issuance and sale may increase or reduce the amount
+                   ultimately distributed to tokenholders.
+              · Secondary-market pricing may reflect currency expectations and exchange rate
+                   volatility.
+
+              Where conversion from GBP is required prior to distribution, conversion will be
+              effected using the relevant GBP/[distribution currency] reference rate captured at
+              12:00 GMT on the applicable conversion date. The reference rate is sourced from
+              Tokinvest's designated pricing data provider, Fixer.io (APILayer).
+              Currency markets may be volatile and unpredictable. Macroeconomic, geopolitical,
+              or regulatory developments may materially affect exchange rates.
+              Tokenholders bear the full impact of foreign exchange movements.
+
+36. Distributed Ledger Technology and Smart Contract Risk
+    BREI Tokens and associated rights are issued, recorded, transferred, and administered using
+    distributed ledger technology (`DLT') and smart contracts. Such technology is subject to
+    inherent risks, including vulnerabilities, coding errors, logic flaws, security weaknesses, or
+    unforeseen interactions that may result in malfunction, loss of functionality, unintended
+    execution, or the loss, freezing, or misallocation of tokens or associated Client Assets. Smart
+    contracts may be subject to upgrades, patches, migrations, or other modifications in order
+    to address security issues, regulatory requirements, or operational needs; such changes may
+    alter BREI Token functionality, rights, or user experience and may require investor action or
+    result in temporary or permanent disruption. In certain circumstances, administrative
+    controls, privileged access, or override mechanisms may exist to enable Tokinvest or
+
+                                                           COMMERCIAL IN CONFIDENCE
+
+                                                                             6
+    authorised parties to intervene in the operation of smart contracts or the underlying ledger,
+    including to comply with legal or regulatory obligations, respond to incidents, or protect
+    Client Assets; the exercise of such powers may result in delays, restrictions, reversals, or
+    other limitations on investor transactions. Investors acknowledge that reliance on
+    distributed ledger technology and smart contracts involves technical and governance risks
+    that may adversely affect access to, control over, or value of BREI Tokens, and that such risks
+    may materialise notwithstanding the implementation of security audits, controls, or
+    safeguards.
+
+37. Secondary Market Liquidity and Price Formation Risk
+    Any secondary market in which BREI Tokens may be admitted to trading or otherwise made
+    available is not guaranteed to be liquid, continuous, or orderly. There may be limited or no
+    active buyers or sellers at any time, and investors may be unable to sell BREI Tokens, or may
+    only be able to do so at prices significantly below the price paid or any indicative net asset
+    value (`NAV') Where multiple trading venues or bilateral arrangements exist, liquidity may
+    be fragmented, resulting in inconsistent pricing, reduced depth, and impaired price
+    discovery. Any Indicative NAV is provided for informational purposes only, may be based on
+    assumptions, estimates, or models, and does not represent a binding, executable, or
+    guaranteed price at which BREI Tokens can be bought or sold. Market prices may deviate
+    materially and persistently from any Indicative NAV due to supply and demand dynamics,
+    market conditions, regulatory constraints, or other factors beyond Tokinvest's control.
+    Investors acknowledge that the ability to realise value from BREI Tokens is subject to these
+    risks and that access to Client Assets may not translate into timely or favourable liquidity.
+
+38. Platform Suspension Risk
+    Tokinvest maintains systems and controls designed to safeguard Client Assets in accordance
+    with applicable regulatory requirements. Notwithstanding such controls, Tokinvest may be
+    required, or may determine it is necessary, to suspend access to the Platform, in whole or in
+    part, including for operational, security, risk-management, legal, or regulatory reasons.
+    During any period of suspension, Users may be temporarily unable to access their accounts,
+    submit instructions, or initiate transactions relating to Client Assets, including deposits,
+    withdrawals, transfers, or conversions. Such suspension may occur to protect Client Assets,
+    maintain system integrity, comply with regulatory obligations, or respond to actual or
+    suspected incidents affecting the Platform.
+    Tokinvest does not guarantee uninterrupted access to the Platform or that any suspension
+    will be resolved within a particular timeframe. Users acknowledge that Platform suspension
+    may result in delays, missed opportunities, or other adverse consequences, and that access
+    to Client Assets may be restricted during such periods in accordance with applicable law and
+    regulatory direction.
+
+39. Regulatory Intervention Risk
+    The Platform and the handling of Client Assets are subject to ongoing regulatory oversight.
+    Regulatory authorities may issue directions, impose conditions, or require actions that affect
+    the safeguarding, access, movement, or treatment of Client Assets, including the imposition
+    of restrictions, enhanced controls, reporting obligations, or suspension of certain activities.
+
+                                                           COMMERCIAL IN CONFIDENCE
+
+                                                                             7
+    Regulatory intervention may require Tokinvest to delay, restrict, or refuse the execution of
+    User instructions relating to Client Assets, including withdrawals or transfers, where such
+    action is necessary to comply with applicable laws, regulatory requirements, or supervisory
+    directions.
+
+    Users acknowledge that regulatory intervention may occur without prior notice and may
+    materially affect their ability to access or deal with Client Assets. Tokinvest shall act in
+    accordance with regulatory requirements and directions, even where such actions conflict
+    with User expectations or instructions.
+
+40. VARA Licence Suspension or Revocation Risk
+    Tokinvest's authority to provide services involving the custody, safeguarding, or
+    administration of Client Assets is contingent upon the maintenance of a valid regulatory
+    licence. There is a risk that such licence may be suspended, restricted, or revoked as a result
+    of regulatory action, supervisory findings, enforcement measures, or changes in applicable
+    regulatory requirements.
+    In the event of licence suspension, restriction, or revocation, Tokinvest may be required to
+    immediately cease certain or all regulated activities and to implement measures directed by
+    the regulator, including restrictions on Client Asset movements, the orderly wind-down of
+    services, or the transfer of Client Assets to another regulated entity.
+    Users acknowledge that licence-related regulatory action may materially affect access to
+    Client Assets and that withdrawals, transfers, or other dealings may be delayed or restricted
+    in accordance with regulatory requirements. There is no assurance that Client Assets can be
+    returned or transferred within a specific timeframe, particularly where regulatory approval
+    or oversight is required.
+
+41. Geo-Restriction Risk
+    The availability of Platform services, including the safeguarding and administration of Client
+    Assets, is subject to jurisdictional restrictions arising from applicable laws, regulations,
+    sanctions regimes, or regulatory guidance. Tokinvest may restrict, suspend, or terminate
+    access to the Platform or specific services based on a User's location, residency, nationality,
+    or place of incorporation.
+    Where geo-restrictions apply, Tokinvest may be required to prevent further onboarding,
+    restrict transactions, or limit access to Client Assets, including the suspension of deposits,
+    withdrawals, or transfers. Such measures may be implemented immediately and without
+    prior notice where required to comply with legal or regulatory obligations.
+    Users acknowledge that the imposition of geo-restrictions may result in limited or delayed
+    access to Client Assets and that continued use of the Platform is subject to ongoing eligibility
+    under applicable laws and regulatory requirements.
+
+                                                           COMMERCIAL IN CONFIDENCE
+                                                                             8
+

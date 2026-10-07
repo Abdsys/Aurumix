@@ -21,5 +21,4 @@ node_modules/
 !deliverables/4-revenue-modeling/final/*.pdf
 !deliverables/6-whitepaper/final/*.pdf
 
-# Third-party regulatory benchmark documents: local only, never pushed
-reference/
+!reference/regulatory-benchmarks/**/*.pdf

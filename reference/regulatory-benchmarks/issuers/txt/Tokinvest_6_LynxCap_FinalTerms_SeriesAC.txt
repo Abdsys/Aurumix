@@ -1,0 +1,282 @@
+Docusign Envelope ID: D18F13E1-E257-88CF-81ED-1806BA8240C1
+
+                                            LCL OPPORTUNITIES 3 S.à r.l.
+
+ a private limited liability company (société à responsabilité limitée) organised under the laws of the
+   Grand Duchy of Luxembourg, having its registered office at 34, rue du Curé, L-1368 Luxembourg,
+
+Grand Duchy of Luxembourg, registered with the Luxembourg Register of Commerce and Companies
+              (Registre de Commerce et des Sociétés) under number B 260326 (the "Issuer")
+
+                                      LEI number 485100EKU8FVREA8DP27
+
+                         Final Terms of Series AC digital bonds (the "Digital Bonds")
+      issued pursuant to the up to EUR 1.000.000 (one million euros) (or its equivalent in other
+ currencies) secured digital bonds issuance programme dated 26 February 2026 as amended on 16
+
+                                                      March 2026
+
+                                                         PART A
+                                               CONTRACTUAL TERMS
+
+Final Terms used herein shall be deemed to be defined as such for the purposes of the terms and
+conditions of the Digital Bonds and as set forth in the Information Memorandum dated 26 February
+2026. This document constitutes the Final Terms of the Digital Bonds described herein and must be
+read in conjunction with the Information Memorandum. Full information on the Issuer and the offer
+of the Digital Bonds is only available on the basis of the combination of these Final Terms and the
+Information Memorandum (as supplemented from time to time). The Information Memorandum is
+available for viewing on the website of the LynxCap group (https://www.lynxcapinvestments.com).
+
+Terms defined in Section 12 (Definitions) of the Information Memorandum should have the same
+meaning herein, unless specified otherwise.
+
+THESE FINAL TERMS WILL BE IMPLEMENTED IN SMART CONTRACTS.
+
+The Series AC shall have the following terms and conditions which shall complete, modify and amend
+the terms and conditions set out in the Information Memorandum.
+
+SHOULD THE ASSETS OF THE ISSUER NOT BE SUFFICIENT TO MEET AMOUNTS PAYABLE UNDER THE
+DITIGAL BONDS, DIGITAL BONDHOLDERS WILL SUFFER A LOSS OF THEIR INVESTED CAPITAL AND/OR
+ANY INTEREST PAYMENTS WHICH MAY BE A COMPLETE LOSS. AFTER THE REALISATION OF THE
+ASSETS, SHOULD THERE BE NO FUNDS AVAILABLE FOR THE PAYMENT OF ANY AMOUNT DUE BY THE
+ISSUER TO THE DIGITAL BONDHOLDER UNDER THE DIGITAL BONDS, INCLUDING IN RESPECT OF
+INTEREST (FIXED OR FLOATING OR OTHERWISE) OR PRINCIPAL, NO PAYMENT MAY BE MADE.
+
+1. Issuer:                                                  LCL OPPORTUNITIES 3 S.à r.l.
+2. (i) Series Number:                                       AC
+Docusign Envelope ID: D18F13E1-E257-88CF-81ED-1806BA8240C1
+
+(ii) Tranche Number:                                        1
+
+(iii) Date on which the Digital Bonds Not Applicable.
+become fungible:
+
+3. Specified Currency or Currencies:                        EUR
+
+                                                            N.B.: if the Issue Price is paid in any other currency
+                                                            that FIAT currency, any potential investor should
+                                                            refer to Section 9.3. (Issue procedure ­
+                                                            transferability) of the Information Memorandum.
+
+4. Aggregate Issue Size:
+
+(i) Series:                                                 Up to 1,000,000 units
+
+(ii) Tranche:                                               Up to 1,000,000 units
+
+5. Issue Price:                                             1 Euro per Digital Bond
+
+                                                            N.B.: if the Issue Price is paid in any other currency
+                                                            that FIAT currency, any potential investor should
+                                                            refer to Section 9.3. (Issue procedure ­
+                                                            transferability) of the Information Memorandum.
+
+6. Aggregate Proceeds:                                      Up to 1,000,000.00 Euro
+
+7. (i) Specified Denominations:                             The Digital Bonds are issued with a minimum
+                                                            denomination of EUR 1.- each.
+
+(ii) Calculation Amount:                                    EUR 1.-
+
+8. (i) Issue Date:                                          15 May 2026
+
+(ii) Interest Commencement Date:                            Issue Date.
+
+9. Maturity Date:                                           15 May 2030
+
+10. Interest Basis:                                         Ten-point-zero percent (10.0%) Fixed Rate per
+                                                            annum (further particulars specified below)
+
+11. Redemption/Payment Basis:                               Redemption at par. Subject to any purchase and
+                                                            cancellation or early redemption in accordance with
+                                                            the conditions set out in the Information
+                                                            Memorandum, the Digital Bonds will be redeemed
+Docusign Envelope ID: D18F13E1-E257-88CF-81ED-1806BA8240C1
+
+                                                            10 Business Days after the Maturity Date at the Final
+                                                            Redemption Amount.
+
+12. Call Option:                                            Applicable.
+                                                            (further particulars specified below)
+
+13. Date of Issuer's approval for issuance 23 April 2026
+        of Digital Bonds:
+
+14. Status of the Digital Bonds:                            The Digital Bonds rank equally among themselves
+                                                            and (subject to the provisions of any security
+                                                            documents) pari passu in right of payment with all
+                                                            other present and future unsecured and
+                                                            unsubordinated obligations of the Issuer (except
+                                                            for obligations mandatorily preferred by law).
+
+15. Method of distribution:                                 Non-syndicated.
+
+PROVISIONS RELATING TO INTEREST (IF ANY PAYABLE)
+ 16. Fixed Rate Digital Bonds Provisions Applicable
+
+(i) Rate of Interest:                                       Ten-point-zero percent (10.0%) per annum payable
+                                                            quarterly on each Interest Payment Date.
+
+(ii) Interest Payment Date(s):                              Quarterly in each year, 10 Business Days after
+                                                            Determination Date from and including Issuance
+                                                            Date up to, and including the Maturity Date, in
+                                                            accordance with the Preceding Business Day
+                                                            Convention.
+
+                                                            The first Interest Period shall be the period
+                                                            commencing on, and including, the Interest
+                                                            Commencement Date and ending on, but excluding,
+                                                            the first Interest Payment Date.
+
+(iii) Business Day Convention:                              Preceding Business Day Convention.
+
+(iv) Fixed Coupon Amount:                                   Calculation amount multiplied by the interest rate.
+
+(v) Broken Amount(s):                                       Calculation amount multiplied by the interest rate
+                                                            on pro rata temporis basis for the first and the last
+                                                            coupon payment.
+
+(vi) Day Count Fraction:                                    Actual/Actual (ICMA).
+Docusign Envelope ID: D18F13E1-E257-88CF-81ED-1806BA8240C1
+
+(vi) Determination Date(s):                                 1 January, 1 April, 1 July and 1 October in each year.
+
+17. Floating Rate Digital Bonds Provisions Not Applicable.
+
+PROVISIONS RELATING TO REDEMPTION
+
+18. Call Option                                             Applicable.
+
+(i) Optional Redemption Date(s):                            As from 15 May 2028.
+
+(ii) Optional Redemption Amount(s) Calculation Amount plus accrued and unpaid
+and method, if any, of calculation of Interest.
+such amount(s):
+
+(iii) Notice period (if other than as set As stated in the Information Memorandum.
+out in the Information
+Memorandum):
+
+19. Final Redemption Amount                                 Calculation Amount plus accrued and unpaid
+                                                            Interest until but excluding the Final Redemption
+                                                            Date.
+
+(ii) Party responsible for calculating Issuer.
+the Final Redemption Amount (if not
+the Calculation Agent):
+
+(iii) Provisions for determining Final                      Not applicable.
+Redemption Amount where
+calculated by reference to and/or
+other variable:
+
+(iv) Determination Date(s):                                 Early Redemption Date, or FME Redemption Date or
+                                                            Final Redemption Date.
+
+(v) Provisions for determining Final                        Not applicable.
+Redemption Amount where
+calculation by reference is impossible
+or impracticable or otherwise
+disrupted:
+
+(vi) Payment Date:                                          10 Business Days after Maturity Date, or Early
+                                                            Redemption Date, or FME Redemption Date Final
+                                                            Redemption Date.
+Docusign Envelope ID: D18F13E1-E257-88CF-81ED-1806BA8240C1
+
+(vii) Minimum Final Redemption Not Applicable.
+Amount:
+
+(viii) Maximum Final Redemption Not Applicable.
+Amount:
+
+20. Early Redemption Amount                                 Calculation Amount plus accrued and unpaid
+
+                                                            Interest.
+
+Early Redemption Amount(s) payable
+
+on redemption for taxation reasons or
+
+on event of default, or in the case of a
+
+Force Majeure Event, or other early
+
+redemption and/or the method of
+
+calculating the same (if required or if
+
+different from that set out in Section
+
+9.11 of the Information Memorandum
+
+(Redemption, purchase and options)
+
+21. Put Option                                              Applicable.
+
+(i) Put Option Date(s):                                     15 May 2028 and 15 May 2029.
+
+(ii) Put Option Amount:                                     Shall correspond to the Put Option Amount as
+                                                            indicated in section 9.11.5. (Early Redemption at the
+                                                            Option of a Digital Bondholder ("Put Option")) of the
+                                                            Information Memorandum subject to any
+                                                            Information Notice that may amend such amount.
+
+(iii) Put Option Notice (if other than as                   The Put Option remains subject to any Adverse Event
+set out in the Information                                  as indicated in section 9.11.5. (Early Redemption at
+Memorandum):                                                the Option of a Digital Bondholder ("Put Option"))
+                                                            of the Information Memorandum.
+
+GENERAL PROVISIONS APPLICABLE TO THE DIGITAL BONDS
+
+22. Form of Digital Bonds:                                  Registered Digital Bonds
+
+23. DLT type:                                               Public
+
+24. Smart contract number:                                  0x83eCECE38d58C7CCa6085462F2437Ad67c7c338F
+
+25. ISIN code of the Digital Bonds                          XS3356029788
+
+26. Common code of the Digital Bonds Not applicable.
+Docusign Envelope ID: D18F13E1-E257-88CF-81ED-1806BA8240C1
+
+27. Payment gateway provider:                               As agreed in the Subscription Form.
+
+28. Financial centre for payment:                           Luxembourg
+
+29. Governing law:                                          Luxembourg law
+
+                    PART B ­ OTHER INFORMATION
+
+1. RATINGS AND FINANCIAL GUARANTEE INSURANCE
+
+The Digital Bonds issued are not rated, are not guaranteed or insured.
+
+2. REASONS FOR THE OFFER ­ USE OF PROCEEDS
+
+The net proceeds of the issuance of the Digital Bonds will be applied by the Issuer to acquire bonds
+issued by LCL Opportunities Luxembourg S.C.S., which are listed on the professional segment of the
+Euro MTF of the Luxembourg Stock Exchange.
+
+This Final Terms comprises the final terms required for the issue of the Digital Bonds described herein
+pursuant to the up to EUR 1,000,000 (or its equivalent in other currencies) Digital Bonds Programme
+of the Issuer.
+
+3. RESPONSIBILITY
+
+The Issuer accepts responsibility for the information contained in this Final Terms, which, when read
+together with the Information Memorandum (and any supplement thereto) referred to above, contain
+all information that is material in the context of the issue of the Digital Bonds.
+
+23 April 2026
+
+_____________________________
+Signed on behalf of the Issuer
+by Mr. Peteris Kadiss
+acting as category A manager
+
+_____________________________
+Signed on behalf of the Issuer
+by Mrs. Dora Vrki Oriskovi
+acting as category B manager
+

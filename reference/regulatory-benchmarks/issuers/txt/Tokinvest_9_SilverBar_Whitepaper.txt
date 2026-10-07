@@ -1,0 +1,2295 @@
+                                       Tokinvest DMCC
+            Tradeflow Warrant (1971 Silver Bar Commodity) token
+
+                            Virtual Asset Whitepaper ­ DTFW
+                                      7 September 2026
+
+REGULATORY DISCLAIMER
+VARA has not taken any steps to verify the information set out in this whitepaper, including its
+accuracy and completeness, and has no responsibility for any loss arising from reliance on it. The
+liability for the content of the whitepaper lies with the Issuer.
+
+This whitepaper is a regulated disclosure document prepared in accordance with the requirements of
+the Dubai Virtual Asset Regulatory Authority (VARA). It is intended to provide prospective investors
+with a clear explanation of the structure, risks, and economic characteristics of the Token.
+
+Core Product Sections (Sections 1­9)
+These sections contain the primary investor-facing disclosure and should be read first:
+
+1. Key Features & Core Definitions
+2. Product Overview
+3. Parties, Roles & Responsibilities
+4. Reference Asset & Asset Structure
+5. Token Economics & Distribution Mechanics
+6. Issuance, Subscription & Token Supply
+7. VA Trading Platform, Secondary Market Trading & Pricing
+8. Structural Limitations & Governance Mechanisms
+9. Legal Structure & Investor Protections
+
+Appendices (Supporting Disclosures)
+The appendices contain supporting detail required for completeness and regulatory transparency:
+
+Appendix A  Issuer Overview, Governance & Regulatory Status
+Appendix B  Tradeflow Warrant and Asset Custody Details
+Appendix C  Tokenisation, Custody, Settlement and Flow of Funds
+Appendix D  Additional Regulatory Disclosures and Definitions
+Appendix E  Supplementary Documentation Details
+
+This whitepaper does not constitute investment advice, a recommendation, or a forecast of
+performance. Prospective investors should read this whitepaper together with the applicable Risk and
+Disclosure Statement and issuance-specific documentation, and should assess the product in light of
+their own financial circumstances, objectives, and risk tolerance.
+
+The appendices form an integral part of this whitepaper. However, not all investors will need to read
+every appendix in full.
+1. KEY FEATURES & CORE DEFINITIONS
+
+This section sets out the principal features of the Token and establishes the key roles, assets, and
+economic concepts used throughout this whitepaper. Capitalised terms introduced here are used
+consistently in the sections that follow.
+
+Issuer and Reference Asset Owner
+Tokinvest DMCC, in its capacity as the regulated issuer of the DTFW Tokens (the "Issuer").
+
+Tokinvest DMCC, also holds and maintains full title of ownership of the tokenised Tradeflow Warrant.
+Each token entitles the holder to fractional ownership of the underlying Reference Asset as Tokinvest
+holds the Reference Asset solely in its capacity as trustee for the benefit of Tokenholders and not in
+its personal or proprietary capacity.
+
+As a VARA-licensed broker-dealer and issuer, Tokinvest intends to undertake additional issuances in
+the future, aligned with its strategic roadmap and subject to regulatory approvals.
+
+Token
+The DTFW token issued under this whitepaper, representing a contractual, time-limited economic
+participation right linked to a defined Reference Asset (the "Token").
+
+Product Type
+Asset-Referenced Virtual Asset (ARVA), issued under the Dubai Virtual Assets Regulatory Authority
+(VARA) framework.
+
+Reference Asset
+A specified DMCC Tradeflow Warrant which represents full legal title to the underlying asset described
+in the warrant. In purchasing the Refence Asset the ownership rights associated with the Reference
+Asset are passed to The Issuer in a legally and contractually binding manner. The unique Warrant
+Number which identifies the Reference Asset is SAM2T and a copy of the Tradeflow Warrant can be
+found in Appendix B.
+
+Custodian
+The Underlying Asset to which each warrant relates is held in physical custody by an independent
+third-party custodying agent (the "Custodian"), which may include Brinks or another internationally
+recognised vaulting and logistics provider, pursuant to a custody or storage agreement entered into
+with the relevant warehouse operator or warrant holder.
+
+Underlying Asset
+A DMCC Tradeflow Warrant provides a clear, enforceable security interest over an underlying
+commodity held in DMCC-approved storage facilities. The underlying asset which is held by the
+Reference Asset for this whitepaper is 1,971kg of high purity silver minted into a world record
+breaking individual bar. This is a unique and historically relevant item minted to celebrate the 50-
+year anniversary of the formation of the United Arab Emirates (the `Underlying Asset').
+
+Economic Nature of the Token
+Each Token represents a direct, undivided and fractional beneficial interest in the Trust Property
+(being the Reference Asset and associated rights held on trust), and such interest shall be
+enforceable against Tokinvest and any successor, liquidator, administrator or insolvency officer.
+Economic Term
+The fixed economic term applicable to a Token issuance, being ten (10) years commencing at
+issuance and ending at expiry, where Tokenholders may participate in net sale proceeds (if any)
+generated by the Reference Asset (the "Economic Term").
+
+Token Price
+The price per Token is set at the time of issuance (the "Token Price"). Note that as the Underlying
+Asset commodity described by the Reference Asset is high purity silver, the issued token price can
+only be determined at a specific time on the issuance date and referenced to the prevailing market
+price with a pre-determined numismatic (or collectibilty) premium due to the historical relevance and
+unique nature of the Underlying Asset.
+
+Subscription Period
+The fixed subscription window during which eligible investors may submit binding subscriptions for
+Tokens, being a period of thirty (30) days, with an option for Tokinvest to extend for a further 30 day
+periods if necessary to support a completed subscription (the "Subscription Period").
+
+Yield/Revenue Distributions
+Tradeflow warrants are not yield-bearing assets and there are no revenue or other periodic
+distributions for this token.
+
+Cost Structure
+Tokenholders are not liable for any future operating, maintenance, management, insurance or storage
+costs through the life of the token. All transaction and related costs are detailed clearly in section 6 of
+this whitepaper.
+
+Expiry
+At the end of the Economic Term, the Underlying Asset is sold and the transaction proceeds, net of
+costs, are distributed proportionally to tokenholders. Once distribution is completed the tokens are
+burnt with zero residual value.
+
+Secondary Market Trading
+Tokens may be traded on the Tokinvest platform and other appropriately licensed venues, subject to
+market conditions, liquidity, and compliance requirements.
+
+Investor Eligibility
+Participation is limited to eligible investors who have completed all applicable AML/KYC, onboarding,
+and jurisdictional compliance requirements as detailed in this whitepaper.
+
+Risk Profile
+Returns are not guaranteed. Commodity prices fluctuate and numismatic premiums may change over
+time. The value of the tokens is directly linked to the current market value of the Underlying Asset.
+Tokens may thus lose value in part or in full.
+
+2. PRODUCT OVERVIEW
+2.1 Overview and Reason for Public Offer
+The DTFW Virtual Asset issue is a commodity-referenced token which represents pass-through
+fractional ownership of a specific Reference Asset that confers legal title to the Underlying Asset.
+These rights are created via the Issuer holding, upon successful completion of the subscription
+process, the Reference Asset on behalf of Tokenholders. It is designed to provide eligible investors
+with exposure to revenues generated by price performance of real-world commodity assets, through
+conferring tokenised ownership of the warrant that relates to those assets.
+
+The DTFW gives investors the opportunity to undertake fractional investments in the world's most
+important commodities with clear oversight of the underlying asset. This differs from investments
+which purport to track the change in financial value of such assets without an auditable holding of the
+asset itself. This mitigates risks associated with derivative-based tracking, including tracking error and
+reliance on intermediary performance, by anchoring token value to a legally identifiable and verifiable
+asset.
+
+The Issuer has created the first token backed by a DMCC-issued Tradeflow Warrant as the Reference
+Asset. Tradeflow Warrants offer investors the security of knowing that the referenced commodity
+asset has been inspected, verified and securely custodied by a world-leading authority and is
+protected by a clear enforceable security interest.
+
+Each issuance references a specific Reference Asset and provides tokenholders with a contractual,
+time-limited right to participate in the price performance (if any) generated by the Underlying Asset
+during a fixed Economic Term.
+
+The Issuer plans to bring additional DTFW tokenised offerings of different Reference Assets that
+represent underlying commodity ownership in the future. Any new token offering will represent a
+different Reference Asset and necessitate a new instance of the DTFW token and supporting
+whitepaper
+
+Token Naming
+The Token has been given the short name `DTFW' as it represents an issuance of tokens
+fractionalising the Reference Asset; a specific DMCC Tradeflow Warrant which is issued out of Dubai.
+
+Each Token will have its own uniquely identified DTFW name, which describes the underlying
+commodity asset that is represented by the warrant.
+
+The token name for this Issuance is `DTFW ­ 1971 Silver Bar'. This would be the name used on the
+Issuer's internal platform and would be recorded in the metadata of the smart contract. The on-chain
+name will be based on the issue number of the specific token TVTVDTFW001 is the first token.
+
+2.2 What the Token Is
+Each Token:
+
+    · is a Virtual Asset issued under the Issuer's VARA-licensed issuance framework;
+    · references a single, defined Reference Asset specific to that issuance;
+    · provides exposure solely to price performance of the Underlying Asset generated during the
+
+         Economic Term; and
+    · is designed to expire at the end of a fixed period and return the proportional net sale value of
+
+         the asset to tokenholders before being burnt for zero residual value.
+The Token is intended to function as a price-performance, finite-life instrument rather than as an
+equity interest, perpetual asset, or yield-paying product.
+
+2.3 What the Token Is Not
+The Token does not:
+
+    · represent ownership, title, or any proprietary interest in the Issuer;
+    · include principal protection or guaranteed returns; or
+    · confer any rights of control, governance, or decision-making over the Underlying Asset, the
+
+         Reference Asset, or the Issuer.
+
+2.4 Reference Asset Concept
+For each issuance, the Reference Asset represents a predefined Underlying Asset as described in the
+Tradeflow Warrant.
+
+The contractual details of the Reference Asset - including the specific Underlying Asset, quantities,
+and applicable quality characteristics - are determined prior to launch and disclosed to investors
+before the Subscription Period opens.
+
+Once an issuance is completed, the Reference Asset associated with that issuance remains fixed in
+scope and composition for the duration of the Economic Term.
+
+2.5 Economic Logic
+The economic logic of the Token is as follows:
+
+    · Tokenholders receive blockchain-based access to fractionalised ownership of the Reference
+         Asset;
+
+    · the Reference Asset in turn gives legal ownership rights to the Underlying Asset; and
+    · the economic value of the Token reflects the market value of the Underlying Asset at any
+
+         given time.
+
+In cases where the Underlying Asset possesses attributes beyond its intrinsic commodity content--
+such as artistic, historic or collectible significance--the value of the Token may reflect such attributes
+in addition to, and independently of, the prevailing market-traded price of the relevant commodity.
+
+The Issuer does not represent that the Token will necessarily track or correlate with commodity
+benchmark prices, and no assurance is given that any numismatic, collectible or non-commodity
+value attributed to the underlying asset will be realised upon sale, transfer, or liquidation.
+
+2.6 Role of the Issuer
+The Issuer acts as the regulated issuer of the Token and operates regulated issuance and secondary-
+market infrastructure under the VARA framework. The Issuer is the custodian and manager of the
+Reference Asset, providing beneficial ownership and fractional entitlement to tokenholders at all
+times.
+
+Responsibilities and limitations are defined contractually and do not extend to any guarantee of
+revenue generation or investor returns.
+Further detail on the roles, responsibilities, ownership structure, and limitations of each party is
+provided in Section 3 (Parties, Roles & Responsibilities) and the relevant appendices.
+
+3. PARTIES, ROLES & RESPONSIBILITIES
+
+3.1 Overview
+The Token structure involves a limited number of clearly defined parties, each performing a distinct
+and non-overlapping role in the issuance, operation, and lifecycle of the product.
+
+This section describes the identity of each party, the capacity in which it acts, the assets or rights to
+which it relates, and the boundaries of responsibility between parties. More detailed legal,
+governance, and regulatory disclosures are set out in the appendices.
+
+3.2 Tokinvest DMCC ­ Issuer & Platform Operator
+Tokinvest DMCC ("Tokinvest"), in its capacity as the Issuer, acts as the regulated issuer of the Tokens
+and the operator of the primary issuance and secondary-market trading platform.
+
+In this capacity, Tokinvest is responsible for:
+
+    · structuring and issuing the Tokens under its VARA-licensed framework;
+    · preparing and publishing this whitepaper and associated disclosure documentation;
+    · maintaining issuance-level records relating to Token ownership and lifecycle events;
+    · facilitating secondary-market trading on the Tokinvest platform and approved VARA-licensed
+
+         venues;
+    · implementing custody and settlement arrangements via regulated third-party providers; and
+    · ensuring ongoing compliance with applicable VARA rulebooks and regulatory requirements.
+
+The Issuer does not provide investment advice, discretionary portfolio management, fiduciary
+services, or trustee services to Tokenholders.
+
+Further detail on the Issuer's regulatory status, governance framework, and internal controls is
+provided in Appendix A.
+
+3.3 Dubai Multi Commodities Centre (DMCC)
+Dubai Multi Commodities Centre ("DMCC") operates the Tradeflow platform, an electronic registry
+used for the registration, recording, and administration of commodity ownership instruments, including
+warehouse warrants. The Reference Asset to which each Token relates is issued, recorded, and
+maintained within the DMCC Tradeflow system in accordance with the applicable Tradeflow rules and
+procedures.
+
+DMCC and Tradeflow do not issue, sponsor, guarantee, or endorse the Tokens, and are not a party to
+the issuance, distribution, transfer, or redemption of the Tokens. DMCC does not act as issuer,
+custodian, trustee, registrar, broker, or agent in respect of the Tokens, nor does it assume any
+fiduciary or contractual obligations to Tokenholders.
+
+The role of DMCC is limited to maintaining the Tradeflow registry and facilitating the recognition and
+transfer of the relevant warrant within its system. Any rights in respect of the Underlying Asset arise
+solely through the Reference Asset as governed by the Tradeflow framework and applicable
+warehouse and storage arrangements, and not through DMCC itself.
+
+DMCC makes no representations or warranties, express or implied, as to the value, condition,
+existence, or marketability of the Underlying Asset, the performance of the Tokens, or the ability of
+Tokenholders to realise value from the Reference Asset. DMCC shall not be responsible for any
+losses arising from the issuance, holding, or transfer of the Tokens or from any act or omission of the
+Issuer or any third party.
+
+3.4 Custody Agent.
+
+The Custodian's role is limited to the safekeeping, storage, and handling of the Underlying Asset in
+accordance with the terms of the applicable custody or warehouse agreement. The Custodian does
+not issue, sponsor, guarantee, or endorse the Tokens and is not a party to the issuance, holding,
+transfer, or redemption of the Tokens.
+
+The Custodian does not act as trustee, fiduciary, registrar, or agent for Tokenholders and owes no
+direct contractual or fiduciary duties to Tokenholders. Tokenholders have no direct rights of action
+against the Custodian. Any rights in respect of the Underlying Asset arise solely through the relevant
+Reference Asset and are exercisable only in accordance with the terms of that Reference Asset, the
+applicable Tradeflow rules, and the relevant custody or warehouse arrangements.
+
+The Custodian makes no representations or warranties, express or implied, regarding the existence,
+quality, condition, valuation, or marketability of the Underlying Asset, and shall not be responsible for
+any losses arising from the issuance, holding, or transfer of the Tokens or from the acts or omissions
+of the Issuer or any third party.
+
+3.5 Reference Asset Ownership
+
+The Issuer:
+
+    · upon successful completion of the subscription process will hold the contractual title of
+         ownership for the Reference Asset for each issuance; and
+
+    · holds such Reference Asset on trust for Tokenholders so that the beneficial ownership rights
+         of the Tokenholders in the Reference Asset shall survive any insolvency, liquidation,
+         administration or restructuring of the Issuer as further described in section 9.3.
+
+3.6 Tokenholders
+Tokenholders:
+
+    · hold a contractual, time-limited economic interest in the economic performance (if any)
+         generated by the Underlying Asset during the Economic Term;
+
+    · are entitled to receive the proceeds of sale of the Underlying Asset in accordance with the
+         terms of the relevant issuance;
+
+    · can redeem their tokens for the Reference Asset provided they hold sufficient number (as
+         dictated by the terms of the issuance) in a single wallet; and
+
+    · may trade their Tokens on approved secondary markets operated by the Issuer, subject to
+         liquidity and market conditions.
+
+Tokenholders do not:
+    · have voting, governance, or control rights over The Issuer, or any related operations;
+    · have any entitlement to periodic interest or yield flows; or
+    · have any right to direct operational or strategic decisions.
+
+3.7 Insolvency and Continuity Considerations
+The Token structure is designed to clearly separate:
+
+    · The Issuer's role as issuer and platform operator;
+    · The Issuer's role as the owner of the Reference Asset, holding such Reference Asset on
+
+         behalf of Tokenholders to protect their rights in the case of insolvency of the Issuer.
+
+In the event of insolvency of the Issuer, the Reference Asset and associated economic rights remain
+structurally separate from the Issuer's insolvency estate in accordance with the provisions of section
+9.3 and subject to applicable law, court proceedings, and the legal framework described in Appendix
+C.
+
+Detailed insolvency, continuity, and risk considerations are set out in the Risk Disclosure Statement
+and the relevant appendices.
+
+3.8 Events of Default and Remedies
+
+Certain events may constitute a default affecting the operation or administration of the Token
+structure. These events include, but are not limited to:
+
+    · insolvency, liquidation, administration or similar proceedings affecting the Issuer;
+    · failure of the Issuer to maintain registration of the Reference Asset within the DMCC Tradeflow
+
+         system;
+    · failure to maintain appropriate custody, storage, or insurance arrangements for the Underlying
+
+         Asset;
+    · loss, damage, or destruction of the Underlying Asset where recovery or insurance proceeds
+
+         are unavailable; or
+    · a material breach by the Issuer of its contractual obligations relating to the issuance,
+
+         administration, or distribution mechanics of the Token.
+
+Where reasonably practicable, the Issuer will take appropriate steps to protect the interests of
+Tokenholders. Such steps may include:
+
+    · exercising contractual governance or coordination rights in relation to the Reference Asset;
+    · appointing a replacement service provider, custodian, or operational agent where required;
+    · initiating the orderly liquidation of the Underlying Asset and distributing the proceeds to
+
+         Tokenholders; or
+    · implementing contingency procedures consistent with the Issuer's regulatory wind-down and
+
+         continuity arrangements.
+
+Any recovery or distribution arising from such actions will be applied proportionally to Tokenholders in
+accordance with their respective Token holdings and the terms of the relevant issuance
+documentation.
+4. REFERENCE ASSET FRAMEWORK
+
+4.1 Overview of the Reference Asset
+Each issuance of the Token references an individual defined Reference Asset.
+
+The Reference Asset is not the Underlying Asset itself, but a DMCC Tradeflow Warrant which
+provides purchasers with demonstrable legal protection by creating a clear, enforceable security
+interest over the Underlying Asset held in DMCC-approved storage facilities. Each warrant is issued
+only after the goods have been independently verified, documented, and placed under the control of a
+licensed warehouse operator, who becomes legally responsible for safeguarding the inventory. The
+warrant serves as a title-linked instrument: it evidences the holder's legal right to the goods and
+ensures that the commodities cannot be moved, pledged, or released without the warrant holder's
+explicit authorisation.
+
+The value of the Reference Asset is thus derived from ownership of these rights which entitle the
+Reference Asset holder, on a contractual basis, to liquidate the Underlying Asset and receive the
+proceeds from the liquidation.
+
+Whilst title to the Reference Asset will remain, upon successful completion of the subscription
+process, with the Issuer at all times, Tokenholders have contractual ownership and are entitled to the
+full liquidation value (net of costs) of the Underlying Asset at the expiry of the Tokens.
+
+4.2 Underlying Asset
+The Underlying Asset to which the Reference Asset confers ownership is a 1,971kg pure silver bar
+minted in recognition of the 50-year anniversary of the UAE and holder of the Guinness World Record
+as the world's largest silver bar by weight.
+4.3 Reference Asset Holding Structure
+The underlying silver bullion referenced by the ARVA Tokens is represented by an electronic
+warehouse warrant issued through the TradeFlow system and held by Tokinvest DMCC.
+
+Upon successful completion of the subscription process and transfer of the relevant warrant,
+Tokinvest DMCC will become the registered holder of the warehouse warrant and will hold the warrant
+and the associated silver bullion on trust for the benefit of ARVA Tokenholders pursuant to the
+Declaration of Trust described in this Whitepaper.
+The Whitepaper sets out the basis on which the Issuer enters into contractual arrangements directly
+with Tokenholder in respect of the economic rights of ownership of each Reference Asset. These
+arrangements are issuance-specific and do not involve pooling or cross-collateralisation between
+issuances.
+Enforcement of the contractual rights comprising the Reference Asset occurs, where applicable, at the
+structural level through Issuer exercising contractual governance and coordination rights in
+accordance with the issuance documentation.
+
+4.4 Composition of the Reference Asset
+Prior to issuance completion, the Reference Asset described in this Whitepaper represents the asset
+intended to be acquired by the Issuer upon successful completion of the subscription process.
+Each issuance is launched with a defined Reference Asset composition, disclosed to investors prior to
+the opening of the Subscription Period.
+
+This disclosure includes, as applicable:
+
+    · the composition of the referenced Underlying Asset;
+    · Warrant number, issue date, current status (active/suspended/expired), and any
+
+         amendments/reissues;
+    · evidence that there are no liens, pledges, encumbrances, or third-party claims registered or
+
+         contractually applicable (including warehouse liens for unpaid fees);
+    · any relevant serial numbers, quality certifications, purity details, custody provenance and other
+
+         information pertinent to the Underlying Asset; and
+    · any material assumptions used in structuring the Reference Asset.
+
+The Reference Asset composition for a given issuance is determined prior to launch and remains
+fixed at issuance and thereafter for the life of The Token.
+
+4.5 Fixed Reference Asset per Issuance
+For each issuance:
+
+    · the Reference Asset is fixed at issuance;
+    · no substitution, addition, or removal of Underlying Asset(s) occurs after issuance; and
+    · Tokenholders are exposed solely to the economic performance of the Reference Asset
+
+         associated with that issuance.
+
+Each issuance is uniquely identified and tracked through issuance-specific disclosures and smart
+contract metadata.
+4.6 Governance and Step-In Rights
+The Issuer retains contractual governance rights in respect of the Reference Asset.
+
+These rights are intended to support continuity or value protection where reasonably practicable and
+do not constitute a guarantee of performance or recovery.
+
+4.7 No Ownership, Security, or Control Rights
+Ownership of Tokens does not confer:
+
+    · direct ownership or title to the Underlying Asset;
+    · voting or governance rights in relation to The Issuer; or
+    · control over custody or maintenance decisions
+
+Economic participation is strictly contractual and limited to the price performance of the Underlying
+Asset as described in this whitepaper.
+
+5. ECONOMIC MECHANICS OF DTFW TOKENS
+
+5.1 Overview
+Tokens are fixed-term, price-performance only digital instruments that provide Tokenholders with
+contractual economic participation in the purchase and eventual liquidation of an underlying
+commodity asset as described by the Reference Asset.
+Each issuance of Tokens:
+
+    · has a fixed Economic Term;
+    · entitles Tokenholders to receive a final distributions of net liquidation proceeds at the
+
+         completion of that Economic Term; and
+    · expires automatically at the end of the Economic Term with no residual value upon completion
+
+         of said distribution.
+
+Tokens do not represent direct ownership of Underlying Asset(s), do not provide periodic yield or
+other revenue payment, and do not entitle Tokenholders to any contractual rights beyond the
+Economic Term.
+5.2 Source of Token Performance
+The performance of The Token is directly determined by the economic value of the Underlying Asset
+to which the Reference Asset confers ownership rights. As The Token represents a digital
+embodiment of the warrant, its value and performance are intrinsically linked to the market value,
+condition, and realisable worth of the Underlying Asset recorded within the DMCC Tradeflow system.
+Any appreciation or depreciation in the underlying asset--whether driven by market prices, supply
+and demand dynamics, or asset-specific factors--will be reflected proportionately in the price of the
+token.
+
+5.3 Distribution Mechanics
+Token distributions, if any:
+
+    · take place only at the end of the Token Term when the Underlying Asset is liquidated by the
+         Issuer;
+
+    · are paid in fiat currency (or stablecoins where permissible) to the Tokenholder's designated
+         account on the Issuer's platform; and
+
+    · are allocated pro rata based on Token holdings as at the end of the Token Term.
+
+Entitlement to the distribution depends solely on ownership of Tokens at the end of the Economic
+Term.
+
+5.4 Redemption and Delivery of the Reference Asset
+Where an investor acquires and holds 100% of all Tokens issued in respect of a Reference Asset in a
+single wallet they may, subject to the terms of the specific issuance, elect to take delivery of the
+Reference Asset. Upon completion of this process, the investor will cease to hold Tokens and will
+instead become the direct owner of the Reference Asset (and in turn the Underlying Asset), with the
+rights and obligations attaching to such ownership under the DMCC Tradeflow framework.
+
+Following delivery of the Reference Asset, the Tokens corresponding to that issuance will be
+permanently cancelled or burned and will no longer represent any economic or proprietary interest.
+No further rights or claims shall subsist under the Tokens once the Reference Asset has been
+delivered to, and accepted by, the investor.
+
+Process for Delivery
+Upon receipt of a valid delivery request via the Issuer investor platform, the Issuer will verify the
+investor's ownership of all outstanding Tokens and confirm satisfaction of any applicable conditions,
+including identity verification, regulatory compliance, and settlement of any outstanding fees, costs, or
+charges associated with delivery.
+Following verification, the Issuer will burn the Tokens and initiate the transfer of the Underlying Asset
+within the DMCC Tradeflow system in accordance with Tradeflow rules. From that point onward, the
+investor will be recognised as the legal holder of the Underlying Asset under the Tradeflow framework.
+
+5.5 Expiry and End-of-Term Treatment
+At a period of no less than two (2) months before the end of the Economic Term, the Issuer (acting as
+the registered warrant holder following successful issuance completion) will appoint an independent,
+DMCC-approved sale agent to oversee the liquidation process for the Underlying Asset described in
+the Tradeflow Warrant.
+
+The liquidation and distribution process operates according to the following sequence:
+
+1. Appointment of Sale Agent
+
+An independent sale agent is appointed to oversee the sale process in accordance with applicable
+Tradeflow procedures.
+
+2. Asset Realisation
+
+The Underlying Asset described in the Tradeflow Warrant is sold at prevailing market rates through
+appropriate market channels.
+
+3. Settlement of Transaction Costs
+
+Any sale-related transaction costs associated with the liquidation of the Underlying Asset are settled.
+
+4. Determination of Net Proceeds
+
+The remaining proceeds following settlement of applicable transaction costs represent the net
+liquidation proceeds attributable to the Token issuance.
+
+5. Distribution to Tokenholders
+
+Net proceeds are credited to Tokenholders via the Tokinvest platform on a pro-rata basis according to
+Token holdings at the time of expiry.
+
+6. Token Cancellation
+
+Following completion of the distribution process, all Tokens associated with the issuance are
+permanently burned. No Tokens will remain in circulation and Tokenholders will have no further claims
+in respect of the issuance.
+
+5.6 Use of Proceeds from Token Issuance
+Proceeds from the issuance of the DTFW token, net of fees and commissions as detailed in this
+whitepaper, are used, upon successful completion of the subscription process, to acquire full legal title
+to the Reference Asset. Through this acquisition, the Issuer assumes ownership and, by extension,
+obtains the rights and economic interest in the Underlying Asset represented by the Reference Asset.
+
+This mechanism ensures that token issuance is directly linked to the transfer of Reference Asset
+ownership.
+Issuer Proceeds
+Any profits realised by the Issuer from issuance-related activities (including brokerage, custody,
+management, and platform fees) are to be retained as part of its ordinary operating revenue.
+These profits will be used to:
+    · Maintain and enhance the Issuer's trading and compliance infrastructure;
+    · Support ongoing regulatory and audit obligations under VARA;
+    · Fund research and development into tokenisation technology and secondary market
+         integrations; and
+    · Strengthen their capital reserves in line with regulatory capital requirements for VARA-licensed
+         entities.
+
+No portion of issuance-related profits will be reinvested into the specific Reference Asset or
+distributed back to tokenholders:
+
+5.7 Summary
+In summary, Tokens provide:
+
+    · contractual ownership of the Reference Asset;
+    · potential returns based on the market value of the Underlying Asset;
+    · end of Economic Term distribution when the Underlying Asset is liquidated by the Issuer;
+    · expiry at zero with no residual value after distributions have been made.
+
+6. ISSUANCE, SUBSCRIPTION & TOKEN SUPPLY
+6.1 Issuance Structure
+Tokens are issued under a regulated, subscription-based issuance framework operated by the Issuer.
+Each issuance of Tokens is structured such that it:
+
+    · corresponds to a single, defined Reference Asset;
+    · is economically and contractually independent of all other issuances; and
+    · has its own fixed Economic Term, distribution profile, and Token supply.
+Proceeds, Reference Assets, and Tokenholder rights are not pooled, aggregated, or cross-
+collateralised between issuances.
+6.2 Issuance Identification
+Each issuance is uniquely identified by:
+
+    · an issuance identifier embedded in the relevant smart contract metadata; and
+    · corresponding issuance-specific disclosure materials specifying the issuance date, issue size,
+
+         Reference Asset composition, and distribution mechanics.
+This identifier links each Token unambiguously to its associated Reference Asset and Economic
+Term.
+
+6.3 Subscription Period
+Tokens are offered solely through The Issuer's platform during a defined Subscription Period, during
+which:
+
+    · eligible investors may submit binding subscriptions; and
+    · investor funds are debited immediately from cleared balances and held in the Issuer's
+
+         designated client money accounts.
+
+Subscriptions submitted during the Subscription Period are binding for the purposes of determining
+issuance completion, subject to cancellation of the issuance as described in Section 6.7.
+
+6.4 Minimum Token Subscription Threshold
+Each issuance is launched with:
+
+    · a target size, which represents the total value of the Underlying Asset at subscription time; and
+    · a minimum subscription threshold,
+
+both of which are disclosed in the applicable issuance documentation prior to the opening of the
+Subscription Period.
+
+The minimum subscription threshold:
+
+    · may vary between issuances;
+    · reflects the minimum viable scale required to tokenise the Reference Asset; and
+    · must be satisfied before issuance can be completed.
+
+Satisfaction of the minimum subscription threshold may require full subscription of the target size
+depending on issuance.
+
+6.5 Investor Minimum Subscription Amount
+The minimum subscription for this issuance is AED9,971. The Number of Tokens will be determined
+by reference to the final Token Price.
+
+The Token will be listed in the currency in AED as the base currency of the UAE where the Issuer is
+domicile, or the standard quoted currency for the physical commodity represented by the Reference
+Asset, as decided by the Issuer
+
+6.6 Determination of Final Issuance Size
+Where the minimum subscription threshold is satisfied, the final size of the issuance is determined at
+the close of the Subscription Period based on the total subscriptions received, up to but not exceeding
+the target size.
+
+If the minimum subscription threshold is also the full target size then the subscription is immediately
+closed when this threshold is met and investors will no longer be able to make additional purchases.
+
+There is no oversubscription permitted in the issuance of the Token.
+6.7 Unsuccessful Subscriptions
+If the minimum subscription threshold is not met by the close of the Subscription Period, the issuance
+does not complete and no Tokens are minted.
+In such circumstances, the Reference Asset is not transferred to the Issuer and the Token does not
+come into existence.
+The Issuer may, subject to applicable regulatory requirements and updated disclosures, elect to:
+
+    · extend or reopen the Subscription Period; or
+    · defer the issuance to a later date on the same or revised terms.
+
+Where an issuance does not complete, funds are returned to the investor's accounts on the Issuer's
+platform in full and without deduction and do not form part of the rights or characteristics of the Token.
+
+The Issuer reserves the right, at its discretion and subject to applicable regulatory requirements, to
+withdraw, suspend, or cancel the issuance at any time prior to completion of the issuance and minting
+of the Tokens, including where operational, legal, regulatory, or market circumstances arise that may
+affect the feasibility or appropriateness of the issuance.
+
+Where the issuance is withdrawn or cancelled prior to completion, no Tokens will be issued and any
+subscription funds received will be returned to investors in full through the Issuer's platform.
+
+6.8 Token Price and Token Supply
+Each Token is issued at a fixed Token Price based on the calculation below and the fees as set out in
+this whitepaper.
+
+For each issuance the Token supply is fixed at issuance and cannot be increased thereafter. No
+additional Tokens may be issued in respect of an issuance once issuance has been completed other
+than to replace lost or stolen tokens.
+
+Token Supply for the 1971kg Silver Bar
+Each token will represent a 1g fraction of the bar. The total number of tokens issued will be 1.971mio
+
+Issue Price for the 1971kg Silver Bar
+As the underlying commodity from which the bar was fabricated has a market reference price, the
+issue price will be calculated using the spot market price for silver plus a premium of 15% at 12pm
+UAE time on the closing day of the subscription period. The Issuer will use the live price from : XAG /
+USD Price Feed | Chainlink as the spot market reference for silver pricing and this price will be
+displayed and update live on the investor platform throughout the subscription period.
+
+The accepted market price for silver is denominated in USD per Troy Ounce. One Troy Ounce is
+31.103477g and the price of each token will be calculated as;
+
+Token Price =  (Spot Silver Price * 1.15)
+                          31.103477
+
+at the time mentioned above. The Issuer will provide all investors with details of the final issue price
+upon successful subscription
+
+Collectible Premium Determination
+The initial issuance price for the DTFW Token incorporates a collectible premium above the prevailing
+commodity value of the underlying silver content.
+This premium reflects the collectible and historical attributes of the underlying asset and is determined
+prior to the opening of the Subscription Period by the Issuer based on relevant market information,
+which may include market comparables, specialist market input, and valuation references relating to
+the collectible characteristics of the asset.
+
+The premium applicable to each issuance is disclosed in the relevant issuance documentation prior to
+the opening of the Subscription Period and remains fixed throughout the Subscription Period.
+The Issuer is responsible for determining and approving the premium applied to the issuance price in
+accordance with its internal governance and conflict management framework.
+Following completion of the issuance, secondary market pricing of the Token is determined solely by
+market supply and demand and may differ materially from the initial issuance price or any reference
+commodity price.
+
+6.9 Issuance Completion
+Issuance completion refers to the point at which the Token comes into existence on-chain and
+attaches to the Reference Asset.
+Issuance is completed following:
+
+    · closure of the Subscription Period;
+    · confirmation that the minimum subscription threshold has been satisfied; and
+    · completion of all applicable compliance, custody, and reconciliation checks.
+
+Upon completion of issuance:
+
+    · Tokens are minted; and
+    · Tokens are credited to investors' verified wallets within two (2) Business Days.
+
+Token minting occurs only after confirmation that the Tradeflow warrant representing the Reference
+Asset has been transferred or registered to Tokinvest DMCC as warrant holder within the Tradeflow
+registry.
+
+6.10 Eligibility and Participation Requirements
+To participate in an issuance, investors must:
+
+    · be at least 18 years of age;
+    · successfully complete the Issuer's AML/KYC onboarding process;
+    · be approved as whitelisted participants; and
+    · comply with all applicable jurisdictional, regulatory, and sanctions-related restrictions.
+
+The DTFW Token is not available to residents or citizens of the United States of America or to
+persons located in sanctioned jurisdictions or jurisdictions identified by the Financial Action Task
+Force (FATF) as high-risk jurisdictions.
+
+Participation may be further restricted for certain jurisdictions in accordance with applicable laws or
+the Issuer's internal compliance policies.
+The DTFW Token may be made available to eligible investors across retail, professional, and
+institutional categories, subject to the Issuer's onboarding and appropriateness assessment
+procedures.
+
+Prior to participating in an issuance, investors are required to complete the Issuer's onboarding
+process, which includes identity verification, jurisdictional eligibility checks, and an appropriateness
+assessment designed to evaluate the investor's understanding of the risks associated with Virtual
+Assets and tokenised real-world assets.
+
+Investors must also acknowledge the principal risk disclosures associated with the Token issuance,
+including risks relating to valuation uncertainty, liquidity constraints, and the collectible characteristics
+of the underlying asset.
+
+Where the Issuer determines that participation may not be appropriate for a particular investor based
+on the results of the appropriateness assessment, additional risk acknowledgement steps may be
+required or access to the product may be restricted in accordance with the Issuer's regulatory
+obligations.
+
+6.11 Oversubscription and Adjustment of Issuance Size
+Each issuance will be launched with the target size disclosed in advance, based on the value of the
+Underlying Asset held by the Reference Asset.
+
+Oversubscription is not possible for the Token. When the target size has been met and further
+subscriptions cannot be accommodated all excess funds are returned to investors without deduction.
+
+6.12 Fees & Charges
+
+All fees and charges are payable in addition to the Token Price unless otherwise specified.
+
+The following table summarises the fees that may apply in connection with the subscription, holding,
+transfer, and administration of DTFW Tokens.
+
+FEE TYPE  BASIS  PAYER  RECIPIENT TIMING  DEDUCTED
+                                          FROM
+                                          INVESTOR
+                                          SUBSCIPTION
+                                          PROCEEDS?
+Primary           2% of Token          Investor     Issuer     At
+Issuance          purchase amount      Investor                subscription No
+Brokerage Fee
+                  Prepaid custody,                  Custodian  At issuance Yes
+Asset Custody     storage and                       (Brinks)
+and Insurance     insurance
+Fee               arrangement
+                  covering the
+                  Economic Term of
+                  the issuance ­ see
+                  section 6.12 below
+                  of this Whitepaper
+                  for details.
+
+Legal Fees        One-off payment of   Payable by   External   At issuance Yes
+directly related  USD10k for pre-      Issuer but   Legal
+to token          issuance legal       funded from  Counsel    At
+issuance          opinion              issuance                transaction No
+                                       proceeds                execution
+
+Secondary                              Buyer and
+                                       Seller
+Market Transfer 0.25% of
+
+Fee (OTC)         transaction value                 Issuer
+
+Virtual Asset     0.1% of transferred  Token        Issuer     At token  Yes
+Transfer Fee      amount               recipient               transfer
+
+Token             0.1% lifetime        Tokenholder Issuer      Billed    No
+Management        management fee                               monthly
+Fee               calculated daily
+
+Token Custody     0.2% per annum       Tokenholder Issuer      Billed    No
+Fee               calculated daily                             monthly
+
+Custody, storage and insurance costs relating to the underlying asset are arranged by the Issuer for
+the duration of the Economic Term. These costs are reflected in the Purchase Price up front for the
+term of the asset and collected at the time of issuance. They and are not charged to Tokenholders as
+ongoing asset-level operating expenses. The applicable custody, storage and operational handling
+fees are governed by the Brinks Global Services Storage Contract and related custody framework
+and these custody fees are confirmed as follows:-
+
+         Silver Bar ARVA Lifetime Storage Including Liability = USD 1,850.00 + VAT per month, with
+         5% Increment every year.
+
+Fees relating to the operation of the token platform and digital asset infrastructure are separate from
+costs associated with maintaining the underlying physical asset.
+Other than set out above, no additional fees are charged directly to Tokenholders by the DMCC
+Tradeflow registry or the physical custodian of the underlying asset.
+
+6.13 Cashflow Waterfall and Fee Treatment
+The financial flows associated with a Token issuance operate as follows:
+
+    1. Subscription Phase - Investor subscription funds are received and held within the Issuer's
+         designated client money accounts pending completion of the issuance and reconciliation
+         checks.
+
+    2. Reference Asset Acquisition - Upon successful completion of the subscription and
+         reconciliation process, subscription proceeds (net of the Primary Issuance Brokerage Fee
+         described above) are applied to acquire the Reference Asset associated with the issuance.
+
+    3. Asset-Level Costs - Custody, storage, and insurance arrangements relating to the Underlying
+         Asset are arranged by the Issuer for the duration of the Economic Term.
+         These asset-level costs are set out in this whitepaper and payable by Tokenholders
+         as part of the issuance structure and reflected in the overall pricing of the issuance.
+
+    4. Platform and Token Administration Fees - Certain fees relating to the operation of the Issuer
+         platform, token administration, custody of digital assets, or secondary-market transactions
+         may apply as disclosed in Section 6.12.
+         These fees relate to the operation of the tokenisation platform and digital asset infrastructure
+         and are separate from costs associated with maintaining the physical asset.
+         Platform-related fees are charged at the token or platform level and are not deducted from
+         proceeds distributed to Tokenholders following liquidation of the Underlying Asset.
+
+    5. End-of-Term Distribution - At the conclusion of the Economic Term, the Underlying Asset is
+         sold and the net proceeds of sale are distributed proportionally to Tokenholders in accordance
+         with their respective Token holdings.
+
+6.14 Summary
+In summary, each issuance:
+
+    · is conducted through a defined Subscription Period;
+    · proceeds only if a disclosed minimum subscription threshold is met;
+    · results in a fixed Token supply issued at a fixed initial Token Price; and
+    · remains economically and contractually independent from all other issuances.
+
+7. VA TRADING PLATFORM, SECONDARY MARKET TRADING & PRICING
+
+7.1 Token Trading Platform
+The Issuer is the licensed issuer and distributor of DTFW tokens through their investor platform.
+
+    · The DTFW token is listed and can be traded on the Issuer investor platform or other
+         appropriately regulated platforms.
+
+    · The CAP table denoting token ownership is maintained internally by the Issuer.
+    · Where an investor chooses to leave their Virtual Asset for custody on the Issuer platform,
+         there are no additional technical requirements to own or hold DTFW tokens beyond use of
+         said platform.
+
+    · Token custody may remain with the Issuer, be transferred to another regulated custodian or
+         VASP providing incidental custodian services or be self custodied by the investor.
+
+    · Whilst under the custodial oversight of the Issuer DTFW tokens are custodied with Hex Trust,
+         a VARA-regulated custodian.
+
+Eligible whitelisted investors must credit their account with the Issuer with fiat currency (or stablecoins
+where permissible) ahead of purchasing the token. The investor's total balance must be more than
+the minimum purchase amount plus fees and any expected foreign exchange costs if relevant.
+
+7.2 Custody Model, Self-Custody and Transfer Controls
+
+DTFW Tokens may be held in custody on the Issuer platform, transferred to another regulated
+custodian or VASP providing incidental custody services, or withdrawn to an external wallet under the
+control of the investor (self-custody).
+
+Where Tokens are held under the custodial oversight of the Issuer, custody is provided through Hex
+Trust or other authorised custody infrastructure providers.
+
+Tokenholders may request withdrawal of Tokens to external wallets subject to compliance and
+operational checks performed by the Issuer. Such checks may include verification of wallet ownership,
+confirmation that the receiving wallet supports the relevant token standard, and compliance screening
+in accordance with applicable regulatory obligations.
+
+Transfers of Tokens remain subject to transfer restrictions embedded within the token smart contract
+and the operational policies of the Issuer. These controls may include wallet whitelisting requirements
+and other compliance checks designed to ensure that transfers occur only between approved
+participants.
+
+Token minting permissions remain under the control of the Issuer. Custody providers, wallet providers,
+or other third parties do not have authority to mint additional Tokens or alter the Token supply.
+
+Handling of Transfers to Non-Approved Wallets
+
+Where a Tokenholder attempts to transfer Tokens to a wallet address that has not been approved or
+whitelisted within the Issuer's compliance framework, the transaction will not be executed. Transfer
+restrictions embedded within the ERC-1404 token logic require the receiving wallet to be authorised
+prior to the transfer being processed.
+
+Accordingly, Tokens cannot be transferred to wallet addresses that are not associated with verified
+and approved participants. Any attempted transfer to a non-approved wallet will fail at the smart
+contract level and the Tokens will remain in the originating wallet.
+
+Where Tokens have been withdrawn to self-hosted wallets, subsequent transfers remain subject to
+the same transfer-restriction controls and may only be completed where the receiving wallet has been
+approved in accordance with the Issuer's onboarding and compliance requirements.
+7.3 Client Asset Segregation and Reconciliation
+
+Client Virtual Assets and fiat balances associated with DTFW Tokens are segregated and reconciled
+in accordance with the Issuer's client asset protection framework approved by VARA.
+
+Client asset records are maintained across three primary record sets:
+
+    · internal cap table and client account records maintained by the Issuer;
+    · on-chain token balances recorded on the relevant blockchain; and
+    · custody records maintained by the Issuer's custody infrastructure providers.
+
+Reconciliation procedures are performed on a regular basis to verify consistency across these
+records. These procedures include automated and manual reconciliation checks designed to ensure
+that client account balances, on-chain token balances, and custody records remain aligned.
+
+Where discrepancies are identified through reconciliation processes, they are escalated through the
+Issuer's operational control framework and investigated in accordance with the Issuer's established
+incident and exception management procedures.
+
+Oversight of reconciliation controls forms part of the Issuer's internal governance and compliance
+framework, including review by relevant operational and compliance functions.
+
+These reconciliation procedures apply consistently across all Virtual Asset products issued or
+distributed through the Issuer platform, including asset-referenced virtual asset (ARVA) issuances
+such as the DTFW Token.
+
+7.4 Token Administration Powers and Governance
+
+The Issuer maintains administrative control over the token smart contract infrastructure used for the
+issuance and management of DTFW Tokens.
+
+Administrative powers may include the ability to mint, burn, freeze, or reissue Tokens in limited
+circumstances where required to maintain the integrity of the token infrastructure or to comply with
+legal or regulatory obligations.
+
+Such administrative actions may occur only under defined circumstances including, but not limited to:
+
+    · execution of the end-of-term liquidation process described in Section 5;
+    · compliance with valid court orders or regulatory instructions;
+    · recovery actions in relation to fraud, theft, or operational errors affecting token balances; or
+    · resolution of technical incidents affecting the smart contract or token infrastructure.
+
+Governance approval for any such administrative action is subject to internal controls of the Issuer
+and is formally documented prior to execution.
+
+All administrative actions affecting token balances are recorded within the Issuer's operational
+systems and are subject to audit logging and internal governance oversight.
+Where administrative action affects a tokenholder's balance, the Issuer will notify affected
+tokenholders where legally permissible and in accordance with applicable legal or regulatory
+requirements.
+
+Administrative Role Permissions
+
+The following table summarises the principal administrative permissions associated with the token
+smart contract infrastructure used for DTFW Tokens.
+
+Function        Control Entity   Description
+Mint Tokens
+                Issuer           Used only at issuance completion to create the fixed Token
+                (Tokinvest)      supply for the issuance.
+
+Burn Tokens     Issuer           Used during end-of-term liquidation or in limited
+                (Tokinvest)      circumstances described in this whitepaper.
+
+Freeze / Pause  Issuer           Used where required to comply with legal or regulatory
+                (Tokinvest)      obligations or to respond to technical incidents affecting
+                                 the token infrastructure.
+
+Whitelist       Issuer           Used to enforce transfer restrictions and ensure Tokens
+Administration  (Tokinvest)      may only be held or transferred by approved participants.
+
+Transfer        Issuer           Used to administer transfers within the compliance
+Administration  (Tokinvest)      framework of the platform.
+
+Oracle          N/A              The ERC-1404 contract architecture used for DTFW
+                                 Tokens does not rely on an on-chain oracle for smart
+Administration                   contract execution or token functionality.
+
+Administrative controls are executed through the Issuer's controlled wallet infrastructure and are
+subject to internal governance procedures and audit logging.
+
+Administrative Key Custody and Governance
+
+Administrative control of the token smart contract infrastructure is exercised through a dedicated
+administrative wallet under the control of the Issuer.
+
+The private keys associated with this wallet are secured through the Issuer's custody arrangements
+with Hex Trust, which utilises hardware security module (HSM) infrastructure for key protection.
+
+Access to administrative functions is governed by the Issuer's internal control framework, including
+segregation of duties, role-based access controls, and periodic access reviews in accordance with the
+Issuer's operational policies.
+
+Administrative actions affecting the token infrastructure are subject to internal governance approval
+and audit logging within the Issuer's operational systems.
+
+7.5 Smart Contract Infrastructure and Deployment
+DTFW Tokens are issued using a standardised ERC-1404 compliant smart contract architecture
+implemented as a BEP-20 compatible token on BNB Smart Chain. The ERC-1404 framework
+provides transfer-restriction functionality designed to support regulatory and compliance requirements
+applicable to tokenised assets.
+
+The smart contract implementation used for DTFW Tokens is not upgradeable once deployed. The
+deployed contract code remains immutable and cannot be modified or replaced after deployment.
+
+The ERC-1404 smart contract implementation used for DTFW Tokens has previously undergone
+independent security review. The Issuer confirms that the contract deployed for this issuance will be
+compiled from the same audited source code using the same compiler configuration.
+
+No modifications to the audited contract logic have been made since the completion of the audit. The
+bytecode of the deployed contract will correspond to the compiled output of the audited source code
+and will be publicly verifiable through the relevant blockchain explorer.
+
+Administrative permissions described in Section 7.4 allow the Issuer to perform certain operational
+actions (such as minting, burning, freezing or whitelisting Tokens) within the logic of the deployed
+contract, but do not allow modification of the underlying smart contract code.
+
+The smart contract framework used for DTFW Tokens is based on the same audited contract
+architecture used for prior token issuances by the Issuer.
+
+The specific smart contract for each issuance is deployed only after successful completion of the
+subscription process described in Section 6.9.
+
+The contract deployed for each issuance is compiled from the same codebase and configuration as
+the audited contract template used by the Issuer. No modifications to the audited contract logic are
+made for individual issuances other than parameters relating to the specific issuance (such as token
+name, symbol and supply).
+
+The smart contract source code, compilation details and verification status for previously deployed
+contracts are publicly available on-chain and may be reviewed via the relevant blockchain explorer.
+
+Smart contracts deployed for each issuance will be verified on the relevant blockchain explorer,
+enabling public inspection of the source code and confirmation that the deployed bytecode
+corresponds to the verified contract implementation used by the Issuer.
+
+7.6 Secondary Market Availability
+Following completion of issuance, Tokens may be admitted to secondary-market trading on platforms
+operated by the Issuer and, where applicable, on other VARA-licensed venues approved by the
+Issuer.
+
+Secondary-market availability is subject to market conditions, participant demand, and ongoing
+compliance requirements. The Issuer does not guarantee liquidity, continuous trading, or the ability to
+buy or sell Tokens at any time or at any particular price.
+All secondary-market transactions are conducted in accordance with the Issuer's market conduct
+rules, surveillance arrangements, and compliance controls.
+
+Market Conduct and Trading Controls
+Secondary market trading of DTFW Tokens on the Issuer platform is subject to the Issuer's market
+conduct and surveillance framework designed to support fair and orderly markets.
+
+The Issuer monitors trading activity on its platform using automated and manual surveillance
+processes intended to identify potentially abusive or manipulative behaviour, including but not limited
+to wash trading, spoofing, or other forms of market manipulation.
+
+The Issuer may implement temporary trading restrictions or suspensions in circumstances where
+trading activity appears disorderly or where operational or market disruptions occur.
+
+Such circumstances may include:
+
+    · material system disruptions affecting the trading platform;
+    · market conditions that prevent reliable price discovery;
+    · suspected market abuse or manipulation; or
+    · other circumstances where the Issuer considers temporary intervention necessary to maintain
+
+         orderly trading.
+
+Where trading restrictions or suspensions are implemented, the Issuer will communicate such actions
+to affected participants through the platform and other appropriate communication channels.
+
+Secondary market prices remain determined by market supply and demand between participants and
+may differ materially from any reference commodity price or indicative valuation of the underlying
+asset.
+
+Market Disruptions and Pricing Continuity
+In circumstances where trading is suspended due to operational disruptions, market disorder, or other
+exceptional conditions, secondary-market trading will be temporarily halted until normal market
+conditions resume.
+
+During any such suspension, the Issuer does not establish substitute prices for secondary-market
+trading. Once trading resumes, prices will continue to be determined by market supply and demand
+among participants.
+
+Where relevant operational updates are required, the Issuer will communicate such information to
+platform participants through the investor platform and other appropriate communication channels.
+7.7 Pricing Model
+Tokens do not entitle holders to periodic revenue distributions. Accordingly, Tokens are expected to
+trade on a price driven basis with respect to the Reference Asset, meaning that:
+
+    · Prices on secondary markets are determined solely by supply and demand among market
+         participants and may differ materially from any indicative valuation, appraisal, or reference
+         commodity price of the Underlying Asset.
+
+    · Non-market considerations such as collectibility or rarity of the Underlying Asset may add a
+         premium or discount to any base commodity market price element; and
+
+    · This premium or discount may persist over time and may not converge toward any commodity
+         spot price or indicative valuation.
+
+Secondary-market prices are therefore driven by investor demand and should therefore be
+understood as market-clearing prices for the Reference Asset at a given time, inclusive of any
+collectible or non-commodity attributes.
+
+7.8 No Yield, Return, or Pricing Guarantees
+Tokens do not provide yields or offer guaranteed returns, or exit prices, and secondary-market
+outcomes depend entirely on market conditions and investor supply and demand.
+
+7.9 Trading as Principal (Settlement Facilitation Only)
+In limited circumstances, the Issuer may temporarily act as principal solely to facilitate settlement
+where two client orders are matched on compatible terms.
+In such circumstances:
+
+    · the Issuer does not take directional, speculative, or inventory positions;
+    · both counterparties receive execution at identical prices and on identical terms; and
+    · the Issuer does not derive any incremental economic benefit beyond its disclosed fees.
+
+This activity is operational in nature, subject to internal compliance oversight and post-trade review,
+and is intended solely to support orderly settlement.
+
+The Issuer does not provide market-making services.
+
+8. STRUCTURAL LIMITATIONS AND GOVERNANCE MECHANISMS
+
+This Section describes certain structural limitations inherent to the Token and the governance
+mechanisms intended to support orderly operation of the issuance.
+Detailed discussion of investment risks is set out separately in the Risk Disclosure Statement, which
+must be read together with this whitepaper.
+8.1 Fixed-Term, Price-Only Structure
+Each Token provides a contractual, time-limited right to proceeds of sale (if any) generated by
+liquidating the Underlying Asset described in the Reference Asset at the end of the Economic Term
+only.
+
+Tokens do not provide yield or other income distribution, or entitlement to residual value and expire
+automatically at the end of the Economic Term when the proceeds of sale have been distributed.
+
+8.2 Ownership of the Reference Asset
+Tokens confer fractional ownership of only:
+
+    · the Reference Asset
+
+8.3 Secondary Market Limitations
+Tokens may be admitted to secondary-market trading, subject to market conditions and compliance
+requirements.
+
+Liquidity is not guaranteed, and secondary-market availability does not alter the fixed-term, price
+performance nature of the Token.
+
+9. LEGAL STRUCTURE & INVESTOR PROTECTIONS
+
+9.1 Legal Nature of the Token
+Each Token represents a tokenised interest in the Reference Asset and is issued by the Issuer under
+its VARA-licensed framework. Legal title to the warrant is retained by the Issuer; however, pursuant to
+the terms of the applicable token issuance and custodial agreements, each Token conveys to the
+Tokenholder beneficial ownership of the Reference Asset and all associated economic rights.
+Tokens:
+
+    · confer beneficial ownership of a specific, identifiable Reference Asset;
+    · provide the Tokenholder with the economic rights arising from ownership of the Underlying
+
+         Asset represented by that Reference Asset;
+    · do not constitute equity or debt interests in The Issuer, other than The Issuer's role as legal
+
+         titleholder, custodian, and administrator of the tokenisation framework; and
+    · do not grant Tokenholders any rights beyond those expressly set out in this whitepaper and
+
+         the applicable contractual documentation.
+
+Tokenholders' rights arise from the beneficial ownership of the Reference Asset and are enforceable
+exclusively pursuant to the contractual arrangements governing the issuance, custody, and transfer of
+the Tokens.
+9.2 Structural Separation of Assets and Rights
+The Reference Asset associated with each issuance consists of contractual rights of ownership of the
+Underlying Asset and is held by the Issuer.
+
+    · The Reference Asset is the legal instrument warrant that evidences and governs ownership of,
+         or entitlement to, the Underlying Asset under the DMCC Tradeflow system;
+
+    · The Issuer holds legal title to the warrant;
+    · Tokenholders hold beneficial ownership of the Reference Asset; and
+    · Any rights to the Underlying Asset (delivery, transfer, disposal) are exercisable only through
+
+         the Reference Asset and in accordance with its terms and the applicable Tradeflow rules.
+
+9.3 Investor Rights, Enforceability and Legal Recourse in the event of Issuer Insolvency
+Trust Structure and Nature of Rights
+
+The Reference Asset and the associated Underlying Asset are held by the Issuer on trust for the
+benefit of Tokenholders pursuant to a Declaration of Trust governed by the laws of the Dubai
+International Financial Centre ("DIFC") (the "Trust Deed").
+
+Under the Trust Deed, each Tokenholder holds a direct, undivided and proportionate beneficial
+interest in the Trust Property, corresponding to their respective Token holdings.
+Such interest constitutes a proprietary beneficial interest under DIFC law, separate from and not
+limited to any contractual claim against the Issuer.
+
+Jurisdiction and governing law
+Contractual rights of Tokenholders against the Issuer (including those arising under this whitepaper
+and related documentation) are governed by DIFC law and may be enforced through the courts of the
+Dubai International Financial Centre (DIFC), save where mandatory law requires otherwise.
+
+Claims against the Issuer
+Tokenholders may bring claims directly against the Issuer in respect of any breach of the Issuer's
+contractual obligations under this whitepaper or the applicable issuance documentation. Such
+obligations include, without limitation, the proper issuance and administration of Tokens, maintenance
+of records, operation of the distribution and secondary-market framework, and exercise of contractual
+governance and step-in rights where applicable.
+
+Capacity of the Issuer as Trustee
+The Issuer holds legal title to the Reference Asset solely in its capacity as trustee and not for its own
+account.
+The Issuer has no beneficial, economic or proprietary interest in the Trust Property and holds such
+property exclusively for the benefit of Tokenholders in accordance with the Trust Deed.
+
+Beneficial Ownership and Fractional Entitlement
+Each Token represents a direct, undivided and proportionate beneficial interest in the Trust Property.
+Such interest attaches solely to the Trust Property associated with the relevant issuance and does not
+extend to the general assets of the Issuer.
+The beneficial interests of Tokenholders are proprietary in nature and are intended to rank ahead of
+unsecured creditor claims of the Issuer in respect of the Trust Property.
+Asset Segregation and Ring-Fencing
+The Trust Property is required to be:
+(a) held separately from the Issuer's own assets;
+(b) clearly identified as trust property in the Issuer's books and records; and
+(c) segregated from assets relating to any other issuance.
+
+The Trust Property is not available to satisfy claims of the Issuer's creditors, except to the extent
+required under applicable insolvency or enforcement law.
+
+Insolvency and Creditor Protection
+The Trust Property is intended to constitute trust property for the purposes of DIFC Trust Law and to
+be legally and beneficially segregated from the Issuer's own assets.
+
+In the event of an insolvency, liquidation, administration or similar proceeding affecting the Issuer:
+(a) the Trust Property is intended not to form part of the Issuer's insolvency estate;
+(b) any insolvency office-holder is required to hold the Trust Property subject to the trust constituted
+by the Trust Deed; and
+(c) the Trust Property is intended to be preserved, protected and transferred for the benefit of
+Tokenholders.
+
+Tokenholders (acting collectively in accordance with the Trust Deed) have the right to appoint a
+replacement trustee, custodian or nominee and to procure the transfer of the Trust Property to such
+replacement entity.
+
+This section summarises the intended legal structure of the Token and the Trust Property. It is not a
+legal opinion.
+
+While the Trust Deed is designed to create a valid and enforceable trust under DIFC law and to
+achieve segregation of the Trust Property, the treatment of such arrangements in insolvency or
+enforcement scenarios may be subject to applicable law, judicial interpretation and the specific facts
+at the relevant time.
+
+Enforceability and Jurisdiction
+The Trust Deed is governed by DIFC law and provides for the exclusive jurisdiction of the DIFC
+Courts. The Issuer has agreed that any judgment of the DIFC Courts in respect of the Trust Property
+shall be binding and enforceable, including in the courts of the United Arab Emirates, subject to
+applicable enforcement procedures.
+
+Insolvency Acknowledgment and Directions to Insolvency Officer
+The Issuer acknowledges and agrees that any insolvency officer, liquidator, administrator or similar
+official appointed in respect of The Issuer shall hold the Reference Asset subject to the rights of the
+Tokenholders and shall have no authority to deal with the Reference Asset other than for the purpose
+of transferring or preserving it for the benefit of the Tokenholders.
+
+No Security Interest or Set-Off
+The Issuer shall not grant, and confirms that it has not granted, any security interest, lien, pledge or
+other encumbrance over the Reference Asset.
+The Issuer waives any right of set-off, retention or counterclaim against the Reference Asset in
+respect of any obligation owed to The Issuer by any Tokenholder.
+Substitution and Continuity Mechanism
+Upon the occurrence of an Insolvency Event in respect of The Issuer, the Tokenholders (acting by a
+majority in value) shall be entitled to appoint a replacement custodian or nominee, and The Issuer or
+any insolvency officer shall promptly transfer the Reference Asset to such replacement custodian.
+
+Wind Down Plan
+The Wind Down Plan was approved by VARA as part of The Issuer's licensing approval. The plan
+outlines all the activities and processes that the business will undertake should it become insolvent. A
+critical aspect of the plan is to ensure that client assets are at all times protected and secured within
+named "client accounts" which will constitute a one of two options depending on if fiat or digital assets
+are being custodied:
+
+    · Fiat currency (cash) will, at all times, be securely stored with an approved third-party bank
+         within the UAE. The Issuer utilises Client Money Account(s) with Zand Bank.
+
+    · Digital assets, where possible, are securely stored with a VARA licensed third-party custodian
+         within the UAE. The Issuer utilises Hex Trust MENA.
+
+The purpose of client assets being held within accounts designated "client accounts", is to ringfence
+client assets from company assets in the case of an insolvency.
+
+Tokenholders will be able to engage with the appointed insolvency practitioners during the insolvency
+proceedings to recover their assets and have them transferred to a third-party location. The appointed
+insolvency practitioner will ensure that tokenholders are kept fully abreast of the situation and detail to
+the tokenholders what they need to do, and provide, in order to recover their assets.
+
+Exercise of rights in practice
+In practice, Tokenholder rights are exercised collectively and structurally through the Issuer's
+regulated framework. Where issues arise affecting the Reference Asset or the contractual economic
+rights underlying an issuance, the Issuer may exercise contractual governance, enforcement with the
+objective of protecting Tokenholder interests to the extent reasonably practicable. Tokenholders do
+not take individual enforcement action at the asset or operational level.
+
+9.4 Variation of Rights
+The rights of tokenholders may not be varied except in accordance with the provisions of this
+whitepaper and applicable law.
+
+    · No variation may be made unilaterally by the Issuer.
+    · Any proposed variation must be subject to regulatory approval (where required) and
+
+         communicated transparently to all tokenholders.
+    · Tokenholders retain the right to reject any variation that materially affects their contractual
+
+         entitlements.
+
+9.5 Issuer Role and Governance Rights
+The Issuer acts as:
+
+    · the regulated issuer of the Tokens;
+    · holder of the legal title to the Reference Asset; and
+    · the operator of the primary issuance and approved secondary-market platforms under the
+
+         VARA framework.
+The Issuer retains limited contractual governance, oversight, and coordination rights intended solely
+to protect the integrity of the issuance and facilitate orderly outcomes where reasonably practicable.
+
+9.6 Investor Suitability, Appropriateness and Sales Conduct
+Participation in Token issuances is limited to investors who have completed the Issuer's onboarding,
+AML/KYC, and jurisdictional eligibility checks in accordance with applicable VARA requirements;
+
+    · the DTFW Token is not available to residents or citizens of the United States of America or to
+         persons located in sanctioned jurisdictions or jurisdictions identified by the Financial Action
+         Task Force (FATF) as high-risk jurisdictions
+
+    · Eligibility and appropriateness assessments applicable to participation in token issuances are
+         described in Section 6.10.
+
+    · investors using unverified or non-whitelisted wallets are not eligible to hold or transfer tokens.
+
+The Issuer applies a range of controls to ensure compliance with jurisdictional restrictions and
+regulatory obligations. These controls include identity verification and residency checks as part of the
+onboarding process, sanctions screening against applicable international sanctions lists, and the
+requirement that Tokens may only be held or transferred through verified and whitelisted wallets.
+
+The Issuer may also apply additional monitoring and controls to identify potentially restricted
+participants or prohibited jurisdictions, including review of account activity and other compliance
+monitoring procedures in accordance with applicable regulatory requirements.
+
+Where the Issuer identifies activity that may be inconsistent with applicable jurisdictional restrictions
+or sanctions obligations, the Issuer may restrict participation, suspend accounts, or take other
+compliance actions as required.
+
+Tokens are structured as fixed-term, price performance instruments and are intended to be accessible
+to retail investors. The Issuer does not provide investment advice, portfolio management, or
+personalised suitability assessments. Investors are responsible for determining whether participation
+is appropriate for their individual circumstances.
+
+To support fair treatment of investors and mitigate mis-selling risk, the Issuer maintains controls
+including:
+
+    · clear, plain-language disclosures describing the Token's structure, limitations, and economic
+         profile;
+
+    · explicit presentation of key risks and the absence of capital protection or guaranteed returns;
+    · restrictions on marketing or communications that imply guaranteed yield, or capital
+
+         preservation;
+    · internal review and approval of product disclosures and promotional materials; and
+    · controls over sales practices in accordance with VARA financial promotion standards.
+Disclosures are designed to be comprehensible to investors without specialist technical or virtual
+asset expertise. The Issuer may impose additional acknowledgements, warnings, or participation
+restrictions where required by applicable regulation or jurisdictional considerations.
+
+9.7 Investor Ranking and Claims
+Tokenholders:
+
+    · have no claim against the general assets of the Issuer; and
+    · have no claim against the Issuer beyond its contractual obligations as issuer and platform
+
+         operator.
+
+Any recovery of economic value must occur through:
+
+    · distributions upon sale at the conclusion of the Economic Term; and/or
+    · secondary-market token sales prior to expiry.
+
+Tokenholders are not direct parties to the contractual arrangements comprising the Reference Asset
+and have no direct enforcement rights against the Issuer other than as expressly set out in this
+whitepaper.
+
+9.8 Material Legal Considerations
+The DTFW tokens have been designed to be a VA product that is suitable for all investor categories
+including retail investors.
+All investors must pass KYC/AML checks and comply with platform terms. Transfer of these Virtual
+Assets can only be made via the Tokinvest OTC platform to pre-authorised and screened investors.
+Investors outside of the UAE are responsible for ensuring compliance with their local laws regarding
+virtual assets. Ownership and transaction of these Virtual Assets is not available to citizens or
+residents of the USA, UK or any sanctioned or FATF high risk jurisdiction.
+Note that changes in laws or regulations may affect token legality, transferability, or value. A
+comprehensive risk disclosure document accompanies this whitepaper, detailing all potential risks
+associated with ownership.
+
+Each investor / owner of these Virtual Assets agrees to the following:-
+
+    1. This Whitepaper together with the Tokinvest Brokerage Terms and Conditions and the
+         associated Risk and Disclosure statement sets out the basis upon which the investors agree
+         to acquire and trade this Virtual Asset.
+
+    2. Notwithstanding the following or any other provision of this white paper , in its capacity as the
+         Issuer Tokinvest DMCC does not limit or exclude its actual or potential civil liability in respect
+         of the accuracy of any information in this whitepaper, or any other disclosure or
+         communication relating to this whitepaper. Subject to the foregoing:
+         a) the Issuer shall not be liable to you for any indirect or consequential losses or for any loss
+         or profits or anticipated returns;
+         b) the total aggregate liability of the Issuer to you in contract, tort, negligence, for breach of
+         statutory duty, under an indemnity or otherwise arising out of or in connection with the
+         issuance of this virtual asset will be capped at a sum equal to the amount of payments that
+         have been received by Tokinvest for distribution to tokenholders and which are due to you in
+         accordance with the terms of this Virtual Asset whitepaper.
+    3. The Issuer will not be liable in contract, tort (including negligence), for breach of statutory duty,
+         under an indemnity or in any other way for any special or indirect or consequential loss or
+         damage suffered or incurred by you arising out of or in connection with the issuance of this
+         Virtual Asset.
+
+    4. Nothing contained in this section shall be applicable to the extent that it: a) constitutes a
+         limitation or exclusion of liability for death or personal injury caused by negligence or
+         constitutes a limitation or exclusion of liability for fraud, deceit, or reckless disregard of
+         professional obligations; or b) would render either you or us in breach of any applicable and
+         mandatory legal, regulatory or other professional restriction or requirement.
+
+    5. Unless otherwise specified in this whitepaper, the rights of an investor / owner of this Virtual
+         Asset cannot be changed or varied without the approval of the investor / owner of the Virtual
+         Asset.
+
+    6. Any complaints arising out of, or in connection with, this whitepaper or token should be should
+         be directed to the published Tokinvest Complaints Handling and Resolution Procedure on the
+         company website.
+
+    7. Unlike Crypto tokens which are themselves the underlying asset, RWA tokens are on-chain
+         representations of off-chain assets or their associated economic benefits. This means that if
+         RWA tokens are lost or compromised, they can be burnt and re-issued to the rightful owner as
+         registered on the Tokinvest CAP table. As such, should a recovery event occur, the Issuer will
+         burn those tokens identified as compromised and replace them with new, valid tokens on a
+         one-for-one basis directly into the wallet of the rightful owner(s).
+
+9.9 Complaints Handling
+Tokinvest DMCC maintains a formal complaints handling procedure in accordance with the
+requirements of the Dubai Virtual Assets Regulatory Authority (VARA).
+Investors may submit complaints relating to the issuance, administration, or trading of the DTFW
+Token by contacting Tokinvest through the complaints process described on the Tokinvest website.
+Upon receipt of a complaint, Tokinvest will acknowledge the complaint and review it in accordance
+with its internal complaints handling procedures. Complaints will be assessed and responded to within
+a reasonable timeframe in accordance with applicable regulatory requirements.
+
+Further details regarding the complaints submission process, including contact details and escalation
+procedures, are available in the Tokinvest Complaints Handling and Resolution Procedure published
+on the Tokinvest website.
+
+9.10 Relationship to Appendices
+Further detail on the following is provided in the appendices to this whitepaper:
+
+    · Issuer governance and regulatory status;
+    · related parties, roles and responsibilities;
+    · custody, settlement, and flow of funds; and
+    · additional regulatory disclosures and definitions
+    · supplementary documentation related to the Reference Asset
+
+The appendices form an integral part of this disclosure but are not intended to replace the core
+product description set out in Sections 1­9.
+9.11 Product Wind-Down and Contingency Procedures
+The Issuer maintains procedures designed to facilitate the orderly wind-down of the DTFW Token
+issuance should circumstances arise requiring termination or liquidation prior to the scheduled expiry
+of the Economic Term.
+
+Potential triggers for product wind-down may include:
+
+    · insolvency, liquidation, or regulatory intervention affecting the Issuer;
+    · inability to maintain custody, storage, or insurance arrangements for the Underlying Asset;
+    · loss, damage, or destruction of the Underlying Asset where recovery or insurance proceeds
+
+         are unavailable;
+    · material failure of technology infrastructure required to administer the Token; or
+    · regulatory direction requiring suspension or termination of the product.
+
+Operational wind-down steps may include:
+
+    1. suspension of new subscriptions and secondary-market trading where appropriate;
+    2. verification and reconciliation of Tokenholder records and on-chain balances;
+    3. appointment of an independent sale agent or administrator where required;
+    4. liquidation of the Underlying Asset in accordance with applicable Tradeflow procedures and
+
+         market conditions;
+    5. distribution of net proceeds to Tokenholders proportionally to their respective Token holdings;
+
+         and
+    6. burning of outstanding Tokens following completion of distributions.
+
+Technology contingency
+If the Issuer platform becomes unavailable, Tokenholder balances may be determined through the
+blockchain record and internal issuance records. Distribution and settlement processes may be
+administered through alternative operational arrangements, including the appointment of third-party
+administrators where required.
+
+Communication
+
+Tokenholders will be notified through the Issuer platform, registered contact channels, and other
+appropriate communication methods regarding any wind-down event and the expected process for
+asset liquidation and distribution.
+APPENDIX A
+TOKINVEST OVERVIEW, GOVERNANCE AND REGULATORY STATUS
+
+A.1 Issuer
+Tokinvest DMCC is a company duly incorporated under the laws of the United Arab Emirates, with its
+registered address at Unit No: UT-12-PO-8, DMCC Business Centre, Level 12, Uptown Tower, Dubai,
+United Arab Emirates ("Tokinvest DMCC").
+Tokinvest DMCC is the Issuer of the DTFW Token described in this whitepaper.
+
+A.2 Incorporation and Registration
+Tokinvest DMCC is registered under DMCC licence number DMCC-928046, with a date of
+incorporation of 10 May 2024.
+
+A.3 Regulatory Status & Licensing
+Tokinvest DMCC is licensed by the Dubai Virtual Assets Regulatory Authority (VARA) as a Broker-
+Dealer and Issuer (Licence No. VL/2024/12/004).
+Under this licence, Tokinvest DMCC is authorised to design, structure, issue, market, distribute, and
+facilitate secondary trading of Virtual Assets, including Asset-Referenced Virtual Assets (ARVAs), in
+accordance with applicable VARA Rulebooks.
+
+A.4 Ownership and Senior Management
+Tokinvest DMCC is an independently owned entity with no parent company.
+The current shareholders and senior management include:
+
+    · Scott Thiel ­ Chief Executive Officer
+    · Matt Blom ­ Chief Strategy Officer
+    · Robert Cooper ­ Chief Operating Officer
+    · James Byrne ­ Chief Technology Officer
+
+The senior management team collectively brings experience across digital assets, financial markets,
+technology, and regulated financial services. Responsibility for day-to-day management and strategic
+oversight rests with this team, subject to Tokinvest's internal governance framework and VARA
+regulatory oversight.
+
+A.5 Fit and Proper Status
+To the best of Tokinvest DMCC's knowledge and based on available information available at the date
+of this whitepaper:
+
+    · no member of its board of directors, senior management, or other significant decision-makers
+         has been convicted of any offence involving dishonesty, fraud, financial crime, money
+         laundering, insider trading, or offences related to companies, banking, or insolvency, whether
+         before the courts of the UAE or any other jurisdiction; and
+
+    · no such individuals are currently subject to any ongoing criminal investigations or regulatory
+         enforcement actions.
+A.6 Governance Framework
+Tokinvest DMCC operates under a formal corporate governance framework designed to ensure
+effective oversight, accountability, and risk management across all regulated activities.
+The Board of Directors is responsible for:
+
+    · setting strategic direction;
+    · approving material business and product decisions;
+    · overseeing risk management and regulatory compliance; and
+    · supervising senior management.
+
+The Board meets at least quarterly, with decisions taken by majority vote.
+The governance arrangements described in this Appendix are intended to support regulatory
+compliance and internal oversight and do not create contractual rights or obligations enforceable by
+Tokenholders.
+The governance structures, committees, and internal controls described in this Appendix reflect
+Tokinvest's enterprise governance framework and are subject to ongoing refinement in accordance
+with regulatory expectations and business needs.
+
+A.7 Committees and Oversight Structure
+The Board may delegate specific responsibilities to standing committees or executive forums
+operating under formal terms of reference, which may include:
+
+    · Risk Committee ­ enterprise and product-level risk oversight
+    · Listing Committee ­ review and approval of new Virtual Asset issuances
+    · Compliance & AML Oversight Committee ­ regulatory compliance and financial crime
+
+         controls
+    · Technology / Product Committee ­ platform integrity, smart contract design, and DLT
+
+         oversight
+    · Cyber Security Committee ­ information security, resilience, and incident response
+
+Each committee reports to the Board or relevant executive committee as appropriate.
+
+A.8 New Product Approval Process
+All Virtual Asset issuances, including the Token, are subject to Tokinvest's formal New Product
+Approval Process.
+Each proposed product undergoes a structured risk assessment covering, at a minimum:
+
+    · strategic risk;
+    · liquidity risk;
+    · legal and regulatory risk;
+    · compliance risk;
+    · market and credit risk;
+    · operational and technology risk; and
+    · reputational risk.
+
+Residual risk is classified as low, medium, or high, with escalation and approval thresholds applied
+accordingly. Products assessed as high residual risk require Board-level approval prior to launch.
+A.9 Financial Controls and Regulatory Capital
+Tokinvest DMCC maintains regulatory capital in accordance with VARA requirements, held in a
+dedicated capital lock-up account with a UAE-authorised bank.
+The company:
+
+    · submits periodic financial and capital adequacy reports to VARA;
+    · maintains segregation between regulatory capital, operational funds, and client money; and
+    · is subject to annual audit by a UAE-registered audit firm.
+
+A.10 Client Money and Asset Safeguarding
+Client fiat funds received in connection with subscriptions, distributions, or secondary-market trading
+are held in designated client money accounts with UAE-authorised banking institutions, segregated
+from Tokinvest DMCC's own funds.
+Tokinvest DMCC is not a VARA-regulated Custodian. Virtual Asset custody is provided solely as an
+incidental activity to its Broker-Dealer services through:
+
+    · VARA-licensed third-party custodians; and/or
+    · regulated custody technology providers.
+
+Tokinvest remains responsible for oversight of outsourced custody arrangements in accordance with
+VARA requirements.
+
+A.11 AML / CFT and Financial Crime Controls
+Tokinvest DMCC maintains AML/CFT policies and procedures fully compliant with:
+
+    · VARA Rulebooks;
+    · UAE Federal Decree-Law No. 20 of 2018; and
+    · Cabinet Decision No. 10 of 2019.
+
+All investors are subject to:
+
+    · risk-based KYC and customer due diligence;
+    · beneficial ownership verification (where applicable);
+    · sanctions and adverse-media screening; and
+    · ongoing monitoring.
+
+Enhanced due diligence is applied where required. Oversight is conducted by Tokinvest's appointed
+Money Laundering Reporting Officer (MLRO).
+
+A.12 Outsourcing and Third-Party Providers
+Tokinvest DMCC relies on third-party service providers for certain operational functions, including:
+
+    · banking and payment services;
+    · Virtual Asset custody;
+    · blockchain infrastructure; and
+    · technology services.
+All outsourcing arrangements are subject to due diligence, contractual controls, and ongoing
+oversight. Outsourcing does not relieve Tokinvest DMCC of its regulatory responsibilities under
+VARA.
+
+A.13 Conflicts of Interest and Market Conduct
+Tokinvest DMCC maintains policies and controls to identify, manage, and mitigate conflicts of interest
+arising from its roles as issuer, broker-dealer, and platform operator.
+These include:
+
+    · segregation of duties;
+    · restrictions on proprietary trading;
+    · governance oversight of principal trading for settlement facilitation only; and
+    · market surveillance and post-trade review.
+
+Tokinvest confirms that, to the best of its knowledge no member of its board of directors, executive
+management, or any other significant person with decision-making authority has any personal,
+professional, or financial relationship or interest with any individual associated with DMCC or
+associated companies nor with any party involved in the operation, management, or governance of
+Distributed Ledger Technology (DLT) platform Binance Smart Chain (BSC). This affirmation is made
+to ensure full transparency and to confirm that there are no existing or potential conflicts of interest
+that could impair the independence or integrity of Tokinvest's operations or its relationship with
+investors
+
+A.14 Other Parties Involved in the Issuance
+The following entities are involved in each DTFW Token issuance in the capacities described below.
+
+Tokinvest DMCC
+
+    · Issuer and Platform Operator
+         Tokinvest DMCC acts as the regulated issuer of the Tokens and operates the primary
+         issuance process and approved secondary-market trading platforms in accordance with its
+         VARA licence.
+
+DMCC
+
+    · Tradeflow Platform Operator
+         Dubai Multi Commodities Centre ("DMCC") operates the Tradeflow platform, an electronic
+         registry used for the registration, recording, and administration of commodity ownership
+         instruments, including warehouse warrants. The underlying warrant to which each Token
+         relates is issued, recorded, and maintained within the DMCC Tradeflow system in accordance
+         with the applicable Tradeflow rules and procedures..
+
+Brinks Global Services
+
+    · Custodian
+         The Underlying Asset to which each warrant relates is held in physical custody by an
+         independent third-party custodying agent (the "Custodian"), which may include Brinks or
+         another internationally recognised vaulting and logistics provider, pursuant to a custody or
+         storage agreement entered into with the relevant warehouse operator or warrant holder.
+For the avoidance of doubt:
+
+    · none of the above entities acts as a trustee, fiduciary, or investment adviser to Tokenholders;
+
+No Tokens are allocated to Tokinvest DMCC, Dubai Multi Commodities Centre, or the Brinks Global
+Services at issuance. Tokens are issued solely to eligible investors who have completed all applicable
+AML/KYC onboarding and have been approved as whitelisted participants on the Tokinvest platform.
+
+A.15 Governance, Risk and Product Approval Flow (Illustrative)
+The diagram below provides a high-level, illustrative overview of Tokinvest's governance, risk
+oversight, and product approval structure as it relates to regulated Virtual Asset issuances.
+
+This diagram is provided for explanatory purposes only and does not form part of the contractual
+terms of any Token issuance. Specific committee composition, approval thresholds, and internal
+processes may evolve over time in accordance with regulatory requirements and internal governance
+policies.
+APPENDIX B
+TRADEFLOW WARRANT AND ASSET CUSTODY DETAILS
+B.1 Vault Operator/Warehouse Keeper
+Brinks Global Services is the DMCC-approved warehouse operator (Warehouse Keeper) responsible
+for physical custody of the underlying asset within the Brinks Almas Vault facility. The custody of the
+asset is recorded within the DMCC Tradeflow system through the applicable Tradeflow warrant.
+B.2 Vault Name and ID
+Brinks Almas Vault - BGSDX-0003
+B.3 Warrant Number, Current Status & Access
+Warrant Number: SAM2T
+Status: ACTIVE
+The Tradeflow Warrant corresponding to this Reference Asset:-
+
+The document is the official warrant issued within the DMCC Tradeflow registry and confirms the
+existence, ownership registration, and custody status of the underlying asset.
+B.4 Warrant Issue Date and Time
+17th December 2025 15:35
+B.5 HS Code and Long Description
+71069110 - Ingots of silver unwrought
+
+B.6 Inventory Description and Quantity
+
+Silver bar ­ 1,971 kg ­ Purity 999.9 (99.99%) silver.
+
+The underlying asset is a single silver bar refined by SAM Precious Metals FZ LLC and is identified in
+the supporting refiner documentation and assay report by Bar Number A1126 / 21.11.2025.
+
+The weight and purity of the bar are recorded in the supporting documentation and are cross-
+referenced to the relevant DMCC Tradeflow Warrant (SAM2T) and related vault inventory records.
+
+B.7 Refiner details
+SAM Precious Metals FZ LLC, Dubai, UAE
+
+B.8 Assay Certification
+Supplementary Document pdf pp17
+
+B.9 Details of any liens, pledges or encumbrances
+None
+
+B.10 Storage Governance
+Subject to standard DMCC Tradeflow Corporate Access Agreement (see attached)
+
+Custody of the underlying asset operates within the DMCC Tradeflow framework under which the
+warehouse operator maintains physical custody of the asset and registered warrant holders maintain
+title through the Tradeflow registry.
+Transfers, endorsements, or other instructions relating to the Tradeflow warrant may only be executed
+within the DMCC Tradeflow platform by authorised users of the warrant holder in accordance with the
+applicable Tradeflow rules and procedures.
+Following successful completion of the issuance process and transfer of the warrant, Tokinvest DMCC
+will become the registered warrant holder and authorised users of Tokinvest DMCC will have authority
+to provide such instructions within the Tradeflow system.
+Release of the underlying asset from the warehouse facility is governed by the applicable warehouse
+agreement and Tradeflow framework and may only occur upon instruction from the warrant holder in
+accordance with those arrangements.
+
+ DMCC Tradeflow -
+Corporate Access Agreement - 28.02.2021-.pdf
+
+B.11 Storage Security Controls
+To be provided by Brinks (warehouse agreement attached)
+     Warehouse
+Agreement Signed_Brinks.pdf
+
+B.12 Inspection and Audit Reports (past and ongoing)
+
+Inspection and audit documentation relating to the custody of the underlying asset is maintained by
+the vault operator (Brinks Global Services). Internal inventory audits are conducted on a weekly basis
+and DMCC conducts periodic audits of vault inventory under the Tradeflow framework. The most
+recent inspection or audit documentation will be provided by the vault operator and forms part of the
+supporting documentation pack.
+Any discrepancies identified through inspection or audit processes are addressed through the vault
+operator's operational escalation procedures in accordance with the applicable custody and storage
+arrangements.
+
+B.13 Certificate and Schedule of Insurance
+
+The underlying asset held within the Brinks vault facility is insured under the applicable insurance
+arrangements maintained within the Brinks Global Services custody framework. Brinks maintains
+insurance coverage for assets held in its vault facilities under a global insurance policy which is
+renewed on an annual basis. The relevant insurance certificate and policy schedule form part of the
+supporting documentation referenced in this appendix.
+For the purposes of the DTFW issuance, custody, storage and insurance costs relating to the
+underlying asset are prepaid for the full duration of the Economic Term of the token issuance.
+Although the underlying insurance policy is renewed annually as part of the Brinks global insurance
+programme, the prepaid funding arrangement ensures that the applicable custody and insurance
+arrangements remain in place throughout the life of the issuance.
+The applicable insurance arrangements are maintained within the custody framework associated with
+the underlying asset and the relevant storage agreements. Tokenholders do not hold direct
+beneficiary rights under the vault insurance policy; any insurance proceeds relating to the underlying
+asset would be applied in accordance with the custody and asset realisation framework described in
+this Whitepaper.
+
+B.14 Tradeflow Registry Confirmation
+A dated extract from the DMCC Tradeflow registry confirming the status of the warrant (SAM2T) is
+included in the supporting documentation pack.
+The extract includes the system timestamp at the time of retrieval and confirms that the warrant is
+active and recorded within the DMCC Tradeflow system in respect of the underlying asset described
+in this whitepaper.
+The registry record identifies:
+
+    · Warrant Number: SAM2T
+    · Vault Operator: Brinks Global Services
+    · Vault Location: Brinks Almas Vault (DMCC-approved facility)
+    · Inventory Description: Silver bar ­ 1,971 kg ­ Purity 999.9
+
+The Tradeflow registry entry corresponds to the physical asset held in the Brinks vault facility and is
+cross-referenced to the refiner documentation and assay certification provided in the supporting
+documentation.
+B.15 Asset Identification and Refiner Documentation
+The underlying asset is uniquely identifiable through multiple corresponding records and physical
+identifiers.
+Refiner: SAM Precious Metals FZ LLC
+Refiner Bar Number: A1126 / 21.11.2025
+Weight: 1,971 kg
+Purity/Fineness: 999.9 (99.99%) silver
+Tradeflow Warrant Number: SAM2T
+Vault Operator / Location: Brinks Global Services, Brinks Almas Vault
+
+Purity of the bar has been confirmed in the assay and test documentation issued by SAM Precious
+Metals FZ LLC dated 22 November 2025.
+The assay report records an initial measured weight of 1,971.235 kg, with the final recorded weight of
+1,971 kg reflecting the removal of a small sample during the assay process conducted in accordance
+with ISO 11596:2021 sampling standards.
+The bar is further identified and cross-referenced through the relevant DMCC Tradeflow Warrant,
+supporting refiner documentation, assay certification, and the applicable vault inventory records.
+Dated photographic evidence of the bar, including visible markings, dimensions, and condition, is
+included in the supporting documentation pack and cross-referenced to the warrant and inventory
+record.
+
+B.16 Operational Dependencies and Continuity Arrangements
+The operation of the DTFW Token issuance relies on several third-party infrastructure providers
+involved in the custody, storage, registry, and administration of the underlying asset and associated
+digital token infrastructure.
+
+The principal operational dependencies include:
+
+Tradeflow Registry (DMCC)
+Maintains the electronic registry for warehouse warrants representing the underlying commodity
+asset.
+
+Vault Operator (Brinks Global Services)
+Provides physical custody and secure storage of the underlying silver bar within the Brinks Almas
+Vault.
+
+Digital Asset Custody (Hex Trust)
+Provides custody services for digital assets and token infrastructure associated with the issuance.
+
+Sale Agent (appointed at expiry)
+A DMCC-approved sale agent may be appointed to facilitate the liquidation of the underlying asset at
+the end of the Economic Term.
+
+Pricing Sources
+Market pricing references used for valuation of the underlying commodity are based on prevailing
+market prices for silver.
+
+Banking Infrastructure
+Investor subscription funds and distribution proceeds are processed through the Issuer's designated
+banking arrangements in accordance with applicable regulatory requirements.
+The Issuer maintains operational procedures intended to ensure continuity of administration and asset
+management in the event of service provider disruption, including the ability to appoint replacement
+service providers where required.
+
+APPENDIX C
+TOKENISATION, CUSTODY, SETTLEMENT AND FLOW OF FUNDS
+C.1 Distributed Ledger Technology (DLT)
+The Tokens are issued as blockchain-based Virtual Assets using distributed ledger technology ("DLT")
+selected by Tokinvest based on security, scalability, regulatory compatibility, and operational suitability.
+At the time of issuance, the Tokens are implemented on the Binance Smart Chain (BSC) DLT, a
+public, EVM blockchain compatible with industry standards.
+The DLT is used to:
+
+    · record token issuance and total supply;
+    · enable secure transfer of the Tokens between approved accounts; and
+    · support lifecycle events, including minting at the Token Generation Event (TGE) and burning
+
+         at expiry.
+The DLT does not control, manage, or operate the Reference Asset, nor does it determine economic
+performance or distributions.
+C.2 Token Standard and Smart Contracts
+The Tokens are implemented using an industry-standard token protocol compatible with ERC-based
+frameworks commonly used for regulated Virtual Assets.
+The smart contracts governing the Tokens define:
+
+    · token supply and transfer rules;
+    · linkage to issuance-specific identifiers; and
+    · lifecycle constraints consistent with the fixed-term, amortising structure described in this
+
+         whitepaper.
+
+Smart contracts used for Token issuances are subject to internal review and independent third-party
+assessment prior to deployment, in accordance with Tokinvest's technology governance and risk
+management procedures. The DTFW token;
+
+    · uses a standard ERC-1404 transfer-restriction framework implemented as a BEP-20
+         compatible token on BNB Smart Chain l;
+
+    · smart contract has undergone a comprehensive independent audit, most recently on 14
+         December 2022;
+
+    · audit was conducted by Block Solutions, a reputable cybersecurity and blockchain auditor; and
+    · results of the audit confirmed that the smart contract is secure, and functions as intended, with
+
+         no critical vulnerabilities detected. While reasonable steps are taken to mitigate smart contract
+         risk, no assurance is given that smart contracts are free from defects, vulnerabilities, or
+         unforeseen behaviour.
+
+C.3 DLT Consensus Mechanism
+BNB Smart Chain uses a Proof-of-Staked-Authority (PoSA) consensus mechanism under which a
+limited set of validators produce and validate blocks. Validator selection is based on staking and
+governance processes defined by the BNB Chain protocol.
+
+The design of the token indicate that there are no observable risks of a variance to the rights of token
+owners should other DLTs be used in the future.
+
+BNB Smart Chain relies on a limited validator set. While this may increase throughput and efficiency,
+it may also introduce concentration risk relative to more decentralised networks. Tokinvest does not
+control, operate, or influence BNB Smart Chain validators.
+
+Validators on the BSC chain receive a portion of transaction fees as well as block rewards. BSC
+transaction fees are paid in BNB and are typically low and predictable but may fluctuate based on
+network demand. They depend on the gas price and the limit used by each transaction.
+
+C.4 DLT Independence and Future Flexibility
+The contractual economic rights associated with the Tokens are defined exclusively by:
+
+    · this whitepaper; and
+    · the applicable legal and contractual documentation.
+
+Those rights are not dependent on the specific DLT network used for token issuance.
+Subject to regulatory approval, technical feasibility, and applicable disclosures, the Issuer reserves
+the ability to:
+
+    · migrate tokens to an alternative DLT;
+    · enable interoperability with other networks; or
+    · upgrade smart contract implementations,
+
+provided that such actions do not alter the fundamental economic rights of tokenholders.
+There is no obligation to undertake any such migration or upgrade.
+
+C.5 Custody and Transfer Controls
+The Tokens may be held:
+
+    · within custody arrangements provided through the Issuer using VARA-licensed third-party
+         custodians; and/or
+
+    · in other approved custody configurations permitted under the Issuer's platform rules and
+         applicable regulation.
+
+Transfers of Tokens are facilitated through the Issuer's investor platform and are subject to:
+
+    · AML/KYC and sanctions controls;
+    · transfer restrictions embedded in smart contract logic where applicable; and
+    · the Issuer's market conduct and compliance policies.
+
+Self-custody may be permitted only where supported by the issuance structure and regulatory
+requirements, and subject to the Issuer's approval.
+
+C.6 Smart Contract Governance, Control and Incident Response
+The smart contracts used to issue and manage the Tokens are deployed and administered by the
+Issuer in its capacity as regulated issuer and platform operator.
+
+Authority and control
+
+    · the Issuer is the sole party with authority to deploy, upgrade, modify, pause, or otherwise
+         administer the smart contracts associated with the Tokens.
+
+    · Administrative access rights (including any privileged or "admin" functions) are subject to the
+         Issuer's internal governance, access control, and compliance frameworks and are not
+         accessible to tokenholders.
+
+Change management
+
+    · No material changes have been made to the smart contracts following initial deployment, other
+         than routine technical maintenance where applicable.
+
+    · Any future upgrade or modification would be undertaken only where reasonably required for
+         security, regulatory compliance, or operational continuity, and would not be intended to alter
+         the fundamental economic rights of tokenholders as described in this whitepaper.
+Incident response
+In the event of a material smart contract vulnerability, exploit, or other critical incident, the Issuer may
+take reasonable and proportionate steps to protect investors and market integrity, including:
+
+    · temporary suspension of token transfers;
+    · disabling affected contract functions;
+    · coordination of remedial technical measures; and
+    · where necessary, burning and reissuing Tokens to restore correct balances and functionality.
+
+Any such actions would be undertaken in accordance with the Issuer's VARA-approved technology
+governance, incident response, and communications procedures. the Issuer is not required to
+guarantee uninterrupted operation of smart contracts and does not accept liability for losses arising
+solely from DLT-related failures or vulnerabilities, except to the extent required under applicable law.
+
+C.7 Environmental Impact Considerations
+the Issuer is committed to responsible and sustainable use of technology.
+The DTFW Token is issued on BNB Smart Chain, which utilises a Proof-of-Staked-Authority (PoSA)
+consensus mechanism under which a limited set of validators produce and validate blocks. This
+consensus model is generally recognised as more energy-efficient than proof-of-work based
+blockchain networks due to its reduced computational requirements.
+
+While the Issuer does not control the environmental footprint of public blockchain networks, the
+selection of distributed ledger infrastructure takes into account network efficiency, transaction
+scalability, and relative energy consumption characteristics of available blockchain networks.
+
+C.8 Technology Risk Disclosure
+Use of DLT involves inherent risks, including:
+
+    · network congestion or downtime;
+    · protocol upgrades or changes;
+    · validator concentration or failure;
+    · cybersecurity threats; and
+    · potential loss or delay of transactions.
+
+These risks are described further in the Risk and Disclosure Statement and should be considered by
+all investors.
+C.9 Issuance Process and Tradeflow Warrant Registration
+
+For each issuance, the Reference Asset is acquired and registered within the DMCC Tradeflow
+system following successful completion of the subscription process.
+
+The operational sequence is as follows:
+
+    1. Subscription Close - the subscription period closes and the Issuer verifies that the minimum
+         subscription threshold has been satisfied.
+
+    2. Funds Reconciliation - investor subscription funds are reconciled within the Issuer's
+         designated client money accounts and internal issuance records are verified.
+
+    3. Reference Asset Acquisition and Registration - upon successful completion of reconciliation
+         checks, the Tradeflow warrant representing the Reference Asset is transferred or registered
+         within the DMCC Tradeflow system with Tokinvest DMCC as the warrant holder.
+
+    4. Issuance Controls - prior to token minting, the Issuer confirms that the warrant registration,
+         subscription reconciliation, and internal issuance records are consistent.
+
+    5. Token Minting and Allocation - following confirmation of the above checks, tokens
+         corresponding to the issuance are minted and allocated to investors' wallets in accordance
+         with the issuance documentation.
+
+These steps are intended to ensure that token issuance occurs only after the Reference Asset has
+been secured within the Tradeflow registry and reconciliation checks have been completed.
+
+APPENDIX D
+ADDITIONAL REGULATORY DISCLOSURES & DEFINITIONS
+
+D.1 Status of this Whitepaper
+This whitepaper is a regulated disclosure document prepared by the Issuer in accordance with the
+requirements of the Dubai Virtual Assets Regulatory Authority (VARA) for the issuance of Asset-
+Referenced Virtual Assets (ARVAs).
+This whitepaper:
+
+    · does not constitute a prospectus under UAE securities legislation;
+    · does not constitute an offer of securities; and
+    · is intended to provide product-specific disclosure for the Tokens described herein.
+
+This whitepaper must be read together with:
+
+    · the applicable Risk and Disclosure Statement;
+    · issuance-specific subscription documentation; and
+    · the Issuer's Brokerage Terms of Business,
+
+each of which forms part of the overall disclosure and contractual framework applicable to the
+Tokens.
+D.2 No Investment Advice or Fiduciary Relationship
+This whitepaper is provided for disclosure and informational purposes only.
+the Issuer:
+
+    · does not provide investment advice, portfolio management, or personalised recommendations;
+    · does not act as a fiduciary, trustee, or adviser to Tokenholders; and
+    · does not assess the suitability of Tokens for individual investors.
+
+Investors remain responsible for determining whether participation in a Token issuance is appropriate
+for their own circumstances, taking into account the disclosures provided and the applicable Risk and
+Disclosure Statement.
+
+D.3 Eligibility, Jurisdictional Restrictions and Transfer Limitations
+Participation in Token issuances is limited to investors who:
+
+    · have completed the Issuer's AML/KYC and onboarding procedures; and
+    · are eligible under applicable laws, regulations, and sanctions regimes.
+
+Tokens may not be offered, sold, or transferred in jurisdictions where such activity would be unlawful
+or require regulatory approval not obtained.
+the Issuer may restrict, suspend, or refuse subscriptions or transfers where required to comply with:
+
+    · applicable law or regulation;
+    · VARA Rulebooks; or
+    · internal compliance and risk controls.
+
+D.4 Custody, Wallets and Private Keys
+Tokens may be held through custody arrangements facilitated by the Issuer using VARA-licensed
+third-party custodians, or through approved self-custody configurations where permitted.
+Where Tokens are held in self-custody, investors are responsible for maintaining access credentials
+and safeguarding private keys. the Issuer does not control self-custodied wallets and cannot restore
+access where credentials are lost or compromised.
+
+Custody arrangements and limitations are described further in the relevant appendices and platform
+documentation.
+
+D.5 Distributed Ledger Technology
+The issuance, transfer, and recordkeeping of Tokens rely on distributed ledger technology.
+DLT involves operational and technical risks, including protocol upgrades, network disruption,
+validator performance, and smart contract behaviour. the Issuer selects and maintains DLT
+infrastructure based on security, scalability, and regulatory compatibility considerations, but does not
+control public blockchain networks.
+
+DLT risks are described further in the Risk and Disclosure Statement.
+D.6 Amendments and Updates
+the Issuer may amend or update this whitepaper in accordance with applicable VARA requirements
+and law.
+Material updates will be communicated through the the Issuer platform or other appropriate channels.
+Where required by regulation, investor consent or additional acknowledgements may be obtained.
+
+D.7 Governing Law and Jurisdiction
+Unless otherwise specified in issuance-specific contractual documentation:
+
+    · the Tokens; and
+    · the contractual rights and obligations arising in connection with the Tokens
+    · the offer, distribution, and issuance of the Tokens
+
+are governed by DIFC law.
+
+The Issuer submits to the exclusive jurisdiction of the courts of the Dubai International Financial
+Centre (DIFC) in relation to disputes arising from the offer, issuance, administration, and operation of
+the Tokens, subject to mandatory applicable law.
+
+D.8 Definitions and Interpretation
+Capitalised terms used in this whitepaper and not otherwise defined have the meanings given to them
+in:
+
+    · the Issuer's Brokerage Terms of Business; or
+    · the applicable issuance-specific documentation.
+
+In the event of inconsistency between:
+
+    · this whitepaper;
+    · the Risk and Disclosure Statement; and
+    · the contractual terms governing the Tokens,
+
+the contractual terms shall prevail to the extent permitted by applicable law.
+
+D.9 Regulatory Positioning of DTFW Tokens
+DTFW Tokens are issued as Asset-Referenced Virtual Assets under the VARA Rulebook. They:
+
+    · carry no regulatory requirements related to settlement or transfer of title of the reference asset;
+         The Reference Asset remains unchanged throughout the life of the DTFW token, is held
+         securely by the Issuer at all times, and is unaffected should the ownership of the DTFW token
+         change (which may take place through purchase/sale in the the Issuer secondary market or on
+         other regulated trading platforms);
+
+    · provide right of redemption for the Reference Asset subject to the terms described in this
+         whitepaper; and
+
+    · confer right of ownership meaning that the value of the ARVA should be stable to the
+         Reference Asset subject to potential minor temporary fluctuations due to supply and demand
+         for tokens.
+D.10 Maintenance of Reserve Assets
+The VARA regulatory framework requires issuers of certain ARVAs to maintain sufficient Reserve
+Assets in accordance with Rule III.C.1. of Annex 2 of the VA Issuance Rulebook. In respect of the
+DTFW token, the Issuer complies with this requirement by designating the Tradeflow Warrant (the
+"Reference Asset") as the Reserve Asset.
+
+Accordingly:
+
+    · the Reserve Asset and the Reference Asset are the same asset (i.e., the Tradeflow Warrant),
+         and are held by the Issuer on behalf of Tokenholders;
+
+    · the Issuer maintains sufficient holdings of the Tradeflow Warrant at all times to ensure full
+         backing of all issued DTFW tokens on a 1:1 basis by weight;
+
+    · the Tradeflow Warrant represents clear and enforceable legal title to the underlying asset,
+         which is insured and securely warehoused in a DMCC-approved facility;
+
+    · the token minting process is strictly controlled to prevent over-issuance, such that DTFW
+         tokens are only issued when a corresponding amount of the Tradeflow Warrant is held, and no
+         additional tokens may be issued once the Reference/Reserve Assets have been fully
+         tokenised.
+
+This structure ensures that the Issuer continuously maintains sufficient Reserve Assets in compliance
+with applicable VARA requirements, while safeguarding the rights of Tokenholders.
+
+D.11 Entirety of Disclosure
+Sections 1­9 of this whitepaper, together with the appendices, the Risk and Disclosure Statement,
+and issuance-specific materials, comprise the complete disclosure framework for the Tokens.
+
+D.12 Third-Party Rights and No-Recourse
+
+The Token structure involves the use of certain third-party service providers including, but not limited
+to, the Dubai Multi Commodities Centre (DMCC), the Tradeflow registry, warehouse operators,
+custodians, insurers, and other operational service providers.
+
+These parties perform limited operational roles in connection with the storage, registration, custody, or
+administration of the underlying asset and associated infrastructure.
+
+Tokenholders are not parties to any contractual arrangements between the Issuer and these third-
+party service providers and do not have direct contractual or legal rights of recourse against them.
+
+Any rights relating to the Reference Asset, custody arrangements, or related operational services
+arise solely through the contractual framework established between the Issuer and such third parties.
+
+Tokenholders' rights in respect of the Token arise exclusively against the Issuer in accordance with
+the terms of this whitepaper and the applicable issuance documentation.
+APPENDIX E
+SUPPLEMENTARY DOCUMENTATION DETAILS
+(please see 17 page supporting documents pdf included with submission)
+
+E.1 Letters of Adherence pp1-6
+Signed Letters of Adherence for SAM Precious Metals, Tokinvest and Brinks
+
+E.2 Inventory Details Report pp7
+Inventory report for the Silver Bar with warrant status, issue date and other information
+
+E.3 Silver Bar Report pp8-15
+Report compiled by SAM Precious Metals detailing fabrication method and process, weight and
+dimensions.
+
+E.4 Weight Certification pp16
+Verified weight certification for the bar signed and stamped by Arab Scale Trading LLC
+
+E.5 Test Report pp17
+Sampling test report detailing purity of silver and weight of bar.
+

@@ -1,0 +1,163 @@
+
+
+Winding Down USDL Lift Dollar - Paxos | Newsroom
+
+Products
+Assets
+Company
+Transparency
+Developers
+Contact Us
+Sign In
+Products
+Assets
+Company
+Transparency
+Developers
+Contact Us
+Sign In
+< Newsroom Home
+Paxos
+Oct 8, 2025
+Winding Down USDL Lift Dollar
+Since its launch, USDL Lift Dollar - a fiat referenced token -  has served as a secure, accessible, and reliable digital asset for users seeking stability and trust on blockchain networks, while earning daily programmatic yield. We’re proud of what USDL has achieved—proving the utility of regulated, dollar-backed stablecoin that democratized access to safe, regulated yield, while also being used to power payments and settlements.
+After careful consideration, we have made the decision to wind down USDL Lift Dollar stablecoin (USDL). While USDL has been a valuable product to prove how regulated assets can pay daily yield to end holders, we are prioritizing initiatives that will have the greatest long-term impact on global financial infrastructure, including USDG.
+Key Details of the Wind-Down
+Minting of new tokens will end on October 8, 2025.
+Daily rebasing for yield accrual on outstanding USDL will be halted on December 8, 2025.
+Paxos will support redemptions of USDL to U.S. dollars through the platform until December 8, 2025, subject to onboarding requirements. For USDL holders that are not onboarded Paxos customers, convert to other assets via the Curve pool.
+Any outstanding USDL that remains on December 8, 2025 will be converted to USDG. Any blockchain addresses holding a USDL balance greater than $1 will be sent the equivalent value in USDG, subject to passing Compliance checks, and the USDL will be burned. Wallet balances less than $1 will not be recouped. 
+Paxos will not reimburse or redeem funds associated with wallet addresses identified as belonging to sanctioned persons or entities under applicable regulations. Such balances will be frozen and access denied. All affected funds will be reported to the relevant authorities as required by law.
+We will provide clear guidance and dedicated support, via support@paxos.com, to ensure a smooth redemption and transition process for all USDL users.
+A Proven Track Record of Safe Wind-Downs
+Paxos has deep experience in safely and transparently winding down regulated stablecoins. In past transitions, we ensured that every token holder was able to redeem their assets for their equivalent dollar value and that the process was executed under the oversight of regulators. This history demonstrates our commitment to protecting customers, maintaining market stability, and setting the industry standard for responsible operations. This wind down will be completed under the oversight of the Financial Services Regulatory Authority (FSRA) of ADGM, the international financial centre of Abu Dhabi, the Capital of the United Arab Emirates.
+With USDL, we are applying the same proven approach:
+Clear timelines and deadlines announced in advance
+Continued 1:1 redemptions backed by fully segregated reserves
+Open communication with users, partners, and regulators throughout the process
+Why We’re Making This Change
+The stablecoin landscape has matured significantly since USDL was first introduced. Today, institutions and enterprises are demanding regulated, large-scale solutions that integrate seamlessly with global banking systems. By winding down USDL, we are able to sharpen our focus on building products that meet the next stage of industry needs. 
+We want to thank the USDL community for their trust and support. This is the start of a new chapter focused on delivering solutions that can transform global markets at scale.
+Disclaimer:
+The information contained herein is for informational purposes only and does not constitute financial, legal, or investment advice. No information provided should be construed as an endorsement or recommendation to buy, sell, or hold any asset. Always conduct your own research and consult with a qualified professional before making any financial decisions.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+Products
+Crypto Brokerage
+Stablecoin Payments
+Stablecoin Issuance
+Mint and Redeem
+itBit
+Platform
+Custody & Wallets
+Regulatory Record
+Security
+Paxos-Issued Assets
+Global Dollar (USDG)
+PayPal USD (PYUSD)
+Pax Dollar (USDP)
+Pax Gold (PAXG)
+BUSD
+Company
+About us
+Careers
+Blog
+Newsroom
+Fordefi by Paxos
+Paxos Labs
+EU Stablecoins
+PSSC
+Resources
+Contact us
+Transparency Reports
+Terms and Conditions
+Your Privacy Choices
+Brand Resources
+Support
+Developers
+Documentation
+Testnet Faucet
+Get the latest from Paxos with Industry news and updates in your inbox
+Privacy Policy
+  |  
+Cookie Policy
+© 2026 Paxos Trust Company, N.A. All Rights Reserved.
+

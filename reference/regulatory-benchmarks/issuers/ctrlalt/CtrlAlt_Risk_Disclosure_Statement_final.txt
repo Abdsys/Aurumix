@@ -1,0 +1,102 @@
+Risk Disclosure Statement
+
+This is version 1.2 of this document which applies from 16th February 2026. The previous version constituted part A only.
+Part A
+
+Users of Ctrl Alt's services should be aware of the key risks associated with the buying, selling and trading of virtual assets.
+
+Important - Please read the risk disclosure below carefully before you start using our platform.
+
+Ctrl Alt allows users of its platform to access `Virtual Tokens' which are a digital representation of a set of rights to a real world
+asset.
+
+Virtual Assets are a digital representation of value that may be digitally traded, transferred, or used as an exchange or
+payment tool, or for investment purposes. This is a more general definition which includes Virtual Tokens.
+
+The primary risks associated with Virtual Assets are:
+
+     They may lose all or some of their value and are subject to extreme volatility.
+     They may not always be transferable and some transfers may be irreversible.
+     They may not be liquid.
+     Some transactions are not private and may be recorded on public DLTs (distributed ledger technology).
+     They may be subject to fraud, manipulation, theft, including through hacks and · other targeted schemes and may not
+
+         benefit from legal protections.
+
+We have implemented robust measures including incident response procedures and a business continuity plan to address
+any risk of loss which may result from a failure of the services provided.
+
+General risks associated with investing include:
+
+ The value of investments can go up and down. Past performance is not a reliable indicator of future returns.
+ Investing may not be suitable for everyone; potential investors could seek independent advice if they're unsure
+
+    whether or not to invest.
+ The tax treatment of an investment depends on the investor's individual circumstances and may be subject to change
+
+    in the future.
+Part B
+
+Investors considering purchasing or otherwise trading in asset referenced virtual assets (ARVAs) relating to the tokenized
+property project should be aware of the following risks.
+
+Investment risks
+
+General risks associated with investing include:
+
+     The value of investments can go up and down. Past performance is not a reliable indicator of future returns.
+     Investing may not be suitable for everyone; potential investors should seek independent advice if they're unsure
+
+         whether or not to invest.
+     The tax treatment of an investment depends on the investor's individual circumstances and may be subject to change
+
+         in future.
+     Property is not generally considered to be a liquid asset class. The redemption of tokens is subject to demand within
+
+         the ecosystem.
+     Virtual Assets, whilst regulated, are not subject to any regulatory compensation scheme.
+
+Investors may be asked to provide additional capital for material charges, such as repairs or maintenance. Any such requests
+will be communicated to investors.
+
+Issuer related risks
+
+The Issuer is exposed to different types of risk as part of its strategy and business operations. These include:
+
+     Financial stability;
+     Credit;
+     Market;
+     Liquidity;
+     Operational;
+     Issuer;
+     Conduct including legal and regulatory;
+     Compliance; and
+     Consumer Protection.
+
+In accordance with VARA's regulatory framework, Ctrl Alt must establish and maintain risk management systems and
+controls to enable it to identify, assess, mitigate, control and monitor its risks.
+
+We must also develop, implement and maintain appropriate measures to manage the risks to which we and, where
+applicable, our customers or users, are exposed.
+
+This is an ongoing process subject to regular review in order to identify emerging or unforeseen risks requiring management
+action. Ctrl Alt's approach to risk management is ultimately overseen by its Board.
+
+Technology risks
+
+XRP operates on a decentralized blockchain using a Federated Consensus Mechanism, ensuring fast, low-cost transactions
+without mining or staking. However, several technology-related risks remain.
+
+Private key management is crucial, as the loss or theft of private keys results in permanent loss of funds.
+
+XRPL's consensus model mitigates 51% attacks, but validator centralization risks could emerge if a small number of entities
+dominate validation, impacting decentralization. Protocol upgrades and governance follow the XRPL Amendment process,
+requiring 80% validator approval for two weeks, which may delay critical updates or lead to governance disputes. Security
+risks include potential bugs in protocol updates, evolving attack vectors, and the long-term challenge of quantum
+computing threats to cryptographic security.
+
+Additionally, while XRPL transactions are efficient and transparent, they are public and pseudonymous, making them
+subject to blockchain analysis, which could impact privacy and regulatory compliance. XRPL continues to evolve, with
+ongoing improvements in governance, interoperability, and scalability, ensuring its role as a leading blockchain for
+cross-border payments and financial transactions.
+

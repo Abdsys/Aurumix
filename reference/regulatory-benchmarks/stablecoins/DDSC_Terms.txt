@@ -1,0 +1,111 @@
+DDSC
+What is DDSC
+How it Works
+FAQ
+Transparency
+What is DDSC
+How it Works
+FAQ
+Transparency
+Legal
+Terms of Use
+Effective Date: 
+1 May 2026
+ · 
+Last Updated: 
+1 May 2026
+Contents
+Preamble
+1. Eligibility
+2. Account Registration and Security
+3. AML / KYC Procedures
+4. User Conduct and Prohibited Activities
+5. Intellectual Property
+6. Risks Disclaimer
+7. No Warranty
+8. Indemnification / Limitation of Liability
+9. Termination
+10. Governing Law and Dispute Resolution
+11. Amendments
+12. Contact
+PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY BEFORE USING, ACCESSING OR BROWSING OUR WEBSITE AND SERVICES.
+Preamble
+These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User," "you", or "your") and AEDC Stable Coin Network and Distribution L.L.C, a limited liability company duly incorporated and licensed in the Emirate of Abu Dhabi, with registered address in Al Batin, West 0.10: Ahmed Ali Mohammed Abdullah Building, Abu Dhabi, United Arab Emirates and regulated by the Central Bank of the United Arab Emirates ("CBUAE"), ("Company", "we", "us" or "our").
+These Terms govern your access to, and use of our website located at 
+ddsc.ai
+ (the "Site"), APIs, and any related services, content, functionality, sale and purchase of virtual assets ("Stablecoin" / "DDSC"), and applications offered by us (collectively, the "Services").
+By accessing or using the Site, or using any of our Services, you acknowledge that you have read, understood, and agree to be bound by these Terms and our 
+Privacy Policy
+, which is incorporated herein by reference. If you do not agree to these Terms, you must not access or use our Site or Services.
+For the avoidance of doubt, these terms and conditions shall apply to all Services, whether offered by the Company or its affiliates. The Services shall be used by you subject to your adherence with these Terms. As long as you accept and comply with these Terms, we grant you a personal, non-exclusive, non-transferable, limited, revocable privilege to avail the Services.
+1. Eligibility
+To use our Services, you must:
+Be at least 18 years of age or the age of legal majority in your jurisdiction.
+Possess the legal capacity and authority to enter into a binding contract.
+Not be a resident of, or located in, a jurisdiction where the provision or use of our Services is prohibited by law, regulation, or directive. We reserve the right to restrict access from certain jurisdictions.
+Not be on any trade or economic sanctions lists, such as those administered by the Office of Foreign Assets Control (OFAC).
+2. Account Registration and Security
+You must provide accurate, current, and complete information during the registration process.
+You are solely responsible for safeguarding your account credentials (username, password, authentication codes, etc.) and for all activities that occur through your account. We are not responsible for losses caused by compromised credentials or User's negligence.
+You must immediately notify us of any unauthorized use of your account or any other security breach.
+We reserve the right to suspend or terminate your account if any information provided is inaccurate, false, or misleading.
+3. AML / KYC Procedures
+To comply with global regulatory standards, we require all users to complete our identity verification process before accessing certain Services and for the purpose of our ongoing Know Your Customer (KYC) compliances.
+You agree to provide us with the information and documentation we request, which may include government-issued ID and/or proof of address.
+We reserve the right to restrict or suspend your account until the verification process is satisfactorily completed.
+4. User Conduct and Prohibited Activities
+You agree not to use our Services to:
+Violate any applicable law or regulation.
+Engage in fraud, deception, money laundering, terrorist financing, or any other illicit financial activity.
+Infringe upon our or any third party's intellectual property rights.
+Transmit any malware, viruses, or other malicious code.
+Interfere with or disrupt the integrity or performance of the Site or Services.
+Use any automated system (e.g., bots, scrapers) to access our Services without our express permission.
+5. Intellectual Property
+The Site, its original content, software, API, features, functionality, and the Stablecoin logo are and will remain the exclusive property of the Company and its licensors. Our trademarks shall not be used without our prior written consent.
+You are granted a limited, non-exclusive, non-transferable license to access and use the Services for their intended purpose.
+6. Risks Disclaimer
+YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT YOUR USE OF OUR SERVICES IS AT YOUR SOLE RISK. POTENTIAL RISKS INCLUDE, BUT ARE NOT LIMITED TO:
+Risk of hacking, phishing, smart contract vulnerabilities, and other cybersecurity breaches.
+Risk of changes in regulatory landscape which may affect the use or value of the Stablecoin.
+Risk of market volatility leading to loss of value.
+7. No Warranty
+THE SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+TO THE FULLEST EXTENT PERMITTED BY LAW, THE COMPANY, ITS DIRECTORS, EMPLOYEES, AND AGENTS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR CRYPTOCURRENCIES, ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE SERVICES.
+8. Indemnification / Limitation of Liability
+You agree to defend, indemnify, and hold harmless the Company and its affiliates, licensors, and service providers from any claim, demand, loss, liability, damage, or expense (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms, your use of the Services, or your violation of any rights of a third party.
+To the fullest extent permitted by applicable law, in no event shall the Company, its affiliates, or their respective directors, employees, or agents be liable to you for any damages whatsoever, including but not limited to direct, indirect, special, incidental, punitive, or consequential damages arising out of or relating to:
+(a) your access to or use of, or inability to access or use, the Website;
+(b) any conduct or content of any third party on the Website;
+(c) any unauthorized access to or use of our servers and/or any personal information stored therein;
+(d) any errors or omissions in any content or for any loss or damage incurred as a result of the use of any content posted, emailed, transmitted, or otherwise made available through the Website.
+9. Termination
+We may suspend or terminate your access to the Services immediately, without prior notice or liability, if required by applicable law or regulation, or if your activity poses risk to the Site or other users, or for any reason, including if you breach these Terms. Upon termination, your right to use the Services will cease immediately.
+10. Governing Law and Dispute Resolution
+These Terms are governed by, and construed in accordance with, the federal laws of the United Arab Emirates, as supplemented by Central Bank of the UAE regulations. Nothing in these Terms limits the User's rights under the CBUAE Consumer Protection Regulation or the User's right to escalate a complaint to the CBUAE Sanadak Ombudsman Unit free of charge. Subject to those rights, any dispute will be referred to the competent UAE courts of [Abu Dhabi].
+11. Amendments
+We reserve the right, at our sole discretion, to modify or replace these Terms and Conditions at any time. We will provide notice of any material change(s) by posting the updated Terms and Conditions on the Site and updating the "Last Updated" date. Your continued use of the Services after any changes constitutes your acceptance of the revised Terms and Conditions.
+12. Contact
+Should you have any queries or questions about these Terms and Conditions, please contact us:
+Legal & Compliance Contact
+Mounir Malou
+mounir.malou@ddsc.ai
+Vidhu Raveendran
+Vidhu.Raveendran@ddsc.ai
+Al Batin, West 0.10: Ahmed Ali Mohammed Abdullah Building, Abu Dhabi, United Arab Emirates
+The institutional-grade, AED-backed payment token engineered for the modern financial system.
+Regulated by CBUAE
+Protocol
+Why DDSC
+How it Works
+Transparency
+Legal
+Terms of Use
+Privacy Policy
+Company
+About
+Contact
+Whitepaper
+© 2026 DDSC. All rights reserved. DDSC tokens are not securities, investment products, or deposit-taking instruments.
+AEDC Stable Coin Network and Distribution L.L.C. is licensed by the Central Bank of the UAE under the Stored Value Facilities Regulation (Licence No. [05.01.01.018.2026.01]) and the Payment Token Services Regulation (Licence No. [09.01.01.004.2026.01]). The Central Bank's licensing of the Company and its review of the DDSC White Paper do not constitute an endorsement of DDSC. DDSC is not a deposit and is not covered by any government deposit-protection scheme.
+The Central Bank of the UAE has reviewed and accepted this White Paper. Such review and acceptance does not constitute an endorsement of the Payment Token to which this White Paper relates, or of the accuracy or completeness of any information or statements in the White Paper.

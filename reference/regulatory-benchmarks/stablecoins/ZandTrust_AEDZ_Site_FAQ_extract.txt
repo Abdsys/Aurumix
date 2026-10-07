@@ -1,0 +1,380 @@
+Source: https://www.zandtrust.com/en (strings extracted from Next.js page payload, retrieved 2026-10-07)
+
+static/chunks/app/global-error-29e8928af5ef1608.js
+static/chunks/app/%5Blocale%5D/page-db42c2a4807003d1.js
+static/chunks/app/%5Blocale%5D/layout-c508e46d6a886465.js
+ZmQ5ZTk2Y2YtNTdhNS00ODkxLWJkZjQtNWQ2YTJmOWNiMTRi
+/_next/static/media/131998dd15ad1ef3-s.p.ttf
+/_next/static/media/1346f361f0f990bd-s.p.ttf
+/_next/static/media/479277d14a2c755d-s.p.ttf
+/_next/static/media/79ed5294bd2208db-s.p.otf
+/_next/static/media/8460ced3d816b784-s.p.otf
+/_next/static/media/95a97a83c412227e-s.p.otf
+/_next/static/media/d7799d863e25a3ff-s.p.otf
+/_next/static/media/e489c3e6e012243d-s.p.ttf
+}]]}]]}],{},null,false]},null,false]},null,false],[
+absolute bottom-0 right-0 z-0 size-full md:block
+/_next/static/media/landing-hero.1e03505d.webp
+data:image/webp;base64,UklGRnoAAABXRUJQVlA4WAoAAAAQAAAABwAAAgAAQUxQSBkAAAAAAAAAAAAAACsAAAAAOrLU9m2blJLg/v7+AFZQOCA6AAAA8AEAnQEqCAADAAJAOCWgAnS6AAK6anrAAP7gwm9wUy1NPrTguxW3sdAY9rQk72YfsiW2epzbsAAAAA==
+object-cover object-[55%_center] sm:object-cover sm:object-[60%_center] xl:!object-[bottom_right]
+relative z-10 mx-8 mb-2 pt-36 md:mb-4 md:ms-32 md:w-200 md:pt-52 2xl:mx-64
+mb-3 text-hero2 font-bold leading-none text-brand-foreground md:mb-5 md:text-hero1
+text-sm font-semibold leading-normal md:mb-8 md:text-hero3 md:leading-snug text-content
+relative z-10 px-8 md:px-32  2xl:px-64  md:pb-56 md:pt-64
+mb-8 text-xl font-bold text-white md:text-4xl md:font-semibold
+flex flex-col gap-4 md:flex-row md:justify-between
+rounded-2xl bg-featuresCard px-8 py-10 md:max-h-card md:max-w-card md:pt-14 md:basis-3/12 transition duration-300 ease-in-out hover:scale-105 hover:bg-featuresCard-hover 
+flex items-center gap-4 md:flex-col md:items-start md:gap-10
+text-base font-bold uppercase text-brand-foreground md:h-20 md:whitespace-pre-line md:text-2xl
+mt-5 text-sm leading-6 text-secondary opacity-85 md:mt-10 md:text-base
+AEDZ is powered by Zand, an AI-powered fintech and financial services group, fully licensed by the Central Bank of the UAE.
+AEDZ is fully transparent with reserve balances that undergo third-party audits and are published for public viewing, ensuring our commitment to openness and trust.
+Powered by blockchain technology, efficient transfer fees make AEDZ an affordable solution for everyone, anywhere, anytime.
+mb-8 text-center text-2xl font-bold tracking-wider text-content
+Zand Bank Majority Shareholders and Board
+grid grid-cols-1 justify-items-center gap-5 gap-x-0 px-12 md:grid-cols-3 md:gap-6
+rounded-lg border text-card-foreground flex h-30 w-30 items-center justify-center bg-white p-4 shadow-md transition-shadow hover:shadow-lg md:h-28 md:w-56
+px-8 pb-8 pt-10 md:mx-32 md:px-0 md:py-24 2xl:mx-64
+mb-4 text-center text-xl font-bold md:mb-14 md:text-3xl text-content
+rounded-lg py-4 hover:no-underline md:text-xl
+text-xs text-muted-foreground md:text-base
+AEDZ is the world’s first regulated AED-backed Stablecoin issued by Zand Trust. With a seamless conversion of 1 AED Stablecoin to 1 Emirati Dirham, the Stablecoin offers unparalleled use cases for everyone, anywhere, anytime.
+Zand Trust is a wholly owned subsidiary of Zand Bank, an AI-powered Fintech and financial services group in the United Arab Emirates (UAE).
+Under the Payment Token Services Regulation (Circular No. 2/2024), AEDZ is licensed by the Central Bank of the UAE, to issue a regulated Dirham-backed Stablecoin. Zand Trust adheres to the highest levels of regulatory compliance ensuring your assets and businesses.
+inline-flex items-center justify-center rounded bg-brand-foreground px-4 py-2 font-medium text-white transition-colors hover:bg-features
+AEDZ facilitates cross-border transactions within seconds, offering new standards in security, transparency and speed.
+6Lc92KorAAAAAGzdI3gkgqXAiTgYmbHOQEJApEYw
+{locale, select, ar {عربى} en {EN} other {Unknown}}
+An unexpected error occurred during registration
+A simple example of how to use i18n in a React app
+Zand Trust is a wholly-owned subsidiary of Zand Bank, an AI-powered Fintech and financial services group for the digital economy.
+Zand Trust has introduced its first stablecoin, Zand AED (AEDZ), a public multi-blockchain digital currency that is backed by the UAE Dirham. This stablecoin is fully transparent, with reserve data published regularly on the Zand Trust website. With the launch of AEDZ, Zand Trust aims to support the evolving needs of the digital economy by creating a seamless integration between TradFi and DeFi..
+The vision and mission reflect the commitment to providing high quality issuance, custody and conversion services while prioritizing security, trust, and client satisfaction. They serve as guiding principles for our company's growth and development in the financial and digital asset industry.
+To empower the world with the freedom to choose how they transact, whether through traditional fiat currency or digital Payment Tokens, fostering a more inclusive and efficient financial ecosystem.
+We aspire to become the leading provider of payment tokens backed by specific-reference assets like fiat-currencies and commodities, recognized globally for our commitment to security, transparency, and financial innovation.
+By positioning our Payment Token as a key enabler in the broader financial and blockchain infrastructure and setting the gold standard for fiat-backed Payment Tokens, we seek to transform the way the world transacts and interacts financially.
+Our mission is to revolutionize the financial landscape by providing a secure, transparent, and accessible payment token solution, backed by specific-reference assets like fiat-currencies and commodities.
+We aim to empower economies by offering a reliable digital currency that facilitates seamless transactions, promotes financial inclusion, and integrates effortlessly with the global economy.
+Through innovation, compliance, and exceptional client-centricity, we strive to build trust and deliver value to our users, stakeholders, and the broader financial ecosystem.
+Mohammed is a Board Member and executive officer with over 15 years of experience spanning across diversified
+Michael Chan is Chief Executive Officer of Zand, the first fully licensed, all-digital bank that operates
+Dr. Marwan Alzarouni is a globally recognized leader in blockchain, artificial intelligence, and digital security. He currently serves as CEO of AI at the Dubai Department of Economy
+Designed for instant, low-cost payments AEDZ brings the power of the UAE Dirham to the digital world.
+Fast, global and 24/7, AEDZ is a regulated digital currency pegged 1:1 to the Emirati Dirham (AED).
+/images/zand-board/board-member_1@2x.webp
+As Chairman of the Board of Directors at Zand Bank, Mr. Mohamed Alabbar stands at the forefront of banking innovation. His esteemed leadership and visionary approach are pivotal in establishing Zand as a leading digital bank, dedicated to delivering exceptional and secure online banking experiences. With a rich background in transformative real estate and e-commerce, including the stewardship of Emaar Properties and the development of noon.com, Mr. Alabbar brings unparalleled expertise in driving growth and excellence. His strategic foresight is instrumental in reinforcing Zand Bank's position as a trusted, customer-centric financial institution for the digital age, poised to meet the evolving needs of investors and customers.
+/images/zand-board/board-member_2@2x.png
+Mr. Mohammed Almazrouei, Vice Chairman at Zand Bank, wields over 15 years of expertise across a spectrum of industries, enhancing the bank's operations with his strategic investment acumen and robust financial insight. Renowned for steering high-yield initiatives, his oversight in business growth and investment management fortifies Zand Bank's position as a premier digital financial institution. His prestigious academic portfolio includes multiple master’s degrees from the University of Wollongong in Dubai and George Washington University, and executive education from the University of Oxford. As a respected thought leader, Mr. Mohammed's guidance is pivotal to Zand Bank's innovative edge in the digital banking sector.
+/images/zand-board/board-member_3@2x.png
+/images/zand-board/board-member_4@2x.png
+Mr. Adnan Abdulfattah, the Chief Commercial Officer, and Deputy President of Emirates Airline, brings strategic commercial acumen and a wealth of experience in digital innovation to the table. His expertise in e-commerce and customer engagement strategies plays a pivotal role in advancing Zand Bank's digital initiatives. Mr. Kazim's proficiency in strategic planning and revenue optimization, honed through his leadership at Emirates, directly contributes to Zand Bank's success and growth in the competitive digital banking landscape. His commitment to excellence is a driving force behind Zand Bank's mission to offer seamless and cutting-edge online banking solutions.
+/images/zand-board/board-member_5@2x.png
+Mrs. Raja Al Mazrouei, with her vast experience in the FinTech sector, plays a crucial role in shaping Zand Bank's digital landscape. Her pivotal work in transforming Dubai into a top FinTech hub through her leadership at FinTech Hive is directly transposed to enhance Zand Bank's digital offerings. A globally recognized figure in financial innovation, Raja applies her strategic foresight to ensure Zand Bank's services are not only cutting-edge but also redefine the digital banking experience in the Middle East, establishing Zand as a benchmark for innovation and customer engagement in the industry.
+/images/zand-board/board-member_6@2x.png
+Mr. Talha Al-Hashimi brings to Zand Bank a track record of exceptional leadership and innovation as the CEO of HWH Investments. With his strategic foresight, he has successfully doubled revenue forecasts through aggressive growth strategies in real estate and hospitality. His expertise in launching diverse business ventures and spearheading operational efficiencies is pivotal in enhancing Zand Bank's digital banking solutions, setting new benchmarks in customer-centric financial services. Mr. Al-Hashimi's adeptness at fostering significant partnerships and steering award-winning brands is instrumental in positioning Zand Bank as a unique and leading digital banking institution in the region, revolutionizing the financial landscape with his commitment to excellence and innovation.
+/images/zand-board/board-member_7@2x.png
+Mr. Greg Johnson, with his strategic foresight as Executive Chairman of Franklin Resources, Inc., brings invaluable leadership to Zand Bank. His role in transforming Franklin Templeton into a globally acclaimed asset management firm is a testament to his expertise in steering financial organizations towards excellence. With his academic background in accounting and business administration, coupled with his CPA credentials, Mr. Johnson's financial acumen is a cornerstone of Zand Bank's strategy to develop distinctive digital banking solutions. His experience with prestigious financial and sports institutions informs his approach to ensuring Zand Bank's digital offerings are unparalleled in the region, setting the bank apart as an innovator in the digital financial services sector.
+/images/zand-board/board-member_8@2x.png
+/images/zand-board/board-member_9@2x.png
+Mr. Sushil Agarwal, with his profound tenure as Group CFO of the Aditya Birla Group, infuses Zand Bank with his extensive financial and strategic acumen. His pivotal contributions to large-scale mergers and acquisitions have honed his ability to navigate complex financial landscapes and foster innovation. With a history of leading transformative initiatives, Mr. Agarwal's expertise is invaluable in guiding Zand Bank's digital strategies, ensuring its position as a trailblazing digital banking leader in the Middle East. His vision is instrumental in crafting Zand Bank's unique digital offerings that set new industry standards and drive financial technology forward in the region.
+Copyright @{year} Zand Trust. All rights reserved.
+Zand Trust is a wholly-owned subsidiary of Zand Bank.
+Regulated by the Central Bank of the UAE.
+We use cookies to offer you a better experience, analyse website traffic, and serve targeted advertisements. By continuing to use this website, you consent to the use of cookies in accordance with our 
+Register your company's interest in Zand AED and one of our account managers will contact you.
+suggestions_and_questions_for_the_company
+Please describe your enquiry or business opportunity
+suggestions_and_questions_for_the_company_placeholder
+Please enter your questions or suggestions
+Numbers and special characters are not allowed
+A Stablecoin is a type of digital asset which is backed by and pegged to real-world assets such as currency (like the Emirati Dirham), commodities and more. This ensures that the value of the Stablecoin remains stable, making it a reliable medium of exchange and store of value.
+AEDZ is the world’s first AED-backed Stablecoin on a public blockchain issued through Zand Trust, a fully owned subsidiary of Zand Bank. With a seamless conversion of 1 AED Stablecoin to 1 Emirati Dirham, AEDZ offers unparalleled use cases for everyone, anywhere, anytime.
+Stablecoins are important because they offer the stability of traditional currencies combined with the advantages of digital assets and the blockchain. Unlike other cryptocurrencies, which can experience significant volatility, Stablecoins are designed to maintain a constant value, usually pegged to a fiat currency like the AED.
+This stability makes them ideal for everyday transactions, reducing the risk of price fluctuations. They also facilitate faster, cheaper cross-border payments and provide a reliable store of value, especially in regions with unstable local currencies. Additionally, Stablecoins enhance the efficiency of blockchain-based financial services such as lending, borrowing, and trading.
+The AEDZ is issued by Zand Trust, licensed by the Central Bank of the UAE under the Payment Token Services Regulation (Circular No. 2/2024).
+What are the benefits of using the AEDZ?
+The AEDZ provides a stable, reliable, and regulated digital currency option for users looking to have quick and cost-effective transactions backed by the stability of the AED.
+Zand Trust-issued Stablecoins – and its reserves – are subject to strict regulatory oversight by the Central Bank of the UAE.
+Reserves are held 100% in cash and cash equivalents – meaning that customer funds are always available for 1:1 redemption.
+One-stop-shop for Custody, Conversion and Issuance
+Zand Trust collaborates with Zand Bank as its banking and custody provider, ensuring that conversion and custody services are delivered under a regulatory framework. This partnership eliminates the counterparty risk commonly associated with Stablecoin issuers.
+You can purchase AEDZ through Zand Bank directly. The Stablecoin is also available on reputable partner exchanges for purchase and redemption.
+What are the Supported Networks for AEDZ?
+AEDZ is launched natively on the public blockchain network. Such information including contract addresses is available on Zand Trust’s website. Any variations or wraps of the Stablecoin on other networks is not the responsibility of Zand Trust, Zand Bank and its affiliates. It is advisable to always conduct your own due diligence before initiating any transfers.
+How can I view AEDZ’s token and reserve balances?
+Zand Trust strives for transparency and publishes a daily report of the total circulating supply of AEDZ and the underlying fiat reserves on the Zand Trust website. Zand Trust has also engaged with Crowe LLC to conduct monthly audited attestation on the token supply and fiat reserves of AEDZ.
+You can access the reports and independent attestations on the Transparency page.
+What are the features available on Zand Trust?
+The AEDZ platform is integrated with Zand Bank’s corporate banking platform. Key features include:
+1) Dedicated and segregated redemption wallet: Upon setting up your account, you will be assigned a unique wallet address to send your AEDZ to for redemption orders.
+2) Effortless Statement Generation: Authorized statements are generated for your recordkeeping.
+3) Wallet Address Whitelisting: Set up approved beneficiary wallet addresses to receive your AEDZ seamlessly.
+4) Comprehensive Transaction View: Gain a complete overview of your order history to address any queries you may have.
+5) Seamless Integration with Corporate Banking: Place your AEDZ mint/redemption orders, and access your Corporate Banking and Digital Asset Custody account in a one-stop-banking platform.
+I transferred my AEDZ to an incorrect address, what can I do?
+Zand Trust does not have any authority or control over the blockchain network on which AEDZ is launched and cannot reverse any transactions that are executed on the blockchain. The blockchain’s immutable and irreversible properties means a transaction is final once it is broadcasted. You should always confirm the wallet address and blockchain network before making any transfers.
+Zand Trust is designed to provide a secure, compliant, and transparent Stablecoin for instantaneous and low-cost transfers. Our service caters to a wide range of clients, including:
+What are the fees associated with Zand Stablecoin on Zand Trust?
+There are no fees charged for purchasing AEDZ from Zand Trust.
+There are two types of fees for sell orders:
+This fee applies when transferring AEDZ to your Zand Trust blockchain redemption wallet address. The fee is the blockchain gas fee, which is charged to reward miners for executing the transaction. Zand Trust and Zand Bank do not enforce, receive, or cover this fee.
+You are required to pay this fee in the blockchain’s native asset. Ensure you have enough additional funds in the wallet you are sending AEDZ from to cover the market network fee.
+The market network fee can vary based on blockchain network demand, congestion, priority fees, and gas limits. It is your responsibility to be aware of any volatility in such fees at the time of transfer.
+The fee is 10 basis points (bps) of the amount of AEDZ to be redeemed or 200 AED, whichever is higher.
+This fee is charged by Zand Bank and is applied in the AED currency. Fees are deducted directly from the notional redemption amount.
+This Whistleblowing Procedure provides employees, management, directors, creditors, depositors, service providers and others ('Stakeholders') with a secure, confidential way to report concerns about corruption, unlawful conduct, unethical or unprofessional behavior To ensure Zand Trust maintains a culture of integrity, transparency and trust it encourages its Stakeholders to Whistle blow when they have genuine concerns, which reduces the risk of financial and reputational loss.
+Stakeholders must report, through line management (for staff) or in accordance with this Whistleblowing Procedure (for third parties) regarding known or suspected matters relating to:
+All disclosures will be recorded, reviewed and, where appropriate, independently investigated. An acknowledgement and where possible, feedback will be provided to the discloser raising the concern.
+Every effort will be made to maintain the confidentiality of the discloser making a report (although where, for example, the report leads to legal proceedings, this cannot be guaranteed).
+Whistleblowing reports and details of any associated work must only be passed to those who 'need to know’, maintaining, where possible, the confidentiality of the discloser.
+Unless a report has been made in bad faith, by reporting a concern known or should have known to be false, no discloser will be disadvantaged for Whistleblowing, even if there is no conclusive evidence to support the concern raised.
+This procedure does not affect the right of a discloser to raise concerns in an appropriate manner directly with a regulator or external auditor as permitted by local law or regulation. Any reports of known or suspected misconduct received from non-Staff will be treated using the same principles.
+AEDZ is always redeemable 1:1 for Dirham AED
+{valueScale, select, k {K} m {M} other {Invalid ValueScale}}
+AEDZ is fully backed by liquid cash and cash equivalents held separately from Zand Trust and custodied for the benefit of Zand Trust clients.
+AEDZ is fully backed with cash reserves and monetary bills for the benefit of its token holders.
+ are references to any person accessing this Cookie Policy on our website or our mobile application.
+ are references to Zand Trust or any other entity licensed to use the registered Zand Trust trade name.
+ include references to any website operated by Zand Trust
+2. General Disclaimer and Acceptance to our Cookie Policy
+IMPORTANT NOTICE: PLEASE READ CAREFULLY BEFORE USING THE SITE.
+This Cookie Policy is a part of our Privacy Policy, dedicated to cookies. Our Cookie Policy details the purpose and usage of the cookies on our site. The policy may be updated from time to time, as published on our site. You should check this page periodically to ensure you remain comfortable with our practices.
+ is a small piece of information, which a web server can store on your web browser, in the form of a small file. They facilitate certain features that can make the browsing experience more convenient and valuable for you.
+The 'Cookie’s enable the browser to remember specific information, which the web server can retrieve later. When you quit your browser, some cookies are stored in your computer's storage as a cookie file, while some expire or disappear. The cookie is set for a particular browser on a particular computer, so when you use a different computer, that cookie will not exist.
+In a nutshell, its purpose is to recognize you when you reconnect or revisit our site.
+Our site uses a variety of cookies allowing the improvement, performance and the functionality of our website.
+Many cookies are designed to give you optimal usage of our site. For example, we use cookies to allow you to use secure online application form or letting you navigate between pages efficiently.
+These cookies are essential for the functioning of our site and cannot be switched off in our systems. You can turn off these cookies on your device if you don't want us to use necessary cookies, but it might impact your ability to browse our site. We need necessary cookies to help us to run our site, and to help us detect any problems with it. For example, we use a cookie that tells us how busy the server is based on the number of visitors and that tells us if any users experience problems so that we can resolve the problems as soon as possible.
+We also use cookies to remember our users while they are browsing our site, its pages, links and subdomains. For example, we use necessary cookies to help recognise you and provide you with content as you browse the site. We may also use a cookie that tracks your cookie privacy preferences so that we do not place analytics and advertising cookies, which we'll brief in the below section, if you don't want us to. This particular type of cookie will remain on your device even after you've stopped browsing the site so we can make sure we comply with our legal and regulatory obligations.
+analyticsPersonalizationAndMarketingCookies
+b. Analytics, Personalization and Marketing cookies
+These allow us to recognize and count the number of visitors to our site, and see how visitors browse our site, so we can understand how our site content is performing and improve it where necessary. We use third party cookies for this purpose and have explained it in the below section 'Usage of Third-party Cookies’.
+Marketing and Analytics cookies also allow us to see what pages, links and sub-domains you have visited so we can provide more relevant information. Where you consent to the use of these cookies, information may also be shared with third-party service providers for analytics and marketing purposes, always in compliance with UAE law.
+We use cookies to provide you a tailored experience and an online service more suited to the device you connect from. Moreover, we also use cookies to ensure your security of our online services, to help prevent fraud and to ensure that the contents you see online, are more relevant to your interests. Cookies are also used to optimise the webpages that you visit, and to personalise the content that we show you, based on what we understand about your requirements.
+In addition to these cookies used, we may use trusted third party suppliers and partners to provide features and functionality on our sites to improve your online experience.
+Where links to third-party websites are provided, please note that each third party has its own Privacy and Cookie Policy. We encourage you to review those polices carefully. However, Zand Trust remains responsible for ensuring that our own deployment of such cookies complies with UAE Federal Law No.45 of 2021.
+7. Setting your Cookie preferences: Managing cookies on this site
+Our website set only necessary cookies by default to improve your experience and to ensure the website performs as you expect it to. You may choose whether to accept analytics and marketing cookies via our cookie banner or settings tool. If you choose to not accept cookies, certain features may not be available to you, but essential services will continue to function.
+If you would prefer not to accept cookies you can either set the browser to notify you when you receive a cookie, thereby giving you the option to accept it or not; or configure your browser to automatically not accept any cookies.
+The following table provides your basic guidance on how you can configure the browser setting to control Cookie usage.
+Click the three dots (⋮) in the top-right corner
+Press Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac)
+For transparency in the online world of website tracking and collecting personal data:
+For details on the Cookie security and privacy issues:
+Please see our Terms and Conditions and Privacy Policy for details on your rights, including how to withdraw consent, or contact us regarding any privacy matter.
+Zand strives to provide customers with exceptional service and resolve any complaints in a timely and efficient manner. However, we would want to kindly clarify that we cannot guarantee a resolution that meets every customer's expectations.
+Our complaint management process is in compliance with the regulations and laws of the United Arab Emirates, and we will treat each complaint with the utmost importance and respect. In order to achieve a mutually agreeable resolution for both parties, we will conduct an impartial and thorough investigation into each complaint.
+We appreciate your business and value your feedback. If you have any inquiries or grievances, please do not hesitate to contact us, and we will do our utmost to promptly address them. Zand strives to address complaints within 2 business days of their receipt. Our teams are committed to address your concerns and resolve any issues within 30 calendar days of receiving your complaint. However, some complaints may require more time, but we will keep you informed about the reasons for the delays and the resolution process.
+Customers can lodge a complaint with Zand by sending an email to
+At Zand we are committed to treating all our customers with care and respect, with transparent and fair outcomes being the goal during every interaction, with every customer.
+This Code of Fair Treatment is evidence of our values which are driven by our view that our customers are considered the core of our business. Trust, honesty, fairness and transparency – at Zand these are not simply endearing words, they are part of every discussion, design, outcome and consideration when it comes to how we treat our customers.
+Trust, honesty, fairness and transparency – at Zand these are not simply endearing words, they are part of every discussion, design, outcome and consideration when it comes to how we treat our customers.
+Our customers can be confident that we will always be committed to being honest and fair in all interactions with them. This is central to the culture of Zand and is reflected in our policies and Code of Conduct. You can count on us:
+To provide you with products and services that are appropriate for your needs and to never over-complicate any of our products or services to the point where you may feel overwhelmed or confused. We enjoy making banking simple and intuitive for our customers.
+To ensure fair outcomes in all our interactions, we treat all our customers with respect.
+To act with due skill, care and diligence, fairness and honesty in all our interactions with customers (existing and potential), regardless of their religion, gender, age, income level or marital status.
+To not make decisions which discriminate on the grounds of family status, gender or of being a member of a minority or vulnerable group.
+Our internal governance framework ensures that our products and services are designed, marketed and distributed appropriately to ensure that we meet the needs of our customers.
+We understand the need for you to be informed and feel confident that you have access to all relevant information pertaining to any of our products or services. To this end:
+We ensure that all relevant information is easily accessible and is clear and accurate.
+We provide up to date information about products and services to you during all stages of the relationship.
+Our products and services are simple and easy to understand.
+Our strict guidelines on data collection, protection and privacy are in line with standards and regulations set by the competent authorities. You can be assured that:
+Any personal and/or financial information provided to us is secure and protected and only used for the purposes which we have agreed with and explained to our customers.
+We will never share your information with any external third party unless we have your consent or are required to do so by law.
+In the unfortunate event that a customer wishes to file complaint, we ensure:
+To inform our customers of their right to file a complaint or dispute any non-agreed terms of the products and services.
+To provide easily accessible information and details of our complaints process as well as ensuring that we have multiple channels via which our customers can file a complaint (whereafter our dedicated complaints management team will respond to all complaints in a timely manner).
+Zand’s complaints handling process and mechanisms are free of cost.
+We perform regular analysis and reporting of our customer complaints; this helps us to improve our processes, products and services.
+Zand aims to connect with our customers on a human level, supporting them in achieving both their immediate and long term goals. We are committed to working closely with you to find solutions that meet your needs, and we are here to assist you.
+This Risk Disclosure Statement aims to set out a list of potential risks associated with Zand Stablecoin, and other issued-products and services provided by Zand Trust. However, this list should not be considered exhaustive. In this document, references to “Zand”, “Zand Stablecoin”, “Stablecoin”, “Zand Trust”, “Issuer”, “we”, “us” or “our” means Zand Trust and its products.
+Acquiring, holding, investing or otherwise doing business involving any Stablecoin is subject to a number of risks which users are solely responsible for with respect to nature, severity, scope, and impact of such risks. Users should not procure or hold Stablecoins, unless they fully understand the volatile nature, complexity, and risks inherent in the transactions, and their exposure to a potential financial loss.
+Only users with adequate understanding of the underlying economic, legal, financial and non-financial risks associated with Stablecoins, and who are still willing to assume such risks, should deal in Stablecoins. Zand Trust does not give any advice or recommendations regarding digital assets including Stablecoins, covering the suitability and appropriateness of such financial assets or related investment strategies for such digital assets. Some of the potential and actual risks associated with Stablecoin are listed below:
+Markets for Stablecoin can at times become illiquid, which means there can be a scarcity of users who are willing to trade at any one time on a secondary exchange or third-party platform. Thinly traded or illiquid markets have a potential for increased risk of loss.
+Stablecoin held in a User’s Stablecoin Wallet is not subject to deposit insurance protection by the UAE Banking Insurance Scheme or any equivalent protection scheme. The maintenance of Stablecoin value and Peg is solely based on the underlying fiat equivalent reserves held by issuer.
+Zand Trust may perform additional reviews or monitoring of a client’s onboarding or any Stablecoin transaction request, which might require, among other things, requesting additional documentation during such review or monitoring. This additional review or monitoring, which may be required for enhanced risk or compliance review, may delay transfers.
+Third parties may elect to support Zand’s Stablecoin on their platforms, subject to applicable UAE regulations. Stablecoin support on any third-party platform does not imply any endorsement by the Issuer that such third-party services are valid, legal, stable, or otherwise appropriate. The Issuer is not responsible for any losses or other disputes, incidents, issues or complications you might encounter using, procuring or redeeming Stablecoin on non-Issuer platforms.
+Zand Trust operates under the regulatory framework established by the CBUAE. While the Issuer maintains compliance with current CBUAE regulations, changes in regulatory requirements or interpretations may impact the operation, issuance, or redemption of Stablecoin.
+All Users are responsible for complying with applicable UAE laws and regulations. Users agree that the Issuer is not responsible for determining whether or which laws may apply to their transactions, including tax laws under UAE jurisdiction. Users are solely responsible for reporting and paying any taxes arising from their use of the Stablecoin Services, including any accurate reporting of the tax or legal status of Stablecoin in their jurisdiction. Additionally, the issuer reserves the right to freeze the associated Stablecoin (temporarily or permanently) that it determines, in its sole discretion or as directed by CBUAE or other UAE authorities, if found that such funds are associated with any illegal activity or any activity that otherwise violates UAE law.
+Transactions on the blockchain provide a higher degree of anonymity for their holders and makes it more difficult to trace them compared to conventional assets, which can lead to an increased risk of Stablecoin being used for, or being connected to, financial crime (which may include fraud, money laundering, financing of terrorism, dealing with sanctioned persons or breaching economic sanctions). Hence users are expected to use enhanced due diligence in such transactions.
+The Issuer may experience sophisticated cyber-attacks, unexpected surges in network activity, or other operational or technical difficulties that may cause interruptions/outages to the Stablecoin services or underlying blockchain. Users understand that the Stablecoin services may experience technology or operational issues that lead to delays, including delays in redeeming Stablecoin. Users agree to accept the risk of transaction delay or failure resulting from unanticipated or increased technical difficulties beyond Zand Trust’s Control. e.g. underlying blockchain outages, network congestions etc.
+When Stablecoin is transferred from one wallet address to another, such transaction is completed on the underlying blockchain. This means that such transactions are irreversible due to the properties of the blockchain being final and immutable, and the Issuer does not have the ability to reverse or recall any transaction once initiated. The Issuer shall not be held responsible for any losses that might be incurred as a result of sending Stablecoins to an incorrect or unintended address or over the incorrect blockchain network.
+Wallets holding Stablecoin where the private keys are lost, destroyed or stolen, may not be recoverable. Users are advised to conduct their own due diligence for the custody of Stablecoins held in an external wallet.
+In light of the above listed risks which are non-exhaustive, users should carefully evaluate whether or not the Stablecoin product is a suitable financial product in light of their respective risk profiles, financial position and if in any doubt, should seek independent professional advice.
+Privacy is a fundamental right that protects the 'Personal Autonomy’ and 'Freedom’ of our customers
+1. Welcome to Zand Trust’s Privacy Policy
+This notice takes you through the 'Privacy Policy’ of Zand Trust LLC SOC (“Zand Trust”) which will assist you in familiarising yourself with how we collect, process and protect your personal data. We take your privacy very seriously and hence we have implemented all required measures to secure your Personal Data and limit them to only required processing.
+Please read this Privacy Policy summary carefully as it contains important information on who we are, and how and why we collect, store, use and share any information relating to you.
+As Zand Trust (a financial institution licensed and regulated by the Central Bank of the UAE to provide stablecoin issuance services), we require your data, which we collect and process to provide you with regulated stablecoin issuance services (“Customer Data”). This includes information required by law to verify your identity, facilitate blockchain-based transactions, and protect against financial crime. Among this Customer Data, some data is identified as Personal Data which is specific or related to you (“Personal Data”); that can be identified to you directly or indirectly.
+2. What are the types of Personal Data we may collect to provide you our services?
+The table provides you an insight on the types and forms of data we collect or process about you including but not limited to the following.
+Your financial position, status and history with us or other entities.
+Your registered address with us (for verification and residency and service eligibility).
+This includes details about your work, nationality, education, income and net worth.
+Includes stablecoin issuance, custody, exchange and transfer transactions (including blockchain transaction data and related metadata).
+Details about the products or services we provide to you within your relationship with us.
+Location data generated by our mobile app and website.
+Static and dynamic information related to the devices and technology you use to access Zand Trust services and products.
+What we learn about you from letters and emails you write to us, and conversations between us across all channels.
+Copies of documents submitted to us as part of the initial onboarding and any subsequent product and/or service request.
+Consents and permissions related to the configuration of preferences that influence how we provide our services and products as well as consents to obtain 3rd party data related to the approval process of onboarding and/or product and services requests (e.g. AECB credit score).
+Your Emirates ID or passport copy. The Social Security Number or any other form of Tax Identification Number for US customers.
+Wallet addresses, transaction hashes, and blockchain records necessary to provide custody, transfer, exchange and issuance services.
+Information collected to comply with CBUAE AML/CFT requirements, including source of funds, purpose of transactions, and enhanced due diligence records.
+Biometric identifiers (e.g. liveness detection, facial scans) used for secure onboarding and/or fraud prevention.
+We collect and use this Personal Data for the purposes described in section 7 below (Why we collect and use your personal data).
+directly, when you enter or send us information, such registering with us, contact us (including via email), send us feedback, acquire products or services via our Site, post material to our Site and complete customer surveys or participate in competitions via our Site; and
+indirectly, such as your browsing activity while on our Site; we will usually collect information indirectly using the technologies explained in section 6 below (Cookies and other tracking technologies)
+We also collect Personal Data about you from other sources as described in the table in Section 2 above (What are the types of 'Personal Data’ we collect to provide you our services).
+In addition, we collect blockchain transaction data (including wallet addresses, transaction identifiers and related metadata) as part of the providing custody, transfer, exchange and issuance of stablecoins. This may include information received from third-party blockchain analytics providers and verification partners in compliance with CBUAE AML/CFT regulations.
+Zand Trust collects and processes your Personal Data for the following purposes:
+Execution of the contract(s) concluded with you as an individual client or a representative of a corporate client
+Compliance with applicable legal or regulatory obligations
+To provide you with adequate and qualitative products and services
+We process your Personal Data based on your consent. Personal Data requested is usually necessary for the provision of a service or product to you or for your use of our websites and applications. If you do not provide Personal Data we ask for where it is required, it may prevent us from providing our products and services to you, and we may be unable to comply with our legal or regulatory obligations
+For any task for which a consent was provided, you have the right to withdraw the consent for future processing at any time, unless the information already consented is required for our business operations related to the provisions of products and services to you, or as detailed in the list of exclusions provided in the UAE federal law. Please 'Contact us' for the withdrawal of the consents.
+4. Personal Data usage for Marketing and Promotional activities
+We may also use your Personal Data to send you updates (by email, text message, telephone or post) about our digital asset and stablecoin services as well as new product features approved by the Central Bank of the UAE.
+We have a legitimate interest in using your Personal Data for marketing purposes (see section 7, Why we collect and use your personal data). This means we do not usually need your consent to send you marketing information. However, where consent is needed, we will ask for this separately and clearly.
+We may ask you to confirm or update your marketing preferences if you ask us to provide further services in the future, or if there are changes in the law, regulation, or the structure of our business.
+5. Who we share your personal data with:
+We may share Personal Data with third parties, such as:
+External Auditors, e.g. in relation to the audit of our accounts, in which case the recipient of the information will be bound by confidentiality obligations.
+Professional Advisors (such as lawyers and other advisors), in which case the recipient of the information will be bound by confidentiality obligations.
+Law enforcement agencies, courts, tribunals and regulatory bodies to comply with our legal and regulatory obligations.
+Other parties in connection with a significant corporate transaction or restructuring, including a merger, acquisition, asset sale, initial public offering or in the event of our insolvency—usually, information will be anonymised, but this may not always be possible, however, the recipient of the information will be bound by confidentiality obligations; or
+Third party service providers act as 'Data Processors’ who use some parts of your confidential information (including Personal Data) to analyse such information in accordance with a service provider’s service functionality, develop and test services and new products to improve the functionality of the services designed for fraud detection and prevention, and produce anonymised and/or aggregated statistical reports and research.
+Third party service providers who help us analyse certain online activities. For example, these service providers may help us measure the performance of our online campaigns or analyse visitor activity.
+We may permit these service providers to use cookies and other technologies to perform these services for us. Our third-party service providers are required to comply fully with this privacy policy.
+Blockchain analytics and AML/CFT service providers engaged to screen, monitor and trace transactions on distributed ledgers in order to comply with UAE anti-money laundering, counter-terrorism financing, and sanctions obligations.
+The Central Bank of the UAE and other competent supervisory authorities, overseeing stablecoin and virtual asset services.
+6. Cookies and other tracking technologies
+You may set up your web browser to block cookies. You may also remove cookies stored from your computer or mobile device. However, if you do block cookies, you may not be able to use certain features and functions of our website.
+We also use analytics programs such as Google Analytics for web analytics purposes to manage and improve our website, mobile apps and/or our services. Accordingly, your Personal Data may be collected for reports such as impression reporting, demographic reporting, interest reporting and to assist with tailoring our online advertising to provide you with a better experience.
+Please read our Cookie policy for more information.
+7. Why we collect and use your personal data?
+The table below explains the need for the collection and processing of your Personal Data, and reason for the same.
+To create and manage your account with us
+For providing products and/or services to you.
+We are able to create, develop, operate, deliver and improve our services, personalized content, and make suggestions for you by using your Personal Data. We understand how you use and interact with our services and the people or things you’re connected to and interested in on and off our Services. This includes supporting your access to custody, transfer, issuance and exchange of stablecoins in line with the CBUAE requirements.
+When we have location Personal Data, we use it to tailor our Services for you and others, like helping you to check-in and find local events or offers in your area.
+We also conduct surveys and research, test features in development, and analyse the Personal Data we have to evaluate and improve products and services, develop new products or features, and conduct audits and troubleshooting activities.
+Conducting checks to identify you and verify your identity
+To comply with our legal and regulatory obligations.
+To help prevent and detect fraud against you or us.
+This includes AML/KYC verification, blockchain monitoring, sanctions screening and transaction purpose checks as required under UAE law.
+To enforce legal rights or defend or undertake legal proceedings.
+To comply with our legal and regulatory obligations
+In other cases, for our legitimate interests or those of a third party, i.e. to protect our business, interests and rights or those of others.
+Customise our site and its content to your particular preferences based on your selected preferences or on your usage of our site.
+Your preferences as set in the browser configurations as gathered by the separate cookies tool on our Site—see 'Cookies and other tracking technologies’.
+Also to improve usability of digital asset custody and exchange portals and enhance fraud detection functionality.
+Retaining and evaluating information on your recent visits to our Site and how you move around different sections of our website for analytics purposes.
+Your consent as gathered by the separate cookies tool on our Site—see 'Cookies and other tracking technologies’.
+This helps us to understand how people use our site so that we can make it more intuitive or to check our site is working as intended.
+Communications with you not related to marketing, including about changes to our terms or policies or changes to the services or other important notices.
+In other cases, for our legitimate interests or those of a third party, i.e. to be as efficient as we can so we can deliver the best service for you in the most efficient manner.
+Protecting the security of systems and data
+We may also use your Personal Data to ensure the security of systems and data.
+To protect systems and data and to prevent and detect criminal activity that could be damaging for you and/or us.
+Includes monitoring blockchain transactions for suspicious or prohibited activity.
+Statistical analysis to help us manage our business, e.g. in relation to our financial performance, customer base, product range or other efficiency measures.
+For our legitimate interests or those of a third party, i.e. to be as efficient as we can so we can deliver the best service to you in the most efficient manner.
+Updating and enhancing customer records.
+To perform our contract with you or to take steps at your request before entering into a contract.
+Where neither of the above apply, for our legitimate interests or those of a third party, e.g. making sure that we can keep in touch with our customers about existing orders and new products.
+Disclosures and other activities necessary to comply with legal and regulatory obligations that apply to our business.
+Marketing our services to existing and former customers.
+For our legitimate interests or those of a third party, i.e. To promote our business to existing and former customers.
+See the section on 'How and why we use your personal data for Marketing and Promotional activities’.
+Specifically limited to Zand Trust’s regulated stablecoin services (custody, transfer, issuance, exchange).
+External audits and quality checks, e.g. For the audit of our accounts.
+For our legitimate interests or those of a third party, i.e. to maintain our accreditations so we can demonstrate we operate at the highest standards.
+To share your personal data with members of our group and third parties in connection with a significant corporate transaction or restructuring, including a merger, acquisition, asset sale, initial public offering or in the event of our insolvency.
+In such cases information will be anonymised where possible and only shared where necessary.
+In other cases, for our legitimate interests or those of a third party, i.e. to protect, realise or grow the value in our business and assets.
+Is it mandatory for you to share your Personal Data with us?
+To ensure your online security and to provide you the best possible services, we require your Personal Data to suggest and offer products and services which suit you the most. Furthermore, it is also mandatory to validate regulatory and compliance checks before the provision of our services which is a major requirement for us requesting your personal data.
+See section 5 (Who we share your personal data with) for further information on the steps we will take to protect your Personal Data where we need to share it with others.
+8. How we keep your personal data secure
+We have appropriate security measures to prevent Personal Data from being accidentally lost, used or accessed unlawfully. We limit access to your Personal Data to those who have a genuine business need to access it. Also, we have required oversight of our third-party service providers to ensure information remains confidential and secure.
+We also have procedures, processes and controls in place to deal with any suspected data security breach. We will notify you and any applicable regulator of a suspected data security breach where we are legally required to do so.
+The UAE Regulators have provided guidance on the minimum period of retention of the customers Personal Data. Zand Trust will adhere to this regulatory guidance on the storage of the Personal Data related to all customers. This retention period starts from the end of our business relationship (closing of your account) or completion of the relevant transaction (if we have no business relationship with you) or longer where required for legal, regulatory or dispute resolution purposes.
+After the expiry of this mandatory retention period, your Personal Data will either be deleted or securely archived, based on the transactional types and as per legal obligations.
+9. What are your Rights under data protection law and how to exercise them?
+You can communicate with our Privacy team on all matters regarding the processing of your Personal Data to exercise your rights in accordance with the UAE federal law concerning the protection of Personal data.
+The following are the rights with respect to the management of your Personal Data.
+As a data subject you have the right to obtain the information such as the types of the Personal Data processed at Zand Trust, the purpose of processing, details of automated processing if any, and the controls adopted for the security of the storage of Information.
+b. Right to request the transfer of Personal Data:
+You have the right to request for the transfer of the Personal Data to another controller, provided it is technically and legally feasible.
+c. Right to the correction or erasure of the Personal Data:
+You, as a customer have the right to request the correction of any inaccurate Personal Data or request to complete the data (Complete Information).
+Also, you have the right to request for the erasure of the Personal Data held by us for few of the cases as provisioned in the law. It has to be noted that there are limitations to exercise this right as both our services and legal binding overtakes priority over this right.
+d. Right to Restrict or Stop processing:
+You have the right to request us to restrict processing under certain conditions as laid out by the law. Zand Trust will proceed with the processing of your Personal Data in cases as stipulated by the law.
+e. Right to processing and automated processing:
+You have the right to object to any decisions resulting from automated processing, including profiling, particularly those decisions which have legal impact on or adversely affecting you.
+As per the law, please be aware that the contract and consents have priority over your right to object to processing and automated processing.
+Your right to object to the processing of Personal Data concerning you will have impact on the services provided and has limitations as per the federal law. Zand Trust will no longer process your data except where such personal data is required for business operations related to the products or services offered to you.
+Your decision to withdraw your consent to the processing of Personal Data will not affect the lawfulness of the processing based on the prior consent before withdrawing it.
+Please 'Contact us’ to know more about your rights under data protection law and ways to exercise them.
+10. Expected Social Media behaviour from Customers
+Zand Trust operates accounts and pages on social media sites to engage with customers and share updates. As an expected behaviour, we continuously update information and monitor all responses such as comments and posts on Zand Trust.
+We may monitor social media mentions for reputational and compliance purposes, including references to Zand Trust’s regulated stablecoin activities.
+We expect the following from you (the customers) with respect to the social media behaviour and usage:
+The only mode of communication with Zand Trust is provided on the 'Contact us’ page and this will be the official mode of communication with us.
+Customer shall not share any of their Personal Data, impacting the confidentiality of our business with you, in the social media (both on our pages or on any other social media Platform).
+Even on the Zand Trust’s social media platforms, do not share any confidential personal information such as account information, transaction details etc. in your comments.
+Sensitive Personal Data, which is defined as “Any data which directly or indirectly reveals a natural person's family, ethnic origin, political or philosophical opinions, religious beliefs, criminal record, biometric data, or any data relating to such person's health and physical, psychological, mental, genetic or sexual condition, including information related to the provision of healthcare services to him/her which reveals his/her health status” by the UAE federal law shall never be shared / communicated on the Zand Trust’s social media platform.
+Zand Trust will not be responsible for any information posted on those sites other than the information posted by our own authorised staff.
+This Privacy Policy is subject to change due to varying regulatory and compliance requirements. Please review it periodically to update yourself with the latest from our end on privacy implementation.
+Any changes to this Policy will become effective when we post the revised policy on our site. Your use of this website following these changes means that you accept the revised Policy.
+If you have questions, comments, concerns or feedback regarding this privacy policy or any other privacy concern, please contact us enquiries@zandtrust.com.
+These terms and conditions of use (Terms) explain how you may use any of our websites (including www.zandtrust.com) or our portals and any of their content (collectively, the “Site”). These Terms apply between Zand Trust LLC SOC (we, us or our) and you, the person accessing or using the Site (you or your).
+You should read these Terms carefully before using the Site. By using the Site or otherwise indicating your consent, you agree to be bound by these Terms. If you do not agree with any of these Terms, you should stop using the Site immediately.
+The Site is provided by us to you for information purposes only. For material changes to these Terms, we will provide reasonable advance notice as described in Clause 13 (Variation).
+Separate terms and conditions will apply for any banking or non-banking services provided by us.
+We are a wholly owned subsidiary of Zand Bank PJSC, and we are not a bank and do not provide banking activities, investment or advisory services unless licensed to do so. All banking activities are carried out exclusively by Zand Bank PJSC. We are licensed in the United Arab Emirates by the Central Bank of the UAE. Our registered office is at P.O. Box 62593, Dubai, United Arab Emirates.
+If you have any questions about the Site, please contact us by visiting the Contact us section on our Site.
+The Site is for your personal and non-commercial use only.
+You agree that you are solely responsible for all costs and expenses you may incur in relation to your use of the Site.
+We make no promise that the Site is appropriate, legal or available for use in locations outside of the United Arab Emirates. If you choose to access the Site from locations outside the United Arab Emirates, you acknowledge you do so at your own initiative and are responsible for compliance with local laws where they apply. 
+As a condition of your use of the Site, you agree not to:
+misuse or attack our Site by knowingly introducing viruses, trojans, worms, logic bombs or any other material which is malicious or technologically harmful (such as by way of a denial-of-service attack), or
+attempt to gain unauthorised access to our Site, the server on which our Site is stored or any server, computer or database connected to our Site.
+We reserve the right to monitor use of the Site and to prevent, suspend or disable your access to the Site (including any user account) if we reasonably believe misuse has occurred, such as where you breach these Terms, applicable law, or engage in fraudulent, abusive or harmful activity.
+take appropriate measures when this Site is used in an inappropriate manner or in breach of these Terms; and
+identify and remove any content that is inappropriate, defamatory, infringes intellectual property rights or is otherwise in breach of our Acceptable Use Policy, when we are notified, but we cannot be responsible if you have failed to provide us with the relevant information. You can report infringement by emailing us at enquiries@zandtrust.com or via the contact details provided on the Site.
+If you believe that any content which is distributed or published by the Site is inappropriate, defamatory or infringing on intellectual property rights, you should contact us immediately.
+5. Your Privacy and Personal Information
+Any personal information that you provide to us will be handled in accordance with our Privacy Policy and applicable data protection laws, including UAE Federal Decree-Law No. 45 of 2021. Our Privacy Policy explains what personal information we collect, how and why we collect, store, use and share such information, your rights in relation to your personal information and how to contact us and supervisory authorities in the event you have a query or complaint about the use of your personal information.
+6. Ownership, Use and Intellectual Property Rights
+If you submit or upload any text, images, video, audio or other multimedia content, software or other information or material submitted to or accessible from the Site (Content), you grant us and our licensors a non-exclusive, worldwide, perpetual, irrevocable, royalty-free license (with the right to sublicense) to use, copy, host, store, modify, adapt, distribute and publish such Content for the purposes of operating and marketing our services. You represent and warrant that you have all necessary rights to grant this license and that your Content does not infringe any third-party rights.
+Nothing in these Terms grants you any legal rights in the Site or the Content other than to access it. You agree not to adjust, circumvent or delete any intellectual property notices and in particular, any digital rights or other security technology embedded or contained within the Site or the Content.
+Trade marks: the name Zand, the Zand logo and other trademarks used on this Site are our registered trademarks. Other trademarks and trade names may also be used on the Site or in the Content. Use by you of any trademarks on the Site or in the Content is strictly prohibited unless you have our prior written permission.
+7. Accuracy of Information and Availability of the Site
+We try to make sure that the Site is accurate, up-to-date and free from bugs, but we do not warrant its availability or that it be error-free.
+We may suspend or terminate access to the Site at any time as we see fit. Where practicable, we will provide advance notice of scheduled maintenance and will use reasonable efforts to restore service promptly following any interruption.
+Any Content is provided for general information purposes only and has not been tailored to your specific requirements or circumstances. It does not constitute technical, financial or legal advice or any other type of advice and should not be relied upon for any purposes. You should always use your own independent judgment when using our Site and its Content.
+The Site may contain hyperlinks or references to third party advertising and websites. Any such hyperlinks or references are provided for your convenience only. We have no control over third party advertising or websites. The display of a hyperlink does not imply endorsement; your use of a third party site is at your own risk. You use a third party site at your own risk, and we are not responsible for any loss or damage that may arise from your use of them.
+Except for any liability that cannot be excluded in law (such as for death or personal injury) or arising from our gross negligence or willful misconduct, we are not legally responsible for any:
+losses that were not foreseeable to you and us when these Terms were formed;
+losses that were not caused by any breach on our part;
+We are not liable to you if we fail to comply with these Terms because of circumstances beyond our reasonable control, including, but not limited to, strikes, lock-outs or other industrial disputes; breakdown of systems or network access; flood, fire, explosion or accident, epidemics or pandemics or any other force majeure event. Where such events occur, we will take reasonable steps to minimize the impact and resume performance as soon as possible.
+Users are solely responsible for maintaining the confidentiality and security of their account credentials, including usernames, passwords, and any other authentication methods. We mandate using strong authentication methods such as complex passwords and two-factor authentication (2FA) and users should not try to bypass those controls. Any attempts to bypass those controls might result in blocking the account.
+Any activity conducted through a user’s account will be deemed authorized by the account holder. We will not be liable for any losses, damages, or claims arising from unauthorized access or transactions resulting from the user’s failure to implement adequate security measures, negligence in safeguarding credentials, or non-use of strong authentication features.
+Users should promptly notify us if they suspect a security breach related to their Account and if security breach is confirmed, users should provide information necessary for breach investigation.
+No one other than a party to these Terms has any right to enforce any of these Terms.
+No changes to these Terms are valid or have any effect unless agreed by us in writing or made in accordance with this clause 12.
+We reserve the right to vary these Terms from time to time. Our updated Terms will be displayed on the Site and by continuing to use and access the Site following such changes constitutes your acceptance of the revised Terms. When we make material changes, we will provide you with at least 14 days notice by posting a prominent notice on the Site and where feasible, by contacting registered users by email. It is your responsibility to check these Terms from time to time to verify such variations. If you do not agree to the changes, you should stop using the Site before the effective date of such changes.
+We will try to resolve any disputes with you quickly and efficiently. If you are unhappy with us, please contact us as soon as possible.
+The law of the United Arab Emirates, as applied in the Emirate of Dubai, will apply to these Terms. The courts of the Emirate of Dubai will have exclusive jurisdiction in relation to these Terms.
+Discover the blockchain networks currently supported by Zand Trust
+0xFC347c996BD66C1d92E2045c80b413ef3fc84A90
+https://etherscan.io/token/0xfc347c996bd66c1d92e2045c80b413ef3fc84a90
+BMrgsEdrqfP4EAhiRbK5fFkq8xgQrqDAcZrv8R2pG4zG
+https://solscan.io/token/BMrgsEdrqfP4EAhiRbK5fFkq8xgQrqDAcZrv8R2pG4zG
+flex min-h-screen flex-col max-w-[120rem] mx-auto __className_151839
+flex h-lvh items-center justify-center bg-background
+-translate-y-20 text-center text-2xl md:text-4xl

@@ -1,0 +1,1960 @@
+USDU
+
+Version 2
+30 January 2026
+USDU                                                  Whitepaper
+
+Contents                                                           03
+                                                                   05
+Executive Summary                                                  07
+                                                                   12
+Background                                                         16
+
+            Stablecoins                                            19
+            Existing USD-Stablecoins                               20
+            An Alternative: USDU                                   22
+                                                                   23
+Introducing USD Universal
+                       Objectives                                         02
+                       Use Cases
+                       Design
+
+                       Benchmarks
+
+Implementation
+                       Portal
+
+                       Adoption Strategy
+
+Additional Information
+                       Implementation Partner
+
+                       Environmental Impact
+                       Risks and Mitigations
+                       Rights and Obligations
+                       Terms and Conditions
+
+Conclusion
+
+Disclaimer
+
+Appendix - Technical Details
+                       Key Management Systems
+                       Smart Contract Infrastructure
+
+References
+USDU  Whitepaper
+
+       Executive Summary
+
+USD Universal ("USDU") is a U.S. dollar-denominated Fiat-Referenced Token ("FRT") backed one-
+for-one by USD fiat deposits held in UAE Central Bank regulated banks.
+
+The issuer is Universal Digital Intl Limited ("we", "us", "our', "Universal" or the "Firm"), a private
+company limited by shares established in the Abu Dhabi Global Market ("ADGM") with commercial
+registration number 26715, regulated by the Financial Services Regulatory Authority ("FSRA") under
+the Financial Services Permission No.250089 to conduct the regulated activity of Issuing an FRT.
+Universal is a Registered Foreign Payment Token Issuer by the UAE Central Bank under the Payment
+Token Services Regulations ("PSTR" as amended from time to time).
+
+USDU is a Registered Foreign Payment Token by the UAE Central Bank under the PTSR and as such
+may not be used for payment purposes in the UAE (i.e. UAE domestic payments). USDU may be
+used as a Means of Payment (as defined in the PTSR) for the purchase of virtual assets or
+derivatives of virtual assets in the UAE. USDU may also be used as a method of payment in
+international markets (i.e. Non-UAE domestic markets where permitted by local, non-UAE laws, rules
+or regulations). USDU may be exchanged for UAE Central Bank Registered Dirham Payment Tokens
+for the purpose of payments in the UAE, where the payment occurs in the Dirham Payment Token.
+
+USDU reserves will only be invested in fiat deposits in UAE Central Bank regulated Banks (and
+short-term USD UAE government securities in the future, if and when available). As such, USDU
+users have very limited practical risk of permanent investment loss and have very limited liquidity
+risk.
+
+Aquanow ME FZE ("Aquanow"), a company registered in Dubai World Trade Centre Freezone with
+the commercial license number L2795 and regulated by the Dubai Virtual Asset Regulatory Authority
+("VARA") will serve as the technology provider and distributor.
+
+                                                                                                                                                                                                                           03
+USDU                                                                                                Whitepaper
+
+USDU aims to:  1. Become A Trusted Alternative:
+               Universal aims to offer USDU as a trusted and fully regulated USD-based FRT
+               alternative in the market.
+
+               2. Foster Digital Innovation:
+               To promote the growth of the Virtual Asset ecosystem and drive the digitalisation
+               initiatives in the UAE.
+
+               Universal will arrange liquidity for USDU through centralised and decentralised
+               exchanges and will integrate USDU with leading Defi protocols.
+
+               USDU is designed to match or exceed leading industry standards for convertibility,
+               stability, traceability, transparency, and security. The inaugural network will be
+               Ethereum, with more blockchains expected to be added in future.
+
+               The intended use cases include 1) Virtual-Asset trading and 2) investments and over
+               time, and as permitted by the appropriate regulatory authorities, 3) Peer to peer
+               transfers.
+
+               It is important to note that Universal does not conduct payments, remittances, or
+               transfers itself as a regulated service. Instead, we may partner with other licensed
+               entities (such as those holding relevant licenses from the UAE Central Bank and/or
+               FSRA/Dubai Financial Services Authority or other compentent regulators in other
+               jusiridictions) to facilitate these activities.
+
+               Please note that USDU should not be considered as an alternative form of
+               investment.
+
+               04
+USDU                                                          Whitepaper
+
+Background
+
+The virtual assets industry began with Bitcoin in 2008. With decentralisation, strong cryptographic security, and an
+immutable ledger, Bitcoin had the ambition to succeed as an open digital payments system. But price volatility and slow
+confirmation times have prevented its wide adoption for payments. Nevertheless, Bitcoin has given rise to many other
+blockchain projects and a new asset class of virtual assets.
+
+Stablecoins
+
+Stablecoins are virtual asset tokens whose value is linked    Major USD stablecoins include Tether (USDT),
+to real-world assets such as commodities and fiat             launched by Tether (later affiliated with Bitfinex); USD
+currencies, most often the U.S. Dollar.                       Coin (USDC), issued by Circle through the Centre
+                                                              consortium with Coinbase; Binance USD (BUSD),
+Following the introduction of Bitcoin and other virtual       issued by Paxos in partnership with Binance; and
+assets, exchanges emerged to facilitate their trading,        Gemini Dollar (GUSD), issued by Gemini Trust.
+which led to the development of stablecoins.
+                                                              Decentralised stablecoins - algorithmic and
+From the early days of these exchanges, stablecoins           overcollateralised varieties - also developed in the
+were created to represent U.S. Dollars to trade, hold, and    market to bypass the use of real-world reserves to
+transfer value. Fiat-backed stablecoins offer the best of     support their value. Instead, these stablecoins rely on
+both worlds - they can be used to transfer value anytime      smart contracts, trading incentives, and virtual assets
+across open blockchains, and are pegged to a real-world       collateral to maintain their pegs.
+asset for stable value.
+                                                              However, the decentralisation principle is often
+Banks did not want to onboard exchanges as clients due        compromised. For example, when MakerDao, issuer of
+to lack of risk controls. Early stablecoins were introduced   the largest decentralised stablecoin DAI, began
+to solve this problem as banks are more willing to            accepting USDC and the underlying U.S. Treasury
+onboard stablecoin issuers than Virtual Asset Exchanges.      securities as reserves, these reserves needed to be
+Stablecoin users could more easily deposit and withdraw       held by a trusted party in the real world.
+fiat currency at the stablecoin issuers. After the
+stablecoin was issued, users could transfer it onto           Decentralised stablecoins also come with their own set
+exchanges and use it to trade other virtual assets.           of risks. Both algorithmic and overcollateralised
+                                                              stablecoins have higher smart contract, price oracle,
+Traditional banking did not have the adequate speed and       and AML/KYC compliance risks. In May 2022, the
+availability to meet the funds transfer needs of the virtual  credibility of algorithmic stablecoins was tarnished by
+assets market trading around the clock. Stablecoins have      the sudden collapse of Terra (UST) from $19 billion
+emerged to provide an efficient way for settlement and to     value within a week.
+eliminate arbitrage. Prior to stablecoins, Bitcoin was
+trading at vastly different prices across countries due to                                                                                                        05
+on/off-ramp difficulties.
+USDU                                                           Whitepaper
+
+Existing USD-                                                  An Alternative:
+Stablecoins                                                    USDU
+
+The total value of stablecoins was US$283 billion as of        This whitepaper introduces USD Universal (USDU), a fully-
+August 31, 2025, representing 7 percent of the US$3.8          regulated USD-backed stablecoin.
+trillion in total virtual assets. Stablecoins can be divided
+into three general categories: centralised fiat-backed,        USDU is designed to provide a secure and reliable
+decentralised crypto-based and decentralised                   alternative for users looking for USD stablecoin options.
+algorithmic.
+                                                               Distinct advantages of USDU include:
+The two largest stablecoins by market capitalisation,
+Tether (USDT) and USD Coin (USDC), represent the vast          a. The FSRA has a fully regulated FRT regime, giving
+majority and are both backed by reserves of fiat currency      users confidence in robust controls and oversight,
+and cash equivalents.                                          including but not limited to AML, fiat reconciliation, and
+                                                               backed by frequent independent attestations to provide
+Despite the consistent maintenance of their pegs over the      assurance of the underlying fiat.
+years, none of these fiat-backed stablecoins has achieved
+complete trust within the marketplace.                         b. USDU is not subject to direct oversight by US
+                                                               regulators. The Issuer and Licensed Distributor of USDU
+Some issuers operate without regulation, raising               are licensed and regulated by the FSRA and VARA
+compliance concerns. Additionally, certain stablecoins         respectively, and the fiat deposits are maintained in UAE
+have encountered transparency challenges, resulting in         banks which are licensed and regulated by the UAE
+occasional price deviations driven by questions about the      Central Bank.
+adequacy of their reserves. Others are issued in the US
+and are directly subject to US regulations and                 c. USDU can be used to onramp, trade, and offramp on
+government oversight. In this era of heightened global         virtual asset exchanges and broker-dealers, and has the
+geopolitical conflicts, some market participants may           potential to facilitate the UAE's growth as a virtual asset
+choose to diversify their jurisdictions to mitigate potential  hub. A robust virtual asset community in the UAE can, in
+risks.                                                         turn, foster the popularity and additional use cases for
+                                                               USDU, creating a high potential for a positive feedback
+                                                               loop.
+
+                                                                                06
+USDU                                                                                   Whitepaper
+
+Introducing USD Universal
+
+USD Universal (USDU) is a conservative fiat-backed
+
+stablecoin to be launched in the United Arab Emirates.
+
+USDU is pegged at 1:1 against USD and fully secured by USD deposited in banks regulated by UAE Central Bank.
+
+ Issuer
+
+ The issuer is Universal Digital Intl Limited ("we", "us", "our', "Universal" or the "Firm"), a private company limited by
+ shares established in the Abu Dhabi Global Market ("ADGM") with commercial registration number 26715, regulated
+ by the Financial Services Regulatory Authority ("FSRA")under the Financial Services Permission No. 250089 to
+ conduct the regulated activity of Issuing an FRT. Universal is permitted to deal with Professional Clients defined
+ under the FSRA COBS rule only. This regulated status, combined with a commitment to transparency, is designed to
+ instill a high level of confidence among users.
+
+Distributor
+
+ USDU will be distributed by Aquanow, the technology and implementation partner that is regulated by the Dubai
+ Virtual Assets Regulatory Authority ("VARA"). USDU is fully backed by USD deposits held in UAE banks that are
+ regulated by the Central Bank of the United Arab Emirates ("UAE Central Bank").
+
+ Aquanow will distribute USDU through registered exchanges and brokerages, or other corporates and not directly to
+ retail customers.
+
+Objectives
+
+ As a regulated stablecoin issuer based in the UAE, Universal aims to enable USDU to provide stability and efficient trading
+ and investment use cases in the UAE virtual assets and traditional economies, and to become a leading digital currency
+ globally:
+
+1. Virtual Assets Economy       2. UAE Local Economy                3. Global Economy
+
+Work with UAE industry          Foster financial efficiency in the  Be an attractive alternative to
+                                UAE economy in collaboration        existing USD-backed stablecoins
+participants and regulators to  with licensed partners
+develop the UAE virtual assets
+ec osy ste m
+
+                                                                                                     07
+USDU                                                                                Whitepaper
+
+Use Cases
+
+1. Virtual assets economy
+
+Trading                              Decentralised Finance                          Asset Tokenisation
+
+UAE exchanges and market             Decentralised finance (DeFi)                   Blockchain projects can utilise
+participants can trade and hedge     applications, including exchanges,             smart contracts to automatically
+virtual assets into local currency,  lending pools, and metaverse, can              distribute payments in USDU,
+and move funds across venues to      be supported by USDU as digital                including interest, dividends,
+capture opportunities and manage     currency                                       rent, fees, and taxes
+risks
+
+2. UAE local economy (in collaboration with licensed partners and AED stablecoins)
+
+Transfers and payments
+
+USDU can be swapped for UAE
+Central Bank regulated Dirham
+Payment Tokens for UAE payments
+
+3. Global economy (outside UAE - in collaboration with licensed partners)
+
+Trading                              Store of Value
+
+Global trading partners can          Savings can be shifted to USDU as
+speed up and reduce the              an alternative store of value for
+complexity of trading and            those looking to diversify their
+transfers                            holdings away from existing USD-
+                                     backed stablecoins
+
+                                                                                                                      08
+USDU                                                                                               Whitepaper
+
+Design
+
+Universal aims to adhere to market leading standards in every aspect of USDU design. USDU is designed with the
+following principles to create public trust in its stability, market liquidity, compliance, and user experience:
+
+1. Centralisation
+
+Centralisation provides the ability to revoke transactions in extreme scenarios such as fraud. To mitigate the risk that
+comes with centralisation, USDU will maintain a high level of transparency on its reserves and investment activities,
+both the custodian and issuer are fully regulated, and reserves will be attested monthly by a major accounting firm.
+
+2. Compliance
+
+Universal as the issuer of USDU, is regulated by the FSRA in the ADGM and adhere to the FSRA FRT regulatory
+framework. Institutional-grade anti-money laundering ("AML"), know-your-client ("KYC"), and know-your-transaction
+("KYT") processes will be implemented by Aquanow, adhering to regulatory requirements and industry best practices.
+Further, as all USDU transactions will be on public blockchains, every token flow can be traced and recorded through
+smart contract. This makes USDU fund flow traceable.
+
+3. Convertibility
+
+The distributor(s) will offer conversion between USD and USDU at minimal costs. The issuer may also utilise its
+treasury and/or balance sheet to provide market liquidity across centralised and decentralised exchanges, including
+market-making activities to facilitate conversion between USDU and major USD-pegged stablecoins.
+
+4. Reliability
+
+The project is regulated, audited and attested, transparent, and backed by USD deposits and short term (less than a
+week) USD, UAE government securities (if and when applicable) in financial institutions regulated by the UAE Central
+Bank. As such, Universal will ensure that the market value of the reserve assets equals or exceeds the total value of all
+outstanding redemption claims as may be issued and outstanding at all times.
+
+The conservative investment strategy of USDU minimises the risk of investment loss or a bank-run.
+
+                              USD Universal  Tether  USD Coin
+                              (USDU)         (USDT)  (USDC)
+
+Cash and Bank Deposits        100%           0.02%   14%
+
+US Treasury Bills             -              65%     86%
+
+Other Short-Term Instruments  -              15%     -
+
+Loans and Investments         -              20%     -
+
+Source: Cir cle + Tether Reserve Breakdowns
+As o f July 2025
+
+                                                                                                                                                                                                                          9
+USDU  Whitepaper
+
+5. Availability
+
+Universal and Aquanow adopt a redundancy in its infrastructure to minimise any single point of failure. It will target 99.95%
+uptime and availability, consistent with the historical performance of Aquanow. Universal will operate on a 24/7/365 basis
+to process USDU transactions, and the project aims to work with partner banks to provide USD deposit/withdrawal
+services during non-business hours.
+
+6. Flexibility
+
+USDU will facilitate use cases across both the virtual assets and traditional economies, in the UAE and globally. Aquanow
+will develop APIs for various use cases to facilitate adoption of USDU by industry partners. The USDU project aims to
+evolve to accommodate future use cases.
+
+7. Security
+
+The USDU smart contract had been audited by Certik, with a report dated 6 May 2025. The USDU issuance portal will
+employ industry-leading custody standards for private key storage including multi-party computation (MPC), hold periods,
+and tiered access. Transaction revocation is available as a safety net in extreme situations.
+
+8. Minting and Burning
+
+Minting (Issuance)
+    1. Once a client has been onboarded by Aquanow, in order to mint, the client needs to deposit USD into Aquanow's
+           Client Money Account ("CMA") or provide equivalent value, along with a valid instruction to mint, via the Aquanow
+           portal. Any fees need to be paid in addition.
+    2. Once received, Aquanow will transfer the required USD from Aquanow's CMA into Universal's Reserve Account
+           and instruct Universal to mint the corresponding amount of USDU.
+    3. Once the amount received in Universal's Reserve Account has been validated, Universal will mint the USDU and
+           transfer it to Aquanow and Aquanow will credit the USDU to the client's account in the portal, or transfer USDU to
+           the client's whitelisted wallet address upon client's instruction.
+    4. Once received, the client may withdraw or trade the USDU.
+
+Burning (Redemption)
+    1. A client deposits USDU into their Aquanow wallet and initiates an instruction to burn and receive USD into their
+           nominated client account maintained with Aquanow. The client will need to pay any fees in addition.
+    2. Once the USDU is received and the instruction is validated, Aquanow will run compliance checks. Once cleared
+           then Aquanow will transfer the USDU to Universal which will burn the USDU. Universal will send the corresponding
+           USD from the reserve account to Aquanow's CMA which will reflect on the client's balance on the Aquanow portal.
+    3. Typically burning and redemption will take 2 business days, following the completion of any required customer
+           due diligence. In extreme market conditions, beyond the control of Universal and Aquanow, the redemption period
+           may be extended following notification to or upon direction from the FSRA.
+    4. Redemption of each USDU will be at par value, for USD 1.
+    5. The client may withdraw or trade the USD received in Aquanow's CMA.
+
+9. Supply
+
+There is no limit to the supply of USDU.
+
+                                                                                                                                                                                                                          10
+USDU                                                                                                              Whitepaper
+
+Benchmarks
+
+USDU is designed to adhere to the highest market standards, making it an attractive virtual asset comparable to other major
+stablecoins.
+
+Name                 USD               Tether      USD               Binance        True           Pax            Gemin i
+Symbol               Universal         USDT        Coin              USD Coin       USD            Dollar         Dollar
+Market Cap (USD)                       $169.4bn
+                     USDU                          USDC              BUSD           TUSD           USDP           GUSD
+
+                     -                             $72.4bn           $55m           $494m          $68m           $52m
+
+Launch Date          2025              2014        2018              2019           2018           2018           2018
+                                                   US                US             China          US             US
+Juris di ct ion      UAE               BVI         USD               USD            USD            USD            USD
+                                                   Yes               Yes            Yes            Yes            Yes
+Reserve Currency     USD               USD         Deloit te         Withum         Moore Hong     Withum         BPM LLP
+                                                                                    Kong
+Reserve Attestation  Yes               Yes         Mont hl y         Mont hl y                     Mont hl y      Mont hl y
+                                                   15                1              Continuous     1              1
+Auditor              UHY James         BDO Italia
+                     Mazars                                                         12
+
+Report ing           Mont hl y         Quarterly
+Frequency
+
+Native Integrations  1 (Starting with  14
+(# of blockchains)
+                     Ethereum)
+
+Regis tra tions      UAE: Issuance     US: Money   US: Money         US: New York   US: Money      US: New York   US: New York
+                     of a Fiat-        service     transmitter; UK:  trust charter  service        trust charter  trust charter
+
+                     Referenced        business    e-money issuer                   business
+                     Token
+
+Custodian            Banks regulated   Tether Ltd  BNY Mellon, NY    Paxos Trust    First Digital  Paxos Trust    State Street
+                     by UAE Central                Community         Company        Trust, BitGo   Company
+
+                     Bank                          Bank, US
+                                                   Bancorp, others
+
+Minimum              $100k             $100k       $100              $60k for       $10k           n/a            n/a
+
+Redemption                                                           individuals;
+
+Amount                                                               $500k
+
+                                                                     institutions
+
+Note: Updated as of Sep 12, 2025
+
+                                                                                                                                11
+USDU                           Whitepaper
+
+Implementation
+
+Portal
+
+The Aquanow portal will allow for minting, burning, deposit, and withdrawal. The separation of deposit and
+minting functions, and of burning and withdrawal functions, allows the flexibility to custody client fiat and Virtual Assets
+and for clients to withdraw or otherwise deal with USDU as they wish.
+
+This provides flexibility for  Ethereum has been selected as the initial blockchain for
+various use cases              deployment. Ethereum is the most popular blockchain
+of USDU, including during      with high security and widespread adoption of the ERC-
+non-business hours.            20 token standard. Ethereum is the most active
+                               blockchain for stablecoin transactions today - over 40%
+                               percent of USDT and 60% of USDC transactions occur
+                               on this network.
+
+                               Both Universal and Aquanow are regulated by their
+                               respective regulators (FSRA and VARA) to deal with
+                               Professional Clients only. Universal and Aquanow will not
+                               face any retail customers. Initially, Aquanow will be the
+                               sole distributor for USDU and therefore Universal will only
+                               face Aquanow and Aquanow will only face a limited
+                               number of institutional or Qualified clients in the
+                               beginning, including leading Virtual Asset exchanges and
+                               banks.
+
+                                    All parties must complete KYC due diligence
+                                          procedures; all Virtual Assets in/out will be
+                                          subject to KYT and compliance checks.
+
+                                    Wallets and bank accounts seeking to withdraw
+                                          assets will need to be checked and whitelisted.
+
+                                    The system will accept USD fiat/USDU for
+                                          Deposit and process USD fiat/USDU in
+                                          Withdrawal.
+
+                                    Universal reserves the flexibility to add to its
+                                          offerings in future, subject to regulatory
+                                          approvals.
+
+                                                                                                                                             12
+USDU                                                                                                             Whitepaper
+
+Implementation
+
+Deposit and
+Minting Sequence (USD)
+
+A qu ano w                                                             4.                                        A qu ano w
+on bo ard ed                                                                                                     CMA
+clients                                                                Client sends USD from
+
+                                                                       whitelisted Bank Account to
+                                                                       Aquanow Client Money
+                                                                       Account (CMA)
+
+                       1.
+
+                       Client onboarding completed by
+                       Aq uan ow
+
+                       2.
+
+                       Client logs in to Aquanow Portal
+
+9.                                                                                                               U SD U
+                                                                                                                 Reserv e
+Client ca n send USDU                                                                                            A ccou nt
+elsewhere from wallet
+                       3.                                              Aquanow Portal
+
+                       Client buys USDU via Aquanow portal
+
+                       7.                                                               5.
+
+                       Minted USDU sent to Aquanow or                                   Aquanow Portal confirms receipt of USD,
+                       whitelisted address                                              transfers USD into Univ ersal reserve
+                                                                                        account and initiates USDU mint request
+
+                         8.                                            6.
+
+                                         Upon request, Aquanow sends   Universal validates
+                                         USDU to Client's whitelisted  receipt of USD in
+                                         wa llet                       Reserve Account
+                                                                       and
+              C lien t                                                 mints USDU
+              Whiteliste d
+              Digita l Wa llet                                         A qu ano w                   U niver sal
+                                                                       Ins titution al
+                                                                       Walle t
+
+                                                                                                                                 13
+USDU                                                                                                   Whitepaper
+
+Implementation
+
+Burning and
+Withdrawal Sequence (USD)
+
+A qu ano w                                                  7.                                         A qu ano w
+on bo ard ed                                                                                           CMA
+clients                                                     Upon client's
+                                                            instruction, USD is
+Ownership                                                   transferred from
+                                                            Aquanow's CMA to
+                                                            client's bank account.
+
+                        1.                                  Aquanow Portal                                                     U SD U
+                                                                                                                               Reserv e
+                        Client logs into Aquanow Portal,                                                                       A ccou nt
+                        which shows client's USDU balance.
+                                                                             4.
+                        2.
+                                                                             Aquanow confirms receipt of USDU and
+                        User initiates burn request via                      run complia nce checks. Once compliance
+                        Aquanow portal and instruct to                       is cleared, Aquanow initiate USDU burn
+                        receive USD in their nominated                       instruction and transfer USDU to
+                        client account.                                      Unive rsal.
+
+                        6.
+
+                        Universal transfers the
+                        corresponding USD from reserve
+                        account to Aquanow's CMA
+                        account which reflects in client's
+                        balance via Aquanow Portal
+
+                        3.
+
+                        User sends USDU to Aqua now
+                        Instiutional Wallet.
+
+      C lien t                                              A qu ano w       5.           U niver sal
+      Whiteliste d                                          Ins titution al
+      Digita l Wa llet                                      Walle t          Unive rsal
+                                                                             co nfi rms
+                                                                             receipt of
+                                                                             USDU a nd
+                                                                             burns USDU.
+
+                                                                             Strictly Private and Confidential                            14
+USDU  Whitepaper
+
+Adoption Strategy
+
+Universal will encourage adoption of USDU across virtual assets,
+UAE local, and global economies in the following sequence.
+
+1. Setup
+
+- List USDU on leading local virtual asset exchanges
+- List USDU on leading decentralised exchanges (DEX)
+- Conduct market-making function on USDU/USDT and USDU/USDC pairs, and at a later date,
+
+        USDU/ETH and USDU/Bitcoin pairs to provide market liquidity
+
+2. Adoption (in collaboration of licensed partners, as needed)
+
+- Promote usage of USDU to trade digital assets at local exchanges
+- Promote usage of USDU to trade digital assets at international exchanges
+- Facilitate swaps with UAE Central Bank licensed Dirham Payment Tokens
+
+3. Ecosystem (in collaboration of licensed partners, as needed)
+
+- Enable international merchants and payment companies (non-UAE) who already accept digital payments to include
+USDU
+- Promote USDU yield
+- Promote usage of USDU as a reserve asset
+- Promote usage of USDU for employee payroll (non-UAE)
+
+                                                                                                                 15
+USDU  Whitepaper
+
+Additional Information:
+
+Implementation Partner
+
+The technology and implementation partner for USDU is Aquanow, a leading institutional
+digital asset platform that powers a network of fast-growing banks, neobanks, brokerages,
+and payment companies. Founded in 2018, Aquanow has established itself as a critical
+player in the digital finance space, operating advanced technology infrastructure and
+underwriting billions of dollars in monthly cryptocurrency brokerage and payment
+transactions.
+
+With a global presence that includes over 150 team members across various offices,
+headquartered in Vancouver, Canada and a regional headquarter in Dubai, UAE, Aquanow
+has gained recognition for its rapid growth and innovation. Notably, the company was
+featured on the Deloitte Technology Fast 500 list in 2024 for the second consecutive year.
+
+In the UAE, Aquanow operates through Aquanow ME FZE, which is incorporated in the
+Dubai World Trade Centre and regulated by VARA with license number VL/24/01/001. This
+regulatory framework allows Aquanow to provide a range of services, including Broker-
+Dealer Services, Lending and Borrowing Services, and Management and Investment
+Services.
+
+As a key partner for USDU, Aquanow's extensive experience and regulatory compliance
+under VARA will play a vital role in the successful implementation and operation of this
+USD-backed stablecoin. Aquanow and Universal commit to uphold the highest standards
+of transparency and security in the digital asset ecosystem. For more information about
+Aquanow, please visit www.aquanow.com.
+
+Environmental Impact
+
+Universal is aware of the potential energy consumption associated with blockchain activity
+and its environmental implications. With this in mind, the team has designed USDU to be
+efficient and to minimise its ecological footprint.
+
+For instance, USDU will utilise only blockchain protocols that operate on a proof-of-stake
+consensus mechanism, which has a lower environmental impact compared to proof-of-
+work protocols that often involve energy-intensive mining operations.
+
+                                                                                                                                                                                                                       16
+USDU                                                                                      Whitepaper
+
+Risks and  The following are major risks for the USDU project:
+
+           1. Depeg Risk
+
+Mitigations The most significant risk for stablecoins is depeg risk. The stability of a fiat-backed stablecoin peg is
+                                                          based on the perceived capability of the issuer to redeem the stablecoin at par value for its underlying
+                                                          asset. For USDU, is each USDU for 1 USD. To address this issue, USDU will be the most conservative
+           among major stablecoins, with its reserves deposited only with financial institutions regulated by the UAE
+
+           Central Bank. Its reserves are subject to monthly attestation by a major independent accounting firm.
+
+           Arbitrage opportunities will also provide incentives for market participants to maintain USDU's parity. In
+
+           addition, Universal and its partners will provide liquidity to help maintain the peg as required.
+
+           2. Investment Loss Risk
+           There is general risk that stablecoin reserves will have investment losses from the various investments
+
+           that they may be held in. However, USDU reserves will be conservatively managed to minimise
+           investment loss risk, being invested only in deposits (and short term USD UAE government securities in
+           the future when applicable) with financial institutions regulated by the UAE Central Bank. It is practically
+
+           impossible for Universal to suffer investment losses from these assets in its reserves.
+
+           3. Market Liquidity Risk
+
+           To mitigate the risk of insufficient trading in USDU, Universal Digital and its partners have sourced
+           treasury funds for market-making in leading centralised and decentralised exchanges. Other market-
+           makers will also provide liquidity, by taking advantage of price discrepancies for arbitrage profit.
+
+           4. Issuer Risk
+           There is operational risk that USDU funds are stolen or that USDU is issued without a corresponding USD
+
+           deposit. To mitigate this risk, reserve assets will be clearly segregated from treasury assets. Reserve
+           Accounts will only be used for minting and burning. There are fully defined minting and burning
+           processes in place with daily internal reconciliation and monthly attestation process. The distributor
+
+           Aquanow is also SOC 2 Type 2 and ISO certified.
+
+           5. Term-Maturity Mismatch Risk
+
+           Many stablecoin issuers invest reserves in long term assets and may not be able to fulfill client demand
+           in a "bank-run" situation. Universal will only be investing in deposits (and short -term UAE government
+           securities in the future and when applicable). Its treasury management is the most conservative of all
+
+           major stablecoin issuers. In the worst-case scenario, all USDU holders will be able to get back their USD
+           within one week, given that the short-term securities (if any) that the reserves invest will have a maturity
+           period of less than a week.
+
+           6. Using and Holding USDU Exposes Holders to Potential Risks Specific to USDU
+
+            Subject to law enforcement for illegal or sanction countermeasures, USDU or the corresponding
+                 reserves backing the USDU can be frozen, seized or forfeited as required. Please refer to the Terms
+                 and Conditions for the prohibited use of USDU.
+
+            Although Universal segregates the reserve assets from corporate funds as per the regulatory
+                 requirements. USDU reserves are held only with UAE central bank regulated banks. However, there
+
+                 are still insolvency risks to the reserve accounts with which USDU reserves are held. Universal had
+                 a thorough third-party agent suitability assessment as per the FSRA requirements to make sure that
+                 the banks which the reserves accounts are held are deemed suitable. Universal will implement a
+                 stringent treasury risk management framework and ongoing due diligence on the banks.
+
+            In the unlikely event of an extreme market condition or other unexpected circumstances, there are
+                 risks that there might be mismatch between outstanding USDUs and the reserve assets. However, it
+                 is highly unlikely for this to happen due to the nature of the USDU reserve assets.
+
+            The USDU smart contract is on a public blockchain, there may be risks where it will be breached by
+                 unauthorized third parties. The USDU smart contract is subject to independent third party smart
+                 contract audit by top audit firms to give assurance that the implementation is secure and stable.
+
+                                                                                                                                                                         17
+USDU  Whitepaper
+
+Rights and Obligations
+
+Subject to terms and conditions, including that all USDU holders seeking redemption must be successfully
+onboarded with Aquanow and all wallet addresses must be checked and/or whitelisted, USDU holders have a
+legal right to redeem the USDU against USD fiat at 1:1 basis within two business days.
+
+To redeem USDU via Aquanow portal, holders must have an account with Aquanow. Each account must have
+a unique redemption wallet address to which the holder can send USDU. Once Universal receives the
+instruction from Aquanow and compliance checks are done, USDU will be sent to Universal and will be burnt.
+After which Universal will send the corresponding USD to Aquanow's CMA which will reflect on the client's
+balances on the Aquanow Portal. Upon client instruction, such balances can be withdrawn.
+
+     All redemptions will be at par value, which is 1:1 for USDU:USD.
+     Universal makes commercially reasonable efforts to redeem USDU which may take up to two
+
+           business days. However, during extreme market conditions which are beyond Universal and
+           Aquanow's control, the redemption period may be extended following notification to or upon
+           direction from the FSRA.
+     Universal and Aquanow may require a minimum amount for redemption, which may be updated from
+           time to time.
+
+Redemption may be delayed in certain circumstances such as:
+     Operational latency with Universal's banking partners;
+     Where a certain redemption request needs additional and enhanced compliance checks from
+           Aquanow;
+     Where Universal and/or Aquanow believes that such redemption may constitute a breach to
+           applicable laws and regulations or would otherwise expose Universal and/or Aquanow to legal
+           liability.
+
+Aquanow is able to communicate with clients who experience delays in the redemption process via Customer
+Support. Universal and/or Aquanow undertakes appropriate remediation actions to help clients redeem their
+USDU given the circumstances of each case. In case of a mismatch between the beneficial owner of the bank
+account and owner of the client account with Aquanow, the USD withdrawal will be denied and the client will
+be notified.
+
+Treatment of USDU Holders in the
+Event of Insolvency
+
+   In accordance with the FSRA COBS rules 19A.2.1 and COBS rules 19A.11, in the event of Universal's
+   insolvency or other pooling event, all of the USDU reserve investments must be liquidated and all of the
+   relevant money must be distributed in the following order of priorities:
+
+       I. Firstly, to all holders of all issued and outstanding USDUs on a pro-rata basis to an amount at par
+              value;
+
+       II. Secondly, to other creditors of Universal whose claims are not addressed.
+
+                                                                                                                                                                                                                       18
+USDU                                                                                                Whitepaper
+
+Terms and Conditions                                                                                Conclusion
+
+1. The I ssuer of USDU, Universal is regulated by the FRSA of ADGM to conduct the regulated         USDU embodies the project team's sincere
+activity of issuing a FRT under the Financial Services Permission No. 250089 to deal with           commitment to providing a USD-pegged
+Professional Clients as defined by the FSRA COBS Rules. Its registered address is 14,11, Sky        stablecoin alternative to the market.
+Tower, Shams Abu Dhabi, Al Reem Island, Abu Dhabi, UAE.
+                                                                                                    We are confident that the USDU project will
+2. USDU will be 1:1 backed by USD, kept in banks regulated under the UAE Central Bank.              play a crucial role in establishing the UAE as a
+                                                                                                    leading virtual assets hub within the global
+3. The USDU reserves will only be invested in saving deposits (and short-term USD UAE               digital asset ecosystem.
+government securities in future when available).                                                    Our initiative is designed to be inclusive, and
+                                                                                                    we are dedicated to facilitating and
+4. Aquanow's platform will provide services 24/7/365 except normal system maintenance and           empowering business opportunities across
+down time (if any). Aquanow aims to provide an availability of 99.95%.                              various use cases for our partners.
+                                                                                                    With the UAE's growing role as a virtual
+5. Via Aquanow, Universal expects to send funds to clients within 2 business day of a               assets hub and global economic centre,
+withdrawal. In extreme market conditions, beyond the control of Universal and Aquanow, the          AED's stable peg with USD and the UAE's
+redemption period may be extended following notification to or upon direction from the FSRA.        politically neutral stance we believe that the
+                                                                                                    USDU project is in a unique position to
+6. Institutional grade AML/KYC/KYT processes will be in place. All parties must complete KYC;       succeed.
+all Virtual Asset in/out will be subject to K YT. Those seeking to mint or burn USDU must have
+an account with Aquanow and have been successfully onboarded by Aquanow's KYC and AML                USDU has a
+onboarding process. Onboarding timelines vary depending on the customer type, the                    promising future as a
+complexity of customer structure, timeliness of providing required documentation among               Fiat Referenced
+others which may prolong the onboarding process.                                                     Virtual Asset for the
+                                                                                                     United Arab Emirates
+7. All outgoing wallet addresses and bank accounts will be verified and/or whitelisted.              and the world.
+
+8. All USDU reserves will be separated from the corporate funds of Universal andAquanow.                                                                                                   19
+
+9. All USDU reserves will be attested by a major accounting firm on a monthly basis. Attestation
+reports will be made public by the end of the following month.
+
+10. The USDU smart contracts had been audited byCertik, with a report dated 6 May 2025.
+
+11. Market leading standards including Multi Party Computation ("MPC") will apply.
+
+12. Revocation will only be used as a last resort but provides a safety net in extreme situations.
+
+13. The choice of blockchain will be Ethereum for the initial implementation. It is expected that
+more blockchains will be added at later stages.
+
+14. Both Universal and Aquanow are permitted to deal with Professional Clients only. Universal
+will not face retail customers. It will only face Aquanow, who will face a limited number of
+institutional clients in the beginning, including leading Virtual Asset exchanges and banks.
+
+15. The system will only accept USD fiat/USDU in Deposit and issue USD fiat/USDU in
+withdrawal. It will not accept other fiat/Virtual Asset currencies in the initial stage.
+
+16. USDU and all relevant services provided by Universal and/or Aquanow may not available to
+any sanctioned individuals or entities and individuals or entities in a prohibited jurisdiction as
+determined by Universal and/or Aquanow to fulfill its regulatory requirements. Any wallet
+addresses with USDU balances are subject to screening and monitoring and USDU maintained
+by wallet addresses which are sanctioned or in a prohibited jurisdiction will be blocked by
+Universal and/or Aquanow.
+
+17. USDU and the corresponding USD reserves backing the USDU may be subject to freeze,
+seizure, forfeiture or other restrictions imposed by law enforcement for illegal or sanction
+countermeasures. Should the USDU tokens being determined to have been used or are being
+used for illegal or sanctioned activities, redemption of such USDU tokens will not be permitted
+and the USD reserves backing those USDU tokens may be forfeited, such USDU and the
+corresponding USD reserves may be unusable, irrecoverable or destroyed as required. This
+applies to all USDU holders, regardless of whether the holder is a client of Universal and/or
+Aquanow.
+
+18. Fees will be charged for activities such as minting, burning, or transactions. These fees are
+subject to change over time based on market conditions. All applicable fees will be disclosed at
+the time of each transaction and applied separately, without impacting the 1:1 backing of USDU.
+
+19. Please refer to the Client Agreement Supplement for terms that relate to USDU.
+USDU                                                                                          Whitepaper
+
+Under no circumstances shall this white paper be deemed or construed as a direct or           Disclaimers
+indirect offer to sell or a solicitation of an offer to purchase or subscribe for any
+securities or any offer to sell any product.
+
+This white paper is intended for general information purpose only and does not
+constitute any legal binding agreement. The information herein may not be exhaustive
+and does not indicate any terms of a contractual relationship. There is no
+representation or warranty to be provided as to the accuracy or completeness of such
+information. The white paper and the content on the website may be updated, amended
+or replaced from time to time. There are no obligations to update the white paper or the
+content on the website, or to provide any information to recipients beyond what has
+been provided herein.
+
+The white paper has not been approved by the FSRA and Universal is solely
+responsible for the content of the white paper. No assurance has been given or will be
+given under the laws, regulatory requirements or rules under any jurisdiction. The
+publication, distribution or dissemination of the white paper and the content on the
+website does not imply that applicable laws, regulatory requirements or rules have
+been complied with.
+
+The Central Bank of the UAE is not responsible for determining the accuracy or
+completeness of this white paper. The Central Bank of the UAE's review and
+acceptance of this white paper does not constitute an endorsement of the Payment
+Token or Payment Token Issuer to which it relates, or of the accuracy or completeness
+of any information or statements in this white paper.
+
+The Firm hereby disclaims any liability, representations or warranties to any entity or
+individual, including without limitation warranties as to the accuracy, completeness,
+timeliness or reliability of the white paper or contents on the website, or any other
+materials published by the Firm (unless damages or loss arising from a material
+misstatement in this white paper). The Firm shall not be liable for any indirect,
+consequential, incidental, or any other damages in tort, contract or otherwise
+(including, without limitation, any liability arising from default or negligence on the part
+of any of them, or any loss of revenue, income or profits, and loss of use or data)
+arising from the use of the white paper or the website, or any other materials published
+by the Firm (including without limitation any errors or omissions) or otherwise with
+respect to the same. Prospective USDU buyers should carefully consider and evaluate
+all risks and uncertainties.
+
+The information on the white paper herein does not constitute any legal, financial or tax
+advice and recipients should consult their own legal, financial, tax or other professional
+advisors before engaging in any business activity in connection herewith. Universal, its
+parent entities, affiliates, directors, officers, employees and agents accept no liability
+for any kind of direct or indirect damage or loss whatsoever with respect to the white
+paper, the content of the website, or any other materials published by the Firm.
+
+                                                                                              20
+USDU                                                                    Whitepaper
+
+  Board Attestation
+
+We, being all the Directors of Universal Digital Intl Limited (the "Board"), a private company limited by shares established and
+existing under the laws of Abu Dhabi Global Market ("ADGM") with registration number 26715 having its registered address at
+14, 11 Floor, Sky Tower, Reem Island, Abu Dhabi, United Arab Emirates (the "Company"), hereby provides attestation in
+accordance with applicable rules and regulations:
+
+Attestation
+
+The Board confirms that it has reviewed this white paper relating to USDU (the "White Paper") and hereby attests that, to the
+best of its knowledge, information and belief:
+
+1. Completeness
+
+The White Paper has been prepared in accordance with FSRA COBS 19A and Articles 26 of the Central Bank PTS Regulation
+and contains all information that is reasonably necessary for a customer, a token holder or other stakeholder to make an
+informed assessment of USDU.
+
+2. Accuracy
+
+The information provided in the White Paper is, as of the date of the publishment, clear, fair, accurate and not misleading,
+whether by omission, ambiguity, or presentation.
+
+3. Ongoing update
+
+The White Paper may be updated, amended or replaced from time to time to ensure that any material changes relating to
+USDU will be promptly assessed, updated and re-published to fulfill its ongoing regulatory obligations.
+
+_____________________________        _________________________________
+Shaikh Juma Maktoum Juma Al-Maktoum  Michael Hang-Yu Leung
+
+_________________________________
+Obaid Helal Obaid Mohammed Alkaabi
+
+                                                                                                                                  21
+USDU                                                                                                      Whitepaper
+
+Appendix - Technical Details
+
+Key Management System
+
+The USDU system integrates with market-leading custody technology. Its platform is a multi-layer
+technology that provides next generation digital asset security from internal collusion, cyberattacks,
+and human error. It uses a custody MPC based wallet to secure the movement of funds and
+operates within a well-defined policy document for transfers.
+
+Smart Contract Infrastructure
+
+We envision the USDU token to be usable on centralised exchanges and decentralised applications on
+popular blockchains. This token is designed to adhere to ERC-20 standards which has been adopted
+across many Ethereum virtual machine ("EVM") blockchains, and is interoperable across existing
+decentralised applications in the decentralised finance ("DeFi") ecosystem. The mainnet contract address
+is 0xe4ca6596d2c28014c6f89964f57838e0be9f369b.
+
+The USDU token can be minted, burned, and transferred. In designing the smart contracts that build the
+USDU token, aspects such as security, upgradeability, whitelisting, and recoverability were considered.
+The USDU token smart contract uses the proxy design pattern to enable the upgradability of the
+implementation contract.
+
+There is a hierarchical role system that defines the access control of members such as administrator,
+master minters, and minters. There are thresholds defined for every minter. A multi-signature scheme is
+applied for high-risk operations.
+
+                                                                                                          22
+USDU  Whitepaper
+
+References
+
+V. Buterin et al., "A next-generation smart contract and decentralised application platform,"
+https://github.com/ethereum/wiki/wiki/White-Paper, 2014.
+
+B. Dyson, "Can stablecoins be `stable'?," https://bankunderground.co.uk/2019/03/28/can-stablecoins-be-stable/, 2019.
+
+NEU Blockchain; Coin Metrics, "The Cambrian Explosion of Stablecoins," https://5264302.fs1.hubspotusercontent-
+na1.net/hubfs/5264302/The%20Cambrian%20Explosion%20of%20Stablecoins.pdf,
+April 2022.
+
+Dirk Bullmann et al., "In search for stability in crypto-assets: are stablecoins the solution?,"
+https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op230~d57946be3b.en.pdf, August 2019.
+
+Galaxy Research, "Digital Dollars: An Overview of Stablecoins Today and Tomorrow," August 2022.
+
+BCG, "Stablecoins: Five Killer Tests to Gauge Their Potential," https://media-publications.bcg.com/Stablecoins-five-killer-tests-to-
+gauge-their-potential.pdf, 2024.
+
+CoinGecko, "State of Stablecoins 2024," https://assets.coingecko.com/reports/2024/CoinGecko-State-of-Stablecoins-2024.pdf,
+2024.
+
+DeFiLlama, "Stablecoin Overview," https://defillama.com/stablecoin/, accessed September 2025.
+
+CoinDesk Research, "Stablecoins and CBDCs Report," https://www.coindesk.com/research/stablecoins-and-cbdcs-report-august-
+2025, August 2025.
+
+      23
+ 
+
+  
+
+      2.0 
+   2026  30
+USDU ""        
+
+         03  
+         05
+        07                                      
+         12
+        16                                     
+
+      19                                     
+      20          
+       22
+      23                    USDU ""    :
+
+                                                USD 
+
+                     
+              
+
+                     
+
+              
+
+                                             
+                      
+
+              
+
+                                                
+
+                            
+
+                            
+                
+
+                       
+                        
+
+                                               
+
+                                                
+
+                                    - 1 
+                    
+                
+
+                                                
+
+                                                      02
+USDU ""      
+
+                    
+
+ 1:1           )" USDU ""    "(   
+                                                           .           
+
+  )""  ""  " ""  " "  "(        
+     26715    )"ADGM"(        
+      250089        )"   "( 
+
+                                                                                          ."FRT "      
+
+ )PSTR(                  
+                                                                                                                 .   
+
+                    
+    .)      (       
+        )        (   
+     (             .  
+         .)           
+
+                              .               
+
+(             USDU ""       
+"       .)              
+
+            .                USDU "
+
+           )" ( Aquanow ) "( ..     
+ )"     "(          2795L   
+
+                                                                                                                      . 
+
+           03
+USDU ""      
+
+                                                                                              :     .1 : USDU ""     
+                USDU ""       
+
+                                  .      )FRT(    
+
+                                                                                                 :   .2
+                      .             
+
+         " USDU "        
+                                                   .       USDU ""   
+
+            USDU ""     
+     "Ethereum "        .   
+
+                                                                                                   .  
+
+         )2      )1    
+                                              .    )4    )3  
+
+  .                  
+          --         
+    (DFSA)      (FSRA)     /  
+
+                                                    ..    --      
+
+                 .           USDU ""     
+
+           04
+USDU ""                                                       
+
+                                 
+
+                .2008          
+         .                 .    
+
+                                                                                                              .        
+
+  Tether )USDT(                                                       
+ USD Coin )USDC(  )Bitfinex    ( Tether
+Binance USD  Coinbase  Centre    Circle                                
+Gemini Dollar  Binance    Paxos   )BUSD(                                            .        
+
+                                    .Gemini Trust   )GUSD(            
+                                                                                  .        
+    --      
+ .         --                                                            
+                                                                 .      
+                                                                   -     
+                       .                                                
+
+     .                                                                                                                                .
+ USDC   DAI      MakerDao
+                                                                        
+                                                                        .
+                         .                                           
+                                                                     .
+                                                                 .     
+          .                                                          
+            
+   2022   . /                                                                                                                       .
+19   Terra )UST(       
+                                                                      
+                                                .              .         
+                                                                 .      
+                                                                       
+
+                                                                                                                                   .
+
+                                                            05
+USDU ""                                                                  
+
+"   :   
+           USDU "                                                       
+
+"    (                                                                    283 2025  31      
+   .         )USDU "                                                    3.8         7    
+                                                                        :        .  
+       USDU ""     
+                      .                                                          
+                                                                                                          .     
+
+                        :  USDU ""                                      Tether )USDT(        
+                                                                              USD Coin )USDC(
+           .
+                                                                                                                             .    
+             
+                                                                                   
+                                                                                   
+                                                               . 
+                                                                                                                                    .  
+
+      USDU ""      .                                                     .         
+       .                                                                           
+          USDU ""                                                          .      
+                                                                       .              
+                                                                                  
+                  .          
+                                                                                            .       
+     USDU ""      .
+            
+ .          
+             
+       USDU ""    
+
+                                                                   . 
+
+                                                                                                                                         06
+USDU ""                                                            
+
+"USDU "   
+
+        ) USDU ""   (
+                                .      
+
+         .                 1:1   USDU ""   
+
+                                                             
+
+      )""  ""  "" ""  " "  "(        
+     )"   "(       26715    )ADGM""(     
+
+                                               FRT". "             250089   
+
+                                                                  
+
+ "(               ( Aquanow )    USDU ""     
+               USDU ""      .)"   
+
+                                                                                                     .)"  "(     
+
+                 USDU ""     ( Aquanow )  
+                                                                                                                                                           . 
+
+                                            
+
+        USDU ""                   
+                                                           :                  
+
+                         .3       .2                                              .1
+                                                               
+                                                                       
+                                                                       
+                                  
+                                                                                    
+                                            
+
+                                                                                      07
+USDU ""                                                 
+
+                                                       
+
+                                                                              .1
+
+                                                                                          
+
+              )DeFi(                                        
+                                                        USDU ""     
+              USDU "      
+                                                                
+                                                   "
+
+             )        (        .2
+
+                                                                                              
+
+                                           "USDU "     
+                                                 
+
+                                                                .       
+
+                                          )        (   .3
+
+                                                                                                
+
+USDU "                                                       
+        "                                             "         
+      
+                                                                                                     USDU "
+                                        
+
+                                                                                                08
+USDU ""                                                                 
+
+                                          
+
+  USDU ""      . USDU ""                   
+                                                                                           :           
+
+                                                                                .1
+
+   USDU ""           .          
+                       
+
+                                                                                                                                                               .
+
+                                                                                .2
+
+                USDU ""        
+     )"KYT"( " " )"KYC"( " " )"AML"(         .    
+   USDU ""            .         ( Aquanow ) 
+
+                           .   USDU ""        .            
+
+                                                                            .3
+
+    /         "". US DU""                                                  )(    
+   USDU                                                                          
+
+                                                                      .  
+
+                                                                                .4
+
+(   )  (                   
+              .        )
+
+                                                                                      .           
+
+              .          USDU ""        
+
+USD Coin      Tether                                      
+ )USDC(       )USDT(                             ) USDU ""    (
+
+          14                               0.02                  100         
+
+          86                               65                    -           
+
+          -                                15                    -       
+
+          -                                20                    -         
+                                                                                              9
+          Circle + Paxos    : 
+                                2025     
+USDU ""      
+
+                                                                                                                                                                 .5
+
+99.95         .             ( Aquanow )    
+     USDU ""      24/7/365      . ( Aquanow )       
+
+                                                                                             .     /     
+
+                                                                                                                                                                .6
+
+( Aquanow   .                 USDU ""    
+   USDU ""      . USDU ""           )API(   )
+
+                                                                                                                                      .   
+
+                                                                                                                                                                  .7
+
+  USDU ""        .2025  6     Certik     USDU ""      
+      .     )MPC(              
+
+                                                                                                                                         .    
+
+                                                                                                                                         ) (   .8
+
+                                                                                                                                                           )( 
+)"CMA"(                  ( Aquanow )      .1
+
+           .     . ( Aquanow )              ( Aquanow )   
+ ( Aquanow )    )"CMA"(          ( Aquanow )      .2
+
+                                    . USDU ""                 
+ ( Aquanow )    USDU ""                  .3
+       USDU ""           USDU ""     ( Aquanow ) 
+
+                                                                                                                     .     
+                                                                                        . USDU ""           .4
+
+                                                                                                                                                        )( 
+            ( Aquanow )    USDU ""       .1
+
+                                                                                  .       . ( Aquanow )    
+ (     .    ( Aquanow )       USDU ""      .2
+       . USDU ""         USDU ""    Aquanow )
+
+                      . ( Aquanow )         ( Aquanow )    )"CMA"(     
+         .                 .3
+
+                                        .                 ( Aquanow )   
+                                                                                   .   1    USDU ""       .4
+
+                                     . ( Aquanow )    )"CMA"(              .5
+
+                                                                                                                                                               .9
+
+                                                                                                . USDU ""          
+
+               10
+USDU ""                                                                                                                 
+
+                                                    
+
+                 .                 USDU ""     
+
+Gemin i           Pax           True                           Binance              USD                                                    
+Dollar           Dollar         USD                            USD Coin            Coin                Tether
+                                                                                                                      USDU                                                       
+        GUSD            USDP           TUSD                               BUSD             USDC                 USDT
+                                                                                    72.4                169.4             - ) (  
+   52              68            494                                55
+
+           2018          2018          2018                                2019      2018             2014                    2025                        
+                                                                                                                                                        
+                                                                                                                                                       
+                                                                                                                                              
+                                                                                                                                 
+                                                                                                                                                               
+                                                                                                                      UHY James                       
+                                                                                                                                                     
+                                          12                                                           BDO                                           )  (
+                                                                               1
+                                                                                                                                                           
+
+1                1                                                                   15               14              )  ( 1                                
+
+:                 :             :                              :                  :                    :              :                            
+                                                                                                                        
+                                                                                    
+                                                                                                                        
+                                                                                  :                                                      
+
+                                                                                    
+
+                                                                                     
+
+                                                                                                          
+                                                                                                                           
+
+                                                                                                    
+
+                                10                                 60                100                100             100
+                                                                      500
+
+                                                                          
+
+                               2025   12    :
+
+                                                                                                                                                                             11
+USDU ""                                                                       
+
+                                 
+
+                                     
+
+        .     .        ( Aquanow )    
+                                    .       USDU ""            
+
+  Ethereum .     Ethereum                                                       
+.20ERC-                                                                        
+--          muerehtE                                                            USDU "" 
+  USDC   60  USDT   40    
+                                                                                            .  
+                                                                         .
+
+    ( Aquanow )      
+   )          (
+    ( Aquanow )      . 
+"       ( Aquanow )     . 
+  ( Aquanow )      USDU "
+          ( Aquanow ) 
+
+              .         
+
+           
+ /      )KYC(
+
+                                    . )KYT (  
+
+         
+                          .      
+
+ /         
+                                              . USDU "" 
+
+          
+             .      
+
+                                                                                12
+USDU ""                                                        
+
+                                                                                                               
+
+                  ) (    
+
+(                                                                            4                                     ( 
+Aquanow )                                                                                                      Aquanow
+                                                                    USD  
+                                                                                                                    )CMA
+                                                                    
+                                                                     (   )CMA(  
+                                                                                          Aquanow )
+
+                                  .1
+
+                  (        
+
+                                                  Aquanow )
+
+                                  .2
+
+                  (        
+
+                                                 Aquanow )
+
+              .9                                                                                          
+                                                                                                         
+  "      
+                                                                                                              USDU ""
+     USDU "
+                                     .3                      ( Aquanow )    
+
+                    USDU ""     
+
+                                              ( Aquanow ) 
+
+                                     7                                               5
+
+                    USDU ""                                          ( Aquanow )    
+                        ( Aquanow ) 
+                                                                     
+                                                                                                  . USDU ""  
+
+                             .8                                              .6                                     
+
+                               ( Aquanow                                           
+                               USDU ""   )                                           
+
+                                                                                     
+                                                                                  "    
+   
+                                                                                                USDU "
+
+                                                             (   
+                                                                Aquanow
+                                                                     )
+
+                                                                                                               13
+USDU ""                                                                                   
+
+                                                                                             
+
+                                                                  ) (   
+
+            (                                                                .7               
+        Aquanow                                                                             (   
+     )                                                                     
+                                                                                              Aquanow )
+                                                                      
+                                                                     )"CMA"(  
+
+                                                                    ( Aquanow ) 
+
+                                                                                  . 
+
+                                     .1                                                                                                         
+                                                                                                                                               
+                  ( Aquanow       
+                     USDU "       )                                                                                                                 USDU ""
+                                                    . "
+                                                                  ( Aquanow )   
+                                    .2
+                                                                                                     4
+                      (       
+                         USD   Aquanow )                                                            "      ( Aquanow )   
+                                                                                                 .  USDU "
+                                                    . 
+                                                                                                  "      ( Aquanow ) 
+                                     .6                                                         USDU ""    USDU "
+
+                                                                                                                                                       .
+                               
+
+                    ( Aquanow )    )"CMA"(
+                          (        
+                                                       Aquanow )
+
+                                     3
+
+                     USDU ""     
+                      . ( Aquanow )Instiutional  
+
+                                                                  (                    .5       
+                                                                     Aquanow
+                                                                          )          
+       
+                                                                               USDU ""  
+
+                                                                              . USDU ""   
+
+                                                                                               14
+USDU ""      
+
+                                      
+
+                               .             USDU ""       
+
+                                                                                                                                                                 .1
+
+                                                                                                 USDU ""     -
+                                                                                      )DEX(        USDU ""      -
+   USDC/ USDU ""     USDT/ USDU ""            -
+                                                                            Bitcoin/ USDU ""     ETH/ USDU ""    
+
+                                                                                                                )     (  .2
+
+                                                                                            USDU ""      -
+                                                                                                               USDU ""      -
+
+                                                                                     -
+
+                                                                                                      )     (   .3
+
+                                                                USDU ""                -
+                                                                                                                                   USDU ""      -
+
+                                                                                                                   USDU ""      -
+                                                                      )     (      USDU ""      -
+
+           15
+USDU ""            
+
+           : 
+              
+
+       USDU ""        ( Aquanow )  
+ ( Aquanow )   .             
+                  2018 
+
+                                                            .          
+
+           150      ( Aquanow )  
+    ( Aquanow )    .            
+
+                 .    2024  Deloitte Technology Fast 500        
+
+       ..           ( Aquanow )  
+ (       .24/01/001VL/          
+
+                Aquanow )
+                                                                                                                   .
+
+     ( Aquanow )      USDU ""       
+  (   .               
+    .           Aquanow )
+                                                                          www.aquanow.com : Aquanow
+
+                                       
+
+      .               
+                                                                     .      USDU ""    
+
+              USDU ""       
+                                   .               
+
+                     16
+  USDU ""                          
+
+                : USDU ""                                                                                                                           
+                                                                                                                                                    
+                                                                                                                                     .1
+                .       
+
+  .  1  USDU ""      USDU ""     .     
+               USDU ""    
+        .          .    
+              . USDU ""      
+
+                                                                                                                                                 .
+
+                                                                                                                                 .2
+     .                   
+                 USDU ""   
+
+       )                (
+                                               .             .  
+
+                                                                                                                                .3
+             USDU ""          
+               .      
+
+                                                                                                                                               . 
+
+                                                                                                                                         .4
+ .      USDU ""     USDU ""           
+         .   .           
+
+                 .ISO  2Type 2 SOC     ( Aquanow )      .      
+
+                            .5
+
+ ."  "                    
+      .)          (       
+
+      USDU ""             .              
+      .                 ) (              
+
+                            : USDU ""           USDU ""    .6
+
+    USDU ""                   
+         .      USDU ""   
+
+                                                                                                                     . USDU ""  
+
+"      .              
+              .        USDU "
+            . USDU ""     
+         .             
+
+                                                                                               .        
+
+                       
+               .    USDU "" 
+
+                                                                                                                           . USDU "" 
+.                     USDU ""      
+                  USDU ""     
+
+                                                                                                                                         .
+
+                                                                                                                                                    17
+USDU ""      
+
+                               
+
+ ) Aquanow (         USDU ""             
+"      USDU ""            /        
+
+                                                                             .    1:1      USDU "
+
+     USDU ""         ( Aquanow )    USDU ""      
+. USDU ""      USDU ""               .)( Aquanow )
+   USDU ""           ( Aquanow )       
+     ( Aquanow )    )CMA (            .
+
+                                                             .        . ( Aquanow )    
+
+                                           .  : USDU ""     1:1        
+    .         USDU ""          
+               ( Aquanow )         
+
+                                                                                                                             . 
+                       .             ( Aquanow )      
+
+                                                                                                                :      
+                                                                                                     
+                                         ( Aquanow )                
+ (  /               ( Aquanow )  /    
+
+                                                                                                            .  )Aquanow
+
+ (  /   .             ( Aquanow )   
+   .      USDU ""             )Aquanow
+
+         .          ( Aquanow )          
+
+   USDU ""    
+
+                 11A.19COBS  2.1A.19COBS  
+      :        USDU ""             
+
+                                      USDU ""        
+                                                                          .          
+
+                                                                                                                                 18
+    USDU ""                                                                                                           
+
+                                                                                       
+
+    USDU ""                                                           USDU ""     .1
+                                                                         
+                                                                        250089   
+                                                        .                    .COBS 
+ USDU "          
+          "                                                                                                       .         
+.                                                                   1:1  USDU ""     .2
+         
+                                                                                                                                     .    
+            .      
+                                                             (     USDU ""      .3
+                                                                                       .)            
+         
+                                                                24/7/365    ( Aquanow )    .4
+         .    USDU ""    
+                                                                      .99.95      ( Aquanow )    .) (   
+ "                                                                     ( Aquanow )     .5
+  USDU "
+                                                            (             .  
+   
+                                                             .                 Aquanow )
+                  .                                         .     /    /      .6
+                                                           /              
+                                                            USDU ""            .    
+                                                                     )Aquanow (      
+                                                                   . ( Aquanow )     
+
+                                                                        .               
+                                                                /          .7
+
+                                                                                                                                                         . 
+
+                                                            (         USDU ""       .8
+                                                                                                                                                    .Aquanow )
+
+                                                                  USDU ""        .9
+
+                                                                                                              .       .
+                                                             .2025  6     Certik   USDU ""       .10
+
+                                                                                .)"MPC"(              .11
+
+                                                                           .               .12
+                                                                .Ethereum          .13
+
+                                                                                                                      .       
+
+                                                             .    ( Aquanow )        .14
+                                                                 ( Aquanow )       .    
+
+                                                                 .                
+
+                                                           /     USDU ""   /      .15
+                                                                  .     /    .  USDU ""   
+
+                                                            (  /        USDU ""      .16
+
+                                                                           Aquanow )
+                                                                .   ( Aquanow )  /  
+                                                            USDU ""       USDU ""    
+
+                                                                         
+                                                                                                                                      . ( Aquanow )  /
+
+                                                           "         USDU ""     .17
+                                                                          USDU "
+                                                            USDU ""        .     
+                                                                          
+                                                                USDU ""        
+                                                                       USDU "" 
+                                                              USDU ""        .    
+
+                                                               . ( Aquanow )  /    USDU ""      
+                                                                .            .18
+                                                                       .    
+
+                                                                                               . USDU ""    1:1     
+                                                                . USDU ""              .19
+USDU ""                                                                                              
+
+                                                                                                    
+  .                     
+
+   .              
+       .          
+          .     
+        .       
+
+        .              
+
+               
+           .     
+        .           
+             
+
+                                                                                                .
+
+               
+               . 
+                    
+
+                                                                 .     
+
+                   
+             --   -- 
+             (White Paper)
+               (
+                 ).
+ --   --              
+                  
+               
+.        )        (    
+           USDU      
+
+                                                                               .   
+
+                
+             
+       .        
+              
+               
+
+                                                                           .   
+
+                                                                                                   20
+USDU " "                                                                                                     
+
+                                    
+
+      (  (   )                        
+     11   14        26715                 
+
+:               ( )            
+                                
+
+   (    ) USDU                      
+
+                                  :              
+
+                                                                                                             .1
+
+             26   FSRA COBS 19A           
+                                                                                                           
+
+                                                                                                           USDU.
+
+                                                     .2
+                                            
+
+                                         .    
+
+                                                                                                                         .3
+   USDU                              
+
+                                                                            .             
+
+_____________________________                                           _________________________________
+          ­                                                                            
+
+                               _________________________________
+                                           
+
+                                                                                                                             21
+USDU ""      
+
+                                  - 1 
+
+                                                       
+
+                    .      USDU ""     
+                  .         
+
+                                                                             .           
+
+                                              
+
+  (Centralised Exchanges)      USDU ""        
+           ERC-20        .   
+    . (DeFi).              (EVM)
+
+                                                                                                : (Mainnet Contract Address)  
+
+                                                                                      0xe4ca6596d2c28014c6f89964f57838e0be9f369b
+
+   USDU ""           .   USDU ""      
+  USDU ""        .           
+
+                                                                                                          .      
+
+    .                 
+                                                                                      .         .
+
+               22
+USDU ""       
+
+                               
+
+V. Buterin et al., "A next-generation smart contract and decentralised application platform,"
+https://github.com/ethereum/wiki/wiki/White-Paper, 2014.
+
+B. Dyson, "Can stablecoins be `stable'?," https://bankunderground.co.uk/2019/03/28/can-stablecoins-be-stable/, 2019.
+
+NEU Blockchain; Coin Metrics, "The Cambrian Explosion of Stablecoins," https://5264302.fs1.hubspotusercontent-
+na1.net/hubfs/5264302/The%20Cambrian%20Explosion%20of%20Stablecoins.pdf,
+April 2022.
+
+Dirk Bullmann et al., "In search for stability in crypto-assets: are stablecoins the solution?,"
+https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op230~d57946be3b.en.pdf, August 2019.
+
+Galaxy Research, "Digital Dollars: An Overview of Stablecoins Today and Tomorrow," August 2022.
+
+BCG, "Stablecoins: Five Killer Tests to Gauge Their Potential," https://media-publications.bcg.com/Stablecoins-five-killer-tests-to-
+gauge-their-potential.pdf, 2024.
+
+CoinGecko, "State of Stablecoins 2024," https://assets.coingecko.com/reports/2024/CoinGecko-State-of-Stablecoins-2024.pdf,
+2024.
+
+DeFiLlama, "Stablecoin Overview," https://defillama.com/stablecoin/, accessed September 2025.
+
+CoinDesk Research, "Stablecoins and CBDCs Report," https://www.coindesk.com/research/stablecoins-and-cbdcs-report-august-
+2025, August 2025.
+
+                23
+

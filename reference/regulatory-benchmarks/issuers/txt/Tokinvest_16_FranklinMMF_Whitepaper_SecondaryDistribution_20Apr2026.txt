@@ -1,0 +1,1191 @@
+                                          Tokinvest DMCC
+
+        Franklin OnChain U.S. Dollar Short-Term Money Market Fund
+                   Virtual Asset Whitepaper (Secondary Distribution)
+
+                                            20th April 2026
+
+REGULATORY DISCLAIMER
+VARA has not taken any steps to verify the information set out in this whitepaper, including its accuracy
+and completeness, and has no responsibility for any loss arising from reliance on it. The liability for the
+content of the whitepaper rests solely with Tokinvest DMCC.
+This whitepaper is a regulated disclosure document prepared in accordance with the requirements of the
+Dubai Virtual Assets Regulatory Authority (VARA). It is intended to provide prospective investors with a
+clear explanation of the Product and its distribution through the Tokinvest platform.
+
+Core Product Sections (Sections 1­8)
+These sections contain the primary investor-facing disclosure:
+
+     1. Key Features & Core Definitions
+     2. Product Overview
+     3. Parties, Roles & Responsibilities
+     4. Subscription, Redemption & Flow of Funds
+     5. Token Representation & Custody
+     6. Dealing, Pricing & Liquidity
+     7. Key Risks
+     8. Legal Structure & Important Disclosures
+
+Appendices (Supporting Disclosures)
+The appendices contain supporting detail required for completeness and regulatory transparency:
+
+Appendix A ­ Tokinvest Overview, Governance & Regulatory Status
+Appendix B ­ Regulatory Disclosures & Legal Information
+
+This whitepaper provides a high-level description of:
+
+     · the tokenised fund product; and
+     · its distribution through Tokinvest
+
+It does not replicate the full detail of the underlying fund documentation.
+Investors should rely on:
+
+     · the Franklin Templeton prospectus for fund-level detail; and
+     · the Risk Disclosure Statement for a full description of risks
+1. KEY FEATURES & CORE DEFINITIONS
+
+This Section summarises the key structural, operational, and economic characteristics of the Product and
+defines the principal terms used throughout this document. Capitalised terms introduced in this Section
+have the meanings given below and apply throughout.
+
+1.1 Overview
+The Product is the Franklin OnChain U.S. Dollar Short-Term Money Market Fund (the "Sub-Fund"), a sub-
+fund of Franklin Templeton Investments VCC (the "Company"), a Variable Capital Company incorporated in
+Singapore.
+The Sub-Fund is a tokenised collective investment scheme providing exposure to a diversified portfolio of
+high-quality, short-term, U.S. dollar-denominated money market instruments.
+The Product is issued and managed by Franklin Templeton and is made available to investors through a
+distribution framework involving Tokinvest as a secondary distributor
+
+1.2 Product Type
+The Product is a money market fund structured as a Variable Capital Company (VCC) under Singapore law.
+Investor interests are recorded through:
+
+     · a legally recognised shareholder register maintained by the Issuer; and
+     · a tokenised or digital register maintained using distributed ledger technology.
+
+Any tokenised representation reflects a record of ownership of fund shares and does not constitute a
+separate financial instrument.
+
+1.3 Investment Objective
+The Sub-Fund seeks to:
+
+     · provide a high level of current income; and
+     · preserve capital and maintain liquidity
+
+by investing primarily in high-quality, short-term, U.S. dollar-denominated debt and money market
+instruments.
+
+1.4 Underlying Assets
+The Sub-Fund invests in a diversified portfolio of:
+
+     · short-term debt securities;
+     · money market instruments;
+     · bank deposits and cash equivalents; and
+     · government and quasi-government securities, including U.S. Treasury-related instruments.
+
+1.5 Key Parties
+The following entities are involved in the structure, management, and distribution of the Product:
+
+     · Issuer (Company): Franklin Templeton Investments VCC
+     · Manager: Templeton Asset Management Ltd
+     · Sub-Manager: Franklin Advisers, Inc.
+     · Registrar and Transfer Agent: Templeton Asset Management Ltd
+     · Custodian: DB International Trust (Singapore) Limited
+     · Primary Distributor: Pinetree Securities Pte. Ltd., which interfaces directly with the Issuer and
+
+          facilitates subscriptions and redemptions at the fund level
+     · Secondary Distributor / Platform Operator: Tokinvest DMCC, which provides investor
+          onboarding, order aggregation, execution, and platform access
+
+Tokinvest interfaces with Pinetree as its counterparty and does not interact directly with the Issuer on
+behalf of underlying investors.
+
+1.6 Role of Tokinvest
+Tokinvest acts solely as:
+
+     · a secondary distributor of the Product; and
+     · the operator of the investor platform through which investors access the Product.
+
+Tokinvest does not:
+
+     · issue the Product;
+     · manage the underlying assets;
+     · determine investment strategy; or
+     · guarantee performance or returns.
+
+All investment management, asset selection, and valuation are performed by the Issuer and its appointed
+Manager.
+
+1.7 Dealing and Liquidity
+The Sub-Fund operates on a daily dealing basis. Subscriptions and redemptions are submitted by
+Tokinvest to the Primary Distributor (Pinetree) for execution at the fund level.
+
+Tokinvest applies the following dealing parameters:
+
+     · Tokinvest cut-off: 3:00pm Dubai time (GST)
+     · Execution basis: forward-pricing based on the Net Asset Value (NAV) determined after the
+
+          applicable fund-level cut-off
+
+Instructions received after the Tokinvest cut-off are processed in the next dealing cycle.
+
+Due to funding timelines, banking cut-offs, and operational processing across jurisdictions, transactions
+are generally submitted on a T+2 basis relative to investor instruction.
+
+Liquidity is therefore subject to:
+
+     · Tokinvest cut-off times and operational processing timelines;
+     · funding and settlement requirements (including fiat transfer timing);
+     · dealing deadlines applied by the Primary Distributor and Issuer; and
+     · any applicable redemption limits, suspension rights, or prevailing market conditions.
+
+While the Sub-Fund offers daily dealing, execution and settlement for investors will reflect the operational
+timelines of the distribution chain.
+
+1.8 Valuation
+The Sub-Fund is valued on each Dealing Day.
+Net Asset Value (NAV) is calculated by the Issuer and forms the basis for all subscription and redemption
+pricing. The applicable dealing price is typically available within two Business Days following the relevant
+Dealing Day.
+1.9 Currency and Foreign Exchange
+
+     · Base currency of the Sub-Fund: USD
+     · Tokinvest subscription currency: AED (initially), with additional currencies (including USD)
+
+          expected to be supported
+
+Subscriptions and redemptions made in a currency other than the Sub-Fund's base currency (USD) require
+foreign exchange conversion. Tokinvest performs this conversion, and the cost of conversion is borne by
+Tokinvest and is not passed on to investors.
+
+Foreign exchange conversion does not, however, eliminate currency risk.
+Investors remain exposed to movements in the exchange rate between AED (or any other subscription
+currency) and USD between the point of subscription and the point of redemption. The UAE Dirham (AED)
+is pegged to the U.S. Dollar, which may reduce, but does not eliminate, this risk.
+
+1.10 Distributions
+Distributions, if any, are at the discretion of the Directors of the Company.
+As at the date of this document, the Sub-Fund does not intend to make periodic distributions, and returns
+are expected to be reflected in NAV performance.
+
+1.11 Capital Protection
+The Product does not provide:
+
+     · capital protection;
+     · guaranteed returns; or
+     · any form of insurance or principal preservation mechanism.
+
+Investors may lose part or all of their invested capital.
+
+1.12 Nature of Investor Rights
+Investors:
+
+     · obtain economic exposure to the Sub-Fund through Tokinvest's distribution framework;
+     · are entitled to economic participation in the performance of the Sub-Fund based on NAV; and
+     · do not hold direct ownership of the underlying securities within the portfolio.
+
+All rights are governed by the Prospectus and applicable fund documentation issued by the Issuer.
+
+1.13 Tokenisation Framework
+The Sub-Fund utilises a tokenised register at the Issuer level, which:
+
+     · links investor identity to wallet addresses;
+     · records ownership using distributed ledger infrastructure; and
+     · operates alongside traditional register systems.
+
+Within the Tokinvest platform, investor positions are represented through internal tokenised records
+("mirror tokens"), which:
+
+     · reflect each investor's economic interest in Tokinvest's aggregate holdings in the Sub-Fund; and
+     · do not constitute direct ownership at the Issuer level.
+
+Neither the tokenised register nor any mirror tokens constitute separate financial instruments.
+1.14 Product Identifiers & Reference Data
+The following identifiers and reference information relate to the Sub-Fund:
+
+     · ISIN: SGXZZ1843866
+     · Fund Domicile: Singapore
+     · Fund Structure: Variable Capital Company (VCC)
+     · Asset Class: Money Market Fund
+     · Benchmark: Bloomberg U.S. Treasury 1­3 Month Index
+     · Minimum Investment (Fund Level): USD 20
+     · Minimum Investment (through Tokinvest): USD 100,000 (or equivalent in other supported
+
+          currencies) (subject to change)
+
+Further details are set out in the official fund documentation issued by Franklin Templeton.
+
+1.15 Important Distinction
+The Product is:
+
+     · issued and managed by Franklin Templeton; and
+     · made available to investors via Tokinvest as a distribution platform.
+
+Tokinvest does not act as issuer, asset manager, or fiduciary and does not assume responsibility for the
+investment performance of the Sub-Fund.
+2. PRODUCT OVERVIEW
+
+2.1 Overview
+The Product provides investors with access to the Franklin OnChain U.S. Dollar Short-Term Money Market
+Fund (the "Sub-Fund"), a regulated fund managed by Franklin Templeton.
+The Sub-Fund invests in a diversified portfolio of high-quality, short-term, U.S. dollar-denominated
+instruments with the objective of generating income while preserving capital and maintaining liquidity.
+The Product relates specifically to the distribution of Class A shares of the Sub-Fund (the "Relevant Share
+Class"), as described in the official fund documentation issued by Franklin Templeton.
+Tokinvest makes the Product available to investors through its platform as a secondary distributor,
+providing access to the Sub-Fund through a digital interface.
+
+2.2 Nature of the Product
+The Product is a regulated collective investment scheme and does not constitute a standalone virtual asset
+issued by Tokinvest.
+Tokenisation is used as an operational and record-keeping mechanism at both the fund and platform level
+to:
+
+     · represent investor holdings digitally;
+     · support custody and internal record-keeping; and
+     · enable integration with the Tokinvest platform.
+
+The Product does not create a new asset class or alter the underlying legal or economic structure of the
+Sub-Fund or the Relevant Share Class.
+
+2.3 Role of Tokinvest
+Tokinvest acts as:
+
+     · a secondary distributor of the Product; and
+     · the operator of the investor platform through which investors access the Product.
+
+Tokinvest enables investors to:
+
+     · submit subscription instructions;
+     · hold positions within a controlled custody environment; and
+     · submit redemption instructions.
+
+Tokinvest aggregates investor instructions and submits them to the Primary Distributor (Pinetree
+Securities Pte. Ltd.) for execution at the fund level.
+
+Tokinvest does not:
+
+     · manage the underlying assets;
+     · determine investment strategy;
+     · influence valuation or pricing; or
+     · act as counterparty to the Sub-Fund.
+2.4 Investment Exposure
+Investors obtain economic exposure to the performance of the Sub-Fund through Tokinvest's distribution
+framework.
+The performance of the Product is driven by:
+
+     · income generated from the underlying money market instruments; and
+     · prevailing interest rate conditions.
+
+Returns are reflected through changes in the Net Asset Value (NAV) of the Relevant Share Class of the Sub-
+Fund.
+
+2.5 Token Representation
+Investor holdings are represented within the Tokinvest platform through internal tokenised records
+("mirror tokens").
+These mirror tokens:
+
+     · reflect each investor's proportional economic interest in Tokinvest's aggregated holdings in the
+          Relevant Share Class of the Sub-Fund; and
+
+     · are used for custody, reporting, and internal platform functionality.
+
+Mirror tokens:
+
+     · do not represent direct ownership of the Sub-Fund at the Issuer level; and
+     · do not constitute separate financial instruments.
+
+2.6 Access and Participation
+Participation in the Product is limited to investors who:
+
+     · complete Tokinvest onboarding and AML/KYC requirements; and
+     · meet applicable eligibility and compliance requirements.
+
+Investors:
+
+     · do not subscribe directly with the Issuer or the Primary Distributor; and
+     · do not hold positions directly on the register of the Sub-Fund.
+
+All access to the Product is provided through Tokinvest.
+
+2.7 Relationship to Fund Documentation
+This document provides a high-level overview of the Product and its distribution through Tokinvest.
+Full details of the Sub-Fund and the Relevant Share Class are set out in the official fund documentation
+issued by Franklin Templeton, including the prospectus and key investor information.
+In the event of any inconsistency, the official fund documentation shall prevail.
+Investors should review the underlying fund documentation before making any investment decision.
+3. PARTIES, ROLES & RESPONSIBILITIES
+
+3.1 Overview
+The Product involves multiple parties across issuance, management, distribution, and custody.
+Tokinvest provides investor access to the Product through its platform but does not issue, manage, or
+operate the Sub-Fund.
+
+3.2 Issuer and Fund Manager
+
+     · Issuer: Franklin Templeton Investments VCC
+     · Manager: Templeton Asset Management Ltd
+     · Sub-Manager: Franklin Advisers, Inc.
+
+The Issuer (acting through its appointed Manager) is responsible for:
+
+     · establishing and operating the Sub-Fund;
+     · portfolio management and investment decisions;
+     · valuation and Net Asset Value (NAV) calculation; and
+     · overall fund governance and oversight.
+
+3.3 Primary Distributor
+Pinetree Securities Pte. Ltd. acts as the Primary Distributor and interfaces directly with the Issuer.
+Pinetree is responsible for:
+
+     · processing subscriptions and redemptions at the fund level; and
+     · maintaining its relationship with the Issuer and its appointed service providers.
+
+Pinetree acts as the counterparty to Tokinvest in respect of all fund-level transactions.
+Tokinvest submits aggregated investor instructions to Pinetree and does not interact directly with the
+Issuer.
+
+3.4 Tokinvest (Secondary Distributor & Platform Operator)
+Tokinvest DMCC acts as:
+
+     · the secondary distributor of the Product; and
+     · the operator of the investor platform.
+
+Tokinvest is responsible for:
+
+     · investor onboarding and AML/KYC;
+     · aggregation of investor instructions and submission to Pinetree;
+     · client money handling and settlement;
+     · maintenance of internal investor records; and
+     · investor servicing and reporting.
+
+Tokinvest does not:
+
+     · manage the Sub-Fund or control investment decisions;
+     · influence valuation or pricing; or
+     · guarantee performance or returns.
+3.5 Custody
+Investor positions within the Tokinvest platform are maintained within a platform-controlled custody
+framework supported by third-party custody providers.
+As at the date of this document, custody services are provided through Hex Trust.
+
+Custody providers are responsible for:
+
+     · safeguarding digital assets within the platform environment; and
+     · supporting secure holding and transfer of digital representations of investor positions.
+
+Investors:
+
+     · do not self-custody assets;
+     · do not interact directly with the custodian; and
+     · access their holdings solely through the Tokinvest platform.
+
+3.6 Investor Relationship
+Investors:
+
+     · access the Product exclusively through Tokinvest;
+     · do not have a direct contractual relationship with the Issuer or Primary Distributor; and
+     · rely on Tokinvest for submission of instructions, custody access, and investor servicing.
+
+All investor-facing services are provided by Tokinvest.
+
+3.7 Responsibility Summary
+
+     · Franklin Templeton: fund structure, investment management, valuation, and NAV determination
+     · Pinetree: fund-level distribution, execution, and intermediary relationship with the Issuer
+     · Tokinvest: investor access, instruction aggregation, platform operation, and investor servicing
+
+Each party operates within its defined role and is responsible only for the functions described above.
+4. SUBSCRIPTION, REDEMPTION & FLOW OF FUNDS
+
+4.1 Overview
+Investors access the Product exclusively through the Tokinvest platform. Tokinvest aggregates investor
+instructions and submits them to the Primary Distributor (Pinetree) for execution at the fund level.
+Tokinvest acts as the sole counterparty to Pinetree in respect of subscriptions and redemptions submitted
+through its platform.
+
+4.2 Subscription Process
+The subscription process operates as follows:
+
+     1. Onboarding
+          Investors complete onboarding, including AML/KYC verification and account setup on the
+          Tokinvest platform.
+
+     2. Funding
+          Investors deposit funds into their Tokinvest account via approved funding rails.
+
+     3. Instruction
+          Subscription instructions are submitted through the platform prior to the applicable cut-off time.
+
+     4. Aggregation
+          Tokinvest aggregates investor instructions into a single subscription order.
+
+     5. Execution
+          The aggregated order is submitted to Pinetree for execution at the fund level.
+
+     6. Allocation
+          Following execution, holdings are allocated to investors based on their respective subscription
+          amounts and recorded within Tokinvest's internal systems.
+
+4.3 Minimum Subscription Amount
+Subscription amounts are subject to:
+
+     · minimum investment thresholds applied by the Issuer at the fund level; and
+     · any minimum subscription amounts determined by Tokinvest for operational or commercial
+
+          purposes.
+
+Tokinvest may apply minimum subscription sizes on a per-order or per-investor basis, which may differ
+from the minimum investment specified in the underlying fund documentation.
+
+4.4 Redemption Process
+Redemptions follow a corresponding process:
+
+     1. Investors submit redemption instructions via the platform.
+     2. Tokinvest aggregates redemption requests.
+     3. Instructions are submitted to Pinetree for execution at the fund level.
+     4. Proceeds, once received, are credited to investor accounts.
+
+Redemptions are subject to fund-level processing, liquidity conditions, and operational timelines across
+the distribution chain.
+4.5 Flow of Funds
+
+Subscription:
+Investor  Tokinvest Client Money Account  Pinetree  Issuer (Sub-Fund)
+
+     · Investor funds are held in segregated Client Money Accounts (CMAs).
+     · Tokinvest transfers aggregated funds to Pinetree.
+     · Pinetree executes the subscription with the Issuer.
+
+Redemption:
+Issuer (Sub-Fund)  Pinetree  Tokinvest  Investor
+
+     · Redemption proceeds are paid by the Issuer to Pinetree.
+     · Proceeds are then transferred to Tokinvest.
+     · Funds are credited to investor accounts upon receipt.
+
+4.6 Dealing Cycle
+Subscriptions and redemptions are processed on a daily dealing basis at the level of the Sub-Fund.
+Tokinvest applies the following dealing parameters:
+
+     · Tokinvest cut-off: 3:00pm Dubai time (GST)
+     · Instructions received after the cut-off: processed in the next dealing cycle
+
+Tokinvest applies this cut-off to allow for:
+
+     · order aggregation;
+     · funding confirmation; and
+     · submission to the Primary Distributor (Pinetree).
+
+All transactions are executed on a forward-pricing basis using the Net Asset Value (NAV) determined after
+the applicable fund-level cut-off.
+
+Due to funding timelines, banking cut-offs, and operational processing across jurisdictions, transactions
+are typically submitted on a T+2 basis relative to investor instruction, although actual timing may vary.
+
+4.7 Settlement
+Settlement is performed through standard fund subscription and redemption processes across the
+distribution chain.
+Funds are transferred from Tokinvest to Pinetree via:
+
+     · telegraphic transfer (USD); and
+     · digital settlement rails (e.g. USDC/USDT), where supported in future, subject to regulatory approval
+
+          and operational readiness.
+
+Settlement timelines are dependent on:
+
+     · funding receipt and banking cut-off times;
+     · payment processing timelines; and
+     · operational coordination across Tokinvest, Pinetree, and the Issuer.
+As a result, settlement will generally occur on a T+2 basis or longer, depending on payment method,
+processing conditions, and upstream fund timelines.
+
+4.8 Investor Position
+Investors:
+
+     · do not submit instructions directly to the Issuer or Primary Distributor;
+     · are represented by Tokinvest in all subscription and redemption activity; and
+     · receive allocations and proceeds through the Tokinvest platform.
+
+Tokinvest maintains internal records of investor holdings and transactions within its platform, which are
+reconciled against aggregate positions held via Pinetree.
+5. TOKEN REPRESENTATION & CUSTODY
+
+5.1 Overview
+Investor holdings in the Product are represented within the Tokinvest platform through a controlled,
+tokenised framework.
+This framework enables digital record-keeping, custody integration, and operational functionality. The
+underlying fund interests are held through the distribution chain via Pinetree and are not directly held by
+investors.
+
+5.2 Upstream Fund Holdings
+The Issuer maintains the official register of ownership of the Sub-Fund through its appointed Registrar and
+Transfer Agent.
+Fund interests are allocated to distributor accounts, including those of Pinetree. Tokinvest's aggregate
+position in the Sub-Fund is reflected within the relevant Pinetree account and may be commingled with
+positions attributable to other distributors or sub-distributors within that account.
+Tokinvest is recognised by Pinetree as a single investor at the distributor level. Underlying investors are
+not recorded or recognised by Pinetree, the Issuer, or the fund registrar.
+
+5.3 Token Representation (Mirror Tokens)
+Within the Tokinvest platform, investor holdings are represented through internal tokenised records
+("mirror tokens").
+These mirror tokens:
+
+     · reflect each investor's proportional economic interest in Tokinvest's aggregate holdings in the Sub-
+          Fund;
+
+     · are used for custody, reporting, and internal platform functionality; and
+     · do not represent direct ownership of the Sub-Fund at the Issuer level.
+
+Mirror tokens:
+
+     · are not issued by the Issuer;
+     · do not constitute separate financial instruments; and
+     · are not recognised on the Issuer's official register.
+
+Mirror tokens exist solely within the Tokinvest platform and form part of Tokinvest's internal record-
+keeping framework.
+
+5.4 Custody Model
+Investor holdings are maintained within a platform-controlled custody framework supported by regulated
+third-party custodians.
+
+As at the date of this document, custody services are provided through Hex Trust.
+
+     · Investors do not have the ability to self-custody mirror tokens.
+     · Mirror tokens cannot be withdrawn to external wallets.
+     · All investor positions remain within the Tokinvest-controlled platform environment.
+
+Tokinvest may utilise alternative or additional regulated custody providers where appropriate, subject to
+regulatory requirements.
+5.5 Backing and Reconciliation
+Tokinvest seeks to maintain a 1:1 economic alignment between:
+
+     · its aggregate holdings in the Sub-Fund (via Pinetree); and
+     · the total mirror tokens recorded on its platform.
+
+Reconciliation processes are performed on a regular basis to align:
+
+     · aggregate upstream fund positions; and
+     · investor-level records maintained within the Tokinvest platform.
+
+Tokinvest is solely responsible for maintaining investor-level records and for mapping those records to its
+aggregate position held via Pinetree. Such records are not independently verified or recognised by the
+Issuer, Pinetree, or the fund registrar.
+
+5.6 Transferability
+Transfers of mirror tokens, where permitted:
+
+     · are restricted to the Tokinvest platform;
+     · are limited to approved and onboarded investors; and
+     · are subject to applicable compliance, operational, and regulatory controls.
+
+Mirror tokens cannot be transferred to external wallets or to unapproved platforms.
+
+5.7 Nature of Investor Rights
+Investors:
+
+     · do not hold direct positions with the Issuer or Primary Distributor;
+     · do not have access to upstream fund-level accounts; and
+     · hold their interests solely through Tokinvest's platform and internal record-keeping framework.
+
+Investor rights are limited to economic participation in the Sub-Fund as facilitated through Tokinvest and
+are contractual in nature.
+6. DEALING, PRICING & LIQUIDITY
+
+6.1 Pricing
+The Product is priced based on the Net Asset Value (NAV) of the Sub-Fund.
+
+     · NAV is determined by the Issuer on each Dealing Day.
+     · All subscriptions and redemptions are executed on a forward-pricing basis.
+     · The applicable price is the NAV calculated after the relevant dealing cut-off applied by the Issuer.
+
+Tokinvest does not determine or influence pricing.
+
+6.2 Dealing
+The Product operates on a daily dealing basis at the level of the Sub-Fund.
+Tokinvest applies the following dealing parameters:
+
+     · Tokinvest cut-off: 3:00pm Dubai time (GST).
+     · Instructions received after the cut-off are processed in the next dealing cycle.
+
+Tokinvest applies this cut-off to facilitate order aggregation, funding confirmation, and submission to the
+Primary Distributor (Pinetree).
+
+All transactions are executed on a forward-pricing basis using the NAV determined after the applicable
+fund-level cut-off.
+
+Due to funding timelines, banking cut-offs, and operational processing across jurisdictions, transactions
+are typically processed on a T+2 basis, although actual timing may vary.
+
+6.3 Liquidity
+The Sub-Fund offers daily subscription and redemption at the fund level.
+However, investor liquidity is subject to:
+
+     · Tokinvest cut-off times and operational processes;
+     · funding and settlement timelines across the distribution chain;
+     · dealing and settlement timelines applied by the Issuer and Primary Distributor; and
+     · any applicable redemption limits, suspensions, or prevailing market conditions.
+
+As a result, while the Sub-Fund operates on a daily dealing basis, investor access to liquidity is dependent
+on the operational timelines of the full distribution chain.
+
+Liquidity is not guaranteed, and investors may experience delays in accessing or realising their investment.
+
+6.4 Currency and Foreign Exchange
+The Sub-Fund is denominated in USD, while Tokinvest may offer subscriptions in AED and other supported
+currencies.
+Where subscriptions or redemptions are made in a currency other than USD, foreign exchange conversion
+will be required.
+Investors are exposed to currency fluctuations, which may impact returns. The UAE Dirham (AED) is
+pegged to the U.S. Dollar; however, this does not eliminate foreign exchange risk.
+6.5 No Secondary Market
+The Product does not currently provide an active secondary trading market.
+Investor liquidity is achieved primarily through redemption at NAV via the dealing process.
+
+6.6 Fees and Charges
+Investment in the Product is subject to fees and charges at the fund level, a platform fee charged by
+Tokinvest, and may also involve additional transaction-related costs.
+
+Fund-Level Fees
+The Sub-Fund charges management fees and other expenses, as disclosed in the official Franklin
+Templeton prospectus and related documentation. These fees are reflected in the Net Asset Value (NAV).
+As at the date of this document, the management fee is 0.20% per annum, although this may change in
+accordance with the fund documentation.
+
+Platform Fee
+Tokinvest charges a platform fee on all subscriptions made through the Tokinvest platform.
+As at the date of this document, the platform fee is 0.10% of the subscription amount.
+The platform fee is applied at the point of subscription and is deducted from the subscription amount,
+with the net amount applied to the investment in the Sub-Fund.
+The platform fee is retained by Tokinvest in respect of platform access and operational services, and is
+separate from, and additional to, the fund-level fees reflected in the NAV.
+No platform fee is charged on redemptions.
+The platform fee may change in accordance with the Tokinvest Terms of Business.
+
+Other Costs
+Additional costs may arise in connection with:
+
+     · banking and payment processing; and,
+     · use of digital settlement rails (e.g. USDC/USDT), where supported.
+
+In addition to the platform fee described above, Tokinvest may receive distribution or placement-related
+fees from the Primary Distributor or Issuer. Such arrangements do not result in any further charge to
+investors beyond the platform fee and the fees and costs reflected in the NAV or otherwise disclosed in
+this section.
+
+Further details of applicable fees and charges are available through the Tokinvest platform and Terms of
+Business.
+7. KEY RISKS
+
+7.1 Overview
+An investment in the Product involves risk. The value of investments may go up or down, and investors
+may lose part or all of their invested capital.
+This Section provides a summary of key risks associated with accessing the Product through Tokinvest and
+does not constitute a complete description of all risks.
+Investors should review:
+
+     · the official fund documentation issued by Franklin Templeton for fund-level risks; and
+     · the Risk Disclosure Statement (RDS) for a comprehensive description of platform, custody,
+
+          operational, and structural risks.
+
+7.2 Fund and Market Risk
+The performance of the Product depends on the performance of the Sub-Fund.
+Risks include:
+
+     · changes in interest rates;
+     · credit risk of underlying issuers; and
+     · broader market conditions affecting short-term fixed income instruments.
+
+Returns are not guaranteed.
+
+7.3 Liquidity Risk
+While the Sub-Fund offers daily dealing, liquidity is not guaranteed.
+Investors may experience:
+
+     · delays in redemption processing; or
+     · restrictions arising from fund-level conditions, liquidity constraints, or operational factors across
+
+          the distribution chain.
+
+7.4 Foreign Exchange Risk
+The Sub-Fund is denominated in USD, while investors may subscribe or redeem in AED or other
+currencies.
+Foreign exchange movements may:
+
+     · reduce returns; or
+     · increase volatility in realised outcomes.
+
+Tokinvest does not hedge foreign exchange exposure on behalf of investors.
+
+7.5 Platform and Intermediation Risk
+Investors access the Product through Tokinvest and do not interact directly with the Issuer or Primary
+Distributor.
+As a result:
+
+     · investors rely on Tokinvest for execution, custody integration, and servicing; and
+     · any disruption to Tokinvest's platform, systems, or operations may impact access to the Product or
+
+          the ability to transact.
+Investment in the Product depends on the proper functioning of the full distribution chain, including
+Tokinvest, Pinetree, and the Issuer.
+
+7.6 Custody Risk
+Investor holdings are maintained within a platform-controlled custody framework supported by third-
+party custodians.
+Risks include:
+
+     · failure or disruption of custody providers;
+     · loss, delay, or restriction of access to assets due to operational or security events; and
+     · reliance on third-party systems, controls, and infrastructure for asset safekeeping.
+
+7.7 Structural and Record-Keeping Risk
+Investor exposure to the Sub-Fund is indirect.
+
+     · Tokinvest is recognised as a single investor at the distributor level.
+     · Underlying investors are not recorded or recognised by the Issuer, Pinetree, or the fund registrar.
+
+Investor holdings are determined solely by Tokinvest's internal records, which are used to map investor
+entitlements to Tokinvest's aggregate position in the Sub-Fund.
+
+As a result:
+
+     · investors rely on the accuracy and integrity of Tokinvest's record-keeping systems; and
+     · any failure, discrepancy, or delay in these systems or reconciliation processes may result in:
+
+                o delays in processing;
+                o inconsistencies in recorded holdings; or
+                o temporary or prolonged restriction of access to investor positions.
+
+In certain circumstances, including insolvency or operational failure, recovery of investor interests may
+depend on these records and applicable legal processes.
+
+7.8 Regulatory Risk
+The Product operates within a regulated environment.
+Changes in applicable laws or regulatory requirements may:
+
+     · affect the availability of the Product;
+     · restrict investor access; or
+     · impact the operation of the platform or distribution model.
+
+7.9 Technology Risk
+The Product incorporates digital systems and tokenised record-keeping infrastructure.
+Risks include:
+
+     · system failures or outages;
+     · data integrity issues; and
+     · cybersecurity threats.
+
+7.10 Further Information
+This summary is not exhaustive.
+Investors should refer to the Franklin Templeton prospectus and the Risk Disclosure Statement (RDS) for a
+full description of risks.
+8. LEGAL STRUCTURE & IMPORTANT DISCLOSURES
+
+8.1 Nature of the Product
+The Product provides economic exposure to a regulated fund issued and managed by Franklin Templeton.
+Investor holdings:
+
+     · do not constitute direct ownership of underlying portfolio assets;
+     · do not constitute direct ownership of fund units at the Issuer level;
+     · are not deposits or guaranteed investments; and
+     · are subject to the terms of the Sub-Fund and applicable fund documentation.
+
+8.2 Investor Position
+Investors access the Product through Tokinvest and:
+
+     · do not hold a direct contractual relationship with the Issuer or Primary Distributor;
+     · do not appear on the fund register at the Issuer level; and
+     · are represented through Tokinvest's aggregated position.
+
+Investor rights are limited to economic participation in the Sub-Fund as facilitated through Tokinvest.
+Investors have a contractual relationship solely with Tokinvest in respect of platform access, execution,
+custody integration, and related services.
+
+8.3 Role of Tokinvest
+Tokinvest acts as:
+
+     · a secondary distributor; and
+     · the operator of the investor platform.
+
+Tokinvest is responsible for:
+
+     · onboarding and AML/KYC;
+     · order aggregation and submission for execution;
+     · custody integration and record-keeping; and
+     · investor servicing.
+
+Tokinvest does not:
+
+     · manage the Sub-Fund;
+     · control investment decisions; or
+     · guarantee performance or returns.
+
+8.4 Token Representation
+Investor holdings are represented within the Tokinvest platform through internal tokenised records
+("mirror tokens").
+These mirror tokens:
+
+     · reflect each investor's proportional economic interest in Tokinvest's aggregate holdings in the Sub-
+          Fund;
+
+     · are used for custody, reporting, and platform functionality; and
+     · do not constitute direct ownership at the Issuer level or separate financial instruments.
+Mirror tokens are not issued by the Issuer and are not recognised on the Issuer's official register.
+
+8.5 Custody and Control
+Investor holdings are maintained within a platform-controlled custody framework supported by regulated
+third-party custodians.
+
+     · Investors do not self-custody assets.
+     · Transfers are restricted to the Tokinvest platform.
+     · Access and control are subject to platform rules, custody arrangements, and regulatory
+
+          requirements.
+
+8.6 No Ownership or Control Rights
+Investors:
+
+     · do not have legal or beneficial ownership of the underlying portfolio assets;
+     · do not have direct ownership of fund units at the Issuer level;
+     · do not have governance or voting rights; and
+     · do not participate in fund-level decision-making.
+
+All investment decisions are made by the Issuer and its appointed Manager.
+
+8.7 Reliance on Third Parties
+The Product depends on multiple third parties, including:
+
+     · the Issuer and fund manager;
+     · the Primary Distributor;
+     · custody providers; and
+     · Tokinvest's platform infrastructure.
+
+Tokinvest is recognised as a single investor at the distributor level, and upstream holdings may be
+maintained in commingled distributor-level accounts.
+Any failure, disruption, or insolvency affecting these parties may impact investor outcomes.
+
+8.8 Insolvency and Structural Considerations
+Investors do not hold direct claims against the Issuer, the Primary Distributor, or the underlying assets of
+the Sub-Fund.
+Underlying investors are not recognised at the level of Pinetree, the Issuer, or the fund registrar. Investor
+entitlements are determined solely by Tokinvest's internal records and reconciliation processes.
+In the event of insolvency or operational failure of Tokinvest or any other relevant party:
+
+     · investor access to the Product may be delayed, restricted, or suspended;
+     · recovery of assets will depend on applicable legal frameworks, custody arrangements, and
+
+          Tokinvest's rights within the distribution chain; and
+     · outcomes may be uncertain, including the risk of partial or total loss.
+
+Investors should assume that their rights are contractual in nature and subject to applicable law.
+
+8.9 Regulatory Considerations
+The Product is distributed within a regulated framework.
+However:
+
+     · regulatory treatment may vary across jurisdictions; and
+     · changes in law or regulation may affect availability, transferability, or access.
+
+Investors are responsible for complying with applicable local laws.
+
+8.10 No Investment Advice
+Tokinvest does not provide financial, legal, or investment advice.
+Nothing in this document constitutes a recommendation or suitability assessment.
+Investors are responsible for making their own investment decisions.
+
+8.11 Limitation of Liability
+To the extent permitted by applicable law:
+
+     · Tokinvest is not liable for the market performance of the Sub-Fund; and
+     · Tokinvest's liability is limited to the performance of its operational responsibilities.
+
+Nothing excludes liability for fraud, wilful misconduct, or matters that cannot be excluded under
+applicable law.
+
+8.12 Further Information
+This document is a summary of the Product and its distribution through Tokinvest.
+Investors must refer to:
+
+     · the official Franklin Templeton fund documentation for fund-level details; and
+     · the Risk Disclosure Statement (RDS) for a comprehensive description of platform, custody,
+
+          operational, and structural risks.
+
+These documents should be read together before making any investment decision.
+APPENDIX A
+TOKINVEST OVERVIEW, GOVERNANCE AND REGULATORY STATUS
+
+A.1 Tokinvest DMCC
+Tokinvest DMCC is a company incorporated in the United Arab Emirates, with its registered address at Unit
+No: UT-12-PO-8, DMCC Business Centre, Level 12, Uptown Tower, Dubai, United Arab Emirates.
+In relation to the Product described in this whitepaper, Tokinvest acts as:
+
+     · a secondary distributor; and
+     · the operator of the investor platform through which investors access the Product
+
+Tokinvest is not the issuer or manager of the Product.
+
+A.2 Incorporation and Registration
+Tokinvest DMCC is registered under DMCC licence number DMCC-928046 and was incorporated on 10
+May 2024.
+
+A.3 Regulatory Status
+Tokinvest DMCC is licensed by the Dubai Virtual Assets Regulatory Authority ("VARA") as a Broker-Dealer
+and Issuer under licence number VL/2024/12/004.
+In relation to the Product described in this whitepaper, Tokinvest acts solely as a distributor and platform
+operator.
+
+A.4 Ownership and Senior Management
+Tokinvest DMCC is an independently owned entity with no parent company.
+Its senior management includes:
+
+     · Scott Thiel ­ Chief Executive Officer
+     · Matt Blom ­ Chief Strategy Officer
+     · Robert Cooper ­ Chief Operating Officer
+     · James Byrne ­ Chief Technology Officer
+
+The senior management team has experience across digital assets, financial markets, regulated financial
+services, operations, and technology.
+
+A.5 Fit and Proper Status
+To the best of Tokinvest's knowledge and based on information available at the date of this document:
+
+     · no member of its senior management or key decision-makers has been convicted of offences
+          involving fraud, financial crime, or dishonesty; and
+
+     · no such individuals are subject to ongoing criminal investigations or regulatory enforcement
+          actions
+
+A.6 Governance Framework
+Tokinvest operates under a formal governance framework designed to ensure effective oversight,
+accountability, and risk management across its regulated activities.
+Oversight includes:
+
+     · business strategy and product approval;
+     · regulatory compliance;
+     · enterprise risk management;
+     · technology and cybersecurity; and
+     · operational controls
+
+This framework is supported by internal governance forums and committees, including risk, compliance,
+and technology oversight functions.
+The governance arrangements described in this Appendix are intended to support regulatory oversight
+and do not create contractual rights for investors.
+
+A.7 New Product Approval
+Products made available through the Tokinvest platform are subject to Tokinvest's internal new product
+approval process.
+This process includes structured assessment of:
+
+     · strategic alignment;
+     · legal and regulatory considerations;
+     · operational readiness;
+     · custody and settlement arrangements;
+     · financial crime risks; and
+     · technology and reputational risks
+
+Approval requirements are determined according to the assessed risk profile of the Product.
+
+A.8 Financial Controls and Regulatory Capital
+Tokinvest maintains regulatory capital in accordance with VARA requirements.
+The company:
+
+     · maintains segregation between regulatory capital, operational funds, and client money;
+     · submits periodic financial and capital adequacy reports to VARA; and
+     · is subject to annual external audit by a UAE-registered audit firm
+
+A.9 Client Money and Asset Safeguarding
+Client fiat funds received in connection with subscriptions and redemptions are held in segregated client
+money accounts with authorised banking institutions.
+Tokinvest is not a standalone VARA-regulated custodian. Digital asset custody is facilitated as an incidental
+activity to its Broker-Dealer services using:
+
+     · VARA-licensed third-party custodians; and/or
+     · regulated custody technology providers
+
+Tokinvest remains responsible for oversight of these arrangements in accordance with applicable
+regulatory requirements.
+
+A.10 AML / CFT and Financial Crime Controls
+Tokinvest maintains AML/CFT policies and procedures in compliance with:
+
+     · VARA Rulebooks; and
+     · applicable UAE AML/CFT legislation
+
+All investors accessing the Product through Tokinvest are subject to:
+
+     · customer due diligence and KYC;
+     · beneficial ownership verification (where applicable);
+     · sanctions and adverse media screening; and
+     · ongoing transaction monitoring
+
+Enhanced due diligence is applied where required.
+Oversight is performed by Tokinvest's appointed Money Laundering Reporting Officer (MLRO).
+
+A.11 Outsourcing and Third-Party Providers
+Tokinvest relies on third-party service providers for certain operational functions, including:
+
+     · banking and payment services;
+     · digital asset custody;
+     · blockchain infrastructure; and
+     · technology and security services
+
+All outsourcing arrangements are subject to due diligence, contractual controls, and ongoing oversight.
+Outsourcing does not relieve Tokinvest of its regulatory responsibilities.
+
+A.12 Conflicts of Interest and Market Conduct
+Tokinvest maintains policies and controls to identify, manage, and mitigate conflicts of interest arising
+from its role as distributor and platform operator.
+These include:
+
+     · segregation of duties;
+     · governance oversight and approval processes;
+     · restrictions on inappropriate internal activity; and
+     · market conduct and surveillance controls, where applicable
+
+Tokinvest does not manage the Product and does not determine the underlying investment strategy or
+portfolio composition.
+
+A.13 Role in Relation to the Product
+In relation to the Product described in this whitepaper, Tokinvest is responsible for:
+
+     · investor onboarding and AML/KYC;
+     · order aggregation and submission to the Primary Distributor;
+     · client money handling, settlement and reconciliation;
+     · custody integration and investor record-keeping; and
+     · investor servicing through its platform
+
+Tokinvest does not:
+
+     · issue the Product;
+     · manage the Sub-Fund;
+     · control valuation or NAV calculation; or
+     · guarantee investment performance or returns
+
+A.14 Other Key Parties
+Other parties involved in the Product include:
+
+     · Franklin Templeton Investments VCC ­ Issuer
+     · Templeton Asset Management Ltd ­ Manager and Registrar / Transfer Agent
+     · Franklin Advisers, Inc. ­ Sub-Manager
+     · DB International Trust (Singapore) Limited ­ Custodian
+     · Pinetree Securities Pte. Ltd. ­ Primary Distributor
+
+These parties operate within their own defined roles and responsibilities.
+Tokinvest is not responsible for the performance of functions carried out by these parties outside the
+scope of its role as distributor and platform operator.
+
+A.15 Governance, Risk and Product Approval Flow (Illustrative)
+The diagram below provides a high-level, illustrative overview of Tokinvest's governance, risk oversight,
+and product approval structure as it relates to products made available through the Tokinvest platform.
+This diagram is provided for explanatory purposes only and does not form part of the contractual terms
+applicable to the Product.
+APPENDIX B
+REGULATORY DISCLOSURES & LEGAL INFORMATION
+
+B.1 Status of this Whitepaper
+This whitepaper is a regulated disclosure document prepared by Tokinvest DMCC in accordance with the
+requirements of the Dubai Virtual Assets Regulatory Authority ("VARA").
+This document:
+
+     · does not constitute a prospectus under UAE securities legislation;
+     · does not constitute an offer of securities by Tokinvest or a solicitation in any jurisdiction where
+
+          such activity would be unlawful; and
+     · is intended to provide a high-level description of the Product and its distribution through the
+
+          Tokinvest platform.
+
+This whitepaper must be read together with:
+
+     · the applicable Risk and Disclosure Statement (RDS);
+     · the official fund documentation issued by Franklin Templeton (including the prospectus and key
+
+          investor information); and
+     · Tokinvest's Brokerage Terms of Business.
+
+B.2 No Investment Advice
+This whitepaper is provided for informational and disclosure purposes only.
+Tokinvest:
+
+     · does not provide investment advice or personalised recommendations;
+     · does not act as a fiduciary, adviser, or portfolio manager; and
+     · does not assess the suitability or appropriateness of the Product for individual investors.
+
+Investors are responsible for determining whether the Product is appropriate for their own circumstances.
+
+B.3 Eligibility and Jurisdictional Restrictions
+Access to the Product is limited to investors who:
+
+     · complete Tokinvest's onboarding and AML/KYC requirements; and
+     · meet applicable eligibility, regulatory, and compliance requirements.
+
+The Product may not be offered or made available in jurisdictions where such distribution would be
+unlawful.
+Tokinvest may:
+
+     · restrict or refuse access;
+     · suspend transactions; or
+     · impose additional controls,
+
+where required to comply with applicable law, regulation, or internal compliance policies.
+
+B.4 Nature of Tokinvest's Role
+Tokinvest acts solely as:
+
+     · a secondary distributor of the Product; and
+     · the operator of the investor platform.
+
+Tokinvest:
+
+     · is not the issuer of the Product;
+     · does not manage the underlying assets; and
+     · does not guarantee performance or returns.
+
+All investment management, valuation, and asset-level decisions are performed by the Issuer and its
+appointed Manager.
+
+B.5 Reliance on Third Parties
+The Product relies on multiple third parties, including:
+
+     · the Issuer and fund manager;
+     · the Primary Distributor (Pinetree);
+     · custody providers; and
+     · banking and payment partners.
+
+Tokinvest is not responsible for the performance, actions, or omissions of these parties outside the scope
+of its own role.
+
+B.6 Amendments and Updates
+Tokinvest may amend or update this whitepaper in accordance with applicable regulatory requirements.
+Material updates will be communicated through the Tokinvest platform or other appropriate channels.
+
+B.7 Governing Law and Jurisdiction
+Unless otherwise specified in applicable contractual documentation, this whitepaper and the contractual
+relationship between Tokinvest and investors are governed by English law.
+Tokinvest submits to the jurisdiction of the courts of the Dubai International Financial Centre (DIFC),
+subject to applicable law.
+
+B.8 Hierarchy of Documents
+This whitepaper is a summary document.
+In the event of any inconsistency between:
+
+     · this whitepaper;
+     · the Risk and Disclosure Statement;
+     · the Tokinvest Terms of Business; and
+     · the official Franklin Templeton fund documentation,
+
+the relevant contractual and fund documentation shall prevail to the extent permitted by applicable law.
+
+B.9 Entirety of Disclosure
+This whitepaper should be read together with:
+
+     · the Risk and Disclosure Statement (RDS); and
+     · the official Franklin Templeton fund documentation.
+
+These documents together form the overall disclosure framework for the Product.
+

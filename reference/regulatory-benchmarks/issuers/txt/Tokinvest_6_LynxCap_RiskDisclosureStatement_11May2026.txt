@@ -1,0 +1,312 @@
+                  LynxCap LCL Opportunities 3 Digital Bond
+
+                               Risk Disclosure Statement
+
+                                                          11th May 2026
+
+1. Purpose of this Notice
+This notice provides a description of the risks associated with investing in and trading Virtual Assets,
+including LynxCap LCL Opportunities 3 Digital Bond (the "Token").
+
+2. Risk of Loss
+Investment in the Token involves a risk of loss of part or all of the invested capital.
+Returns are not guaranteed.
+The value of the Token reflects the performance of the underlying LCL Opportunities Bond and may
+fluctuate due to changes in market conditions, interest rates, credit conditions, and liquidity dynamics.
+Investors may receive less than their original investment, or nothing at all.
+
+3. Nature of the Product and Rights
+The Token is a digital representation of an investor's economic exposure to a Luxembourg issued
+Senior Secured Bond accessed through Tokinvest's platform.
+The Token:
+
+     · does not represent legal or beneficial ownership of the Bond or underlying assets;
+     · does not constitute a claim on the issuer of the Bond (outside those assets specifically
+
+          identified in the Bond prospectus); and
+     · does not constitute a claim on the general assets of Tokinvest.
+
+Tokenholders have contractual rights solely against Tokinvest in respect of:
+
+     · platform access;
+     · submission of purchase and sale (where permissible) instructions; and
+     · receipt of economic outcomes as recorded in Tokinvest's internal systems.
+
+All rights are contractual in nature and dependent on the proper functioning of the platform and
+upstream distribution arrangements.
+
+4. No Direct Relationship with Bond Issuer
+Investors:
+
+     · are not registered as Token holders in the Cap Table of the issuer;
+     · have no direct contractual or legal relationship with LCL Opportunities 3; and
+     · cannot exercise rights directly against the issuer.
+
+Access to the Token is entirely intermediated through Tokinvest and any other distribution partners
+appointed by the issuer.
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    1
+5. Intermediation Chain Risk
+Investment in the Token relies on a multi-party structure involving:
+
+     · Tokinvest (platform and licensed distributor);
+     · the Token issuer and its administrators and custodians.
+
+Failure, delay, or disruption at any level may:
+
+     · delay or prevent execution of subscriptions or redemptions;
+     · affect pricing, settlement, or availability of liquidity; or
+     · impair investor access to economic outcomes.
+
+Investors are exposed to the operational and financial performance of each entity in this chain.
+
+6. Tokinvest Custody Model
+Virtual Assets held via the platform are under the control of Tokinvest. Tokinvest is not a VARA-
+regulated custodian and provides custody only as an incidental activity to its Brokerage Services,
+utilising third-party VARA-regulated custodians and/or custody technology providers.
+Custody arrangements may involve multiple layers of infrastructure, and failures at any level may
+affect access to Tokens.
+
+7. No Investment Advice
+Tokinvest does not provide financial, legal, tax, or investment advice.
+Nothing in this Notice constitutes a recommendation or personalised advice.
+Investors are responsible for conducting their own independent assessment.
+
+8. No Clearing or Third-Party Brokerage
+Tokinvest does not provide clearing services for other VASPs and does not introduce clients to other
+VASPs.
+
+9. Not Exhaustive
+This Notice does not set out all risks.
+The risks applicable to any investment depend on individual circumstances and transaction terms.
+
+10. General Risk Categories
+Risks include:
+
+     · liquidity risk;
+     · market risk;
+     · settlement risk;
+     · currency risk;
+     · operational risk;
+     · regulatory risk;
+     · legal risk; and
+     · barriers to divestment.
+
+11. Tokinvest Insolvency Risk
+In the event of Tokinvest insolvency:
+
+     · investors rely on contractual rights, internal records, and custody arrangements;
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    2
+     · access to the platform and Tokens may be restricted or suspended;
+     · investor positions may be subject to reconciliation processes across internal records, custody
+
+          providers, and the issuer of the Tokens;
+     · recovery of value depends on the effectiveness of segregation arrangements and record
+
+          accuracy; and
+     · delays, partial recovery, or total loss may occur.
+
+There is no assurance that investor interests will be fully protected or that access to underlying asset
+exposure can be preserved in a timely manner.
+
+12. Counterparty Risk
+Tokinvest relies on the Token Issuer to transact and deliver the Token.
+Failure or disruption of the Token Issuer may:
+
+     · delay or prevent execution;
+     · impact pricing or settlement;
+     · impair investor access to the Token; and
+     · lead to potential financial loss.
+
+Conflicts of Interest
+
+14. Conflicts Framework
+Tokinvest performs ongoing conflicts-of-interest assessments across its roles as platform operator and
+distributor.
+Conflicts are managed through governance controls, segregation of duties, and compliance oversight.
+
+15. Principal Trading
+Tokinvest may, in limited circumstances, act as principal solely to facilitate settlement of matched
+transactions.
+It does not engage in proprietary or speculative trading.
+
+16. Fee Incentive Risk
+Fees are fixed, disclosed, and applied uniformly.
+However, fee structures may create incentives related to transaction volume or platform usage.
+
+17. Tax and Legal Risk
+Tokinvest does not advise on tax or legal consequences.
+Investors are responsible for compliance with applicable laws.
+
+18. Acknowledgement of Risk
+Users acknowledge and accept the risks described in this Notice.
+
+19. Reliance on Documentation
+Investors must read the whitepaper and all relevant documentation included within.
+
+Market and Virtual Asset Risks
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    3
+20. Market Risk
+The market price of the Token may, at times, diverge materially from the value or indicative net asset
+value of the underlying bond due to factors including limited liquidity, fragmented trading venues,
+differences in supply and demand for the token, operational or technological constraints, market
+sentiment toward digital assets generally, and the absence of active market makers or arbitrage
+mechanisms.
+
+21. Financial Crime Risk
+Virtual Asset markets may be exposed to fraud, manipulation, or illicit activity.
+
+22. Cybersecurity Risk
+Systems may be subject to cyber-attacks, data breaches, or operational compromise.
+
+23. Transparency and Ownership Risk
+Blockchain addresses do not identify beneficial ownership.
+Verification of ownership may be dependent on platform records.
+
+24. Core Virtual Asset Risks
+Virtual Assets:
+
+     · may lose value;
+     · may not be transferable;
+     · may be illiquid; and
+     · may be subject to theft or fraud.
+
+25. Regulatory Risk
+Regulation may evolve and affect:
+
+     · access;
+     · transferability; and
+     · platform operations.
+
+26. Technology and Internet Risk
+Platform access may be disrupted due to connectivity or system failures.
+
+27. Emerging Technology Risk
+Virtual Assets operate within a rapidly evolving technological environment.
+
+28. Legal Uncertainty
+Legal treatment may vary across jurisdictions.
+
+29. Wallet and Access Risk
+Loss of credentials may result in loss of access to Tokens.
+
+30. Valuation Risk
+Pricing of the Token may differ from the underlying bond price due to:
+
+     · timing differences between bond and Token pricing;
+     · subscription and redemption processing delays;
+     · applicable fees and charges;
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    4
+     · liquidity conditions; and
+     · market sentiment in any secondary market.
+
+Investors may not be able to transact at the bond price and may experience pricing that differs
+materially from the underlying asset valuation.
+
+31. Distributed Ledger Technology Risk
+DLT systems may:
+
+     · experience downtime;
+     · be subject to protocol changes; or
+     · be exposed to security vulnerabilities.
+
+32. Amendments
+Tokinvest may amend this Notice in accordance with regulatory requirements.
+
+33. Fiat and Payment Provider Risk
+Tokinvest relies on third-party banking and payment providers.
+Failures or restrictions may affect funding and withdrawals.
+
+Bond-Specific Risks
+
+34. Bond Risks
+The underlying bond is subject to:
+
+     · interest rate risk;
+     · credit risk;
+     · liquidity risk; and
+     · counterparty risk.
+
+The underlying bonds have senior secured status which, although typically lower risk than unsecured
+instruments, may incur losses and do not guarantee capital preservation.
+
+35. Token Pricing Risk
+The Token is intended to reflect the market value of the underlying bond; however, pricing may
+diverge due to:
+
+     · operational timing differences between bond and token pricing;
+     · fees and charges applied at platform or transaction level;
+     · foreign exchange movements (where applicable); and
+     · supply and demand dynamics in any secondary market.
+
+Whilst Token redemption at maturity is contractually fixed at the same value as the underlying bond, if
+earlier redemption is sought via a secondary market investors may realise proceeds above or below
+the underlying bond price at the time of execution depending on market conditions.
+
+36. Redemption Risk
+Redemption of Tokens occurs at maturity and proceeds are passed from the Token Issuer to Tokinvest
+for distribution.
+Investors are exposed to the credit, operational, and liquidity risks of the Tokinvest (and any additional
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    5
+intermediaries in the redemption chain such as banks or other financial institutions), including the risk
+that Tokinvest fails, delays, or is unable to distribute proceeds in a timely manner or at all.
+Technology and Platform Risks
+
+37. Smart Contract Risk
+Tokens rely on smart contract infrastructure which may contain vulnerabilities, coding errors, logic
+flaws, or unforeseen interactions.
+These may result in:
+
+     · incorrect or unintended execution of transactions;
+     · loss, freezing, or misallocation of Tokens;
+     · disruption to platform functionality; or
+     · the need for administrative intervention.
+
+While Tokinvest implements governance, review, and audit processes, no assurance can be given that
+smart contracts are free from defects or will operate as intended in all circumstances.
+
+38. Secondary Market Risk
+Secondary market liquidity is not guaranteed.
+Investors may be unable to sell Tokens or may only do so at a discount.
+
+39. Platform Suspension Risk
+Tokinvest may suspend access to the platform, in whole or in part, for operational, security, legal, or
+regulatory reasons.
+During any period of suspension:
+
+     · investors may be unable to access their accounts;
+     · transactions, including subscriptions, redemptions, and transfers, may be delayed or
+
+          prevented; and
+     · access to Token-related functionality may be restricted.
+
+Tokinvest does not guarantee uninterrupted platform availability.
+
+40. Regulatory Intervention and Licence Risk
+Regulatory authorities may impose restrictions, conditions, or directions affecting Tokinvest's
+operations, including the handling of Tokens and related Client Assets.
+Such actions may:
+
+     · restrict or suspend trading, subscriptions, or redemptions;
+     · impose additional compliance or reporting requirements;
+     · require changes to platform operations; or
+     · result in the suspension or revocation of Tokinvest's licence.
+
+These actions may materially affect investor access, liquidity, and outcomes.
+
+41. Geo-Restriction Risk
+Access may be restricted based on jurisdiction.
+Users may lose access due to regulatory changes.
+
+                                                                  COMMERCIAL IN CONFIDENCE
+                                                                                    6
+

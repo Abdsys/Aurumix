@@ -1,0 +1,2601 @@
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+                                         INFORMATION MEMORANDUM DATED 26 February 2026
+                                                         as amended on 16 March 2026
+
+                                                           LCL OPPORTUNITIES 3 S.à r.l.
+               A Luxembourg private limited liability company (société à responsabilité limitée), having its registered
+
+                  office at 34, rue du Curé, L-1368 Luxembourg, Grand Duchy of Luxembourg, registered with the
+                 Luxembourg Register of Commerce and Companies (Registre de Commerce et des Sociétés) under
+
+                                                         number B 260326 (the "Issuer")
+
+                         Up to EUR 1,000,000 secured digital bonds issuance programme (the "Programme")
+
+              The Issuer accepts full responsibility for the accuracy of the information contained in information
+              memorandum (the "Information Memorandum") and confirms, having made reasonable enquiry,
+              that to the best of its knowledge and belief there are no other facts the omission of which would
+              make any statement within this Information Memorandum misleading.
+
+              This Information Memorandum is provided for information purposes only. It does not constitute and
+              is not construed as any advice, solicitation, offer, endorsement, commitment or recommendation to
+              invest in the securities described herein. The provision of the Information Memorandum is not and
+              shall not be a substitute for your own researches, investigations, verifications, checks or consultation
+              for professional or investment advice.
+
+              YOU ARE USING THIS INFORMATION MEMORANDUM AT YOUR OWN RISKS.
+
+              This Information Memorandum must only be used for the purposes for which it has been published.
+              The Digital Bonds may not be offered to the public or indirectly to the public unless the requirements
+              of the Luxembourg law have been satisfied. Any person making or intending to make any offer of the
+              Digital Bonds in any Member State of the EEA may only do so in circumstances in which no
+              obligations arises for the Issuer to prepare a prospectus pursuant to article 3 of the Prospectus
+              Regulation. The Issuer has not authorised, nor does the Issuer authorise, the making of any offer of
+              the Digital Bonds in circumstances in which an obligation arises for it to publish a prospectus for such
+              offer in any jurisdiction.
+
+              This Information Memorandum has been prepared on the basis that any offer of Digital Bonds in any
+              Member State of the EEA (each, a "Relevant Member State") will be made pursuant to an exemption
+              under the Prospectus Regulation, from the requirement to publish a prospectus for offers of Digital
+              Bonds. Accordingly any person making or intending to make an offer in that Relevant Member State
+              of Digital Bonds which are the subject of an offering contemplated in this Information Memorandum
+              as completed by Final Terms in relation to the offer of those Digital Bonds may only do so in
+              circumstances in which no obligation arises for the Issuer to publish or a supplement to a prospectus
+              pursuant to the Prospectus Regulation, in each case, in relation to such offer. The Issuer has not
+              authorized the making of any offer of Digital Bonds in circumstances in which an obligation arises for
+              the Issuer to publish or supplement a prospectus for such offer.
+
+                                                                                                        1/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              Under the Programme described in this Information Memorandum, the Issuer, issues Digital Bonds
+              which rank equally among themselves and (subject to the provisions of any security documents) pari
+              passu in right of payment with all other present and future unsecured and unsubordinated
+              obligations of the Issuer (except for obligations mandatorily preferred by law), substantially on the
+              terms set out herein, as supplemented in respect of each issue by a set of final terms supplementary
+              hereto (each "Final Terms").
+
+              The Digital Bonds will be issued in separate series (each a "Series"). Where further fungible issues of
+              a Series are made, the Digital Bonds of such Series will have one or more issue dates and be on terms
+              otherwise identical (or identical other than in respect of the first payment of any interest) and will be
+              intended to be interchangeable with all other Digital Bonds of that Series. Each Series of Digital Bonds
+              may be issued in tranches (each a "Tranche") and may have different settlement, issue dates or first
+              interest payment dates of interest and nominal amount of the Tranche and redemption rules but will
+              on terms otherwise be identical to the terms of other Tranches of the same Series. The specific terms
+              of each Tranche (which will be supplemented, where necessary, with supplemental terms and
+              conditions) will be set out in the relevant Final Terms. Each Series and Tranche will be authorised by
+              the Issuer. The terms and conditions of a Series or of a Tranche (as the case may be) will comprise the
+              terms and conditions set out in this Information Memorandum and as contained hereinafter, as
+              supplemented by the relevant Final Terms (as implemented in smart contracts).
+
+              A purchase of Digital Bonds involves various risks. Several risk factors may simultaneously affect the
+              performance of the Digital Bonds, although no binding statement can be made as regards their
+              interaction. In addition, other risks which are currently unknown may also affect the value of the
+              Digital Bonds. Prospective investors are advised to consider all the information contained in this
+              Information Memorandum, as supplemented by the relevant Final Terms, before making an
+              investment in Digital Bonds. Prior to purchasing the Digital Bonds, prospective investors should
+              carefully examine whether an investment in the Digital Bonds is in line with their financial and tax
+              profile and other circumstances applicable to them and meets their requirements and expectations in
+              terms of safety, profitability and liquidity.
+
+              The key factors described below and in the relevant Final Terms are essential risks which may have a
+              significant impact on an investment in the Digital Bonds. Before making an investment in the Digital
+              Bonds, prospective investors are advised to read in its entirety this Information Memorandum, as
+              supplemented by the relevant Final Terms, and to consult a legal, tax or other adviser.
+
+              A PROSPECTIVE DIGITAL BONDHOLDER (AS DEFINED BELOW) SHALL NOT ASSUME THAT THE
+              INVESTMENTS ARE SECURED, UNLESS SO SPECIFIED IN THE RELEVANT FINAL TERMS OF EACH SERIES
+              OR OF A TRANCHE OF A SERIES (AS THE CASE MAY BE). SHOULD ONE OR MORE OF THE KEY
+              FACTORS BELOW AND IN THE RELEVANT FINAL TERMS MATERIALIZE, THIS MAY RESULT IN
+              MATERIAL AND SUSTAINED DECREASES IN THE PRICE OF THE DIGITAL BONDS, OR IN THE WORST
+              CASE, A TOTAL LOSS OF THE CAPITAL INVESTED BY THE DIGITAL BONDHOLDER.
+
+              The Issuer (the "Responsible Person") accepts responsibility for the information contained in this
+              Information Memorandum. To the best of the knowledge and belief of the Issuer (which has taken all
+
+                                                                                                        2/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              reasonable care to ensure that this is the case), the information contained in this Information
+              Memorandum is in accordance with the facts and does not omit anything likely to affect the import
+              of such information. The delivery of this Information Memorandum at any time does not imply any
+              information contained herein is correct at any time subsequent to the date hereof.
+              No person has been authorised to give any information or to make any representation other than
+              those contained in this Information Memorandum in connection with the issue or sale of the Digital
+              Bonds and, if given or made, such information or representation must not be relied upon as having
+              been authorised by the Issuer.
+              This Information Memorandum may only be used for the purposes for which it has been published.
+              This Information Memorandum is to be read in conjunction with all the documents which are
+              deemed to be incorporated herein by reference (see "Documents Incorporated by Reference").
+              This Information Memorandum does not constitute an offer of, or an invitation by or on behalf of the
+              Issuer to subscribe for, or purchase, any Digital Bonds. The distribution of this Information
+              Memorandum and the offering or sale of the Digital Bonds in certain jurisdictions may be restricted
+              by law. Persons into whose possession this Information Memorandum comes are required by the
+              Issuer to inform themselves about and to observe any such restriction.
+              The Digital Bonds will not be listed or traded on any market and the aggregate volume of bonds
+              offered to the public whether under this programme or under any other issue to the public by the
+              Issuer shall at all times be limited to one million euro.
+
+                                                                                [THE PPM CONTINUES ON THE NEXT PAGE]
+
+                                                                                                        3/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+    TABLE OF CONTENT
+
+1.  PERSON RESPONSIBLE.......................................................................................................6
+
+2.  INVESTOR SUITABILITY......................................................................................................6
+
+3.  OVERVIEW OF THE PROGRAMME .....................................................................................6
+
+    3.1. Introduction ­ forward looking statements........................................................................6
+
+    3.2. Overview and general description of the Programme ........................................................7
+
+4.  INFORMATION ON THE ISSUER .........................................................................................8
+
+    4.1. Corporate structure ...........................................................................................................8
+
+    4.2. Executive Management .....................................................................................................9
+
+    4.3. Auditors ..........................................................................................................................11
+
+    4.4. Contact data ....................................................................................................................11
+
+    4.5. No significant change / trend information .......................................................................11
+
+    4.6. Financial Statements of the Issuer ...................................................................................12
+
+    4.7. No regulation of the Issuer ..............................................................................................12
+
+5.  OTHER KEY FACTORS.......................................................................................................12
+
+    5.1. No listing or trading on a stock exchange .........................................................................13
+
+    5.2. Sole debtor......................................................................................................................13
+
+    5.3. Potential conflicts of interest ...........................................................................................13
+
+    5.4. Contingency Reserves......................................................................................................13
+
+    5.5. Risk of loss of the capital invested ...................................................................................13
+
+    5.6. No claim against shareholders, managers or executive officers........................................14
+
+    5.7. Insolvency proceedings and consequences of liquidation of the Issuer ............................14
+
+    5.8. Lack of operating history .................................................................................................14
+
+    5.9. Dependence on key personnel.........................................................................................14
+
+6.  PARTIES INVOLVED .........................................................................................................15
+
+    6.1. Electronic platform provider(s) ­ crypto payment gateway providers ..............................15
+
+    6.2. Defactor ..........................................................................................................................16
+
+7.  DOCUMENTS AVAILABLE FOR INSPECTION AND DOCUMENTS INCORPORATED BY
+
+REFERENCE .......................................................................................................................................16
+
+8.  DATA PROTECTION .........................................................................................................17
+
+9.  TERMS AND CONDITIONS OF THE DIGITAL BONDS .........................................................18
+
+    9.1. Key features of the Digital Bonds .....................................................................................18
+
+    9.2. Proceeds of the Digital Bonds ..........................................................................................19
+
+    9.3. Issue procedure ­ transferability .....................................................................................19
+
+    9.4. Further issues ..................................................................................................................29
+
+    9.5. Digital Bonds Maturity, denomination and ranking ..........................................................29
+
+    9.6. Interest / interest payment dates / Amortization.............................................................30
+
+                                                            4/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+   9.7.   Payments of principal amount and interest .....................................................................30
+   9.8.   Ranking of Digital Bonds - subordination .........................................................................31
+   9.9.   No other advantages.......................................................................................................33
+   9.10.  Event of Default ..............................................................................................................34
+   9.11.  Redemption, purchase and options .................................................................................34
+   9.12.  Market and liquidity risk for the Digital Bonds .................................................................37
+   9.13.  Taxation ..........................................................................................................................37
+   9.14.  Prescription..................................................................................................................... 38
+   9.15.  Notices ............................................................................................................................ 38
+   9.16.  Underwriting and placement of the Digital Bonds ..........................................................39
+   9.17.  Meeting of the Digital Bondholders ................................................................................39
+   9.18.  Distribution, subscriptions and transfer restrictions .......................................................40
+   9.19.  Governing law and jurisdiction ........................................................................................41
+10.       INFORMATION OF THE DIGITAL BONDHOLDERS .............................................................42
+11.       FORM OF FINAL TERMS...................................................................................................42
+12.       DEFINITIONS ...................................................................................................................50
+
+                                                            5/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              1. PERSON RESPONSIBLE
+
+              The Issuer is responsible for the content of this Information Memorandum and declares that, having
+              taken all reasonable care to ensure that such is the case, the information contained in this
+              Information Memorandum is, to the best of its knowledge, in accordance with the facts and contains
+              no omission likely to affect its import.
+
+              Where any third-party information has been included in this Information Memorandum, such
+              information has been accurately reproduced and, as far as the Issuer is aware and is able to ascertain
+              from information made available or published by that third party, no facts have been omitted which
+              would render the reproduced information inaccurate or misleading.
+
+              The source of information will be indicated where third-party information has been included in this
+              Information Memorandum. Where the Issuer refers to third-party websites, the Issuer is not
+              responsible for the completeness and correctness of the contents on these websites.
+
+              No person has been authorised to give any information or to make any representation in connection
+              with the issue or the sale of the Digital Bonds other than those contained in this Information
+              Memorandum. The Issuer does not assume any liability for information which is not contained in this
+              Information Memorandum. The information contained herein is current as of the date of this
+              Information Memorandum and may have become inaccurate and/or incomplete due to changes
+              which have occurred subsequently.
+
+              2. INVESTOR SUITABILITY
+
+              Prospective investors should determine whether an investment in the Digital Bonds is appropriate in
+              their particular circumstances and should consult with their legal, business and tax advisers to
+              determine the consequences of an investment in the Digital Bonds and to arrive at their own
+              valuation of the investment.
+
+              The tax consequences for each investor in the Digital Bonds can be different and therefore investors
+              are advised to consult with their tax advisers as to their specific consequences.
+
+              By subscribing to the Digital Bonds, each Digital Bondholder shall be deemed to be fully aware of,
+              adhere to and be bound by the terms and conditions and the provisions of the Articles of the Issuer.
+
+              3. OVERVIEW OF THE PROGRAMME
+
+              3.1. Introduction ­ forward looking statements
+
+              Certain of the statements included in this Information Memorandum that are not historical facts are
+              forward-looking statements. These forward-looking statements are based on current expectations,
+              estimates and projections about the industry and markets in which the Issuer operates,
+              management's beliefs and assumptions made by management of the Issuer. Such statements involve
+
+                                                                                                        6/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              uncertainties that could significantly impact the Issuer's financial results.
+
+              Words such as "expects", "anticipates", "intends", "plans", "believes", "seeks" and "estimates",
+              variations of such words and similar expressions are intended to identify such forward-looking
+              statements, which generally are not historical in nature. All statements that address operating
+              performance, events or developments that the Issuer expects or anticipates will occur in the future
+              are forward-looking statements. These statements are not guarantees of future performance and
+              involve certain risks, uncertainties and assumptions that are difficult to predict.
+
+              Although the Issuer believes the expectations reflected in any forward-looking statements are based
+              on reasonable assumptions, it can give no assurance that its expectations will be attained and
+              therefore, actual outcomes and results may differ materially from what is expressed or forecasted in
+              such forward-looking statements. Some of the factors that may affect outcomes and results include,
+              but are not limited to: (i) national, international, regional and local economic climates, (ii) changes in
+              financial markets, interest rates and foreign currency exchange rates, (iii) availability of financing and
+              capital, the levels of debt that the Issuer maintains and its credit ratings (if any), (iv) risks of doing
+              business internationally, including currency risks, (v) environmental uncertainties, including risks of
+              natural disasters, pandemic, and (vi) those additional factors described under "Risk Factors". The
+              Issuer undertakes no duty to update any forward-looking statements appearing in this Information
+              Memorandum except as may be required by law.
+
+              3.2. Overview and general description of the Programme
+
+              The maximum aggregate principal amount of Digital Bonds outstanding at any one time under the
+              Programme will not exceed one million euro (EUR 1,000,000), or its equivalent in other currencies.
+
+              Digital Bonds under this Programme may be offered to any legal or natural persons having legal
+              capacity to subscribe to such Digital Bonds and the individual denomination of the Digital Bonds may
+              start at one euro (EUR 1). The public offering of the Digital Bonds is allowed in the European Union
+              and third countries provided that in the latter case, local requirements are respected.
+
+              The purpose of the issuance of Digital Bonds is to have access to retail clients. The proceeds of the
+              Digital Bonds will be invested solely within the LynxCap Group and more specifically in bonds issued
+              by LCL Opportunities Luxembourg S.C.S., is a Luxembourg common limited partnership (société en
+              commandite simple), established on 19 May 2022 in the Grand Duchy of Luxembourg, for an
+              unlimited period, having its registered office at 34, rue du Curé, L-1368 Luxembourg, Grand Duchy of
+              Luxembourg, and being registered with the Luxembourg Registre de Commerce et des Sociétés under
+              number B 267834. This entity has issued bonds listed and traded on the professional segment of the
+              Euro MTF of the Luxembourg Stock Exchange (the "Traditional Bonds").
+
+              The terms and conditions of any particular Tranche of Digital Bonds will be the terms and conditions
+              substantially in the form set out under "Terms and conditions of the Digital Bonds" as supplemented,
+              by the Final Terms, substantially in the form set out in Section 11 (Form of Final Terms), applicable
+              thereto and, in respect of any Digital Bonds.
+
+                                                                                                        7/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              4. INFORMATION ON THE ISSUER
+
+              4.1. Corporate structure
+
+              The Issuer is LCL OPPORTUNITIES 3 S.à r.l., a Luxembourg private limited liability company (société à
+              responsabilité limitée), having its registered office at 34, rue du Curé, L-1368 Luxembourg, Grand
+              Duchy of Luxembourg, registered with the Luxembourg Register of Commerce and Companies
+              (Registre de Commerce et des Sociétés) under number B 260326.
+
+              The LynxCap group of companies is headed by LynxCap Investments AG, a Swiss public limited
+              liability company, having its registered office at Lüssihofweg 4, 6300 Zoug, Switzerland, registered
+              with the Register of Commerce of the canton of Zug under number CHE-244.186.164 ("LynxCap").
+
+              LynxCap fully owns the Issuer.
+
+              The Issuer was incorporated on 5 October 2021 and its articles of incorporation were published in the
+              electronic Compendium of Companies and Associations (the "RESA") under reference
+              RESA_2021_225.312 on 22 October 2021. The articles of association were amended for the last time
+              on 26 February 2025 and have been published in the RESA under reference RESA_20255_059.398 on
+              17 March 2025.
+
+              The Issuer's LEI is 485100EKU8FVREA8DP27.
+
+              Its last unqualified audited accounts, for the financial year ended on 31 December 2024 have been
+              lodged with the Luxembourg Register of Commerce and Companies under reference L250357858 on
+              27 October 2025.
+
+              Deloitte Audit S.à r.l., a private limited liability company (société à responsabilité limitée) having its
+              registered office at 20 boulevard de Kocklescheuer, L-1821 Luxembourg, Grand Duchy of Luxembourg
+              and registered with the Luxembourg Register of Commerce and Companies (Registre de Commerce et
+              des Sociétés) under number B 67895, will audit the accounts of the Issuer.
+
+              The Issuer does not qualify, and shall not be authorized by the CSSF, as (i) an undertaking for
+              collective investment under the law of 17 December 2010 on undertakings for collective investment,
+              as (ii) a specialized investment fund under the law of 13 February 2007 on specialized investment
+              funds, nor as (iii) an investment company in risk capital (SICAR) under the law of 15 June 2004
+              relating to the investment company in risk capital and is therefore not subject to the supervision of
+              the CSSF.
+
+              The share capital of the Issuer amounts to 12,000 euro and is fully paid up and subscribed by LynxCap
+              Investments AG.
+
+                                                                                                        8/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              The fiscal year of the Issuer shall commence on the 1st day of January and end on the 31st day of
+              December in each year (the "Issuer Fiscal Year"). Except as otherwise required by law, the Issuer shall
+              have the same Issuer Fiscal Year for financial and accounting purposes.
+
+              The present Information Memorandum and the Programme have been approved by the Issuer by
+              resolutions of the Board of Managers dated 23 April 2026.
+
+              4.2. Executive Management
+
+              In accordance with the Articles, the Issuer is managed by a board of managers (the "Board") which is
+              composed of one or several managers who need not be shareholders and are appointed and removed
+              from office by a simple majority decision of the Limited Partner's general meeting of shareholders,
+              which determines the term of their mandates.
+
+              In dealing with third parties, the Board of Managers will have all powers to act in the name of the
+              Issuer in all circumstances and to carry out and approve all acts and operations consistent with the
+              Issuer's objects and provided the terms of the articles of association shall have been complied with.
+
+              The Board is currently composed of the following executive members:
+
+               Mr. Peteris Kadiss, appointed on 30 September 2022 as Category A Manager, for an unlimited
+                      duration.
+
+               Mr. Konstantins Kraiss, appointed on 30 September 2022 as Category A Manager, for an
+                      unlimited duration;
+
+               Mrs. Tea Puh, appointed on 30 September 2022 as Category B Manager, for an unlimited
+                      duration; and
+
+               Mrs. Dora Vrkic Oriskovic, appointed on 30 September 2022 as Category B Manager, for an
+                      unlimited duration;
+
+              Category C Managers might be appointed. They are non-executive managers and may only be
+              appointed among people not being employees or shareholders of any company affiliated directly or
+              indirectly to the Issuer either through its shareholder(s) or its subsidiaries.
+
+              Peteris Kadiss
+
+                                             Prior to joining LynxCap Group, Peteris Kadiss was responsible for NPL
+                                             portfolio acquisitions at DDM Group AG, managing key transactions in the
+                                             CEE region, specifically focused on the Slovenian, Croatian and Serbian
+                                             markets. Mr. Kadiss has a background in Private Equity and Investment
+                                             Banking. He was an Investment Director at a EUR 5 billion Private Equity &
+                                             Credit fund, as well as Head of Syndicate at an investment bank, where he
+                                             was responsible for major Oil and Gas Eurobond placements. Peter holds BA
+                                             in Economics from University of Latvia, was Erasmus student in Gent
+
+                                                                                                        9/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              university in Belgium, holds a Master's degree in Banking and Finance from University of Sheffield, UK
+              and completed an Executive MBA from London Business School. Peteris is a CFA charter holder.
+
+              Konstantins Kraiss
+
+                                             Konstantins Kraiss was responsible for all aspects of NPL portfolio
+                                             acquisitions for DDM Group AG in the CSEE region, with a special focus on
+                                             the Romanian, Hungarian and Greek markets. Prior to DDM Group, Mr. Kraiss
+                                             was employed by Deloitte, Ernst & Young and leading regional Private Equity
+                                             funds, focusing on mergers and acquisitions as well as financial and strategic
+                                             advice to industry leading companies and financial institutions in Central and
+                                             Eastern Europe. Mr. Kraiss has 15 years of experience in corporate finance
+                                             and a proven track record of successful cross-border transactions with total
+              investment value over EUR 1 billion. Mr. Kraiss holds a BSc in Business and Economics with a
+              specialization in Finance, Stockholm School of Economics in Riga, Latvia.
+
+              Dora Vrkic Oriskovic
+
+                                            Dora Vrkic Oriskovic is an internal legal advisor responsible for transactions.
+                                            Prior to joining LynxCap, she was part of the Group Transaction Team at
+                                            B2Holding Group, where she was responsible for large transactions and co-
+                                            investments within the Group in addition to supervising and supporting local
+                                            acquisition and deal teams. Earlier in her tenure at B2, Ms. Vrkic Oriskovic was
+                                            part of the Acquisition department at B2 Kapital d.o.o., a Croatian subsidiary
+                                            of B2Holding Group, where she was in charge of NPL portfolio acquisitions,
+                                            due diligence and transactional support across the CEE and SEE regions, with
+              focus on CE markets. Ms. Vrkic Oriskovic holds a Master's in Law from the University of Zagreb.
+
+              Tea Puh
+
+                                             Tea Puh is a seasoned investment manager in charge of the LynxCap
+                                             Luxembourg office. Prior to joining LynxCap, she was the Group Head of
+                                             Portfolio Management with B2Holding Group, a listed pan-European NPL
+                                             purchaser and servicer with a presence in over 20 European countries. At
+                                             B2Holding, Ms. Puh was responsible for the execution of B2's investment
+                                             strategy, maximising portfolio performance, managing the new acquisition
+                                             approval process and existing portfolio reforecasting. Ms. Puh has a
+                                             background in the acquisition and management of NPL portfolios in the
+              majority of the European NPL markets with a particular focus on the CE markets. Ms. Puh holds a
+              Masters in Finance from the University of Zagreb.
+
+                                                                                                       10/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+4.3. Auditors
+
+The approved independent auditor (réviseur d'entreprises agréé) of the Issuer is Deloitte Audit S.à
+r.l., a private limited liability company (société à responsabilité limitée) having its registered office at
+20 boulevard de Kockelscheuer, L-1821 Luxembourg, Grand Duchy of Luxembourg and registered with
+the Luxembourg Register of Commerce and Companies (Registre de Commerce et des Sociétés) under
+number B 67895. The approved independent auditor is entrusted with the auditing of the annual
+accounts of the Issuer.
+
+LCL Opportunities 3 S.à r.l. has resolved to proceed with audit of its annual accounts in order to
+provide comfort to the Digital Bondholders.
+
+Each year, the auditors shall perform an audit of the financial statements, as prepared by the
+management of the Issuer.
+
+Unless otherwise provided for in this Information Memorandum as supplemented by the relevant
+Final Terms, in the performance of the audit of the annual financial statements, the auditor shall
+control the method of valuation and of assessment of the assets by the management.
+
+The Issuer may resolve to change its auditor through time. However, in such a case, he shall only
+appoint an auditor belonging to a big four group (Deloitte, Ernst & Young, PricewaterhouseCoopers,
+KPMG).
+
+4.4. Contact data
+
+The Issuer's contact data are as follows:
+
+Name of contact: LCL Opportunities 3 S.à r.l.
+
+                   Att.: the board of managers
+
+                   Address: 34, rue du Curé,
+
+                   L-1368 Luxembourg
+
+                   Grand Duchy of Luxembourg
+
+Email:             p.kadish@lynxcapinvestments.com
+
+Any document concerning the Issuer which is referred to in this Information Memorandum may be
+consulted upon request at the above mentioned address.
+
+4.5. No significant change / trend information
+
+Unless otherwise specified in this Information Memorandum, there has been no significant last
+financial information lodged with the Luxembourg Register of Commerce and Companies, and no
+significant change in the financial or trading position subsequent to the period covered by the last
+financial information lodged with the Luxembourg Register of Commerce and Companies.
+
+                                                            11/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              The Issuer is not aware of any pending or imminent legal dispute or arbitration proceeding initiated
+              since its establishment on 19 May 2022, or of legal dispute and arbitration proceeding which have
+              had material effects on the Issuer's financial situation in the recent past or will have such effects in
+              the future.
+
+              There are no material events which might have an impact on the assessment of the Issuer's solvency.
+
+              4.6. Financial Statements of the Issuer
+
+              The Issuer was formed in 2021 and has thus a limited operating history given that it was a dormant
+              entity which actually never had any operational activity since its incorporation as visible in its annual
+              accounts.
+
+              The Issuer prepares annual audited non-consolidated financial reports in compliance with Luxembourg
+              accounting standards.
+
+              The Issuer shall prepare and make available an audited financial report to each shareholder within
+              180 days after the end of each Issuer Fiscal Year.
+
+              The Issuer's financial year starts on 1 January and ends on 31 December. Standalone annual accounts
+              will be published in accordance with the applicable legal conditions. The Issuer does not prepare
+              interim financial accounts.
+
+              Any published annual financial statements prepared for the Issuer can be obtained free of charge at
+              the Luxembourg Register of Commerce and Companies (Registre de Commerce et des Sociétés) or on
+              its website at www.lbr.lu.
+
+              4.7. No regulation of the Issuer
+
+              The Issuer is not required to be licensed, registered or authorized under any current securities,
+              commodities or banking laws of its jurisdiction of incorporation and will operate without supervision
+              by any authority in any jurisdiction. The Issuer is a standard financial holding company (société de
+              participation financière) acting for its own account and benefit. It does not provide any investment
+              services to third parties. The issuance of Digital Bonds allows the Issuer to gather financing in order to
+              fund the activities of the LynxCap group of companies. There can be no assurance, however, that
+              regulatory authorities in one or more other jurisdictions will not determine that the Issuer is required
+              to be licensed, registered or authorized under the securities, commodities or banking laws of such
+              jurisdiction or that legal or regulatory requirements with respect thereto will not change in the
+              future. Any such requirement or change could have an adverse impact on the Issuer or investors in
+              the Digital Bonds.
+
+              5. OTHER KEY FACTORS
+
+                                                                                                       12/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              5.1. No listing or trading on a stock exchange
+
+              The Digital Bonds will not be listed or traded on a stock exchange. Digital Bondholders may only resell
+              their Digital Bonds directly over the counter through direct transactions.
+
+              5.2. Sole debtor
+
+              The Issuer is the sole debtor of the Digital Bonds. Digital Bondholders must therefore request all
+              payments due under the Digital Bonds exclusively from the Issuer. In the event of default of the
+              Issuer, Digital Bondholders may therefore lose all of the capital invested.
+
+              5.3. Potential conflicts of interest
+
+              Digital Bondholders should be aware that there will be situations where the Issuer and its respective
+              Affiliates and service providers may encounter potential conflicts of interest in connection with the
+              Issuer's investment activities. The following details certain potential conflicts of interest which should
+              be carefully considered before making an investment in the Issuer. By acquiring Digital Bonds, Digital
+              Bondholders will be deemed to have acknowledged the existence of any such actual and potential
+              conflicts of interest and to have waived any claim with respect to any liability arising from the
+              existence of any such conflict of interest.
+
+              5.4. Contingency Reserves
+
+              The Issuer, at any time in its sole discretion, may establish reserves for contingencies (including
+              general reserves for unspecified contingencies). The establishment of such reserves will not insulate
+              any portion of the Issuer's assets from being at risk.
+
+              5.5. Risk of loss of the capital invested
+
+              The Issuer's obligations resulting from the Digital Bonds create direct liabilities of the Issuer.
+
+              Any claim asserted by the Digital Bondholders against the Issuer shall be limited to the Issuer's
+              assets (subject to other creditors having preferential rights of payments).
+
+              The Issuer therefore cannot and will not meet its payment obligations in respect of the Digital Bonds
+              from other assets or funds. If payments which have been received by the Issuer in respect of the issue of
+              Digital Bonds are not sufficient to meet all the obligations due to the Digital Bondholders and the other
+              debtors, the Issuer shall be obliged to make payments in respect of the Digital Bonds only to the extent
+              that it has sufficient assets. In the event of a termination of the Digital Bonds for exceptional reasons and
+              a pro-rata distribution of the proceeds from the realisation of the Issuer's assets in accordance with the
+              applicable regulation.
+
+              SHOULD THE ASSETS OF THE ISSUER NOT BE SUFFICIENT TO MEET AMOUNTS PAYABLE UNDER THE
+              DIGITAL BONDS, DIGITAL BONDHOLDERS WILL SUFFER A LOSS OF THEIR INVESTED CAPITAL AND/OR
+
+                                                                                                       13/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              ANY INTEREST PAYMENTS WHICH MAY BE A COMPLETE LOSS. AFTER THE REALISATION OF THE
+              ASSETS, SHOULD THERE BE NO FUNDS AVAILABLE FOR THE PAYMENT OF ANY AMOUNT DUE BY THE
+              ISSUER TO THE DIGITAL BONDHOLDER UNDER THE DIGITAL BONDS, INCLUDING IN RESPECT OF
+              INTEREST (FIXED OR OTHERWISE) OR PRINCIPAL, NO PAYMENT MAY BE MADE.
+
+              5.6. No claim against shareholders, managers or executive officers
+
+              The shareholders, managers, executive officers or managing directors and employees of the Issuer,
+              assume no personal liability in relation to any obligation, commitment or agreement of the Issuer or
+              arising from the agreements to which the Issuer is a party. The obligations arising for the Issuer from
+              the agreements (including, but not limited to, the Digital Bonds) to which the Issuer is a party shall
+              only create liability for the Issuer as a legal entity.
+
+              5.7. Insolvency proceedings and consequences of liquidation of the Issuer
+
+              The Issuer can be declared bankrupt (en état de faillite) upon petition by a creditor of the Issuer or by
+              the managers (who may have the legal obligation to file for bankruptcy in case the relevant conditions
+              are met), or ex officio by the Luxembourg courts in accordance with the relevant provisions of
+              Luxembourg insolvency law. If granted, the Luxembourg courts will appoint a bankruptcy trustee
+              (curateur) who shall be obliged to take such action as he deems to be in the best interest of the mass of
+              the creditors of the Issuer (including, as the case may be, by preserving all rights of the Issuer against
+              the latter's own debtors). Certain preferred creditors of the Issuer (including the Luxembourg tax
+              authorities and the receiver, liquidator or insolvency administrator) may have a privilege that ranks
+              senior to the rights of the Digital Bondholders in such circumstances and the proceeds may first be used
+              to pay fees and charges of the preferential claims by law and insolvency claims, before distributing any
+              surpluses to the Digital Bondholders. Other insolvency proceedings under Luxembourg law might be
+              implemented.
+
+              Should insolvency proceedings be opened, the Issuer may not be able to make the payments due under
+              the Digital Bonds on the due dates.
+
+              5.8. Lack of operating history
+
+              Although the Issuer was incorporated on 5 October 2021, this entity was originally designed to act as
+              a securitization vehicle. On 26 February 2025, the sole shareholder resolved to convert this entity into
+              a financial holding company (société de participation financière ­ "Soparfi"). By way of consequence,
+              the Issuer is a similar to a newly-formed entity and has no operating history as a Soparfi. The Issuer's
+              investment programs should be evaluated on the basis that there can be no assurance that the
+              AIFM's assessment of the short-term or long-term prospects of investments will prove accurate or
+              that the Issuer will achieve its investment objectives.
+
+              5.9. Dependence on key personnel
+
+                                                                                                       14/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+The success of the Issuer depends in substantial part on the skill and expertise of members and
+employees of the LynxCap group of companies and certain industry specialists. There can be no
+assurance that such members and employees will continue to be actively involved in the investments
+of the Issuer throughout the life of the Issuer. The loss of key personnel could have a material adverse
+effect on the Issuer.
+
+THE CONSIDERATIONS SET OUT ABOVE ARE NOT, AND ARE NOT INTENDED TO BE, A
+COMPREHENSIVE LIST OF ALL CONSIDERATIONS RELEVANT TO A DECISION TO PURCHASE OR HOLD
+ANY DIGITAL BONDS.
+
+6. PARTIES INVOLVED
+
+The key roles in the ecosystem include:
+
+· Issuer: which is the entity creating the DLT financial instrument and ensuring regulatory
+       compliance.
+
+· Technology provider: Defactor supplies the smart contract framework and tokenization
+       infrastructure.
+
+· Custodians: these are third-party regulated custodians may be used for off-chain asset backing,
+       outside of Defactor's scope. In this case, the Issuer will act as custodian.
+
+· Investors & Digital Bondholders: these are the end users who acquire and trade tokenized real
+       world assets.
+
+· Investment platform(s): it is the venue to offer the assets for sale, marketing and distribution.
+
+6.1. Electronic platform provider(s) ­ crypto payment gateway providers
+
+Several electronic platform providers may be appointed at the same time by the Issuer. Digital Bonds
+of different Series may be issued on different platform depending on the Issuer's needs. Additional
+service providers may be added through a supplement to this Information Memorandum. Crypto
+payment gateway providers are third-party servicers that enable businesses to accept payments in
+cryptocurrencies (like Bitcoin, Ethereum, or stablecoins) from customers. These providers handle the
+technical infrastructure needed to receive, verify, and often convert crypto payments into fiat
+currency. Electronic platforms (the "Electronic Platforms") are regulated computer-based systems
+(software and infrastructure) that enables multiple participants to submit, receive, match and/or
+execute instructions (orders, requests, transfers) through electronic communications, under a defined
+set of operating rules (access rules, workflow, governance, audit logs).
+
+Currently, appointed electronic platform service providers is:
+
+(i)  YouHodler S.A. is a Swiss public limited liability company, with registered office at avenue
+
+     du Théâtre 7, 1005 Lausanne, Switzerland, registered with the Register of Commerce of the
+
+     canton of Vaud under number CHE-336.197.657. YouHodler is a regulated entity active as
+
+     financial intermediary and subject to the supervision of the Swiss Financial Market
+
+     Supervisory Authority (FINMA).
+
+                                                            15/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+    YouHodler provides the electronic platform where Digital Bonds exchange are possible.
+
+6.2. Defactor
+
+Decentral Limited ("Defactor"), is an Irish limited company, having its registered office at Dogpatch
+Labs, CHQ Building, Dublin 1, D01Y6H7, Ireland, registered under number 625523.
+
+Defactor provides the technology infrastructure for the tokenization process but does not act as an
+intermediary in issuance, custody, or compliance verification.
+
+7.  DOCUMENTS AVAILABLE FOR INSPECTION AND DOCUMENTS INCORPORATED BY
+
+    REFERENCE
+
+This Information Memorandum should be read and construed in conjunction with each relevant Final
+Terms and all amendments and supplements from time to time to this Information Memorandum,
+which shall be deemed to be incorporated in, and to form part of this Information Memorandum and
+which shall be deemed to modify or supersede the contents of this Information Memorandum to the
+extent that a statement contained in any such document is inconsistent with such contents.
+
+Save that any statement contained herein or in a document all or the relevant portion of which is
+deemed to be incorporated by reference herein shall be deemed to be modified or superseded for
+the purpose of this Information Memorandum to the extent that a statement contained in any such
+subsequent document all or the relative portion of which is or is deemed to be incorporated by
+reference herein modifies or supersedes such earlier statement (whether expressly, by implication or
+otherwise). Any statement so modified or superseded shall not be deemed, except as so modified or
+superseded, to constitute a part of this Information Memorandum. Copies of any or all of the
+documents which are incorporated herein by reference will be available free of charge during normal
+business hours from the office of the Issuer.
+
+The Issuer will, in the event of any significant new factor, material mistake or inaccuracy relating to
+information included in this Information Memorandum, which is capable of affecting the assessment
+of any Digital Bonds, prepare a supplement which shall be incorporated by reference.
+
+Copies of the documents which are incorporated by reference in, and to form part of, this
+Information Memorandum, will be available as follows:
+
+ any published annual audited financial statements prepared for the Issuer can be obtained free
+       of charge at the Luxembourg Register of Commerce and Companies (Registre de Commerce et
+       des Sociétés), or on its website at www.lbr.lu.
+
+ Copies (and English translations where the documents in question are not in English) of the
+       following documents will be available, during usual business hours on any weekday (Saturdays,
+
+                                                            16/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+    Sundays and public holidays excepted), for collection free of charge from the offices of the
+    Issuer in Luxembourg:
+
+    (a) the published audited annual financial statements of the Issuer for the years 2023 and
+           2024 together with any audit or review reports prepared in connection therewith and
+           the most recent published audited ;
+
+    (b) a copy of this Information Memorandum together with any supplement to this
+           Information Memorandum (as the case may be);
+
+    (c) a copy of the relevant form of Final Terms;
+
+In addition, this Information Memorandum and any other supplements (as the case may be) will be
+published on the website of the Issuer: https://www.lynxcapinvestments.com
+
+Documents indicated under letters b) to c) are incorporated by reference and form part of this
+Information Memorandum.
+
+8.  DATA PROTECTION
+
+In accordance with the applicable data protection provisions, and notably (Regulation (EU) 2016/679
+of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons
+with regard to the processing of personal data and on the free movement of such data, and repealing
+Directive 95/46/EC ("General Data Protection Regulation"), the Issuer, acting as data controller, may
+collect, record, store, adapt, transfer or otherwise process certain investor's personal data (including,
+but not limited to, in the holding of Digital Bonds, name, address, contact details (the "Personal
+Data")) for the purposes set out below.
+
+The prospective investor may, at his/her/its discretion, refuse to communicate the Personal Data to
+the Issuer. In this case however, the Issuer may reject his/her/its request for subscription for Digital
+Bonds.
+
+The Personal Data may be processed for complying with its legal obligations and notably for the
+purposes of (i) maintaining the register of Digital Bondholders, (ii) processing subscriptions,
+redemptions as well as payments to Digital Bondholders, (iii) complying with applicable anti-money
+laundering rules, (iv) tax identification under applicable regulation such as the FATCA Rules, the CRS
+or similar laws and regulations, (v) providing client services, (vi) and complying with any other legal
+obligations.
+
+The Issuer may delegate the processing of the Personal Data, in compliance and within the limits of
+the applicable laws and regulations, to other entities such as the Agents (as defined below) (the
+"Processors").
+
+The relevant Agents may decide, under their own responsibility, and as data controllers, to transfer or
+sub-delegate the processing of the Personal Data to their parent companies, to one or several
+affiliates of their group or to their agents, including their offices located outside the European Union
+
+                                                            17/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+and thus located in countries which may be deemed not to offer a level of protection which is
+equivalent to that offered in Luxembourg, for the purposes of carrying out the provision of different
+services, including but not limited to financial and operational management and reporting, risk
+management, legal and regulatory compliance, client service management, business continuity
+management and product development. The Issuer will not be involved in appointing these affiliates
+or agents and shall not bear any responsibility in relation to this sub-delegation.
+
+The Issuer may disclose Personal Data to the Luxembourg tax authorities, which in turn may, acting as
+data controller, disclose it to foreign tax authorities.
+
+Each Digital Bondholder has a right to access his/her/its Personal Data and may ask for a rectification
+thereof in cases where such data is inaccurate and/or incomplete. Request for a rectification should
+be made by a letter addressed to the Issuer.
+
+The Digital Bondholder has a right of opposition regarding the use of his/her Personal Data for
+marketing purposes. This opposition can be made by letter or email addressed to the Issuer.
+
+By subscribing for the Digital Bonds, each Digital Bondholder consents to such processing of his/her
+Personal Data.
+
+9.  TERMS AND CONDITIONS OF THE DIGITAL BONDS
+
+9.1. Key features of the Digital Bonds
+
+All Digital Bonds irrespective of their Series and Tranche qualify as financial instruments as defined
+under section C of Annex I of directive 2014/65/EU of 15 May 2014 on markets in financial
+instruments. The Digital Bonds issued fall outside the scope of Regulation (EU) 2023/1114 of 31 May
+2023 relating to crypto assets.
+
+Legally speaking, the Digital Bonds qualify as registered bonds, the register using the distributed
+ledger technology.
+
+The issuance of the Digital Bonds will be made in euro or another Fiat Currency and any payments
+made in respect of the Digital Bonds will be initiated in the same currency. If cryptocurrencies are
+used by a Digital Bondholder, he/she/it will bear the risk associated with the volatility of such
+cryptocurrencies and the exchange ratio between FIAT currencies and cryptocurrencies in order to
+subscribe to the Digital Bonds. Cryptocurrencies received from an investor by the Issuer or by a third
+party on behalf of the Issuer, will be exchanged into the relevant Fiat Currencies within a maximum of
+two Business Days after being received by the relevant party. Any conversion from a Fiat Currency
+into a cryptocurrency for payment to an investor by, or on behalf of the Issuer will be made on the
+relevant Payment Date. The actual conversion process between cryptocurrencies and Fiat Currencies
+will not be handled by the Issuer but by a payment gateway provider or financial intermediary.
+
+                                                            18/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              Therefore the Issuer may under no circumstances be held accountable for the conversion rate applied
+              or associated costs which remain solely the Digital Bondholder's responsibility.
+
+              All Digital Bonds irrespective of their Series and Tranche will bear an interest (fixed or floating), the
+              amount of which will be decided at the respective issuances.
+
+              All terms and conditions not stated in this Information Memorandum will be summarized in Final
+              Terms, the content of which will notably include (but without limitation), the Interest Rate, the
+              Maturity Date, the number of Digital Bonds issued, whether put or call options apply. These Final
+              Terms will then be implemented into a smart contract.
+
+              The Issuer is not responsible for the accuracy of the smart contract save in the case of gross fault or
+              wilful misconduct.
+
+              9.2. Proceeds of the Digital Bonds
+
+              The proceeds received from the Digital Bonds will be invested in bonds issued by LCL Opportunities
+              Luxembourg S.C.S., which are listed on the professional segment of the Euro MTF of the Luxembourg
+              Stock Exchange, i.e. the Traditional Bonds.
+
+              9.3. Issue procedure ­ transferability
+
+              The smart contract will make it possible for the Issuer to create and cancel the Digital Bonds. New
+              Digital Bonds might be created up to the limits of the Programme.
+
+              The smart contract will only make it possible for the Issuer to issue whole numbers (as opposed to
+              real numbers) of Digital Bonds. The Issuer's Digital Bonds will consequently have a decimal place set
+              to zero (meaning that the transfer of a fraction of a Digital Bond will not be possible).
+
+              Digital Bonds will be cancelled at their term, or in the case of early redemption, as foreseen in the
+              Final Terms as implemented in the smart contracts.
+
+              Any Investor shall enter into a Subscription Form with the Issuer at the issuance of the Digital Bonds,
+              and, in the case of Atomic Settlement, at their acquisition. In any case and by subscribing to a Digital
+              Bonds or buying it, as the case may be, each person:
+
+              - expresses to have full legal capacity to subscribe to or buy the Digital Bonds and that such
+                      subscription or purchase is not in breach of any personal restrictions or legal order pronounced
+                      against such person, and that such subscription or purchase is legal, valid and binding on
+                      his/her/its behalf, and that he/she/it can freely dispose of the funds used to subscribe to the
+                      Digital Bonds;
+
+              - accepts that the Issuer or its agents, shall not be responsible for damages caused in the event
+                      of an Investor's or third party authorized to act on his behalf legal incapacity, provided that the
+                      Issuer or its agents, have not received prior notice of the fact. The Investor shall compensate
+
+                                                                                                       19/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+                      and reimburse the Issuer or its agents for all complaints, legal action, fees expenses, damages
+                      losses or other sums paid, or responsibilities incurred by the Issuer or its agents resulting from
+                      the execution by the Issuer or its agents of such an instruction on the part of the Investor.
+              - understands that the personal data requested by the platform above must be transmitted in
+                      order to proceed with the purchase. Should the Investor refuse to communicate it, the Issuer
+                      or its agents, will refuse the purchase. Each Investor understands that his/her personal data
+                      (relating mainly to his/her identity, address, personal and marital status), specific information
+                      concerning my assets and transactions carried out on my behalf, may be recorded in one or
+                      several databases of the Issuer or its agents in accordance with applicable legislation. Under
+                      this legislation, the Issuer or its agents may outsource the processing and storage of this data.
+                      Each Investor expressly authorizes the Issuer or its agents to collect and process personal data
+                      relating to individual Investors as described in this section. Investors understand that they can
+                      consult the data concerning me and rectify any inaccuracies in this data. The Issuer or its
+                      agents may record, or process personal data for the purpose of carrying out transactions,
+                      managing contractual relations and in general for the purpose of carrying out their obligations
+                      and improving the services provided to Investors. Each Investor expressly grants the platform
+                      and the Issuer or its agents, an unlimited right to inspect all data concerning the Investor
+                      and/or relative to my purchase, including data stored by the Issuer or its agents.
+
+              Once the Subscription Form is executed, the Investor has three (3) Business Days to transfer the
+              amount in the Specified Currency to the Issuer's account as stated in the Subscription Form. Digital
+              Bonds are issued in FIAT currencies in the Specified Currency.
+
+              The Issuer has the obligation to issue and allocate Digital Bonds to the Investor only when the
+              intended Subscription Price, as stated in the Subscription Form, is actually received by the Issuer
+              (payment versus delivery).
+
+              For the avoidance of doubt, the Issuer does not charge any issuance fees to the investors.
+
+              9.3.1. Payment in FIAT currencies
+
+              As soon as the intended Subscription Price is actually received by the Issuer, the Issuer will allocate
+              the Digital Bonds without delay to the Digital Bondholders. Payment in FIAT currencies are only
+              accepted by the Issuer in the relevant Specified Currency, i.e. for any Digital Bonds issued in euro, the
+              intended Subscription Price must be paid by the Investor in euro.
+
+              If, for any reason, the amount received form the Investor in the Specified Currency was below the
+              intended Subscription Price of the Digital Bonds, the Issuer would without delay notify the Investor of
+              the difference between the amount actually received and the intended Subscription Price of the
+              Digital Bonds. The Investor would have an additional three (3) Business Days as of the notification
+              made by the Issuer to make an additional wire in order to match the intended Subscription Price of
+              the Digital Bonds.
+
+                                                                                                       20/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              As soon as the full intended Subscription Price is actually received by the Issuer, the Issuer will
+              allocate the Digital Bonds without delay to the Digital Bondholder.
+
+              If no additional funds have been received by the Issuer within these (3) Business Days, but the
+              amount received form the Investor in the Specified Currency is still higher than the minimum
+              subscription amount stated in the Subscription Form, all available funds will be allocated towards the
+              allocation of Digital Bonds and the Investor irrevocably consents on this new Subscription Price and
+              number of Digital Bonds so allocated. In this case, the Issuer will allocate the Digital Bonds without
+              delay to the Digital Bondholder.
+
+              In case the amount received form the Investor in the Specified Currency is lower than the minimum
+              subscription amount stated in the Subscription Form, and that no additional funds have been
+              received within three (3) Business Days, the subscription will be cancelled, and no Digital Bond will be
+              allocated. In such a case, the funds held by the Issuer on behalf of the Investor will be returned to
+              such Investor on the account as instructed by him/her/it. Under no circumstances the Issuer may be
+              liable for any losses or costs incurred by the Investor in the repayment process except in the case of
+              gross fault or wilful misconduct.
+
+              9.3.2. Conversion of cryptocurrencies process
+
+              If cryptocurrencies are used by a Digital Bondholder, he/she/it will bear the risk associated with the
+              volatility of such cryptocurrencies and the exchange ratio between FIAT currencies and
+              cryptocurrencies in order to subscribe to the Digital Bonds. Cryptocurrencies received from an
+              Investor by the Issuer or by a third party on behalf of the Issuer, will be exchanged into the relevant
+              FIAT Currencies within a maximum of two Business Days after being received by the Issuer or its
+              agent. The conversion from cryptocurrencies to FIAT currencies will be handled by a financial
+              intermediary as identified in the Subscription Form. Any conversion from a Fiat Currency into a
+              cryptocurrency for payment to an Investor by, or on behalf of the Issuer will be made on the relevant
+              Payment Date.
+
+              When the wallet of the Digital Bondholder is held by an electronic platform on behalf of the Digital
+              Bondholder, or on an electronic platform, the actual conversion process between cryptocurrencies
+              and Fiat Currencies will not be handled by the Issuer but by the relevant payment gateway provider
+              or relevant financial intermediary. Therefore, the Issuer may under no circumstances be held
+              accountable for the conversion rate applied or associated costs which remain solely the investor's
+              responsibility.
+
+              Whenever the Digital Bondholder holds his/her/its wallet and private key personally, any payment in
+              cryptocurrency to the Issuer will be subject to conversion in FIAT currencies. Such conversion will be
+              made by the Issuer with any payment gateway provider the Issuer usually works with. The Issuer
+              cannot be held accountable of the exchange rate or costs applied by such payment gateway provider.
+
+              Once the conversion done, the Issuer will consider the amount of FIAT currency actually received
+              after conversion.
+
+                                                                                                       21/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              9.3.2.1. The amount received after conversion is equal or exceeds the intended Subscription Price
+
+              If the amount received in the Specified Currency after conversion of cryptocurrencies is equal or
+              exceeds the intended Subscription Price, the Issuer will allocate Digital Bonds without delay to the
+              Digital Bondholder for the whole amount received, and any difference will be rounded to the next
+              closest euro or equivalent in the Specified Currency.
+
+              9.3.2.2. The amount received after conversion is below the intended Subscription Price of the Digital
+                          Bonds
+
+              If the amount received in the Specified Currency after conversion of cryptocurrencies is below the
+              intended Subscription Price, the Issuer will without delay notify the Investor. In such a case, the
+              Investor would have three (3) Business Days to send additional cryptocurrencies for conversion of
+              FIAT currency, in order to match the intended Subscription Price in the Specified Currency, in which
+              case, the Issuer will allocate the Digital Bonds without delay to the Digital Bondholder.
+
+              If no additional funds have been received by the Issuer within these (3) Business Days, but the
+              amount received form the Investor in the Specified Currency after conversion is still higher than the
+              minimum subscription amount stated in the Subscription Form, all available funds will be allocated
+              towards the allocation of Digital Bonds and the Investor irrevocably consents on this new
+              Subscription Price and number of Digital Bonds so allocated. In this case, the Issuer will allocate the
+              Digital Bonds without delay to the Digital Bondholder.
+
+              In case the amount received form the Investor in the Specified Currency after conversion is lower
+              than the minimum subscription amount stated in the Subscription Form, and that no additional funds
+              have been received within three (3) Business Days, the subscription will be cancelled and no Digital
+              Bonds will be allocated. In such a case, the funds held by the Issuer on behalf of the Investor will be
+              returned to such Investor on the account and in the (crypto)currency as instructed by him/her/it.
+              Under no circumstances the Issuer may be liable for any losses or conversion costs incurred by the
+              Investor in the reconversion and repayment process except in the case of gross fault or wilful
+              misconduct.
+
+              9.3.3. Long-Stop Date ­ over allocation of Bonds
+
+              In the unlikely event that more Digital Bonds have been subscribed than the number of Bonds
+              available due to technical mistake or technological malfunction, system error, hardware/software
+              failure, or operation fault, the Issuer has the right to reimburse the principal amount of such
+              oversubscribed Digital Bonds to the relevant Digital Bondholder(s) without penalty for a period of ten
+              Business Days after the Digital Bonds allocation to the relevant Digital Bondholder(s). As a
+              consequence such oversubscribed Digital Bonds will be cancelled and any rights and obligations in
+              connection therewith extinguished. In such a case, the funds held by the Issuer on behalf of the
+              Investor will be returned to such Investor on the account and in the (crypto)currency as instructed by
+              him/her/it. Under no circumstances the Issuer may be liable for any losses or reconversion costs
+
+                                                                                                       22/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              incurred by the Investor in the reconversion and repayment process except in the case of gross fault
+              or wilful misconduct.
+
+              9.3.4. Technical Digital Bonds' issuance details
+
+              The Ethereum blockchain serves as the underlying DLT infrastructure for this issuance. Ethereum is a
+              public, permissionless, decentralized network operating under a Proof of Stake (PoS) consensus
+              mechanism, subsequent to its transition from Proof of Work in 2022 ("The Merge").
+
+              Key attributes of Ethereum relevant to this issuance include: Broad institutional adoption and
+              regulatory familiarity, availability of audited, standardized smart contract templates, transparent on-
+              chain recordkeeping of all issuance and transfer events. The Issuer retains comprehensive control
+              over the issuance parameters, supply management, transfer logic, and off-chain KYC records through
+              this DLT-enabled structure, while benefiting from the transparency, auditability, and security inherent
+              in the Ethereum network.
+
+              Upon execution of the applicable terms and satisfaction of Know Your Customer (KYC)/Anti-Money
+              Laundering (AML) compliance obligations via an authorized distribution or exchange platform, the
+              Issuer shall mint and allocate an amount of Digital Bonds to the pre-approved blockchain addresses
+              of eligible investors. Only investors duly onboarded and verified through regulated channels are
+              authorized to receive Digital Bonds.
+
+              The Digital Bonds are minted through a smart contract deployed on the Ethereum network, adhering
+              to the ERC-20 standard. As required, the Issuer can use specific asset standards such as ERC-3643
+              (ERC-3643 tokens include mechanisms to verify the identity and eligibility of participants before
+              allowing transactions. This ensures that all transfers adhere to predefined compliance rules, such as
+              Know Your Customer (KYC) and Anti-Money Laundering (AML) regulations). The smart contract
+              governs: Overall supply control, transfer enforcement, Event-driven functions (e.g., freeze, burn).
+              Subsequent to issuance, Digital Bonds transactions are immutably recorded on-chain and held within
+              platform custodial wallets (such as YouHodler) or Ethereum-compatible non-custodial wallets under
+              the control of the respective Digital Bondholders. Digital Bonds do not exist in physical or certificated
+              form.
+
+              Digital Bond transfers are subject to stringent controls managed by the issuer. This ensures that only
+              pre-approved and whitelisted wallet addresses will receive Digital Bonds. All transactions occur
+              between verified, KYC-compliant parties.
+
+              9.3.5. Allocation of Digital Bonds to blockchain addresses
+
+              The smart contracts make it possible for the Issuer to allocate the Digital Bonds to a specified
+              blockchain addresses, and to determine at all times the number of Digital Bonds associated with a
+              specific blockchain address.
+
+                                                                                                       23/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              The Issuer may allocate Digital Bonds to a wallet held by an electronic platform on behalf of the
+              Digital Bondholder or directly to the Digital Bondholder in the case he/she/it holds his/her/its wallet
+              personally as well as the private key associated with such wallet.
+
+              Investors are aware of the principle "Not your wallet, not your private key" also known as "Not your
+              keys, not your coins". It means that If a person does not control the private keys to a crypto wallet,
+              he/she/it does not truly control the assets stored in it. If the private key is held by a third party (e.g.
+              an exchange, custodian, or wallet provider), they effectively control the crypto assets. In case of a
+              hack, platform failure, regulation, or fraud, the user may lose access without recourse.
+
+              UNDER NO CIRCUMSTANCES MAY THE ISSUER BE HELD LIABLE FOR ANY FAILURE RELATING TO THE
+              HOLDING OF THE CRYPTO-ASSETS OF THE DIGITAL BONDHOLDERS.
+
+              9.3.6. Transfer of Digital Bonds ­ Atomic settlement
+
+              The smart contracts make it possible for Digital Bondholders (i.e. for the owners of the private key
+              controlling the blockchain address in which the Digital Bonds have been allocated) to transfer Digital
+              Bonds from their blockchain address to another blockchain address. In accordance with the rules
+              issued by the Issuer, such a transfer consequently results in the relevant Digital Bondholder being
+              struck off from the register with respect to Digital Bonds associated with the transferred Digital
+              Bonds.
+
+              Any transfer of Digital Bonds shall be notified by the Transferor and the Transferee to the Issuer in
+              order for the register of Digital Bonds to be updated on the blockchain.
+
+              The transfer of Digital Bonds remains valid even if the agreement based on which the Digital Bonds
+              were transferred is invalidated, for example further to a material error of one of the parties or fraud.
+              If the invalidity of the agreement based on which the transfer of the Digital Bonds was effected is
+              acknowledged in a final decision issued by a court of competent jurisdiction, the Issuer can decide to
+              cancel the relevant Digital Bonds and allocate new Digital Bonds to the person who/which has been
+              identified as the rightful owner of the Digital Bonds.
+
+              Atomic Settlement
+
+              In order to ensure an Atomic Settlement between the Digital Bonds allocation to the Investor and
+              their connection with the bonds issued by LCL Opportunities Luxembourg S.C.S., LCL Opportunities 3
+              S.à r.l. will subscribe to the bonds and hold them in treasury until reconciliation is made with the
+              Digital Bonds. If needed for technical purpose, the Issuer may hold its own Digital Bonds in treasury
+              (which, for the avoidance of doubt would not accrue any interest or bear any voting right). Therefore,
+              investors will in this case not subscribe Digital Bonds at their issuance, but right after, in a secondary
+              trade. In this case, all rights under the Digital Bonds will start to accrue towards the Digital
+              Bondholders as of the acquisition date of the Digital Bonds.
+
+                                                                                                       24/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              For the avoidance of doubt, investors shall have rights over the Digital Bonds, only when they are
+              allocated to him/her/it, which may occur only after the payment of the subscription
+              amount/acquisition amount is received by the Issuer. If the funds are received after the issuance of
+              the Digital Bonds, the Digital Bondholder shall not have any rights over the Digital Bonds since their
+              issuance but only as of the date of their allocation to the investor. As a consequence, the only way to
+              have the right over accrued interest since the issuance date of the Digital Bonds is to ensure that
+              payment of the subscription amount is received before their issuance or on the issuance date. A
+              partial and incomplete payment does not give right to partial rights. Without prejudice to the other
+              provisions regarding late payment, in the case of the payment of the subscription price after the
+              issuance of the Digital Bonds (and provided they are actually allocated to the investor), the investor
+              shall have only a pro rata temporis right over the accrued interest for the relevant interest period.
+
+              9.3.7. Consensus mechanism on Ethereum
+
+              Ethereum transitioned from a Proof-of-Work (PoW) to a Proof-of-Stake ("PoS") consensus mechanism
+              in September 2022, a significant upgrade known as "The Merge." This shift aimed to enhance the
+              network's security, scalability, and energy efficiency.
+
+               Validator participation
+
+              Staking Requirements: To become a validator, an individual must stake a minimum of 32 ETH. This
+              stake acts as collateral, incentivizing proper behavior within the network.
+
+               Block proposal and finalization
+
+              Epochs and Slots: Time in Ethereum's PoS is divided into epochs and slots. Each epoch consists of 32
+              slots, with each slot lasting 12 seconds. During each slot, a validator is selected to propose a block.
+
+              Attestations: After a block is proposed, other validators attest to its validity. Once a block receives
+              sufficient attestations, it is added to the blockchain.
+
+               Incentives and penalties
+
+              Rewards: Validators earn rewards for proposing blocks and for attesting to the validity of blocks
+              proposed by others.
+
+               Penalties
+
+              Validators can be penalized for malicious actions or inactivity. Severe infractions can lead to
+              "slashing," where a portion of the validator's staked ETH is forfeited, and the validator is removed
+              from the network.
+
+               Energy efficiency
+
+                                                                                                       25/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              The transition to PoS has significantly reduced Ethereum's energy consumption, making it more
+              environmentally friendly compared to the previous PoW mechanism. ethereum.org
+
+              This PoS mechanism enhances Ethereum's security and scalability while reducing its environmental
+              footprint.
+
+              9.3.8. Freeze
+
+              The smart contracts make it possible for the Issuer to "freeze" the Digital Bonds associated with the
+              debt instruments issued by the Issuer, i.e. to prevent execution of transactions on the blockchain until
+              the Issuer puts an end to the freeze. This function may be used to block transactions in case of a
+              "hard fork" of the blockchain, pending a decision of the Issuer as to which version of the blockchain it
+              will support.
+
+              9.3.9. No preferential subscription right
+
+              In the case of further issuers of Digital Bonds, the existing Digital Bondholders have no preferential
+              subscription right.
+
+              9.3.10. Loss or theft of Digital Bonds
+
+              The Issuer's regulations specify the procedure to be followed if a Digital Bondholder loses access to
+              its Digital Bonds, e.g. because the corresponding private key has been lost or stolen. The procedure to
+              be followed in such cases varies depending on whether the relevant Digital Bonds were recorded in
+              the Issuer's debt instruments register under the name of the relevant Digital Bondholder or whether
+              the relevant Digital Bonds had not been so registered.
+
+              9.3.10.1. Registered Digital Bondholder
+
+              If the Digital Bondholder who claims to have lost access to Digital Bonds (the "Applicant") was
+              recorded in the Issuer's debt instruments register as the holder of such Digital Bonds, then, after
+              having identified itself in a manner satisfactory to the Issuer, the Applicant must notify the Issuer that
+              it has lost access to certain Digital Bonds (the "Lost Access Digital Bonds") and specify the blockchain
+              address to which the applicant has lost access. The Issuer will, on three separate occasions, publish a
+              notice on its website and in such other media as the Issuer may find appropriate, stating that it will
+              cancel and reissue the Lost Access Digital Bonds to a blockchain address designated by the Applicant
+              unless, within 30 days following the date of the first publication, a third party claims to own and
+              provides prima facie evidence that such third party is the rightful owner of the Lost Access Digital
+              Bonds.
+
+              The Issuer will also send a letter to the postal address of the Applicant (as evidenced by the debt
+              instrument register), with a copy of the email sent by the applicant to the Issuer and of the notice
+              published on the Issuer's website. It will ask the applicant to provide a blockchain address to which
+
+                                                                                                       26/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              the reissued Digital Bonds must be allocated, and to confirm that such blockchain address is
+              controlled by the Applicant exclusively.
+
+              Unless the Issuer has received a notice from a third party that includes prima facie evidence that such
+              third party owns the Lost Access Digital Bonds, the Issuer will cancel and reissue the Lost Access
+              Digital Bonds to the blockchain address designated by the Applicant. If, before reissuing the Lost
+              Access Digital Bonds, the Issuer receives a notice from a third party that includes prima facie
+              evidence that such third party owns the Lost Access Digital Bonds, it will inform the Applicant of the
+              fact and invite the Applicant to bring the matter to the competent courts. Upon receipt of a final
+              decision from a Luxembourg court acknowledging the ownership of the Lost Access Digital Bonds, the
+              Issuer will cancel and reissue the Lost Access Digital Bonds to the blockchain address that will have
+              been designated by the person identified as the rightful owner of the lost access Digital Bonds.
+
+              9.3.10.2. Unregistered Digital Bondholder
+
+              If, for any reason, the Applicant was not recorded as the owner of the Lost Access Digital Bonds in the
+              Issuer's debt instruments register, the Applicant will be invited to demonstrate in a manner
+              satisfactory to the Issuer that the Applicant is the rightful owner of the Lost Access Digital Bonds s. If
+              the Applicant has provided such evidence to the Issuer, the Issuer will follow the procedure outlined
+              above regarding loss or theft of Digital Bonds held by registered Digital Bondholders.
+
+              9.3.10.3. Investor's responsibility
+
+              Investors are responsible for implementing reasonable measures for securing the wallet, vault, or
+              other storage mechanism used to receive and hold Digital Bonds, including any requisite private
+              key(s) or other credentials necessary to access such storage mechanism(s). The loss of private key(s)
+              or other credentials may result in Investors losing access to their Digital Bonds. Investors
+              acknowledge that their holding in Digital Bonds may be deduced from records on the Ethereum
+              blockchain.
+
+              9.3.10.4. Environmental considerations
+
+              The Digital Bonds are issued and transferred using the Ethereum blockchain, which, since its
+              transition to Proof of Stake ("PoS") in September 2022 (known as "The Merge"), has significantly
+              improved its environmental profile. Unlike Proof of Work ("PoW") systems, which require intensive
+              computational effort and energy consumption to validate blocks, Ethereum's PoS mechanism relies
+              on economic incentives and validator staking, resulting in a >99.95% reduction in energy
+              consumption compared to its previous consensus model.
+
+              According to independent estimates published by the Ethereum Foundation and research groups, the
+              Ethereum network now consumes approximately 0.0026 TWh/year, which is comparable to the
+              energy footprint of a small town and dramatically lower than legacy financial systems or earlier
+              blockchain platforms.
+
+                                                                                                       27/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              In addition to the core Ethereum mainnet, Layer 2 (L2) networks compatible with Ethereum such as
+              Polygon, Arbitrum, and Base, further optimize energy usage by aggregating transactions off-chain and
+              submitting them to Ethereum in compressed batches. These L2s offer enhanced scalability with
+              minimal incremental energy use. Defactor's infrastructure is 'blockchain-agnostic' and can operate
+              across multiple chains.
+
+              No additional environmental risks identified, aside from computational energy use (which is now
+              minimal), the Issuer has not identified any further environmental externalities or sustainability
+              concerns directly associated with the use of Ethereum or the tokenization process for this
+              Programme. The on-chain issuance, distribution, and lifecycle management of the Digital Bonds occur
+              digitally and do not require any paper documentation, transport, or physical handling. The process
+              contributes to an overall reduction in administrative carbon footprint compared to traditional
+              securities infrastructure.
+
+              The Issuer continues to monitor developments in blockchain sustainability and remains open to
+              migrating to alternative DLT networks or adopting hybrid models in the future if material
+              environmental advantages are identified.
+
+              9.3.11. Contingency Procedures in Case of Distributed Ledger Technology Failure
+
+              Ethereum is the most widely used and battle tested blockchain, currently secured by over 900,000
+              validators globally under a decentralized Proof of Stake mechanism. It supports the world's largest
+              tokenized asset ecosystems.
+
+              In the event of a material disruption, malfunction, or failure of the Ethereum blockchain, the Issuer
+              has implemented operational contingency procedures to protect Digital Bondholders and ensure the
+              traceability and enforceability of their rights. The Issuer maintains, through coordination with the
+              technology provider Defactor, the following safeguards:
+
+              9.3.11.1. On-chain Snapshots and Off-chain Mapping
+
+              Regular on-chain snapshots are taken to capture the current token balances across all whitelisted
+              wallet addresses. The Issuer shall maintain a parallel electronic secure register based on all past
+              transactions which shall match the data on the blockchain. This allows the Issuer to reconstruct the
+              Digital Bondholder register in the event of failure.
+
+              9.3.11.2. Digital Bondholder Register
+
+              All Digital Bonds are issued and transferred only to pre-approved wallet addresses associated with
+              verified investors. This record is maintained off-chain in a secure register, enabling the Issuer to
+              identify Digital Bondholders even if on-chain data becomes temporarily or permanently inaccessible.
+
+                                                                                                       28/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              In the event of any claim by any person asserting rights in respect of the Digital Bonds and where the
+              data recorded on the blockchain differs from the off-chain register, the off-chain register shall prevail
+              unless and until evidence to the contrary has been provided to the satisfaction of the Issuer.
+
+              9.3.11.3. Fallback and Recovery Process
+
+              In a critical failure scenario, the Issuer may, subject to regulatory and legal requirements, (i) issue
+              replacement Digital Bonds on a functioning blockchain or (ii) provide equivalent financial instruments
+              in off-chain form (e.g., certificated notes), based on the latest verified snapshot.
+
+              The Issuer is not responsible for any IT failure with regard to the payment gateway provider's
+              platform and does not provide any guarantee, indemnity or any insurance in the case of a technical
+              failure leading in the loss of access to the wallets or the Digital Bonds. In such a case, the Investor
+              shall have recourse only against the payment gateway provider and not the Issuer. The Investor is
+              solely responsible for proceeding with the necessary due diligence about the capacity of the payment
+              gateway provider to actually provide the offered services and its ability to recover pursuant to any
+              disaster or loss of service.
+
+              9.3.11.4. Role of Defactor
+
+              Defactor, as the smart contract implementation partner, supports technical infrastructure but does
+              not maintain off-chain records or investor identity data. The responsibility for maintaining
+              compliance, snapshots, and recovery mechanisms rests with the Issuer.
+
+              The Issuer is responsible for maintaining these contingency procedures and ensuring they meet
+              regulatory standards. Defactor acts as the technology provider, supporting the implementation and
+              automation of smart contracts and snapshots, but does not retain or control Digital Bondholder
+              identity data.
+
+              In the event of a failure, the Issuer remains liable for enforcing Digital Bondholder rights and ensuring
+              that affected investors are either reinstated through reissued Digital Bonds or compensated per the
+              terms of the security instruments.
+
+              9.4. Further issues
+
+              The Issuer may from time to time without notice to or the consent of the Digital Bondholders create
+              and issue further Digital Bonds having the same rights, restrictions, terms and conditions as the
+              Digital Bonds in all respects (or in all respects save for the Issue Date, the first payment of interest
+              thereon and/or the Issue Price) so that the same shall be consolidated and form a single Series with
+              the already issued Digital Bonds.
+
+              9.5. Digital Bonds Maturity, denomination and ranking
+
+                                                                                                       29/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              The Digital Bonds may have any Maturity between one month and 99 years, subject to compliance
+              with all applicable legal and/or regulatory restrictions and any denomination (in euros or equivalent
+              in any other FIAT currency) as may be decided by the Issuer (as indicated in the relevant Final Terms).
+
+              The Digital Bonds rank equally among themselves and (subject to the provisions of any security
+              documents) pari passu in right of payment with all other present and future unsecured and
+              unsubordinated obligations of the Issuer (except for obligations mandatorily preferred by law).
+
+              9.6. Interest / interest payment dates / Amortization
+
+              The Digital Bonds may be interest bearing (fixed or floating rate), non-interest bearing or profit
+              participating instruments. The length of the interest periods for interest bearing Digital Bonds and the
+              applicable interest rate or its method of calculation may differ from time to time or be constant for any
+              Series. All such information shall be specified in the relevant Final Terms as implemented by smart
+              contracts. Whenever amortization of a Series of Digital Bonds has been foreseen in the relevant Final
+              Terms, such amortization shall applies to all Digital Bonds of the Series.
+
+              Amortization is the repayment of the nominal/principal amount/Calculation Amount of a Digital Bonds
+              during the lifetime of such Digital Bonds through regular payments as foreseen in the Final Terms. The
+              applicable interest rate (fixed or floating) will be applied against the amount of principal amount
+              outstanding on the relevant Determination Date taking into account all repayments of
+              nominal/principal amount/Calculation Amount made through amortization.
+
+              Interest accrual shall begin on the date specified within the relevant Final Terms (the "Date of Accrual").
+
+              Payment of interests under a Series or a Tranche of Digital Bonds will be made on the date as
+              indicated in the relevant Final Terms (each, an "Interest Payment Date").
+
+              In case the said payment date would not fall on a Business Day, then the payment shall be due on the
+              following Business Day, unless such day falls into the next calendar month, in which case the payment
+              shall be due on the first preceding Business Day.
+
+              If any date for payment is not a Business Day, the Digital Bondholder shall not be entitled to any
+              interest or other sum in respect of such postponed payment.
+
+              9.7. Payments of principal amount and interest
+
+              The Digital Bonds will be settled through the facilities of the electronic platform.
+
+              Any payments under the Digital Bonds made by the Issuer, or on its behalf, to the Digital Bondholders
+              is subject to the Payment Waterfall, as further described in Section 9.8 (Ranking of Digital Bonds ­
+              Subordination) of the Information Memorandum.
+
+                                                                                                       30/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              Payments of principal amount and interests, if any, on the Digital Bonds shall be made by the Issuer,
+              on each Payment Date, for further payment on the wallet of each Digital Bondholder held on the
+              electronic platform held by a crypto payment gateway provider (a cryptocurrency payment gateway is
+              a payment processor for virtual currencies, similar to the payment processor gateways and acquiring
+              banks in credit card payment networks. Cryptocurrency gateways enable you to accept digital
+              payments and receive fiat currency immediately in exchange). A record of each payment made,
+              distinguishing between payments of principal and payments of interest, shall be recorded in the
+              electronic records held by the Issuer and such registration in the record held by the Issuer together
+              with the evidence of the wire shall be evidence that the payment has been made.
+
+              Furthermore, all payments are subject in all cases to:
+
+              - any applicable fiscal or other laws, regulations and directives; and
+              - the condition that if a payment is made to a Digital Bondholder in breach of the Information
+
+                      Memorandum, as supplemented by the relevant Final Terms (as implemented by smart
+                      contracts), such Digital Bondholder shall repay the amount so received to the Issuer`s account.
+                      The Issuer shall then pay out the moneys so received in the way they were payable in
+                      accordance with the Information Memorandum, as supplemented by the relevant Final Terms
+                      (as implemented by smart contracts). If such repayment is not enforceable, the Issuer is
+                      authorised and obliged to make payments in such a way that any over-payments or under-
+                      payments made in breach of the Information Memorandum, as supplemented by the relevant
+                      Final Terms (as implemented by smart contracts), are set-off by correspondingly decreased or
+                      increased payments.
+
+              In addition, the Digital Bondholders agree that any payment under the Digital Bonds may be affected
+              by a Force Majeure Event. Other than as provided herein or in the relevant Final Terms (as
+              implemented by smart contracts), no commission or expenses shall be charged to the Digital
+              Bondholders in respect of such payments.
+
+              Any claim brought by Digital Bondholders against the Issuer in relation to the Digital Bonds shall be
+              exclusively limited to the Issuer's assets or pledged assets in favour of the Digital Bondholders.
+
+              9.8. Ranking of Digital Bonds - subordination
+
+              The Digital Bonds will be the Issuer's general obligations. The Digital Bonds rank equally among
+              themselves and (subject to the provisions of any security documents) pari passu in right of payment
+              with all other present and future unsecured and unsubordinated obligations of the Issuer (except for
+              obligations mandatorily preferred by law).
+
+              The Issuer may issue other securities subject to priority right of payment in the case of a default by
+              the Issuer, by virtue of security interests granted on one or several assets of the Issuer or claims held
+              by the Issuer.
+
+                                                                                                       31/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              Individual security interest
+
+              As security for its obligations under the Digital Bonds (the "Secured Obligations"), The Issuer hereby
+              grants to each Digital Bondholder a first ranking pledge (gage de premier rang) over the a portion of
+              the claims the Issuer holds in the Traditional Bonds which subscription was financed by the proceeds
+              of the Digital bonds held by each Digital Bondholder, equal to the prorata of the Digital Bonds held by
+              the relevant Digital Bondholder in the relevant Series, under and subject to the provisions of the law
+              of 5 August 2005 relating to financial collateral arrangements, as amended (the "Pledge"). Such
+              Pledge becomes effective each time Digital Bonds are subscribed by a Digital Bondholder.
+
+              As an example, if one million (1,000,000) Digital Bonds of a Series denominated "ABC123" are issued
+              and that one Digital Bondholder holds ten percent (10%) of that Series ABC123, such Digital
+              Bondholder shall have a pledge over the claims held by the Issuer against LCL Opportunities
+              Luxembourg S.C.S., in the Series of Traditional Bonds financed by such Series of Digital Bonds, up to
+              ten percent (10%) of the proceeds coming from that Series of Digital Bonds (the "Proceeds Share").
+
+              Whenever the proceeds of the Digital Bonds are used to subscribe to Traditional Bonds, the Issuer
+              will notify LCL Opportunities Luxembourg S.C.S. that the claims existing under the Traditional Bonds
+              are pledged in favour of the Digital Bondholders holding Digital Bonds in the relevant back-to-back
+              Series.
+
+              Until the occurrence of an Event of Default which has not been remedied, the Issuer shall be entitled
+              to collect all monies or proceeds in principal and interest which are owed under the claims object of
+              the Pledge.
+
+              In the case of an Event of Default which has not been remedied, each Digital Bondholder shall notify
+              LCL Opportunities Luxembourg S.C.S. of the number of Digital Bonds held and that they request direct
+              payment out of the proceeds of the Traditional Bonds in the relevant Series, up to their Proceeds
+              Share, on the bank account each Digital Bondholder will indicate.
+
+              If a Digital Bondholder does not notify his/her/its request of direct payment, the funds coming from
+              the proceeds of the relevant Traditional Bonds Series shall be held by LCL Opportunities Luxembourg
+              S.C.S. on behalf of the relevant Digital Bondholder and each relevant Digital Bondholder shall in the
+              relevant case have a right of retention in respect of these funds.
+
+              For any unpaid remaining claim of the Digital Bondholder against the Issuer in excess of the Proceeds
+              Share, such remaining claim shall rank pari passu in right of payment with all other present and
+              future unsecured and unsubordinated obligations of the Issuer (except for obligations mandatorily
+              preferred by law).
+
+              Neither the obligations of the Issuer nor the rights, powers and remedies conferred upon each Digital
+              Bondholder by this Pledge provisions or by law, nor the Pledge created hereby shall be discharged,
+              impaired or otherwise affected by:
+
+                                                                                                       32/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              (i) any amendment to, or any variation, waiver or release of, any Secured Obligations; or
+              (ii) any failure to take, or to fully take, any security contemplated by any other agreement or
+
+                      otherwise agreed to be taken in respect of any Secured Obligations; or
+              (iii) any failure to realise or to fully realise the value of, or any release, discharge, exchange or
+
+                      substitution of, any security taken in respect of any Secured Obligations; or
+              (iv) any other act, event or omission which might operate to discharge, impair or otherwise affect
+              (v) any of the obligations of the Issuer contained in this Clause, the rights, powers and remedies
+
+                      conferred upon each Digital Bondholder by this the Pledge or by law.
+
+              For the avoidance of doubt, the Issuer hereby waives any rights arising now or in the future (if any)
+              under article 2037 of the Luxembourg civil code as well as any benefit of discussion (bénéfice de
+              discussion) as set forth by article 2021 of the Luxembourg civil code or benefit of division (benefice de
+              division) as set forth by article 2026 of the Luxembourg civil code.
+
+              The Issuer hereby irrevocably waives any right of recourse, right, action and claim (including, for the
+              avoidance of doubt, by way of set-off or by way of protective measures such as a saisie-arrêt) that it
+              may have, whether by way of subrogation or directly or of any other nature, further to an
+              enforcement of the Pledge by any means whatsoever (including, in particular, the right of recourse
+              the Issuer may have against such entity under the terms of article 2028 et seq. of the Luxembourg
+              civil code).
+
+              For the purpose of articles 1278 et seq. of the Luxembourg civil code and any other relevant legal
+              provisions, to the extent required under applicable law and without prejudice to any other terms
+              hereof or of any other bonds and in particular Clause 15.2. hereof, each Digital Bondholder is
+              irrevocably deemed to have reserved and the Issuer agrees to the preservation of this Pledge and the
+              security interest created thereunder in case of transformation, assignment, novation, amendment or
+              any other transfer of the Secured Obligations.
+
+              The Pledge shall remain in effect for the benefit of any transferee of the Digital Bonds transferred in
+              any way and for any reason. However, such transfer shall be opposable to the Issuer and LCL
+              Opportunities Luxembourg S.C.S. only if such transfer was duly notified to the Issuer in accordance
+              with the provisions of Clause 9.3.6. of the Information Memorandum.
+
+              Any dispute arising in connection with the Pledge shall be exclusively submitted to the competent
+              courts of Luxembourg.
+
+              9.9. No other advantages
+
+              Unless specified otherwise in the relevant Final Terms (as implemented by smart contracts), no other
+              advantages are attached to this issue of Digital Bonds. Digital Bondholders are entitled to receive
+              coupon/interests and principal amount at Maturity (save in the case of amortization or in the case of
+              early repayment), according and subject to the conditions of the present Information Memorandum
+              and of the applicable Final Terms (as implemented by smart contracts).
+
+                                                                                                       33/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+9.10. Event of Default
+
+The Digital Bonds shall become immediately due and repayable at their Final Redemption Amount in
+any of the following events (each an "Event of Default"):
+
+9.10.1.  default is made for a period of 10 (ten) Business Days (or such shorter period as specified in
+         the applicable Final Terms, as implemented by smart contracts) or more in the payment of
+         any sum due in respect of the Digital Bonds, unless such payment default is due to a Force
+         Majeure Event or a Disruption Event:
+
+         a) supervised management ("gestion contrôlée"), judicial liquidation ("liquidation
+                judiciaire"), bankruptcy ("faillite") of the Issuer, or it becomes insolvent or a receiver
+                or liquidator is appointed for all or any material part of its business or assets of the
+                Issuer, or any act is done or event occurs under any foreign laws has an effect
+                substantially similar to any foregoing acts or events;
+
+         b) the Issuer fails to comply with any of the terms of the Information Memorandum or
+                of applicable Final Terms (as implemented by smart contracts) or of any security
+                agreement granted to the benefit of the Digital Bondholders;
+
+         c) it is or will become unlawful for the Issuer to perform or comply with any one or
+                more of its obligations under the Information Memorandum and/or the Final Terms
+                (as implemented by smart contracts);
+
+         d) if any order shall be made by any competent court or any resolution passed for the
+                winding up or dissolution of the Issuer as an entire legal entity save for the purposes
+                of amalgamation, merger, consolidation, reorganisation or other similar arrangement;
+                or
+
+         e) as may be further specified in the applicable Final Terms (as implemented by smart
+                contracts).
+
+9.11. Redemption, purchase and options
+
+9.11.1. Redemption at Maturity
+
+Payment of the Redemption Amount in cash in FIAT currency
+
+Unless previously redeemed, exchanged or purchased and cancelled as provided below, each Digital
+Bonds will be redeemed at its Final Redemption Amount on the Maturity Date specified in the
+applicable Final Terms (as implemented by smart contracts). Redemption at Maturity will be made via
+payment in cash in FIAT currencies.
+
+Payment of the Redemption Amount by exchange of securities
+
+                                                            34/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              Upon request of a Digital Bondholder, the Issuer's obligation to pay the Final Redemption Amount on
+              the Maturity Date may be satisfied by the Issuer delivering an equivalent proportion of new Digital
+              bonds issued by the Issuer through an exchange of securities (repayment by reinvestment). In this
+              respect and subject to the availability and existence of such other Digital Bonds. Digital Bondholders'
+              requests must be received within 1 (one) month preceding the Maturity Date (and shall contain a copy
+              of the subscription agreement in connection with the new Digital Bonds duly filled in by the Digital
+              Bondholder, if any).
+
+              Upon receipt of the Digital Bondholder's request the Issuer shall apply the redemption amounts to the
+              subscriptions for the new digital bonds for the account of the relevant Digital Bondholders. Delivery
+              shall be made in accordance with the rules and procedures established by the Issuer.
+
+              9.11.2. Amortization
+
+              Amortization is the repayment of the nominal/principal amount/Calculation Amount of a Digital Bonds
+              during the lifetime of such Digital Bonds through regular payments as foreseen in the Final Terms.
+
+              Whenever amortization of a Series of Digital Bonds has been foreseen in the relevant Final Terms, such
+              amortization shall applies to all Digital Bonds of the Series.
+
+              9.11.3. Early Redemption for taxation Reason
+
+              If, in relation to any Series of Digital Bonds, as a result of any amendment to or change in or in the
+              official interpretation or administration of the laws, regulations or rulings of their jurisdiction of
+              incorporation or, in any case, of any political subdivision thereof or any authority therein or thereof
+              having power to tax which becomes effective on or after the date of issue of the first Tranche of Digital
+              Bonds or such other date as may be specified in the relevant Final Terms (as implemented by smart
+              contracts), the Issuer would be required, for reasons outside its control, and after making such
+              endeavours as may be reasonable to avoid such requirement, to make any withholding or deduction,
+              the Issuer may at its option, at any time, on giving not more than 60 (sixty) nor less than 30 (thirty)
+              Business Days' notice to the Digital Bondholders (which notice shall be irrevocable), redeem on the
+              next Interest Payment Date (the "Early Redemption Date") all, but not some only, of the outstanding
+              Digital Bonds comprising the relevant Series at their Early Redemption Amount, which shall be (subject
+              to any applicable provision specified in the applicable Final Terms) their principal amount or, in the
+              case of any original issue discount Digital Bonds, the issue price of such Digital Bonds on their original
+              issuance plus accrued original issue discount to but, excluding the date fixed for redemption or such
+              other redemption amount as may be specified in or determined in accordance with the relevant Final
+              Terms (as implemented by smart contracts), together with accrued interest (if any) thereon to but
+              excluding the date fixed for redemption (the "Early Redemption Amount").
+
+              9.11.4. Early Redemption at the option of the Issuer ("Call Option")
+
+                                                                                                       35/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              If the Call Option is specified as applicable in the relevant Final Terms (as implemented by smart
+              contracts), the Issuer may, upon giving not less than 7 (seven) calendar days' notice (or such other
+              notice period as may be specified in the applicable Final Terms as implemented by smart contracts) to
+              the Digital Bondholders of the relevant Series (which notice shall be irrevocable), redeem 7 (seven)
+              calendar days later upon the expiry of such notice (the "Call Option Redemption Date") all or some
+              only of the Digital Bonds then outstanding on the Call Option Redemption Date indicated in the
+              applicable Final Terms (as implemented by smart contracts) and at the Optional Redemption Amount,
+              which shall be (subject to any applicable provision specified in the applicable Final Terms, as
+              implemented by smart contracts) their principal amount or, in the case of any original issue discount
+              Digital Bonds, the issue price of such Digital Bonds on their original issuance plus accrued original
+              issue discount to but excluding the date fixed for redemption together, if appropriate, with interest
+              accrued to but excluding such Call Option Redemption Date (the "Call Option Redemption Amount").
+
+              9.11.5. Early Redemption at the Option of a Digital Bondholder ("Put Option")
+
+              If the Put Option is specified as applicable in the relevant Final Terms (as implemented in smart
+              contracts), a Digital Bondholder may have the right to require the Issuer to redeem the Digital Bonds
+              subscribed by him/her/it in a relevant Series on the Put Option Date at its principal amount, together
+              with accrued and unpaid interest (if any) to such date (but, excluding the date fixed for redemption)
+              and less a pro-rata amount of all fees, costs and expenses incurred and recharged by the Issuer in
+              connection with such redemption (the "Put Option Redemption Amount"). To exercise such right, the
+              Digital Bondholder shall give by the end of a calendar quarter a notice (or such other notice period as
+              may be specified in the applicable Final Terms) to the Issuer (the "Put Option Notice") for the Put
+              Option to be effective on the last calendar day of the following calendar quarter (the "Put Option
+              Redemption Date"). The Put Option may be exercised only if the Put Option Amount to be redeemed
+              are corresponding to the entire outstanding principal amount of the Digital Bonds or at least to 25% of
+              the Digital Bonds held by the Digital Bondholder in the relevant Series.
+
+              Payment in respect of any such Digital Bond shall be made by transfer to an Euro (EUR) (or any other
+              currency as indicated in the Final Terms (as implemented by smart contracts) or as agreed between
+              the Issuer and the relevant Digital Bondholder) bank account as specified by the relevant Digital
+              Bondholder in the Put Option Notice.
+
+              In the case that the assets available to the Issuer are not sufficient to redeem the Digital Bonds at their
+              Put Option Amount in accordance with this section (the "Adverse Event"), the Issuer shall deliver an
+              information notice to the Digital Bondholder not less than 20 (twenty) Business Days before the
+              payment date of the Put Option Amount including information (the "Information Notice") on (i) the
+              Adverse Event, (ii) the revised Put Option Amount that the Issuer would proceed with following the
+              Adverse Event on the original payment date and (iii) the revised payment date for a redemption of the
+              Digital Bonds at the full Put Option Amount. In such a circumstance, the relevant Digital Bondholder
+              will have 5 (five) Business Days following the receipt of the Information Notice to confirm his intention
+              to proceed or not with the Put Option and the related revised Put Option Amount.
+
+                                                                                                       36/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              9.11.6. Early Redemption in the case of a Force Majeure Event
+
+              Each Digital Bonds may be redeemed by the Issuer following the occurrence of a Force Majeure Event,
+              which is continuing, subject to the conditions set out below (the "FME Option").
+
+              If the FME Option is specified in the applicable Final Terms (as implemented by smart contract), the
+              Issuer may, upon giving not less than 7 (seven) calendar days' notice (or such other notice period as
+              may be specified in the applicable Final Terms) to the Digital Bondholders of the relevant Series (which
+              notice shall be irrevocable), redeem 7 (seven) calendar days later upon the expiry of such notice (the
+              "FME Redemption Date") all or some only of the Digital Bonds then outstanding on the FME
+              Redemption Date indicated in the applicable Final Terms (as implemented by smart contracts) and at
+              the FME Redemption Amount, which shall be (subject to any applicable provision specified in the
+              applicable Final Terms as implemented by smart contracts) their principal amount or, in the case of any
+              original issue discount Digital Bonds, the issue price of such Digital Bonds on their original issuance
+              plus accrued original issue discount to but excluding the date fixed for redemption together, if
+              appropriate, with interest accrued to but excluding such FME Redemption Date (the "FME
+              Redemption Amount").
+
+              9.11.7. Purchase
+
+              Subject to any applicable legal or regulatory restrictions, the Issuer may at any time purchase Digital
+              Bonds in the open market or by private treaty at any price. If purchases are made by tender, tenders
+              must be available to all Digital Bondholders of the relevant Series alike.
+
+              9.11.8. Cancellation
+
+              All Digital Bonds purchased by or on behalf of the Issuer, exchanged or redeemed must be
+              surrendered for cancellation. Any Digital Bonds so surrendered for cancellation may not be reissued or
+              resold and the obligations of the Issuer in respect of any such Digital Bonds shall be discharged.
+
+              9.12. Market and liquidity risk for the Digital Bonds
+
+              There is no guarantee that a liquid secondary market will develop for the Digital Bonds. In the
+              absence of market activities (i.e. bids and offers), it is unlikely that a liquid secondary market will
+              develop. Even if such a market is established, there is no guarantee that it will provide sufficient
+              liquidity to sell each Digital Bond. Accordingly ­ and provided the Issuer has no duty to early
+              redemption ­ Digital Bondholders should be prepared to hold their investment in the Digital Bonds
+              until the Maturity Date.
+
+              The value of the Digital Bonds might be subject to fluctuation, which may be substantial and could
+              result in significant losses for Digital Bondholders.
+
+              9.13. Taxation
+
+                                                                                                       37/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              All payments of principal and interest by the Issuer will be made without withholding or deduction
+              for, or on account of, any present or future taxes, duties, assessments or governmental charges of
+              whatever nature imposed, levied, collected, withheld or assessed by or on behalf of the Issuer's
+              jurisdiction of incorporation or any political subdivision thereof or any authority therein or thereof
+              having power to tax (collectively, "Taxes"), unless the withholding or deduction of the Taxes is
+              required by law. Where withholding or deduction is required by law, the Issuer shall not be required
+              to make any additional payment and may redeem the Digital Bonds in accordance with Section 9.11.3
+              (Early Redemption for Taxation Reason).
+
+              9.14. Prescription
+
+              Claims against the Issuer for payment in respect of the Digital Bonds shall be prescribed and become
+              void unless made within 10 (ten) years (in the case of principal) or 5 (five) years (in the case of
+              interest) from the appropriate relevant date in respect thereof.
+
+              9.15. Notices
+
+              Notices to the Digital Bondholders will be validly given if transmitted individually at the postal address
+              or electronic mail address as set out in the register of Digital Bondholders or by any electronic
+              message as agreed by the Digital Bondholder.
+
+              In addition, as long as the Digital Bonds are outstanding, all notices to the Digital Bondholders
+              regarding the Digital Bonds will be published on the website of the Issuer and shall constitute good
+              notification to them.
+
+              Notices to be given to the Issuer by any Digital Bondholder shall be in writing or through electronic
+              means.
+
+              the Issuer and its agents are not liable for any damages which may be directly or indirectly caused by
+              the lack of authenticity of validity of the authorizations which refer to a Digital Bondholder or third
+              parties with the legal capacity to act on his behalf, provided those who appear to give such
+              instructions are on an authorized signature list established by the Digital Bondholder. Once the
+              signature complies at first glance with the specimens held at the Issuer's office, the Issuer or its
+              agents shall not be held responsible for any damages caused by the fact that the signature(s) on the
+              instructions given to the Issuer or its agents are fraudulent. The Issuer or its agents may trust the
+              signature(s) without having to proceed with a more detailed investigation and decline all
+              responsibility for damages that could result from the absence of any legitimization or any undetected
+              forgery. In the case of doubt, the Issuer may (but does not have the obligation to) delay any
+              transaction until it has received satisfactory confirmation.
+
+              The Issuer or its agents reserve the right to refuse to process an instruction from any person whose
+              identity and permissions have not been sufficiently established through electronic emails or
+              electronic communications on the crypto assets platform used (if any).
+
+                                                                                                       38/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              The Issuer or its agents, shall not be responsible for damages caused in the event of the Digital
+              Bondholder's legal incapacity or the legal incapacity of a third party authorized to act on a Digital
+              Bondholder's behalf, provided that the Issuer or its agents, have not received prior notice of the fact.
+              The Digital Bondholder shall compensate and reimburse the Issuer or its agents for all complaints,
+              legal action, fees expenses, damages losses or other sums paid, or responsibilities incurred by the
+              Issuer or its agents resulting from the execution by the Issuer or its agents of such an instruction on
+              the Digital Bondholder's part.
+
+              9.16. Underwriting and placement of the Digital Bonds
+
+              The Digital Bonds are not covered or guaranteed by underwriters guaranteeing the subscription or
+              placement of the Digital Bonds for the Issuer.
+
+              9.17. Meeting of the Digital Bondholders
+
+              In accordance with article 100-14 of the Companies law, Articles 470-1 to 470-19 of the same law are
+              not applicable to the Digital Bonds and the Digital Bondholders unless otherwise expressly stated
+              herein.
+
+              As the terms and conditions of the Digital Bonds as stated in this Information Memorandum and in
+              the applicable Final Terms (as implemented by smart contracts) cannot be amended, no resolutions
+              should be adopted by the Digital Bondholders. In the unforeseeable circumstances where such
+              resolutions would become needed, the vote of Digital Bondholders will be gathered, when possible,
+              by electronic messages sent at least three (3) weeks prior to the date where such resolutions must be
+              adopted on the electronic mail address indicated by the Digital Bondholder to the Issuer, and in any
+              case through a notice published on the website of the Issuer at least three (3) weeks prior to the date
+              where such resolutions must be adopted.
+
+              Only Digital Bondholders holding Digital Bonds prior to the fourteenth days prior to the date of the
+              meeting of Digital Bondholders are entitled to participate in the voting process. The identity of Digital
+              Bondholders admitted to vote shall be established through the data recorded in the distributed
+              ledger of Digital Bonds. Any transfer of Digital Bonds after this date shall not invalidate the vote
+              expressed by the prior Digital Bondholder.
+
+              All electronic communications will be supplemented by publications made on the Issuer's website
+              containing the wording of the resolutions to be adopted and the recommendations of the Issuer.
+
+              The voting rights attached to the Digital Bonds are equal to the proportion of the principal amount of
+              the Digital Bonds represented by the principal amount of the Digital Bonds held by the relevant
+              Digital Bondholders. Each Digital Bond gives the right to at least one vote. Each Digital Bondholder
+              may vote physically at the meeting, through proxies or by correspondence only. Proxies containing
+              voting instructions or votes by correspondence shall be received by the Issuer at least two Business
+              Days prior to the meeting to be taken into account, the Issuer being entitled to accept proxies or
+
+                                                                                                       39/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              votes by correspondence later if it so wishes. No meeting of Digital Bondholders through conference-
+              call will be held.
+
+              Such vote might be needed should the rights of the Digital Bondholders generally or of a particular
+              Series be amended for legal or practical reasons. In such cases, only the Digital Bondholders whose
+              rights are impacted will be contacted. Decisions will be approved in accordance with the provisions of
+              article 470-14 of the Companies Law.
+
+              9.18. Distribution, subscriptions and transfer restrictions
+
+              The collection and placement of subscriptions are made by and under the sole responsibility of the
+              Issuer. In case of over subscription, the Issuer may allocate those amounts at its discretion.
+
+              The distribution of this document and the offering of the Digital Bonds in certain jurisdictions may be
+              restricted by law. Persons into whose possession this document comes are required by the Issuer to
+              inform themselves about and to observe any such restrictions.
+
+              The Digital Bonds are freely transferable between Digital Bondholders, and are freely transferable to
+              third parties. Any person acquiring Digital Bonds is deemed to have accepted the terms of this
+              Information Memorandum (as supplemented from time to time) and of the relevant Final Terms.
+
+              However, the Issuer may not control sales made on the secondary market, and shall in any case not
+              be held liable for any resale not made in compliance with the provisions of this Information
+              Memorandum. Any person reselling bonds does so under his/her/its sole responsibility and should
+              ensure that such resale is compliant with applicable laws and regulations (including in connection
+              with offers to the public and thresholds as set out in the Prospectus Regulation and Luxembourg
+              Prospectus Law).
+
+              The following is a description of the contractual and other restrictions applicable to the issuance of
+              the Digital Bonds.
+
+              9.18.1. United States of America
+
+              The Issuer has not been and will not be registered under the Investment Company Act and the Digital
+              Bonds have not been and will not be registered under the Securities Act.
+
+              Consequently, the Digital Bonds may not be offered, sold, resold, delivered or transferred within the
+              United States of America or to, or for the account or benefit of, U.S. persons (as such term is defined
+              in Regulation S under the Securities Act) except in accordance with the Securities Act or an exemption
+              therefrom and under circumstances which will not require the Issuer to register under the Investment
+              Company Act.
+
+              9.18.2. European Economic Area
+
+                                                                                                       40/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              Specific information as to the potential restriction relating to the distribution, sale or transfer of the
+              Digital Bonds within States of the EEA may be included in the relevant Terms and Conditions.
+
+              9.18.3. Switzerland
+
+              The Digital Bonds may be offered in Switzerland by way of a private placement (i.e., to a limited
+              number of selected investors only), without any public advertisement and only to investors who do
+              not purchase the Digital Bonds with the intention to distribute them to the public, unless they are
+              themselves duly licensed to do so and distribute derivatives instruments based on the Digital Bonds,
+              thus bearing solely the responsibility of such distribution and all related obligations towards the
+              subscribers.
+
+              The investors might be individually approached directly from time to time.
+
+              9.18.4. United Kingdom
+
+              The Digital Bonds are not offered to the public in the United Kingdom.
+
+              9.18.5. General
+
+              These selling restrictions may be modified by the Issuer following a change in a relevant law,
+              regulation or directive. Any such modification will be set out in a supplement to this Information
+              Memorandum.
+
+              The Issuer will comply, to the best of its knowledge, in good faith and on reasonable grounds after
+              making all reasonable investigation, with all applicable securities laws, regulations and directives in
+              force in any jurisdiction in which it purchases, offers, sells or delivers Digital Bonds or possesses or
+              distributes the Information Memorandum or any other offering material and will obtain any consent,
+              approval or permission required by it for the purchase, offer, sale or delivery by it of Information
+              Memorandum under the laws and regulations in force in any jurisdiction to which it is subject or in
+              which it makes such purchases, offers, sales or deliveries and the Issuer shall have no responsibility
+              therefor. No action has been taken in any jurisdiction that would permit a public offering of any of the
+              Information Memorandum, or possession or distribution of the Information Memorandum in any
+              country or jurisdiction where action for that purpose is required.
+
+              9.19. Governing law and jurisdiction
+
+              The Digital Bonds are governed by, and shall be construed in accordance with the Luxembourg law.
+
+              The courts of Luxembourg-City are to have exclusive jurisdiction to settle any disputes which may
+              arise out of or in connection with the Digital Bonds and accordingly any legal action or proceedings
+              arising out of or in conjunction with the Digital Bonds may be brought in such courts ("Proceedings").
+              The Issuer irrevocably submits to the jurisdiction of such courts.
+
+                                                                                                       41/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+10.  INFORMATION OF THE DIGITAL BONDHOLDERS
+
+Quarterly information will be provided by the Issuer on the LynxCap group general business results
+and such quarterly reports will be publicly available on the Issuer's website:
+
+https://lynxcapinvestments.com
+
+By subscribing to the Digital Bonds, each Digital Bondholder agrees to receive any information from
+the Issuer in connection with the Digital Bonds by electronic mail or any other form of electronic
+communication.
+
+All Digital Bondholders will receive the same level of information and will be treated equally.
+
+11.  FORM OF FINAL TERMS
+
+                                LCL OPPORTUNITIES 3 S.à r.l.
+
+ a private limited liability company (société à responsabilité limitée) organised under the laws of the
+  Grand Duchy of Luxembourg, having its registered office at 34, rue du Curé, L-1368 Luxembourg,
+
+Grand Duchy of Luxembourg, registered with the Luxembourg Register of Commerce and Companies
+             (Registre de Commerce et des Sociétés) under number B 260326 (the "Issuer")
+
+     LEI number 485100EKU8FVREA8DP27
+
+                              Final Terms of digital bonds (the "Digital Bonds")
+     issued pursuant to the up to EUR 1.000.000 (one million euros) (or its equivalent in other
+
+                currencies) secured Digital Bonds Programme dated 26 February 2026,
+                                         as amended on 16 March 2026
+
+                                         PART A
+                                CONTRACTUAL TERMS
+
+Final Terms used herein shall be deemed to be defined as such for the purposes of the terms and
+conditions of the Digital Bonds and as set forth in the Information Memorandum dated 26 February
+2026 as amended on 16 March 2026. This document constitutes the Final Terms of the Digital Bonds
+described herein and must be read in conjunction with the Information Memorandum. Full
+information on the Issuer and the offer of the Digital Bonds is only available on the basis of the
+combination of these Final Terms and the Information Memorandum (as supplemented from time to
+time). This Information Memorandum is available for viewing on the website of the LynxCap group
+(https://www.lynxcapinvestments.com)
+
+Terms defined in Section 12 (Definitions) of the Information Memorandum should have the same
+meaning herein, unless specified otherwise.
+
+                                                            42/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+THESE FINAL TERMS WILL BE IMPLEMENTED IN SMART CONTRACTS.
+
+The [insert title of series] shall have the following terms and conditions which shall complete, modify
+and amend the terms and conditions set out in the Information Memorandum.
+
+SHOULD THE ASSETS OF THE ISSUER NOT BE SUFFICIENT TO MEET AMOUNTS PAYABLE UNDER THE
+DITIGAL BONDS, DIGITAL BONDHOLDERS WILL SUFFER A LOSS OF THEIR INVESTED CAPITAL
+AND/OR ANY INTEREST PAYMENTS WHICH MAY BE A COMPLETE LOSS. AFTER THE REALISATION OF
+THE ASSETS, SHOULD THERE BE NO FUNDS AVAILABLE FOR THE PAYMENT OF ANY AMOUNT DUE BY
+THE ISSUER TO THE DIGITAL BONDHOLDER UNDER THE DIGITAL BONDS, INCLUDING IN RESPECT OF
+INTEREST (FIXED OR FLOATING OR OTHERWISE) OR PRINCIPAL, NO PAYMENT MAY BE MADE.
+
+[Include whichever of the following apply or specify as "Not Applicable" (N/A). Note that the
+numbering should remain as set out below, even if "Not Applicable" is indicated for individual
+paragraphs or subparagraphs. Italics denote directions for completing the Final Terms.
+
+1. Issuer:                                                  LCL OPPORTUNITIES 3 S.à r.l.
+
+2. [(i)] Series Number:                                     [·]
+
+[(ii)] Tranche Number:                                      [·]
+                                                            (If fungible with an existing Series, details of that
+                                                            Series, including the date on which the Digital
+                                                            Bonds become fungible.)
+
+[(iii) Date on which the Digital Bonds                      [Not Applicable/The Digital Bonds shall be
+become fungible:                                            consolidated, form a single series and be
+                                                            interchangeable for trading purposes with the
+                                                            [insert description of the Series] on [insert date/the
+                                                            Issue, as referred to in paragraph 8 below [which is
+                                                            expected to occur on or about [insert date]]].]
+
+3. Specified Currency or Currencies:                        [·]
+4. Aggregate Issue Size:                                    The currency can only be a Fiat Currency.
+
+[(i)] Series:                                               [·]
+                                                            [Insert total nominal amount of outstanding Digital
+                                                            Bonds, including the Tranche which is the subject of
+                                                            the Final Terms.]
+
+[(ii)] Tranche:                                             [·]
+
+5. Issue Price:                                             [·] Euro/other currency per Digital Bond [plus
+
+                                                            43/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+                                                            accrued interest from [insert date]
+                                                            (in the case of fungible issues only, if applicable)]
+
+6. Aggregate Proceeds:                                      [·]
+
+7. (i) Specified Denominations:                             The Digital Bonds are issued with a minimum
+                                                            denomination of [·] each.
+
+(ii) Calculation Amount:                                    [·] [If only one Specified Denomination, insert the
+                                                            Specified Denomination. If more than one Specified
+                                                            Denomination, insert the highest common factor.]
+
+8. (i) Issue Date:                                          [·]
+
+(ii) Interest Commencement Date:                            [Specify/Issue Date]
+
+9. Maturity Date:                                           [·] specify date
+
+10. Interest Basis:                                         [fixed rate/floating rate]
+                                                            (further particulars specified below)
+
+11. Redemption/Payment Basis:                               [Redemption at par] [Amortization] [Subject to any
+                                                            purchase and cancellation or early redemption in
+                                                            accordance with the conditions set out in the
+                                                            Information Memorandum, the Digital Bonds will
+                                                            be redeemed on the Maturity Date at the Final
+                                                            Redemption Amount]
+
+12. Call Option:                                            [Applicable/Not Applicable]
+                                                            [(further particulars specified below)]
+
+13. Date of Issuer's approval for issuance [·]
+         of Digital Bonds:
+
+14. Status of the Digital Bonds:                            The Digital Bonds rank equally among themselves
+                                                            and (subject to the provisions of any security
+                                                            documents) pari passu in right of payment with all
+                                                            other present and future unsecured and
+                                                            unsubordinated obligations of the Issuer (except
+                                                            for obligations mandatorily preferred by law).
+
+15. Method of distribution:                                 Non-syndicated
+
+                                                            44/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+PROVISIONS RELATING TO INTEREST (IF ANY PAYABLE)
+ 16. Fixed Rate Digital Bonds Provisions Applicable
+
+(i) Rate[(s)] of Interest:                                  [·] per cent. per annum [payable[annually/semi-
+                                                            annually/quarterly/monthly/ other (specify)] in
+                                                            arrear] on each Interest Payment Date
+
+                                                            [include adjustment language for dates as
+                                                            appropriate]
+
+(ii) Interest Payment Date(s):                              [·] in each year, from and including [·] up to, and
+                                                            including the Maturity Date, [not
+                                                            adjusted/adjusted] [for payment purposes only] in
+                                                            accordance with the [Following Business Day
+                                                            Convention/ Modified Following Business Day
+                                                            Convention/Preceding Business Day Convention]
+                                                            (amend in the case of long or short coupons)
+
+(iii) Business Day Convention:                              [Following Business Day Convention/Modified
+                                                            Following Business Day Convention/Preceding
+                                                            Business Day Convention][Not Applicable]
+
+(iv) Fixed Coupon Amount[(s)]:                              [·] per Calculation Amount
+                                                            [for short or long first coupon insert:, except for the
+                                                            amount of interest payable on the [first/last]
+                                                            Interest Payment Date falling on [·]]
+
+(v) Broken Amount(s):                                       [·] per Calculation Amount, payable on the Interest
+                                                            Payment Date falling [in/on] [·]
+                                                            (insert particulars of any initial or final broken
+                                                            interest amounts (or the amount per Calculation
+                                                            Amount) which do not correspond with the Fixed
+                                                            Coupon Amount(s))
+
+                                                            [Not Applicable]
+
+(vi) Day Count Fraction:                                    Actual/Actual
+
+(vii) Calculation Agent:                                    [·]
+
+17. Floating Rate Digital Bonds Provisions [Applicable / Not Applicable]
+                                                           (specify details)
+
+                                                            45/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+(i) Rate of Interest:                                       [·]
+(ii) Interest Payment Date(s):                              (state reference rate and margin if any)
+
+(iii) Business Day Convention:                              [·] in each year, from and including [·] up to, and
+(iv) Broken Amounts:                                        including the Maturity Date, [not
+                                                            adjusted/adjusted] [for payment purposes only] in
+(v) Day Count Fraction:                                     accordance with the [Following Business Day
+(vi) Determination Date(s):                                 Convention/ Modified Following Business Day
+(vii) Calculation Agent:                                    Convention/Preceding Business Day Convention]
+                                                            (amend in the case of long or short coupons)
+
+                                                            [Following Business Day Convention/Modified
+                                                            Following Business Day Convention/Preceding
+                                                            Business Day Convention][Not Applicable]
+
+                                                            (insert particulars of any initial or final broken
+                                                            interest amounts (or the amount per Calculation
+                                                            Amount) which do not correspond with the Coupon
+                                                            Amount(s))
+                                                            [Not Applicable]
+
+                                                            Actual/Actual
+
+                                                            [·]
+
+                                                            [·]
+
+PROVISIONS RELATING TO REDEMPTION
+
+18. Call Option                                             [Applicable/Not Applicable]
+                                                            (If not applicable, delete the remaining sub-
+                                                            paragraphs of this paragraph.)
+
+(i) Call Option Redemption Date(s): [·]
+
+(ii) Call Option Redemption Amount(s) [·] per Calculation Amount/specify other
+and method, if any, of calculation of
+such amount(s):
+
+(iii) Notice period (if other than as set                   [·]
+out in the Information                                      If setting notice periods which are different to those
+Memorandum):                                                provided in the Information Memorandum, the
+                                                            Issuer is advised to consider the practicalities of
+
+                                                            46/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+                                                            distribution of information through intermediaries,
+                                                            for example, as well as any other notice
+                                                            requirements which may apply, for example,
+                                                            between the Issuer.
+
+19. Put Option                                              [Applicable/Not Applicable]
+                                                            (If not applicable, delete the remaining sub-
+                                                            paragraphs of this paragraph.)
+
+(i) Put Option Redemption Date(s):                          [Shall correspond to the Put Option Date as
+                                                            indicated in Section 9.11.5. of the Information
+                                                            Memorandum (Early Redemption at the Option of
+                                                            the Digital Bondholder ("Put Option")) of the
+                                                            Information Memorandum]
+
+(ii) Put Option Redemption Amount                           [Shall correspond to the Put Option Amount as
+and method, if any, of calculation of                       indicated in Section 9.11.5. of the Information
+such amount(s):                                             Memorandum (Early Redemption at the Option of
+                                                            the Digital Bondholder ("Put Option")) of the
+                                                            Information Memorandum subject to any
+                                                            Information Notice that may amend such amount]
+
+(iii) Notice period (if other than as set                   [The Put Option remains subject to any Adverse
+out in the Information                                      Event as indicated in Section 9.11.5. of the
+Memorandum):                                                Information Memorandum (Early Redemption at
+                                                            the Option of the Digital Bondholder ("Put
+                                                            Option")) of the Information Memorandum]
+
+20. Details relating to amortization: [·]
+          amount repaid at each interest
+          payment date ("Amortization
+          Amount") and date on which each
+          payment is to be made
+          ("Amortization Date"):
+
+21. Final Redemption Amount                                 [·] per Calculation Amount/other
+
+In cases where the Final Redemption
+Amount is other variable linked:
+
+(i) Party responsible for calculating [·]
+the Final Redemption Amount (if not
+the Calculation Agent):
+
+                                                            47/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+(iii) Provisions for determining Final [·]
+Redemption Amount where
+calculated by reference to and/or
+other variable:
+
+(iv) Determination Date(s):                                 [·]
+
+(v) Provisions for determining Final [·]
+Redemption Amount where
+calculation by reference is impossible
+or impracticable or otherwise
+disrupted:
+
+(vi) Payment Date:                                          [·]
+
+(vii) Minimum Final Redemption [·] per Calculation Amount/Not Applicable
+Amount:
+
+(viii) Maximum Final Redemption [·] per Calculation Amount/Not Applicable
+Amount:
+
+22. Early Redemption Amount                                 [·] per Calculation Amount/Not Applicable
+
+Early Redemption Amount(s) payable
+
+on redemption for amortization, or
+
+for taxation reasons or on event of
+
+default, or in the case of a Force
+
+Majeure Event, or other early
+
+redemption and/or the method of
+
+calculating the same (if required or if
+
+different from that set out in Section
+
+9.11. of the Information
+
+Memorandum                  (Redemption,
+
+purchase and options)
+
+GENERAL PROVISIONS APPLICABLE TO THE DIGITAL BONDS
+
+23. Form of Digital Bonds:                                  Registered Digital Bonds
+
+24. DLT type:                                               Public / private
+
+25. Smart contract number:                                  [·]
+
+26. ISIN code of the Digital Bonds                          [·]
+
+                                                            48/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+27. Common code of the Digital Bonds [·] / Not applicable
+
+28. Payment gateway provider:                               [Youhodler / specify]
+
+29. Financial centre for payment:                           [·]
+
+30. Governing law:                                          Luxembourg law
+
+                                 PART B ­ OTHER INFORMATION
+
+1. RATINGS AND FINANCIAL GUARANTEE INSURANCE
+
+The Digital Bonds issued are not rated, are not guaranteed or insured.
+
+2. REASONS FOR THE OFFER ­ USE OF PROCEEDS
+
+The net proceeds of the issuance of the Digital Bonds will be applied by the Issuer to acquire bonds
+issued by LCL Opportunities Luxembourg S.C.S., which are listed on the professional segment of the
+Euro MTF of the Luxembourg Stock Exchange.
+
+This Final Terms comprises the final terms required for the issue of the Digital Bonds described herein
+pursuant to the up to EUR 1,000,000 (or its equivalent in other currencies) secured Digital Bonds
+Programme of the Issuer.
+
+3. RESPONSIBILITY
+
+The Issuer accepts responsibility for the information contained in this Final Terms, which, when read
+together with the Information Memorandum (and any supplement thereto) referred to above,
+contain all information that is material in the context of the issue of the Digital Bonds.
+
+Signed on behalf of the Issuer:
+By
+Duly authorised
+
+                                 [REMAINDER OF PAGE INTENTIONALLY LEFT BLANK]
+
+                                                            49/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+12.       DEFINITIONS
+
+Adverse Event          has the meaning given to it under Section 9.11.5 (Early Redemption at the
+                       Option of the Digital Bondholder) of the Information Memorandum.
+
+Agents                 means any services provider appointed from time to time by the Issuer in
+                       respect of the Digital Bonds (and "Agent" designates anyone of them).
+
+AIFM Directive         means the directive 2011/61/EU of the European Parliament and of the
+                       Council of 8 June 2011 on Alternative Investment Fund Managers and
+                       amending Directives 2003/41/EC and 2009/65/EC and Regulations (EC)
+                       No 1060/2009 and (EU) No 1095/2010.
+
+AIFM Law               means the Luxembourg law on alternative investment fund managers
+                       dated 12 July 2013.
+
+Articles               means the Issuer's coordinated articles of association dated 26 February
+                       2025.
+
+Atomic Settlement      Atomic settlement is a delivery-versus-payment settlement mechanism in
+                       which the transfer of the securities token and the transfer of the cash
+                       token (or other payment leg) are executed as one indivisible operation:
+                       either both legs settle, or neither settles ("all-or-nothing", no
+                       intermediate state). This is the distributed ledger technology / tokenised
+                       markets equivalent of eliminating "principal risk" by ensuring the two
+                       linked transfers are simultaneous and conditional.
+
+Board                  the board of managers of the Issuer.
+
+Business Day           TARGET Business Days
+
+Call Option            has the meaning given to it under Section 9.11.4 (Early Redemption at the
+Redemption Amount      option of the Issuer).
+
+Call Option            has the meaning given to it under Section 9.11.4 (Early Redemption at the
+Redemption Date        option of the Issuer).
+
+Companies Law          means the Luxembourg law of 10 August 1915 relating to commercial
+                       companies, as amended.
+
+Date of Accrual        has the meaning given to it under Section 9.6 (Interest / Interest payment
+                       dates).
+
+Digital Bonds          means the digital bonds issued under the form of securities tokens. A
+
+                                                            50/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+Digital Bondholder  token is a digital instrument representing a debt instrument, in this case,
+Day Count Fraction  bonds, issued by the Issuer.
+
+Disruption Event    means the persons who are for the time being holders of Digital Bonds in
+                    any Series or Tranches of a Series (as the case may be) and the words
+                    "Digital Bondholder" and "Holder" shall be construed accordingly.
+
+                    means, in respect of the calculation of an amount of interest on any Note
+                    for any period of time (whether or not constituting an Interest Period or
+                    Interest Accrual Period, the "Calculation Period"):
+
+                    (i) if "Actual/Actual" or "Actual/Actual (ISDA)" is specified in the
+                          applicable Issue Terms, the actual number of days in the Calculation
+                          Period divided by 365 (or, if any portion of the Calculation Period
+                          falls in a leap year, the sum of (A) the actual number of days in that
+                          portion of the Calculation Period falling in a leap year divided by 366
+                          and (B) the actual number of days in that portion of the Calculation
+                          Period falling in a non-leap year divided by 365);
+
+                    (ii) if "Actual/365 (Fixed)" or is specified in the applicable Issue Terms,
+                          the actual number of days in the Calculation Period divided by 365;
+
+                    (iii) if "Actual/Actual(ICMA)" is specified in the applicable Issue Terms:
+                          (A) if the Calculation Period is equal to or shorter than the
+                          Determination Period during which it falls, the number of days in
+                          the Calculation Period divided by the product of
+                          (x) the number of days in such Determination Period and (y) the
+                          number of Interest Payment Dates that would occur in one calendar
+                          year assuming interest was to be payable in respect of the whole of
+                          that year; or (B) if the Calculation Period is longer than the
+                          Determination Period, the sum of:(x) the number of days in such
+                          Calculation Period falling in the Determination Period in which it
+                          begins divided by the product of (1) the number of days in such
+                          Determination Period and (2) the number of Interest Payment Dates
+                          that would occur in one calendar year assuming interest was to be
+                          payable in respect of the whole of that year; and (y) the number of
+                          days in such Calculation Period falling in the next Determination
+                          Period divided by the product of (1) the number of days in such
+                          Determination Period and (2) the number of Interest Payment Dates
+                          that would occur in one calendar year assuming interest was to be
+                          payable in respect of the whole of that year, if "Actual/360" is
+                          specified in the applicable Issue Terms, the actual number of days in
+                          the Calculation Period divided by 360;
+
+                    means:
+                    - a material disruption to those payment or communications systems
+
+                                                            51/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+                      or to those financial markets which are, in each case, required to
+                      operate in order for payments to be made in connection with the
+                      Digital Bonds, which disruption is not caused by, and is beyond the
+                      control of, any of the parties; or
+                   - the occurrence of any other event which results in a disruption (of a
+                      technical or systems-related nature) to the treasury or payments
+                      operations of a party preventing that, or any other party (i) from
+                      performing its payment obligations under the Information
+                      Memorandum or the Final Terms or (ii) from communicating with
+                      other parties in accordance with the terms of this , and which (in
+                      either such case) is not caused by, and is beyond the control of, the
+                      party whose operations are disrupted.
+
+Early   Redemption has the meaning given to it under Section 9.11.3 (Early redemption for
+
+Amount             taxation reasons).
+
+Early Redemption Date has the meaning given to it under Section 9.11.3 (Early redemption for
+                                taxation reasons).
+
+EEA                means the European Economic Area.
+
+EURIBOR 6 months   means, in relation to the Bonds the 6-month interbank reference offer
+                   rate at which prime banking institutions are prepared to deposit cash
+                   funds with another prime banking institution for a specified amount of
+                   time, as it is published at (or about) 11:00am CET in the adequate page by
+                   Thomson Reuters or published in another way by the European Money
+                   Markets Institute. For the purpose of Bonds, (i) the EURIBOR shall be
+                   rounded up to two decimal places in a percentage denomination and (ii)
+                   the EURIBOR used for the calculation of the interest payments is the 6
+                   month EURIBOR published 2 Business Days before the first Interest Period
+                   and is updated (to the extent applicable) after each 3 (three) consecutive
+                   Interest Periods (each time using the 6 month EURIBOR published 2
+                   Business Days before the start of the next 3 (three) Interest Periods.
+
+Euro, EUR or euro  means the lawful currency of the Member States of the European Union
+                   participating in the Economic and Monetary Union.
+
+Event of Default   has the meaning given to it under Section 9.10 (Event of Default).
+
+FIAT Currency      Fiat currency is currency that a government has declared to be legal
+                   tender, but it is not backed by a physical commodity.
+
+FME Option         has the meaning given to it under Section 9.11.6 (Early redemption in the
+                   case of a Force Majeure Event).
+
+                                                            52/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+FME Redemption         has the meaning given to it under Section 9.11.6 (Early redemption in the
+Amount                 case of a Force Majeure Event).
+
+FME Redemption Date has the meaning given to it under Section 9.11.6 (Early redemption in the
+                                case of a Force Majeure Event).
+
+Force Majeure Event    means an event or circumstance which prevents or otherwise impedes
+                       the determinations or the performance of the duties of the Issuer and/or
+                       an Agent in relation to the Digital Bonds. These events and circumstances
+                       may include, without limitation, a system failure, fire, building evacuation,
+                       natural or man-made disaster, act of God, measures from public
+                       authorities, armed conflict, epidemics or pandemics, act of terrorism, riot
+                       or labour disruption or any similar intervening circumstance.
+
+General Data           has the meaning given to it under Section 8 (Data protection).
+Protection Regulation
+
+Information Notice     has the meaning given to it under Section 9.11.4 (Early redemption at the
+                       Option of the Digital Bondholder).
+
+Interest Payment Date has the meaning given to it under Section 9.6 (Interest / interest payment
+                                dates).
+
+Investment Company     means the United States Investment Company Act of 1940, as amended.
+Act
+
+Issue Date             has the meaning given to it under Section 9.3 (Issue procedure - Form of
+                       Digital Bonds - Transferability) of the Information Memorandum.
+
+Issue Price            has the meaning given to it under Section 9.3 (Issue procedure - form of
+                       Digital Bonds - transferability).
+
+Issuer                 means LCL Opportunities Luxembourg S.C.S., a common limited
+                       partnership (société en commandite simple), organised under the laws of
+                       the Grand-Duchy of Luxembourg, having its registered office at 34, rue du
+                       Curé, L-1368 Luxembourg, Grand Duchy of Luxembourg, registered with
+                       the Luxembourg Register of Commerce and Companies(Registre de
+                       Commerce et des Sociétés) under number B 267834.
+
+Interest               Means the issuance date of the Digital Bonds or such other date as may
+
+Commencement Date be specified in the applicable Final Terms.
+
+Interest Period        Means the period beginning on (and including) the Interest
+
+                                                            53/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+                       Commencement Date and ending on (but excluding) the first Interest
+                       Payment Date and each successive period beginning anon (and including)
+                       and Interest Payment Date or the Maturity Date, as applicable.
+
+LEI                    means legal entity identifier.
+
+Maturity               means the maturity of the Digital Bonds, as indicated in the relevant Final
+                       Terms (as implemented in smart contracts).
+
+Maturity Date          means the calendar date on which Maturity occurs.
+
+Personal Data          has the meaning given to it under Section 8 (Data protection).
+
+Proceedings            has the meaning given to it under Section 9.19 (Governing law and
+                       jurisdiction).
+
+Processors             has the meaning given to it under Section 8 (Data protection).
+
+Programme              means the up to EUR 1.000.000 (one million euros) (or its equivalent in
+                       other currencies) Digital Bonds programme under this Information
+                       Memorandum.
+
+Prospectus Law         means the Luxembourg law dated 16 July 2019 on prospectuses for
+                       securities, as amended.
+
+Prospectus Regulation  means the regulation (EU) 2017/1129 of 14 June 2017 on the prospectus
+                       to be published when securities are offered to the public or admitted to
+                       trading on a regulated market.
+
+Put Option             has the meaning given to it under Section 9.11.4. (Early Redemption at
+                       the Option of the digital bondholder).
+
+Put Option Redemption has the meaning given to it under Section 9.11.4. (Early Redemption at
+
+Amount                 the Option of the Digital Bondholder).
+
+Put Option Redemption has the meaning given to it under Section 9.11.4. (Early Redemption at
+
+Date                   the Option of the Digital Bondholder).
+
+Put Option Notice      has the meaning given to it under Section 9.11.4. (Early Redemption at
+                       the Option of the Digital Bondholder).
+
+Relevant Member State any Member State of the EEA.
+
+RESA                   means the Electronic Compendium of Companies and Associations
+
+                                                            54/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+                     (Recueil des Sociétés et Associations).
+
+Responsible Person   means the Issuer.
+
+Securities Act       means the United States Securities Act of 1933, as amended.
+
+Shareholder(s)       means the shareholder(s) of the Issuer, from time to time.
+
+Specified Currency   means the currency in which will be paid the principal and interest of the
+                     Digital Bonds, as specified in the relevant Final Terms.
+
+Subsidiary           means any legal entity in which the Issuer holds, directly, or indirectly
+                     shares, units, or any other kind of equity instrument.
+
+TARGET System        means the Trans-European Automated Real-Time Gross Settlement
+                     Express Transfer System (known as TARGET or T2).
+
+TARGET Business Day  means any day on which the TARGET System is open for the settlement of
+                     payments in euro.
+
+Tranche              means together the bonds corresponding to a subdivision of a Series of
+                     Digital Bonds, designated as a tranche within the relevant Final Terms.
+                     Each Serres of Digital Bonds may be issued in Tranches and may have
+                     different settlement, issue dates or first interest payment dates. The
+                     specific terms of each Tranche (which will be supplemented, where
+                     necessary, with supplemental terms and conditions) will be set out in the
+                     relevant Final Terms.
+
+U.S.                 means the United States of America.
+
+USD or U.S. dollar   means the lawful currency of the U.S.
+
+U.S. person          has the meaning given to it in Regulation S under the Securities Act.
+
+                                                             *
+                                                            **
+
+_____________________________
+Signed on behalf of the Issuer
+By Mr. Peteris Kadiss
+acting as category A manager, , and authorised signatory
+
+                                                                                   55/56
+Docusign Envelope ID: 70758986-03C6-804E-83AB-EBB2ECFF2EA6
+
+              _____________________________
+              Signed on behalf of the Issuer
+              by Mrs. Tea Puh
+              acting as category B manager, and authorised signatory
+
+                                                                                                       56/56
+

@@ -1,0 +1,876 @@
+Summary
+This whitepaper, which has been prepared by Ctrl Alt Solutions DMCC ("Ctrl Alt" or "the Issuer"), explains the
+mechanics of tokenized property in the United Arab Emirates ("UAE") and the nature of the tokens that are issued.
+This whitepaper outlines the benefits and transformative potential of the tokenized property project within the
+financial sector. It examines how Ctrl Alt's cutting-edge technology, together with its strategic partnership with the
+Dubai Land Department (`DLD'), drives the adoption of tokenized property by enhancing accessibility, efficiency,
+and security. By leveraging this collaboration, the project aims to redefine property ownership and trading in the
+digital economy, setting a new standard for asset tokenization. The tokenized property project currently remains in
+a pilot phase, all operations are running within a controlled environment
+This white paper was notified to the Virtual Assets Regulatory Authority (VARA) by the Issuer as is required prior to
+any issuance activity. VARA has not taken any steps to verify the information set out in the whitepaper, including its
+accuracy and completeness, and has no responsibility for any loss arising from reliance on it. The liability for the
+content of the whitepaper lies with the Issuer.
+This white paper was published on 17th February 2026 and last updated on 17th February 2026.
+
+                                                                                                                                                                               1
+Part 1 - Issuer Information
+
+Statutory Name     Ctrl Alt Solutions DMCC
+
+Trading Name       Ctrl Alt
+
+Legal Structure    Free Zone Company
+
+Registered address DMCC Business Centre, Level No 11, office 24, Uptown Tower, Dubai
+
+Head office        This is the same as the registered address.
+
+Registration Date  19th July 2024
+
+Legal entity identifier DMCC199928
+
+Parent Company     Alt Ltd ("Alt") is a UK registered business with company number 12481559. Alt is an
+                   appointed representative of Infinity Asset Management (FCA Reference Number 464315),
+                   Infinity Asset Management is authorised and regulated by the Financial Conduct Authority.
+
+                                                                                      2
+The management body  Robert Farquhar
+                     Chief Executive Officer, MENA
+                     Finance Officer
+                     Board Member
+
+                     Lee Bowyer
+                     Head of Compliance
+                     Money Laundering Reporting Officer
+                     Risk Officer
+
+                     Ctrl Alt has determined that both these individuals are `fit and proper' in line with all
+                     applicable regulatory requirements. Our assessment considered: their financial soundness;
+                     their knowledge, skills and experience; and their honesty, integrity & reputation.
+
+                     No individual who is part of the management body has been convicted of any offence of
+                     dishonesty, fraud, financial crime or an offence under laws relating to companies, banking,
+                     insolvency, money laundering and insider dealing. No individual is subject to ongoing
+                     inquiries or investigations in respect of such offences.
+
+Business activities  Ctrl Alt was established with the objective of using technology to re-engineer the way we
+                     invest in alternative assets. Our vision is to become the leading alternative asset investment
+                     solutions provider.
+
+                     In the UAE, Ctrl Alt holds a Broker-Dealer Services licence from VARA (licence number
+                     VL/25/05/002) which allows us to undertake the following activities:
+
+                         A. arranging orders for the purchase and/or sale of Virtual Assets between two Entities.
+
+                                                         3
+Financial condition      B. soliciting or accepting orders for Virtual Assets and accepting fiat currency, or other
+                              Virtual Assets, for such orders.
+
+                         C. facilitating the matching of transactions in Virtual Assets between buyers and sellers.
+                         E. making a market in Virtual Assets using client assets; or
+                         F. providing placement, distribution or other issuance related services to clients issuing
+
+                              Virtual Assets
+
+                     Ctrl Alt will be carrying out Virtual Asset Issuance activities as per Schedule 1 of the Virtual
+                     Assets and Related Activities Regulations 2023. These activities are considered by VARA to
+                     be category 1 issuances.
+
+                     Ctrl Alt was formally incorporated on 19th July 2024. The share capital is AED 50,000. Ctrl Alt
+                     holds a UAE bank account with Zand Bank PJSC; its operations are currently funded by its
+                     parent entity Alt Ltd.
+
+                     Ctrl Alt shall, at all times, hold and maintain the required paid-up capital for the virtual asset
+                     activities that it carries out - as mandated by VARA.
+
+Business             Ctrl Alt Solutions DMCC is in its first year of licenced operations. As such, we have not
+performance          provided an assessment of performance at the current time.
+
+Governance           Ctrl Alt believes that a strong and robust system of corporate governance enables
+arrangements         companies to realise their corporate objectives, protect customer and shareholders' rights,
+                     meet requirements and to demonstrate to their customers on how they are conducting
+                     their business. Ctrl Alt complies with all governance requirements as part of its obligations
+                     as a VARA licensed firm.
+
+                     4
+            
+            The corporate governance framework at Ctrl Alt is designed to:
+
+                 promote the sound and prudent management of its business.
+                 protect the interests of its customers and stakeholders; and
+                 place clear responsibility for achieving the above on its Board of Directors and senior
+
+                     management.
+
+            The Firm's corporate governance framework not only refers to the Board of Directors and
+            their responsibilities but also encompasses the roles and obligations of the Firm's senior
+            management as well as the implementation of policies, procedures and effective systems &
+            controls.
+
+            Our Board of Directors, along with our senior management, has ultimate responsibility for
+            the oversight of our business activities and ensuring that systems and controls, policies and
+            procedures are in place to ensure our affairs are managed with due skill, care and diligence.
+            Ctrl Alt's Board comprises an adequate number and mixes of individuals who have, among
+            them, the relevant knowledge, skills, expertise and time commitment necessary to
+            effectively carry out their duties and functions.
+
+            The current composition of Ctrl Alt's Board can be found on our website by following this
+            link. We do not currently operate any Board sub-committees.
+
+Other virtual asset The Issuer has issued multiple Virtual Assets relating to tokenized real estate - additional
+
+activities  details can be found on our website.
+
+                                                  5
+Part 2 - The Virtual Asset  DLD-25-TRE-S803-M
+Name
+                            The underlying asset is:
+Issue price                      Property number 803
+                                 8th Floor
+                                 Sobha Creek Vistas Grande building
+                                 Al Merkadh community
+                                 This is a freehold property - additional details can be found within the
+                                     information memo made available by Prypco FZE (hereafter referred to as
+                                     "the distributing entity").
+                                 The developer is Sobha Realty.
+
+                                 The listing price of the property is AED 1,600,000.
+                                 The total area of the property is 69.43 metres square (m2.).
+                                 The total area of 69.43 m2 is represented in 0.0001 units.
+                                 The total tokens in issuance is calculated by dividing the total area by 1 unit,
+
+                                     i.e. 69.43 m2/0.0001 units = 694,300 tokens.
+                                 The value of 1 token based on the listing price is AED 2.30. This is calculated
+
+                                     by dividing the property value divided by the number of tokens i.e. AED
+                                     1,600,000/694,300 = approximately AED 2.30.
+
+                            This information represents the original listing price at which existing token holders
+                            purchased their tokens.
+
+                            Any subsequent listing price is based on an up to date independent property
+                            valuation. For the purposes of the secondary trading market, the price is set by the
+                            seller of the token and can be 15% higher or lower than the listing price.
+
+                                                                                                                    6
+Characteristics  Within the previous phase of the tokenized property project, investors were able to
+                 purchase ownership tokens which represented a fractional ownership interest in an
+                 underlying property. The token (DLD-25-TRE-S803) is a tokenized title deed that is
+                 directly registered on the Dubai Land Department's (DLD) blockchain-integrated
+                 ownership ledger.
+
+                 Within the next phase, as explained throughout this white paper, investors are able
+                 to purchase an Asset Referenced Virtual Asset (ARVA) which is intrinsically linked to
+                 the ownership token. Existing investors will receive an additional token representing
+                 their management rights which is linked to their current token - no additional
+                 payment is due and there is otherwise no change to their rights. The number of
+                 ARVAs purchased or held is exactly equal to the number of ownership tokens
+                 purchased or held.
+
+                 Unless the context suggests otherwise, all references in this whitepaper to "token"
+                 or "tokens" include both the ownership token and the ARVA, and all references to
+                 "token holders" and "investors" include the original token holders and buyers of
+                 tokens on the secondary market.
+
+                 DLD-25-TRE-S803-M is an Asset Referenced Virtual Asset (ARVA), as defined by
+                 VARA.Purchasing this ARVA grants the investor the governance and economic
+                 rights associated with the underlying property.
+
+                 The ARVA is intrinsically linked to the ownership token and cannot exist, be
+                 transacted on, or be transferred independently of it. Integrated systems and
+                 controls ensure that neither token can be transferred, or modified separately,
+                 maintaining seamless synchronization, regulatory compliance, and investor
+                 protection. Together the tokens represent the full spectrum of legal ownership,
+                 governance, and economic rights associated with the property investment.
+
+                 To purchase this ARVA, you must have completed the distributing entity's
+                 onboarding process; and subsequently verified by the DLD in order to receive the
+                 corresponding tokenized title deed (ownership token).
+
+                                                                                                                                                7
+                          Ownership of the property is evidenced through the ownership token which the
+                          Issuer (Ctrl Alt), tokenizes on behalf of the DLD. As above, this token is intrinsically
+                          linked to the management token which represents the investor's management
+                          rights derived from the property itself (including rental yield). The tokenization
+                          process is only complete once both tokens are minted and linked. The linked tokens
+                          are then distributed to the investors.
+
+                          Once an investor has funded their account with the distributing entity, they are able
+                          to invest in a property. Oversubscriptions are not allowed.
+
+                           Each property listed on the distributing entity's platform has a funding
+                              target. When this is achieved, no further investments will be permitted.
+                              Tokens are allocated in strict date order to ensure fairness to all investors. In
+                              the event that an investor's individual subscription causes the funding target
+                              to be achieved, the allocation will not be fulfilled and the funds will be
+                              returned in full to that investor.
+
+                           If the funding target is not met by the expiration date of the listing, the
+                              property listing will be cancelled and all funds refunded to the investor's
+                              wallet with the distributing entity without the deduction of any fees. This
+                              typically takes no more than 3 to 5 days. These funds can be re-invested or
+                              withdrawn to the investor's bank account.
+
+                          Once the funding target for that property has been met in full, the tokenization
+                          process begins. Tokens are allocated to investors based on their committed funding
+                          percentage.
+
+                          The ownership tokens remain accessible to the token holder at all times via the
+                          distributing entity's App or website and the DLD's own portal. This ensures
+                          transparency, traceability, and verifiable ownership of the underlying real estate
+                          asset.
+
+Individuals and    other   Technology - outsourced by Ctrl Alt to its parent entity Alt Ltd which is
+entities involved             domiciled in the UK, company number 12481559 . Alt Ltd.'s registered address
+
+                                                                                                                    8
+                                 is at 86-90 Paul Street, London, England, EC2A 4NE.
+
+                              Custodial wallets - these are hosted by the Issuer using Hardware Security
+                                 Module (HSM) technology provided by Ripple Custody under an appropriate
+                                 outsourcing agreement. Ripple Custody is part of Ripple Labs Inc (company
+                                 number 5602063) which has a registered address at 251 Little Falls Drive,
+                                 Wilmington, 19808, United States of America.
+
+Roles & responsibilities of   Virtual Asset distribution, and property management - Prypco FZE (VARA
+any relevant third parties       licence number VL/25/05/001) with company registration number L-2048.
+
+                              Dubai Land Department (DLD) - the DLD seeks to achieve the objectives of
+                                 Dubai Government's strategy in the real estate sector and improve land
+                                 registration procedures. The tokenization of real estate is a landmark
+                                 objective for the region with the DLD aiming to secure its status as a global
+                                 leader in property technology. The DLD's role within this project includes: the
+                                 granting of any required legal real estate approvals; verifying the validity of
+                                 ownership documents and registering them in accordance with their
+                                 standards; efficiently carrying out the registration process; and ensuring
+                                 overall compliance with all legislation relating to real estate in the UAE.
+
+Future plans   and  related  This property will be let out and the rental income distributed to the token holders.
+projects
+                             In the future, other tokens may be made available which represent other property
+                             investment opportunities via a variety of distribution channels.
+
+Target market                 Retail clients (as defined by VARA's rules): Individuals seeking accessible and
+                                 secure property investment opportunities. This segment includes tech-savvy
+                                 individuals, first-time property investors, and those interested in diversifying
+                                 their portfolios through fractional ownership.
+
+                             9
+Ownership                  Qualified investors (as defined by VARA's rules): Investors seeking stable and
+Licensed Distributor           reliable investment avenues such as real estate-backed tokens, access to
+Trading Platform               exclusive property offerings with high growth potential, and efficient portfolio
+                               diversification through secure blockchain-based transactions.
+
+                      Investors typically need to be resident in the UAE, over the age of 18 years old and
+                      must have fully completed the onboarding process for the distributing entity.
+
+                      There are no specific technical requirements although investors must also have
+                      registered for the Dubai REST app prior to completing the distributing entity's
+                      onboarding process - at the current time, non-custodial (i.e. private) wallets are not
+                      supported within Ctrl Alt's ecosystem (where the tokens are issued) although this
+                      will likely form part of future phases. The Issuer uses a custodial wallet solution
+                      where we have full control over the virtual assets and the wallets/accounts in which
+                      they are held.
+
+                           Name: Prypco FZE
+                           VARA licence number: VL/25/05/001
+                           Legal form: Free-zone entity established in the UAE under the jurisdiction of
+
+                               the Dubai World Trade Centre (DWTC)
+                           Registered address & Head office: 04, Sheikh Rashid Tower, Dubai World
+
+                               Trade Centre (Premise No: FZH 378 SRT)
+                           Description of business & professional activities: Prypco's mission is to
+
+                               revolutionise property ownership by offering a secure and innovative
+                               platform that enables customers to purchase real estate using virtual assets.
+
+                      Secondary trading with other token holders is permitted via the distributing entity's
+                      platform only and subject to any relevant terms & conditions.
+
+                      10
+Issuance structure  The seller lists the number of tokens for sale and the price on the distributing
+Proceeds            entity's marketplace which can be viewed and then accepted by the buyer, at which
+                    point the tokens are blocked in order for the transfer of ownership to be arranged.
+
+                    The underlying price of the tokens is determined by an independent quarterly
+                    valuation or via a DLD `smart valuation'. The seller can list their token at a price 15%
+                    higher or lower than the underlying price.
+
+                    All trading takes place between individuals who have been fully onboarded onto the
+                    distributing entity's platform.
+
+                    The issuance of the ARVA tokens represents a property being tokenized as a whole -
+                    therefore the ownership tokens in circulation remain consistent throughout the
+                    lifecycle. The total issuance amount of both tokens is determined by the size of the
+                    property as each token represents a part of the property measured in square
+                    metres.
+
+                    Tokens which are burnt are always re-minted to ensure a full issuance is in
+                    circulation - unless the property is no longer available for investment.
+
+                    Process - once the creation of a token is approved, the token is minted, with the
+                    details logged on-chain. The token is then added to the issuer's wallet for
+                    distribution with stakeholders notified of the issuance through automated
+                    notifications. For the destruction of a token, once a burn request has been
+                    validated and approved, the token is burned via an on-chain transaction,
+                    permanently removing it from circulation. All such events are recorded for audit and
+                    reporting.
+
+                    The consideration received by the Issuer from the distributing entity will be AED
+
+                                                                                                                                                 11
+Other  850 per tokenized title deed, additional commercial fees will be paid in relation to
+       secondary trading activities.
+
+       The token holder will pay fees to the distributing company as outlined within its
+       terms & conditions. The token holder does not pay fees to the Issuer.
+
+       The planned use of the proceeds from this project are to contribute to the
+       commercial success of the Issuer by funding additional tokenization projects in the
+       UAE.
+
+       Additional details regarding the investment into the underlying property can be
+       found within the distributing entity's information memo which is made available on
+       their platform for review prior to investing.
+
+       12
+Part 3 - Rights & obligations
+
+Characteristics  DLD-25-TRE-S803-M is an Asset Referenced Virtual Asset (ARVA) (as defined by VARA).
+
+                 Purchasing this ARVA grants the investor the governance and economic rights
+                 associated with the underlying property along with a fractional ownership interest as
+                 evidenced by the tokenized title deed.
+
+                 The ARVA is intrinsically linked to the ownership token and cannot exist, be transacted
+                 on, or be transferred independently of it. Integrated systems and controls ensure that
+                 neither token can be transferred, or modified separately, maintaining seamless
+                 synchronization, regulatory compliance, and investor protection. Together the tokens
+                 represent the full spectrum of legal ownership, governance, and economic rights
+                 associated with the property investment.
+
+                 To purchase this ARVA, you must have completed the distributing entity's onboarding
+                 process; and subsequently verified by the DLD in order to receive the corresponding
+                 tokenized title deed (ownership token). .
+
+                                The token holder can benefit from an increase in the underlying value of the
+                                   property - as they could from holding direct ownership of a real-world property.
+                                   The token holder will also receive payments via the distributing entity based on
+                                   the value of the rent paid by the tenants of the property.
+
+                                All tokens once sent to the Investor's address will be frozen such that they
+                                   cannot, without authorisation, be sent to another Investor's address. The token
+                                   can be unfrozen, on the approval of all parties, where required for a secondary
+                                   trade (for example).
+
+                                The authorisation process for unfreezing a token is handled natively through the
+                                   chain's in-built features, allowing Ctrl Alt to freeze and unfreeze tokens at the
+
+                                                                                                        13
+Rights & obligations           address level without relying on smart contracts, ensuring secure, controlled
+                               transfers directly via protocol level functionality.
+
+                           Tokens can be burned by Ctrl Alt upon instruction from the DLD where they are
+                               no longer valid or need to be re-issued with different characteristics.
+
+                           Ownership tokens and management tokens are intrinsically linked and cannot
+                               exist, be transacted on, or be moved independently. Both tokens are frozen once
+                               sent to an investor's address.
+
+                      Token holders accept that the Issuer may, at its absolute discretion, freeze access to
+                      tokens where there are reasonable grounds to suspect that the token holder has been
+                      engaged in fraudulent, illegal or other unauthorised activity which may compromise
+                      the security, financial standing, regulatory status or reputation of the Issuer. The Issuer
+                      will report such activity to a law enforcement agency or equivalent.
+
+                      The combined rights granted to the token holder are described in this section.
+
+                      The ownership token represents a digital version of the title deed and as such conveys
+                      all the economic and legal rights of a traditional title deed.
+
+                      The rights derived from the ARVA are as follows:
+
+                           Rental yield - the investor will receive a periodic return which is the rental
+                               income generated by the underlying property minus any fees applied by the
+                               distributing entity. This will be paid into the investor's wallet; typically, on a
+                               monthly basis. The return is not guaranteed - it is dependent on the funds
+                               available for distribution after the running costs of the property (for example
+                               maintenance) have been deducted; and ultimately the receipt of rent from the
+
+                                                                                                                                                       14
+         tenant of the property.
+               In exceptional circumstances, legal action could be initiated by the
+                   property manager on behalf of the investors to recover monies owed by
+                   the tenant.
+
+     Redemption - the investor can sell their ARVA after it has been held for 3
+         months (known as a "lock-in period") - this will not apply. This will always be
+         subject to marketplace demand at the point of sale. The redemption of the
+         ARVA will also result in the redemption of the linked ownership token.
+               This is additionally subject to the investor satisfying any financial crime
+                   related checks required by either the Issuer or the distributing entity.
+
+     Change in value of the underlying property - this is a general feature of holding
+         the token rather than a right to be fulfilled by either the Issuer or the
+         distributing entity. Property values rise and fall in line with market conditions.
+
+The token holder may exercise their rights by using the tokens - i.e. by transacting in
+fractional real estate within the Issuer's ecosystem.
+
+Additional information can be found within the investor's client agreement which is
+provided when the investor signs up to the Prypco FZE platform. This includes the
+following important information:
+
+     Renewal - at the end of the initial investment term, all token holders will
+         participate in a voting process administered by the third party property
+         manager (see below) which will decide whether the property should be sold or
+         retained for a further 1 year. This process can also be initiated at the discretion of
+         the property manager based on their assessment of market conditions - this
+         process can result in the sale of the property. Reasonable endeavours will always
+         be taken to achieve the most favourable sale price.
+
+                                                                                                                                 15
+Modifications          Management - Each property is professionally managed by a licensed
+Future issuances           third-party property manager appointed by Prypco FZE. Their role includes
+                           handling tenant relationships, rent collection, maintenance requests, and
+                           periodic inspections.
+
+                       Maintenance - Routine and corrective maintenance is handled by the property
+                           manager, funded through the property's operational reserve or deducted
+                           proportionally from rental income. Major repairs or upgrades are decided in
+                           consultation with investors where applicable.
+
+                       Insurance - All properties are covered by comprehensive insurance policies
+                           including building and liability insurance. Prypco FZE ensures the premiums are
+                           paid and the policies remain active throughout the holding period.
+
+                       Limits - investments in this ARVA are subject to a minimum amount of AED
+                           2,000 and a maximum amount of 20% of the property value per investor.
+
+                       Cooling off period - investments can only be cancelled within 24 hours of the
+                           investor's initial instruction to the distributing entity.
+
+                  No modifications are permitted to the rights and obligations of the token(s) without
+                  prior notice to the token holders of at least thirty (30) calendar days. No modifications
+                  are otherwise permitted to the token holder's rights where these could reasonably be
+                  interpreted as detrimental.
+
+                  The Issuer otherwise reserves the right to withdraw or cancel the token issuance at its
+                  absolute discretion. Such a decision would only be taken in exceptional circumstances
+                  (including, for example, the funding target not being met, regulatory
+                  change/intervention or the cancellation of a property sale by the seller) - any investor
+                  funds would be returned without delay.
+
+                  DLD-25-TRE-S803-M relates to a property tokenization project. Future issuances may
+                  take place, but they will not directly impact nor dilute the tokens already issued and
+                  will be the subject of separate white papers.
+
+                                                                                                                                                   16
+Post issuance        The tokens can only be bought or sold post issuance (i.e. in the secondary market) via
+Transferability      the distributing entity's platform - this activity is subject to approval by VARA.
+
+                     Tokens cannot be transferred outside of the Issuer's ecosystem, nor can they be
+                     transferred to the token holder's private (non-custodial) wallet.
+
+Compensation scheme  None
+Rights enforcement
+                     Issuers of virtual assets/tokens are required to have in place robust arrangements
+                     relating to business continuity, disaster recovery and wind-down planning. These
+                     arrangements are designed to ensure that the business can continue to function and
+                     meet its obligations in the event of an unexpected disruption to our operations; and
+                     ultimately to ensure an orderly wind down of the business with minimal impact to
+                     stakeholders.
+
+                          The ownership tokens represent a direct replacement of the title deed and, as
+                              such, all rights granted to the owner of a title deed are given to the token holder.
+                              These rights would be preserved in the unlikely event of the failure or insolvency
+                              of the Issuer.
+
+                          The management tokens represent all other rights granted to the investor by
+                              the property (as described in the rights & obligations section above). In the
+                              unlikely event of the failure or insolvency of the distributing entity, the property
+                              manager (or another appointed party such as a liquidator) will initiate the voting
+                              process in order to sell the property and redeem the investor's tokens.
+
+                     These tokens are intrinsically linked and cannot exist, be transacted on, or be moved
+                     independently.
+
+                     17
+Claim      Token holders do not acquire any specific contractual rights or legal claims against the
+Liquidity  Issuer except for those explained within this white paper. Ownership of the property by
+           the investor is facilitated by the distributing entity once the opportunity is fully funded
+           on their platform.
+
+           Each combination of ownership and management tokens represents a fractional
+           economic and governance interest in the property. Value is, measured in square
+           metres with each token corresponding to a unit of 0.0001 of the total area of the
+           property. Using the distributing entity's platform, the investor purchases a fraction of
+           the property; the value of the investor's holding can be used to calculate the
+           percentage of the property that they own. Equally, this can be determined by the
+           number of tokens held as a percentage of the total issuance.
+
+           The tokens will change in value as the value of the underlying property value changes.
+           Post issuance - this information can be obtained via the distributing entity's investor
+           portal.
+
+           This white paper relates specifically to property number 803 on the 8th floor of the
+           Sobha Creek Vistas Grande within the Al Merkadh community, only - additional details
+           on this investment property are available in the distributing entity's information
+           memorandum which is accessible via their platform for review prior to investing.
+
+           Real estate is a semi-liquid asset class, and tokenized ownership reflects that nature -
+           exit depends on market supply and demand. Token holders can list their tokens on the
+           distributing entity's platform and have the flexibility to offer them at a discount to
+           improve chances of resale.
+
+           In rare and genuine cases, where multiple resale attempts fail, the distributing entity
+
+                                                                                                                                            18
+Complaints  may step in to buy back the tokens at 15% below the last valuation. These tokens are
+Title       immediately relisted on the market.
+
+            It is important to note that the distributing entity's intention is not to retain ownership
+            in any property, but to maintain investor confidence and facilitate liquidity when
+            necessary.
+
+            In the event of dissatisfaction, complaints can be made to the Issuer who will
+            investigate the matter in line with its published complaints handling procedures which
+            can be found by following this link.
+
+            These tokens will be held in wallets which include a record of the ownership assigned
+            to each end token owner. These wallets can only be operated by the Issuer. This
+            ensures transparency and alignment with the rights for each individual investor. Using
+            the blockchain as a ledger, the Issuer owns the internal mapping between the wallet
+            address and the end Investor.
+
+            Transfer to the token holder - following the settlement of the transaction,both of the
+            linked tokens are then minted to the blockchain and transferred to the address
+            mapped to that customer.
+
+            Alongside this activity, the DLD registers token holders as fractional property owners
+            within its own records. The Issuer has established internal controls and verification
+            procedures to ensure that each on-chain token transfer accurately corresponds to the
+            legal ownership records maintained by the DLD.
+
+            In instances where a blockchain transaction does not result in a corresponding transfer
+            or settlement of the underlying property record (for example, due to a system error,
+            network latency, or title mismatch), the Issuer will suspend further transfers related to
+
+                                                                                                                                             19
+Redemption          the impacted tokens until reconciliation is completed. Any such discrepancies will be
+Legal & regulatory  promptly investigated and resolved in coordination with the DLD, ensuring continued
+                    alignment between the on-chain records and the DLD's property ownership register.
+
+                    In the event of the insolvency of the Issuer, tokens that are held for the benefit of
+                    investors or other parties should not ordinarily be available to pay the debts or liabilities
+                    of the Issuer or for distribution to the Issuer's general creditors. We have implemented
+                    high standards for the prudent financial management of our business, and, in the
+                    event of exceptional circumstances, we have established robust contingency measures
+                    to minimise the impact of our failure on the wider market. In the unlikely event that
+                    the token holder is unable to access their tokens from the Issuer, their status as a
+                    registered title deed holder with the DLD remains intact and maintained within data
+                    back-ups.
+
+                    Token holders can sell their tokens within the Ctrl Alt ecosystem by notifying the
+                    distributing entity. This will be subject to the distributing entity's terms and conditions
+                    which typically include lock-in periods where a token sale is not permitted. The
+                    proceeds of the token sale will be transferred to the token holder's nominated account
+                    within 3 to 4 working days. This is subject to marketplace demand.
+
+                    In the event that the underlying property is to be redeemed for a traditional title deed -
+                    all token holders need to agree, and the request will be validated by the Issuer. Once
+                    the DLD approves the redemption request, both the ownership and management
+                    tokens are burned and removed from the investor's holdings.
+
+                    Activities relating to Virtual Assets in the UAE including issuance and acting as a
+                    broker-dealer are regulated by VARA.
+
+                                                                                                                                                     20
+Governing law  Any dispute or claim arising out of or in connection with the contents of this white
+               paper shall be governed by the law of the Dubai International Financial Centre. The
+               courts of the Dubai International Financial Centre shall have non-exclusive
+               jurisdiction to settle any dispute or claim.
+
+               21
+Part 4 - Technology & security
+
+Technology  The XRP Ledger (XRPL) is a decentralized, permissionless distributed ledger technology
+            (DLT) optimized for payments and asset tokenization. It is built on a shared ledger
+            model, where all nodes maintain a copy of the ledger state. The XRPL supports multiple
+            features including:
+
+                                 Fast settlement: Transactions are typically confirmed within 3­5 seconds.
+
+                                 Cryptographic Security: The system uses public-key cryptography (secp256k1
+
+                                and  Ed25519  algorithms)  to  sign  transactions.
+
+                                https://xrpl.org/docs/concepts/accounts/cryptographic-keys#signing-algorithms
+
+                                 Data Standards: The XRPL employs JSON-based data structures for transaction
+
+                                serialization and API interactions. Transaction rules are deterministic and
+
+                                applied uniformly by all validating nodes. https://xrpl.org/docs/references
+
+            To mitigate risks related to blockchain failure and network outages on the XRP Ledger,
+            the network relies on a decentralized consensus protocol with globally distributed
+            validators to ensure continuity of operations.
+
+            In the event of a blockchain failure, or change of chain, DLD's official land registry should
+            remain the main source of information and tokens can be re-minted on the new chain.
+            Ownership rights are recorded at the land registry and a chain outage would not
+            materially affect that in any way.
+
+Consensus mechanism The XRPL employs a unique consensus protocol, which is Byzantine Fault Tolerant, often
+                                         referred to as the XRP Ledger Consensus Protocol.
+
+                                         https://xrpl.org/docs/concepts/consensus-protocol/consensus-principles-and-rules#cons
+                                         ensus-principles-and-rules
+
+                                                                                                             22
+     Unlike Proof-of-Work (PoW) or Proof-of-Stake (PoS) systems, the XRPL uses a
+     deterministic agreement process among participating validator nodes. The key aspects
+     are:
+
+              No mining: There's no need for high energy usage or hardware competition.
+              Consensus Rounds: Validators propose transactions they believe should be
+
+                  included. Through multiple rounds of voting with increasing thresholds, nodes
+                  reach supermajority agreement (~80%) on a single set of transactions to apply.
+              Validation Votes: Once a ledger version is applied, validators publish
+                  cryptographic fingerprints (hashes) of the new state.
+              Fallback Tolerance: In rare cases where consensus is not reached, nodes defer to
+                  the next round, causing only a few seconds' delay without compromising
+                  ledger integrity.
+
+Incentive mechanisms Unlike many blockchains, XRPL does not have traditional mining rewards or staking
+                                         yields. Its economic model is designed for sustainability and security through:
+
+      Anti-spam fees: Every transaction destroys a small amount of XRP (currently 10
+         drops, or 0.00001 XRP), preventing network spam.
+
+      No block rewards: Validators are not financially compensated by the protocol.
+         They typically run infrastructure either altruistically, for strategic utility, or for
+         business model integration.
+
+      Fee Market (Optional): In periods of congestion, transaction fees can increase
+         dynamically, but they remain predictable and low compared to other networks.
+
+     Please check https://xrpl.org/docs/concepts/transactions/transaction-cost for more
+     information about fees and transaction cost.
+
+DLT  The XRP Ledger is operated by a decentralized network of independent
+
+     23
+Audit  validators--which can be individuals, companies, universities, or financial institutions.
+       While anyone can run a node, the Unique Node List (UNL)--a recommended list of
+       trusted validators--helps ensure honest majority agreement.
+
+       Here is a link detailing the nodes and validators: https://xrpscan.com/validators
+
+       Important details:
+
+                Validator Independence: Nodes can choose their own UNLs and adjust trust
+                    dynamically.
+
+                Consensus Coordination: Each validator proposes transactions based on what
+                    they've seen; through a multi-round consensus process, they finalize one set of
+                    transactions to apply.
+
+                Open Participation: Any entity can run a stock server node or validator node,
+                    contributing to redundancy, decentralization, and transparency.
+
+       The following audits have been done for some XRPL specifications:
+
+       Bishop Fox completes XLS-38d audit
+
+       Security audit results and remediation (XLS-38d + EVM Sidechain)
+
+       Certik completes XLS-30d audit
+
+       Additionally, the code is open source: The core XRPL software is published publicly on
+       GitHub, where anyone can look at the code and contribute:
+       https://github.com/XRPLF/rippled.
+
+       The XRP Ledger (XRPL) does not utilize smart contracts in the traditional sense; instead,
+       it operates with built-in transaction types and protocol-level features such as Escrows,
+
+                                                                                                                                           24
+               NFTs, Payment Channels, checks, etc. which are directly implemented and tested within
+               the core ledger code, rather than through separate smart contracts.
+
+Environmental  The XRP Ledger is one of the most environmentally sustainable blockchains:
+
+                No mining: It does not rely on Proof-of-Work and thus avoids high electricity
+
+               consumption.
+
+                Efficient processing: Transactions are confirmed in seconds with negligible
+
+               energy use--reportedly just 0.0079 kWh per transaction. Please see the
+
+               Sustainable                                section                          in
+
+               https://learn.xrpl.org/course/intro-to-the-xrpl/lesson/how-the-xrpl-came-to-be/
+
+                Green-focused: Ripple, one of XRPL's key contributors, has committed to
+
+               becoming carbon net-zero and is involved in carbon markets and climate
+
+               initiatives   using  XRPL  to              tokenize  carbon                 credits.
+
+               https://ripple.com/impact/#sustainability
+
+Note - this white paper does not include details relating to public offerings or trading admission. The
+DLD-25-TRE-S803-M tokens cannot be openly traded on the market; trading is only permitted within the Issuer's
+ecosystem.
+
+                                                                                                25
+Part 5 - Risk statement  Virtual Assets are a digital representation of value that may be digitally traded,
+Virtual Asset risks      transferred, or used as an exchange or payment tool, or for investment purposes. This
+                         definition includes Virtual Tokens.
+Investment risks
+                         The primary risks associated with Virtual Assets are:
+
+                              They may lose all or some of their value and are subject to extreme volatility.
+                              They may not always be transferable, and some transfers may be irreversible.
+                              They may not be liquid.
+                              Some transactions are not private and may be recorded on public DLTs
+
+                                  (distributed ledger technology).
+                              They may be subject to fraud, manipulation, theft, including through hacks and
+
+                                  other targeted schemes and may not benefit from legal protections
+
+                         We have implemented robust measures including incident response procedures and
+                         a business continuity plan to address any risk of loss which may result from a failure of
+                         the services provided.
+
+                         General risks associated with investing include:
+
+                              The value of investments can go up and down. Past performance is not a
+                                  reliable indicator of future returns.
+
+                              Investing may not be suitable for everyone; potential investors should seek
+                                  independent advice if they're unsure whether or not to invest.
+
+                              The tax treatment of an investment depends on the investor's individual
+                                  circumstances and may be subject to change in future.
+
+                              Property is not generally considered to be a liquid asset class. The redemption
+                                  of tokens is subject to demand within the ecosystem.
+
+                         26
+Issuer related risks       Virtual Assets, whilst regulated, are not subject to any regulatory compensation
+Technology risks               scheme.
+
+                      Investors may be asked to provide additional capital by Prypco FZE for material
+                      charges, such as repairs or maintenance. Any such requests will be communicated to
+                      investors.
+
+                      The Issuer is exposed to different types of risk as part of its strategy and business
+                      operations. These include:
+
+                           Financial stability;
+                           Credit;
+                           Market;
+                           Liquidity;
+                           Operational;
+                           Issuer;
+                           Conduct including legal and regulatory;
+                           Compliance; and
+                           Consumer Protection.
+
+                      In accordance with VARA's regulatory framework, Ctrl Alt must establish and maintain
+                      risk management systems and controls to enable it to identify, assess, mitigate, control
+                      and monitor its risks.
+
+                      We must also develop, implement and maintain appropriate measures to manage the
+                      risks to which we and, where applicable, our customers or users, are exposed.
+
+                      This is an ongoing process subject to regular review in order to identify emerging or
+                      unforeseen risks requiring management action. Ctrl Alt's approach to risk
+                      management is ultimately overseen by its Board.
+
+                      XRP operates on a decentralized blockchain using a Federated Consensus Mechanism,
+
+                                                                                                                                                       27
+Conflicts of Interest  ensuring fast, low-cost transactions without mining or staking. However, several
+Disclaimers            technology-related risks remain.
+
+                       Private key management is crucial, as the loss or theft of private keys results in
+                       permanent loss of funds.
+
+                       XRPL's consensus model mitigates 51% attacks, but validator centralization risks could
+                       emerge if a small number of entities dominate validation, impacting decentralization.
+                       Protocol upgrades and governance follow the XRPL Amendment process, requiring
+                       80% validator approval for two weeks, which may delay critical updates or lead to
+                       governance disputes. Security risks include potential bugs in protocol updates,
+                       evolving attack vectors, and the long-term challenge of quantum computing threats
+                       to cryptographic security.
+
+                       Additionally, while XRPL transactions are efficient and transparent, they are public and
+                       pseudonymous, making them subject to blockchain analysis, which could impact
+                       privacy and regulatory compliance. XRPL continues to evolve, with ongoing
+                       improvements in governance, interoperability, and scalability, ensuring its role as a
+                       leading blockchain for cross-border payments
+                       and financial transactions.
+
+                       We have conducted a thorough review of our business operations, relationships, and
+                       service arrangements to identify any actual or potential conflicts of interest. Based on
+                       this review, we confirm that no conflicts of interest exist that would impair our ability
+                       to act in the best interests of our customers, partners, or any other stakeholder. We
+                       remain committed to ongoing monitoring and will promptly disclose and address any
+                       conflicts should they arise in the future.
+
+                       Holding DLD-25-TRE-S803-M tokens do not provide token holders with any rights
+                       against the Issuer other than those explained within this white paper.
+
+                       28
+ We are not associated or affiliated with any parties other than those mentioned
+    in this White Paper.
+
+ This White Paper does not constitute a prospectus or financial service offering
+    document and is not an offer to sell or solicitation of an offer to buy any security.
+
+ The distribution of this document is restricted by Ctrl Alt and may be further
+    restricted by law. No action has been or will be taken by Ctrl Alt Limited to
+    permit the possession or distribution of the document in any jurisdiction where
+    action for that purpose may be required. Accordingly, the document may not
+    be used in any jurisdiction except under circumstances that will result in
+    compliance with any applicable laws and regulations. Persons to whom the
+    document is communicated should inform themselves about and observe any
+    such restrictions. This document may not under any circumstances be copied,
+    distributed, published or reproduced, in whole or in part, without the prior
+    written consent of Ctrl Alt.
+
+ To the extent permitted by law, neither Ctrl Alt nor its employees, directors,
+    officers, shareholders or service providers assumes any liability or responsibility
+    nor owes any duty of care for any consequences of any person acting or
+    refraining to act in reliance on the information contained in this document or
+    for any decision based on it. Note, we do not exclude or attempt to exclude any
+    form of actual or potential civil liability in respect of providing inaccurate or
+    misleading information.
+
+ No statement in this whitepaper is intended as a profit forecast.
+ Prospective holders will bear all the costs of your investigation and evaluation of
+
+    their investments, including the fees and disbursements of your own counsel
+    and advisers, where necessary.
+ Any assumptions used in this whitepaper and any other relevant document
+    have been based on certain information and projections provided by various
+    sources. Whilst Ctrl Alt believes that these projections are based on acceptable
+    and robust methodology, they necessarily incorporate an element of
+
+                                                                                                                            29
+Data privacy           subjectivity and there can be no certainty that these projections will prove to be
+                       correct.
+
+              The Issuer's privacy policy explaining how personal data is processed can be found on
+              the website or by following this link.
+
+              30
+

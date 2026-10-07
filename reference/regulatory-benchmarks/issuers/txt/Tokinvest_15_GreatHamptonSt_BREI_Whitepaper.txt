@@ -1,0 +1,1693 @@
+                                       Tokinvest FZCO
+                       Built Real Estate Economic Interest Token
+
+                               Virtual Asset Whitepaper TVBREIBBWUK1
+
+REGULATORY DISCLAIMER
+VARA has not taken any steps to verify the information set out in this whitepaper, including its accuracy and
+completeness, and has no responsibility for any loss arising from reliance on it. The liability for the content of
+the whitepaper lies with the Issuer.
+
+SECTION A: INFORMATION ABOUT THE ISSUER
+
+A.1 Issuer Name, Legal Structure and Registered Address
+Tokinvest FZCO is a company duly incorporated under the laws of the United Arab Emirates, and with its
+principal office at Unit No: UT-12-PO-8, DMCC Business Centre, Level No 12, Uptown Tower, Dubai,
+United Arab Emirates. ("Tokinvest FZCO").
+
+A.2 Issuer Incorporation/Registration Date
+Tokinvest FZCO is registered under DMCC license number DMCC-928046, with a date of incorporation of 10
+May 2024.
+
+A.3 Issuer Parent Company
+Tokinvest FZCO is a wholly owned subsidiary of OREHC Holding Limited, a private company limited by shares
+incorporated on 13 February 2025 under company number 25680, with its registered office at Unit PC-1, Level
+7, Al Maryah Tower, Abu Dhabi Global Market Square, Al Maryah Island, Abu Dhabi, United Arab Emirates.
+OREHC Holding Limited holds 100% of the issued share capital of Tokinvest FZCO.
+
+A.4 Issuer Related Functions
+Tokinvest FZCO functions:
+
+    · Scott Thiel (Chief Executive Officer)
+         Leads the company and sets strategic direction. Brings extensive expertise in tokenisation and aims to
+         broaden access to previously exclusive asset classes.
+
+    · Matt Blom (Chief Strategy Officer)
+         Responsible for identifying market trends and product development. Brings deep market insight and
+         forward-looking product strategy.
+
+    · Robert Cooper (Chief Operating Officer)
+         Oversees day-to-day operational efficiency and execution of strategic plans.
+
+    · James Byrne (Chief Technology Officer)
+         Manages the technology stack supporting issuance, custody, and lifecycle management of virtual
+         assets.
+
+Business Address:
+Tokinvest FZCO, DMCC Crypto Centre, Office 8, Floor 12, Uptown Tower, Jumeirah Lake Towers, Dubai
+A.5 Related Persons Legal Status
+To the best of Tokinvest FZCO's knowledge and based on available information, no individual associated with
+the company has been convicted of any offence involving dishonesty, fraud, financial crime, or offences
+related to companies, banking, insolvency, money laundering, or insider trading.
+Furthermore, no such individuals are currently subject to any ongoing criminal investigations or inquiries in
+any relevant jurisdiction.
+
+A.6 Issuer Business Activity
+Tokinvest FZCO is a Virtual Assets Regulatory Authority (VARA) licensed Broker-Dealer and Issuer (Licence No.
+VL/2024/12/004), authorised to provide services related to the design, structuring, issuance, placement,
+marketing, distribution, and over-the-counter (OTC) trading of Virtual Assets including ARVAs.
+
+A.7 Issuer Financial Condition
+Tokinvest FZCO holds a fixed amount of its own money in a specially designated `capital lock-up' bank account,
+as required by VARA for broker-dealer and issuer licence holders. This money acts as a financial safeguard and
+must always remain in the account. It cannot be used for running the business, paying expenses, or any other
+day-to-day activity.
+
+The bank account is legally ring-fenced, meaning the funds are kept completely separate from the company's
+operational accounts. Tokinvest FZCO is required to maintain this minimum balance at all times and regularly
+reports this to VARA. VARA can request proof at any time, and using or moving these funds without regulatory
+approval would be a breach of licence conditions. This ensures that investors know the company always holds
+a protected capital reserve as part of its regulatory obligations..
+
+Since obtaining its licence, Tokinvest has maintained continuous compliance with VARA's capital adequacy and
+reserve requirements, with no material deterioration in its financial position. The company holds sufficient
+liquidity to meet all operational and regulatory obligations, and its regulatory capital consistently remains
+above VARA's prescribed minimum threshold.
+
+Tokinvest submits monthly financial statements to VARA including balance sheet, income statement, and
+capital adequacy reports ensuring ongoing transparency and supervisory oversight. The company's accounts
+are also subject to annual audit by a UAE-registered audit firm, reaffirming its adherence to sound financial
+and governance standards.
+
+A.8 Issuer Assessment
+Tokinvest FZCO was incorporated in May 2024 and is registered within the Dubai Multi Commodities Centre
+(DMCC).
+
+In its inaugural year, Tokinvest secured its VARA Broker-Dealer licence (VL/2024/12/004), affirming its
+regulatory standing. In September 2025, Tokinvest secured the first VARA multi asset and full market Issuance
+License (VL/2024/12/004). The company has quickly positioned itself as a key player in the UAE's tokenisation
+ecosystem, serving a growing client base interested in tokenising a range of assets including real estate,
+commodities, funds, alternative assets and fixed-income securities.
+
+The BREI Token represents one of the Issuer's early offerings. As such, performance metrics are not yet
+available but will be developed and disclosed in accordance with regulatory guidelines following issuance.
+A.9 Issuer Governance Framework
+Given its fiduciary responsibility to shareholders, the Board is responsible for delivering efficient and effective
+corporate governance, through which Tokinvest strives to promote sustainable growth and maximise
+corporate value. After establishing the strategic direction of the Company, the Board shall use its supervisory
+function on general operations to ensure that these operations are fair and transparent. The Board shall also
+make decisions on the important business affairs of the Company, such as decisions on the formulation of
+management plans and business plans and decisions on investment projects that exceed a certain fixed
+amount of money.
+The Board shall delegate responsibility for the conduct of other business affairs and decisions to other
+members of senior management, and the Board shall carry out the oversight of the performance of their
+duties.
+The Board has established a framework of policies so that business affairs are efficiently conducted under
+suitable internal controls and shall put in place and monitor the use of a system to manage compliance and
+risks. The Board shall take the actions necessary to enable external Financial Auditors to fulfil their role.
+The Tokinvest Board meets once a quarter to discuss the business updates for that quarter and vote upon
+anything that requires Board approval. There are three voting Board members and a majority vote is required.
+Tokinvest FZCO's Corporate Governance Policy sits across the top of all business activities and provides the
+governance framework to which the company operates. Diagram 1 below breaks down the Committees that
+oversee the various policies and processes that the company has in place.
+
+The Tokinvest Board delegates power to a number of committees by formally assigning specific responsibilities
+and decision making authority to these groups, specially:
+
+    · Board of Directors
+    · Change Advisory Board (CAB)
+    · Compliance AML Oversight Committee
+    · Cyber Security Committee
+    · Listing Committee
+    · Nomination & Dismissal Committee
+    · Risk Committee
+    · Technology/Product Committee
+    · Vendor Control Function Committee
+                                               Diagram 1: Governance Structure
+
+Tokinvest FZCO conducts due diligence on all counterparties with whom it works. All asset owners are subject
+to stringent checks ahead of commencing whitepaper completion which is subsequently submitted to VARA
+for approval once completed.
+
+Tokinvest has in place a whitepaper review cycle to ensure all department heads have reviewed the issuance
+documentation; inclusive of risk, finance, technology and operations. Alongside the whitepaper, Tokinvest
+ensures that the following documentation is in order ahead of the business's Listing Committee reviewing and
+approving the new product:
+
+     · VARA's IDQ document
+     · Compliance Due Diligence report on the asset owner
+· Broker Dealer Risk Disclosure Statement
+· Issuer Disclosure Statement
+· Broker Deal Declaration
+· New Product Form which is part of Tokinvest's New Product Policy which governs the oversight of
+
+    new products. The New Product Form is of critical importance as it is how the business conducts a risk
+    assessment analysis for a given product, considerations are made for:
+
+         o Strategic risk
+         o Liquidity risk
+         o Finance risk
+         o Tax risk
+         o Legal risk
+         o Compliance risk
+         o Credit risk
+         o Market risk
+         o Technology risk
+         o Operational risk
+         o Reputation risk
+    In order for a product to be approved for launch, the areas of risk listed above are analyzed against
+    the business's Risk Management Policy criteria. They are then added to the New Product Form by the
+    Product Owner ahead of review and approval by the following roles:
+         o Chief Executive Officer
+         o Chief Strategy Officer
+         o Chief Legal Officer (CEO currently fulfilling role)
+         o Chief Compliance Officer
+         o Chief Risk Officer
+         o Chief Operating Officer
+         o Chief Technology Officer
+    The voting mechanism requires all individuals to review and approve a product prior to release with
+    final approval being held at one of three levels depending on the level of residual risk; low, medium
+    and high as per the table below.
+
+Residual Risk Level  Risk Committee          Executive Committee  Board Risk Committee
+Low                  Approve                 Review               Review
+Medium               Recommend for Approval  Approve              Review
+High                 Recommend for Approval  Recommended for      Approve
+                                             Approval
+
+A product with a high level of residual risk requires sign-off by the Tokinvest Board, a low residual risk product
+can be approved by the Risk Committee.
+
+Compliance & Regulatory Considerations:
+Tokinvest's AML/CFT Policy and Procedures, as approved by VARA during the licensing process,
+comprehensively address all applicable requirements for Customer Due Diligence (CDD), Know-Your-Customer
+(KYC), and ongoing monitoring.
+Specifically:
+
+    · All participants/customers are subject to full identification and verification in accordance with VARA's
+         Part III ­ Anti-Money Laundering and Combating the Financing of Terrorism Rulebook, the UAE Federal
+         Decree-Law No. 20 of 2018, and Cabinet Decision No. 10 of 2019.
+
+    · The standards applied include risk-based CDD, verification of beneficial ownership for entities,
+         sanctions screening, and ongoing transaction monitoring
+
+    · Enhanced due diligence measures are applied for higher-risk categories (e.g., PEPs, complex
+         structures).
+
+    · Our AML/CFT controls are implemented through automated KYC onboarding, screening tools, and
+         manual review by our appointed Money Laundering Reporting Officer (MLRO).
+
+Governance & On-Chain Controls:
+Tokinvest applies a structured governance and compliance framework designed to protect investors and
+ensure all BREI Tokens operate within a regulated, permissioned environment.
+
+1. Board & Management Oversight
+
+    · Strategic decisions, product approvals, and risk governance are overseen by the Board of Directors of
+         Tokinvest FZCO.
+
+    · Daily operations are managed by the CEO, Chief Strategy Officer, and relevant function heads.
+    · All key individuals are subject to regulatory fitness, propriety, and competence requirements.
+
+2. Independent Compliance Function
+
+    · The Compliance Officer oversees adherence to VARA rules, customer due diligence, AML/CFT
+         monitoring, and reporting obligations.
+
+    · Compliance is independent from commercial and operational teams.
+
+3. Risk Management Framework
+
+    · Tokinvest maintains risk assessment procedures covering operational, market, liquidity, cyber, and
+         smart-contract risks.
+
+    · These controls evolve as new products and on-chain modules are introduced.
+
+4. Conflicts of Interest Management
+
+    · Conflicts are identified, monitored, and managed through clear policies covering disclosure,
+         segregation of duties, and related-party interactions.
+
+    · Tokinvest does not act as principal or market maker unless explicitly disclosed to investors.
+
+5. Internal Policies
+
+    · Tokinvest maintains internal AML/CFT Policies and Procedures, an Operational Risk Manual, and an
+         Information Security Program.
+
+    · These are internal regulatory documents, but their existence and governance principles are disclosed
+         for transparency.
+6. Phased On-Chain Compliance and Governance Controls
+
+Tokinvest will introduce on-chain controls in phases. These enhancements are designed to strengthen investor
+protection and ensure that BREI Tokens remain within a permissioned, compliant ecosystem.
+
+Phase 1­2 (Current):
+Off-chain KYC, AML/CFT screening, and eligibility checks before allowing any participation or trading.
+
+Phase 3­4 (Future):
+Introduction of on-chain compliance modules such as:
+
+    · Whitelisted/permissioned wallet restrictions
+    · Transfer-control logic
+    · Attestation-based access (e.g., investor category or eligibility flags)
+
+These modules will be activated only after regulatory approval and external audit.
+
+Phase 5 (Where Applicable):
+
+    · Optional governance functions (e.g., vote-escrowed rights or staking mechanisms) for products
+         designed to include them.
+
+All future on-chain modules will be implemented only after formal approval and testing to ensure alignment
+with VARA requirements. On-Chain Governance
+
+A.10 ISSUER VIRTUAL ASSET ACTIVITIES
+The BREI Token represents one of Tokinvest FZCO's Virtual Asset issuance products.
+As a VARA-licensed broker-dealer and issuer, Tokinvest may conduct further issuances in the ordinary course
+of its regulated activities, subject to applicable regulatory approvals and compliance requirements.
+
+A.11 ISSUER/DLT RELATIONSHIP
+Tokinvest FZCO utilises the BSC distributed ledger technology (DLT) network for the issuance of this Virtual
+Asset.
+There is no legal, financial, or operational affiliation between Tokinvest FZCO and the BSC protocol or its
+developers. The selection of the BSC network was made based on its technical characteristics and suitability
+for the product.
+
+A.12 DETAILS OF ALL ENTITIES INVOLVED IN THE ISSUANCE
+Tokinvest FZCO is the sole Issuer of the BREI Token described in this whitepaper. As a VARA-licensed broker-
+dealer and issuer (Licence No. VL/2024/12/004), Tokinvest FZCO is responsible for the design, structuring,
+issuance, distribution, and lifecycle management of the Virtual Asset.
+Entities involved in the issuance are as follows:
+
+    · Tokinvest FZCO (Issuer & Licensed Distributor) ­ responsible for the issuance, marketing, distribution,
+         custody arrangements (via outsourcing), and ongoing regulatory compliance. ("Issuer")
+
+    · GHSW Holdings Limited (UK, Company No. 17001987) ­ the registered legal owner of the reference
+         property (the underlying real estate asset located in the Jewellery Quarter, Birmingham). This entity
+         has engaged with Tokinvest FZCO for the tokenisation of its asset but does not act as Issuer of the
+         Virtual Asset. ("Asset Owner")
+
+    · Nurtured Homes West Midlands Limited (Registered Number: 16409128) and M.D.R Properties
+         Limited t/a Martin & Co (Registered No: 07887348)- independent, UK-licensed broker and property
+         management businesses engaged as agents for letting, managing, and maintaining the reference
+         property. ("Property Manager")
+
+No allocation of tokens at issuance will be made to any entity other than whitelisted investors who have
+completed AML/KYC checks.
+
+SECTION B: INFORMATION ABOUT THE VIRTUAL ASSET
+B.1 VA NAME AND ABBREVIATION
+The name of the Virtual Asset is Built Real Estate Token (TVBREIBBWUK1) ).
+The abbreviation for this whitepaper is BREI.
+
+Each BREI issuance carries a unique identifier that references the underlying Property. For this issuance, the
+token is designated the name given above.
+The property referenced for this White Paper is the entirety of the Great Hampton Street Works, Jewellery
+Quarter, Birmingham (the "Property"), as recorded under UK Land Registry title number WM656558.
+
+B.2 VA CHARACTERISTICS, FEATURES & USES
+The BREI Token is an Asset-Referenced Virtual Asset (ARVA) representing the contractual economic rights
+associated with the Property as described in this Whitepaper (the "Reference Asset").
+Key characteristics include:
+
+Economic Rights:
+Tokenholders are entitled to a proportional share of:
+
+    · The net rental yield generated by the Property.
+         Distribution commences after the first month and accrues on a block-by-block basis, with token
+         holders eligible to claim outstanding rental returns at any time, up to and including the corresponding
+         block; and
+
+    · The net proceeds of any future sale of the Property, following deduction of agreed costs and fees as
+         set out in this White Paper.
+
+The timing and process of the Property sale is determined as set out in Appendix B of this White Paper.
+
+Property Reference Structure:
+
+    · Each BREI Token corresponds to the economic rights associated with a specific Property, as
+         constituted by the Reference Asset
+
+    · The Property referenced for this whitepaper is economic contractual rights relating to UK Land
+         Registry title WM656558 (the "Property")
+
+    · Tokens are semi-fungible: those linked to the same Property are interchangeable, but tokens linked to
+         different properties are not.
+    · The Reference Asset for a BREI token cannot be changed under any circumstance.
+
+Property Management:
+Tokinvest has appointed the Property Manager to undertake the management of the Property Asset including
+the activities set out in Appendix A of this White Paper.
+
+Property Rights Agreement
+Tokinvest has entered into a contract with the Asset Owner pursuant to which it acquires the contractual
+economic rights associated with the Property, which constitute the Reference Asset referenced by the BREI
+Token.
+
+No Ownership Rights:
+Ownership of the BREI token does not confer legal or beneficial ownership of the Property. Instead, tokens
+represent contractual economic participation rights referenced to the Property, entitling tokenholders to
+distributions derived from the Reference Asset in accordance with this Whitepaper.
+
+Governance & Voting:
+Tokenholders have no governance rights in respect of the decisions over the management or sale of the
+Property. Authority of the Property sale and process for selling the Property is set out in Appendix B.
+
+Trading & Liquidity:
+BREI tokens can be traded on Tokinvest FZCO's secondary marketplaces and can be traded on regulated RWA
+platforms by whitelisted investors who have passed the required AML/KYC checks.
+
+Use Case:
+The BREI token provides investors with blockchain-based access to fractionalised real estate returns,
+combining rental yield with potential capital appreciation, underpinned by a regulated issuance framework.
+
+B.3 PLANS FOR VA AND RELATED PROJECTS
+Primary Issuance:
+Proceeds are applied to the acquisition, structuring, and management of the Property, including settlement of
+existing debt, payment of transaction costs, and preparation for rental.
+
+Rental Yield Distribution:
+Once purchased and let, the Property will generate rental yield distributions, net of management and
+operating costs, payable to tokenholders in proportion to their holdings.
+Distribution commences after the first month and accrues on a block-by-block basis, with token holders
+eligible to claim outstanding rental returns at any time, up to and including the corresponding block.
+
+Exit and Sale:
+The decision making and sale process is set out in Appendix B. Where Tokinvest FZCO completes a sale
+process for the Property then the proceeds will be distributed to tokenholders.
+
+B.4 VA TARGET MARKET
+The BREI Token is designed for retail, qualified and institutional investors seeking fractionalised exposure to
+the economic rights of residential property through a regulated, blockchain-based structure.
+Target investor categories include:
+
+Professional and Institutional Investors: Asset managers, family offices, and private wealth managers seeking
+alternative asset exposure with yield and capital appreciation potential.
+High Net Worth Individuals: Whitelisted investors seeking access to prime real estate opportunities without
+the requirement to directly purchase and manage property.
+International Investors: Particularly those interested in diversifying into residential property markets while
+benefiting from a transparent, regulated virtual asset issuance framework.
+Retail Investors: who are looking to get fractional exposure to the economic benefits of being a residential
+property landlord without having to acquire and manage an entire property.
+
+Participation Requirements:
+Access to the BREI Token is restricted exclusively to investors who have:
+
+    1. completed Tokinvest's full AML/KYC onboarding;
+    2. been reviewed and approved by Tokinvest; and
+    3. been added to the investor whitelist together with their verified wallet address.
+
+Only investors satisfying all of the above conditions are eligible to subscribe for, hold, or transfer BREI Tokens.
+Investors must also meet a minimum subscription threshold of 1,000 tokens (AED 100,000 or currency
+equivalent).
+The BREI Token is not available to:
+
+    · residents or citizens of the United States of America; or
+    · persons located in, or associated with, sanctioned or FATF high-risk jurisdictions.
+
+B.5 VA TRADING PLATFORM AND RELATED PROCESSES
+BREI Tokens are admitted to trading exclusively on the Tokinvest FZCO Investor Platform in the first instance,
+operated under Tokinvest's VARA-regulated Broker-Dealer licence (VL/2024/12/004).
+
+Secondary-market functionality is expected to be available at or shortly after the Token Generation Event
+(TGE), enabling investors to buy and sell tokens through Tokinvest's regulated marketplace.
+
+Future listings may occur only on other VARA-licensed RWA platforms that maintain equivalent compliance,
+KYC/AML, and settlement standards to Tokinvest and are approved by Tokinvest for interoperability and
+investor-protection purposes.
+
+Only whitelisted investors who have completed full AML/KYC onboarding may access the marketplace. Access
+is provided via secure login to the Tokinvest Investor Platform web portal, where investors can view live order
+books, place buy/sell orders, and settle trades using pre-funded client-money accounts in AED or approved
+currency equivalents.
+Access to the Tokinvest App and Investor Platform is available to fully onboarded and whitelisted investors
+irrespective of their travel location. Tokinvest does not apply geo-blocking to verified users, provided they are
+not residents of a sanctioned or FATF high-risk jurisdiction. Jurisdictional restrictions apply only at the
+onboarding stage.
+Transfers occur as standard BEP-20-compliant blockchain transactions between verified wallets. A 0.25 %
+secondary-market transfer fee applies to both buyer and seller.
+Brokerage, custody, and token-management fees are detailed in Section F.14; no other trading charges are
+levied by Tokinvest beyond those disclosed.
+
+Custody and Cap-Table Management:
+The CAP table denoting token ownership is maintained internally by Tokinvest.
+Where an investor chooses to leave their Virtual Asset for custody on Tokinvest platform, there are no
+additional technical requirements to own or hold BREI Tokens beyond use of the Tokinvest Investor Platform.
+BREI Token Custody may remain with Tokinvest, be transferred to another regulated custodian or VASP
+providing incidental custodian services or be self custodied by the investor.
+
+Primary Issuance Process
+Subscription Period :
+BREI Tokens are offered during an initial subscription period of up to 60 days on the Tokinvest platform (the
+"initial Subscription Period"). The initial Subscription Period commences on the date on which the first valid
+subscription for BREI Tokens is accepted by Tokinvest from a whitelisted investor. Making the offering
+available on the Tokinvest platform does not of itself commence the initial Subscription Period. Where the
+authorised Token Supply has not been fully issued at the close of the initial Subscription Period, Tokinvest may
+open no more than two subsequent Subscription Periods, each of up to 30 days. Each subsequent Subscription
+Period commences immediately on the close of the Subscription Period preceding it. The initial Subscription
+Period and any subsequent Subscription Periods are each a "Subscription Period" and run consecutively. No
+subscriptions may be accepted more than 120 days after the commencement of the initial Subscription
+Period.
+
+Minimum Investor Subscription Amount:
+Participation in the issuance is subject to a minimum subscription by each investor of 1,000 BREI Tokens,
+equivalent to AED 100,000 (or currency equivalent). (the "Minimum Investor Subscription Amount")
+
+Token Price:
+Each BREI token has a face value of AED 100. For transparency, the GBP equivalent price is also displayed on
+the platform using prevailing exchange rates.
+
+No Pre-Sales or Discounts
+There are no pre-sales or discounted offers for BREI Tokens.
+
+Investor Requirements:
+Investors must complete Tokinvest's onboarding process, including AML/KYC clearance.
+Investors must pre-fund their client money account with sufficient cleared funds to cover their subscription
+and associated fees. Subscriptions are binding once made, and funds are debited immediately from the
+investor's balance.
+
+Token Generation Event (TGE)
+The Token Generation Event (the "TGE") occurs following the close of the first Subscription Period at which
+the Minimum Subscription Amount for the issuance has been achieved and all applicable verification and
+compliance checks have been completed. This may be the initial Subscription Period or, where the Minimum
+Subscription Amount has not been achieved by the close of the initial Subscription Period, any subsequent
+Subscription Period up to and including the last.
+
+Prior to the TGE, Tokinvest performs a formal reconciliation of all cleared investor funds held in its Client
+Money Account (CMA) and confirms that subscriptions received up to the close of that Subscription Period
+correspond to the approved issuance parameters.
+This reconciliation and verification process is reviewed jointly by Tokinvest's Compliance and Operations
+teams to ensure that:
+
+    · all participating investors have successfully completed AML/KYC onboarding;
+    · all subscription funds have been fully cleared and correctly matched to investor accounts; and
+    · no outstanding eligibility, sanctions, or ownership restrictions apply.
+
+Upon completion of these checks, Tokinvest authorises the TGE.
+At the TGE:
+
+    · the maximum total Token Supply for the issuance is authorised and fixed by reference to the Property
+         Price and the foreign exchange mechanics described in this Whitepaper;
+
+    · the Token Price and the fractional economic entitlement per Token are fixed; and
+    · no Tokens may be authorised in excess of the fixed total Token Supply.
+
+The authorised Token Supply represents the maximum number of Tokens that may ever be issued for the
+relevant Property and cannot be increased.
+Following the TGE, Tokens corresponding to subscriptions received up to and including the Subscription Period
+at which the TGE occurred are minted and credited to investor wallets within two (2) business days. Each
+issuance is recorded in Tokinvest's internal systems and reflected in the investor's Tokinvest platform
+dashboard.
+
+Subsequent Subscription Periods
+Where, at the close of the initial Subscription Period, the Minimum Subscription Amount has not been
+achieved or the authorised Token Supply has not been fully issued, Tokinvest may, in accordance with the
+issuance documentation and applicable disclosures, open no more than two subsequent Subscription Periods
+for the same issuance, each of up to 30 days.
+
+Tokens issued in subsequent Subscription Periods:
+
+    · are minted at the same fixed Token Price;
+    · confer identical economic rights; and
+    · do not alter or dilute the economic position of existing Tokenholders.
+
+No Tokens may be minted once the authorised Token Supply has been fully issued.
+
+Unsuccessful Subscription
+If the Minimum Subscription Amount is not achieved by the close of the final Subscription Period, being the
+last subsequent Subscription Period opened or, where no subsequent Subscription Period is opened, the initial
+Subscription Period:
+
+    · no TGE occurs; and
+    · all subscription funds are returned to investors in full, without deduction, in accordance with
+
+         Tokinvest's platform terms.
+
+In such circumstances, the issuance does not proceed.
+
+Secondary Market Trading:
+BREI Tokens may subsequently be listed for resale on the Tokinvest secondary market.
+Only whitelisted investors (AML/KYC cleared) are eligible to participate.
+Trading is suspended once an Exit Property Valuation is set.
+
+Settlement & Recordkeeping:
+All transactions executed on Tokinvest Marketplaces follow an integrated settlement and confirmation
+process:
+
+Automated Trade Confirmation - when a buy or sell order is matched and executed, Tokinvest's trading
+system automatically generates a transaction confirmation. This confirmation is sent to both buyer and seller
+via email immediately upon completion.
+
+Dashboard Update - simultaneously, the investor's Tokinvest dashboard is updated in real time to reflect the
+new token or cash balance, with full transaction details (token quantity, price, timestamp, and counterparty).
+
+Daily Reconciliation - Tokinvest's internal systems reconcile the platform order book, CAP table, and Client
+Money Account balances daily to ensure that tokenholder and cash positions remain accurate.
+
+Custody Alignment - the reconciled records are cross-checked against the custodian's ledger for those
+investors who elect to retain custody with Tokinvest.
+
+Audit Record - all confirmations and reconciliations are logged in Tokinvest's internal compliance and audit
+systems to maintain an immutable record of transaction activity.
+
+B.6 VA CUSTODY
+Unless an Investor elects to self-custody, BREI Tokens are held in secure custody with Hex Trust MENA, a
+VARA-licensed custodian engaged under a material outsourcing agreement with Tokinvest FZCO. where
+tokens are held in a segregated secured wallet and reconciled daily against Tokinvest's cap table.
+
+Minting
+The total authorised Token Supply for the issuance is fixed at the Token Generation Event (TGE) and may not
+be increased.
+Following the TGE, Tokens are minted solely in respect of valid investor subscriptions, whether during the
+initial Subscription Period or any subsequent Subscription Periods permitted under the issuance
+documentation, provided that the authorised Token Supply is not exceeded.
+Minting does not alter the Token Price, economic entitlements, or proportional rights of existing
+Tokenholders.
+
+Burning
+Tokens are burned only upon completion of a verified terminal event for the issuance, including the sale of the
+Property or any other wind-down event expressly provided for in the issuance documentation. Burning
+represents the end of the Token's lifecycle and the termination of the associated economic rights.
+
+Transfers and Supply Integrity
+Transfers of Tokens between investors - whether on the Tokinvest platform or on another VARA-licensed
+marketplace - are standard blockchain transfers and do not trigger minting or burning.
+
+The total authorised Token Supply remains constant and fully auditable on-chain throughout the life of the
+Token.
+
+Cross-Chain Transfers:
+BREI Tokens are issued and operate exclusively on a single blockchain network. Cross-chain transfers are not
+supported. All transfers occur solely on the native chain between verified, whitelisted wallets. Token supply
+remains fixed and fully auditable on-chain.
+
+Operational Oversight:
+Tokinvest retains control of issuance, transfers, and lifecycle management, ensuring full compliance with
+VARA requirements.
+
+Safeguards:
+Tokens custodied on the Tokinvest platform are protected by institutional-grade systems, including multi-
+factor authentication and encryption protocols. Client assets are fully segregated from company assets,
+ensuring that investor holdings remain ring-fenced in the event of Tokinvest insolvency or operational
+disruption.
+In such an event, Tokinvest's Wind Down Plan, approved by VARA, governs the secure transfer or recovery of
+investor assets.
+
+B.7 VA ISSUANCE STRUCTURE
+The BREI Token is issued under a regulated subscription-based issuance model operated by Tokinvest FZCO
+pursuant to its VARA licence.
+
+Each issuance follows an all-or-nothing minimum subscription framework, with a defined maximum issuance
+size linked to the agreed Property Price. Tokens are issued only where the minimum aggregate subscription
+threshold is achieved.
+
+Token Price and Authorised Supply
+Each BREI token has a face value of AED 100.
+
+The maximum authorised Token Supply for the issuance is determined at the Token Generation Event (TGE),
+being the close of the first Subscription Period at which the Minimum Subscription Amount is achieved, by
+reference to the agreed GBP-denominated Property Price, converted into AED using a single spot AED/GBP
+exchange rate captured at that TGE. The FX reference rate is sourced from Fixer.io (APILayer).
+
+The resulting AED amount is divided by the fixed Token Price to determine the total authorised Token Supply
+for the issuance. This authorised Token Supply is fixed at TGE and may not be increased.
+Any subsequent Subscription Periods, if conducted, allocate Tokens from this fixed authorised supply and do
+not alter the FX rate, Token Price, or total authorised Token Supply.
+
+Subscription Parameters:
+Maximum Subscription Amount
+An amount equivalent to the Property Price, converted into AED at TGE. The aggregate value of all Tokens
+issued for the issuance (prior to costs and fees) may not exceed this amount.
+
+Minimum Subscription Amount
+A minimum aggregate subscription amount equivalent to £5.2 million (or AED equivalent). If this minimum
+threshold is not achieved by the close of the final Subscription Period, the issuance does not proceed.
+
+Minimum Investor Subscription Amount
+Each investor must subscribe for a minimum of 1,000 BREI Tokens (AED 100,000), or currency equivalent.
+
+Subscription Process
+BREI Tokens are offered through an initial Subscription Period of up to 60 days and, where required, no more
+than two subsequent Subscription Periods of up to 30 days each, conducted on the Tokinvest platform.
+To participate, investors must:
+
+    · complete full AML/KYC onboarding;
+    · pre-fund their Tokinvest Client Money Account (CMA); and
+    · submit binding subscription instructions through the Tokinvest platform.
+
+Subscription amounts are deducted immediately from an investor's cleared CMA balance and held in
+Tokinvest's segregated Client Money Account at Zand Bank.
+There are no pre-sales, discounts, or preferential allocations.
+
+Token Generation Event (TGE)
+The Token Generation Event (TGE) occurs once the Minimum Subscription Amount has been achieved and all
+participating investors have been verified.
+Prior to TGE, Tokinvest performs a formal reconciliation of cleared investor funds and confirms that:
+
+    · all investors have completed AML/KYC onboarding;
+    · subscription funds have fully cleared; and
+    · all eligibility requirements have been satisfied.
+
+At TGE:
+    · the maximum authorised Token Supply for the issuance is fixed;
+    · Tokens are minted only in respect of valid subscriptions received; and
+    · Tokinvest applies subscription proceeds in accordance with the issuance documentation, including
+
+         acquisition of the contractual economic rights comprising the Reference Asset.
+
+Tokens are credited to investor wallets within two business days following TGE.
+
+Subsequent Subscription Periods
+Where the Minimum Subscription Amount has not been achieved by the close of the initial Subscription
+Period, or has been achieved but the Maximum Subscription Amount has not been fully subscribed, Tokinvest
+may open no more than two additional Subscription Periods for the same issuance, each of up to 30 days.
+Any Tokens issued in subsequent Subscription Periods:
+
+    · are issued at the same fixed Token Price;
+    · form part of the same issuance; and
+    · carry identical economic rights and terms.
+
+The authorised Token Supply may not be exceeded, and no repricing, dilution, or alteration of Tokenholder
+rights is permitted.
+
+Unsuccessful Subscription
+If the Minimum Subscription Amount is not achieved by the close of the final Subscription Period:
+
+    · no TGE occurs;
+    · no Tokens are issued; and
+    · all investor subscription funds are returned in full without deduction, in accordance with Tokinvest
+
+         platform terms.
+
+Flow of Funds
+Investor subscriptions are credited into Tokinvest's client money account.
+Upon TGE, funds are deployed as follows:
+
+    · Payment for the economic rights to the Property.
+    · Legal and structuring costs related to the tokenisation.
+    · Tokinvest brokerage and platform fees (as detailed in Section F.14).
+    · Establishment of reserves for property management, insurance, and maintenance costs.
+
+Any net rental yield is subsequently collected and distributed to tokenholders as set out in this whitepaper.
+
+Upon property sale, net proceeds are remitted through Tokinvest, credited to investor accounts, and all
+tokens are burnt.
+
+Allocation Restrictions
+BREI Tokens may be retained by the Asset Owner to reflect its continuing economic interest in the underlying
+property and to maintain alignment with tokenholders. Such retained tokens are not held for the purpose of
+proprietary trading or market making, and do not give rise to any obligation to provide liquidity.
+
+Tokinvest FZCO and the Property Manager do not retain tokens for market making or proprietary trading
+purposes.
+Tokens are issued solely to subscribed, whitelisted investors who have successfully completed all applicable
+AML/KYC and eligibility requirements
+
+Lifecycle
+BREI Tokens remain active and tradable on Tokinvest's secondary market until:
+
+              1. The Exit Property Valuation is agreed.
+              2. The Property is sold; and/or
+              3. Sale proceeds are received and distributed.
+
+Following sale of the Property, all BREI Tokens are burnt, and investors' accounts are credited with their
+proportional share of the net proceeds.
+
+B.8 USE OF PROCEEDS
+The net proceeds from the issuance of BREI Tokens, after deduction of applicable fees and charges (as set out
+in Section F.14), will be applied as follows:
+
+Acquisition of Economic Rights
+Payment to the Asset Owners for the transfer of the economic rights to the designated Property.
+
+Legal and Structuring Costs
+Costs associated with the drafting and execution of legal agreements, tokenisation structuring, and regulatory
+submissions.
+
+Brokerage and Platform Fees
+Fees payable to Tokinvest FZCO for arranging, distributing, and managing the issuance, as described in Section
+F.14.
+
+Property Management & Maintenance Fund
+An allocation to cover ongoing maintenance, repairs, insurance, and compliance costs of the Property
+Manager, as described in Appendix A.
+
+Marketing & Agency Costs
+Costs relating to the marketing and letting of the Property, including professional photography, tenant
+sourcing, and agency commissions.
+
+Reserves
+Establishment of appropriate reserves for unforeseen property-related expenses, supporting continuity of
+rental income and yield distributions to tokenholders.
+
+Ongoing Proceeds Distribution:
+         · Rental Yield: Net rental income, after deduction of management and maintenance costs, will be
+              distributed to tokenholders in proportion to their holdings. Distribution commences after the
+              first month and accrues on a block by block basis, with token holders eligible to claim outstanding
+              rental returns at any time, up to and including the corresponding block.
+
+         · Final Settlement: Upon sale of the Property, net sale proceeds (after deduction of sale costs and
+              fees) will be distributed to tokenholders, and BREI Tokens will be burnt.
+
+Proceeds from Issuance Activities
+Any profits realised by Tokinvest FZCO from issuance-related activities (including brokerage, management, and
+platform fees) are to be retained by Tokinvest as part of its ordinary operating revenue.
+These profits will be used to:
+Maintain and enhance Tokinvest's trading and compliance infrastructure;
+Support ongoing regulatory and audit obligations under VARA;
+Fund research and development into tokenisation technology and secondary market integrations; and
+Strengthen Tokinvest's capital reserves in line with regulatory capital requirements for VARA-licensed entities.
+No portion of issuance-related profits will be reinvested into the specific property asset or distributed back to
+tokenholders.
+
+SECTION C ­ INFORMATION ABOUT RIGHTS AND OBLIGATIONS ATTACHED TO THE VIRTUAL ASSET
+C.1 VA FUNCTIONALITY
+The BREI Token entitles tokenholders to receive:
+
+    1. A proportional share of net rental yield generated by the Property; and
+    2. A proportional share of net proceeds from any sale of the Property, following deduction of all fees and
+
+         costs as outlined in this whitepaper.
+
+The BREI Token does not provide any ownership or title rights over the Property. All rights are contractual
+economic rights only.
+
+Stability of Functionality:
+There are no current plans to alter the functionality of the BREI Token. Tokinvest is not aware of any
+circumstances that would affect its operation or expected lifecycle.
+
+C.2 VA RIGHTS AND OBLIGATIONS
+Rights of BREI Tokenholders:
+
+Economic Rights
+Proportional entitlement to net rental yield and to net proceeds from any sale of the Property.
+
+Governance and Voting Rights
+BREI Tokens do not confer any voting, management, or governance rights in Tokinvest FZCO. Ownership of the
+token is strictly limited to proportional economic interest rights on the Property and does not extend to equity
+or control of the Property or the Asset Owner.
+
+Liquidity Rights
+Ability to buy or sell tokens via the Tokinvest secondary market, subject to eligibility and compliance
+requirements.
+Obligations of BREI Tokenholders:
+
+    · Completion of AML/KYC onboarding and adherence to Tokinvest platform terms.
+    · Acceptance that tokens will be custodied on the Tokinvest Platform and can only be transferred to a
+
+         third-party custodian or investor self-custody wallet with Tokinvest approval.
+    · Compliance with all applicable regulatory and legal requirements in their jurisdiction.
+    · Complaints, if any, are to be directed through Tokinvest's published Complaints Handling and
+
+         Resolution Procedure.
+
+BREI Tokenholders have no rights of ownership, title, or control over the Property.
+
+C.3 VA DLT AND RIGHTS
+The BREI Token is minted, managed, and burnt by Tokinvest FZCO on the BNB Smart Chain (BSC) blockchain,
+using the BEP-20 token standard.
+
+There is no legal, financial, or operational affiliation between Tokinvest FZCO and the BSC protocol or its
+developers. The use of BSC was selected for its technical suitability, scalability, and regulatory alignment.
+
+Tokenholder rights are defined entirely by the contractual terms set out in this whitepaper and are not
+dependent on or altered by the functioning of the underlying DLT.
+
+C.4 CONDITIONS FOR RIGHTS/OBLIGATIONS MODIFICATION
+There are no known conditions under which the rights and obligations of tokenholders may be modified.
+Tokinvest FZCO does not have the ability to unilaterally amend or alter these rights.
+
+C.5 RELATIONSHIP WITH SUBSEQUENT ISSUANCE
+BREI involves a single authorised issuance.
+The final Token supply is determined at the Token Generation Event.
+Following this point, no increase in the authorised Token supply is permitted.
+Tokens are minted only upon receipt of valid subscriptions.
+Where the full authorised supply is not subscribed during the initial Subscription Period, no more than two
+additional Subscription Periods, each of up to 30 days, may be conducted for the purpose of allocating and
+minting the remaining Tokens from the fixed authorised supply. Any such allocations do not constitute a
+further issuance.
+
+Such subsequent Subscription Periods:
+
+    · do not constitute further issuances;
+    · do not alter the Token Price; and
+    · do not increase the authorised Token supply.
+
+Once the authorised Token Supply for the issuance has been fully issued, no additional BREI Tokens relating to
+the Property may be created or issued.
+Any future BREI issuances will relate to different properties, each with:
+    · a separate whitepaper;
+    · a unique token designation;
+    · distinct smart contract identifiers; and
+    · issuance-specific Reference Assets.
+
+Such future issuances are legally, economically, and operationally separate and have no impact on the rights
+or obligations of tokenholders in this issuance.
+
+C.6 VA TRADING VENUE
+BREI Tokens may be traded on the Tokinvest FZCO Investor Platform, which operates under Tokinvest's VARA-
+regulated broker-dealer licence.
+
+While BREI Tokens will initially only be traded on the Tokinvest Investor Platform, they may be accepted for
+listing on other approved and appropriately regulated RWA platforms and Tokinvest will publish details of
+such licensed distribution on its website.
+
+C.7 VA TRANSFER RESTRICTIONS
+BREI Tokens can be transferred via the Tokinvest platform to other whitelisted investors / wallets.
+All transfers are restricted to whitelisted investors who have successfully completed AML/KYC checks.
+
+Trading is suspended once an Exit Property Valuation has been established. At that point, tokens remain valid
+for rental yield distributions until redeemed and burnt.
+
+C.8 VA VALUE PROTECTION MEASURES
+The BREI Token does not include any contractual guarantees, redemption floors, or value protection
+mechanisms.
+The token's value is derived solely from:
+
+    · Net rental income generated by the Property; and
+    · Net proceeds realised from any Property sale.
+
+These are variable in nature and subject to market conditions, operating costs, and management fees as
+outlined in this whitepaper.
+
+C.9 ENFORCEABILITY OF RIGHTS (INCLUDING PERMANENT REDEMPTION) AND CLAIMS AGAINST THE ISSUER
+By acquiring BREI Tokens, holders acknowledge and agree that the token represents a contractual right to
+receive certain distributions as described in this whitepaper. The BREI Token does not confer any ownership,
+title, equity, or governance rights in the Issuer, Tokinvest FZCO, the Asset Owner or the Property.
+
+The Issuer shall have no obligation to repurchase or redeem the token at any time. Upon expiry of the token,
+all rights (contractual, legal, or otherwise) shall automatically terminate, and no further claims shall be
+enforceable unless explicitly permitted under the terms of this whitepaper. Tokenholders accept that
+enforceability is contingent upon proper adherence to these terms, and that any legal or contractual recourse
+shall be limited to the mechanisms and remedies described herein.
+
+All enforceable rights are contractual and are governed by this whitepaper, Tokinvest Brokerage Terms and
+Conditions, and the associated legal agreements executed at issuance.
+C.10 INSOLVENCY EVENT
+Tokinvest Insolvency Risk
+In the event of Tokinvest FZCO entering into an insolvency event, tokenholders maintain third party rights
+under the contract between Tokinvest FZCO and the Asset Owner. This creates a contractual nexus for
+tokenholders to receive their economic rights directly from the Asset Owner. In practice this means that
+Tokenholders have the ability to recover their economic rights directly from the Asset Owner. This includes
+net rental yield and their entitlement to the net Property sale proceeds if the Asset Owner sells the Property.
+In the event of Tokinvest insolvency, the Asset Owner has the right to appoint a third party to administer the
+process or dealing directly with Tokenholders rights and the cost of such third party administrator can be set
+off against rental payments or Property sale proceeds.
+
+Furthermore, in the event of such insolvency, the directors will implement the Wind Down Plan identified in
+Diagram 1. The Wind Down Plan was approved by VARA as part of Tokinvest's licensing approval. The plan
+outlines all the activities and processes that the business will undertake should it become insolvent. A critical
+aspect of the plan is to ensure that client assets are at all times protected and secured within named "client
+accounts" which will constitute a one of two options depending on if fiat or digital assets are being custodied:
+
+    · Fiat currency (cash) will, at all times, be securely stored with an approved third-party bank within the
+         UAE. Tokinvest utilises Client Money Account(s) with Zand Bank.
+
+    · Digital assets, where possible, are securely stored with a VARA licensed third-party custodian within
+         the UAE. Tokinvest utilises Hex Trust MENA.
+
+The purpose of client assets being held within accounts designated "client accounts", is to ringfence client
+assets from company assets in the case of an insolvency.
+
+Tokenholders will be able to engage with the appointed insolvency practitioners during the insolvency
+proceedings to recover their assets and have them transferred to a third-party location. The appointed
+insolvency practitioner will ensure that tokenholders are kept fully abreast of the situation and detail to the
+tokenholders what they need to do, and provide, in order to recover their assets.
+
+Asset Owner Insolvency Risk
+Tokinvest has established legal rights to protect investors interests in the event of an insolvency of the Asset
+Owner. Specifically, the Asset Owner has granted Tokinvest:
+a) a first legal charge over the Property; and
+b) an assignment of income derived from the Property (including rent, sale proceeds, insurance proceeds, and
+other income).
+
+Tokinvest's interest over the Property is registered on the UK Land Registry.
+
+The terms of this security are set out in the Property Rights Agreement entered into between Tokinvest and
+the Asset Owner and includes the right to appoint a receiver to administer the Asset Owner and/or the right to
+sell the Property so that Property sale proceeds can be returned to tokenholders. Tokinvest is entitled to
+enforce this security interest in the event of material breach of insolvency of the Asset Owner. Tokinvest will
+exercise these rights promptly and in the interests of Tokenholders economic rights under this whitepaper
+which will enable tokenholders to continue to receive their economic rights include to receive Property sale
+proceeds.
+C.11 VARIATION OF RIGHTS
+All BREI Tokenholders hold identical and non-discriminatory rights. There are no separate classes of holders
+(e.g., retail, professional, market-maker, or affiliate) and no preferential or differential entitlements to
+information, liquidity, or governance.
+Every whitelisted investor, once approved under Tokinvest's AML/KYC process, enjoys the same contractual
+rights to economic distributions and secondary trading access.
+Market makers, if appointed, operate solely to provide liquidity under Tokinvest supervision and do not
+receive preferential rights or enhanced access.
+All eligible investors (as defined in Section B.4) may participate equally in primary issuance, secondary trading,
+and distributions.
+
+Rights may not be varied unilaterally by Tokinvest FZCO.
+Any change to tokenholder rights or eligibility criteria requires prior VARA regulatory review and approval.
+Following approval, Tokinvest will give all tokenholders no less than 30 days' written notice via the investor
+dashboard and registered email before implementation.
+Existing tokenholders are grandfathered under the prior terms for any obligations or benefits accrued prior to
+the effective date of the amendment.
+Tokinvest must publish a Summary of Change Notice setting out:
+
+    · the rationale for the variation;
+    · confirmation that the change applies equally to all holders; and
+    · the expected effective date.
+
+Transferability rules are identical across all holder categories and are governed by Tokinvest's platform terms.
+Tokens may only be held or transferred by investors whose wallets remain on the approved whitelist.
+Removal from the whitelist (e.g., due to failed compliance review) suspends transfer and distribution rights
+until reinstatement.
+Whitelist reviews occur annually, with appeals permitted under Tokinvest's Complaints and Review Policy.
+
+C.12 VA LIQUIDITY
+BREI Tokens are designed to accommodate secondary market liquidity through the Tokinvest FZCO Investor
+Platform.
+
+Secondary Market
+Tokenholders may list BREI Tokens for sale to other whitelisted investors on Tokinvest's secondary
+marketplace. All initial and ongoing secondary trading will take place on the Tokinvest Investor Platform,
+operated under Tokinvest's VARA-regulated Broker-Dealer licence (VL/2024/12/004).
+Secondary-market functionality is expected to be available at or shortly after the Token Generation Event
+(TGE), enabling investors to buy and sell tokens in a regulated environment.
+Any future listings on other VARA-licensed RWA marketplaces would require prior regulatory approval and
+alignment with Tokinvest's compliance, settlement, and KYC standards.
+
+Eligibility
+Only investors who have completed AML/KYC clearance may buy or sell BREI Tokens.
+Liquidity Facilitation
+Tokinvest provides a price-discovery interface for each BREI Token individually.
+
+The platform maintains an electronic order book where whitelisted investors may submit limit orders (bids or
+offers) in accordance with published market rules. Each BREI Token has a dedicated liquidity page displaying
+outstanding orders, recent trades, and indicative pricing information to support transparency and price
+discovery.
+
+Orders are eligible for execution where buy and sell instructions contain compatible terms, including matching
+price, quantity, and settlement conditions. In such cases, Tokinvest may temporarily interpose itself as
+principal solely for the purpose of facilitating settlement, executing both sides of the transaction
+simultaneously at the same price on a delivery-versus-payment basis.
+
+Tokinvest does not act as a market maker, does not provide continuous two-way pricing, and does not take
+directional or speculative trading positions. Any principal execution is risk-neutral, operational in nature, and
+subject to the same pricing logic, execution rules, and compliance oversight applicable to all secondary market
+activity.
+
+Market Insights and Valuation Support
+Tokinvest will periodically publish indicative net-asset values (NAVs), housing-market data, and (where
+available) AI-driven pricing analytics to assist investors in assessing fair-value ranges for secondary-market
+pricing.
+
+Ongoing Monitoring, Reporting and Investor Communications
+Tokinvest conducts ongoing monitoring of each BREI Token and its underlying property to support asset
+oversight and investor transparency. Monitoring includes, at a minimum, rental performance and yield
+metrics, occupancy and vacancy status, maintenance and operating expenditures, material FX exposure
+(where applicable), and relevant market and valuation indicators. Information is sourced from the property
+manager, third-party service providers, market data sources, and Tokinvest's internal reconciliation and
+oversight processes.
+
+Tokinvest provides periodic reporting to tokenholders via the Tokinvest Investor Platform, typically on a
+quarterly basis. Reporting includes property performance summaries, indicative net asset values (NAVs),
+relevant housing-market data, and commentary on material developments affecting the property or token.
+Indicative NAVs are derived from market data and analytical tools and are provided for informational purposes
+only.
+
+Indicative NAVs are calculated in GBP, being the functional currency of the underlying property. For investor
+reporting purposes, NAVs are presented in both GBP and AED.
+AED values are derived using a reference FX rate captured at 12:00 GMT on the relevant reporting date. FX
+rates are sourced from Tokinvest's designated pricing data provider, Fixer.io (APILayer), which aggregates
+exchange rate data from multiple commercial sources.
+FX conversions are applied consistently in accordance with Tokinvest's internal pricing policy and are provided
+for valuation and disclosure purposes only. FX rates do not represent executable rates and may differ from
+rates available in the secondary market or through financial institutions.
+In addition to scheduled reporting, Tokinvest communicates material events to investors on an ad-hoc basis
+through platform notifications and direct communications. Tokenholders have continuous access to their
+holdings, transaction history, and cash balances via their investor dashboard.
+
+Suspension of Trading
+Trading will be suspended once an Exit Property Valuation is established. During this period, yield distributions
+continue until the sale is settled.
+
+Exit and Resale Liquidity
+BREI Tokens do not guarantee capital preservation. Tokenholders may only be able to resell their tokens at a
+price below the original issue price, or may be unable to resell them at all.
+
+Any resale, buy-back, or redemption of BREI Tokens may occur at a discount to the most recently published
+indicative NAV and may result in tokenholders receiving less than their original investment, or, in adverse
+market conditions, no recovery of capital. Tokinvest does not guarantee liquidity, resale price, or exit timing.
+
+Real estate is a semi-liquid asset class, - exit ultimately depends on market supply and demand. Tokenholders
+can list their tokens on the Tokinvest platform and may offer them at a discount to improve the likelihood of
+resale.
+In rare and exceptional circumstances, and at its sole discretion, Tokinvest may consider repurchasing BREI
+Tokens for the limited purpose of supporting orderly market functioning where prolonged secondary-market
+illiquidity is evidenced. Buy-back consideration may arise only where BREI Tokens have been continuously
+offered for sale at the maximum permitted discount under platform pricing controls (currently 10% below the
+most recently published indicative NAV) for a sustained period (currently eight weeks) without execution.
+
+Where such conditions are met and subject to internal governance, compliance oversight, and approval
+processes independent of commercial functions, Tokinvest may repurchase tokens at a price of up to 15%
+below the most recently published indicative NAV. Tokinvest has no obligation to undertake any buy-back,
+does not engage in proprietary trading or market-making activities, and does not use buy-backs to influence
+secondary-market pricing or generate trading profits. Any tokens repurchased are promptly relisted on the
+platform under the same market rules, pricing logic, and execution protocols applicable to all investors.
+
+Any buy-back, if undertaken, is intended solely to support orderly market functioning and does not protect
+tokenholders from loss, does not establish a price floor, and should not be relied upon as an exit mechanism.
+Following any eventual property sale, all tokens linked to that asset are redeemed and burnt, and net sale
+proceeds are credited to tokenholder accounts in AED or approved currency equivalents.
+Following any eventual sale of the underlying property, all tokens linked to that asset are redeemed and
+burnt, and net sale proceeds (which may be less than the original investment amount after costs, liabilities,
+and market movements) are credited to tokenholder accounts in AED or approved currency equivalents.
+
+For the purposes of this section, "rare and exceptional circumstances" are limited to situations where
+continued listing or holding of the underlying property would reasonably be expected to materially
+disadvantage tokenholders or impair the integrity of the product, as determined and documented in
+accordance with Tokinvest's internal governance and compliance procedures.
+
+Operational Process and Settlement
+All trades settle on a delivery-versus-payment (DvP) basis within the Tokinvest ecosystem. Upon execution,
+the buyer's client account is debited, the seller's is credited, and the platform updates the CAP table
+immediately to reflect the new token ownership positions. Token transfers between verified wallets are then
+processed within two business days, subject to standard compliance and custody verification checks. Each
+transaction is confirmed by email and displayed in real time on investor dashboards.
+
+Liquidity Risk
+Tokinvest makes no assurance of continuous liquidity; tokenholders may not be able to sell their holdings on
+demand.
+
+C.13 COMPLAINTS HANDLING
+For any complaints, please go to Tokinvest's website; Tokinvest Complaints Handling and Resolution
+Procedure which details the complaints handling procedure and how to submit a complaint.
+
+C.14 REDEMPTION RIGHTS
+BREI Tokens do not include any contractual right of redemption during their lifecycle other than as set out
+below. Tokinvest FZCO has no obligation to repurchase or redeem tokens at any time.
+
+Upon sale of the Property, the issuance enters a mandatory wind-up process as described in Appendix B.
+Net sale proceeds are distributed to Tokenholders in accordance with the contractual mechanics, following
+which the Tokens are automatically extinguished and burned.
+No other redemption options or buy-back mechanisms exist.
+
+C.15 MATERIAL LEGAL CONSIDERATIONS
+The BREI token structure has been designed to be a VA product that is suitable for retail, qualified and
+institutional investors.
+
+All investors must pass KYC/AML checks and comply with platform terms. Transfer of these Virtual Assets can
+only be made via the Tokinvest OTC platform to pre-authorised and screened investors.
+Investors outside of the UAE are responsible for ensuring compliance with their local laws regarding virtual
+assets. Ownership and transaction of these Virtual Assets is not available to citizens or residents of the United
+States of America or any sanctioned or FATF high risk jurisdiction.
+
+Note that changes in laws or regulations may affect token legality, transferability, or value. A comprehensive
+risk disclosure document accompanies this whitepaper, detailing all potential risks associated with ownership
+of this Virtual Asset.
+
+Each investor / owner of these Virtual Assets agrees to the following:-
+
+    1. This Whitepaper together with the Tokinvest Brokerage Terms and Conditions and the associated Risk
+         and Disclosure statement sets out the basis upon which the investors agree to acquire and trade this
+         Virtual Asset.
+
+    2. Notwithstanding the following, in its capacity as the Issuer Tokinvest FZCO does not limit or exclude its
+         actual or potential civil liability in respect of the accuracy of any information in this whitepaper, or any
+         other disclosure or communication relating to this whitepaper. Subject to the foregoing:-
+              a) Tokinvest FZCO shall not be liable to you for any indirect or consequential losses or for any loss
+                   or profits or anticipated returns;
+
+              b) the total aggregate liability of Tokinvest FZCO to you in contract, tort, negligence, for breach of
+                   statutory duty, under an indemnity or otherwise arising out of or in connection with the
+                   issuance of this virtual asset will be capped at a sum equal to the amount of payments that have
+                   been received by Tokinvest for distribution to tokenholders and which are due to you in
+                   accordance with the terms of this Virtual Asset whitepaper.
+
+    3. Tokinvest FZCO will not be liable in contract, tort (including negligence), for breach of statutory duty,
+         under an indemnity or in any other way for any special or indirect or consequential loss or damage
+         suffered or incurred by you arising out of or in connection with the issuance of this Virtual Asset.
+
+    4. Nothing contained in this section shall be applicable to the extent that it: a) constitutes a limitation or
+         exclusion of liability for death or personal injury caused by negligence or constitutes a limitation or
+         exclusion of liability for fraud, deceit, or reckless disregard of professional obligations; or b) would
+         render either you or us in breach of any applicable and mandatory legal, regulatory or other professional
+         restriction or requirement.
+
+    5. Unless otherwise specified in this whitepaper, the rights of an investor / owner of this Virtual Asset
+         cannot be changed or varied without the approval of the investor / owner of the Virtual Asset.
+
+    6. Any complaints arising out of, or in connection with, this whitepaper or token should be should be
+         directed to the published Tokinvest Complaints Handling and Resolution Procedure on the company
+         website.
+
+    7. Unlike Crypto tokens which are themselves the underlying asset, RWA tokens are on-chain
+         representations of off-chain assets or their associated economic benefits. This means that if RWA
+         tokens are lost or compromised, they can be burnt and re-issued to the rightful owner as registered
+         on the Tokinvest CAP table. In exceptional circumstances where Tokens are demonstrably lost or
+         compromised (e.g., due to private key compromise), the Issuer may, subject to internal compliance
+         procedures and verification requirements, invalidate the affected Tokens and reissue an equivalent
+         number to the verified beneficial owner.
+         In such cases:
+
+         · the original Tokens are permanently burnt or rendered invalid;
+         · no net increase in Token supply occurs;
+         · the authorised Token supply remains unchanged; and
+         · the economic rights attached to the issuance are not modified.
+
+          Reissuance is not discretionary and occurs only following documented verification and approval
+         processes.
+
+C.16 APPLICABLE LAWS
+Any dispute arising out of or in connection with this whitepaper, including any question regarding its
+existence, validity or termination, shall be referred to and finally resolved by the Courts of the DIFC. The
+governing law of the contract shall be the substantive law of England & Wales.
+SECTION D: INFORMATION ABOUT UNDERLYING TECHNOLOGY
+
+D.1 VA DLT
+The BREI token is deployed on the Binance Smart Chain (BSC) DLT, a public, EVM blockchain compatible with
+industry standards.
+The BREI token uses a standard BEP-20 token incorporating ERC1404 transfer restriction logic. The smart
+contract has undergone a comprehensive independent audit, most recently on 14 December 2022. The
+contract remains unchanged and the audit is still considered current.
+The audit was conducted by Block Solutions, a reputable cybersecurity and blockchain auditor.
+The results of the audit confirmed that the BREI token smart contract is secure, and functions as intended,
+with no critical vulnerabilities detected.
+Tokens can be held on the Tokinvest platform in secure digital wallets provided by a VARA licensed VASP
+providing regulated Custody Services. Investors may also self-custody their tokens.
+Transfers are facilitated through the Tokinvest Investor Platform, ensuring compliance with regulatory
+requirements.
+
+D.2 DLT CONSENSUS MECHANISM
+BNB Smart Chain uses a Proof-of-Staked-Authority (PoSA) consensus mechanism under which a limited set of
+validators produce and validate blocks. Validator selection is based on staking and governance processes
+defined by the BNB Chain protocol.
+The design of the token indicate that there are no observable risks of a variance to the rights of token owners
+should other DLTs be used in the future.
+BNB Smart Chain relies on a limited validator set. While this may increase throughput and efficiency, it may
+also introduce concentration risk relative to more decentralised networks. Tokinvest does not control,
+operate, or influence BNB Smart Chain validators.
+
+D.3 DLT DETAILS
+Validators on the BSC chain receive a portion of transaction fees as well as block rewards. BSC transaction fees
+are paid in BNB and are typically low and predictable but may fluctuate based on network demand. They
+depend on the gas price and the limit used by each transaction.
+
+D.4 ISSUER/THIRD PARTY DLT
+N/A
+
+D.5 ENVIRONMENTAL IMPACT STATEMENT
+Tokinvest is dedicated to sustainable practices and continuously seeks ways to reduce its environmental
+footprint. We will always provide information on the environmental impact of all our activities and positively
+encourage and support eco-friendly initiatives within the industry.
+By implementing the BREI token on an energy-efficient blockchain using Proof of Staked Authority (PoSA),
+Tokinvest ensures minimal environmental impact due to the low energy consumption of the underlying
+technology.
+
+SECTION E: INFORMATION ABOUT LICENSED DISTRIBUTOR
+
+Tokinvest is the sole licensed distributor of the BREI token at the time of issuance.
+BREI Tokens may be accepted for listing on other approved and appropriately regulated RWA platforms and
+Tokinvest will publish details of any such licensed distributors.
+E.1 Licensed Distributor Name
+Tokinvest FZCO
+
+E.2 Legal Form
+Tokinvest FZCO a company organized and existing under the laws of the United Arab Emirates, license no
+DMCC-928046 (registered on 10th May 2024)
+
+E.3 Registered Address
+Unit No: UT-12-PO-8, DMCC Business Centre, Level No 12, Uptown Tower, Dubai, United Arab Emirates.
+
+E.4 VARA Number
+VARA regulated broker dealer reference number VL/2024/12/004
+
+E.5 Parent Company
+Tokinvest FZCO is a wholly owned subsidiary of OREHC Holding Limited (company number 25680,
+incorporated 13 February 2025), registered at Unit PC-1, Level 7, Al Maryah Tower, Abu Dhabi Global Market
+Square, Al Maryah Island, Abu Dhabi, United Arab Emirates.
+
+E.6 Business Activity
+Providing Virtual Asset design, placement, marketing, distribution and OTC trading services for the Virtual
+Asset.
+
+SECTION F: INFORMATION ABOUT ANY INITIAL OFFER TO THE PUBLIC OF THE VIRTUAL ASSET
+F.1 REASONING BEHIND PUBLIC OFFER
+The BREI Token gives investors the opportunity to gain fractionalised exposure to the economic returns from
+residential real estate in a regulated, blockchain-based format. Investors participate in both net rental yield
+and potential capital appreciation from sale of the Property.
+
+F.2 OFFER AMOUNT (AED)
+The maximum aggregate offer amount corresponds to the agreed acquisition price of the Property (the
+"Property Price"), as disclosed in this Whitepaper.
+
+The Property Price represents the maximum aggregate subscription amount for this issuance. The total value
+of all BREI Tokens issued for the Property (prior to costs and fees) shall not exceed the Property Price,
+converted into AED in accordance with the foreign exchange mechanics described elsewhere in this
+Whitepaper.
+
+BREI Tokens are issued with a fixed face value of AED 100 each.
+
+Minimum Investor Subscription Amount: 1,000 BREI Tokens (AED 100,000 or currency equivalent) per
+investor.
+
+F.3 OVERSUBSCRIPTION PROCESS
+Oversubscription is not permitted.
+The total number of BREI Tokens issued for the Property shall not exceed the authorised maximum Token
+Supply determined at the Token Generation Event (TGE). Once this supply is fully issued, no further Tokens
+referencing the Property may be created.
+
+F.4 SPECIFIC NOTICE
+BREI Tokens may be offered through an initial Subscription Period of up to 60 days, commencing on the date
+Tokinvest accepts the first valid subscription, and no more than two subsequent Subscription Periods of up to
+30 days each, conducted on the Tokinvest FZCO platform, each forming part of the same issuance and on
+identical economic and pricing terms.
+
+A Token Generation Event (TGE) occurs once the minimum aggregate subscription threshold for the issuance
+has been achieved and all investor subscriptions have been verified.
+If the minimum subscription threshold is not reached by the close of the final Subscription Period, no TGE
+occurs and all investor funds are returned in full without deduction.
+
+Following the TGE, Tokens may continue to be issued during subsequent Subscription Periods for the same
+issuance until the authorised maximum Token Supply is reached. No Tokens may be issued beyond this cap.
+
+F.5 ISSUE PRICE
+The issue price of each BREI Token is set at AED 100.
+
+For transparency, and where relevant, Tokinvest FZCO also displays the GBP currency equivalent price on its
+platform, calculated using prevailing exchange rates at the time of subscription.
+
+F.6 VA SUPPLY
+The total Token Supply for the issuance is determined at the Token Generation Event (TGE) by reference to
+the Property valuation and the fixed Token price of AED 100.
+
+Once established at the TGE, the total Token Supply is fixed, auditable on-chain, and cannot be increased. Any
+subsequent subscription windows relate solely to the distribution of Tokens within this fixed supply and do
+not alter the total Token Supply.
+
+F.7 PROSPECTIVE OWNERS
+The target market for BREI Tokens is retail, qualified and institutional investors, over the age of 18, who are
+seeking exposure to the economic rights of residential real estate through fractionalised, blockchain-based
+investment structures.
+
+         · Minimum subscription: 1,000 tokens (AED 100,000) or currency equivalent.
+         · All investors must complete Tokinvest's AML/KYC checks and be approved as whitelisted investors
+
+              before participation in the issuance.
+
+F.8 VA OFFER PHASES
+There will be no phased offerings or discounted sales of BREI Token. All tokens are offered on the same terms
+during each applicable Subscription Period.
+
+F.9 TIME-LIMITED OFFERS
+There will be no time-limited offers or promotional discounts of BREI Tokens.
+Subscriptions may be accepted only in respect of an offering designated as open for subscription on the
+Tokinvest platform. Where no offering is so designated, or after the close of the final Subscription Period, no
+subscriptions may be made.
+
+F.10 VA SAFEGUARDING DURING OFFER PERIODS
+Not applicable. BREI Tokens are not distributed until the Token Generation Event (TGE). Investor subscriptions
+are safeguarded in Tokinvest's designated client money accounts at Zand Bank throughout the Subscription
+Period. If the issuance is unsuccessful, funds are returned to investors in full without deduction.
+
+F.11 METHODS OF PAYMENT AND VALUE TRANSFER FOR THE VA
+Funding and Subscription
+To subscribe to an offering of the BREI token, investors must deposit funds into their Tokinvest client account
+in AED (or another approved currency equivalent) prior to subscribing. Note that all payments and settlements
+are securely processed through Tokinvest's CBUAE-approved Client Money Account (CMA).
+
+When these funds have cleared, the investor can open the offering in the Tokinvest marketplace and click the
+`Subscribe' button to select the number of tokens they wish to purchase, When the subscription has been
+confirmed by the investor, Tokinvest debits the investor's fiat account and then allocates to them the requisite
+number of tokens to be minted at the Token Generation Event (TGE). This allocation will be displayed in the
+Investor Dashboard as an Open Order
+
+Upon TGE, BREI Tokens are minted and transferred into each investor's individual wallet within two business
+days, following completion of compliance and custody verification checks. Investors will then see the tokens
+with a confirmed status in their portfolio in the Investor Dashboard.
+
+Secondary-Market Sales and Fiat Redemption
+When an investor sells BREI Tokens on the Tokinvest secondary market, the platform automatically debits the
+buyer's client account and credits the seller's account with the equivalent fiat proceeds in AED (less applicable
+trading fees).
+Settlement occurs on a delivery-versus-payment (DvP) basis: the CAP table updates immediately to reflect
+new ownership, while token transfers between verified wallets are processed within two business days.
+
+Proceeds from token sales remain in the investor's Tokinvest fiat wallet, held within the CMA. These balances
+may either:
+
+    · be used to purchase other virtual assets listed on the platform; or
+    · be withdrawn to the investor's verified external bank account via standard domestic or international
+
+         bank transfer. Withdrawals are typically processed within two business days of request.
+
+Ongoing Cashflows
+Net rental income generated by the Property accrues on a block-by-block basis following completion of the
+first full month after issuance.
+Distributions to tokenholders will be made in a permitted distribution currency supported by Tokinvest's
+regulated client money and virtual asset infrastructure at the relevant time. Such currency may include fiat
+currency or a VARA-permitted Virtual Asset, where supported by Tokinvest's licensing permissions.
+
+Where conversion from GBP is required prior to distribution, conversion will be effected using the relevant
+GBP/[distribution currency] reference rate captured at 12:00 GMT on the applicable distribution date. The
+reference rate is sourced from Tokinvest's designated pricing data provider, Fixer.io (APILayer), which
+aggregates exchange rate data from multiple commercial sources. Tokinvest applies the captured reference
+rate consistently for distribution calculations.
+Net rental yield distribution commences after the first month and accrues on a block-by-block basis.
+Tokenholders are eligible to claim outstanding rental returns at any time, up to and including the
+corresponding block.
+FX movements between receipt of rental income and the applicable reference time may positively or
+negatively affect the amount ultimately received by tokenholders. Tokinvest does not hedge foreign exchange
+risk on behalf of tokenholders.
+
+Distribution on Property Sale
+Upon property sale or disposal, gross sale proceeds (denominated in GBP) will be converted into the
+permitted distribution currency using the AED/GBP reference rate captured at 12:00 GMT on the applicable
+conversion date, sourced from Fixer.io (APILayer).
+After deduction of disclosed transaction costs and Tokinvest's capital appreciation fee, net sale proceeds are
+distributed to tokenholders in proportion to their holdings via the same block-based settlement mechanism.
+Following distribution of sale proceeds, all Tokens linked to the Property are redeemed and burnt in
+accordance with the issuance mechanics.
+
+Withdrawal of Funds
+Investors may withdraw available cash balances at any time, subject only to the absence of compliance,
+security, or operational restrictions reasonably required to protect client assets and platform integrity.
+
+Cross-Platform Settlement
+Where a sale occurs on another VARA-licensed RWA platform that meets Tokinvest's compliance and
+reconciliation standards, the transaction follows the same delivery-versus-payment (DvP) process. Both fiat
+and token legs are settled in AED through CBUAE-approved client accounts, with Tokinvest maintaining the
+definitive record of tokenholder positions through daily reconciliation.
+Trade confirmations and updated balances are reflected in investors' dashboards once final settlement is
+verified by both counterpart platforms.
+No settlement or value transfer is permitted with unlicensed or offshore venues.
+
+Inter-Platform Transfers
+Transfers of BREI Tokens are permitted only between Tokinvest and other VARA-licensed RWA or VASP
+platforms that maintain equivalent KYC/AML, reconciliation, and settlement standards. Transfers to
+unregulated or non-licensed venues are not permitted.
+
+Reconciliation and Confirmation
+All transactions (whether executed on Tokinvest or an approved VARA-licensed partner platform) are fully
+reconciled through Tokinvest's internal records. Each transaction is confirmed by email and reflected in real
+time on the investor's dashboard.
+
+F.12 ISSUER RIGHT TO WITHDRAW/CANCEL
+Tokinvest reserves the right, in its sole discretion and at any time prior to the completion of the offering, to
+withdraw or cancel the offering for any reason, including but not limited to insufficient investor interest,
+adverse market conditions, regulatory concerns, or changes in business strategy. In the event of such
+withdrawal, no further tokens will be issued but all existing tokens will maintain full rights and will be
+unaffected by the withdrawal.
+
+F.13 SCHEDULE OF VA TRANSFER
+Upon a successful subscription and TGE, Tokinvest debits the investor's account, credits the Asset owner with
+the proceeds (net of fees) and mints the requisite BREI Tokens. Tokens are transferred to each investor's
+individual wallet within two business days of the TGE.
+
+F.14 VA PURCHASING FEES
+All fees and charges are paid in addition to the token purchase price.
+
+         · 2% Brokerage fee due to Tokinvest FZCO for the purchase of primary issuance tokens
+         · 0.25% transfer fee for OTC secondary market purchases and sales (payable by both token buyer
+
+              and seller) payable to Tokinvest FZCO.
+         · 0.1% Transfer fee for VA transfer (payable by the token buyer)
+         · 0.1% Lifetime Token Management fee payable to Tokinvest FZCO (calculated daily, billed
+
+              monthly)
+         · 0.2% Annual Custody fee payable to Tokinvest FZCO (calculated daily, billed monthly)
+         · 5% share of the capital appreciation of the Property will be retained by Tokinvest FZCO ­ i.e. 5%
+
+              of the difference between the Property Value at Issuance and the Property sale price.
+
+F.15 POTENTIAL CONFLICTS OF INTEREST
+Tokinvest confirms that, to the best of its knowledge no member of its board of directors, executive
+management, or any other significant person with decision-making authority has any personal, professional,
+or financial relationship or interest with any individual associated with this issuance nor with any party
+involved in the operation, management, or governance of Distributed Ledger Technology (DLT) platform BSC.
+This affirmation is made to ensure full transparency and to confirm that there are no existing or potential
+conflicts of interest that could impair the independence or integrity of Tokinvest's operations or its
+relationship with investors.
+
+F.16 APPLICABLE LAW FOR VA OFFERING
+Any dispute arising out of or in connection with this whitepaper, including any question regarding its
+existence, validity or termination, shall be referred to and finally resolved by the Courts of the DIFC. The
+governing law of the contract shall be the substantive law of England & Wales.
+
+SECTION G ­ ADDITIONAL WHITEPAPER DISCLOSURES (FOR ASSET-REFERENCED VIRTUAL ASSETS (ARVA))
+G.1 ARVA VALUE AND RIGHTS
+The BREI Token is an Asset-Referenced Virtual Asset (ARVA). Its value is directly linked to the economic
+performance of the Property.
+
+Tokenholders are entitled to:
+
+    · A proportional share of net rental yield generated by the Property; and
+    · A proportional share of net proceeds from any sale of the Property.
+
+G.2 REFERENCE ASSET TYPE AND COMPOSITION
+The reference asset for the BREI Token (TVBREIBBWUK1) is the contractual economic rights associated with
+the Property which is owned by the Asset Owner.
+
+G.3 REFERENCE ASSET CONSISTENCY
+The underlying reference asset will not change throughout the life of the token.
+
+G.4 REFERENCE ASSET RIGHTS REPRESENTATION
+There is no direct or indirect right of ownership of the Property or the Asset Owner. The BREI token represents
+economic rights only.
+
+G.5 REFERENCE ASSET LEGAL/REGULATORY REQUIREMENTS
+There are no specific legal or regulatory requirements in respect of settlement or transfer of title of the
+Property, which remains at all times remains registered to the Asset Owner.
+
+    · At the point of Issuance the Property is not encumbered by any regulatory conditions affecting its
+         transferability. Following the Issuance, Tokinvest's interest will be noted on the Property Title to
+         secure it for the benefit of tokenholders. The Property will not otherwise be encumbered for the
+         duration of this Virtual Asset.
+
+    · Ownership of BREI Tokens does not affect, alter, or transfer title in the Property.
+    · Changes in tokenholder ownership (e.g. via Tokinvest's secondary market) do not affect the legal
+
+         status or ownership of the Property itself.
+
+G.6 STABILITY OF ARVA VALUE TO REFERENCE ASSETS
+The BREI Token references the economic performance of the Property.
+Secondary market prices of the Token are determined by supply and demand and may differ, potentially
+materially, from the net asset value (NAV) of the underlying Property.
+Factors including liquidity conditions, discounting, platform risk, FX movements, regulatory developments, and
+investor sentiment may cause market prices to trade at a premium or discount to NAV.
+No assurance is given that the Token will trade in line with the value of the Property.
+
+G.7 MAINTENANCE OF RESERVE ASSETS
+The VARA regulatory framework dictates that for certain asset-referenced Virtual Assets issuers must maintain
+a Reserve Asset allocation.
+Reserve Assets
+The VARA regulatory framework dictates that for certain asset-referenced Virtual Assets issuers must maintain
+a Reserve Asset allocation.
+Tokinvest will allocate a portion of their Reserve Assets that corresponds to 2% of the net BREI token issuance
+fiat currency amount (excluding fees and commissions) within the VARA stipulated timeframe for each
+individual BREI that is issued.
+
+G.8 TYPE AND COMPOSITION OF RESERVE ASSETS
+Reserve Assets will be held in fiat AED, being the base currency of the issuance and of Tokinvest FZCO. At this
+time Tokinvest sees no reason to expect the Reserve Asset composition to change.
+
+G.9 CHANGEABILITY OF RESERVE ASSET
+N/A. Reserve Assets will remain in AED at all times.
+
+G.10 TOKEN EXPIRY PROCESS
+There is no redemption of the BREI Token (TVBREIBBWUK1) during its lifecycle. Tokens will expire only upon
+the sale of the Property. At that point:
+
+    · Net sale proceeds (after deduction of applicable costs and fees) are credited to tokenholders'
+         Tokinvest accounts in proportion to their holdings.
+
+    · All BREI Tokens relating to the Property are then redeemed and burnt, automatically terminating
+         tokenholder rights.
+
+The detailed procedure governing the property sale, including valuation, marketing, remarketing, and
+transparency of settlement, is set out in Appendix B (Exit and Sale Process).
+
+G.11 FLOW OF FUNDS FOR ARVA HOLDERS AT EXPIRY
+When the Property is sold:
+
+    · Gross Sale Proceeds are received by Tokinvest FZCO on behalf of tokenholders.
+    · Deductions are made for:
+
+         o Property sale costs (legal, agency, conveyancing, valuation), and
+         o Tokinvest's capital appreciation fee (5%).
+    · Net Proceeds are transferred to Tokinvest's designated client money account.
+    · Distribution: Each tokenholder's proportional share is credited to their Tokinvest investor account.
+    · Redemption: All BREI Tokens are burnt at expiry, formally closing out the issuance.
+
+The procedure for property valuation, marketing, sale, and proceeds distribution is described in Appendix B.
+
+G.12 REFERENCE ASSET/RESERVE ASSET CUSTODY ARRANGEMENT
+Funds are placed in a segregated account with Zand Bank, a CBUAE licensed domestic institution, and
+managed strictly according to Tokinvest's Reserve Assets policy.
+
+G.13 RISK ASSESSMENT OF REFERENCE AND RESERVE ASSETS
+Credit Risk
+Reserve assets are subject to the creditworthiness of Zand Bank.
+Tokinvest shall only maintain reserve accounts with banks that meet minimum capital adequacy and credit
+rating thresholds approved by the Tokinvest Risk Committee.
+
+Market Risk
+As reserves are denominated solely in fiat AED, market risk is limited to inflation or devaluation of the AED.
+Tokinvest does not engage in FX hedging or interest rate speculation.
+
+Counterparty Risk
+Tokinvest faces counterparty risk in relation to Zand Bank, the reserve asset custody institution.
+Due diligence is performed annually to assess financial health, operational controls, and regulatory
+compliance of the custodian bank. No reserve assets shall be placed with unlicensed or offshore financial
+institutions at any time.
+
+Liquidity Risk
+All reserve assets will be available for redemption or conversion on demand and with same-day liquidity.
+Term deposits or restricted access holdings will not exceed 10% of total reserves and be pre-approved by the
+Tokinvest Risk Committee.
+
+G.14 ANY OTHER RELEVANT INFORMATION
+N/A
+APPENDIX A ­ PROPERTY MANAGERS ROLE
+
+The Property Manager has been appointed by Tokinvest FZCO to act as the agent for the Property. The
+Property Manager's responsibilities are designed to ensure the property is well-maintained, legally compliant,
+attracts suitable tenants, and maximises rental yield.
+
+Services provided by the Property Manager include:
+
+    1. Property Marketing and Advertising
+
+              · Listing the property on major UK real estate portals (e.g. RightMove, Zoopla), social media,
+                   and agency websites.
+
+              · Preparing professional photography and virtual tours.
+              · Organising open houses or private viewings.
+
+    2. Tenant Screening and Selection
+
+              · Conducting background checks (rental history, employment verification, references,
+                   creditworthiness).
+
+              · Drafting and negotiating tenancy agreements to align with UK legal requirements.
+
+    3. Rent Collection and Payment Management
+
+              · Managing rent collection through automated systems.
+              · Sending reminders, following up on late payments, and applying late fee policies.
+
+    4. Maintenance and Repairs
+
+              · Scheduling routine maintenance and inspections.
+              · Coordinating emergency repairs with vetted contractors.
+              · Conducting regular condition checks.
+
+    5. Legal and Regulatory Compliance
+
+              · Ensuring tenancy agreements comply with UK tenancy law.
+              · Registering deposits under the UK Tenancy Deposit Protection scheme, where applicable.
+              · Monitoring compliance with new legislation (e.g. Renters' Rights Bill expected in 2025).
+
+    6. Tenant Relations and Communication
+
+              · Acting as primary contact for tenant queries.
+              · Managing tenancy renewals, rent adjustments, and move-out arrangements.
+              · Mediating disputes between landlord and tenants.
+7. Property Inspections and Deposit Handling
+
+         · Conducting check-in / check-out inspections with full inventories.
+         · Determining return or retention of deposits for damages beyond fair wear and tear.
+
+8. Financial Reporting
+
+         · Providing detailed statements of rental income and expenses.
+         · Preparing documentation to assist with tax filings.
+
+9. Rent Increase Management
+
+         · Advising on lawful rent increases under Section 13 procedures.
+         · Providing tenant notices in line with statutory timelines.
+
+10. Eviction Assistance
+
+         · Managing legal eviction processes where tenants breach contracts.
+         · Coordinating with UK courts where required.
+
+11. Insurance and Risk Management
+
+         · Advising on appropriate property insurance and ensuring cover is maintained.
+         · Recommending tenant insurance where appropriate.
+
+12. Exit and Property Handover
+
+         · Managing end-of-lease handovers and deposit settlements.
+         · Re-marketing the property to minimise vacancy periods.
+APPENDIX B ­ PROPERTY EXIT SALE PROCESS
+
+The following process governs the property sale and settlement:
+
+1. Property Sale
+
+    · While the intention is for this to be a long term Virtual Asset, Tokinvest, reserves the right, in its sole
+         discretion, to sell the underlying property where the Issuer reasonably determines that circumstances
+         justify an early sale, including but not limited to: material changes in market conditions, regulatory
+         developments, unforeseen risks to the property or the project, or opportunities to realize enhanced
+         value for token holders.
+
+In the event of such a sale, the Issuer shall apply the net proceeds of the sale (after deduction of applicable
+costs, taxes, and fees) towards the early wind-up of the financial product represented by the tokens. Token
+holders will receive their proportionate entitlement from the net sale proceeds in accordance with the terms
+of this White Paper and any applicable offering documents.
+
+    · Any decision to initiate a Property sale is taken in accordance with Tokinvest FZCO's internal
+         governance, compliance, and conflict-of-interest frameworks, and is supported by independent
+         valuation evidence and prevailing market conditions. Secondary market token prices are considered as
+         contextual indicators only and are not determinative of sale timing.
+
+2. Exit Property Valuation
+
+    · Tokinvest FZCO will instruct no fewer than three independent, licensed real estate agents to provide
+         written valuations of the property.
+
+    · Where one valuation materially diverges from the others without objective market justification,
+         Tokinvest may disregard the outlier valuation or commission an additional independent valuation to
+         confirm pricing integrity.
+
+    · The property is then marketed at the median price of those three valuations, which becomes the Exit
+         Property Valuation.
+
+3. Marketing and Sale
+
+    · The property will be marketed at or above the Exit Property Valuation.
+    · If the property is not sold within six months, Tokinvest will obtain three further valuations, determine
+
+         a revised median valuation, and relist the property at this updated price.
+    · This process will be repeated as necessary until the property is sold (the Property Sale Price).
+
+4. Transparency of Process
+
+    · Tokinvest FZCO will publish on its platform all legal documents, valuations, and contracts relating to
+         the sale, to provide tokenholders with full transparency of the settlement process.
+
+    · This disclosure obligation applies equally to all valuation materials, agency appointments, and sale
+         documentation used in determining and executing the Property Sale.
+5. Distribution of Proceeds
+
+    · Upon receipt of sale proceeds, Tokinvest will deduct:
+              o Transaction costs (legal, conveyancing, valuation, agency commissions), and
+              o Tokinvest's capital appreciation fee (5%).
+
+    · The Property will be sold in GBP. Where conversion from GBP is required prior to distribution,
+         conversion will be effected using the relevant GBP/[distribution currency] reference rate captured at
+         12:00 GMT on the applicable conversion date, sourced from Tokinvest's designated pricing data
+         provider, Fixer.io (APILayer). FX movements between issuance and sale may positively or negatively
+         impact the amount distributed to tokenholders.
+
+    · The net proceeds will be distributed to tokenholders in proportion to their holdings and credited to
+         their Tokinvest accounts.
+
+    · The capital appreciation fee is payable only upon completion of an actual Property sale and is
+         calculated solely by reference to the realised sale price relative to the Property Value at Issuance.
+
+6. Token Redemption
+
+    · Following completion of the sale and distribution of proceeds, all BREI Tokens relating to the property
+         will be redeemed and burnt, formally terminating tokenholder rights in respect of the Property.
+
