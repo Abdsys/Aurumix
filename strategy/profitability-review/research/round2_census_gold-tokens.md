@@ -1,0 +1,323 @@
+{
+ "issuers": [
+  {
+   "name": "Kinesis Gold",
+   "ticker": "KAU",
+   "company": "Kinesis Money (Kinesis group, built on Allocated Bullion Exchange / ABX)",
+   "status": "live",
+   "pure_play": true,
+   "market_cap_usd": "$356M (High; CoinGecko 2026-10-29, https://www.coingecko.com/en/categories/tokenized-gold). Silver twin KAG adds $194M (High).",
+   "jurisdiction": "Global platform, Australia-founded ABX group (Low on legal domicile)",
+   "parent_business": "Gold/silver payments + exchange; metals monetary system is the core business",
+   "notes": "Largest non-PAXG/XAUT gold token, about 47% of the long tail. 1 KAU = 1 g. Bureau Veritas audit April 2026, twice a year (Med; https://kinesis.money/audits/, https://x.com/KinesisMonetary/status/1932099999912910967). Says it returns over half of transaction fees to users as monthly yield (Med; kinesis.money). Third-party volume is tiny ($1.8K-$58K/day, High) so trading stays inside Kinesis's own exchange. Revenue comes from trading fees, not holding. No public P&L, so we cannot confirm margins."
+  },
+  {
+   "name": "AZ Gold Reserve",
+   "ticker": "AZG",
+   "company": "AZ Reserves Ltd (asset manager) on BT Asset Hub",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "$126M (Med; rwa.xyz 2026-10-29, https://app.rwa.xyz/commodities)",
+   "jurisdiction": "Not verified",
+   "parent_business": "Platform that tokenizes mining reserves (gold, copper-gold projects)",
+   "notes": "Not a vaulted-gold token. Reserve is 36,743 oz, 82% of it gold still in the ground and 18% bullion (Med; https://arizore.io/reserve-data/azg). Started 2026-02-13. Only 26 holders. Charges 1.00% management fee + 0.99% performance fee, which is the fee level of a fund, not a coin. Large value but few users and no real secondary market."
+  },
+  {
+   "name": "Goldfish Gold",
+   "ticker": "GGBR",
+   "company": "GGBR Inc. (Wyoming) / gold held on balance sheet of I-On Digital Corp",
+   "status": "live",
+   "pure_play": true,
+   "market_cap_usd": "$82M circulating, $100M on-chain (High; CoinGecko + Etherscan 2026-10-29, https://etherscan.io/token/0x7e2ac793f3e692f388e66c7dc28f739d13b0b71a)",
+   "jurisdiction": "USA (Wyoming)",
+   "parent_business": "Small US listed company that turns gold still in the ground into tokens",
+   "notes": "1 GGBR = 1/1000 oz. Backed by about 1M oz of gold still in the ground (mining claims in Pinal County, AZ), not vaulted bars. Claims about 40:1 coverage (Med; https://goldfishgold.com/collateral). Launched Oct 2025. 766 holders, $130K/day volume. Site gives no auditor name, attestation date or redemption terms. Treat as high-risk and not comparable to PAXG/XAUT."
+  },
+  {
+   "name": "Pleasing Gold",
+   "ticker": "PGOLD",
+   "company": "Pleasing Golden (platform of Pleasing International)",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "$79M (High; CoinGecko $78.6M, rwa.xyz $79.1M, 2026-10-29)",
+   "jurisdiction": "Hong Kong",
+   "parent_business": "Licensed Hong Kong precious-metals dealer; the token is a side product",
+   "notes": "Launched 2025-10-29 on Arbitrum/ApeChain using LayerZero and Chainlink (High; https://www.globenewswire.com/news-release/2025/10/29/3176301/0/en/Pleasing-International-Launches-RWA-Platform-Pleasing-Golden-Introducing-Tokenized-Gold-PGOLD-and-Synthetic-Dollar-PUSD.html). 1 PGOLD = 1 oz LBMA gold, redeemable in Hong Kong. 24h volume about $2 (High), so almost nothing trades on exchanges. No third-party attestation found (Low)."
+  },
+  {
+   "name": "Matrixdock Gold",
+   "ticker": "XAUm",
+   "company": "Matrixdock (Matrixport group)",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "$70M (High; CoinGecko/CMC 2026-10-29). rwa.xyz shows $55M.",
+   "jurisdiction": "Singapore / Hong Kong",
+   "parent_business": "Crypto financial services (Matrixport): lending, structured products, tokenized T-bills",
+   "notes": "Bureau Veritas July 2026 audit found 508 bars / 16,331 oz backing 16,331 XAUm (High; https://www.manilatimes.net/2026/07/21/tmt-newswire/pr-newswire/reserve-transparency-built-through-continuous-operation-matrixdock-marks-two-years-of-independent-verification/2388158). Audit runs twice a year. Vaults: Brink's HK/SG, Malca-Amit SG. Also issues silver (XAGm). Minimum redemption is 1 kg. Gold is one product line, so a bigger group funds it."
+  },
+  {
+   "name": "Streamex Gold Yield",
+   "ticker": "GLDY",
+   "company": "Streamex Ltd (Cayman SPV) of Streamex Corp",
+   "status": "live",
+   "pure_play": true,
+   "market_cap_usd": "$12.4M (Med; CoinGecko 2026-10-29, no volume reported)",
+   "jurisdiction": "Cayman Islands (CIMA registration still pending per issuer site)",
+   "parent_business": "Commodity tokenization company; gold is its first product",
+   "notes": "Gold token that pays a target yield of about 3.5% from net gold leasing (Med; https://www.streamex.com). Site says the SPV is not yet registered with CIMA and no regulator has approved GLDY. Reserves and attestation not disclosed (Low). It is early stage, and the yield depends on lending out the gold."
+  },
+  {
+   "name": "Digital Gold (DGLD)",
+   "ticker": "DGLD",
+   "company": "Gold Token SA (subsidiary of MKS PAMP SA)",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "$9.7M (High; CoinGecko 2026-10-29, https://www.coingecko.com/en/coins/gold-token-sa-dgld-tokenized-gold)",
+   "jurisdiction": "Switzerland",
+   "parent_business": "MKS PAMP: global gold refiner and bullion trader",
+   "notes": "2,411 oz in circulation. Swiss-vaulted LBMA bars mapped to individual bars. Charges zero management or custody fees, so it earns nothing from holding. Any money comes from MKS PAMP's spread and bullion business. Live on Ethereum, Solana and Base. Daily volume about $5K."
+  },
+  {
+   "name": "VNX Gold",
+   "ticker": "VNXAU",
+   "company": "VNX Commodities AG",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "$5.5-5.7M (High; CoinGecko/CMC 2026-10-29)",
+   "jurisdiction": "Liechtenstein (TVTG)",
+   "parent_business": "White-label tokenization platform that also issues fiat stablecoins (VEUR, VCHF)",
+   "notes": "1 VNXAU = 1 g. VNX calls itself asset-agnostic B2B infrastructure, with precious metals as the established use case (Med; https://vnx.li). Volume is about $5K/day. Gold is one product among its stablecoins."
+  },
+  {
+   "name": "GoldZip",
+   "ticker": "XGZ",
+   "company": "GoldZip Digital (reported link to Hong Kong Gold Exchange member)",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "$5.0M (High; CoinGecko 2026-10-29, 39,000 g)",
+   "jurisdiction": "Hong Kong",
+   "parent_business": "Hong Kong bullion trading group (Low)",
+   "notes": "Launched Dec 2025. Datawallet reports about 95% of supply sits in the issuer's treasury and no reserve audit has been published (Med; https://www.datawallet.com/crypto/best-gold-backed-cryptocurrency). Redeem 1,000 XGZ for a 1 kg bar. Trades on MEXC and Uniswap, about $70-85K/day."
+  },
+  {
+   "name": "Comtech Gold",
+   "ticker": "CGO",
+   "company": "ComTech Gold",
+   "status": "live",
+   "pure_play": true,
+   "market_cap_usd": "$3.1M on CoinGecko (24,000 g) vs $18.3M on CMC (Low; the two trackers disagree on supply)",
+   "jurisdiction": "UAE (Dubai)",
+   "parent_business": "Gold tokenization is the core business",
+   "notes": "Main UAE issuer. Shariah fatwa from Amanie Advisors. Runs on XDC Network (Med; https://www.coingecko.com/en/coins/comtech-gold). Volume about $860K/day, mostly on Bitrue. Small balance and exchange-driven turnover, so fee income is likely very small. No 2025-26 attestation found (Low)."
+  },
+  {
+   "name": "Herculis Gold Coin",
+   "ticker": "XAUH",
+   "company": "Herculis (issuer details not verified)",
+   "status": "live",
+   "pure_play": true,
+   "market_cap_usd": "$2.0M (High on the number; CoinGecko 2026-10-29, 15,500 g)",
+   "jurisdiction": "Not verified",
+   "parent_business": "Not verified (Low)",
+   "notes": "Trades on Biconomy, BTSE and STON.fi, on Ethereum, TRON and TON, about $150K/day (https://www.coingecko.com/en/coins/herculis-gold-coin). No reserve report found. Do not rely on it without checking the issuer."
+  },
+  {
+   "name": "Kinka",
+   "ticker": "XNK",
+   "company": "Daiichi Commodities with Crowdbank",
+   "status": "dormant",
+   "pure_play": false,
+   "market_cap_usd": "$1.9M (High; CoinGecko 2026-10-29, 482 oz)",
+   "jurisdiction": "Japan",
+   "parent_business": "Old Japanese gold trading house plus a crowdfunding platform",
+   "notes": "1 XNK = 1 oz in Japan FSA-compliant vaults. Zero 24h volume and no active trading pairs (High; https://www.coingecko.com/en/coins/kinka). No 2025-26 attestation found."
+  },
+  {
+   "name": "Gold DAO Gold Token",
+   "ticker": "GLDT",
+   "company": "Gold DAO",
+   "status": "live",
+   "pure_play": true,
+   "market_cap_usd": "$0.77-0.82M (Med; CoinGecko/CMC 2026-10-29)",
+   "jurisdiction": "Switzerland (gold custody) / Internet Computer",
+   "parent_business": "DAO built around gold NFTs (GLD NFTs) on ICP",
+   "notes": "1 GLDT = 0.01 g. Backed by GLD NFTs that point to physical bars (https://www.coingecko.com/en/coins/gold-token). Runs on ICP, Arbitrum, Ethereum and Base. Volume about $2.6K/day. Very small."
+  },
+  {
+   "name": "Tenbin Gold",
+   "ticker": "TGLD",
+   "company": "Tenbin Labs",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "$0.56M (High; CoinGecko 2026-10-29, 137 tokens)",
+   "jurisdiction": "Not verified",
+   "parent_business": "Tokenized-asset protocol (Low)",
+   "notes": "Backing method is not confirmed, and may be synthetic or hedged with futures rather than vaulted bars (Low; https://www.coingecko.com/en/coins/tenbin-gold). Trades on Uniswap, about $20/day. Too small to matter."
+  },
+  {
+   "name": "Gram Gold / ONS Gold",
+   "ticker": "GRAMG / ONSG",
+   "company": "Token Teknoloji A.S.",
+   "status": "live",
+   "pure_play": true,
+   "market_cap_usd": "Not tracked; GRAMG total supply 48 g (about $6K) (Med; https://www.coingecko.com/en/coins/gram-gold)",
+   "jurisdiction": "Turkey",
+   "parent_business": "Turkish gold-token company (Low)",
+   "notes": "GRAMG launched Nov 2022 on Avalanche and Polygon. Volume a few thousand dollars a day. Micro-scale."
+  },
+  {
+   "name": "HSBC Gold Token",
+   "ticker": "XGT",
+   "company": "HSBC Bank (Hong Kong)",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "Not disclosed (private bank ledger; not on public trackers)",
+   "jurisdiction": "Hong Kong",
+   "parent_business": "Global bank; the token is a retail investment product",
+   "notes": "1 token = 0.001 oz of gold in HSBC vaults. HK residents with an HSBC investment account only. Cannot take delivery of the gold. No storage fee, but HSBC charges up to 2% spread in business hours and 5% outside them (High; https://www.hsbc.com.hk/investments/products/gold-token/). The bank makes money on spread and already has the customers, so it does not need scale. Launched 2024 (Med)."
+  },
+  {
+   "name": "Meld Gold",
+   "ticker": "n/a (Meld gold/silver tokens)",
+   "company": "Meld Gold (founder Michael Cotton)",
+   "status": "live",
+   "pure_play": true,
+   "market_cap_usd": "Not tracked on CoinGecko/CMC/rwa.xyz (Low)",
+   "jurisdiction": "Australia",
+   "parent_business": "Precious-metal tokenization platform",
+   "notes": "Site is live with a 2026 footer and a launch-app button. Lists Perth Mint, MKS PAMP, Heraeus and BDO Australia as partners (Low; https://www.meld.gold). Runs on XRP Ledger and Algorand. No supply or attestation figures published, so size is unknown and probably small."
+  },
+  {
+   "name": "Zipangcoin",
+   "ticker": "ZPG",
+   "company": "Mitsui & Co. Digital Commodities",
+   "status": "dormant",
+   "pure_play": false,
+   "market_cap_usd": "Not tracked (Low)",
+   "jurisdiction": "Japan",
+   "parent_business": "Mitsui & Co. trading conglomerate",
+   "notes": "Gold-linked token on Japanese exchanges since 2022 (Med, from prior knowledge). We could not verify activity in 2025-26: zipangcoin.com did not resolve and the CMC page returned 404. Status is uncertain (Low)."
+  },
+  {
+   "name": "WisdomTree Gold Token",
+   "ticker": "n/a",
+   "company": "WisdomTree (WisdomTree Prime app)",
+   "status": "live",
+   "pure_play": false,
+   "market_cap_usd": "Not disclosed (Low)",
+   "jurisdiction": "USA",
+   "parent_business": "ETF and asset manager",
+   "notes": "Gold token offered inside the WisdomTree Prime retail app (Low; the product page returned 403, so we could not confirm 2026 status or size). A side product of a large ETF manager."
+  },
+  {
+   "name": "CACHE Gold",
+   "ticker": "CGT",
+   "company": "CACHE Gold",
+   "status": "dormant",
+   "pure_play": true,
+   "market_cap_usd": "About $13M nominal (100,771 CGT x about $129/g) but no live market (Low; https://etherscan.io/token/0xf5238462e7235c7b62811567e63dd17d12c2eaa0)",
+   "jurisdiction": "Singapore (Low)",
+   "parent_business": "Gold tokenization start-up",
+   "notes": "195 holders, zero transfers in 24h. CMC shows only a preview page with 3.99K circulating. cache.gold returned 503 and the CoinGecko page has been removed. No 2025-26 attestation found."
+  },
+  {
+   "name": "AurusGOLD",
+   "ticker": "AWG (CMC slug now shows tGOLD / TXAU)",
+   "company": "Aurus",
+   "status": "dormant",
+   "pure_play": true,
+   "market_cap_usd": "Not tracked (Low)",
+   "jurisdiction": "Not verified",
+   "parent_business": "Gold tokenization network of vaults and traders",
+   "notes": "aurus.io now redirects to an unrelated magazine site, a strong sign the issuer has been abandoned (Med). The CMC page now shows tGOLD (TXAU) as a preview, unverified listing with a self-reported 93.39K supply (Low; https://coinmarketcap.com/currencies/aurusgold/). Likely effectively dead."
+  },
+  {
+   "name": "Lode Gold",
+   "ticker": "AUX",
+   "company": "Lode / LOD3 Finance DAO",
+   "status": "dormant",
+   "pure_play": true,
+   "market_cap_usd": "Not tracked (Low)",
+   "jurisdiction": "Not verified",
+   "parent_business": "Silver/gold coin DAO (AGX silver is the main product)",
+   "notes": "Site still claims each coin is backed by 1 g of vaulted metal, but publishes no supply or audit data. The latest reward reports are from Jan 2025 (Low; https://lode.one)."
+  },
+  {
+   "name": "Perth Mint Gold Token",
+   "ticker": "PMGT",
+   "company": "Perth Mint (with InfiniGold)",
+   "status": "dead",
+   "pure_play": false,
+   "market_cap_usd": "About $0 (115 PMGT circulating) (High; https://coinmarketcap.com/currencies/perth-mint-gold-token/)",
+   "jurisdiction": "Australia",
+   "parent_business": "State-owned mint and refiner",
+   "notes": "Discontinued. The deadline to trade out has passed. Holders can only file a manual redemption request. Shows that even a state mint dropped its token."
+  },
+  {
+   "name": "Digix Gold",
+   "ticker": "DGX",
+   "company": "Digix (Singapore)",
+   "status": "dead",
+   "pure_play": true,
+   "market_cap_usd": "$0 circulating per CMC (Med; https://coinmarketcap.com/currencies/digix-gold-token/)",
+   "jurisdiction": "Singapore",
+   "parent_business": "Gold tokenization pioneer (2014)",
+   "notes": "CMC preview page shows 0 circulating out of 58K total. DigixDAO was dissolved in 2020 (Med, prior knowledge). A first-generation pure play that failed."
+  },
+  {
+   "name": "GoldMint",
+   "ticker": "MNTP (utility) / GOLD",
+   "company": "GoldMint",
+   "status": "dead",
+   "pure_play": true,
+   "market_cap_usd": "About $15K, $0 volume (High; https://coinmarketcap.com/currencies/goldmint/)",
+   "jurisdiction": "Not verified",
+   "parent_business": "Gold tokenization start-up from 2018",
+   "notes": "Price is down 99.9% from its 2018 peak, with no active markets. A 2018 ICO-era project that collapsed."
+  },
+  {
+   "name": "Royal Mint Gold",
+   "ticker": "RMG",
+   "company": "The Royal Mint (UK) with CME",
+   "status": "dead",
+   "pure_play": false,
+   "market_cap_usd": "$0 (never launched) (Med, prior knowledge)",
+   "jurisdiction": "UK",
+   "parent_business": "Government mint",
+   "notes": "Shelved in 2018 before launch. Included to show that big institutions have also walked away."
+  },
+  {
+   "name": "OneGram",
+   "ticker": "OGC",
+   "company": "OneGram",
+   "status": "dead",
+   "pure_play": true,
+   "market_cap_usd": "Not tracked (Low)",
+   "jurisdiction": "UAE (Dubai)",
+   "parent_business": "Shariah gold coin start-up from 2017",
+   "notes": "An early Dubai Shariah gold token. No current market or activity found (Low, prior knowledge). The UAE gold-token field is now ComTech Gold and little else."
+  },
+  {
+   "name": "AABB Gold Token",
+   "ticker": "AABBG",
+   "company": "Asia Broadband Inc. (OTC: AABB)",
+   "status": "dormant",
+   "pure_play": false,
+   "market_cap_usd": "Not tracked (Low)",
+   "jurisdiction": "USA / Mexico mining",
+   "parent_business": "Small mining company with its own wallet/exchange",
+   "notes": "Could not verify: the CMC page returned 404 and no independent attestation was found (Low). Claimed gold backing, traded mainly inside AABB's own wallet. Excluded from any totals."
+  },
+  {
+   "name": "Oropocket ORO",
+   "ticker": "ORO",
+   "company": "Oropocket / OpenDeFi",
+   "status": "dormant",
+   "pure_play": false,
+   "market_cap_usd": "Not tracked (Low)",
+   "jurisdiction": "Not verified",
+   "parent_business": "Retail DeFi / savings app",
+   "notes": "CMC preview page shows a DeFi token and does not confirm gold backing (https://coinmarketcap.com/currencies/oro/). Probably not a real gold token, so exclude. We could not identify any gold token called 'Ounce'. Tether's XAUT0 ($110M) is excluded because it is XAUT moved across chains."
+  }
+ ]
+}
